@@ -325,8 +325,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 30 }}>
-              <div className="glass-card" style={{ padding: 36 }}>
+            <div className="modern-features-grid">
+              <div className="glass-card" style={{ padding: "32px 28px" }}>
                 <div
                   style={{
                     width: 56,
@@ -343,15 +343,15 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-brain"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)" }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
                   Fundamentação Rigorosa
                 </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
+                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
                   Desde embriologia, biomecânica e diagnóstico diferencial até neurofisiologia intraoperatória avançada.
                 </p>
               </div>
 
-              <div className="glass-card" style={{ padding: 36 }}>
+              <div className="glass-card" style={{ padding: "32px 28px" }}>
                 <div
                   style={{
                     width: 56,
@@ -369,15 +369,15 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-tools"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)" }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
                   Arsenal Cirúrgico Moderno
                 </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
+                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
                   Cobertura detalhada de técnicas minimamente invasivas, endoscopia uni/biportal, ALIF, OLIF, osteotomias, navegação e robótica.
                 </p>
               </div>
 
-              <div className="glass-card" style={{ padding: 36 }}>
+              <div className="glass-card" style={{ padding: "32px 28px" }}>
                 <div
                   style={{
                     width: 56,
@@ -394,10 +394,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-shield"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)" }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
                   Segurança &amp; Complicações
                 </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
+                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
                   Prevenção, diagnóstico precoce e manejo sistemático de lesões neurais, infecções, perda de sinal intraoperatório e falhas mecânicas.
                 </p>
               </div>
@@ -416,7 +416,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20 }}>
+            <div className="modern-sections-grid">
               {SECOES.map((sec) => (
                 <Link
                   key={sec.id}

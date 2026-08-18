@@ -1,6 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SvgSprite from "@/components/SvgSprite";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#001026",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tratado-de-cirurgiada-coluna-verteb.vercel.app"),
