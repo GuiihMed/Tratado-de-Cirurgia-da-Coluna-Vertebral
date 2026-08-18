@@ -172,48 +172,6 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
   return (
     <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
-      {/* ================= LAYOUT VERSION TOGGLE BANNER ================= */}
-      <aside
-        aria-label="Alternar versão do layout"
-        style={{
-          background: "#001026",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
-          padding: "8px 16px",
-          color: "#fff",
-          fontSize: 12.5,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 14,
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-        }}
-      >
-        <span style={{ color: "#94a3b8" }}>
-          Você está visualizando o: <strong style={{ color: "#fff" }}>Layout Clássico Original (Fidedigno)</strong>
-        </span>
-        <Link
-          href={`/${locale}/capitulo-new/${num}`}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "4px 12px",
-            borderRadius: 6,
-            background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
-            color: "#fff",
-            textDecoration: "none",
-            fontWeight: 700,
-            fontSize: 12,
-            boxShadow: "0 2px 8px rgba(245, 34, 56, 0.4)",
-          }}
-        >
-          <span>✨ Ver no Novo Layout Moderno</span>
-          <span>→</span>
-        </Link>
-      </aside>
-
       {/* Classic Top Header */}
       <Header locale={locale} currentPage="other" />
 

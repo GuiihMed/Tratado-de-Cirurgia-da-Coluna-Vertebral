@@ -172,50 +172,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
       ];
 
   return (
-    <div style={{ background: "#f1f5f9", color: "#0f172a", minHeight: "100vh" }}>
-      {/* ================= LAYOUT VERSION TOGGLE BANNER ================= */}
-      <aside
-        aria-label="Alternar versão do layout"
-        style={{
-          background: "linear-gradient(90deg, #001026 0%, #032b69 100%)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
-          padding: "8px 16px",
-          color: "#fff",
-          fontSize: 12.5,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 14,
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-        }}
-      >
-        <span style={{ color: "#93c5fd" }}>
-          Você está visualizando o: <strong style={{ color: "#fff" }}>✨ Novo Layout Moderno (Nova Identidade)</strong>
-        </span>
-        <Link
-          href={`/${locale}/capitulo/${num}`}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "4px 12px",
-            borderRadius: 6,
-            background: "rgba(255, 255, 255, 0.15)",
-            border: "1px solid rgba(255, 255, 255, 0.3)",
-            color: "#fff",
-            textDecoration: "none",
-            fontWeight: 700,
-            fontSize: 12,
-            transition: "all 0.2s ease",
-          }}
-        >
-          <span>🏛️ Ver no Layout Clássico Original</span>
-          <span>→</span>
-        </Link>
-      </aside>
-
+    <div style={{ background: "#001026", color: "#0f172a", minHeight: "100vh" }}>
       <ModernHeader locale={locale} currentPage="other" />
 
       <main style={{ paddingBottom: "100px" }}>
@@ -225,6 +182,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
             background: "linear-gradient(135deg, #001026 0%, #00224d 50%, #001738 100%)",
             color: "#fff",
             padding: "45px 0 55px",
+            marginTop: "-88px",
+            paddingTop: "125px",
             position: "relative",
             overflow: "hidden",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
@@ -489,7 +448,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
         </section>
 
         {/* ================= 2-COLUMN MODERN CONTENT ================= */}
-        <section style={{ padding: "45px 0 80px" }}>
+        <section style={{ padding: "45px 0 80px", background: "#f1f5f9" }}>
           <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.3fr 1fr", gap: 36, alignItems: "start" }}>
             {/* MAIN COLUMN */}
             <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
