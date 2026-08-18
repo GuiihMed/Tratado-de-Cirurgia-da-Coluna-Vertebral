@@ -942,7 +942,77 @@
   }
 }
 
-/* Modern Mobile Navigation Drawer Styles */
+/* Modern Controls Bar (Layout Switcher & Filters) */
+.modern-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13.5px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.modern-controls-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 10, 26, 0.7);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.modern-controls-actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .modern-controls-bar {
+    flex-direction: column;
+    padding: 14px 12px;
+    gap: 12px;
+    text-align: center;
+    border-radius: 14px;
+  }
+
+  .modern-controls-switcher {
+    width: 100%;
+    display: flex;
+  }
+
+  .modern-controls-switcher button {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 4px !important;
+    font-size: 11px !important;
+  }
+
+  .modern-controls-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .modern-controls-actions button {
+    flex: 1;
+    justify-content: center;
+    padding: 8px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+/* ==========================================================================
+   MODERN MOBILE NAVIGATION DRAWER & EXPANDED BREAKPOINTS
+   ========================================================================== */
 .modern-mobile-burger {
   display: none;
 }
@@ -952,36 +1022,80 @@
     display: none !important;
   }
 
+  .modern-nav-sticky {
+    position: sticky;
+    top: 8px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    margin: 0 auto;
+    z-index: 1000;
+  }
+
+  .modern-nav-bar {
+    height: 60px;
+    padding: 0 16px;
+    border-radius: 16px;
+    background: rgba(0, 16, 38, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 30px rgba(0, 5, 20, 0.4);
+  }
+
+  .modern-brand-link {
+    gap: 10px;
+  }
+
+  .modern-brand-link img {
+    height: 32px !important;
+  }
+
+  .modern-brand-text {
+    padding-left: 10px !important;
+  }
+
+  .modern-brand-text span {
+    font-size: 10px;
+    letter-spacing: 0.03em;
+  }
+
+  .modern-brand-text strong {
+    font-size: 13.5px;
+    line-height: 1.1;
+  }
+
   .modern-mobile-burger {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .modern-mobile-burger:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .modern-mobile-drawer {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
-    background: rgba(0, 16, 38, 0.97);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(0, 14, 32, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 20px;
-    padding: 22px;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 34, 56, 0.15);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 20px rgba(245, 34, 56, 0.15);
     z-index: 9999;
     animation: modernDrawerSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -989,7 +1103,7 @@
   @keyframes modernDrawerSlide {
     from {
       opacity: 0;
-      transform: translateY(-12px);
+      transform: translateY(-8px);
     }
     to {
       opacity: 1;
@@ -1000,18 +1114,18 @@
   .modern-drawer-links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 16px;
   }
 
   .modern-drawer-links a {
     color: #edf5ff;
     text-decoration: none;
-    font-size: 15.5px;
+    font-size: 14.5px;
     font-weight: 600;
-    padding: 12px 18px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 11px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
     transition: all 0.15s ease;
   }
 
@@ -1025,20 +1139,20 @@
   .modern-drawer-footer {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding-top: 18px;
+    gap: 12px;
+    padding-top: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .modern-switch-link {
-    color: #8cb7e4;
+    color: #ff8090;
     text-decoration: none;
     font-weight: 700;
-    font-size: 13.5px;
-    padding: 11px 16px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
+    font-size: 13px;
+    padding: 10px 14px;
+    background: rgba(245, 34, 56, 0.12);
+    border: 1px solid rgba(245, 34, 56, 0.3);
+    border-radius: 8px;
     text-align: center;
   }
 
@@ -1049,129 +1163,214 @@
   }
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 1400px) {
-  .modern-nav-sticky {
-    max-width: calc(100% - 60px);
-  }
-}
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================================================== */
 
+/* TABLETS (1024px and below) */
 @media (max-width: 1024px) {
-  .modern-nav-sticky {
+  .shell {
     max-width: calc(100% - 32px);
-    top: 10px;
+    padding: 0 16px;
   }
+
   .modern-hero {
     min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 60px;
+    margin-top: -65px;
+    padding-top: 95px;
+    padding-bottom: 50px;
   }
+
   .modern-hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     text-align: center;
   }
+
   .modern-hero-badge {
-    margin: 0 auto 18px;
+    margin: 0 auto 16px;
   }
+
   .modern-hero-copy h1 {
-    font-size: 46px;
+    font-size: 38px;
+    line-height: 1.18;
   }
+
   .modern-hero-actions {
     justify-content: center;
   }
+
   .modern-hero-3d {
     margin: 0 auto;
-    max-width: 340px;
+    max-width: 280px;
   }
+
   .modern-stats-bar {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-top: 36px;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 18px;
   }
+
   .author-accordion-container {
     flex-direction: column;
     min-height: auto;
+    gap: 14px;
   }
+
   .author-accordion-card {
-    min-height: 420px;
+    min-height: 320px;
+    height: 320px;
     flex: none !important;
+    border-radius: 16px;
   }
+
   .author-default-label {
     display: none !important;
   }
+
   .author-accordion-glass-box {
     display: block !important;
+    background: rgba(0, 16, 38, 0.88) !important;
+    padding: 18px !important;
   }
+
   .modern-video-card {
     grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
   }
+
   .modern-footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 28px;
   }
 }
 
+/* SMARTPHONES (768px and below) */
 @media (max-width: 768px) {
+  .modern-hero {
+    margin-top: -60px !important;
+    padding-top: 85px !important;
+    padding-bottom: 40px !important;
+  }
+
   .modern-hero-copy h1 {
-    font-size: 34px !important;
+    font-size: 28px !important;
     letter-spacing: -0.025em;
+    line-height: 1.22 !important;
   }
+
   .modern-hero-copy p {
-    font-size: 16px !important;
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 22px !important;
   }
+
   .modern-hero-actions {
     flex-direction: column;
     width: 100%;
     gap: 10px;
   }
+
   .modern-hero-actions a,
   .modern-hero-actions button {
     width: 100%;
     justify-content: center;
+    height: 46px;
+    font-size: 14px;
   }
+
   .modern-stats-bar {
     grid-template-columns: 1fr 1fr;
-    padding: 16px;
-    gap: 10px;
+    padding: 14px 12px;
+    gap: 8px;
   }
-  .modern-stat-item strong {
-    font-size: 26px !important;
-  }
-  .modern-search-bar {
-    padding: 8px 14px;
-    gap: 10px;
-  }
-  .modern-search-input {
-    font-size: 14px;
-  }
-  .modern-filter-row {
-    padding-bottom: 8px;
-  }
-  .modern-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
 
-@media (max-width: 480px) {
-  .modern-nav-bar {
-    padding: 0 14px;
-    height: 64px;
+  .modern-stat-item {
+    padding: 6px;
   }
-  .modern-brand-text strong {
-    font-size: 14px;
-  }
-  .modern-brand-text span {
-    font-size: 10px;
-  }
-  .modern-hero-copy h1 {
-    font-size: 28px !important;
-  }
+
   .modern-stat-item strong {
     font-size: 22px !important;
   }
+
   .modern-stat-item span {
     font-size: 11px !important;
+  }
+
+  .modern-search-bar {
+    padding: 6px 12px;
+    gap: 8px;
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  .modern-search-input {
+    font-size: 13.5px;
+  }
+
+  .modern-filter-row {
+    padding-bottom: 6px;
+    gap: 6px;
+  }
+
+  .modern-filter-chip {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .modern-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* SMALL MOBILES (480px and below) */
+@media (max-width: 480px) {
+  .shell {
+    max-width: 100%;
+    padding: 0 12px;
+  }
+
+  .modern-nav-sticky {
+    width: calc(100% - 16px);
+    max-width: calc(100% - 16px);
+    top: 6px;
+  }
+
+  .modern-nav-bar {
+    height: 54px;
+    padding: 0 12px;
+  }
+
+  .modern-brand-link img {
+    height: 28px !important;
+  }
+
+  .modern-brand-text strong {
+    font-size: 12.5px;
+  }
+
+  .modern-brand-text span {
+    display: none;
+  }
+
+  .modern-hero-copy h1 {
+    font-size: 24px !important;
+  }
+
+  .modern-stats-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 10px 8px;
+  }
+
+  .modern-stat-item strong {
+    font-size: 20px !important;
+  }
+
+  .modern-stat-item span {
+    font-size: 10px !important;
   }
 }

@@ -219,40 +219,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
             </div>
 
             {/* Controls Bar (Layout Switcher & Expand/Collapse) */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                maxWidth: 960,
-                margin: "0 auto",
-                padding: "12px 24px",
-                borderRadius: 16,
-                background: "rgba(255, 255, 255, 0.05)",
-                backdropFilter: "blur(20px)",
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                fontSize: 13.5,
-                flexWrap: "wrap",
-                gap: 16,
-              }}
-            >
+            <div className="modern-controls-bar">
               <span style={{ color: "#c2dcf5", fontWeight: 500 }}>
                 Exibindo <strong style={{ color: "#ffffff" }}>{filteredChapters.length}</strong> de 109 capítulos
                 {searchQuery && ` para "${searchQuery}"`}
               </span>
 
               {/* Layout Display Switcher */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                  background: "rgba(0, 10, 26, 0.7)",
-                  padding: "4px",
-                  borderRadius: 12,
-                  border: "1px solid rgba(255, 255, 255, 0.14)",
-                }}
-              >
+              <div className="modern-controls-switcher">
                 <button
                   type="button"
                   onClick={() => setLayoutView("accordion")}
@@ -325,7 +299,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
 
               {/* Accordion Expand / Collapse Buttons */}
               {layoutView === "accordion" && (
-                <div style={{ display: "flex", gap: 8 }}>
+                <div className="modern-controls-actions">
                   <button
                     onClick={() => setAllSections(true)}
                     style={{
