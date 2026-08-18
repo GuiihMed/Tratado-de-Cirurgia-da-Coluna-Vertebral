@@ -1380,15 +1380,24 @@
     font-weight: 700 !important;
   }
 
-  .indice-section-chapters-grid {
-    grid-template-columns: 1fr !important;
-    padding: 0 16px 18px 16px !important;
-    gap: 10px !important;
-  }
-
   .modern-footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+}
+
+.modern-chapter-card-link:hover {
+  background: rgba(245, 34, 56, 0.18) !important;
+  border-color: rgba(245, 34, 56, 0.45) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+  .indice-section-chapters-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 14px 18px 14px !important;
+    gap: 8px !important;
   }
 }
 

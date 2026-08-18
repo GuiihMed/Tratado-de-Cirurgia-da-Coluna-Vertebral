@@ -439,30 +439,28 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     <article
                       key={secao.id}
                       id={secao.tag}
-                      className={`outline-row ${secao.colorClass} ${
-                        isSection8 ? "section-eight" : ""
-                      } ${isOpen ? "is-open" : ""}`}
+                      className={`modern-section-accordion ${isOpen ? "is-open" : ""}`}
                       style={{
-                        marginBottom: 18,
+                        marginBottom: 16,
                         borderRadius: 16,
-                        background: "rgba(0, 16, 38, 0.82)",
+                        background: "rgba(0, 16, 38, 0.85)",
                         backdropFilter: "blur(24px)",
+                        WebkitBackdropFilter: "blur(24px)",
                         border: "1px solid rgba(255, 255, 255, 0.12)",
                         borderLeft: "5px solid #f52238",
-                        boxShadow: "0 12px 35px rgba(0, 5, 20, 0.45)",
+                        boxShadow: "0 10px 30px rgba(0, 5, 20, 0.4)",
                         overflow: "hidden",
                         transition: "all 0.25s ease",
                       }}
                     >
                       <button
                         type="button"
-                        className="outline-header"
                         onClick={() => toggleSection(secao.id)}
                         aria-expanded={isOpen}
                         style={{
                           width: "100%",
                           textAlign: "left",
-                          padding: "20px 26px",
+                          padding: "18px 22px",
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
@@ -472,37 +470,37 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           color: "#fff",
                         }}
                       >
-                        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                           <span
                             style={{
                               display: "inline-flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              width: 38,
-                              height: 38,
-                              borderRadius: 10,
+                              width: 42,
+                              height: 42,
+                              borderRadius: 12,
                               background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                               color: "#ffffff",
-                              fontWeight: 800,
-                              fontSize: 16,
-                              boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
+                              fontWeight: 850,
+                              fontSize: 18,
+                              boxShadow: "0 4px 14px rgba(245, 34, 56, 0.4)",
                               flexShrink: 0,
                             }}
                           >
                             {secao.numero}
                           </span>
                           <div>
-                            <strong style={{ fontSize: 18, fontWeight: 800, display: "block", color: "#fff", letterSpacing: "-0.01em" }}>
+                            <strong style={{ fontSize: 19, fontWeight: 800, display: "block", color: "#fff", letterSpacing: "-0.01em", lineHeight: 1.2 }}>
                               {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                             </strong>
-                            <span style={{ fontSize: 13, color: "#94a3b8" }}>
+                            <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 500, marginTop: 2, display: "block" }}>
                               {secChapters.length} capítulos nesta seção
                             </span>
                           </div>
                         </div>
 
-                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                          <span style={{ fontSize: 16, color: "#cbd5e1" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 10 }}>
+                          <span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700 }}>
                             {isOpen ? "▲" : "▼"}
                           </span>
                         </div>
@@ -513,10 +511,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           className="indice-section-chapters-grid"
                           style={{
                             margin: 0,
-                            padding: "0 26px 24px 26px",
+                            padding: "0 22px 22px 22px",
                             display: "grid",
                             gridTemplateColumns: "repeat(2, 1fr)",
-                            gap: 12,
+                            gap: 10,
                           }}
                         >
                           {secChapters.map((cap) => {
@@ -529,28 +527,67 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               <Link
                                 key={cap.numero}
                                 href={`/${locale}/capitulo-new/${cap.numero}`}
+                                className="modern-chapter-card-link"
                                 style={{
-                                  padding: "14px 18px",
-                                  borderRadius: 10,
+                                  padding: "14px 16px",
+                                  borderRadius: 12,
                                   textDecoration: "none",
                                   transition: "all 0.2s ease",
-                                  background: isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)",
-                                  border: isMatch ? "1px solid rgba(245, 34, 56, 0.5)" : "1px solid rgba(255, 255, 255, 0.08)",
+                                  background: isMatch ? "rgba(245, 34, 56, 0.22)" : "rgba(255, 255, 255, 0.05)",
+                                  border: isMatch ? "1px solid rgba(245, 34, 56, 0.5)" : "1px solid rgba(255, 255, 255, 0.09)",
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "space-between",
                                   gap: 12,
                                 }}
                               >
-                                <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
-                                  <b style={{ color: "#ff4d61", flexShrink: 0, fontWeight: 800, fontSize: 15 }}>
-                                    {cap.numero}.
-                                  </b>
-                                  <span style={{ color: "#edf5ff", fontSize: 14.5, fontWeight: 550, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0, flex: 1 }}>
+                                  <span
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      minWidth: 28,
+                                      height: 28,
+                                      padding: "0 6px",
+                                      borderRadius: 6,
+                                      background: "rgba(245, 34, 56, 0.15)",
+                                      color: "#ff6677",
+                                      fontWeight: 800,
+                                      fontSize: 13,
+                                      flexShrink: 0,
+                                    }}
+                                  >
+                                    {cap.numero}
+                                  </span>
+                                  <span
+                                    style={{
+                                      color: "#edf5ff",
+                                      fontSize: 14.5,
+                                      fontWeight: 600,
+                                      lineHeight: 1.3,
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      display: "-webkit-box",
+                                      WebkitLineClamp: 2,
+                                      WebkitBoxOrient: "vertical",
+                                    }}
+                                  >
                                     {getChapterTitle(cap)}
                                   </span>
                                 </div>
-                                <span style={{ fontSize: 13, color: "#8da9cc", fontWeight: 600, flexShrink: 0 }}>
+                                <span
+                                  style={{
+                                    fontSize: 12,
+                                    color: "#60b5ff",
+                                    background: "rgba(14, 101, 162, 0.25)",
+                                    border: "1px solid rgba(14, 101, 162, 0.4)",
+                                    padding: "5px 10px",
+                                    borderRadius: 6,
+                                    fontWeight: 700,
+                                    flexShrink: 0,
+                                  }}
+                                >
                                   Ver →
                                 </span>
                               </Link>
