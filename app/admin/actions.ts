@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 
-// Helper for XSS sanitization
+// Helper for XSS sanitization while preserving paragraph line breaks and basic formatting
 function sanitize(input: string | null | undefined): string {
   if (!input) return "";
   return input
@@ -15,6 +15,14 @@ function sanitize(input: string | null | undefined): string {
     .trim();
 }
 
+function sanitizeTextarea(input: string | null | undefined): string {
+  if (!input) return "";
+  return input
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .trim();
+}
+
 export interface ActionResult {
   success: boolean;
   message: string;
@@ -22,7 +30,7 @@ export interface ActionResult {
 }
 
 /**
- * Server action to insert or update a chapter in Supabase
+ * Server action to insert or update a chapter with rich content in Supabase
  */
 export async function cadastrarCapituloAction(
   prevState: ActionResult | null,
@@ -34,6 +42,11 @@ export async function cadastrarCapituloAction(
     const tituloPtRaw = formData.get("titulo_pt")?.toString();
     const tituloEnRaw = formData.get("titulo_en")?.toString();
     const tituloEsRaw = formData.get("titulo_es")?.toString();
+    const autoresRaw = formData.get("autores")?.toString();
+    const resumoPtRaw = formData.get("resumo_pt")?.toString();
+    const conteudoPtRaw = formData.get("conteudo_pt")?.toString();
+    const referenciasRaw = formData.get("referencias")?.toString();
+    const statusRaw = formData.get("status")?.toString() || "publicado";
 
     // 1. Validation: required fields
     if (!secaoIdRaw || !numeroRaw || !tituloPtRaw) {
@@ -63,6 +76,11 @@ export async function cadastrarCapituloAction(
     const titulo_pt = sanitize(tituloPtRaw);
     const titulo_en = sanitize(tituloEnRaw) || null;
     const titulo_es = sanitize(tituloEsRaw) || null;
+    const autores = sanitize(autoresRaw) || null;
+    const resumo_pt = sanitizeTextarea(resumoPtRaw) || null;
+    const conteudo_pt = sanitizeTextarea(conteudoPtRaw) || null;
+    const referencias = sanitizeTextarea(referenciasRaw) || null;
+    const status = ["publicado", "rascunho"].includes(statusRaw) ? statusRaw : "publicado";
 
     if (titulo_pt.length < 3) {
       return {
@@ -80,6 +98,11 @@ export async function cadastrarCapituloAction(
         titulo_pt,
         titulo_en,
         titulo_es,
+        autores,
+        resumo_pt,
+        conteudo_pt,
+        referencias,
+        status,
         updated_at: new Date().toISOString(),
       },
       { onConflict: "numero" }
@@ -95,11 +118,13 @@ export async function cadastrarCapituloAction(
     }
 
     revalidatePath("/[locale]/indice", "page");
+    revalidatePath("/[locale]/indice-new", "page");
+    revalidatePath("/[locale]/capitulo/[numero]", "page");
     revalidatePath("/admin/painel", "page");
 
     return {
       success: true,
-      message: `Capítulo ${numero} ("${titulo_pt}") salvo com sucesso no banco de dados!`,
+      message: `Capítulo ${numero} ("${titulo_pt}") publicado/atualizado com sucesso!`,
     };
   } catch (err: any) {
     console.error("Unexpected error in cadastrarCapituloAction:", err);
@@ -134,6 +159,7 @@ export async function excluirCapituloAction(idOrNumero: number | string): Promis
     }
 
     revalidatePath("/[locale]/indice", "page");
+    revalidatePath("/[locale]/indice-new", "page");
     revalidatePath("/admin/painel", "page");
 
     return {

@@ -467,21 +467,21 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 O conteúdo completo, técnica cirúrgica passo a passo, algoritmos e referências deste capítulo constam com exclusividade na obra impressa oficial do Tratado.
               </p>
 
-              <div style={{ display: "flex", gap: 12 }}>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <Link
+                  href={`/${locale}/capitulo/${activeModalChapter.numero}`}
+                  className="modern-btn-glow"
+                  style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
+                >
+                  Ler Capítulo Completo 📖
+                </Link>
                 <button
                   onClick={() => copyCitation(activeModalChapter)}
-                  className="modern-btn-glow"
-                  style={{ height: 44, fontSize: 13, flex: 1 }}
-                >
-                  {copiedChapter === activeModalChapter.numero ? "Citação Copiada! ✓" : "Copiar Citação ABNT"}
-                </button>
-                <Link
-                  href={`/${locale}/home-new#comprar`}
                   className="modern-btn-glass"
-                  style={{ height: 44, fontSize: 13 }}
+                  style={{ height: 44, fontSize: 13, padding: "0 16px" }}
                 >
-                  Onde Adquirir
-                </Link>
+                  {copiedChapter === activeModalChapter.numero ? "Citação Copiada! ✓" : "Copiar Citação"}
+                </button>
               </div>
             </div>
           </div>

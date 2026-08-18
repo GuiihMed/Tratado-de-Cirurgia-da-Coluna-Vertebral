@@ -46,3 +46,38 @@ export async function getCapitulos(): Promise<{ data: Capitulo[]; isFromDb: bool
     return { data: INITIAL_CHAPTERS, isFromDb: false, error: err?.message };
   }
 }
+
+/**
+ * Fetch a single chapter by its number (1 to 109).
+ */
+export async function getCapituloByNumero(
+  numero: number
+): Promise<{ data: Capitulo | null; isFromDb: boolean }> {
+  try {
+    const isConfigured =
+      Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
+      !process.env.NEXT_PUBLIC_SUPABASE_URL?.includes("placeholder") &&
+      Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) &&
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.includes("placeholder");
+
+    if (isConfigured) {
+      const client = getSupabaseServerClient();
+      const { data, error } = await client
+        .from("capitulos")
+        .select("*")
+        .eq("numero", numero)
+        .maybeSingle();
+
+      if (!error && data) {
+        return { data: data as Capitulo, isFromDb: true };
+      }
+    }
+
+    // Fallback to local catalog
+    const local = INITIAL_CHAPTERS.find((c) => c.numero === numero) || null;
+    return { data: local, isFromDb: false };
+  } catch (err) {
+    const local = INITIAL_CHAPTERS.find((c) => c.numero === numero) || null;
+    return { data: local, isFromDb: false };
+  }
+}

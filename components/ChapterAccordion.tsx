@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Capitulo, Locale, SecaoInfo } from "@/lib/types";
 import { SECOES } from "@/lib/data/sections-and-chapters";
 
@@ -130,7 +131,13 @@ export default function ChapterAccordion({
                   {chapters.length > 0 ? (
                     chapters.map((cap) => (
                       <li key={cap.numero}>
-                        <b>{cap.numero}.</b> {getChapterTitle(cap)}
+                        <Link
+                          href={`/${locale}/capitulo/${cap.numero}`}
+                          style={{ color: "inherit", textDecoration: "none", display: "inline-block" }}
+                          title={`Ler Capítulo ${cap.numero}: ${getChapterTitle(cap)}`}
+                        >
+                          <b>{cap.numero}.</b> {getChapterTitle(cap)}
+                        </Link>
                       </li>
                     ))
                   ) : (

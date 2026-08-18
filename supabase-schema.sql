@@ -13,7 +13,12 @@ CREATE TABLE IF NOT EXISTS public.capitulos (
     resumo_pt TEXT,
     resumo_en TEXT,
     resumo_es TEXT,
+    conteudo_pt TEXT,
+    conteudo_en TEXT,
+    conteudo_es TEXT,
     autores TEXT,
+    referencias TEXT,
+    status TEXT NOT NULL DEFAULT 'publicado' CHECK (status IN ('publicado', 'rascunho')),
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     CONSTRAINT capitulos_numero_unique UNIQUE (numero)

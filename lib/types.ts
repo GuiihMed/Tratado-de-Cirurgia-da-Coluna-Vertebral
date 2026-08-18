@@ -10,7 +10,12 @@ export interface Capitulo {
   resumo_pt?: string | null;
   resumo_en?: string | null;
   resumo_es?: string | null;
+  conteudo_pt?: string | null;
+  conteudo_en?: string | null;
+  conteudo_es?: string | null;
   autores?: string | null;
+  referencias?: string | null;
+  status?: "publicado" | "rascunho" | string;
   created_at?: string;
   updated_at?: string;
 }
