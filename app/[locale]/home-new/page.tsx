@@ -23,8 +23,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
     "equilibrio" | "incidencia" | "cone" | "lordose" | "t1"
   >("equilibrio");
 
-  // Interactive Author Accordion State
-  const [activeAuthor, setActiveAuthor] = useState<number>(0);
+  // Interactive Author Hover State (null when not hovering)
+  const [hoveredAuthor, setHoveredAuthor] = useState<number | null>(null);
 
   const authorsList = [
     {
@@ -655,62 +655,31 @@ export default function HomeNewPage({ params }: HomeNewProps) {
           </div>
         </section>
 
-        {/* ================= AUTORES E CORPO EDITORIAL (SANFONA INTERATIVA PREMIUM) ================= */}
-        <section id="autores" style={{ padding: "90px 0 110px", background: "radial-gradient(100% 100% at 50% 0%, #f4f8fd 0%, #ffffff 100%)" }}>
+        {/* ================= AUTORES E CORPO EDITORIAL (MINIMALISTA) ================= */}
+        <section id="autores" style={{ padding: "80px 0 100px", background: "#fff" }}>
           <div className="shell">
-            <div className="modern-section-header">
-              <span className="modern-tag-pill">Liderança Acadêmica &amp; Cirúrgica</span>
-              <h2 className="modern-section-title">Autores &amp; Corpo Editorial</h2>
+            <div className="modern-section-header" style={{ marginBottom: 40 }}>
+              <span className="modern-tag-pill">Corpo Editorial</span>
+              <h2 className="modern-section-title">Autores &amp; Editores do Tratado</h2>
               <p className="modern-section-subtitle">
-                O Tratado reúne os maiores expoentes da cirurgia de coluna do Brasil, combinando rigor acadêmico, diretrizes da SBC e vasta experiência de bloco cirúrgico.
+                Conheça os editores responsáveis pela coordenação acadêmica, diretrizes da SBC e rigor científico da obra.
               </p>
             </div>
 
-            {/* Quick-Selector Tabs for Instant Navigation */}
-            <div className="author-selector-tabs">
+            {/* Minimalist Interactive Accordion */}
+            <div
+              className="author-accordion-container"
+              onMouseLeave={() => setHoveredAuthor(null)}
+            >
               {authorsList.map((author, index) => {
-                const isActive = activeAuthor === index;
-                return (
-                  <button
-                    key={author.id}
-                    type="button"
-                    className={`author-selector-btn ${isActive ? "active" : ""}`}
-                    onClick={() => setActiveAuthor(index)}
-                    onMouseEnter={() => setActiveAuthor(index)}
-                  >
-                    <img
-                      src={author.photo}
-                      alt={author.name}
-                      className="author-selector-thumb"
-                    />
-                    <span>{author.name}</span>
-                    <span style={{ fontSize: 11, opacity: 0.75, fontWeight: 500 }}>
-                      ({author.num})
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Premium Interactive Accordion */}
-            <div className="author-accordion-container">
-              {authorsList.map((author, index) => {
-                const isActive = activeAuthor === index;
+                const isHovered = hoveredAuthor === index;
                 return (
                   <article
                     key={author.id}
-                    className={`author-accordion-card ${isActive ? "active" : ""}`}
-                    onMouseEnter={() => setActiveAuthor(index)}
-                    onClick={() => setActiveAuthor(index)}
+                    className={`author-accordion-card ${isHovered ? "active" : ""}`}
+                    onMouseEnter={() => setHoveredAuthor(index)}
+                    onClick={() => setHoveredAuthor(index)}
                   >
-                    {/* Top Bar with Number Badge & Live Pulse */}
-                    <div className="author-card-top-bar">
-                      <span className="author-num-badge">
-                        EDITOR {author.num}
-                      </span>
-                      {isActive && <div className="author-pulse-dot" title="Perfil em Foco" />}
-                    </div>
-
                     {/* High-Resolution Portrait */}
                     <img
                       src={author.photo}
@@ -719,128 +688,124 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     />
                     <div className="author-accordion-overlay" />
 
-                    {/* Bottom Frosted Glass Box */}
                     <div className="author-accordion-content">
-                      <div className="author-accordion-glass-box">
+                      {/* Default Minimalist State (Visible when not hovered) */}
+                      <div className="author-default-label">
                         <div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
-                            <span
-                              style={{
-                                display: "inline-block",
-                                padding: "4px 10px",
-                                borderRadius: 6,
-                                background: "#f52238",
-                                color: "#fff",
-                                fontSize: 11.5,
-                                fontWeight: 800,
-                                textTransform: "uppercase",
-                                letterSpacing: "0.05em",
-                                boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
-                              }}
-                            >
-                              {author.role}
-                            </span>
-                            <span style={{ fontSize: 12, color: "#9ec5f0", fontWeight: 600 }}>
-                              {author.institution}
-                            </span>
-                          </div>
-
-                          <h3
-                            style={{
-                              fontSize: 24,
-                              fontWeight: 800,
-                              margin: "0 0 4px",
-                              letterSpacing: "-0.02em",
-                              color: "#fff",
-                              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
-                            }}
-                          >
+                          <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#fff" }}>
                             {author.name}
                           </h3>
-
-                          <div style={{ fontSize: 12.5, color: "#ff8c98", fontWeight: 700 }}>
-                            ★ {author.highlight}
-                          </div>
+                          <span style={{ fontSize: 12, color: "#ff808f", fontWeight: 600 }}>
+                            {author.role}
+                          </span>
                         </div>
+                        <span
+                          style={{
+                            width: 28,
+                            height: 28,
+                            borderRadius: "50%",
+                            background: "rgba(255, 255, 255, 0.12)",
+                            display: "grid",
+                            placeItems: "center",
+                            fontSize: 14,
+                            color: "#fff",
+                          }}
+                        >
+                          +
+                        </span>
+                      </div>
 
-                        <div className="author-accordion-details">
-                          <p
+                      {/* Hover / Expanded State (Visible on mouse hover) */}
+                      <div className="author-accordion-glass-box">
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
+                          <span
                             style={{
-                              fontSize: 13.5,
-                              lineHeight: 1.55,
-                              color: "#dce8f5",
-                              margin: "0 0 14px",
+                              display: "inline-block",
+                              padding: "4px 10px",
+                              borderRadius: 6,
+                              background: "#f52238",
+                              color: "#fff",
+                              fontSize: 11.5,
+                              fontWeight: 800,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.05em",
                             }}
                           >
-                            {author.bio}
-                          </p>
+                            {author.role}
+                          </span>
+                          <span style={{ fontSize: 12, color: "#9ec5f0", fontWeight: 600 }}>
+                            {author.institution}
+                          </span>
+                        </div>
 
-                          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
-                            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                              {author.specialties.map((spec, i) => (
-                                <span
-                                  key={i}
-                                  style={{
-                                    fontSize: 11,
-                                    fontWeight: 600,
-                                    padding: "3px 8px",
-                                    borderRadius: 6,
-                                    background: "rgba(255, 255, 255, 0.15)",
-                                    backdropFilter: "blur(8px)",
-                                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                                    color: "#f1f6fc",
-                                  }}
-                                >
-                                  {spec}
-                                </span>
-                              ))}
-                            </div>
+                        <h3
+                          style={{
+                            fontSize: 22,
+                            fontWeight: 800,
+                            margin: "0 0 10px",
+                            letterSpacing: "-0.02em",
+                            color: "#fff",
+                          }}
+                        >
+                          {author.name}
+                        </h3>
 
-                            <Link
-                              href={`/${locale}/indice-new`}
-                              style={{
-                                fontSize: 12,
-                                fontWeight: 700,
-                                color: "#fff",
-                                textDecoration: "none",
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: 4,
-                                padding: "6px 12px",
-                                borderRadius: 8,
-                                background: "rgba(245, 34, 56, 0.8)",
-                                transition: "all 0.2s ease",
-                              }}
-                            >
-                              Ver no Índice →
-                            </Link>
+                        <p
+                          style={{
+                            fontSize: 13.5,
+                            lineHeight: 1.55,
+                            color: "#dce8f5",
+                            margin: "0 0 14px",
+                          }}
+                        >
+                          {author.bio}
+                        </p>
+
+                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+                          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                            {author.specialties.map((spec, i) => (
+                              <span
+                                key={i}
+                                style={{
+                                  fontSize: 11,
+                                  fontWeight: 600,
+                                  padding: "3px 8px",
+                                  borderRadius: 6,
+                                  background: "rgba(255, 255, 255, 0.15)",
+                                  backdropFilter: "blur(8px)",
+                                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                                  color: "#f1f6fc",
+                                }}
+                              >
+                                {spec}
+                              </span>
+                            ))}
                           </div>
+
+                          <Link
+                            href={`/${locale}/indice-new`}
+                            style={{
+                              fontSize: 12,
+                              fontWeight: 700,
+                              color: "#fff",
+                              textDecoration: "none",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 4,
+                              padding: "6px 12px",
+                              borderRadius: 8,
+                              background: "#f52238",
+                              transition: "all 0.2s ease",
+                            }}
+                          >
+                            Ver no Índice →
+                          </Link>
                         </div>
                       </div>
                     </div>
                   </article>
                 );
               })}
-            </div>
-
-            {/* Editorial Credentials & Trust Banner */}
-            <div className="author-stats-banner">
-              <div className="author-stat-item">
-                <span className="author-stat-value">109</span>
-                <span className="author-stat-label">Capítulos Especializados &amp; Inéditos</span>
-              </div>
-              <div className="author-stat-item">
-                <span className="author-stat-value">+200</span>
-                <span className="author-stat-label">Cirurgiões e Autores Colaboradores</span>
-              </div>
-              <div className="author-stat-item">
-                <span className="author-stat-value">10</span>
-                <span className="author-stat-label">Grandes Seções Anatômicas e Clínicas</span>
-              </div>
-              <div className="author-stat-item">
-                <span className="author-stat-value">100% SBC</span>
-                <span className="author-stat-label">Chancela Oficial da Sociedade Brasileira de Coluna</span>
-              </div>
             </div>
           </div>
         </section>
