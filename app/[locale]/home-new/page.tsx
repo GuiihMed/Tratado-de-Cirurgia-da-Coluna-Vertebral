@@ -23,6 +23,36 @@ export default function HomeNewPage({ params }: HomeNewProps) {
     "equilibrio" | "incidencia" | "cone" | "lordose" | "t1"
   >("equilibrio");
 
+  // Interactive Author Accordion State
+  const [activeAuthor, setActiveAuthor] = useState<number>(0);
+
+  const authorsList = [
+    {
+      id: 0,
+      name: "Dr. Edson Pudles",
+      role: "Editor-Chefe / SBC",
+      photo: "/assets/edson-pudles.png",
+      bio: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da SBC.",
+      specialties: ["Deformidades Complexas", "Liderança Editorial", "Cirurgia Reconstrutiva"],
+    },
+    {
+      id: 1,
+      name: "Dr. Helton Defino",
+      role: "Editor / FMRP-USP",
+      photo: "/assets/helton-defino.png",
+      bio: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de fixação vertebral pedicular e traumatologia espinhal.",
+      specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
+    },
+    {
+      id: 2,
+      name: "Dr. Marcelo Risso",
+      role: "Editor / SBC",
+      photo: "/assets/marcelo-risso.png",
+      bio: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral.",
+      specialties: ["Equilíbrio Sagital", "Osteotomias 3D", "Minimamente Invasiva"],
+    },
+  ];
+
   const sagittalDetails = {
     equilibrio: {
       title: "Equilíbrio Sagital Global (SVA)",
@@ -616,8 +646,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
           </div>
         </section>
 
-        {/* ================= AUTORES E COLABORADORES ================= */}
-        <section id="autores" style={{ padding: "60px 0 90px", background: "#fff" }}>
+        {/* ================= AUTORES E CORPO EDITORIAL (SANFONA INTERATIVA) ================= */}
+        <section id="autores" style={{ padding: "80px 0 100px", background: "#fff" }}>
           <div className="shell">
             <div className="modern-section-header">
               <span className="modern-tag-pill">Excelência Nacional</span>
@@ -627,45 +657,92 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 30 }}>
-              <div className="glass-card" style={{ padding: 32, textAlign: "center" }}>
-                <img
-                  src="/assets/edson-pudles.png"
-                  alt="Dr. Edson Pudles"
-                  style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", margin: "0 auto 18px", border: "4px solid #fff", boxShadow: "0 8px 20px rgba(0, 20, 60, 0.12)" }}
-                />
-                <h4 style={{ fontSize: 20, margin: "0 0 6px", color: "var(--navy)" }}>Dr. Edson Pudles</h4>
-                <p style={{ fontSize: 13, color: "#f52238", fontWeight: 700, margin: "0 0 12px" }}>Editor-Chefe / SBC</p>
-                <p style={{ fontSize: 14, color: "#546e8c", lineHeight: 1.5, margin: 0 }}>
-                  Referência nacional em deformidades complexas e liderança editorial das publicações da SBC.
-                </p>
-              </div>
+            <div className="author-accordion-container">
+              {authorsList.map((author, index) => {
+                const isActive = activeAuthor === index;
+                return (
+                  <article
+                    key={author.id}
+                    className={`author-accordion-card ${isActive ? "active" : ""}`}
+                    onMouseEnter={() => setActiveAuthor(index)}
+                    onClick={() => setActiveAuthor(index)}
+                  >
+                    <img
+                      src={author.photo}
+                      alt={author.name}
+                      className="author-accordion-bg"
+                    />
+                    <div className="author-accordion-overlay" />
 
-              <div className="glass-card" style={{ padding: 32, textAlign: "center" }}>
-                <img
-                  src="/assets/helton-defino.png"
-                  alt="Dr. Helton Defino"
-                  style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", margin: "0 auto 18px", border: "4px solid #fff", boxShadow: "0 8px 20px rgba(0, 20, 60, 0.12)" }}
-                />
-                <h4 style={{ fontSize: 20, margin: "0 0 6px", color: "var(--navy)" }}>Dr. Helton Defino</h4>
-                <p style={{ fontSize: 13, color: "#f52238", fontWeight: 700, margin: "0 0 12px" }}>Editor / FMRP-USP</p>
-                <p style={{ fontSize: 14, color: "#546e8c", lineHeight: 1.5, margin: 0 }}>
-                  Professor Titular da USP, pioneiro na pesquisa biomecânica e desenvolvimento de técnicas de fixação vertebral.
-                </p>
-              </div>
+                    <div className="author-accordion-content">
+                      <div>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            padding: "4px 10px",
+                            borderRadius: 6,
+                            background: "#f52238",
+                            color: "#fff",
+                            fontSize: 11.5,
+                            fontWeight: 800,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            marginBottom: 8,
+                            boxShadow: "0 4px 10px rgba(245, 34, 56, 0.35)",
+                          }}
+                        >
+                          {author.role}
+                        </span>
+                        <h3
+                          style={{
+                            fontSize: 24,
+                            fontWeight: 800,
+                            margin: 0,
+                            letterSpacing: "-0.02em",
+                            color: "#fff",
+                            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                          }}
+                        >
+                          {author.name}
+                        </h3>
+                      </div>
 
-              <div className="glass-card" style={{ padding: 32, textAlign: "center" }}>
-                <img
-                  src="/assets/marcelo-risso.png"
-                  alt="Dr. Marcelo Risso"
-                  style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", margin: "0 auto 18px", border: "4px solid #fff", boxShadow: "0 8px 20px rgba(0, 20, 60, 0.12)" }}
-                />
-                <h4 style={{ fontSize: 20, margin: "0 0 6px", color: "var(--navy)" }}>Dr. Marcelo Risso</h4>
-                <p style={{ fontSize: 13, color: "#f52238", fontWeight: 700, margin: "0 0 12px" }}>Editor / SBC</p>
-                <p style={{ fontSize: 14, color: "#546e8c", lineHeight: 1.5, margin: 0 }}>
-                  Especialista em equilíbrio sagital, osteotomias de alta complexidade e técnicas minimamente invasivas.
-                </p>
-              </div>
+                      <div className="author-accordion-details">
+                        <p
+                          style={{
+                            fontSize: 14,
+                            lineHeight: 1.6,
+                            color: "#dce8f5",
+                            margin: "0 0 14px",
+                          }}
+                        >
+                          {author.bio}
+                        </p>
+
+                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                          {author.specialties.map((spec, i) => (
+                            <span
+                              key={i}
+                              style={{
+                                fontSize: 11,
+                                fontWeight: 600,
+                                padding: "3px 8px",
+                                borderRadius: 6,
+                                background: "rgba(255, 255, 255, 0.15)",
+                                backdropFilter: "blur(8px)",
+                                border: "1px solid rgba(255, 255, 255, 0.2)",
+                                color: "#f1f6fc",
+                              }}
+                            >
+                              {spec}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>

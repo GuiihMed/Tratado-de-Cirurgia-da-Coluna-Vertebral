@@ -756,6 +756,83 @@
   }
 }
 
+/* Author Accordion Section (Sanfona Interativa) */
+.author-accordion-container {
+  display: flex;
+  gap: 24px;
+  min-height: 480px;
+  width: 100%;
+}
+
+.author-accordion-card {
+  position: relative;
+  flex: 1;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #021a3a;
+  border: 1px solid rgba(0, 30, 80, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 20, 60, 0.08);
+  transition: flex 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.author-accordion-card.active,
+.author-accordion-card:hover {
+  flex: 2.4;
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(2, 26, 58, 0.22);
+  border-color: rgba(14, 101, 162, 0.4);
+}
+
+.author-accordion-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.author-accordion-card.active .author-accordion-bg,
+.author-accordion-card:hover .author-accordion-bg {
+  transform: scale(1.04);
+}
+
+.author-accordion-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 15, 40, 0) 25%, rgba(0, 15, 40, 0.65) 60%, rgba(1, 10, 25, 0.95) 100%);
+  pointer-events: none;
+}
+
+.author-accordion-content {
+  position: relative;
+  z-index: 10;
+  padding: 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.author-accordion-details {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
+}
+
+.author-accordion-card.active .author-accordion-details,
+.author-accordion-card:hover .author-accordion-details {
+  opacity: 1;
+  max-height: 300px;
+  margin-top: 14px;
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 1400px) {
   .modern-nav-sticky {
@@ -780,5 +857,18 @@
     overflow-x: auto;
     justify-content: flex-start;
     padding: 4px;
+  }
+  .author-accordion-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .author-accordion-card {
+    min-height: 380px;
+    flex: none !important;
+  }
+  .author-accordion-details {
+    opacity: 1 !important;
+    max-height: none !important;
+    margin-top: 12px !important;
   }
 }
