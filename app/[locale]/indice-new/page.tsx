@@ -127,19 +127,18 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
     }
   };
 
-  const sectionWord =
-    locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção";
-
   return (
-    <div style={{ background: "#0a192f", color: "#e6f1ff", minHeight: "100vh" }}>
+    <div style={{ background: "#001026", color: "#e6f1ff", minHeight: "100vh" }}>
       <ModernHeader locale={locale} currentPage="indice-new" />
 
       <main>
         {/* ================= HERO SEARCH & CONTROLS ================= */}
         <section
           style={{
-            padding: "100px 0 45px",
-            background: "radial-gradient(circle at 50% 20%, rgba(14, 101, 162, 0.4), transparent 60%), linear-gradient(180deg, #020c1b 0%, #0a192f 100%)",
+            marginTop: "-88px",
+            paddingTop: "135px",
+            paddingBottom: "50px",
+            background: "radial-gradient(circle at 50% 25%, rgba(245, 34, 56, 0.18) 0%, rgba(14, 101, 162, 0.35) 45%, transparent 70%), linear-gradient(180deg, #001026 0%, #04142b 60%, #0a192f 100%)",
             position: "relative",
             overflow: "hidden",
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
@@ -148,12 +147,27 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           <div className="modern-hero-ambient" />
 
           <div className="shell" style={{ position: "relative", zIndex: 10, textAlign: "center" }}>
-            <div className="modern-hero-badge" style={{ margin: "0 auto 18px" }}>
-              <span className="pulse-dot" />
-              <span>Índice Oficial • 10 Seções &amp; 109 Capítulos</span>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "6px 16px",
+                borderRadius: 999,
+                background: "linear-gradient(135deg, rgba(245, 34, 56, 0.15) 0%, rgba(0, 51, 130, 0.3) 100%)",
+                border: "1px solid rgba(245, 34, 56, 0.35)",
+                fontSize: 13,
+                fontWeight: 700,
+                color: "#ff8090",
+                marginBottom: 20,
+                boxShadow: "0 4px 15px rgba(245, 34, 56, 0.2)",
+              }}
+            >
+              <span className="pulse-dot" style={{ background: "#f52238" }} />
+              <span style={{ color: "#ffffff" }}>Índice Oficial • 10 Seções &amp; 109 Capítulos</span>
             </div>
 
-            <h1 style={{ fontSize: 50, letterSpacing: "-0.035em", margin: "0 0 16px", fontWeight: 800, color: "#fff" }}>
+            <h1 style={{ fontSize: 50, letterSpacing: "-0.035em", margin: "0 0 16px", fontWeight: 800, color: "#fff", lineHeight: 1.15 }}>
               {locale === "en"
                 ? "Interactive Master Index"
                 : locale === "es"
@@ -161,7 +175,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 : "Índice Completo da Obra"}
             </h1>
 
-            <p style={{ fontSize: 18, color: "#94b8db", maxWidth: 660, margin: "0 auto 32px", lineHeight: 1.5 }}>
+            <p style={{ fontSize: 18, color: "#94b8db", maxWidth: 680, margin: "0 auto 34px", lineHeight: 1.55 }}>
               {locale === "en"
                 ? "Navigate the complete 10 thematic sections and 109 chapters with real-time multilingual search."
                 : locale === "es"
@@ -170,8 +184,15 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
             </p>
 
             {/* Live Search Bar */}
-            <div className="modern-search-bar" style={{ background: "rgba(255, 255, 255, 0.95)" }}>
-              <svg style={{ width: 22, height: 22, color: "#0e65a2", flexShrink: 0 }}>
+            <div
+              className="modern-search-bar"
+              style={{
+                background: "rgba(255, 255, 255, 0.96)",
+                boxShadow: "0 12px 36px rgba(0, 10, 30, 0.35)",
+                marginBottom: 26,
+              }}
+            >
+              <svg style={{ width: 22, height: 22, color: "#f52238", flexShrink: 0 }}>
                 <use href="#i-search"></use>
               </svg>
               <input
@@ -205,18 +226,18 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 alignItems: "center",
                 maxWidth: 960,
                 margin: "0 auto",
-                padding: "10px 20px",
-                borderRadius: 14,
-                background: "rgba(255, 255, 255, 0.06)",
-                backdropFilter: "blur(16px)",
+                padding: "12px 24px",
+                borderRadius: 16,
+                background: "rgba(255, 255, 255, 0.05)",
+                backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.12)",
                 fontSize: 13.5,
                 flexWrap: "wrap",
-                gap: 14,
+                gap: 16,
               }}
             >
-              <span style={{ color: "#c2dcf5" }}>
-                Exibindo <strong>{filteredChapters.length}</strong> de 109 capítulos
+              <span style={{ color: "#c2dcf5", fontWeight: 500 }}>
+                Exibindo <strong style={{ color: "#ffffff" }}>{filteredChapters.length}</strong> de 109 capítulos
                 {searchQuery && ` para "${searchQuery}"`}
               </span>
 
@@ -226,10 +247,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   display: "flex",
                   alignItems: "center",
                   gap: 4,
-                  background: "rgba(0, 0, 0, 0.35)",
+                  background: "rgba(0, 10, 26, 0.7)",
                   padding: "4px",
-                  borderRadius: 10,
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  borderRadius: 12,
+                  border: "1px solid rgba(255, 255, 255, 0.14)",
                 }}
               >
                 <button
@@ -239,13 +260,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 6,
-                    padding: "6px 12px",
+                    padding: "7px 14px",
                     borderRadius: 8,
                     border: "none",
-                    background: layoutView === "accordion" ? "#f52238" : "transparent",
+                    background: layoutView === "accordion" ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "transparent",
                     color: layoutView === "accordion" ? "#ffffff" : "#94a3b8",
                     fontSize: 12.5,
-                    fontWeight: 700,
+                    fontWeight: layoutView === "accordion" ? 800 : 600,
+                    boxShadow: layoutView === "accordion" ? "0 4px 14px rgba(245, 34, 56, 0.35)" : "none",
                     cursor: "pointer",
                     transition: "all 0.2s ease",
                   }}
@@ -261,13 +283,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 6,
-                    padding: "6px 12px",
+                    padding: "7px 14px",
                     borderRadius: 8,
                     border: "none",
-                    background: layoutView === "grid" ? "#f52238" : "transparent",
+                    background: layoutView === "grid" ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "transparent",
                     color: layoutView === "grid" ? "#ffffff" : "#94a3b8",
                     fontSize: 12.5,
-                    fontWeight: 700,
+                    fontWeight: layoutView === "grid" ? 800 : 600,
+                    boxShadow: layoutView === "grid" ? "0 4px 14px rgba(245, 34, 56, 0.35)" : "none",
                     cursor: "pointer",
                     transition: "all 0.2s ease",
                   }}
@@ -283,13 +306,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 6,
-                    padding: "6px 12px",
+                    padding: "7px 14px",
                     borderRadius: 8,
                     border: "none",
-                    background: layoutView === "compact" ? "#f52238" : "transparent",
+                    background: layoutView === "compact" ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "transparent",
                     color: layoutView === "compact" ? "#ffffff" : "#94a3b8",
                     fontSize: 12.5,
-                    fontWeight: 700,
+                    fontWeight: layoutView === "compact" ? 800 : 600,
+                    boxShadow: layoutView === "compact" ? "0 4px 14px rgba(245, 34, 56, 0.35)" : "none",
                     cursor: "pointer",
                     transition: "all 0.2s ease",
                   }}
@@ -305,8 +329,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   <button
                     onClick={() => setAllSections(true)}
                     style={{
-                      padding: "5px 12px",
-                      borderRadius: 6,
+                      padding: "6px 14px",
+                      borderRadius: 8,
                       border: "1px solid rgba(255, 255, 255, 0.2)",
                       background: "rgba(255, 255, 255, 0.08)",
                       color: "#fff",
@@ -320,8 +344,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   <button
                     onClick={() => setAllSections(false)}
                     style={{
-                      padding: "5px 12px",
-                      borderRadius: 6,
+                      padding: "6px 14px",
+                      borderRadius: 8,
                       border: "1px solid rgba(255, 255, 255, 0.2)",
                       background: "rgba(255, 255, 255, 0.08)",
                       color: "#fff",
@@ -339,7 +363,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
         </section>
 
         {/* ================= SECTION FILTER PILLS ================= */}
-        <section style={{ padding: "20px 0 16px", background: "rgba(0, 15, 35, 0.5)", position: "relative" }}>
+        <section style={{ padding: "24px 0 20px", background: "rgba(0, 12, 28, 0.7)", position: "relative" }}>
           <div className="shell">
             <div className="filter-scroll-wrapper">
               {/* Left Arrow & Fade Indicator */}
@@ -371,9 +395,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   onClick={() => setSelectedSecao("all")}
                   className={`modern-filter-chip ${selectedSecao === "all" ? "active" : ""}`}
                   style={{
-                    background: selectedSecao === "all" ? "#f52238" : "rgba(255, 255, 255, 0.06)",
-                    borderColor: selectedSecao === "all" ? "#f52238" : "rgba(255, 255, 255, 0.12)",
+                    background: selectedSecao === "all" ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "rgba(255, 255, 255, 0.06)",
+                    borderColor: selectedSecao === "all" ? "transparent" : "rgba(255, 255, 255, 0.12)",
                     color: "#fff",
+                    boxShadow: selectedSecao === "all" ? "0 4px 15px rgba(245, 34, 56, 0.35)" : "none",
                   }}
                 >
                   <span>Todas as 10 Seções</span>
@@ -386,9 +411,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     onClick={() => setSelectedSecao(sec.id)}
                     className={`modern-filter-chip ${selectedSecao === sec.id ? "active" : ""}`}
                     style={{
-                      background: selectedSecao === sec.id ? (sec.id <= 5 ? "#f52238" : "#0e65a2") : "rgba(255, 255, 255, 0.06)",
+                      background: selectedSecao === sec.id ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "rgba(255, 255, 255, 0.06)",
                       borderColor: selectedSecao === sec.id ? "transparent" : "rgba(255, 255, 255, 0.12)",
                       color: "#fff",
+                      boxShadow: selectedSecao === sec.id ? "0 4px 15px rgba(245, 34, 56, 0.35)" : "none",
                     }}
                   >
                     <span>
@@ -399,7 +425,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 ))}
               </div>
 
-              {/* Right Arrow & Fade Indicator (Always indicating more content if scrollable) */}
+              {/* Right Arrow & Fade Indicator */}
               {canScrollRight && (
                 <>
                   <div className="filter-fade-right" />
@@ -421,7 +447,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
         </section>
 
         {/* ================= DYNAMIC LAYOUT DISPLAY VIEWS ================= */}
-        <section style={{ padding: "30px 0 80px" }}>
+        <section style={{ padding: "36px 0 90px" }}>
           <div className="shell">
             {/* VIEW 1: ACCORDION BY SECTIONS (ESTRUTURA EM SANFONA) */}
             {layoutView === "accordion" && (
@@ -443,11 +469,11 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         isSection8 ? "section-eight" : ""
                       } ${isOpen ? "is-open" : ""}`}
                       style={{
-                        marginBottom: 10,
-                        borderRadius: 14,
+                        marginBottom: 14,
+                        borderRadius: 16,
                         backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(255, 255, 255, 0.16)",
-                        boxShadow: "0 8px 24px rgba(0, 10, 30, 0.35)",
+                        border: "1px solid rgba(255, 255, 255, 0.14)",
+                        boxShadow: "0 10px 30px rgba(0, 10, 30, 0.35)",
                         transition: "all 0.25s ease",
                       }}
                     >
@@ -459,7 +485,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         style={{
                           width: "100%",
                           textAlign: "left",
-                          padding: "16px 20px",
+                          padding: "18px 24px",
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
@@ -475,22 +501,23 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               display: "inline-flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              width: 32,
-                              height: 32,
-                              borderRadius: 8,
-                              background: secao.id <= 5 ? "#f52238" : "#0e65a2",
+                              width: 36,
+                              height: 36,
+                              borderRadius: 10,
+                              background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
+                              color: "#ffffff",
                               fontWeight: 800,
-                              fontSize: 14,
-                              boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                              fontSize: 15,
+                              boxShadow: "0 4px 12px rgba(245, 34, 56, 0.3)",
                             }}
                           >
                             {secao.numero}
                           </span>
                           <div>
-                            <strong style={{ fontSize: 16, display: "block", color: "#fff" }}>
+                            <strong style={{ fontSize: 17, display: "block", color: "#fff", letterSpacing: "-0.01em" }}>
                               {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                             </strong>
-                            <span style={{ fontSize: 12, color: "#8da9cc" }}>
+                            <span style={{ fontSize: 12.5, color: "#8da9cc" }}>
                               {secChapters.length} capítulos nesta seção
                             </span>
                           </div>
@@ -508,10 +535,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           className="outline-list"
                           style={{
                             margin: 0,
-                            padding: "0 20px 16px 20px",
+                            padding: "0 24px 20px 24px",
                             display: "grid",
                             gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
-                            gap: 8,
+                            gap: 10,
                             listStyle: "none",
                           }}
                         >
@@ -526,8 +553,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                 key={cap.numero}
                                 onClick={() => setActiveModalChapter(cap)}
                                 style={{
-                                  padding: "8px 12px",
-                                  borderRadius: 8,
+                                  padding: "10px 14px",
+                                  borderRadius: 10,
                                   cursor: "pointer",
                                   transition: "all 0.15s ease",
                                   background: isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)",
@@ -545,8 +572,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                   e.currentTarget.style.transform = "translateX(0px)";
                                 }}
                               >
-                                <div style={{ display: "flex", alignItems: "center", gap: 8, overflow: "hidden" }}>
-                                  <b style={{ color: secao.id <= 5 ? "#ff7382" : "#55cdfc", flexShrink: 0 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
+                                  <b style={{ color: "#ff5b6e", flexShrink: 0, fontWeight: 800 }}>
                                     {cap.numero}.
                                   </b>
                                   <span style={{ color: "#edf5ff", fontSize: 13.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
@@ -567,7 +594,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               </div>
             )}
 
-            {/* VIEW 2: 3D CARD GRID (GRADE VISUAL DE CARDS) */}
+            {/* VIEW 2: 3D CARD GRID (GRADE VISUAL DE CARDS COM GRADIENTE PADRÃO) */}
             {layoutView === "grid" && (
               <div
                 style={{
@@ -578,40 +605,42 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               >
                 {filteredChapters.map((cap) => {
                   const sec = SECOES.find((s) => s.id === cap.secao_id);
-                  const isSec1to5 = (cap.secao_id || 1) <= 5;
 
                   return (
                     <article
                       key={cap.numero}
                       style={{
                         background: "#ffffff",
-                        borderRadius: 16,
-                        padding: "24px",
-                        border: "1px solid #e2e8f0",
-                        boxShadow: "0 10px 30px rgba(0, 20, 60, 0.06)",
+                        borderRadius: 18,
+                        overflow: "hidden",
+                        border: "1px solid rgba(226, 232, 240, 0.9)",
+                        boxShadow: "0 10px 30px rgba(0, 20, 60, 0.08)",
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
                         transition: "all 0.25s ease",
                       }}
                     >
-                      <div>
+                      {/* Top Signature Gradient Ribbon */}
+                      <div style={{ height: 4, width: "100%", background: "linear-gradient(90deg, #f52238 0%, #003382 100%)" }} />
+
+                      <div style={{ padding: "22px 22px 14px" }}>
                         {/* Header Badges */}
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                           <span
                             style={{
-                              background: isSec1to5 ? "linear-gradient(135deg, #f52238, #b80f21)" : "linear-gradient(135deg, #003382, #001f52)",
+                              background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                               color: "#ffffff",
                               fontSize: 12,
                               fontWeight: 800,
-                              padding: "4px 10px",
+                              padding: "4px 11px",
                               borderRadius: 6,
-                              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+                              boxShadow: "0 3px 10px rgba(245, 34, 56, 0.3)",
                             }}
                           >
                             Capítulo {cap.numero}
                           </span>
-                          <span style={{ fontSize: 11.5, fontWeight: 700, color: "#64748b", background: "#f1f5f9", padding: "3px 8px", borderRadius: 4 }}>
+                          <span style={{ fontSize: 11.5, fontWeight: 700, color: "#003382", background: "rgba(0, 51, 130, 0.07)", padding: "3px 8px", borderRadius: 4, border: "1px solid rgba(0, 51, 130, 0.15)" }}>
                             Seção {cap.secao_id}
                           </span>
                         </div>
@@ -626,7 +655,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                       </div>
 
                       {/* Actions */}
-                      <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                      <div style={{ padding: "0 22px 22px", borderTop: "1px solid #f1f5f9", paddingTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
                         <Link
                           href={`/${locale}/capitulo-new/${cap.numero}`}
                           style={{
@@ -635,14 +664,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             alignItems: "center",
                             justifyContent: "center",
                             gap: 6,
-                            background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                            background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                             color: "#ffffff",
-                            padding: "8px 12px",
+                            padding: "9px 12px",
                             borderRadius: 8,
                             textDecoration: "none",
                             fontSize: 12.5,
                             fontWeight: 700,
-                            boxShadow: "0 2px 8px rgba(245, 34, 56, 0.3)",
+                            boxShadow: "0 3px 10px rgba(245, 34, 56, 0.35)",
                           }}
                         >
                           <span>Ver Capítulo</span>
@@ -652,7 +681,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           type="button"
                           onClick={() => setActiveModalChapter(cap)}
                           style={{
-                            padding: "8px 12px",
+                            padding: "9px 12px",
                             borderRadius: 8,
                             background: "#f8fafc",
                             border: "1px solid #cbd5e1",
@@ -669,7 +698,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           onClick={() => copyCitation(cap)}
                           title="Copiar citação ABNT"
                           style={{
-                            padding: "8px 10px",
+                            padding: "9px 10px",
                             borderRadius: 8,
                             background: "#f8fafc",
                             border: "1px solid #cbd5e1",
@@ -688,30 +717,32 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               </div>
             )}
 
-            {/* VIEW 3: COMPACT CLINICAL TABLE (TABELA MÉDICA COMPACTA) */}
+            {/* VIEW 3: COMPACT CLINICAL TABLE (TABELA MÉDICA COMPACTA COM GRADIENTE PADRÃO) */}
             {layoutView === "compact" && (
               <div
                 style={{
                   background: "#ffffff",
-                  borderRadius: 16,
+                  borderRadius: 18,
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                  boxShadow: "0 10px 35px rgba(0, 20, 60, 0.08)",
                   overflow: "hidden",
                 }}
               >
+                {/* Top Signature Gradient Ribbon */}
+                <div style={{ height: 4, width: "100%", background: "linear-gradient(90deg, #f52238 0%, #003382 100%)" }} />
+
                 <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
                   <thead>
-                    <tr style={{ background: "#001a3d", color: "#ffffff", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                      <th style={{ padding: "14px 18px", width: 70, textAlign: "center" }}>Nº</th>
-                      <th style={{ padding: "14px 18px" }}>Título do Capítulo</th>
-                      <th style={{ padding: "14px 18px", width: 220 }}>Seção Temática</th>
-                      <th style={{ padding: "14px 18px", width: 220, textAlign: "right" }}>Ações Rápidas</th>
+                    <tr style={{ background: "linear-gradient(135deg, #00122e 0%, #002255 100%)", color: "#ffffff", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                      <th style={{ padding: "16px 20px", width: 75, textAlign: "center" }}>Nº</th>
+                      <th style={{ padding: "16px 20px" }}>Título do Capítulo</th>
+                      <th style={{ padding: "16px 20px", width: 240 }}>Seção Temática</th>
+                      <th style={{ padding: "16px 20px", width: 220, textAlign: "right" }}>Ações Rápidas</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredChapters.map((cap, index) => {
                       const sec = SECOES.find((s) => s.id === cap.secao_id);
-                      const isSec1to5 = (cap.secao_id || 1) <= 5;
                       const isEven = index % 2 === 0;
 
                       return (
@@ -722,27 +753,29 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             borderBottom: "1px solid #e2e8f0",
                             transition: "background 0.15s ease",
                           }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(245, 34, 56, 0.04)")}
                           onMouseLeave={(e) => (e.currentTarget.style.background = isEven ? "#ffffff" : "#f8fafc")}
                         >
-                          <td style={{ padding: "12px 18px", textAlign: "center" }}>
+                          <td style={{ padding: "14px 20px", textAlign: "center" }}>
                             <span
                               style={{
-                                display: "inline-block",
-                                width: 28,
-                                height: 28,
-                                lineHeight: "28px",
-                                borderRadius: 6,
-                                background: isSec1to5 ? "#f52238" : "#003382",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 32,
+                                height: 32,
+                                borderRadius: 8,
+                                background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                                 color: "#ffffff",
                                 fontSize: 12,
                                 fontWeight: 800,
+                                boxShadow: "0 2px 8px rgba(245, 34, 56, 0.3)",
                               }}
                             >
                               {cap.numero}
                             </span>
                           </td>
-                          <td style={{ padding: "12px 18px" }}>
+                          <td style={{ padding: "14px 20px" }}>
                             <Link
                               href={`/${locale}/capitulo-new/${cap.numero}`}
                               style={{
@@ -755,21 +788,22 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               {getChapterTitle(cap)}
                             </Link>
                           </td>
-                          <td style={{ padding: "12px 18px", fontSize: 13, color: "#64748b", fontWeight: 600 }}>
+                          <td style={{ padding: "14px 20px", fontSize: 13, color: "#64748b", fontWeight: 600 }}>
                             {sec ? `Seção ${sec.numero}: ${locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}` : ""}
                           </td>
-                          <td style={{ padding: "12px 18px", textAlign: "right" }}>
+                          <td style={{ padding: "14px 20px", textAlign: "right" }}>
                             <div style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
                               <Link
                                 href={`/${locale}/capitulo-new/${cap.numero}`}
                                 style={{
-                                  padding: "6px 12px",
+                                  padding: "6px 14px",
                                   borderRadius: 6,
-                                  background: "#001a3d",
+                                  background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                                   color: "#ffffff",
                                   fontSize: 12,
                                   fontWeight: 700,
                                   textDecoration: "none",
+                                  boxShadow: "0 2px 8px rgba(245, 34, 56, 0.25)",
                                 }}
                               >
                                 Abrir →
@@ -870,7 +904,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                 <span
                   style={{
-                    background: "#f52238",
+                    background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                     color: "#fff",
                     fontSize: 12,
                     fontWeight: 800,
@@ -907,11 +941,11 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <Link
-                  href={`/${locale}/capitulo/${activeModalChapter.numero}`}
+                  href={`/${locale}/capitulo-new/${activeModalChapter.numero}`}
                   className="modern-btn-glow"
                   style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
                 >
-                  Ler Capítulo Completo 📖
+                  Ler Capítulo no Novo Layout 📖
                 </Link>
                 <button
                   onClick={() => copyCitation(activeModalChapter)}
