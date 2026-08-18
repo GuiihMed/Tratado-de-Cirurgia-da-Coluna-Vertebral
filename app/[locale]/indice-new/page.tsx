@@ -19,6 +19,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
     : "pt";
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [layoutView, setLayoutView] = useState<"accordion" | "grid" | "compact">("accordion");
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
   const [activeModalChapter, setActiveModalChapter] = useState<Capitulo | null>(null);
   const [copiedChapter, setCopiedChapter] = useState<number | null>(null);
@@ -84,12 +85,16 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
     setOpenSections(newState);
   };
 
-  // Filter chapters based on search query
+  // Filter chapters based on search query and section
   const filteredChapters = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
-    if (!q) return INITIAL_CHAPTERS;
 
     return INITIAL_CHAPTERS.filter((cap) => {
+      const matchSection = selectedSecao === "all" || cap.secao_id === selectedSecao;
+      if (!matchSection) return false;
+
+      if (!q) return true;
+
       return (
         cap.numero.toString() === q ||
         cap.titulo_pt.toLowerCase().includes(q) ||
@@ -97,7 +102,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
         (cap.titulo_es && cap.titulo_es.toLowerCase().includes(q))
       );
     });
-  }, [searchQuery]);
+  }, [searchQuery, selectedSecao]);
 
   const getChapterTitle = (cap: Capitulo) => {
     if (locale === "en" && cap.titulo_en) return cap.titulo_en;
@@ -160,8 +165,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               {locale === "en"
                 ? "Navigate the complete 10 thematic sections and 109 chapters with real-time multilingual search."
                 : locale === "es"
-                ? "Navegue por las 10 secciones temáticas y 109 capítulos con búsqueda multilingüe en tiempo real."
-                : "Navegue pela estrutura completa das 10 seções temáticas e 109 capítulos com busca instantânea em tempo real."}
+                ? "Navegue por las 10 secciones temáticas y 109 capítulos con busca multilingüe en tiempo real."
+                : "Navegue pela estrutura completa das 10 seções temáticas e 109 capítulos com busca instantânea e modos flexíveis de visualização."}
             </p>
 
             {/* Live Search Bar */}
@@ -192,13 +197,13 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               )}
             </div>
 
-            {/* Controls Bar (Expand / Collapse All & Match Counter) */}
+            {/* Controls Bar (Layout Switcher & Expand/Collapse) */}
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                maxWidth: 800,
+                maxWidth: 960,
                 margin: "0 auto",
                 padding: "10px 20px",
                 borderRadius: 14,
@@ -206,6 +211,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 backdropFilter: "blur(16px)",
                 border: "1px solid rgba(255, 255, 255, 0.12)",
                 fontSize: 13.5,
+                flexWrap: "wrap",
+                gap: 14,
               }}
             >
               <span style={{ color: "#c2dcf5" }}>
@@ -213,38 +220,120 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 {searchQuery && ` para "${searchQuery}"`}
               </span>
 
-              <div style={{ display: "flex", gap: 10 }}>
+              {/* Layout Display Switcher */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  background: "rgba(0, 0, 0, 0.35)",
+                  padding: "4px",
+                  borderRadius: 10,
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                }}
+              >
                 <button
-                  onClick={() => setAllSections(true)}
+                  type="button"
+                  onClick={() => setLayoutView("accordion")}
                   style={{
-                    padding: "5px 12px",
-                    borderRadius: 6,
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    background: "rgba(255, 255, 255, 0.08)",
-                    color: "#fff",
-                    fontSize: 12,
-                    fontWeight: 650,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "6px 12px",
+                    borderRadius: 8,
+                    border: "none",
+                    background: layoutView === "accordion" ? "#f52238" : "transparent",
+                    color: layoutView === "accordion" ? "#ffffff" : "#94a3b8",
+                    fontSize: 12.5,
+                    fontWeight: 700,
                     cursor: "pointer",
+                    transition: "all 0.2s ease",
                   }}
                 >
-                  Expandir Todos ↓
+                  <span>📑</span>
+                  <span>Por Seções</span>
                 </button>
+
                 <button
-                  onClick={() => setAllSections(false)}
+                  type="button"
+                  onClick={() => setLayoutView("grid")}
                   style={{
-                    padding: "5px 12px",
-                    borderRadius: 6,
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    background: "rgba(255, 255, 255, 0.08)",
-                    color: "#fff",
-                    fontSize: 12,
-                    fontWeight: 650,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "6px 12px",
+                    borderRadius: 8,
+                    border: "none",
+                    background: layoutView === "grid" ? "#f52238" : "transparent",
+                    color: layoutView === "grid" ? "#ffffff" : "#94a3b8",
+                    fontSize: 12.5,
+                    fontWeight: 700,
                     cursor: "pointer",
+                    transition: "all 0.2s ease",
                   }}
                 >
-                  Recolher Todos ↑
+                  <span>⊞</span>
+                  <span>Grade de Cards</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setLayoutView("compact")}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "6px 12px",
+                    borderRadius: 8,
+                    border: "none",
+                    background: layoutView === "compact" ? "#f52238" : "transparent",
+                    color: layoutView === "compact" ? "#ffffff" : "#94a3b8",
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  <span>☰</span>
+                  <span>Tabela Compacta</span>
                 </button>
               </div>
+
+              {/* Accordion Expand / Collapse Buttons */}
+              {layoutView === "accordion" && (
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button
+                    onClick={() => setAllSections(true)}
+                    style={{
+                      padding: "5px 12px",
+                      borderRadius: 6,
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                      background: "rgba(255, 255, 255, 0.08)",
+                      color: "#fff",
+                      fontSize: 12,
+                      fontWeight: 650,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Expandir Todos ↓
+                  </button>
+                  <button
+                    onClick={() => setAllSections(false)}
+                    style={{
+                      padding: "5px 12px",
+                      borderRadius: 6,
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                      background: "rgba(255, 255, 255, 0.08)",
+                      color: "#fff",
+                      fontSize: 12,
+                      fontWeight: 650,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Recolher Todos ↑
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -331,128 +420,401 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           </div>
         </section>
 
-        {/* ================= MODERNIZED CLASSIC OUTLINE SECTION ================= */}
+        {/* ================= DYNAMIC LAYOUT DISPLAY VIEWS ================= */}
         <section style={{ padding: "30px 0 80px" }}>
           <div className="shell">
-            {SECOES.filter((s) => selectedSecao === "all" || s.id === selectedSecao).map((secao) => {
-              const isOpen = Boolean(openSections[secao.id]);
-              const secChapters = filteredChapters.filter(
-                (c) => c.secao_id === secao.id
-              );
-              const isSection8 = secao.id === 8;
+            {/* VIEW 1: ACCORDION BY SECTIONS (ESTRUTURA EM SANFONA) */}
+            {layoutView === "accordion" && (
+              <div>
+                {SECOES.filter((s) => selectedSecao === "all" || s.id === selectedSecao).map((secao) => {
+                  const isOpen = Boolean(openSections[secao.id]);
+                  const secChapters = filteredChapters.filter(
+                    (c) => c.secao_id === secao.id
+                  );
+                  const isSection8 = secao.id === 8;
 
-              // Hide section if searching and no matches in this section
-              if (searchQuery && secChapters.length === 0) return null;
+                  if (searchQuery && secChapters.length === 0) return null;
 
-              return (
-                <article
-                  key={secao.id}
-                  id={secao.tag}
-                  className={`outline-row ${secao.colorClass} ${
-                    isSection8 ? "section-eight" : ""
-                  } ${isOpen ? "is-open" : ""}`}
-                  style={{
-                    marginBottom: 10,
-                    borderRadius: 14,
-                    backdropFilter: "blur(20px)",
-                    border: "1px solid rgba(255, 255, 255, 0.16)",
-                    boxShadow: "0 8px 24px rgba(0, 10, 30, 0.35)",
-                    transition: "all 0.25s ease",
-                  }}
-                >
-                  {/* Row Toggle Header Button */}
-                  <button
-                    className="row-toggle"
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`chapters-${secao.id}`}
-                    onClick={() => toggleSection(secao.id)}
-                    id={`toggle-secao-${secao.id}`}
-                  >
-                    <span className="row-title">
-                      <span
-                        className="row-icon"
+                  return (
+                    <article
+                      key={secao.id}
+                      id={secao.tag}
+                      className={`outline-row ${secao.colorClass} ${
+                        isSection8 ? "section-eight" : ""
+                      } ${isOpen ? "is-open" : ""}`}
+                      style={{
+                        marginBottom: 10,
+                        borderRadius: 14,
+                        backdropFilter: "blur(20px)",
+                        border: "1px solid rgba(255, 255, 255, 0.16)",
+                        boxShadow: "0 8px 24px rgba(0, 10, 30, 0.35)",
+                        transition: "all 0.25s ease",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className="outline-header"
+                        onClick={() => toggleSection(secao.id)}
+                        aria-expanded={isOpen}
                         style={{
-                          background: secao.id <= 5 ? "rgba(245, 34, 56, 0.2)" : "rgba(14, 101, 162, 0.25)",
-                          borderColor: secao.id <= 5 ? "rgba(245, 34, 56, 0.5)" : "rgba(14, 101, 162, 0.5)",
+                          width: "100%",
+                          textAlign: "left",
+                          padding: "16px 20px",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          background: "transparent",
+                          border: "none",
+                          cursor: "pointer",
+                          color: "#fff",
                         }}
                       >
-                        <svg>
-                          <use href={`#${secao.iconId}`}></use>
-                        </svg>
-                      </span>
-                      <span>
-                        <b style={{ color: secao.id <= 5 ? "#ff5b6e" : "#45c2ff" }}>
-                          {sectionWord} {secao.numero}
-                        </b>
-                        <strong style={{ color: "#fff", fontSize: 22 }}>
-                          {locale === "en"
-                            ? secao.titulo_en
-                            : locale === "es"
-                            ? secao.titulo_es
-                            : secao.titulo_pt}
-                        </strong>
-                        <small style={{ color: "#a5c4e8" }}>
-                          {secao.range} ({secChapters.length} capítulos)
-                        </small>
-                      </span>
-                    </span>
+                        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                          <span
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              width: 32,
+                              height: 32,
+                              borderRadius: 8,
+                              background: secao.id <= 5 ? "#f52238" : "#0e65a2",
+                              fontWeight: 800,
+                              fontSize: 14,
+                              boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                            }}
+                          >
+                            {secao.numero}
+                          </span>
+                          <div>
+                            <strong style={{ fontSize: 16, display: "block", color: "#fff" }}>
+                              {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
+                            </strong>
+                            <span style={{ fontSize: 12, color: "#8da9cc" }}>
+                              {secChapters.length} capítulos nesta seção
+                            </span>
+                          </div>
+                        </div>
 
-                    <span className="toggle-icon">
-                      <svg>
-                        <use href="#i-down"></use>
-                      </svg>
-                    </span>
-                  </button>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                          <span style={{ fontSize: 18, color: "#8da9cc", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>
+                            ▼
+                          </span>
+                        </div>
+                      </button>
 
-                  {/* 3-Column Chapters List (The Classic Format Upgraded) */}
-                  <ol
-                    id={`chapters-${secao.id}`}
-                    className={`chapters ${secao.isCompact ? "compact" : ""}`}
-                    style={{
-                      padding: "24px 20px 20px 32px",
-                    }}
-                  >
-                    {secChapters.map((cap) => {
-                      const isMatch =
-                        searchQuery &&
-                        (cap.titulo_pt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          cap.numero.toString() === searchQuery.trim());
-
-                      return (
-                        <li
-                          key={cap.numero}
-                          onClick={() => setActiveModalChapter(cap)}
+                      {isOpen && (
+                        <ol
+                          className="outline-list"
                           style={{
-                            cursor: "pointer",
-                            padding: "6px 8px",
-                            borderRadius: 6,
-                            transition: "background 0.15s ease, transform 0.15s ease",
-                            background: isMatch ? "rgba(245, 34, 56, 0.25)" : "transparent",
-                            border: isMatch ? "1px solid rgba(245, 34, 56, 0.5)" : "1px solid transparent",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)";
-                            e.currentTarget.style.transform = "translateX(2px)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.background = isMatch ? "rgba(245, 34, 56, 0.25)" : "transparent";
-                            e.currentTarget.style.transform = "translateX(0px)";
+                            margin: 0,
+                            padding: "0 20px 16px 20px",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
+                            gap: 8,
+                            listStyle: "none",
                           }}
                         >
-                          <b style={{ color: secao.id <= 5 ? "#ff7382" : "#55cdfc", marginRight: 5 }}>
-                            {cap.numero}.
-                          </b>{" "}
-                          <span style={{ color: "#edf5ff" }}>
-                            {getChapterTitle(cap)}
+                          {secChapters.map((cap) => {
+                            const isMatch =
+                              searchQuery &&
+                              (cap.numero.toString() === searchQuery.trim() ||
+                                cap.titulo_pt.toLowerCase().includes(searchQuery.toLowerCase()));
+
+                            return (
+                              <li
+                                key={cap.numero}
+                                onClick={() => setActiveModalChapter(cap)}
+                                style={{
+                                  padding: "8px 12px",
+                                  borderRadius: 8,
+                                  cursor: "pointer",
+                                  transition: "all 0.15s ease",
+                                  background: isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)",
+                                  border: isMatch ? "1px solid rgba(245, 34, 56, 0.5)" : "1px solid rgba(255, 255, 255, 0.08)",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "space-between",
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)";
+                                  e.currentTarget.style.transform = "translateX(2px)";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)";
+                                  e.currentTarget.style.transform = "translateX(0px)";
+                                }}
+                              >
+                                <div style={{ display: "flex", alignItems: "center", gap: 8, overflow: "hidden" }}>
+                                  <b style={{ color: secao.id <= 5 ? "#ff7382" : "#55cdfc", flexShrink: 0 }}>
+                                    {cap.numero}.
+                                  </b>
+                                  <span style={{ color: "#edf5ff", fontSize: 13.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                    {getChapterTitle(cap)}
+                                  </span>
+                                </div>
+                                <span style={{ fontSize: 12, color: "#8da9cc", flexShrink: 0, marginLeft: 8 }}>
+                                  Ver →
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* VIEW 2: 3D CARD GRID (GRADE VISUAL DE CARDS) */}
+            {layoutView === "grid" && (
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+                  gap: 22,
+                }}
+              >
+                {filteredChapters.map((cap) => {
+                  const sec = SECOES.find((s) => s.id === cap.secao_id);
+                  const isSec1to5 = (cap.secao_id || 1) <= 5;
+
+                  return (
+                    <article
+                      key={cap.numero}
+                      style={{
+                        background: "#ffffff",
+                        borderRadius: 16,
+                        padding: "24px",
+                        border: "1px solid #e2e8f0",
+                        boxShadow: "0 10px 30px rgba(0, 20, 60, 0.06)",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        transition: "all 0.25s ease",
+                      }}
+                    >
+                      <div>
+                        {/* Header Badges */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                          <span
+                            style={{
+                              background: isSec1to5 ? "linear-gradient(135deg, #f52238, #b80f21)" : "linear-gradient(135deg, #003382, #001f52)",
+                              color: "#ffffff",
+                              fontSize: 12,
+                              fontWeight: 800,
+                              padding: "4px 10px",
+                              borderRadius: 6,
+                              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+                            }}
+                          >
+                            Capítulo {cap.numero}
                           </span>
-                        </li>
+                          <span style={{ fontSize: 11.5, fontWeight: 700, color: "#64748b", background: "#f1f5f9", padding: "3px 8px", borderRadius: 4 }}>
+                            Seção {cap.secao_id}
+                          </span>
+                        </div>
+
+                        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 10px", lineHeight: 1.35 }}>
+                          {getChapterTitle(cap)}
+                        </h3>
+
+                        <p style={{ fontSize: 12.5, color: "#64748b", margin: "0 0 16px", lineHeight: 1.4 }}>
+                          {sec ? (locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt) : ""}
+                        </p>
+                      </div>
+
+                      {/* Actions */}
+                      <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                        <Link
+                          href={`/${locale}/capitulo-new/${cap.numero}`}
+                          style={{
+                            flex: 1,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 6,
+                            background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                            color: "#ffffff",
+                            padding: "8px 12px",
+                            borderRadius: 8,
+                            textDecoration: "none",
+                            fontSize: 12.5,
+                            fontWeight: 700,
+                            boxShadow: "0 2px 8px rgba(245, 34, 56, 0.3)",
+                          }}
+                        >
+                          <span>Ver Capítulo</span>
+                          <span>→</span>
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setActiveModalChapter(cap)}
+                          style={{
+                            padding: "8px 12px",
+                            borderRadius: 8,
+                            background: "#f8fafc",
+                            border: "1px solid #cbd5e1",
+                            color: "#001a3d",
+                            fontSize: 12.5,
+                            fontWeight: 700,
+                            cursor: "pointer",
+                          }}
+                        >
+                          Resumo 📖
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => copyCitation(cap)}
+                          title="Copiar citação ABNT"
+                          style={{
+                            padding: "8px 10px",
+                            borderRadius: 8,
+                            background: "#f8fafc",
+                            border: "1px solid #cbd5e1",
+                            color: "#001a3d",
+                            fontSize: 12,
+                            fontWeight: 700,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {copiedChapter === cap.numero ? "✓" : "📋"}
+                        </button>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* VIEW 3: COMPACT CLINICAL TABLE (TABELA MÉDICA COMPACTA) */}
+            {layoutView === "compact" && (
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: 16,
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                  overflow: "hidden",
+                }}
+              >
+                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
+                  <thead>
+                    <tr style={{ background: "#001a3d", color: "#ffffff", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                      <th style={{ padding: "14px 18px", width: 70, textAlign: "center" }}>Nº</th>
+                      <th style={{ padding: "14px 18px" }}>Título do Capítulo</th>
+                      <th style={{ padding: "14px 18px", width: 220 }}>Seção Temática</th>
+                      <th style={{ padding: "14px 18px", width: 220, textAlign: "right" }}>Ações Rápidas</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredChapters.map((cap, index) => {
+                      const sec = SECOES.find((s) => s.id === cap.secao_id);
+                      const isSec1to5 = (cap.secao_id || 1) <= 5;
+                      const isEven = index % 2 === 0;
+
+                      return (
+                        <tr
+                          key={cap.numero}
+                          style={{
+                            background: isEven ? "#ffffff" : "#f8fafc",
+                            borderBottom: "1px solid #e2e8f0",
+                            transition: "background 0.15s ease",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f5f9")}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = isEven ? "#ffffff" : "#f8fafc")}
+                        >
+                          <td style={{ padding: "12px 18px", textAlign: "center" }}>
+                            <span
+                              style={{
+                                display: "inline-block",
+                                width: 28,
+                                height: 28,
+                                lineHeight: "28px",
+                                borderRadius: 6,
+                                background: isSec1to5 ? "#f52238" : "#003382",
+                                color: "#ffffff",
+                                fontSize: 12,
+                                fontWeight: 800,
+                              }}
+                            >
+                              {cap.numero}
+                            </span>
+                          </td>
+                          <td style={{ padding: "12px 18px" }}>
+                            <Link
+                              href={`/${locale}/capitulo-new/${cap.numero}`}
+                              style={{
+                                color: "#001a3d",
+                                fontWeight: 700,
+                                fontSize: 14.5,
+                                textDecoration: "none",
+                              }}
+                            >
+                              {getChapterTitle(cap)}
+                            </Link>
+                          </td>
+                          <td style={{ padding: "12px 18px", fontSize: 13, color: "#64748b", fontWeight: 600 }}>
+                            {sec ? `Seção ${sec.numero}: ${locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}` : ""}
+                          </td>
+                          <td style={{ padding: "12px 18px", textAlign: "right" }}>
+                            <div style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
+                              <Link
+                                href={`/${locale}/capitulo-new/${cap.numero}`}
+                                style={{
+                                  padding: "6px 12px",
+                                  borderRadius: 6,
+                                  background: "#001a3d",
+                                  color: "#ffffff",
+                                  fontSize: 12,
+                                  fontWeight: 700,
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Abrir →
+                              </Link>
+                              <button
+                                type="button"
+                                onClick={() => setActiveModalChapter(cap)}
+                                style={{
+                                  padding: "6px 10px",
+                                  borderRadius: 6,
+                                  background: "#f1f5f9",
+                                  border: "1px solid #cbd5e1",
+                                  color: "#001a3d",
+                                  fontSize: 12,
+                                  fontWeight: 700,
+                                  cursor: "pointer",
+                                }}
+                              >
+                                Resumo
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => copyCitation(cap)}
+                                style={{
+                                  padding: "6px 8px",
+                                  borderRadius: 6,
+                                  background: "#f1f5f9",
+                                  border: "1px solid #cbd5e1",
+                                  color: "#001a3d",
+                                  fontSize: 12,
+                                  cursor: "pointer",
+                                }}
+                                title="Copiar citação"
+                              >
+                                {copiedChapter === cap.numero ? "✓" : "📋"}
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
                       );
                     })}
-                  </ol>
-                </article>
-              );
-            })}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </section>
 
