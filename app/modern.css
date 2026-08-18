@@ -57,9 +57,10 @@
   position: sticky;
   top: 16px;
   z-index: 100;
-  max-width: 1440px;
+  width: var(--shell);
+  max-width: calc(100% - 150px);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .modern-nav-bar {
@@ -752,5 +753,32 @@
   }
   100% {
     height: 100%;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1400px) {
+  .modern-nav-sticky {
+    max-width: calc(100% - 60px);
+  }
+}
+
+@media (max-width: 992px) {
+  .modern-nav-sticky {
+    max-width: calc(100% - 32px);
+    top: 10px;
+  }
+  .modern-nav-bar {
+    height: auto;
+    padding: 12px 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .modern-nav-pills {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px;
   }
 }
