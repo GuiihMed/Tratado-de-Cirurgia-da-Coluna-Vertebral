@@ -215,11 +215,11 @@ export default function AdminLoginPage() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #000c1e 0%, #001533 50%, #01214d 100%)",
+        background: "linear-gradient(135deg, #000a1a 0%, #001433 50%, #011f4d 100%)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "24px 16px",
+        padding: "32px 16px",
         position: "relative",
         overflow: "hidden",
       }}
@@ -228,40 +228,40 @@ export default function AdminLoginPage() {
       <div
         style={{
           position: "absolute",
-          top: "10%",
-          left: "20%",
-          width: 500,
-          height: 500,
+          top: "5%",
+          left: "15%",
+          width: 550,
+          height: 550,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0, 77, 196, 0.22) 0%, rgba(0, 0, 0, 0) 70%)",
+          background: "radial-gradient(circle, rgba(0, 80, 200, 0.2) 0%, rgba(0, 0, 0, 0) 70%)",
           pointerEvents: "none",
         }}
       />
       <div
         style={{
           position: "absolute",
-          bottom: "10%",
-          right: "20%",
-          width: 500,
-          height: 500,
+          bottom: "5%",
+          right: "15%",
+          width: 550,
+          height: 550,
           borderRadius: "50%",
           background: "radial-gradient(circle, rgba(245, 34, 56, 0.15) 0%, rgba(0, 0, 0, 0) 70%)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Main Container Card (Dual Column Reference Design) */}
+      {/* Main Container Card */}
       <div
         style={{
           width: "100%",
-          maxWidth: 980,
+          maxWidth: 1040,
           background: "#ffffff",
           borderRadius: 28,
-          boxShadow: "0 30px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1)",
+          boxShadow: "0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.12)",
           display: "grid",
-          gridTemplateColumns: "1.05fr 1fr",
-          padding: 16,
-          gap: 20,
+          gridTemplateColumns: "1fr 1.08fr",
+          padding: 20,
+          gap: 28,
           position: "relative",
           zIndex: 10,
         }}
@@ -270,9 +270,9 @@ export default function AdminLoginPage() {
         {/* LEFT COLUMN: Deep Blue 3D Book Showcase */}
         <div
           style={{
-            background: "linear-gradient(160deg, #000e24 0%, #001b44 50%, #003382 100%)",
-            borderRadius: 20,
-            padding: "36px 32px",
+            background: "linear-gradient(160deg, #000e24 0%, #001c44 50%, #003382 100%)",
+            borderRadius: 22,
+            padding: "40px 32px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -302,16 +302,16 @@ export default function AdminLoginPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 8,
-                padding: "6px 14px",
+                padding: "7px 16px",
                 background: "rgba(255, 255, 255, 0.12)",
                 backdropFilter: "blur(8px)",
                 borderRadius: 20,
                 fontSize: 12,
-                fontWeight: 700,
+                fontWeight: 750,
                 letterSpacing: 0.5,
                 textTransform: "uppercase",
                 color: "#ff8090",
-                marginBottom: 20,
+                marginBottom: 22,
               }}
             >
               Sociedade Brasileira de Coluna
@@ -319,7 +319,7 @@ export default function AdminLoginPage() {
 
             <h2
               style={{
-                fontSize: 30,
+                fontSize: 32,
                 fontWeight: 850,
                 lineHeight: 1.15,
                 letterSpacing: "-0.02em",
@@ -332,8 +332,8 @@ export default function AdminLoginPage() {
 
             <p
               style={{
-                fontSize: 14.5,
-                lineHeight: 1.5,
+                fontSize: 15,
+                lineHeight: 1.55,
                 color: "#94a3b8",
                 margin: 0,
               }}
@@ -348,25 +348,25 @@ export default function AdminLoginPage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: "20px 0",
+              padding: "24px 0",
               position: "relative",
             }}
           >
             <div
               style={{
                 position: "absolute",
-                width: 180,
-                height: 180,
+                width: 200,
+                height: 200,
                 borderRadius: "50%",
                 background: "radial-gradient(circle, rgba(0, 102, 255, 0.4) 0%, rgba(0,0,0,0) 70%)",
-                filter: "blur(20px)",
+                filter: "blur(24px)",
               }}
             />
             <img
               src="/assets/book-cover.png"
               alt="Tratado de Cirurgia da Coluna Vertebral"
               style={{
-                maxHeight: 240,
+                maxHeight: 260,
                 width: "auto",
                 objectFit: "contain",
                 filter: "drop-shadow(0 20px 30px rgba(0, 0, 0, 0.75))",
@@ -383,8 +383,8 @@ export default function AdminLoginPage() {
               alignItems: "center",
               justifyContent: "space-between",
               borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-              paddingTop: 16,
-              fontSize: 12.5,
+              paddingTop: 18,
+              fontSize: 13,
               color: "#cbd5e1",
             }}
           >
@@ -396,84 +396,85 @@ export default function AdminLoginPage() {
         {/* RIGHT COLUMN: Form Card */}
         <div
           style={{
-            padding: "28px 24px",
+            padding: "28px 24px 28px 12px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             color: "#0f172a",
           }}
         >
-          {/* Logo & Header */}
-          <div style={{ textAlign: "center", marginBottom: 18 }}>
-            <Link href="/pt" style={{ display: "inline-block", marginBottom: 12 }}>
+          {/* Logo Section with Generous Top Spacing */}
+          <div style={{ textAlign: "center", marginBottom: 24 }}>
+            <Link href="/pt" style={{ display: "inline-block", marginBottom: 24 }}>
               <img
                 src="/assets/sbc-logo.png"
                 alt="Logo SBC"
-                style={{ height: 44, width: "auto", objectFit: "contain" }}
+                style={{ height: 48, width: "auto", objectFit: "contain" }}
               />
             </Link>
 
             {/* Mode Switcher Tabs */}
-            <div
-              style={{
-                display: "inline-flex",
-                background: "#f1f5f9",
-                padding: 4,
-                borderRadius: 30,
-                gap: 4,
-                marginBottom: 14,
-              }}
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  setMode("login");
-                  setErrorMessage(null);
-                  setSuccessMessage(null);
-                }}
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}>
+              <div
                 style={{
-                  padding: "8px 20px",
-                  borderRadius: 24,
-                  border: "none",
-                  fontWeight: 700,
-                  fontSize: 13.5,
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  background: mode === "login" ? "#003382" : "transparent",
-                  color: mode === "login" ? "#ffffff" : "#64748b",
-                  boxShadow: mode === "login" ? "0 2px 8px rgba(0, 51, 130, 0.3)" : "none",
+                  display: "inline-flex",
+                  background: "#f1f5f9",
+                  padding: 5,
+                  borderRadius: 30,
+                  gap: 6,
                 }}
               >
-                Entrar
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setMode("register");
-                  setErrorMessage(null);
-                  setSuccessMessage(null);
-                }}
-                style={{
-                  padding: "8px 20px",
-                  borderRadius: 24,
-                  border: "none",
-                  fontWeight: 700,
-                  fontSize: 13.5,
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  background: mode === "register" ? "#003382" : "transparent",
-                  color: mode === "register" ? "#ffffff" : "#64748b",
-                  boxShadow: mode === "register" ? "0 2px 8px rgba(0, 51, 130, 0.3)" : "none",
-                }}
-              >
-                Criar Conta
-              </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("login");
+                    setErrorMessage(null);
+                    setSuccessMessage(null);
+                  }}
+                  style={{
+                    padding: "9px 24px",
+                    borderRadius: 24,
+                    border: "none",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                    background: mode === "login" ? "#003382" : "transparent",
+                    color: mode === "login" ? "#ffffff" : "#64748b",
+                    boxShadow: mode === "login" ? "0 2px 10px rgba(0, 51, 130, 0.35)" : "none",
+                  }}
+                >
+                  Entrar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("register");
+                    setErrorMessage(null);
+                    setSuccessMessage(null);
+                  }}
+                  style={{
+                    padding: "9px 24px",
+                    borderRadius: 24,
+                    border: "none",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                    background: mode === "register" ? "#003382" : "transparent",
+                    color: mode === "register" ? "#ffffff" : "#64748b",
+                    boxShadow: mode === "register" ? "0 2px 10px rgba(0, 51, 130, 0.35)" : "none",
+                  }}
+                >
+                  Criar Conta
+                </button>
+              </div>
             </div>
 
             <h1
               style={{
-                fontSize: 23,
-                fontWeight: 800,
+                fontSize: 25,
+                fontWeight: 850,
                 letterSpacing: "-0.02em",
                 margin: "0 0 6px 0",
                 color: "#0f172a",
@@ -483,7 +484,7 @@ export default function AdminLoginPage() {
             </h1>
             <p
               style={{
-                fontSize: 13.5,
+                fontSize: 14,
                 color: "#64748b",
                 margin: 0,
               }}
@@ -501,11 +502,11 @@ export default function AdminLoginPage() {
                 background: "#fef2f2",
                 border: "1px solid #fecaca",
                 color: "#dc2626",
-                padding: "10px 14px",
-                borderRadius: 12,
-                fontSize: 13,
-                lineHeight: 1.4,
-                marginBottom: 14,
+                padding: "12px 16px",
+                borderRadius: 14,
+                fontSize: 13.5,
+                lineHeight: 1.45,
+                marginBottom: 18,
               }}
             >
               {errorMessage}
@@ -518,11 +519,11 @@ export default function AdminLoginPage() {
                 background: "#f0fdf4",
                 border: "1px solid #bbf7d0",
                 color: "#16a34a",
-                padding: "12px 14px",
-                borderRadius: 12,
-                fontSize: 13,
-                lineHeight: 1.4,
-                marginBottom: 14,
+                padding: "14px 16px",
+                borderRadius: 14,
+                fontSize: 13.5,
+                lineHeight: 1.45,
+                marginBottom: 18,
                 display: "flex",
                 alignItems: "flex-start",
                 gap: 10,
@@ -534,17 +535,17 @@ export default function AdminLoginPage() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {mode === "register" && (
               <>
                 <div>
                   <label
                     style={{
                       display: "block",
-                      fontSize: 12.5,
+                      fontSize: 13,
                       fontWeight: 700,
                       color: "#334155",
-                      marginBottom: 5,
+                      marginBottom: 6,
                     }}
                   >
                     Nome Completo
@@ -553,30 +554,33 @@ export default function AdminLoginPage() {
                     <div
                       style={{
                         position: "absolute",
-                        left: 14,
+                        left: 16,
                         top: "50%",
                         transform: "translateY(-50%)",
                         color: "#94a3b8",
                       }}
                     >
-                      <IconUser size={16} />
+                      <IconUser size={18} />
                     </div>
                     <input
                       type="text"
                       required
-                      placeholder="Ex: Dr. Carlos Eduardo"
+                      placeholder="Digite seu nome completo"
                       value={nome}
                       onChange={(e) => setNome(e.target.value)}
                       style={{
                         width: "100%",
-                        height: 44,
-                        padding: "0 14px 0 40px",
+                        height: 48,
+                        padding: "0 16px 0 46px",
                         borderRadius: 24,
                         border: "1.5px solid #e2e8f0",
-                        fontSize: 13.5,
+                        fontSize: 14,
                         color: "#0f172a",
                         outline: "none",
+                        transition: "border-color 0.2s",
                       }}
+                      onFocus={(e) => (e.target.style.borderColor = "#003382")}
+                      onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                     />
                   </div>
                 </div>
@@ -585,10 +589,10 @@ export default function AdminLoginPage() {
                   <label
                     style={{
                       display: "block",
-                      fontSize: 12.5,
+                      fontSize: 13,
                       fontWeight: 700,
                       color: "#334155",
-                      marginBottom: 5,
+                      marginBottom: 6,
                     }}
                   >
                     Cargo / Instituição
@@ -597,29 +601,32 @@ export default function AdminLoginPage() {
                     <div
                       style={{
                         position: "absolute",
-                        left: 14,
+                        left: 16,
                         top: "50%",
                         transform: "translateY(-50%)",
                         color: "#94a3b8",
                       }}
                     >
-                      <IconBriefcase size={16} />
+                      <IconBriefcase size={18} />
                     </div>
                     <input
                       type="text"
-                      placeholder="Ex: Cirurgião de Coluna / USP / Membro SBC"
+                      placeholder="Digite seu cargo ou instituição"
                       value={cargoInstituicao}
                       onChange={(e) => setCargoInstituicao(e.target.value)}
                       style={{
                         width: "100%",
-                        height: 44,
-                        padding: "0 14px 0 40px",
+                        height: 48,
+                        padding: "0 16px 0 46px",
                         borderRadius: 24,
                         border: "1.5px solid #e2e8f0",
-                        fontSize: 13.5,
+                        fontSize: 14,
                         color: "#0f172a",
                         outline: "none",
+                        transition: "border-color 0.2s",
                       }}
+                      onFocus={(e) => (e.target.style.borderColor = "#003382")}
+                      onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                     />
                   </div>
                 </div>
@@ -630,10 +637,10 @@ export default function AdminLoginPage() {
               <label
                 style={{
                   display: "block",
-                  fontSize: 12.5,
+                  fontSize: 13,
                   fontWeight: 700,
                   color: "#334155",
-                  marginBottom: 5,
+                  marginBottom: 6,
                 }}
               >
                 E-mail
@@ -642,30 +649,33 @@ export default function AdminLoginPage() {
                 <div
                   style={{
                     position: "absolute",
-                    left: 14,
+                    left: 16,
                     top: "50%",
                     transform: "translateY(-50%)",
                     color: "#94a3b8",
                   }}
                 >
-                  <IconMail size={16} />
+                  <IconMail size={18} />
                 </div>
                 <input
                   type="email"
                   required
-                  placeholder="seuemail@exemplo.com"
+                  placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
                     width: "100%",
-                    height: 44,
-                    padding: "0 14px 0 40px",
+                    height: 48,
+                    padding: "0 16px 0 46px",
                     borderRadius: 24,
                     border: "1.5px solid #e2e8f0",
-                    fontSize: 13.5,
+                    fontSize: 14,
                     color: "#0f172a",
                     outline: "none",
+                    transition: "border-color 0.2s",
                   }}
+                  onFocus={(e) => (e.target.style.borderColor = "#003382")}
+                  onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                 />
               </div>
             </div>
@@ -674,10 +684,10 @@ export default function AdminLoginPage() {
               <label
                 style={{
                   display: "block",
-                  fontSize: 12.5,
+                  fontSize: 13,
                   fontWeight: 700,
                   color: "#334155",
-                  marginBottom: 5,
+                  marginBottom: 6,
                 }}
               >
                 Senha
@@ -686,30 +696,33 @@ export default function AdminLoginPage() {
                 <div
                   style={{
                     position: "absolute",
-                    left: 14,
+                    left: 16,
                     top: "50%",
                     transform: "translateY(-50%)",
                     color: "#94a3b8",
                   }}
                 >
-                  <IconLock size={16} />
+                  <IconLock size={18} />
                 </div>
                 <input
                   type="password"
                   required
-                  placeholder="••••••••••••"
+                  placeholder="Digite sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   style={{
                     width: "100%",
-                    height: 44,
-                    padding: "0 14px 0 40px",
+                    height: 48,
+                    padding: "0 16px 0 46px",
                     borderRadius: 24,
                     border: "1.5px solid #e2e8f0",
-                    fontSize: 13.5,
+                    fontSize: 14,
                     color: "#0f172a",
                     outline: "none",
+                    transition: "border-color 0.2s",
                   }}
+                  onFocus={(e) => (e.target.style.borderColor = "#003382")}
+                  onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                 />
               </div>
             </div>
@@ -719,10 +732,10 @@ export default function AdminLoginPage() {
                 <label
                   style={{
                     display: "block",
-                    fontSize: 12.5,
+                    fontSize: 13,
                     fontWeight: 700,
                     color: "#334155",
-                    marginBottom: 5,
+                    marginBottom: 6,
                   }}
                 >
                   Confirmar Senha
@@ -731,30 +744,33 @@ export default function AdminLoginPage() {
                   <div
                     style={{
                       position: "absolute",
-                      left: 14,
+                      left: 16,
                       top: "50%",
                       transform: "translateY(-50%)",
                       color: "#94a3b8",
                     }}
                   >
-                    <IconLock size={16} />
+                    <IconLock size={18} />
                   </div>
                   <input
                     type="password"
                     required
-                    placeholder="••••••••••••"
+                    placeholder="Confirme sua senha"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     style={{
                       width: "100%",
-                      height: 44,
-                      padding: "0 14px 0 40px",
+                      height: 48,
+                      padding: "0 16px 0 46px",
                       borderRadius: 24,
                       border: "1.5px solid #e2e8f0",
-                      fontSize: 13.5,
+                      fontSize: 14,
                       color: "#0f172a",
                       outline: "none",
+                      transition: "border-color 0.2s",
                     }}
+                    onFocus={(e) => (e.target.style.borderColor = "#003382")}
+                    onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
                   />
                 </div>
               </div>
@@ -766,15 +782,16 @@ export default function AdminLoginPage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  fontSize: 12.5,
+                  fontSize: 13,
+                  marginTop: -2,
                 }}
               >
-                <label style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", color: "#64748b" }}>
+                <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", color: "#64748b" }}>
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    style={{ accentColor: "#003382" }}
+                    style={{ accentColor: "#003382", width: 16, height: 16 }}
                   />
                   Lembrar de mim
                 </label>
@@ -785,9 +802,10 @@ export default function AdminLoginPage() {
                     background: "none",
                     border: "none",
                     color: "#003382",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     cursor: "pointer",
                     padding: 0,
+                    fontSize: 13,
                   }}
                 >
                   Esqueceu a senha?
@@ -800,20 +818,20 @@ export default function AdminLoginPage() {
               type="submit"
               disabled={loading}
               style={{
-                height: 46,
-                borderRadius: 24,
+                height: 50,
+                borderRadius: 25,
                 background: "linear-gradient(135deg, #003382 0%, #004dc4 100%)",
                 color: "#ffffff",
                 border: "none",
-                fontSize: 14.5,
+                fontSize: 15,
                 fontWeight: 750,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: 8,
                 cursor: loading ? "wait" : "pointer",
-                marginTop: 4,
-                boxShadow: "0 4px 14px rgba(0, 51, 130, 0.35)",
+                marginTop: 6,
+                boxShadow: "0 4px 16px rgba(0, 51, 130, 0.35)",
                 transition: "all 0.2s ease",
               }}
             >
@@ -835,8 +853,8 @@ export default function AdminLoginPage() {
           <div
             style={{
               textAlign: "center",
-              marginTop: 18,
-              fontSize: 13,
+              marginTop: 22,
+              fontSize: 13.5,
               color: "#64748b",
             }}
           >
@@ -889,11 +907,11 @@ export default function AdminLoginPage() {
             )}
           </div>
 
-          <div style={{ textAlign: "center", marginTop: 12 }}>
+          <div style={{ textAlign: "center", marginTop: 14 }}>
             <Link
               href="/pt"
               style={{
-                fontSize: 12,
+                fontSize: 12.5,
                 color: "#94a3b8",
                 textDecoration: "none",
               }}
@@ -908,7 +926,7 @@ export default function AdminLoginPage() {
         @media (max-width: 860px) {
           .login-card-container {
             grid-template-columns: 1fr !important;
-            padding: 12px !important;
+            padding: 14px !important;
           }
         }
       `}</style>
