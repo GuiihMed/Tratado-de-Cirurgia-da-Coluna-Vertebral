@@ -675,68 +675,70 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <div className="author-accordion-overlay" />
 
                     <div className="author-accordion-content">
-                      <div>
-                        <span
-                          style={{
-                            display: "inline-block",
-                            padding: "4px 10px",
-                            borderRadius: 6,
-                            background: "#f52238",
-                            color: "#fff",
-                            fontSize: 11.5,
-                            fontWeight: 800,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.05em",
-                            marginBottom: 8,
-                            boxShadow: "0 4px 10px rgba(245, 34, 56, 0.35)",
-                          }}
-                        >
-                          {author.role}
-                        </span>
-                        <h3
-                          style={{
-                            fontSize: 24,
-                            fontWeight: 800,
-                            margin: 0,
-                            letterSpacing: "-0.02em",
-                            color: "#fff",
-                            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
-                          }}
-                        >
-                          {author.name}
-                        </h3>
-                      </div>
+                      <div className="author-accordion-glass-box">
+                        <div>
+                          <span
+                            style={{
+                              display: "inline-block",
+                              padding: "4px 10px",
+                              borderRadius: 6,
+                              background: "#f52238",
+                              color: "#fff",
+                              fontSize: 11.5,
+                              fontWeight: 800,
+                              textTransform: "uppercase",
+                              letterSpacing: "0.05em",
+                              marginBottom: 6,
+                              boxShadow: "0 4px 10px rgba(245, 34, 56, 0.35)",
+                            }}
+                          >
+                            {author.role}
+                          </span>
+                          <h3
+                            style={{
+                              fontSize: 22,
+                              fontWeight: 800,
+                              margin: 0,
+                              letterSpacing: "-0.02em",
+                              color: "#fff",
+                              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                            }}
+                          >
+                            {author.name}
+                          </h3>
+                        </div>
 
-                      <div className="author-accordion-details">
-                        <p
-                          style={{
-                            fontSize: 14,
-                            lineHeight: 1.6,
-                            color: "#dce8f5",
-                            margin: "0 0 14px",
-                          }}
-                        >
-                          {author.bio}
-                        </p>
+                        <div className="author-accordion-details">
+                          <p
+                            style={{
+                              fontSize: 13.5,
+                              lineHeight: 1.55,
+                              color: "#dce8f5",
+                              margin: "0 0 12px",
+                            }}
+                          >
+                            {author.bio}
+                          </p>
 
-                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                          {author.specialties.map((spec, i) => (
-                            <span
-                              key={i}
-                              style={{
-                                fontSize: 11,
-                                fontWeight: 600,
-                                padding: "3px 8px",
-                                borderRadius: 6,
-                                background: "rgba(255, 255, 255, 0.15)",
-                                backdropFilter: "blur(8px)",
-                                border: "1px solid rgba(255, 255, 255, 0.2)",
-                                color: "#f1f6fc",
-                              }}
-                            >
-                              {spec}
-                            </span>
-                          ))}
+                          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                            {author.specialties.map((spec, i) => (
+                              <span
+                                key={i}
+                                style={{
+                                  fontSize: 11,
+                                  fontWeight: 600,
+                                  padding: "3px 8px",
+                                  borderRadius: 6,
+                                  background: "rgba(255, 255, 255, 0.15)",
+                                  backdropFilter: "blur(8px)",
+                                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                                  color: "#f1f6fc",
+                                }}
+                              >
+                                {spec}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
