@@ -403,7 +403,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
             </div>
 
             {/* Authors Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: 28 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))", gap: 24 }}>
               {filteredAuthors.map((author) => {
                 const isHovered = hoveredAuthor === author.id;
                 return (

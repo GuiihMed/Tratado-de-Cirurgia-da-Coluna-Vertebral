@@ -215,7 +215,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
             }}
           />
 
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "1.25fr 360px", alignItems: "center", gap: 48, position: "relative", zIndex: 1 }}>
+          <div className="shell" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", alignItems: "center", gap: 40, position: "relative", zIndex: 1 }}>
             {/* Left Chapter Headline */}
             <div>
               {/* Breadcrumb */}
@@ -449,7 +449,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
         {/* ================= 2-COLUMN MODERN CONTENT ================= */}
         <section style={{ padding: "45px 0 80px", background: "#f1f5f9" }}>
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.3fr 1fr", gap: 36, alignItems: "start" }}>
+          <div className="shell" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 40, alignItems: "center" }}>
             {/* MAIN COLUMN */}
             <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
               {/* CARD 1: RESUMO CIENTÍFICO ESTRUTURADO (HIGH CONTRAST & BEAUTIFUL) */}

@@ -731,7 +731,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 {/* Top Signature Gradient Ribbon */}
                 <div style={{ height: 4, width: "100%", background: "linear-gradient(90deg, #f52238 0%, #003382 100%)" }} />
 
-                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
+                <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+                  <table style={{ width: "100%", minWidth: 600, borderCollapse: "collapse", textAlign: "left" }}>
                   <thead>
                     <tr style={{ background: "linear-gradient(135deg, #00122e 0%, #002255 100%)", color: "#ffffff", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                       <th style={{ padding: "16px 20px", width: 75, textAlign: "center" }}>Nº</th>
@@ -847,6 +848,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     })}
                   </tbody>
                 </table>
+                </div>
               </div>
             )}
           </div>

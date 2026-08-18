@@ -89,7 +89,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
             </nav>
 
-            <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 36, alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
               {/* Foto com Zoom e Glow */}
               <div
                 style={{
@@ -101,6 +101,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   border: "2px solid rgba(255, 255, 255, 0.2)",
                   boxShadow: "0 20px 40px rgba(0, 0, 0, 0.6)",
                   position: "relative",
+                  margin: "0 auto",
                 }}
               >
                 <img
@@ -178,7 +179,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
 
         {/* ================= 2-COLUMN MODERN CONTENT SECTION ================= */}
         <section style={{ padding: "45px 0 85px", background: "#f1f5f9" }}>
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.3fr 1fr", gap: 36, alignItems: "start" }}>
+          <div className="shell" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 36, alignItems: "start" }}>
             {/* COLUNA PRINCIPAL */}
             <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
               {/* TAB SWITCHER */}

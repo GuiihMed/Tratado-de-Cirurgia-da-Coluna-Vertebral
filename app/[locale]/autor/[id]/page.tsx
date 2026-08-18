@@ -93,17 +93,18 @@ export default async function AutorPage({ params }: AutorPageProps) {
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
             </nav>
 
-            <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 36, alignItems: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
               {/* Foto do Autor */}
               <div
                 style={{
-                  width: 220,
-                  height: 250,
+                  width: 200,
+                  height: 230,
                   borderRadius: 16,
                   overflow: "hidden",
                   background: "#001738",
                   border: "3px solid rgba(255, 255, 255, 0.3)",
                   boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
+                  margin: "0 auto",
                 }}
               >
                 <img
@@ -164,9 +165,9 @@ export default async function AutorPage({ params }: AutorPageProps) {
           </div>
         </section>
 
-        {/* ================= CONTEÚDO DETALHADO DO AUTOR ================= */}
-        <section style={{ padding: "45px 0" }}>
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr", gap: 36, alignItems: "start" }}>
+        {/* ================= 2-COLUMN CONTENT SECTION ================= */}
+        <section style={{ padding: "45px 0 85px", background: "#f8fafc" }}>
+          <div className="shell author-detail-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 36, alignItems: "start" }}>
             {/* COLUNA PRINCIPAL */}
             <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
               {/* CARD 1: BIOGRAFIA COMPLETA E TRAJETÓRIA */}
