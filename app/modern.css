@@ -598,9 +598,85 @@
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-bottom: 12px;
-  margin-bottom: 32px;
-  scrollbar-width: thin;
+  padding-bottom: 8px;
+  margin-bottom: 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modern-filter-row::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent;
+}
+
+.filter-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 26, 61, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: grid;
+  placeItems: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-arrow-btn:hover {
+  background: #f52238;
+  border-color: #f52238;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(245, 34, 56, 0.45);
+}
+
+.filter-arrow-btn.right {
+  right: -6px;
+}
+
+.filter-arrow-btn.left {
+  left: -6px;
+}
+
+.filter-fade-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(90deg, rgba(0, 15, 35, 0) 0%, rgba(0, 15, 35, 0.95) 80%);
+  pointer-events: none;
+  z-index: 5;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.filter-fade-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(270deg, rgba(0, 15, 35, 0) 0%, rgba(0, 15, 35, 0.95) 80%);
+  pointer-events: none;
+  z-index: 5;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .modern-filter-chip {
