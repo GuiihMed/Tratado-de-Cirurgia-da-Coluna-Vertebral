@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
-import { Locale, Capitulo } from "@/lib/types";
+import { Locale } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 
@@ -171,12 +171,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
         },
       ];
 
-  const relatedChapters = INITIAL_CHAPTERS.filter(
-    (c) => c.numero !== num && (c.secao_id === cap.secao_id || [1, 2, 4, 8].includes(c.numero))
-  ).slice(0, 4);
-
   return (
-    <div style={{ background: "#f8fbfe", color: "var(--ink)", minHeight: "100vh" }}>
+    <div style={{ background: "#f1f5f9", color: "#0f172a", minHeight: "100vh" }}>
       {/* ================= LAYOUT VERSION TOGGLE BANNER ================= */}
       <aside
         aria-label="Alternar versão do layout"
@@ -206,8 +202,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
             gap: 6,
             padding: "4px 12px",
             borderRadius: 6,
-            background: "rgba(255, 255, 255, 0.12)",
-            border: "1px solid rgba(255, 255, 255, 0.25)",
+            background: "rgba(255, 255, 255, 0.15)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
             color: "#fff",
             textDecoration: "none",
             fontWeight: 700,
@@ -224,11 +220,43 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
       <main style={{ paddingBottom: "100px" }}>
         {/* ================= MODERN HERO SECTION ================= */}
-        <section className="modern-hero" style={{ padding: "50px 0 60px" }}>
-          <div className="modern-hero-ambient" />
-          <div className="modern-hero-glow" />
+        <section
+          style={{
+            background: "linear-gradient(135deg, #001026 0%, #00224d 50%, #001738 100%)",
+            color: "#fff",
+            padding: "45px 0 55px",
+            position: "relative",
+            overflow: "hidden",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+        >
+          {/* Ambient Glows */}
+          <div
+            style={{
+              position: "absolute",
+              top: "-20%",
+              left: "15%",
+              width: "600px",
+              height: "400px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(245, 34, 56, 0.22) 0%, rgba(0, 0, 0, 0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              bottom: "-20%",
+              right: "10%",
+              width: "500px",
+              height: "400px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(14, 101, 162, 0.28) 0%, rgba(0, 0, 0, 0) 70%)",
+              pointerEvents: "none",
+            }}
+          />
 
-          <div className="shell modern-hero-grid" style={{ gridTemplateColumns: "1.2fr 380px", alignItems: "center", gap: 50 }}>
+          <div className="shell" style={{ display: "grid", gridTemplateColumns: "1.25fr 360px", alignItems: "center", gap: 48, position: "relative", zIndex: 1 }}>
             {/* Left Chapter Headline */}
             <div>
               {/* Breadcrumb */}
@@ -239,7 +267,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   gap: 8,
                   fontSize: 13,
                   color: "#94b8db",
-                  marginBottom: 20,
+                  marginBottom: 18,
                   flexWrap: "wrap",
                 }}
               >
@@ -265,7 +293,20 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
               {/* Tag Pill */}
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <span className="modern-tag-pill">
+                <span
+                  style={{
+                    display: "inline-block",
+                    padding: "5px 14px",
+                    borderRadius: 20,
+                    background: "rgba(245, 34, 56, 0.25)",
+                    border: "1px solid #f52238",
+                    color: "#ff99a8",
+                    fontSize: 12,
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                  }}
+                >
                   Seção {cap.secao_id} • {sectionTitle}
                 </span>
                 <span
@@ -284,41 +325,50 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               </div>
 
               {/* Title */}
-              <h1 className="modern-hero-title" style={{ fontSize: "clamp(30px, 4vw, 44px)", marginBottom: 14, lineHeight: 1.15 }}>
+              <h1
+                style={{
+                  fontSize: "clamp(32px, 3.8vw, 46px)",
+                  fontWeight: 900,
+                  color: "#fff",
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.03em",
+                  margin: "0 0 14px",
+                }}
+              >
                 {title}
               </h1>
 
               {/* Authors */}
-              <div style={{ fontSize: 15, fontWeight: 700, color: "#ff808f", marginBottom: 14 }}>
+              <div style={{ fontSize: 15.5, fontWeight: 700, color: "#ff808f", marginBottom: 14 }}>
                 {authorsText}
               </div>
 
               {/* Lead */}
-              <p className="modern-hero-lead" style={{ fontSize: 16, marginBottom: 24, maxWidth: 640 }}>
+              <p style={{ fontSize: 16, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 22px", maxWidth: 660 }}>
                 {leadText}
               </p>
 
               {/* Notice Box */}
               <div
                 style={{
-                  background: "rgba(245, 34, 56, 0.12)",
-                  border: "1px solid rgba(245, 34, 56, 0.35)",
+                  background: "rgba(245, 34, 56, 0.14)",
+                  border: "1px solid rgba(245, 34, 56, 0.4)",
                   backdropFilter: "blur(10px)",
                   borderRadius: 12,
-                  padding: "14px 20px",
+                  padding: "14px 18px",
                   display: "flex",
                   alignItems: "center",
                   gap: 14,
                   marginBottom: 28,
-                  maxWidth: 640,
+                  maxWidth: 660,
                 }}
               >
                 <div
                   style={{
-                    width: 36,
-                    height: 36,
+                    width: 38,
+                    height: 38,
                     borderRadius: "50%",
-                    background: "rgba(245, 34, 56, 0.25)",
+                    background: "rgba(245, 34, 56, 0.3)",
                     display: "grid",
                     placeItems: "center",
                     color: "#ff808f",
@@ -333,16 +383,46 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 </span>
               </div>
 
-              {/* CTA Actions */}
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                <Link href={`/${locale}/home-new#comprar`} className="btn-modern-primary">
+              {/* CTA Action Buttons */}
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+                <Link
+                  href={`/${locale}/home-new#comprar`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "13px 26px",
+                    borderRadius: 12,
+                    background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                    color: "#fff",
+                    textDecoration: "none",
+                    fontSize: 14.5,
+                    fontWeight: 800,
+                    boxShadow: "0 8px 24px rgba(245, 34, 56, 0.45)",
+                    transition: "all 0.2s ease",
+                  }}
+                >
                   <span>Adquirir Tratado Impresso</span>
                   <span>🛒</span>
                 </Link>
 
                 <a
                   href="#resumo"
-                  className="btn-modern-ghost"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "13px 22px",
+                    borderRadius: 12,
+                    background: "rgba(255, 255, 255, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    backdropFilter: "blur(10px)",
+                    color: "#fff",
+                    textDecoration: "none",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    transition: "all 0.2s ease",
+                  }}
                 >
                   <span>Explorar Resumo</span>
                   <span>↓</span>
@@ -350,7 +430,21 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
                 <a
                   href="#referencias"
-                  className="btn-modern-ghost"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "13px 20px",
+                    borderRadius: 12,
+                    background: "rgba(255, 255, 255, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    backdropFilter: "blur(10px)",
+                    color: "#fff",
+                    textDecoration: "none",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    transition: "all 0.2s ease",
+                  }}
                 >
                   <span>Referências ({referencesList.length})</span>
                   <span>↗</span>
@@ -358,13 +452,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               </div>
             </div>
 
-            {/* Right: 3D Book & Spine Illustration Card */}
+            {/* Right: 3D Book Illustration Card */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <div
                 style={{
                   position: "relative",
                   perspective: 1000,
-                  padding: "20px",
+                  padding: "10px",
                 }}
               >
                 <div
@@ -381,13 +475,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   alt="Capa 3D Tratado de Coluna"
                   style={{
                     width: "100%",
-                    maxWidth: 320,
-                    borderRadius: 12,
-                    boxShadow: "0 30px 70px rgba(0, 0, 0, 0.7), -15px 15px 40px rgba(0, 20, 50, 0.5)",
-                    transform: "rotateY(-12deg) rotateX(4deg)",
+                    maxWidth: 290,
+                    borderRadius: 10,
+                    boxShadow: "0 25px 60px rgba(0, 0, 0, 0.7), -10px 10px 30px rgba(0, 20, 50, 0.4)",
+                    transform: "rotateY(-10deg) rotateX(3deg)",
                     position: "relative",
                     zIndex: 1,
-                    transition: "transform 0.4s ease",
                   }}
                 />
               </div>
@@ -396,51 +489,118 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
         </section>
 
         {/* ================= 2-COLUMN MODERN CONTENT ================= */}
-        <section style={{ padding: "50px 0 80px" }}>
+        <section style={{ padding: "45px 0 80px" }}>
           <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.3fr 1fr", gap: 36, alignItems: "start" }}>
             {/* MAIN COLUMN */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-              {/* CARD 1: RESUMO CIENTÍFICO ESTRUTURADO */}
-              <article id="resumo" className="modern-highlight-card" style={{ padding: "36px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, borderBottom: "1px solid rgba(255, 255, 255, 0.12)", paddingBottom: 16 }}>
-                  <span style={{ fontSize: 24 }}>📑</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+              {/* CARD 1: RESUMO CIENTÍFICO ESTRUTURADO (HIGH CONTRAST & BEAUTIFUL) */}
+              <article
+                id="resumo"
+                style={{
+                  background: "#ffffff",
+                  borderRadius: 20,
+                  padding: "36px",
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                }}
+              >
+                {/* Header */}
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
+                  <div
+                    style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: 12,
+                      background: "rgba(0, 26, 61, 0.06)",
+                      display: "grid",
+                      placeItems: "center",
+                      fontSize: 22,
+                    }}
+                  >
+                    📑
+                  </div>
                   <div>
-                    <h2 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: 0 }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 900, color: "#001a3d", margin: "0 0 2px" }}>
                       Resumo Clínico do Capítulo
                     </h2>
-                    <span style={{ fontSize: 13, color: "#9ec5f0" }}>
-                      Síntese acadêmica, objetivos e conclusões cirúrgicas
+                    <span style={{ fontSize: 13, color: "#64748b" }}>
+                      Síntese acadêmica, metodologia diagnóstica e recomendações cirúrgicas
                     </span>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 18, fontSize: 14.5, lineHeight: 1.65, color: "#dce8f5" }}>
-                  <div style={{ background: "rgba(255, 255, 255, 0.04)", padding: "16px 20px", borderRadius: 12, border: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                    <strong style={{ color: "#ff808f", display: "block", marginBottom: 4, textTransform: "uppercase", fontSize: 12, letterSpacing: "0.05em" }}>
+                {/* Content Blocks */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  {/* Block 1 */}
+                  <div
+                    style={{
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      borderLeft: "4px solid #f52238",
+                      borderRadius: 12,
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#dc2626", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • Contexto Clínico
-                    </strong>
-                    O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível.
+                    </div>
+                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                      O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível.
+                    </p>
                   </div>
 
-                  <div style={{ background: "rgba(255, 255, 255, 0.04)", padding: "16px 20px", borderRadius: 12, border: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                    <strong style={{ color: "#67e8f9", display: "block", marginBottom: 4, textTransform: "uppercase", fontSize: 12, letterSpacing: "0.05em" }}>
+                  {/* Block 2 */}
+                  <div
+                    style={{
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      borderLeft: "4px solid #0284c7",
+                      borderRadius: 12,
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • Objetivo da Abordagem
-                    </strong>
-                    Apresentar os fundamentos anatômicos, biomecânicos e radiográficos do alinhamento sagital, destacando sua relevância para a avaliação clínica e para o planejamento de procedimentos cirúrgicos da coluna.
+                    </div>
+                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                      Apresentar os fundamentos anatômicos, biomecânicos e radiográficos do alinhamento sagital, destacando sua relevância para a avaliação clínica e para o planejamento de procedimentos cirúrgicos da coluna.
+                    </p>
                   </div>
 
-                  <div style={{ background: "rgba(255, 255, 255, 0.04)", padding: "16px 20px", borderRadius: 12, border: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                    <strong style={{ color: "#fde047", display: "block", marginBottom: 4, textTransform: "uppercase", fontSize: 12, letterSpacing: "0.05em" }}>
+                  {/* Block 3 */}
+                  <div
+                    style={{
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      borderLeft: "4px solid #d97706",
+                      borderRadius: 12,
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#d97706", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • Conteúdo Principal &amp; Parâmetros Chave
-                    </strong>
-                    O capítulo discute a evolução da postura ereta, o conceito do "cone de economia", os parâmetros pélvicos e vertebrais do equilíbrio sagital, incluindo incidência pélvica (PI), versão pélvica (PT), inclinação sacral (SS), eixo vertical sagital (SVA), lordose lombar (LL), cifose torácica (TK), T1 slope e parâmetros cervicais. Também são abordadas a distribuição regional da lordose lombar, a classificação de Roussouly, os modificadores sagitais da classificação SRS-Schwab, as ponderações da escola francesa em relação à escola americana, os mecanismos compensatórios e o conceito de Global Alignment and Proportion Score (GAP).
+                    </div>
+                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                      O capítulo discute a evolução da postura ereta, o conceito do "cone de economia", os parâmetros pélvicos e vertebrais do equilíbrio sagital, incluindo incidência pélvica (PI), versão pélvica (PT), inclinação sacral (SS), eixo vertical sagital (SVA), lordose lombar (LL), cifose torácica (TK), T1 slope e parâmetros cervicais. Também são abordadas a distribuição regional da lordose lombar, a classificação de Roussouly, os modificadores sagitais da classificação SRS-Schwab, as ponderações da escola francesa em relação à escola americana, os mecanismos compensatórios e o conceito de Global Alignment and Proportion Score (GAP).
+                    </p>
                   </div>
 
-                  <div style={{ background: "rgba(255, 255, 255, 0.04)", padding: "16px 20px", borderRadius: 12, border: "1px solid rgba(255, 255, 255, 0.08)" }}>
-                    <strong style={{ color: "#a7f3d0", display: "block", marginBottom: 4, textTransform: "uppercase", fontSize: 12, letterSpacing: "0.05em" }}>
+                  {/* Block 4 */}
+                  <div
+                    style={{
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      borderLeft: "4px solid #16a34a",
+                      borderRadius: 12,
+                      padding: "18px 22px",
+                    }}
+                  >
+                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • Mensagem Central aos Cirurgiões
-                    </strong>
-                    O alinhamento sagital não deve ser analisado por fórmulas rígidas ou valores universais. A avaliação deve ser individualizada, considerando morfologia pélvica, distribuição de lordose, capacidade compensatória, quadril, membros inferiores e necessidade de manter o olhar horizontal.
+                    </div>
+                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                      O alinhamento sagital não deve ser analisado por fórmulas rígidas ou valores universais. A avaliação deve ser individualizada, considerando morfologia pélvica, distribuição de lordose, capacidade compensatória, quadril, membros inferiores e necessidade de manter o olhar horizontal.
+                    </p>
                   </div>
                 </div>
               </article>
@@ -448,16 +608,16 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               {/* CARD 2: PALAVRAS-CHAVE MODERNAS */}
               <article
                 style={{
-                  background: "#fff",
-                  borderRadius: 18,
+                  background: "#ffffff",
+                  borderRadius: 20,
                   padding: "28px 32px",
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 6px 20px rgba(0, 30, 80, 0.04)",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span style={{ fontSize: 20 }}>🏷️</span>
-                  <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Descritores Científicos DeCS / MeSH
                   </h3>
                 </div>
@@ -469,11 +629,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       style={{
                         padding: "6px 14px",
                         borderRadius: 20,
-                        background: "rgba(0, 26, 61, 0.05)",
-                        border: "1px solid rgba(0, 26, 61, 0.12)",
+                        background: "#f1f5f9",
+                        border: "1px solid #cbd5e1",
                         fontSize: 13,
                         color: "#001a3d",
-                        fontWeight: 650,
+                        fontWeight: 700,
                         transition: "all 0.2s ease",
                       }}
                     >
@@ -483,14 +643,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 </div>
               </article>
 
-              {/* CARD 3: POR QUE ESTE CAPÍTULO IMPORTA (GLASS QUOTE) */}
+              {/* CARD 3: POR QUE ESTE CAPÍTULO IMPORTA (DEEP NAVY CARD) */}
               <article
                 style={{
-                  background: "linear-gradient(135deg, #001a3d 0%, #002b66 100%)",
-                  borderRadius: 18,
+                  background: "linear-gradient(135deg, #001533 0%, #00224d 100%)",
+                  borderRadius: 20,
                   padding: "36px",
                   color: "#fff",
-                  boxShadow: "0 10px 30px rgba(0, 26, 61, 0.15)",
+                  boxShadow: "0 12px 36px rgba(0, 20, 60, 0.15)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
@@ -507,8 +667,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 {/* Quote Box */}
                 <div
                   style={{
-                    background: "rgba(245, 34, 56, 0.15)",
-                    border: "1.5px solid rgba(245, 34, 56, 0.4)",
+                    background: "rgba(245, 34, 56, 0.18)",
+                    border: "1.5px solid rgba(245, 34, 56, 0.5)",
                     borderRadius: 14,
                     padding: "20px 28px",
                     textAlign: "center",
@@ -524,11 +684,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
                 <div
                   style={{
-                    background: "#fff",
-                    borderRadius: 16,
+                    background: "#ffffff",
+                    borderRadius: 18,
                     padding: "24px",
                     border: "1px solid #e2e8f0",
-                    boxShadow: "0 4px 16px rgba(0, 30, 80, 0.04)",
+                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
                   }}
                 >
                   <div
@@ -536,8 +696,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       width: 48,
                       height: 48,
                       borderRadius: 12,
-                      background: "rgba(88, 28, 135, 0.1)",
-                      color: "#581c87",
+                      background: "#f3e8ff",
+                      color: "#6b21a8",
                       display: "grid",
                       placeItems: "center",
                       fontSize: 22,
@@ -546,21 +706,21 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     🌐
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     Base Conceitual
                   </h4>
-                  <p style={{ fontSize: 13, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
                     Conceitos anatômicos e biomecânicos que sustentam o equilíbrio sagital e o "cone de economia de Dubousset".
                   </p>
                 </div>
 
                 <div
                   style={{
-                    background: "#fff",
-                    borderRadius: 16,
+                    background: "#ffffff",
+                    borderRadius: 18,
                     padding: "24px",
                     border: "1px solid #e2e8f0",
-                    boxShadow: "0 4px 16px rgba(0, 30, 80, 0.04)",
+                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
                   }}
                 >
                   <div
@@ -568,8 +728,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       width: 48,
                       height: 48,
                       borderRadius: 12,
-                      background: "rgba(245, 34, 56, 0.1)",
-                      color: "#f52238",
+                      background: "#fee2e2",
+                      color: "#b91c1c",
                       display: "grid",
                       placeItems: "center",
                       fontSize: 22,
@@ -578,21 +738,21 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     🩺
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     Aplicação Clínica
                   </h4>
-                  <p style={{ fontSize: 13, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
                     Interpretação dos principais parâmetros radiográficos e sua relação direta com sintomas e prognóstico funcional.
                   </p>
                 </div>
 
                 <div
                   style={{
-                    background: "#fff",
-                    borderRadius: 16,
+                    background: "#ffffff",
+                    borderRadius: 18,
                     padding: "24px",
                     border: "1px solid #e2e8f0",
-                    boxShadow: "0 4px 16px rgba(0, 30, 80, 0.04)",
+                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
                   }}
                 >
                   <div
@@ -600,8 +760,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       width: 48,
                       height: 48,
                       borderRadius: 12,
-                      background: "rgba(14, 116, 144, 0.1)",
-                      color: "#0e7490",
+                      background: "#e0f2fe",
+                      color: "#0369a1",
                       display: "grid",
                       placeItems: "center",
                       fontSize: 22,
@@ -610,10 +770,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     📐
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     Planejamento 3D
                   </h4>
-                  <p style={{ fontSize: 13, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
                     Princípios para restauração da harmonia espinopélvica, prevenindo sobrecargas no nível adjacente.
                   </p>
                 </div>
@@ -623,11 +783,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               <article
                 id="referencias"
                 style={{
-                  background: "#fff",
-                  borderRadius: 18,
+                  background: "#ffffff",
+                  borderRadius: 20,
                   padding: "36px",
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 6px 20px rgba(0, 30, 80, 0.04)",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
@@ -639,17 +799,17 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       Literatura de alto impacto indexada no PubMed / DOI
                     </span>
                   </div>
-                  <span style={{ fontSize: 12, fontWeight: 800, padding: "4px 10px", borderRadius: 12, background: "#f1f5f9", color: "#475569" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, padding: "4px 12px", borderRadius: 12, background: "#f1f5f9", color: "#475569" }}>
                     {referencesList.length} Referências
                   </span>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {referencesList.map((ref) => (
                     <div
                       key={ref.num}
                       style={{
-                        padding: "16px",
+                        padding: "16px 18px",
                         borderRadius: 12,
                         background: "#f8fafc",
                         border: "1px solid #e2e8f0",
@@ -660,7 +820,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       }}
                     >
                       <div>
-                        <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d", marginBottom: 4 }}>
+                        <div style={{ fontSize: 14, fontWeight: 750, color: "#001a3d", marginBottom: 4 }}>
                           {ref.num}. {ref.author} {ref.title}
                         </div>
                         <div style={{ fontSize: 12.5, color: "#64748b", fontStyle: "italic" }}>
@@ -709,33 +869,50 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 </div>
               </article>
 
-              {/* BOTTOM: TRATADO EM DEBATE & NAVEGAÇÃO DE CAPÍTULOS */}
+              {/* BOTTOM: TRATADO EM DEBATE & NAVEGAÇÃO */}
               <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
                 {/* Tratado em Debate Video Card */}
                 <div
                   style={{
                     background: "linear-gradient(135deg, #001026 0%, #032b69 100%)",
-                    borderRadius: 18,
+                    borderRadius: 20,
                     padding: "28px",
                     color: "#fff",
                     position: "relative",
                     overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "#ff808f", letterSpacing: "0.08em", marginBottom: 6 }}>
-                    Tratado em Debate • Podcast &amp; Vídeo
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 850, textTransform: "uppercase", color: "#ff808f", letterSpacing: "0.08em", marginBottom: 6 }}>
+                      Tratado em Debate • Podcast Oficial
+                    </div>
+                    <h4 style={{ fontSize: 18, fontWeight: 900, color: "#fff", margin: "0 0 10px" }}>
+                      Episódio {isCap8 ? "1" : num} – Capítulo {num}: {title}
+                    </h4>
+                    <p style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5, margin: "0 0 20px" }}>
+                      Aprofunde-se no debate científico com os autores do capítulo discutindo casos práticos e condutas cirúrgicas.
+                    </p>
                   </div>
-                  <h4 style={{ fontSize: 19, fontWeight: 900, color: "#fff", margin: "0 0 10px" }}>
-                    Episódio {isCap8 ? "1" : num} – Capítulo {num}: {title}
-                  </h4>
-                  <p style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5, margin: "0 0 20px" }}>
-                    Aprofunde-se no debate científico com os autores do capítulo discutindo casos práticos e condutas cirúrgicas.
-                  </p>
 
                   <Link
                     href={`/${locale}/home-new#podcast`}
-                    className="btn-modern-primary"
-                    style={{ display: "inline-flex", padding: "10px 20px", fontSize: 13.5 }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 8,
+                      padding: "11px 20px",
+                      borderRadius: 10,
+                      background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontSize: 13.5,
+                      fontWeight: 800,
+                      boxShadow: "0 6px 18px rgba(245, 34, 56, 0.4)",
+                    }}
                   >
                     <span>Assistir Episódio Completo</span>
                     <span>▶</span>
@@ -745,17 +922,18 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 {/* Navegação Entre Capítulos */}
                 <div
                   style={{
-                    background: "#fff",
-                    borderRadius: 18,
+                    background: "#ffffff",
+                    borderRadius: 20,
                     padding: "28px",
                     border: "1px solid #e2e8f0",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
                   }}
                 >
                   <div>
-                    <h4 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px" }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 14px" }}>
                       Navegar na Obra
                     </h4>
                     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -764,13 +942,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                           href={`/${locale}/capitulo-new/${prevCap.numero}`}
                           style={{
                             padding: "10px 14px",
-                            borderRadius: 8,
+                            borderRadius: 10,
                             background: "#f8fafc",
                             border: "1px solid #e2e8f0",
                             textDecoration: "none",
                             color: "#334155",
                             fontSize: 12.5,
-                            fontWeight: 650,
+                            fontWeight: 700,
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
@@ -785,13 +963,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                           href={`/${locale}/capitulo-new/${nextCap.numero}`}
                           style={{
                             padding: "10px 14px",
-                            borderRadius: 8,
+                            borderRadius: 10,
                             background: "#f8fafc",
                             border: "1px solid #e2e8f0",
                             textDecoration: "none",
                             color: "#334155",
                             fontSize: 12.5,
-                            fontWeight: 650,
+                            fontWeight: 700,
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
@@ -826,11 +1004,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               {/* CARD 1: AUTORES */}
               <div
                 style={{
-                  background: "#fff",
-                  borderRadius: 18,
+                  background: "#ffffff",
+                  borderRadius: 20,
                   padding: "28px",
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 6px 20px rgba(0, 30, 80, 0.04)",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
@@ -890,11 +1068,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               {/* CARD 2: IDIOMAS */}
               <div
                 style={{
-                  background: "#fff",
-                  borderRadius: 18,
+                  background: "#ffffff",
+                  borderRadius: 20,
                   padding: "28px",
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 6px 20px rgba(0, 30, 80, 0.04)",
+                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
@@ -964,7 +1142,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               <div
                 style={{
                   background: "linear-gradient(135deg, #00132b 0%, #00224d 100%)",
-                  borderRadius: 18,
+                  borderRadius: 20,
                   padding: "28px",
                   color: "#fff",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -989,13 +1167,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   style={{
                     display: "block",
                     textAlign: "center",
-                    padding: "10px",
-                    borderRadius: 8,
+                    padding: "11px",
+                    borderRadius: 10,
                     background: "rgba(255, 255, 255, 0.12)",
                     border: "1px solid rgba(255, 255, 255, 0.25)",
                     color: "#fff",
                     fontSize: 13,
-                    fontWeight: 700,
+                    fontWeight: 750,
                     textDecoration: "none",
                   }}
                 >
