@@ -443,11 +443,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         isSection8 ? "section-eight" : ""
                       } ${isOpen ? "is-open" : ""}`}
                       style={{
-                        marginBottom: 14,
+                        marginBottom: 18,
                         borderRadius: 16,
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(255, 255, 255, 0.14)",
-                        boxShadow: "0 10px 30px rgba(0, 10, 30, 0.35)",
+                        background: "rgba(0, 16, 38, 0.82)",
+                        backdropFilter: "blur(24px)",
+                        border: "1px solid rgba(255, 255, 255, 0.12)",
+                        borderLeft: "5px solid #f52238",
+                        boxShadow: "0 12px 35px rgba(0, 5, 20, 0.45)",
+                        overflow: "hidden",
                         transition: "all 0.25s ease",
                       }}
                     >
@@ -459,7 +462,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         style={{
                           width: "100%",
                           textAlign: "left",
-                          padding: "18px 24px",
+                          padding: "20px 26px",
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
@@ -469,51 +472,51 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           color: "#fff",
                         }}
                       >
-                        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                           <span
                             style={{
                               display: "inline-flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              width: 36,
-                              height: 36,
+                              width: 38,
+                              height: 38,
                               borderRadius: 10,
                               background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                               color: "#ffffff",
                               fontWeight: 800,
-                              fontSize: 15,
-                              boxShadow: "0 4px 12px rgba(245, 34, 56, 0.3)",
+                              fontSize: 16,
+                              boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
+                              flexShrink: 0,
                             }}
                           >
                             {secao.numero}
                           </span>
                           <div>
-                            <strong style={{ fontSize: 17, display: "block", color: "#fff", letterSpacing: "-0.01em" }}>
+                            <strong style={{ fontSize: 18, fontWeight: 800, display: "block", color: "#fff", letterSpacing: "-0.01em" }}>
                               {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                             </strong>
-                            <span style={{ fontSize: 12.5, color: "#8da9cc" }}>
+                            <span style={{ fontSize: 13, color: "#94a3b8" }}>
                               {secChapters.length} capítulos nesta seção
                             </span>
                           </div>
                         </div>
 
                         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                          <span style={{ fontSize: 18, color: "#8da9cc", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>
-                            ▼
+                          <span style={{ fontSize: 16, color: "#cbd5e1" }}>
+                            {isOpen ? "▲" : "▼"}
                           </span>
                         </div>
                       </button>
 
                       {isOpen && (
-                        <ol
-                          className="outline-list"
+                        <div
+                          className="indice-section-chapters-grid"
                           style={{
                             margin: 0,
-                            padding: "0 24px 20px 24px",
+                            padding: "0 26px 24px 26px",
                             display: "grid",
-                            gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
-                            gap: 10,
-                            listStyle: "none",
+                            gridTemplateColumns: "repeat(2, 1fr)",
+                            gap: 12,
                           }}
                         >
                           {secChapters.map((cap) => {
@@ -523,44 +526,37 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                 cap.titulo_pt.toLowerCase().includes(searchQuery.toLowerCase()));
 
                             return (
-                              <li
+                              <Link
                                 key={cap.numero}
-                                onClick={() => setActiveModalChapter(cap)}
+                                href={`/${locale}/capitulo-new/${cap.numero}`}
                                 style={{
-                                  padding: "10px 14px",
+                                  padding: "14px 18px",
                                   borderRadius: 10,
-                                  cursor: "pointer",
-                                  transition: "all 0.15s ease",
+                                  textDecoration: "none",
+                                  transition: "all 0.2s ease",
                                   background: isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)",
                                   border: isMatch ? "1px solid rgba(245, 34, 56, 0.5)" : "1px solid rgba(255, 255, 255, 0.08)",
                                   display: "flex",
                                   alignItems: "center",
                                   justifyContent: "space-between",
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)";
-                                  e.currentTarget.style.transform = "translateX(2px)";
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.background = isMatch ? "rgba(245, 34, 56, 0.25)" : "rgba(255, 255, 255, 0.04)";
-                                  e.currentTarget.style.transform = "translateX(0px)";
+                                  gap: 12,
                                 }}
                               >
                                 <div style={{ display: "flex", alignItems: "center", gap: 10, overflow: "hidden" }}>
-                                  <b style={{ color: "#ff5b6e", flexShrink: 0, fontWeight: 800 }}>
+                                  <b style={{ color: "#ff4d61", flexShrink: 0, fontWeight: 800, fontSize: 15 }}>
                                     {cap.numero}.
                                   </b>
-                                  <span style={{ color: "#edf5ff", fontSize: 13.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                                  <span style={{ color: "#edf5ff", fontSize: 14.5, fontWeight: 550, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                                     {getChapterTitle(cap)}
                                   </span>
                                 </div>
-                                <span style={{ fontSize: 12, color: "#8da9cc", flexShrink: 0, marginLeft: 8 }}>
+                                <span style={{ fontSize: 13, color: "#8da9cc", fontWeight: 600, flexShrink: 0 }}>
                                   Ver →
                                 </span>
-                              </li>
+                              </Link>
                             );
                           })}
-                        </ol>
+                        </div>
                       )}
                     </article>
                   );

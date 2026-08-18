@@ -1250,79 +1250,99 @@
 /* SMARTPHONES (768px and below) */
 @media (max-width: 768px) {
   .modern-hero {
-    margin-top: -60px !important;
-    padding-top: 85px !important;
-    padding-bottom: 40px !important;
+    margin-top: -65px !important;
+    padding-top: 95px !important;
+    padding-bottom: 45px !important;
+  }
+
+  .modern-hero-badge {
+    padding: 7px 16px !important;
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
   }
 
   .modern-hero-copy h1 {
-    font-size: 28px !important;
+    font-size: 34px !important;
     letter-spacing: -0.025em;
-    line-height: 1.22 !important;
+    line-height: 1.18 !important;
+    margin-bottom: 14px !important;
   }
 
   .modern-hero-copy p {
-    font-size: 14.5px !important;
+    font-size: 16px !important;
     line-height: 1.55 !important;
-    margin-bottom: 22px !important;
+    margin-bottom: 24px !important;
+    color: #cbd5e1 !important;
   }
 
   .modern-hero-actions {
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 12px;
   }
 
   .modern-hero-actions a,
   .modern-hero-actions button {
     width: 100%;
     justify-content: center;
-    height: 46px;
-    font-size: 14px;
+    height: 52px !important;
+    font-size: 15.5px !important;
+    font-weight: 750 !important;
+    border-radius: 12px !important;
   }
 
   .modern-stats-bar {
     grid-template-columns: 1fr 1fr;
-    padding: 14px 12px;
-    gap: 8px;
+    padding: 16px 14px;
+    gap: 10px;
+    margin-top: 32px !important;
   }
 
   .modern-stat-item {
-    padding: 6px;
+    padding: 8px;
   }
 
   .modern-stat-item strong {
-    font-size: 22px !important;
+    font-size: 28px !important;
+    font-weight: 850 !important;
   }
 
   .modern-stat-item span {
-    font-size: 11px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
   }
 
   .modern-search-bar {
-    padding: 6px 12px;
-    gap: 8px;
-    height: 48px;
-    border-radius: 12px;
+    padding: 10px 16px !important;
+    gap: 10px !important;
+    height: 56px !important;
+    border-radius: 14px !important;
   }
 
   .modern-search-input {
-    font-size: 13.5px;
+    font-size: 15px !important;
   }
 
   .modern-filter-row {
-    padding-bottom: 6px;
-    gap: 6px;
+    padding-bottom: 8px;
+    gap: 8px;
   }
 
   .modern-filter-chip {
-    padding: 6px 12px !important;
-    font-size: 12px !important;
+    padding: 9px 16px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+  }
+
+  .indice-section-chapters-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 16px 18px 16px !important;
+    gap: 10px !important;
   }
 
   .modern-footer-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 28px;
   }
 }
 
@@ -1330,7 +1350,7 @@
 @media (max-width: 480px) {
   .shell {
     max-width: 100%;
-    padding: 0 12px;
+    padding: 0 14px;
   }
 
   .modern-nav-sticky {
@@ -1340,37 +1360,47 @@
   }
 
   .modern-nav-bar {
-    height: 54px;
-    padding: 0 12px;
+    height: 60px;
+    padding: 0 14px;
   }
 
   .modern-brand-link img {
-    height: 28px !important;
+    height: 32px !important;
   }
 
   .modern-brand-text strong {
-    font-size: 12.5px;
+    font-size: 13.5px;
   }
 
   .modern-brand-text span {
-    display: none;
+    font-size: 10px;
   }
 
   .modern-hero-copy h1 {
-    font-size: 24px !important;
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+  }
+
+  .modern-hero-copy p {
+    font-size: 15.5px !important;
   }
 
   .modern-stats-bar {
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    padding: 10px 8px;
+    gap: 8px;
+    padding: 14px 10px;
   }
 
   .modern-stat-item strong {
-    font-size: 20px !important;
+    font-size: 25px !important;
   }
 
   .modern-stat-item span {
-    font-size: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .modern-filter-chip {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
   }
 }
