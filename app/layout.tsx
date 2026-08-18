@@ -3,14 +3,71 @@ import "./globals.css";
 import SvgSprite from "@/components/SvgSprite";
 
 export const metadata: Metadata = {
-  title: "Tratado de Cirurgia da Coluna Vertebral",
-  description: "Site oficial de apoio à obra impressa Tratado de Cirurgia da Coluna Vertebral.",
+  metadataBase: new URL("https://tratado-de-cirurgiada-coluna-verteb.vercel.app"),
+  title: {
+    default: "Tratado de Cirurgia da Coluna Vertebral | Sociedade Brasileira de Coluna (SBC)",
+    template: "%s | Tratado de Cirurgia da Coluna Vertebral",
+  },
+  description:
+    "Obra oficial de referência nacional da Sociedade Brasileira de Coluna (SBC). 109 capítulos especializados, 10 seções temáticas, diretrizes clínicas e produção científica dos maiores cirurgiões de coluna do Brasil.",
+  applicationName: "Tratado de Cirurgia da Coluna Vertebral",
+  keywords: [
+    "Tratado de Cirurgia da Coluna Vertebral",
+    "Sociedade Brasileira de Coluna",
+    "SBC",
+    "Cirurgia de Coluna",
+    "Ortopedia Espinhal",
+    "Neurocirurgia",
+    "Equilíbrio Sagital",
+    "Escoliose Idiopática",
+    "Fixação Pedicular",
+    "Edson Pudles",
+    "Helton Defino",
+    "Marcelo Risso",
+  ],
+  authors: [
+    { name: "Sociedade Brasileira de Coluna (SBC)", url: "https://coluna.org.br" },
+    { name: "Dr. Edson Pudles" },
+    { name: "Dr. Helton Defino" },
+    { name: "Dr. Marcelo Risso" },
+  ],
+  creator: "Sociedade Brasileira de Coluna (SBC)",
+  publisher: "Sociedade Brasileira de Coluna (SBC)",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    alternateLocale: ["en_US", "es_ES"],
+    url: "https://tratado-de-cirurgiada-coluna-verteb.vercel.app",
+    siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
+    title: "Tratado de Cirurgia da Coluna Vertebral | Obra Oficial SBC",
+    description:
+      "Plataforma digital e científica da maior obra de referência em cirurgia espinhal do Brasil. 109 capítulos especializados, diretrizes clínicas e coordenação da Sociedade Brasileira de Coluna.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tratado de Cirurgia da Coluna Vertebral | Sociedade Brasileira de Coluna (SBC)",
+    description:
+      "Obra oficial de referência médica nacional com 109 capítulos especializados e diretrizes científicas da SBC.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: "/favicon.svg",
+    apple: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
     shortcut: "/favicon.svg",
   },
 };
