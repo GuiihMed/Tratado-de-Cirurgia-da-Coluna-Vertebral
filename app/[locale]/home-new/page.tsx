@@ -1,15 +1,52 @@
 "use client";
 
-import { useState, use } from "react";
+import { useState, useEffect, use } from "react";
 import Link from "next/link";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
-import { Locale } from "@/lib/types";
+import { Locale, AutorEditor } from "@/lib/types";
 import { SECOES } from "@/lib/data/sections-and-chapters";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface HomeNewProps {
   params: Promise<{ locale: string }>;
 }
+
+const DEFAULT_AUTHORS = [
+  {
+    id: "1",
+    num: "01",
+    name: "Dr. Edson Pudles",
+    role: "Editor-Chefe / SBC",
+    institution: "Sociedade Brasileira de Coluna",
+    highlight: "Coordenação Editorial de 109 Capítulos",
+    photo: "/assets/edson-pudles.png",
+    bio: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.",
+    specialties: ["Deformidades Complexas", "Liderança Editorial", "Diretrizes SBC"],
+  },
+  {
+    id: "2",
+    num: "02",
+    name: "Dr. Helton Defino",
+    role: "Editor / FMRP-USP",
+    institution: "Faculdade de Medicina de Ribeirão Preto - USP",
+    highlight: "Pioneiro da Fixação Pedicular no Brasil",
+    photo: "/assets/helton-defino.png",
+    bio: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.",
+    specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
+  },
+  {
+    id: "3",
+    num: "03",
+    name: "Dr. Marcelo Risso",
+    role: "Editor / SBC",
+    institution: "Comitê de Educação e Publicações SBC",
+    highlight: "Coordenador do Capítulo 8 (Plano Sagital)",
+    photo: "/assets/marcelo-risso.png",
+    bio: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.",
+    specialties: ["Equilíbrio Sagital", "Osteotomias 3D", "Minimamente Invasiva"],
+  },
+];
 
 export default function HomeNewPage({ params }: HomeNewProps) {
   const resolvedParams = use(params);
@@ -26,41 +63,64 @@ export default function HomeNewPage({ params }: HomeNewProps) {
   // Interactive Author Hover State (null when not hovering)
   const [hoveredAuthor, setHoveredAuthor] = useState<number | null>(null);
 
-  const authorsList = [
-    {
-      id: 0,
-      num: "01",
-      name: "Dr. Edson Pudles",
-      role: "Editor-Chefe / SBC",
-      institution: "Sociedade Brasileira de Coluna",
-      highlight: "Coordenação Editorial de 109 Capítulos",
-      photo: "/assets/edson-pudles.png",
-      bio: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.",
-      specialties: ["Deformidades Complexas", "Liderança Editorial", "Diretrizes SBC"],
-    },
-    {
-      id: 1,
-      num: "02",
-      name: "Dr. Helton Defino",
-      role: "Editor / FMRP-USP",
-      institution: "Faculdade de Medicina de Ribeirão Preto - USP",
-      highlight: "Pioneiro da Fixação Pedicular no Brasil",
-      photo: "/assets/helton-defino.png",
-      bio: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.",
-      specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
-    },
-    {
-      id: 2,
-      num: "03",
-      name: "Dr. Marcelo Risso",
-      role: "Editor / SBC",
-      institution: "Comitê de Educação e Publicações SBC",
-      highlight: "Coordenador do Capítulo 8 (Plano Sagital)",
-      photo: "/assets/marcelo-risso.png",
-      bio: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.",
-      specialties: ["Equilíbrio Sagital", "Osteotomias 3D", "Minimamente Invasiva"],
-    },
-  ];
+  // Dynamic Authors list
+  const [authorsList, setAuthorsList] = useState(DEFAULT_AUTHORS);
+
+  useEffect(() => {
+    async function loadAuthors() {
+      try {
+        if (isSupabaseConfigured()) {
+          const { data, error } = await supabase
+            .from("autores")
+            .select("*")
+            .order("ordem", { ascending: true });
+
+          if (!error && data && data.length > 0) {
+            const formatted = data.map((a: AutorEditor, i: number) => ({
+              id: a.id || `autor-${i}`,
+              num: (a.ordem < 10 ? `0${a.ordem}` : `${a.ordem}`),
+              name: a.nome,
+              role: a.cargo,
+              institution: a.instituicao,
+              highlight: a.destaque || "",
+              photo: a.foto_url || "/assets/edson-pudles.png",
+              bio: a.bio_pt,
+              specialties: a.especialidades
+                ? a.especialidades.split(",").map((s: string) => s.trim()).filter(Boolean)
+                : [],
+            }));
+            setAuthorsList(formatted);
+            return;
+          }
+        }
+
+        const local = localStorage.getItem("sbc_custom_authors");
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const formatted = parsed.map((a: AutorEditor, i: number) => ({
+              id: a.id || `autor-${i}`,
+              num: (a.ordem < 10 ? `0${a.ordem}` : `${a.ordem}`),
+              name: a.nome,
+              role: a.cargo,
+              institution: a.instituicao,
+              highlight: a.destaque || "",
+              photo: a.foto_url || "/assets/edson-pudles.png",
+              bio: a.bio_pt,
+              specialties: a.especialidades
+                ? a.especialidades.split(",").map((s: string) => s.trim()).filter(Boolean)
+                : [],
+            }));
+            setAuthorsList(formatted);
+          }
+        }
+      } catch (e) {
+        // use DEFAULT_AUTHORS
+      }
+    }
+
+    loadAuthors();
+  }, []);
 
   const sagittalDetails = {
     equilibrio: {

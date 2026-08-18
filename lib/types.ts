@@ -33,3 +33,20 @@ export interface SecaoInfo {
   totalCapitulos: number;
   isCompact?: boolean;
 }
+
+export interface AutorEditor {
+  id?: string;
+  ordem: number;
+  nome: string;
+  cargo: string;
+  instituicao: string;
+  destaque?: string | null;
+  bio_pt: string;
+  bio_en?: string | null;
+  bio_es?: string | null;
+  especialidades: string;
+  foto_url: string;
+  created_at?: string;
+  updated_at?: string;
+}
+

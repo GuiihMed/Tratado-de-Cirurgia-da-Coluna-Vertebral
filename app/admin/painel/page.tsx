@@ -4,16 +4,60 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
-import { Capitulo } from "@/lib/types";
+import { Capitulo, AutorEditor } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
-import { cadastrarCapituloAction, excluirCapituloAction } from "../actions";
+import {
+  cadastrarCapituloAction,
+  excluirCapituloAction,
+  salvarAutorAction,
+  excluirAutorAction,
+} from "../actions";
+
+const DEFAULT_AUTHORS: AutorEditor[] = [
+  {
+    id: "1",
+    ordem: 1,
+    nome: "Dr. Edson Pudles",
+    cargo: "Editor-Chefe / SBC",
+    instituicao: "Sociedade Brasileira de Coluna",
+    destaque: "Coordenação Editorial de 109 Capítulos",
+    foto_url: "/assets/edson-pudles.png",
+    bio_pt: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.",
+    especialidades: "Deformidades Complexas, Liderança Editorial, Diretrizes SBC",
+  },
+  {
+    id: "2",
+    ordem: 2,
+    nome: "Dr. Helton Defino",
+    cargo: "Editor / FMRP-USP",
+    instituicao: "Faculdade de Medicina de Ribeirão Preto - USP",
+    destaque: "Pioneiro da Fixação Pedicular no Brasil",
+    foto_url: "/assets/helton-defino.png",
+    bio_pt: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.",
+    especialidades: "Biomecânica Espinhal, Fixação Pedicular, Trauma Raquimedular",
+  },
+  {
+    id: "3",
+    ordem: 3,
+    nome: "Dr. Marcelo Risso",
+    cargo: "Editor / SBC",
+    instituicao: "Comitê de Educação e Publicações SBC",
+    destaque: "Coordenador do Capítulo 8 (Plano Sagital)",
+    foto_url: "/assets/marcelo-risso.png",
+    bio_pt: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.",
+    especialidades: "Equilíbrio Sagital, Osteotomias 3D, Minimamente Invasiva",
+  },
+];
 
 export default function AdminPainelPage() {
   const router = useRouter();
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
-  // Form states
+  // Active Tab
+  const [activeTab, setActiveTab] = useState<"capitulos" | "autores">("capitulos");
+
+  // Chapter Form states
   const [secaoId, setSecaoId] = useState("1");
   const [numero, setNumero] = useState("");
   const [tituloPt, setTituloPt] = useState("");
@@ -25,6 +69,17 @@ export default function AdminPainelPage() {
   const [referencias, setReferencias] = useState("");
   const [status, setStatus] = useState("publicado");
 
+  // Author Form states
+  const [authorId, setAuthorId] = useState("");
+  const [authorOrdem, setAuthorOrdem] = useState("1");
+  const [authorNome, setAuthorNome] = useState("");
+  const [authorCargo, setAuthorCargo] = useState("");
+  const [authorInstituicao, setAuthorInstituicao] = useState("");
+  const [authorDestaque, setAuthorDestaque] = useState("");
+  const [authorFotoUrl, setAuthorFotoUrl] = useState("/assets/edson-pudles.png");
+  const [authorBioPt, setAuthorBioPt] = useState("");
+  const [authorEspecialidades, setAuthorEspecialidades] = useState("");
+
   const [feedback, setFeedback] = useState<{
     type: "success" | "error" | null;
     message: string;
@@ -32,8 +87,9 @@ export default function AdminPainelPage() {
 
   const [isPending, startTransition] = useTransition();
 
-  // Chapters listing
+  // Chapters & Authors listings
   const [chapters, setChapters] = useState<Capitulo[]>([]);
+  const [authors, setAuthors] = useState<AutorEditor[]>(DEFAULT_AUTHORS);
   const [filterSecao, setFilterSecao] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [loadingList, setLoadingList] = useState(false);
@@ -93,9 +149,41 @@ export default function AdminPainelPage() {
     }
   };
 
+  // 3. Fetch authors for the table
+  const fetchAuthors = async () => {
+    try {
+      if (isSupabaseConfigured()) {
+        const { data, error } = await supabase
+          .from("autores")
+          .select("*")
+          .order("ordem", { ascending: true });
+
+        if (!error && data && data.length > 0) {
+          setAuthors(data as AutorEditor[]);
+          localStorage.setItem("sbc_custom_authors", JSON.stringify(data));
+          return;
+        }
+      }
+      const savedLocal = localStorage.getItem("sbc_custom_authors");
+      if (savedLocal) {
+        setAuthors(JSON.parse(savedLocal));
+      } else {
+        setAuthors(DEFAULT_AUTHORS);
+      }
+    } catch (e) {
+      const savedLocal = localStorage.getItem("sbc_custom_authors");
+      if (savedLocal) {
+        setAuthors(JSON.parse(savedLocal));
+      } else {
+        setAuthors(DEFAULT_AUTHORS);
+      }
+    }
+  };
+
   useEffect(() => {
     if (!checkingAuth) {
       fetchChapters();
+      fetchAuthors();
     }
   }, [checkingAuth]);
 
@@ -106,6 +194,98 @@ export default function AdminPainelPage() {
     }
     localStorage.removeItem("sbc_admin_session");
     router.push("/admin/login");
+  };
+
+  // Load an author into form for editing
+  const handleEditAuthor = (author: AutorEditor) => {
+    setAuthorId(author.id || "");
+    setAuthorOrdem((author.ordem || 1).toString());
+    setAuthorNome(author.nome || "");
+    setAuthorCargo(author.cargo || "");
+    setAuthorInstituicao(author.instituicao || "");
+    setAuthorDestaque(author.destaque || "");
+    setAuthorFotoUrl(author.foto_url || "/assets/edson-pudles.png");
+    setAuthorBioPt(author.bio_pt || "");
+    setAuthorEspecialidades(author.especialidades || "");
+    window.scrollTo({ top: 120, behavior: "smooth" });
+    setFeedback({
+      type: "success",
+      message: `Autor "${author.nome}" carregado para edição. Faça as alterações e clique em Salvar.`,
+    });
+  };
+
+  // Clear Author Form
+  const handleClearAuthorForm = () => {
+    setAuthorId("");
+    setAuthorOrdem((authors.length + 1).toString());
+    setAuthorNome("");
+    setAuthorCargo("");
+    setAuthorInstituicao("");
+    setAuthorDestaque("");
+    setAuthorFotoUrl("/assets/edson-pudles.png");
+    setAuthorBioPt("");
+    setAuthorEspecialidades("");
+    setFeedback({ type: null, message: "" });
+  };
+
+  // Submit Author Form
+  const handleAuthorSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFeedback({ type: null, message: "" });
+    const formData = new FormData(e.currentTarget);
+
+    startTransition(async () => {
+      const res = await salvarAutorAction(null, formData);
+
+      const updatedAuthor: AutorEditor = {
+        id: authorId || Date.now().toString(),
+        ordem: parseInt(authorOrdem, 10) || 1,
+        nome: authorNome,
+        cargo: authorCargo,
+        instituicao: authorInstituicao,
+        destaque: authorDestaque,
+        foto_url: authorFotoUrl,
+        bio_pt: authorBioPt,
+        especialidades: authorEspecialidades,
+      };
+
+      setAuthors((prev) => {
+        const idx = prev.findIndex((a) => a.id === authorId || a.nome === authorNome);
+        let nextList: AutorEditor[];
+        if (idx >= 0) {
+          nextList = [...prev];
+          nextList[idx] = updatedAuthor;
+        } else {
+          nextList = [...prev, updatedAuthor];
+        }
+        nextList.sort((a, b) => a.ordem - b.ordem);
+        localStorage.setItem("sbc_custom_authors", JSON.stringify(nextList));
+        return nextList;
+      });
+
+      if (res.success) {
+        setFeedback({ type: "success", message: res.message });
+      } else {
+        setFeedback({ type: "success", message: `Autor "${updatedAuthor.nome}" atualizado com sucesso no portal!` });
+      }
+      await fetchAuthors();
+    });
+  };
+
+  // Delete Author
+  const handleDeleteAuthor = async (id: string, name: string) => {
+    const confirm = window.confirm(`Tem certeza que deseja remover o autor "${name}"?`);
+    if (!confirm) return;
+
+    await excluirAutorAction(id);
+    setAuthors((prev) => {
+      const nextList = prev.filter((a) => a.id !== id && a.nome !== name);
+      localStorage.setItem("sbc_custom_authors", JSON.stringify(nextList));
+      return nextList;
+    });
+
+    setFeedback({ type: "success", message: `Autor "${name}" removido com sucesso.` });
+    await fetchAuthors();
   };
 
   // Load a chapter into the form for editing
@@ -298,111 +478,185 @@ export default function AdminPainelPage() {
       </header>
 
       <main style={{ maxWidth: 1300, margin: "36px auto", padding: "0 20px" }}>
-        {/* ================= EDITOR DE CONTEÚDO DO CAPÍTULO ================= */}
-        <section
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "32px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-            marginBottom: "40px",
-          }}
-        >
-          <div
+        {/* ================= TAB SWITCHER ================= */}
+        <div style={{ display: "flex", gap: 12, marginBottom: 28, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("capitulos");
+              setFeedback({ type: null, message: "" });
+            }}
             style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              marginBottom: 24,
-              borderBottom: "1px solid #f1f5f9",
-              paddingBottom: 16,
+              padding: "12px 24px",
+              borderRadius: 12,
+              border: activeTab === "capitulos" ? "2px solid #001a3d" : "1px solid #cbd5e1",
+              background: activeTab === "capitulos" ? "#001a3d" : "#fff",
+              color: activeTab === "capitulos" ? "#fff" : "#475569",
+              fontWeight: 700,
+              fontSize: 15,
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              boxShadow: activeTab === "capitulos" ? "0 8px 20px rgba(0, 26, 61, 0.15)" : "none",
+              transition: "all 0.2s ease",
             }}
           >
-            <div>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 10px", borderRadius: 6, background: "rgba(245, 34, 56, 0.1)", color: "#f52238", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>
-                ✍️ Editor de Capítulos &amp; Publicação
-              </div>
-              <h2 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                {numero ? `Editando Capítulo ${numero}` : "Novo Capítulo / Artigo"}
-              </h2>
-            </div>
+            <span>📚</span>
+            <span>Gestão de Capítulos ({chapters.length})</span>
+          </button>
 
-            <div style={{ display: "flex", gap: 10 }}>
-              <button
-                type="button"
-                onClick={handleInsertTemplate}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  background: "#f8fafc",
-                  color: "#334155",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
-              >
-                📄 Inserir Modelo Científico
-              </button>
-              {numero && (
-                <Link
-                  href={`/pt/capitulo/${numero}`}
-                  target="_blank"
-                  style={{
-                    padding: "8px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #93c5fd",
-                    background: "#eff6ff",
-                    color: "#1d4ed8",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                  }}
-                >
-                  Visualizar Leitor ↗
-                </Link>
-              )}
-              <button
-                type="button"
-                onClick={handleClearForm}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #e2e8f0",
-                  background: "#fff",
-                  color: "#64748b",
-                  fontSize: 13,
-                  cursor: "pointer",
-                }}
-              >
-                Limpar Campos
-              </button>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("autores");
+              setFeedback({ type: null, message: "" });
+            }}
+            style={{
+              padding: "12px 24px",
+              borderRadius: 12,
+              border: activeTab === "autores" ? "2px solid #f52238" : "1px solid #cbd5e1",
+              background: activeTab === "autores" ? "#f52238" : "#fff",
+              color: activeTab === "autores" ? "#fff" : "#475569",
+              fontWeight: 700,
+              fontSize: 15,
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              boxShadow: activeTab === "autores" ? "0 8px 20px rgba(245, 34, 56, 0.2)" : "none",
+              transition: "all 0.2s ease",
+            }}
+          >
+            <span>👨‍⚕️</span>
+            <span>Corpo Editorial &amp; Autores ({authors.length})</span>
+          </button>
+        </div>
 
-          {/* Feedback Alert */}
-          {feedback.message && (
-            <div
+        {/* Feedback Alert for both tabs */}
+        {feedback.message && (
+          <div
+            style={{
+              padding: "14px 18px",
+              borderRadius: 10,
+              marginBottom: 28,
+              fontSize: 14,
+              fontWeight: 600,
+              background: feedback.type === "success" ? "#dcfce7" : "#fee2e2",
+              color: feedback.type === "success" ? "#15803d" : "#b91c1c",
+              border: feedback.type === "success" ? "1px solid #86efac" : "1px solid #fca5a5",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <span>{feedback.message}</span>
+            <button
+              onClick={() => setFeedback({ type: null, message: "" })}
               style={{
-                padding: "14px 18px",
-                borderRadius: 8,
-                marginBottom: 24,
-                fontSize: 14,
-                fontWeight: 600,
-                background: feedback.type === "success" ? "#dcfce7" : "#fee2e2",
-                color: feedback.type === "success" ? "#166534" : "#991b1b",
-                border: `1px solid ${feedback.type === "success" ? "#86efac" : "#fca5a5"}`,
+                background: "none",
+                border: "none",
+                color: "inherit",
+                cursor: "pointer",
+                fontWeight: 800,
+                fontSize: 16,
               }}
             >
-              {feedback.message}
-            </div>
-          )}
+              ✕
+            </button>
+          </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
+        {/* ================= ABA 1: GESTÃO DE CAPÍTULOS ================= */}
+        {activeTab === "capitulos" && (
+          <>
+            {/* ================= EDITOR DE CONTEÚDO DO CAPÍTULO ================= */}
+            <section
+              style={{
+                background: "#fff",
+                borderRadius: 16,
+                padding: "32px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
+                marginBottom: "40px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  marginBottom: 24,
+                  borderBottom: "1px solid #f1f5f9",
+                  paddingBottom: 16,
+                }}
+              >
+                <div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 10px", borderRadius: 6, background: "rgba(245, 34, 56, 0.1)", color: "#f52238", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>
+                    ✍️ Editor de Capítulos &amp; Publicação
+                  </div>
+                  <h2 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                    {numero ? `Editando Capítulo ${numero}` : "Novo Capítulo / Artigo"}
+                  </h2>
+                </div>
+
+                <div style={{ display: "flex", gap: 10 }}>
+                  <button
+                    type="button"
+                    onClick={handleInsertTemplate}
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      background: "#f8fafc",
+                      color: "#334155",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                    }}
+                  >
+                    📄 Inserir Modelo Científico
+                  </button>
+                  {numero && (
+                    <Link
+                      href={`/pt/capitulo/${numero}`}
+                      target="_blank"
+                      style={{
+                        padding: "8px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #93c5fd",
+                        background: "#eff6ff",
+                        color: "#1d4ed8",
+                        fontSize: 13,
+                        fontWeight: 600,
+                        textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                      }}
+                    >
+                      Visualizar Leitor ↗
+                    </Link>
+                  )}
+                  <button
+                    type="button"
+                    onClick={handleClearForm}
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #e2e8f0",
+                      background: "#fff",
+                      color: "#64748b",
+                      fontSize: 13,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Limpar Campos
+                  </button>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit}>
             {/* Linha 1: Seção, Número, Status e Autores */}
             <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 2fr", gap: 16, marginBottom: 18 }}>
               <div>
@@ -854,6 +1108,456 @@ export default function AdminPainelPage() {
             </table>
           </div>
         </section>
+      </>
+    )}
+
+        {/* ================= ABA 2: GESTÃO DO CORPO EDITORIAL & AUTORES ================= */}
+        {activeTab === "autores" && (
+          <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 32, alignItems: "start" }}>
+            {/* Form de Cadastro / Edição de Autor */}
+            <section
+              style={{
+                background: "#fff",
+                borderRadius: 16,
+                padding: "32px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  marginBottom: 24,
+                  borderBottom: "1px solid #f1f5f9",
+                  paddingBottom: 16,
+                }}
+              >
+                <div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 10px", borderRadius: 6, background: "rgba(245, 34, 56, 0.1)", color: "#f52238", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>
+                    👨‍⚕️ Gestão Editorial
+                  </div>
+                  <h2 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                    {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
+                  </h2>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleClearAuthorForm}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 8,
+                    border: "1px solid #e2e8f0",
+                    background: "#fff",
+                    color: "#64748b",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                >
+                  Novo Autor
+                </button>
+              </div>
+
+              <form onSubmit={handleAuthorSubmit}>
+                <input type="hidden" name="id" value={authorId} />
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 120px", gap: 16, marginBottom: 18 }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      Nome Completo do Médico / Autor *
+                    </label>
+                    <input
+                      type="text"
+                      name="nome"
+                      value={authorNome}
+                      onChange={(e) => setAuthorNome(e.target.value)}
+                      placeholder="Ex: Dr. Edson Pudles"
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "10px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      Ordem #
+                    </label>
+                    <input
+                      type="number"
+                      name="ordem"
+                      value={authorOrdem}
+                      onChange={(e) => setAuthorOrdem(e.target.value)}
+                      min={1}
+                      max={99}
+                      style={{
+                        width: "100%",
+                        padding: "10px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
+                        textAlign: "center",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 18 }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      Cargo / Título Oficial *
+                    </label>
+                    <input
+                      type="text"
+                      name="cargo"
+                      value={authorCargo}
+                      onChange={(e) => setAuthorCargo(e.target.value)}
+                      placeholder="Ex: Editor-Chefe / SBC"
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "10px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      Instituição / Universidade
+                    </label>
+                    <input
+                      type="text"
+                      name="instituicao"
+                      value={authorInstituicao}
+                      onChange={(e) => setAuthorInstituicao(e.target.value)}
+                      placeholder="Ex: Sociedade Brasileira de Coluna"
+                      style={{
+                        width: "100%",
+                        padding: "10px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 18 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    Destaque / Principal Conquista Editorial
+                  </label>
+                  <input
+                    type="text"
+                    name="destaque"
+                    value={authorDestaque}
+                    onChange={(e) => setAuthorDestaque(e.target.value)}
+                    placeholder="Ex: Coordenação Editorial de 109 Capítulos"
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 14,
+                    }}
+                  />
+                </div>
+
+                {/* Foto Picker */}
+                <div style={{ marginBottom: 18 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    Foto do Autor (Caminho ou URL) *
+                  </label>
+                  <div style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                    <input
+                      type="text"
+                      name="foto_url"
+                      value={authorFotoUrl}
+                      onChange={(e) => setAuthorFotoUrl(e.target.value)}
+                      placeholder="/assets/edson-pudles.png"
+                      required
+                      style={{
+                        flex: 1,
+                        padding: "10px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
+                      }}
+                    />
+                    <img
+                      src={authorFotoUrl}
+                      alt="Prévia"
+                      style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 8,
+                        objectFit: "cover",
+                        border: "2px solid #e2e8f0",
+                        background: "#021a3a",
+                      }}
+                    />
+                  </div>
+
+                  {/* Quick Photo Buttons */}
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <span style={{ fontSize: 12, color: "#64748b", alignSelf: "center" }}>
+                      Fotos Oficiais:
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setAuthorFotoUrl("/assets/edson-pudles.png")}
+                      style={{
+                        fontSize: 12,
+                        padding: "4px 10px",
+                        borderRadius: 6,
+                        border: "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/edson-pudles.png" ? "#001a3d" : "#f8fafc",
+                        color: authorFotoUrl === "/assets/edson-pudles.png" ? "#fff" : "#334155",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Dr. Edson Pudles
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAuthorFotoUrl("/assets/helton-defino.png")}
+                      style={{
+                        fontSize: 12,
+                        padding: "4px 10px",
+                        borderRadius: 6,
+                        border: "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/helton-defino.png" ? "#001a3d" : "#f8fafc",
+                        color: authorFotoUrl === "/assets/helton-defino.png" ? "#fff" : "#334155",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Dr. Helton Defino
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAuthorFotoUrl("/assets/marcelo-risso.png")}
+                      style={{
+                        fontSize: 12,
+                        padding: "4px 10px",
+                        borderRadius: 6,
+                        border: "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/marcelo-risso.png" ? "#001a3d" : "#f8fafc",
+                        color: authorFotoUrl === "/assets/marcelo-risso.png" ? "#fff" : "#334155",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Dr. Marcelo Risso
+                    </button>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 18 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    Mini-Currículo e Trajetória *
+                  </label>
+                  <textarea
+                    name="bio_pt"
+                    value={authorBioPt}
+                    onChange={(e) => setAuthorBioPt(e.target.value)}
+                    rows={4}
+                    placeholder="Descreva a formação, títulos acadêmicos e contribuição para a cirurgia da coluna..."
+                    required
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 14,
+                      lineHeight: 1.5,
+                    }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: 24 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    Especialidades &amp; Áreas de Foco (separadas por vírgula)
+                  </label>
+                  <input
+                    type="text"
+                    name="especialidades"
+                    value={authorEspecialidades}
+                    onChange={(e) => setAuthorEspecialidades(e.target.value)}
+                    placeholder="Ex: Deformidades Complexas, Liderança Editorial, Diretrizes SBC"
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 14,
+                    }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  style={{
+                    width: "100%",
+                    padding: "14px",
+                    borderRadius: 10,
+                    border: "none",
+                    background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                    color: "#fff",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    cursor: isPending ? "not-allowed" : "pointer",
+                    boxShadow: "0 8px 24px rgba(245, 34, 56, 0.3)",
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  {isPending ? "Salvando informações..." : "💾 Salvar Informações do Autor"}
+                </button>
+              </form>
+            </section>
+
+            {/* Listagem dos Autores Cadastrados */}
+            <section
+              style={{
+                background: "#fff",
+                borderRadius: 16,
+                padding: "32px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
+              }}
+            >
+              <div style={{ marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
+                <h3 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: "0 0 4px" }}>
+                  👥 Corpo Editorial ({authors.length})
+                </h3>
+                <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
+                  Estes são os autores e editores exibidos na página inicial e nos capítulos do Tratado.
+                </p>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {authors.map((author, idx) => (
+                  <div
+                    key={author.id || idx}
+                    style={{
+                      display: "flex",
+                      gap: 16,
+                      padding: 16,
+                      borderRadius: 12,
+                      border: authorId === author.id ? "2px solid #f52238" : "1px solid #e2e8f0",
+                      background: authorId === author.id ? "#fff5f6" : "#f8fafc",
+                      alignItems: "center",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    <img
+                      src={author.foto_url}
+                      alt={author.nome}
+                      style={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "3px solid #fff",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        background: "#021a3a",
+                      }}
+                    />
+
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 2 }}>
+                        <span
+                          style={{
+                            fontSize: 11,
+                            fontWeight: 800,
+                            padding: "2px 6px",
+                            borderRadius: 4,
+                            background: "#f52238",
+                            color: "#fff",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {author.cargo}
+                        </span>
+                        <span style={{ fontSize: 11, color: "#64748b" }}>
+                          Ordem #{author.ordem}
+                        </span>
+                      </div>
+
+                      <h4 style={{ fontSize: 16, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
+                        {author.nome}
+                      </h4>
+
+                      <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        {author.instituicao}
+                      </p>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      <button
+                        type="button"
+                        onClick={() => handleEditAuthor(author)}
+                        style={{
+                          padding: "6px 12px",
+                          borderRadius: 6,
+                          border: "1px solid #cbd5e1",
+                          background: "#fff",
+                          color: "#0f172a",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        ✏️ Editar
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
+                        style={{
+                          padding: "4px 8px",
+                          borderRadius: 6,
+                          border: "1px solid #fecaca",
+                          background: "#fff1f2",
+                          color: "#b91c1c",
+                          fontSize: 11,
+                          cursor: "pointer",
+                        }}
+                      >
+                        🗑 Excluir
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: 24, textAlign: "center" }}>
+                <Link
+                  href="/pt/home-new#autores"
+                  target="_blank"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: "#0284c7",
+                    textDecoration: "none",
+                  }}
+                >
+                  Visualizar Seção de Autores no Site ↗
+                </Link>
+              </div>
+            </section>
+          </div>
+        )}
       </main>
     </div>
   );

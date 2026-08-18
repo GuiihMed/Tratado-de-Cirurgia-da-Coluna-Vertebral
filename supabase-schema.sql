@@ -201,3 +201,39 @@ ON CONFLICT (numero) DO UPDATE SET
     titulo_en = EXCLUDED.titulo_en,
     titulo_es = EXCLUDED.titulo_es,
     updated_at = now();
+
+-- ==============================================================================
+-- TABELA DE AUTORES & CORPO EDITORIAL
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS public.autores (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    ordem INTEGER NOT NULL DEFAULT 1,
+    nome TEXT NOT NULL,
+    cargo TEXT NOT NULL,
+    instituicao TEXT NOT NULL,
+    destaque TEXT,
+    bio_pt TEXT NOT NULL,
+    bio_en TEXT,
+    bio_es TEXT,
+    especialidades TEXT,
+    foto_url TEXT NOT NULL DEFAULT '/assets/edson-pudles.png',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.autores ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public read-only autores" ON public.autores;
+CREATE POLICY "Allow public read-only autores" ON public.autores FOR SELECT TO anon, authenticated USING (true);
+
+DROP POLICY IF EXISTS "Allow authenticated write autores" ON public.autores;
+CREATE POLICY "Allow authenticated write autores" ON public.autores FOR ALL TO authenticated USING (true) WITH CHECK (true);
+
+-- Inserção inicial dos 3 Editores Oficiais
+INSERT INTO public.autores (ordem, nome, cargo, instituicao, destaque, bio_pt, especialidades, foto_url)
+VALUES
+(1, 'Dr. Edson Pudles', 'Editor-Chefe / SBC', 'Sociedade Brasileira de Coluna', 'Coordenação Editorial de 109 Capítulos', 'Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.', 'Deformidades Complexas, Liderança Editorial, Diretrizes SBC', '/assets/edson-pudles.png'),
+(2, 'Dr. Helton Defino', 'Editor / FMRP-USP', 'Faculdade de Medicina de Ribeirão Preto - USP', 'Pioneiro da Fixação Pedicular no Brasil', 'Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.', 'Biomecânica Espinhal, Fixação Pedicular, Trauma Raquimedular', '/assets/helton-defino.png'),
+(3, 'Dr. Marcelo Risso', 'Editor / SBC', 'Comitê de Educação e Publicações SBC', 'Coordenador do Capítulo 8 (Plano Sagital)', 'Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.', 'Equilíbrio Sagital, Osteotomias 3D, Minimamente Invasiva', '/assets/marcelo-risso.png')
+ON CONFLICT DO NOTHING;
+
