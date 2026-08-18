@@ -13,6 +13,134 @@ import {
   excluirAutorAction,
 } from "../actions";
 
+// ============================================================================
+// SVG ICONS (Medical & Modern UI)
+// ============================================================================
+
+function IconBook({ className = "w-5 h-5", size = 20 }: { className?: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  );
+}
+
+function IconUsers({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  );
+}
+
+function IconLayers({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}
+
+function IconCheckCircle({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  );
+}
+
+function IconEdit({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </svg>
+  );
+}
+
+function IconEye({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function IconTrash({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <line x1="10" y1="11" x2="10" y2="17" />
+      <line x1="14" y1="11" x2="14" y2="17" />
+    </svg>
+  );
+}
+
+function IconSearch({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+function IconPlus({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+  );
+}
+
+function IconSave({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+      <polyline points="17 21 17 13 7 13 7 21" />
+      <polyline points="7 3 7 8 15 8" />
+    </svg>
+  );
+}
+
+function IconSparkles({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z" />
+    </svg>
+  );
+}
+
+function IconExternal({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  );
+}
+
+function IconLogout({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <polyline points="16 17 21 12 16 7" />
+      <line x1="21" y1="12" x2="9" y2="12" />
+    </svg>
+  );
+}
+
 const DEFAULT_AUTHORS: AutorEditor[] = [
   {
     id: "1",
@@ -196,6 +324,96 @@ export default function AdminPainelPage() {
     router.push("/admin/login");
   };
 
+  // Load a chapter into the form for editing
+  const handleEditChapter = (cap: Capitulo) => {
+    setSecaoId(cap.secao_id.toString());
+    setNumero(cap.numero.toString());
+    setTituloPt(cap.titulo_pt || "");
+    setTituloEn(cap.titulo_en || "");
+    setTituloEs(cap.titulo_es || "");
+    setAutores(cap.autores || "");
+    setResumoPt(cap.resumo_pt || "");
+    setConteudoPt(cap.conteudo_pt || "");
+    setReferencias(cap.referencias || "");
+    setStatus(cap.status || "publicado");
+
+    window.scrollTo({ top: 220, behavior: "smooth" });
+    setFeedback({
+      type: "success",
+      message: `Capítulo ${cap.numero} ("${cap.titulo_pt}") carregado para edição. Altere os campos e clique em Salvar.`,
+    });
+  };
+
+  // Clear chapter form
+  const handleClearForm = () => {
+    setNumero("");
+    setTituloPt("");
+    setTituloEn("");
+    setTituloEs("");
+    setAutores("");
+    setResumoPt("");
+    setConteudoPt("");
+    setReferencias("");
+    setStatus("publicado");
+    setFeedback({ type: null, message: "" });
+  };
+
+  // Insert Standard Scientific Template
+  const handleInsertTemplate = () => {
+    if (!resumoPt) {
+      setResumoPt(
+        "Este capítulo aborda os fundamentos anátomo-cirúrgicos, princípios biomecânicos essenciais e o processo de tomada de decisão clínica na abordagem dos pacientes com afecções vertebrais. Destacam-se as indicações precisas, armadilhas diagnósticas e estratégias para prevenção de complicações perioperatórias."
+      );
+    }
+    if (!conteudoPt) {
+      setConteudoPt(
+        `## 1. Introdução e Contexto Clínico\nA cirurgia da coluna vertebral passou por profundas transformações conceituais e tecnológicas nas últimas décadas. O domínio das bases anatômicas e dos parâmetros espinopélvicos é o pilar indispensável para o sucesso dos procedimentos reconstrutivos e descompressivos.\n\n## 2. Anatomia Cirúrgica Aplicada e Vias de Acesso\nO planejamento pré-operatório criterioso requer o conhecimento milimétrico das relações entre os elementos ósseos, estruturas neurais (saco dural, raízes espinhais) e vasculares adjacentes. A preservação dos estabilizadores musculoligamentares posteriores contribui diretamente para a redução da dor residual e prevenção da doença do nível adjacente.\n\n## 3. Avaliação Radiográfica e Parâmetros Chave\n- Alinhamento no plano sagital e coronal\n- Avaliação tomográfica da densidade óssea e integridade dos pedículos\n- Ressonância magnética para graduação da estenose de canal e compressão foraminal\n\n## 4. Técnica Cirúrgica Passo a Passo\n1. Posicionamento adequado do paciente em mesa radiotransparente com alívio da pressão abdominal.\n2. Localização fluoroscópica precisa do nível operatório.\n3. Descompressão microcirúrgica cuidadosa sob magnificação e controle hemostático rigoroso.\n4. Instrumentação guiada por marcos anatômicos ou navegação intraoperatória.\n\n## 5. Cuidados Pós-Operatórios e Reabilitação\nMobilização precoce assistida, analgesia multimodal preemptiva e protocolo de seguimento radiográfico com 30 dias, 3 meses, 6 meses e 1 ano pós-operatório.`
+      );
+    }
+    if (!referencias) {
+      setReferencias(
+        `1. Sociedade Brasileira de Coluna (SBC). Diretrizes Clínicas em Cirurgia da Coluna. 2026.\n2. Bridwell KH, et al. The Textbook of Spinal Surgery. 4th ed. Wolters Kluwer, 2020.\n3. Schwab F, et al. Sagittal parameters in spinal deformity: radiographic assessment and clinical relevance. Spine, 2012.`
+      );
+    }
+    setFeedback({
+      type: "success",
+      message: "Modelo científico inserido com sucesso nos campos de Resumo, Conteúdo e Referências!",
+    });
+  };
+
+  // Submit Chapter Form
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFeedback({ type: null, message: "" });
+    const formData = new FormData(e.currentTarget);
+
+    startTransition(async () => {
+      const res = await cadastrarCapituloAction(null, formData);
+      if (res.success) {
+        setFeedback({ type: "success", message: res.message });
+        await fetchChapters();
+      } else {
+        setFeedback({ type: "error", message: res.message });
+      }
+    });
+  };
+
+  // Delete Chapter
+  const handleDelete = async (num: number, title: string) => {
+    const confirm = window.confirm(
+      `Tem certeza que deseja excluir o Capítulo ${num}: "${title}"?`
+    );
+    if (!confirm) return;
+
+    const res = await excluirCapituloAction(num);
+    if (res.success) {
+      setFeedback({ type: "success", message: res.message });
+      await fetchChapters();
+    } else {
+      setFeedback({ type: "error", message: res.message });
+    }
+  };
+
   // Load an author into form for editing
   const handleEditAuthor = (author: AutorEditor) => {
     setAuthorId(author.id || "");
@@ -207,7 +425,7 @@ export default function AdminPainelPage() {
     setAuthorFotoUrl(author.foto_url || "/assets/edson-pudles.png");
     setAuthorBioPt(author.bio_pt || "");
     setAuthorEspecialidades(author.especialidades || "");
-    window.scrollTo({ top: 120, behavior: "smooth" });
+    window.scrollTo({ top: 220, behavior: "smooth" });
     setFeedback({
       type: "success",
       message: `Autor "${author.nome}" carregado para edição. Faça as alterações e clique em Salvar.`,
@@ -288,97 +506,6 @@ export default function AdminPainelPage() {
     await fetchAuthors();
   };
 
-  // Load a chapter into the form for editing
-  const handleEditChapter = (cap: Capitulo) => {
-    setSecaoId(cap.secao_id.toString());
-    setNumero(cap.numero.toString());
-    setTituloPt(cap.titulo_pt || "");
-    setTituloEn(cap.titulo_en || "");
-    setTituloEs(cap.titulo_es || "");
-    setAutores(cap.autores || "");
-    setResumoPt(cap.resumo_pt || "");
-    setConteudoPt(cap.conteudo_pt || "");
-    setReferencias(cap.referencias || "");
-    setStatus(cap.status || "publicado");
-
-    window.scrollTo({ top: 120, behavior: "smooth" });
-    setFeedback({
-      type: "success",
-      message: `Capítulo ${cap.numero} carregado para edição. Altere os campos e clique em Salvar.`,
-    });
-  };
-
-  // Clear form
-  const handleClearForm = () => {
-    setNumero("");
-    setTituloPt("");
-    setTituloEn("");
-    setTituloEs("");
-    setAutores("");
-    setResumoPt("");
-    setConteudoPt("");
-    setReferencias("");
-    setStatus("publicado");
-    setFeedback({ type: null, message: "" });
-  };
-
-  // Insert Standard Scientific Template
-  const handleInsertTemplate = () => {
-    if (!resumoPt) {
-      setResumoPt(
-        "Este capítulo aborda os fundamentos anátomo-cirúrgicos, princípios biomecânicos essenciais e o processo de tomada de decisão clínica na abordagem dos pacientes com afecções vertebrais. Destacam-se as indicações precisas, armadilhas diagnósticas e estratégias para prevenção de complicações perioperatórias."
-      );
-    }
-    if (!conteudoPt) {
-      setConteudoPt(
-        `## 1. Introdução e Contexto Clínico\nA cirurgia da coluna vertebral passou por profundas transformações conceituais e tecnológicas nas últimas décadas. O domínio das bases anatômicas e dos parâmetros espinopélvicos é o pilar indispensável para o sucesso dos procedimentos reconstrutivos e descompressivos.\n\n## 2. Anatomia Cirúrgica Aplicada e Vias de Acesso\nO planejamento pré-operatório criterioso requer o conhecimento milimétrico das relações entre os elementos ósseos, estruturas neurais (saco dural, raízes espinhais) e vasculares adjacentes. A preservação dos estabilizadores musculoligamentares posteriores contribui diretamente para a redução da dor residual e prevenção da doença do nível adjacente.\n\n## 3. Avaliação Radiográfica e Parâmetros Chave\n- Alinhamento no plano sagital e coronal\n- Avaliação tomográfica da densidade óssea e integridade dos pedículos\n- Ressonância magnética para graduação da estenose de canal e compressão foraminal\n\n## 4. Técnica Cirúrgica Passo a Passo\n1. Posicionamento adequado do paciente em mesa radiotransparente com alívio da pressão abdominal.\n2. Localização fluoroscópica precisa do nível operatório.\n3. Descompressão microcirúrgica cuidadosa sob magnificação e controle hemostático rigoroso.\n4. Instrumentação guiada por marcos anatômicos ou navegação intraoperatória.\n\n## 5. Cuidados Pós-Operatórios e Reabilitação\nMobilização precoce assistida, analgesia multimodal preemptiva e protocolo de seguimento radiográfico com 30 dias, 3 meses, 6 meses e 1 ano pós-operatório.`
-      );
-    }
-    if (!referencias) {
-      setReferencias(
-        `1. Sociedade Brasileira de Coluna (SBC). Diretrizes Clínicas em Cirurgia da Coluna. 2026.\n2. Bridwell KH, et al. The Textbook of Spinal Surgery. 4th ed. Wolters Kluwer, 2020.\n3. Schwab F, et al. Sagittal parameters in spinal deformity: radiographic assessment and clinical relevance. Spine, 2012.`
-      );
-    }
-    setFeedback({
-      type: "success",
-      message: "Modelo de texto científico inserido com sucesso nos campos de Resumo, Conteúdo e Referências!",
-    });
-  };
-
-  // Submit form handler
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFeedback({ type: null, message: "" });
-
-    const formData = new FormData(e.currentTarget);
-
-    startTransition(async () => {
-      const res = await cadastrarCapituloAction(null, formData);
-      if (res.success) {
-        setFeedback({ type: "success", message: res.message });
-        await fetchChapters();
-      } else {
-        setFeedback({ type: "error", message: res.message });
-      }
-    });
-  };
-
-  // Handle Delete
-  const handleDelete = async (num: number, title: string) => {
-    const confirm = window.confirm(
-      `Tem certeza que deseja excluir o Capítulo ${num}: "${title}"?`
-    );
-    if (!confirm) return;
-
-    const res = await excluirCapituloAction(num);
-    if (res.success) {
-      setFeedback({ type: "success", message: res.message });
-      await fetchChapters();
-    } else {
-      setFeedback({ type: "error", message: res.message });
-    }
-  };
-
   // Filtered listing
   const displayedChapters = chapters.filter((c) => {
     const matchesSecao =
@@ -396,90 +523,311 @@ export default function AdminPainelPage() {
 
   if (checkingAuth) {
     return (
-      <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: "#f8fafc" }}>
-        <p style={{ color: "#475569", fontWeight: 600 }}>Verificando credenciais de acesso...</p>
+      <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: "#001026" }}>
+        <div style={{ textAlign: "center", color: "#fff" }}>
+          <img src="/assets/sbc-logo-white.svg" alt="SBC" style={{ height: 48, margin: "0 auto 16px" }} />
+          <p style={{ color: "#94a3b8", fontWeight: 600, fontSize: 15 }}>Autenticando acesso editorial...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ background: "#f1f5f9", minHeight: "100vh", paddingBottom: "80px" }}>
-      {/* Top Navigation Bar */}
+    <div style={{ background: "#f1f5f9", minHeight: "100vh", paddingBottom: "100px" }}>
+      {/* ================= TOP NAVIGATION BAR ================= */}
       <header
         style={{
           background: "#001a3d",
           color: "#fff",
-          padding: "16px 24px",
+          padding: "14px 28px",
           borderBottom: "3px solid #f52238",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
+          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.25)",
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
         }}
       >
         <div
           style={{
-            maxWidth: 1300,
+            maxWidth: 1380,
             margin: "0 auto",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            flexWrap: "wrap",
+            gap: 16,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <img
-              src="/assets/sbc-logo-white.svg"
-              alt="Sociedade Brasileira de Coluna"
-              style={{ height: 42, width: "auto", objectFit: "contain" }}
-            />
+            <Link href="/pt/home-new" style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/assets/sbc-logo-white.svg"
+                alt="Sociedade Brasileira de Coluna"
+                style={{ height: 42, width: "auto", objectFit: "contain" }}
+              />
+            </Link>
             <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 14 }}>
-              <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, letterSpacing: "-0.01em" }}>
-                Portal Editorial dos Autores
-              </h1>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <h1 style={{ fontSize: 17, fontWeight: 800, margin: 0, letterSpacing: "-0.01em" }}>
+                  Portal Editorial &amp; Autores
+                </h1>
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 800,
+                    padding: "2px 8px",
+                    borderRadius: 4,
+                    background: "rgba(245, 34, 56, 0.25)",
+                    border: "1px solid rgba(245, 34, 56, 0.5)",
+                    color: "#ff808f",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  SBC Oficial
+                </span>
+              </div>
               <span style={{ fontSize: 12, color: "#94a3b8" }}>
-                Gestão e Publicação de Capítulos • Tratado de Cirurgia da Coluna Vertebral
+                Gestão e Publicação Científica • Tratado de Cirurgia da Coluna Vertebral
               </span>
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span style={{ fontSize: 13, color: "#cbd5e1" }}>
-              👤 Conectado como: <strong>{userEmail}</strong>
-            </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "6px 14px",
+                borderRadius: 8,
+                background: "rgba(255, 255, 255, 0.06)",
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                fontSize: 13,
+                color: "#cbd5e1",
+              }}
+            >
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} />
+              <span>{userEmail}</span>
+            </div>
+
             <Link
               href="/pt/indice-new"
               target="_blank"
               style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
                 fontSize: 13,
+                fontWeight: 600,
                 color: "#67e8f9",
                 textDecoration: "none",
-                padding: "6px 12px",
-                borderRadius: 6,
-                background: "rgba(255, 255, 255, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                padding: "7px 14px",
+                borderRadius: 8,
+                background: "rgba(103, 232, 249, 0.1)",
+                border: "1px solid rgba(103, 232, 249, 0.3)",
+                transition: "all 0.2s ease",
               }}
             >
-              Ver Índice Público ↗
+              <span>Ver Índice Público</span>
+              <IconExternal size={13} />
             </Link>
+
             <button
               onClick={handleLogout}
               style={{
-                padding: "6px 14px",
-                borderRadius: 6,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "7px 14px",
+                borderRadius: 8,
                 border: "none",
-                background: "#ef4444",
-                color: "#fff",
+                background: "rgba(239, 68, 68, 0.2)",
+                color: "#fca5a5",
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "rgba(239, 68, 68, 0.4)",
                 fontSize: 13,
-                fontWeight: 600,
+                fontWeight: 700,
                 cursor: "pointer",
+                transition: "all 0.2s ease",
               }}
             >
-              Sair
+              <IconLogout size={14} />
+              <span>Sair</span>
             </button>
           </div>
         </div>
       </header>
 
-      <main style={{ maxWidth: 1300, margin: "36px auto", padding: "0 20px" }}>
+      <main style={{ maxWidth: 1380, margin: "28px auto 0", padding: "0 24px" }}>
+        {/* ================= METRICS & KPI STRIP ================= */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: 16,
+            marginBottom: 28,
+          }}
+        >
+          {/* Card 1: Total Chapters */}
+          <div
+            style={{
+              background: "#fff",
+              padding: "20px 24px",
+              borderRadius: 14,
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: "rgba(0, 26, 61, 0.08)",
+                color: "#001a3d",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <IconBook size={24} />
+            </div>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Capítulos Cadastrados
+              </div>
+              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
+                {chapters.length} <span style={{ fontSize: 13, fontWeight: 600, color: "#059669" }}>• 100% da Obra</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Sections */}
+          <div
+            style={{
+              background: "#fff",
+              padding: "20px 24px",
+              borderRadius: 14,
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: "rgba(14, 116, 144, 0.1)",
+                color: "#0e7490",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <IconLayers size={24} />
+            </div>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Seções Temáticas
+              </div>
+              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
+                10 <span style={{ fontSize: 13, fontWeight: 600, color: "#64748b" }}>Módulos Clínicos</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Authors */}
+          <div
+            style={{
+              background: "#fff",
+              padding: "20px 24px",
+              borderRadius: 14,
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: "rgba(245, 34, 56, 0.1)",
+                color: "#f52238",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <IconUsers size={24} />
+            </div>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Corpo Editorial
+              </div>
+              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
+                {authors.length} <span style={{ fontSize: 13, fontWeight: 600, color: "#f52238" }}>Editores Oficiais</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Status */}
+          <div
+            style={{
+              background: "#fff",
+              padding: "20px 24px",
+              borderRadius: 14,
+              border: "1px solid #e2e8f0",
+              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            <div
+              style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: "rgba(16, 185, 129, 0.1)",
+                color: "#059669",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <IconCheckCircle size={24} />
+            </div>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Status de Publicação
+              </div>
+              <div style={{ fontSize: 26, fontWeight: 900, color: "#059669", lineHeight: 1.2 }}>
+                Ativo <span style={{ fontSize: 13, fontWeight: 600, color: "#64748b" }}>• Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* ================= TAB SWITCHER ================= */}
-        <div style={{ display: "flex", gap: 12, marginBottom: 28, flexWrap: "wrap" }}>
+        <div
+          style={{
+            background: "#fff",
+            padding: "8px",
+            borderRadius: 16,
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.02)",
+            display: "inline-flex",
+            gap: 8,
+            marginBottom: 28,
+            flexWrap: "wrap",
+          }}
+        >
           <button
             type="button"
             onClick={() => {
@@ -488,22 +836,34 @@ export default function AdminPainelPage() {
             }}
             style={{
               padding: "12px 24px",
-              borderRadius: 12,
-              border: activeTab === "capitulos" ? "2px solid #001a3d" : "1px solid #cbd5e1",
-              background: activeTab === "capitulos" ? "#001a3d" : "#fff",
+              borderRadius: 10,
+              border: "none",
+              background: activeTab === "capitulos" ? "#001a3d" : "transparent",
               color: activeTab === "capitulos" ? "#fff" : "#475569",
               fontWeight: 700,
-              fontSize: 15,
+              fontSize: 14.5,
               cursor: "pointer",
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              boxShadow: activeTab === "capitulos" ? "0 8px 20px rgba(0, 26, 61, 0.15)" : "none",
+              boxShadow: activeTab === "capitulos" ? "0 4px 14px rgba(0, 26, 61, 0.25)" : "none",
               transition: "all 0.2s ease",
             }}
           >
-            <span>📚</span>
-            <span>Gestão de Capítulos ({chapters.length})</span>
+            <IconBook size={18} />
+            <span>Gestão dos 109 Capítulos</span>
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 800,
+                padding: "2px 8px",
+                borderRadius: 12,
+                background: activeTab === "capitulos" ? "rgba(255, 255, 255, 0.2)" : "#e2e8f0",
+                color: activeTab === "capitulos" ? "#fff" : "#475569",
+              }}
+            >
+              {chapters.length}
+            </span>
           </button>
 
           <button
@@ -514,43 +874,59 @@ export default function AdminPainelPage() {
             }}
             style={{
               padding: "12px 24px",
-              borderRadius: 12,
-              border: activeTab === "autores" ? "2px solid #f52238" : "1px solid #cbd5e1",
-              background: activeTab === "autores" ? "#f52238" : "#fff",
+              borderRadius: 10,
+              border: "none",
+              background: activeTab === "autores" ? "#f52238" : "transparent",
               color: activeTab === "autores" ? "#fff" : "#475569",
               fontWeight: 700,
-              fontSize: 15,
+              fontSize: 14.5,
               cursor: "pointer",
               display: "inline-flex",
               alignItems: "center",
               gap: 10,
-              boxShadow: activeTab === "autores" ? "0 8px 20px rgba(245, 34, 56, 0.2)" : "none",
+              boxShadow: activeTab === "autores" ? "0 4px 14px rgba(245, 34, 56, 0.3)" : "none",
               transition: "all 0.2s ease",
             }}
           >
-            <span>👨‍⚕️</span>
-            <span>Corpo Editorial &amp; Autores ({authors.length})</span>
+            <IconUsers size={18} />
+            <span>Corpo Editorial &amp; Autores</span>
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 800,
+                padding: "2px 8px",
+                borderRadius: 12,
+                background: activeTab === "autores" ? "rgba(255, 255, 255, 0.25)" : "#e2e8f0",
+                color: activeTab === "autores" ? "#fff" : "#475569",
+              }}
+            >
+              {authors.length}
+            </span>
           </button>
         </div>
 
-        {/* Feedback Alert for both tabs */}
+        {/* Feedback Alert */}
         {feedback.message && (
           <div
             style={{
-              padding: "14px 18px",
-              borderRadius: 10,
+              padding: "16px 20px",
+              borderRadius: 12,
               marginBottom: 28,
               fontSize: 14,
               fontWeight: 600,
-              background: feedback.type === "success" ? "#dcfce7" : "#fee2e2",
-              color: feedback.type === "success" ? "#15803d" : "#b91c1c",
-              border: feedback.type === "success" ? "1px solid #86efac" : "1px solid #fca5a5",
+              background: feedback.type === "success" ? "#ecfdf5" : "#fef2f2",
+              color: feedback.type === "success" ? "#065f46" : "#991b1b",
+              border: feedback.type === "success" ? "1px solid #a7f3d0" : "1px solid #fecaca",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
             }}
           >
-            <span>{feedback.message}</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {feedback.type === "success" ? <IconCheckCircle size={20} /> : <IconTrash size={20} />}
+              <span>{feedback.message}</span>
+            </div>
             <button
               onClick={() => setFeedback({ type: null, message: "" })}
               style={{
@@ -560,6 +936,7 @@ export default function AdminPainelPage() {
                 cursor: "pointer",
                 fontWeight: 800,
                 fontSize: 16,
+                padding: "4px",
               }}
             >
               ✕
@@ -570,12 +947,12 @@ export default function AdminPainelPage() {
         {/* ================= ABA 1: GESTÃO DE CAPÍTULOS ================= */}
         {activeTab === "capitulos" && (
           <>
-            {/* ================= EDITOR DE CONTEÚDO DO CAPÍTULO ================= */}
+            {/* Editor de Conteúdo do Capítulo */}
             <section
               style={{
                 background: "#fff",
-                borderRadius: 16,
-                padding: "32px",
+                borderRadius: 18,
+                padding: "36px",
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
                 marginBottom: "40px",
@@ -586,540 +963,625 @@ export default function AdminPainelPage() {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
-                  marginBottom: 24,
+                  marginBottom: 28,
                   borderBottom: "1px solid #f1f5f9",
-                  paddingBottom: 16,
+                  paddingBottom: 20,
+                  flexWrap: "wrap",
+                  gap: 16,
                 }}
               >
                 <div>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 10px", borderRadius: 6, background: "rgba(245, 34, 56, 0.1)", color: "#f52238", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>
-                    ✍️ Editor de Capítulos &amp; Publicação
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "4px 10px",
+                      borderRadius: 6,
+                      background: "rgba(245, 34, 56, 0.1)",
+                      color: "#f52238",
+                      fontSize: 12,
+                      fontWeight: 800,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <IconBook size={14} />
+                    <span>Editor Científico da Obra</span>
                   </div>
-                  <h2 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    {numero ? `Editando Capítulo ${numero}` : "Novo Capítulo / Artigo"}
+                  <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0, letterSpacing: "-0.02em" }}>
+                    {numero ? `Editando Capítulo ${numero}: ${tituloPt || "Sem Título"}` : "Cadastrar / Publicar Novo Capítulo"}
                   </h2>
+                  <p style={{ fontSize: 13.5, color: "#64748b", margin: "4px 0 0" }}>
+                    Preencha os metadados, títulos e o texto completo com formatação científica estruturada.
+                  </p>
                 </div>
 
-                <div style={{ display: "flex", gap: 10 }}>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   <button
                     type="button"
                     onClick={handleInsertTemplate}
                     style={{
-                      padding: "8px 14px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "9px 16px",
                       borderRadius: 8,
                       border: "1px solid #cbd5e1",
                       background: "#f8fafc",
                       color: "#334155",
                       fontSize: 13,
-                      fontWeight: 600,
+                      fontWeight: 700,
                       cursor: "pointer",
+                      transition: "all 0.2s ease",
                     }}
                   >
-                    📄 Inserir Modelo Científico
+                    <IconSparkles size={15} />
+                    <span>Inserir Modelo Científico</span>
                   </button>
+
                   {numero && (
                     <Link
                       href={`/pt/capitulo/${numero}`}
                       target="_blank"
                       style={{
-                        padding: "8px 14px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        padding: "9px 16px",
                         borderRadius: 8,
                         border: "1px solid #93c5fd",
                         background: "#eff6ff",
                         color: "#1d4ed8",
                         fontSize: 13,
-                        fontWeight: 600,
+                        fontWeight: 700,
                         textDecoration: "none",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
                       }}
                     >
-                      Visualizar Leitor ↗
+                      <IconEye size={15} />
+                      <span>Visualizar Leitor</span>
                     </Link>
                   )}
+
                   <button
                     type="button"
                     onClick={handleClearForm}
                     style={{
-                      padding: "8px 14px",
+                      padding: "9px 16px",
                       borderRadius: 8,
                       border: "1px solid #e2e8f0",
                       background: "#fff",
                       color: "#64748b",
                       fontSize: 13,
+                      fontWeight: 600,
                       cursor: "pointer",
                     }}
                   >
-                    Limpar Campos
+                    Limpar Formulário
                   </button>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit}>
-            {/* Linha 1: Seção, Número, Status e Autores */}
-            <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 2fr", gap: 16, marginBottom: 18 }}>
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Seção Temática *
-                </label>
-                <select
-                  name="secao_id"
-                  value={secaoId}
-                  onChange={(e) => setSecaoId(e.target.value)}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                    background: "#fff",
-                  }}
-                >
-                  {SECOES.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      Seção {s.numero} – {s.titulo_pt}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Número do Capítulo *
-                </label>
-                <input
-                  type="number"
-                  name="numero"
-                  value={numero}
-                  onChange={(e) => setNumero(e.target.value)}
-                  placeholder="Ex: 8"
-                  min="1"
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Status de Publicação
-                </label>
-                <select
-                  name="status"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                    background: "#fff",
-                  }}
-                >
-                  <option value="publicado">🟢 Publicado</option>
-                  <option value="rascunho">🟡 Rascunho</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Autores e Colaboradores
-                </label>
-                <input
-                  type="text"
-                  name="autores"
-                  value={autores}
-                  onChange={(e) => setAutores(e.target.value)}
-                  placeholder="Ex: Dr. Marcelo Risso • Dr. Paulo Cavali"
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Linha 2: Títulos (PT, EN, ES) */}
-            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 16, marginBottom: 18 }}>
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Título em Português (PT) *
-                </label>
-                <input
-                  type="text"
-                  name="titulo_pt"
-                  value={tituloPt}
-                  onChange={(e) => setTituloPt(e.target.value)}
-                  placeholder="Ex: Coluna Vertebral no Plano Sagital"
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                    fontWeight: 600,
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Título em Inglês (EN)
-                </label>
-                <input
-                  type="text"
-                  name="titulo_en"
-                  value={tituloEn}
-                  onChange={(e) => setTituloEn(e.target.value)}
-                  placeholder="Ex: Spine in the Sagittal Plane"
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                  Título em Espanhol (ES)
-                </label>
-                <input
-                  type="text"
-                  name="titulo_es"
-                  value={tituloEs}
-                  onChange={(e) => setTituloEs(e.target.value)}
-                  placeholder="Ex: Columna Vertebral en el Plano Sagital"
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #cbd5e1",
-                    fontSize: 14,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Linha 3: Resumo Executivo / Abstract */}
-            <div style={{ marginBottom: 18 }}>
-              <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                Resumo Executivo / Abstract do Capítulo
-              </label>
-              <textarea
-                name="resumo_pt"
-                value={resumoPt}
-                onChange={(e) => setResumoPt(e.target.value)}
-                placeholder="Breve resumo com objetivos do capítulo, parâmetros anatômicos e principais mensagens clínicas..."
-                rows={3}
-                style={{
-                  width: "100%",
-                  padding: "12px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  fontSize: 14,
-                  lineHeight: 1.5,
-                  fontFamily: "inherit",
-                }}
-              />
-            </div>
-
-            {/* Linha 4: Texto Integral do Artigo / Capítulo */}
-            <div style={{ marginBottom: 18 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
-                  Conteúdo Completo do Capítulo (Texto, Seções e Subtítulos)
-                </label>
-                <span style={{ fontSize: 12, color: "#64748b" }}>
-                  Suporta títulos (# ou ##), listas (-) e quebras de parágrafo
-                </span>
-              </div>
-              <textarea
-                name="conteudo_pt"
-                value={conteudoPt}
-                onChange={(e) => setConteudoPt(e.target.value)}
-                placeholder="Escreva ou cole aqui o texto integral do capítulo..."
-                rows={12}
-                style={{
-                  width: "100%",
-                  padding: "14px 16px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  fontSize: 14,
-                  lineHeight: 1.6,
-                  fontFamily: "monospace, sans-serif",
-                }}
-              />
-            </div>
-
-            {/* Linha 5: Referências Bibliográficas */}
-            <div style={{ marginBottom: 24 }}>
-              <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                Referências Bibliográficas
-              </label>
-              <textarea
-                name="referencias"
-                value={referencias}
-                onChange={(e) => setReferencias(e.target.value)}
-                placeholder="1. Autor AB, et al. Título do artigo. Revista, 2026.&#10;2. Livro de Referência SBC..."
-                rows={3}
-                style={{
-                  width: "100%",
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  fontSize: 13,
-                  lineHeight: 1.5,
-                  fontFamily: "inherit",
-                }}
-              />
-            </div>
-
-            {/* Botão de Envio */}
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: 14 }}>
-              <button
-                type="submit"
-                disabled={isPending}
-                style={{
-                  padding: "12px 32px",
-                  borderRadius: 8,
-                  background: "linear-gradient(135deg, #f52238 0%, #d01428 100%)",
-                  color: "#fff",
-                  fontSize: 15,
-                  fontWeight: 700,
-                  border: "none",
-                  cursor: isPending ? "not-allowed" : "pointer",
-                  boxShadow: "0 4px 14px rgba(245, 34, 56, 0.35)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                {isPending ? "Salvando no Banco..." : "💾 Salvar e Publicar Capítulo"}
-              </button>
-            </div>
-          </form>
-        </section>
-
-        {/* ================= LISTA E GESTÃO DOS 109 CAPÍTULOS ================= */}
-        <section
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "32px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 24,
-              flexWrap: "wrap",
-              gap: 16,
-            }}
-          >
-            <div>
-              <h2 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: "0 0 4px" }}>
-                Acervo de Capítulos ({chapters.length})
-              </h2>
-              <span style={{ fontSize: 13, color: "#64748b" }}>
-                Filtre por seção ou pesquise para editar o conteúdo de qualquer capítulo
-              </span>
-            </div>
-
-            <div style={{ display: "flex", gap: 12 }}>
-              {/* Filtro por Seção */}
-              <select
-                value={filterSecao}
-                onChange={(e) => setFilterSecao(e.target.value)}
-                style={{
-                  padding: "8px 12px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  fontSize: 13,
-                  background: "#fff",
-                }}
-              >
-                <option value="all">Todas as Seções (1–10)</option>
-                {SECOES.map((s) => (
-                  <option key={s.id} value={s.id.toString()}>
-                    Seção {s.numero} – {s.titulo_pt}
-                  </option>
-                ))}
-              </select>
-
-              {/* Busca */}
-              <input
-                type="text"
-                placeholder="Buscar por número, título ou autor..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #cbd5e1",
-                  fontSize: 13,
-                  width: 260,
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Tabela de Capítulos */}
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 14 }}>
-              <thead>
-                <tr style={{ background: "#f8fafc", borderBottom: "2px solid #e2e8f0", color: "#475569" }}>
-                  <th style={{ padding: "12px 14px", width: 60 }}>#</th>
-                  <th style={{ padding: "12px 14px" }}>Título do Capítulo</th>
-                  <th style={{ padding: "12px 14px", width: 180 }}>Seção</th>
-                  <th style={{ padding: "12px 14px", width: 200 }}>Autores</th>
-                  <th style={{ padding: "12px 14px", width: 100 }}>Status</th>
-                  <th style={{ padding: "12px 14px", width: 180, textAlign: "right" }}>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {loadingList ? (
-                  <tr>
-                    <td colSpan={6} style={{ padding: 30, textAlign: "center", color: "#64748b" }}>
-                      Carregando catálogo de capítulos...
-                    </td>
-                  </tr>
-                ) : displayedChapters.length === 0 ? (
-                  <tr>
-                    <td colSpan={6} style={{ padding: 30, textAlign: "center", color: "#64748b" }}>
-                      Nenhum capítulo encontrado para o filtro selecionado.
-                    </td>
-                  </tr>
-                ) : (
-                  displayedChapters.map((c) => {
-                    const sec = SECOES.find((s) => s.id === c.secao_id);
-                    return (
-                      <tr
-                        key={c.numero}
-                        style={{ borderBottom: "1px solid #f1f5f9", transition: "background 0.15s ease" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "#f8fafc")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                {/* BLOCO 1: METADADOS */}
+                <div style={{ marginBottom: 28 }}>
+                  <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
+                    1. Metadados do Capítulo
+                  </h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "1.4fr 120px 140px 2fr", gap: 16, flexWrap: "wrap" }}>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Seção Temática *
+                      </label>
+                      <select
+                        name="secao_id"
+                        value={secaoId}
+                        onChange={(e) => setSecaoId(e.target.value)}
+                        required
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          background: "#fff",
+                          fontWeight: 600,
+                          color: "#0f172a",
+                        }}
                       >
-                        <td style={{ padding: "12px 14px", fontWeight: 800, color: "#f52238" }}>
-                          {c.numero}
-                        </td>
-                        <td style={{ padding: "12px 14px" }}>
-                          <strong style={{ color: "#0f172a" }}>{c.titulo_pt}</strong>
-                          {c.titulo_en && (
-                            <div style={{ fontSize: 12, color: "#64748b", fontStyle: "italic" }}>
-                              EN: {c.titulo_en}
-                            </div>
-                          )}
-                        </td>
-                        <td style={{ padding: "12px 14px", color: "#334155", fontSize: 13 }}>
-                          Seção {c.secao_id}: {sec?.titulo_pt || `Seção ${c.secao_id}`}
-                        </td>
-                        <td style={{ padding: "12px 14px", color: "#64748b", fontSize: 13 }}>
-                          {c.autores || "Corpo Editorial SBC"}
-                        </td>
-                        <td style={{ padding: "12px 14px" }}>
-                          <span
-                            style={{
-                              padding: "3px 8px",
-                              borderRadius: 12,
-                              fontSize: 11,
-                              fontWeight: 700,
-                              background: c.status === "rascunho" ? "#fef3c7" : "#dcfce7",
-                              color: c.status === "rascunho" ? "#92400e" : "#15803d",
-                            }}
-                          >
-                            {c.status === "rascunho" ? "Rascunho" : "Publicado"}
-                          </span>
-                        </td>
-                        <td style={{ padding: "12px 14px", textAlign: "right" }}>
-                          <div style={{ display: "flex", justifyContent: "flex-end", gap: 8 }}>
-                            <button
-                              type="button"
-                              onClick={() => handleEditChapter(c)}
-                              style={{
-                                padding: "4px 10px",
-                                borderRadius: 6,
-                                border: "1px solid #cbd5e1",
-                                background: "#fff",
-                                color: "#0f172a",
-                                fontSize: 12,
-                                fontWeight: 600,
-                                cursor: "pointer",
-                              }}
-                            >
-                              ✏️ Editar
-                            </button>
-                            <Link
-                              href={`/pt/capitulo/${c.numero}`}
-                              target="_blank"
-                              style={{
-                                padding: "4px 10px",
-                                borderRadius: 6,
-                                border: "1px solid #93c5fd",
-                                background: "#eff6ff",
-                                color: "#1d4ed8",
-                                fontSize: 12,
-                                fontWeight: 600,
-                                textDecoration: "none",
-                              }}
-                            >
-                              👁 Ver
-                            </Link>
-                            <button
-                              type="button"
-                              onClick={() => handleDelete(c.numero, c.titulo_pt)}
-                              style={{
-                                padding: "4px 8px",
-                                borderRadius: 6,
-                                border: "1px solid #fecaca",
-                                background: "#fff1f2",
-                                color: "#b91c1c",
-                                fontSize: 12,
-                                cursor: "pointer",
-                              }}
-                            >
-                              🗑
-                            </button>
-                          </div>
+                        {SECOES.map((s) => (
+                          <option key={s.id} value={s.id}>
+                            Seção {s.id}: {s.titulo_pt}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Número *
+                      </label>
+                      <input
+                        type="number"
+                        name="numero"
+                        value={numero}
+                        onChange={(e) => setNumero(e.target.value)}
+                        placeholder="Ex: 8"
+                        required
+                        min={1}
+                        max={200}
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          fontWeight: 800,
+                          color: "#f52238",
+                          textAlign: "center",
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Status *
+                      </label>
+                      <select
+                        name="status"
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value)}
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          fontWeight: 700,
+                          color: status === "publicado" ? "#166534" : "#92400e",
+                          background: status === "publicado" ? "#f0fdf4" : "#fefce8",
+                        }}
+                      >
+                        <option value="publicado">Publicado</option>
+                        <option value="rascunho">Rascunho</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Autores do Artigo
+                      </label>
+                      <input
+                        type="text"
+                        name="autores"
+                        value={autores}
+                        onChange={(e) => setAutores(e.target.value)}
+                        placeholder="Ex: Dr. Edson Pudles, Dr. Helton Defino"
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* BLOCO 2: TÍTULOS MULTILÍNGUES */}
+                <div style={{ marginBottom: 28, background: "#f8fafc", padding: "20px", borderRadius: 12, border: "1px solid #e2e8f0" }}>
+                  <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
+                    2. Títulos da Obra (Multilíngue)
+                  </h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        🇧🇷 Título em Português *
+                      </label>
+                      <input
+                        type="text"
+                        name="titulo_pt"
+                        value={tituloPt}
+                        onChange={(e) => setTituloPt(e.target.value)}
+                        placeholder="Ex: Equilíbrio Sagital e Parâmetros Espinopélvicos"
+                        required
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          fontWeight: 600,
+                          color: "#0f172a",
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#64748b", marginBottom: 6 }}>
+                        🇺🇸 Título em Inglês (Opcional)
+                      </label>
+                      <input
+                        type="text"
+                        name="titulo_en"
+                        value={tituloEn}
+                        onChange={(e) => setTituloEn(e.target.value)}
+                        placeholder="Ex: Sagittal Balance and Spinopelvic Parameters"
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#64748b", marginBottom: 6 }}>
+                        🇪🇸 Título em Espanhol (Opcional)
+                      </label>
+                      <input
+                        type="text"
+                        name="titulo_es"
+                        value={tituloEs}
+                        onChange={(e) => setTituloEs(e.target.value)}
+                        placeholder="Ex: Equilibrio Sagital y Parámetros Espinopélvicos"
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* BLOCO 3: RESUMO CLÍNICO */}
+                <div style={{ marginBottom: 28 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    3. Resumo Clínico / Abstract do Capítulo
+                  </label>
+                  <textarea
+                    name="resumo_pt"
+                    value={resumoPt}
+                    onChange={(e) => setResumoPt(e.target.value)}
+                    rows={3}
+                    placeholder="Síntese dos objetivos, métodos diagnósticos, indicações cirúrgicas e relevância clínica deste tema..."
+                    style={{
+                      width: "100%",
+                      padding: "12px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 14,
+                      lineHeight: 1.5,
+                    }}
+                  />
+                </div>
+
+                {/* BLOCO 4: CONTEÚDO COMPLETO EM MARKDOWN */}
+                <div style={{ marginBottom: 28 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+                      4. Conteúdo Científico do Capítulo (Markdown Completo)
+                    </label>
+                    <span style={{ fontSize: 12, color: "#64748b" }}>
+                      Suporta títulos ##, listas -, tabelas, imagens e citações
+                    </span>
+                  </div>
+                  <textarea
+                    name="conteudo_pt"
+                    value={conteudoPt}
+                    onChange={(e) => setConteudoPt(e.target.value)}
+                    rows={12}
+                    placeholder="## 1. Introdução&#10;Texto explicativo...&#10;&#10;## 2. Técnica Cirúrgica Passo a Passo&#10;1. Incisão...&#10;2. Exposição..."
+                    style={{
+                      width: "100%",
+                      padding: "14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 14,
+                      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                      lineHeight: 1.6,
+                      background: "#fafbfd",
+                    }}
+                  />
+                </div>
+
+                {/* BLOCO 5: REFERÊNCIAS BIBLIOGRÁFICAS */}
+                <div style={{ marginBottom: 32 }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                    5. Referências Bibliográficas (Estilo Vancouver / ABNT)
+                  </label>
+                  <textarea
+                    name="referencias"
+                    value={referencias}
+                    onChange={(e) => setReferencias(e.target.value)}
+                    rows={4}
+                    placeholder="1. Schwab F, et al. Sagittal parameters in spinal deformity. Spine, 2012.&#10;2. Sociedade Brasileira de Coluna. Diretrizes Clínicas, 2026."
+                    style={{
+                      width: "100%",
+                      padding: "12px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 13.5,
+                      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                    }}
+                  />
+                </div>
+
+                {/* BOTÃO DE SALVAMENTO */}
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  style={{
+                    width: "100%",
+                    padding: "16px",
+                    borderRadius: 12,
+                    border: "none",
+                    background: "linear-gradient(135deg, #001a3d 0%, #003366 100%)",
+                    color: "#fff",
+                    fontSize: 16,
+                    fontWeight: 800,
+                    cursor: isPending ? "not-allowed" : "pointer",
+                    boxShadow: "0 8px 24px rgba(0, 26, 61, 0.25)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 10,
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  <IconSave size={20} />
+                  <span>{isPending ? "Processando publicação..." : "Publicar / Salvar Capítulo no Tratado"}</span>
+                </button>
+              </form>
+            </section>
+
+            {/* ================= TABELA DE CAPÍTULOS ================= */}
+            <section
+              style={{
+                background: "#fff",
+                borderRadius: 18,
+                padding: "32px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 24,
+                  flexWrap: "wrap",
+                  gap: 16,
+                }}
+              >
+                <div>
+                  <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
+                    Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
+                    Navegue por seções, busque títulos ou edite o conteúdo de qualquer capítulo em tempo real.
+                  </p>
+                </div>
+
+                {/* Filtros e Busca */}
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                  <div
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div style={{ position: "absolute", left: 12, color: "#94a3b8" }}>
+                      <IconSearch size={16} />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Buscar por título ou autor..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      style={{
+                        padding: "9px 14px 9px 36px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 13.5,
+                        width: 260,
+                      }}
+                    />
+                  </div>
+
+                  <select
+                    value={filterSecao}
+                    onChange={(e) => setFilterSecao(e.target.value)}
+                    style={{
+                      padding: "9px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #cbd5e1",
+                      fontSize: 13.5,
+                      background: "#fff",
+                      color: "#0f172a",
+                      fontWeight: 600,
+                    }}
+                  >
+                    <option value="all">Todas as 10 Seções</option>
+                    {SECOES.map((s) => (
+                      <option key={s.id} value={s.id.toString()}>
+                        Seção {s.id}: {s.titulo_pt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Tabela */}
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 14 }}>
+                  <thead>
+                    <tr style={{ background: "#f8fafc", borderBottom: "2px solid #e2e8f0", color: "#475569" }}>
+                      <th style={{ padding: "12px 14px", width: 60 }}>#</th>
+                      <th style={{ padding: "12px 14px" }}>Título do Capítulo</th>
+                      <th style={{ padding: "12px 14px", width: 220 }}>Seção</th>
+                      <th style={{ padding: "12px 14px", width: 180 }}>Autores</th>
+                      <th style={{ padding: "12px 14px", width: 110 }}>Status</th>
+                      <th style={{ padding: "12px 14px", width: 160, textAlign: "right" }}>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {loadingList ? (
+                      <tr>
+                        <td colSpan={6} style={{ padding: 40, textAlign: "center", color: "#64748b" }}>
+                          Carregando catálogo de capítulos...
                         </td>
                       </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </>
-    )}
+                    ) : displayedChapters.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} style={{ padding: 40, textAlign: "center", color: "#64748b" }}>
+                          Nenhum capítulo encontrado para o filtro selecionado.
+                        </td>
+                      </tr>
+                    ) : (
+                      displayedChapters.map((c) => {
+                        const sec = SECOES.find((s) => s.id === c.secao_id);
+                        return (
+                          <tr
+                            key={c.numero}
+                            style={{ borderBottom: "1px solid #f1f5f9", transition: "background 0.15s ease" }}
+                            onMouseEnter={(e) => (e.currentTarget.style.background = "#f8fafc")}
+                            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                          >
+                            <td style={{ padding: "12px 14px", fontWeight: 900, color: "#f52238" }}>
+                              {c.numero}
+                            </td>
+                            <td style={{ padding: "12px 14px" }}>
+                              <strong style={{ color: "#001a3d" }}>{c.titulo_pt}</strong>
+                              {c.titulo_en && (
+                                <div style={{ fontSize: 12, color: "#64748b", fontStyle: "italic" }}>
+                                  EN: {c.titulo_en}
+                                </div>
+                              )}
+                            </td>
+                            <td style={{ padding: "12px 14px", color: "#334155", fontSize: 13 }}>
+                              <span
+                                style={{
+                                  display: "inline-block",
+                                  padding: "2px 8px",
+                                  borderRadius: 6,
+                                  fontSize: 11.5,
+                                  fontWeight: 700,
+                                  background: sec?.colorClass === "red-row" ? "#fee2e2" : "#e0f2fe",
+                                  color: sec?.colorClass === "red-row" ? "#991b1b" : "#0369a1",
+                                }}
+                              >
+                                S{c.secao_id} • {sec?.titulo_pt || `Seção ${c.secao_id}`}
+                              </span>
+                            </td>
+                            <td style={{ padding: "12px 14px", color: "#64748b", fontSize: 13 }}>
+                              {c.autores || "Corpo Editorial SBC"}
+                            </td>
+                            <td style={{ padding: "12px 14px" }}>
+                              <span
+                                style={{
+                                  padding: "3px 10px",
+                                  borderRadius: 12,
+                                  fontSize: 11.5,
+                                  fontWeight: 700,
+                                  background: c.status === "rascunho" ? "#fef3c7" : "#dcfce7",
+                                  color: c.status === "rascunho" ? "#92400e" : "#15803d",
+                                }}
+                              >
+                                {c.status === "rascunho" ? "Rascunho" : "Publicado"}
+                              </span>
+                            </td>
+                            <td style={{ padding: "12px 14px", textAlign: "right" }}>
+                              <div style={{ display: "flex", justifyContent: "flex-end", gap: 6 }}>
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditChapter(c)}
+                                  title="Editar Capítulo"
+                                  style={{
+                                    padding: "6px 10px",
+                                    borderRadius: 6,
+                                    border: "1px solid #cbd5e1",
+                                    background: "#fff",
+                                    color: "#001a3d",
+                                    fontSize: 12,
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                  }}
+                                >
+                                  <IconEdit size={13} />
+                                  <span>Editar</span>
+                                </button>
+                                <Link
+                                  href={`/pt/capitulo/${c.numero}`}
+                                  target="_blank"
+                                  title="Abrir no Leitor"
+                                  style={{
+                                    padding: "6px 10px",
+                                    borderRadius: 6,
+                                    border: "1px solid #93c5fd",
+                                    background: "#eff6ff",
+                                    color: "#1d4ed8",
+                                    fontSize: 12,
+                                    fontWeight: 700,
+                                    textDecoration: "none",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                  }}
+                                >
+                                  <IconEye size={13} />
+                                  <span>Ver</span>
+                                </Link>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDelete(c.numero, c.titulo_pt)}
+                                  title="Excluir Capítulo"
+                                  style={{
+                                    padding: "6px 8px",
+                                    borderRadius: 6,
+                                    border: "1px solid #fecaca",
+                                    background: "#fff1f2",
+                                    color: "#b91c1c",
+                                    fontSize: 12,
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  <IconTrash size={13} />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </>
+        )}
 
         {/* ================= ABA 2: GESTÃO DO CORPO EDITORIAL & AUTORES ================= */}
         {activeTab === "autores" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 32, alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 32, alignItems: "start" }}>
             {/* Form de Cadastro / Edição de Autor */}
             <section
               style={{
                 background: "#fff",
-                borderRadius: 16,
-                padding: "32px",
+                borderRadius: 18,
+                padding: "36px",
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
               }}
@@ -1131,14 +1593,30 @@ export default function AdminPainelPage() {
                   alignItems: "flex-start",
                   marginBottom: 24,
                   borderBottom: "1px solid #f1f5f9",
-                  paddingBottom: 16,
+                  paddingBottom: 18,
                 }}
               >
                 <div>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 10px", borderRadius: 6, background: "rgba(245, 34, 56, 0.1)", color: "#f52238", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 6 }}>
-                    👨‍⚕️ Gestão Editorial
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      padding: "4px 10px",
+                      borderRadius: 6,
+                      background: "rgba(245, 34, 56, 0.1)",
+                      color: "#f52238",
+                      fontSize: 12,
+                      fontWeight: 800,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <IconUsers size={14} />
+                    <span>Gestão do Corpo Editorial</span>
                   </div>
-                  <h2 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
                   </h2>
                 </div>
@@ -1147,17 +1625,21 @@ export default function AdminPainelPage() {
                   type="button"
                   onClick={handleClearAuthorForm}
                   style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
                     padding: "8px 14px",
                     borderRadius: 8,
                     border: "1px solid #e2e8f0",
                     background: "#fff",
                     color: "#64748b",
                     fontSize: 13,
-                    fontWeight: 600,
+                    fontWeight: 700,
                     cursor: "pointer",
                   }}
                 >
-                  Novo Autor
+                  <IconPlus size={14} />
+                  <span>Novo Autor</span>
                 </button>
               </div>
 
@@ -1182,6 +1664,7 @@ export default function AdminPainelPage() {
                         borderRadius: 8,
                         border: "1px solid #cbd5e1",
                         fontSize: 14,
+                        fontWeight: 600,
                       }}
                     />
                   </div>
@@ -1204,6 +1687,7 @@ export default function AdminPainelPage() {
                         border: "1px solid #cbd5e1",
                         fontSize: 14,
                         textAlign: "center",
+                        fontWeight: 800,
                       }}
                     />
                   </div>
@@ -1272,12 +1756,25 @@ export default function AdminPainelPage() {
                   />
                 </div>
 
-                {/* Foto Picker */}
-                <div style={{ marginBottom: 18 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    Foto do Autor (Caminho ou URL) *
+                {/* Foto Picker com Prévia */}
+                <div style={{ marginBottom: 18, background: "#f8fafc", padding: "16px", borderRadius: 12, border: "1px solid #e2e8f0" }}>
+                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8 }}>
+                    Foto Oficial do Autor *
                   </label>
-                  <div style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                  <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 12 }}>
+                    <img
+                      src={authorFotoUrl}
+                      alt="Prévia"
+                      style={{
+                        width: 52,
+                        height: 52,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "3px solid #fff",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        background: "#021a3a",
+                      }}
+                    />
                     <input
                       type="text"
                       name="foto_url"
@@ -1287,29 +1784,18 @@ export default function AdminPainelPage() {
                       required
                       style={{
                         flex: 1,
-                        padding: "10px 14px",
+                        padding: "9px 12px",
                         borderRadius: 8,
                         border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                      }}
-                    />
-                    <img
-                      src={authorFotoUrl}
-                      alt="Prévia"
-                      style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 8,
-                        objectFit: "cover",
-                        border: "2px solid #e2e8f0",
-                        background: "#021a3a",
+                        fontSize: 13.5,
+                        background: "#fff",
                       }}
                     />
                   </div>
 
                   {/* Quick Photo Buttons */}
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    <span style={{ fontSize: 12, color: "#64748b", alignSelf: "center" }}>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+                    <span style={{ fontSize: 12, color: "#64748b", fontWeight: 600 }}>
                       Fotos Oficiais:
                     </span>
                     <button
@@ -1317,11 +1803,12 @@ export default function AdminPainelPage() {
                       onClick={() => setAuthorFotoUrl("/assets/edson-pudles.png")}
                       style={{
                         fontSize: 12,
-                        padding: "4px 10px",
+                        padding: "5px 12px",
                         borderRadius: 6,
-                        border: "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/edson-pudles.png" ? "#001a3d" : "#f8fafc",
+                        border: authorFotoUrl === "/assets/edson-pudles.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/edson-pudles.png" ? "#001a3d" : "#fff",
                         color: authorFotoUrl === "/assets/edson-pudles.png" ? "#fff" : "#334155",
+                        fontWeight: 700,
                         cursor: "pointer",
                       }}
                     >
@@ -1332,11 +1819,12 @@ export default function AdminPainelPage() {
                       onClick={() => setAuthorFotoUrl("/assets/helton-defino.png")}
                       style={{
                         fontSize: 12,
-                        padding: "4px 10px",
+                        padding: "5px 12px",
                         borderRadius: 6,
-                        border: "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/helton-defino.png" ? "#001a3d" : "#f8fafc",
+                        border: authorFotoUrl === "/assets/helton-defino.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/helton-defino.png" ? "#001a3d" : "#fff",
                         color: authorFotoUrl === "/assets/helton-defino.png" ? "#fff" : "#334155",
+                        fontWeight: 700,
                         cursor: "pointer",
                       }}
                     >
@@ -1347,11 +1835,12 @@ export default function AdminPainelPage() {
                       onClick={() => setAuthorFotoUrl("/assets/marcelo-risso.png")}
                       style={{
                         fontSize: 12,
-                        padding: "4px 10px",
+                        padding: "5px 12px",
                         borderRadius: 6,
-                        border: "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/marcelo-risso.png" ? "#001a3d" : "#f8fafc",
+                        border: authorFotoUrl === "/assets/marcelo-risso.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
+                        background: authorFotoUrl === "/assets/marcelo-risso.png" ? "#001a3d" : "#fff",
                         color: authorFotoUrl === "/assets/marcelo-risso.png" ? "#fff" : "#334155",
+                        fontWeight: 700,
                         cursor: "pointer",
                       }}
                     >
@@ -1362,14 +1851,14 @@ export default function AdminPainelPage() {
 
                 <div style={{ marginBottom: 18 }}>
                   <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    Mini-Currículo e Trajetória *
+                    Mini-Currículo e Trajetória Acadêmica *
                   </label>
                   <textarea
                     name="bio_pt"
                     value={authorBioPt}
                     onChange={(e) => setAuthorBioPt(e.target.value)}
                     rows={4}
-                    placeholder="Descreva a formação, títulos acadêmicos e contribuição para a cirurgia da coluna..."
+                    placeholder="Descreva a formação médica, títulos acadêmicos e contribuição para a cirurgia da coluna..."
                     required
                     style={{
                       width: "100%",
@@ -1407,19 +1896,24 @@ export default function AdminPainelPage() {
                   disabled={isPending}
                   style={{
                     width: "100%",
-                    padding: "14px",
+                    padding: "15px",
                     borderRadius: 10,
                     border: "none",
                     background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
                     color: "#fff",
                     fontSize: 16,
-                    fontWeight: 700,
+                    fontWeight: 800,
                     cursor: isPending ? "not-allowed" : "pointer",
                     boxShadow: "0 8px 24px rgba(245, 34, 56, 0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
                     transition: "all 0.2s ease",
                   }}
                 >
-                  {isPending ? "Salvando informações..." : "💾 Salvar Informações do Autor"}
+                  <IconSave size={18} />
+                  <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
                 </button>
               </form>
             </section>
@@ -1428,15 +1922,15 @@ export default function AdminPainelPage() {
             <section
               style={{
                 background: "#fff",
-                borderRadius: 16,
+                borderRadius: 18,
                 padding: "32px",
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
               }}
             >
               <div style={{ marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
-                <h3 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: "0 0 4px" }}>
-                  👥 Corpo Editorial ({authors.length})
+                <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
+                  👥 Corpo Editorial Cadastrado ({authors.length})
                 </h3>
                 <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
                   Estes são os autores e editores exibidos na página inicial e nos capítulos do Tratado.
@@ -1450,8 +1944,8 @@ export default function AdminPainelPage() {
                     style={{
                       display: "flex",
                       gap: 16,
-                      padding: 16,
-                      borderRadius: 12,
+                      padding: 18,
+                      borderRadius: 14,
                       border: authorId === author.id ? "2px solid #f52238" : "1px solid #e2e8f0",
                       background: authorId === author.id ? "#fff5f6" : "#f8fafc",
                       alignItems: "center",
@@ -1473,12 +1967,12 @@ export default function AdminPainelPage() {
                     />
 
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 2 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
                         <span
                           style={{
                             fontSize: 11,
                             fontWeight: 800,
-                            padding: "2px 6px",
+                            padding: "3px 8px",
                             borderRadius: 4,
                             background: "#f52238",
                             color: "#fff",
@@ -1487,12 +1981,12 @@ export default function AdminPainelPage() {
                         >
                           {author.cargo}
                         </span>
-                        <span style={{ fontSize: 11, color: "#64748b" }}>
+                        <span style={{ fontSize: 11.5, color: "#64748b", fontWeight: 700 }}>
                           Ordem #{author.ordem}
                         </span>
                       </div>
 
-                      <h4 style={{ fontSize: 16, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
+                      <h4 style={{ fontSize: 16.5, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
                         {author.nome}
                       </h4>
 
@@ -1506,32 +2000,41 @@ export default function AdminPainelPage() {
                         type="button"
                         onClick={() => handleEditAuthor(author)}
                         style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 4,
                           padding: "6px 12px",
                           borderRadius: 6,
                           border: "1px solid #cbd5e1",
                           background: "#fff",
-                          color: "#0f172a",
+                          color: "#001a3d",
                           fontSize: 12,
                           fontWeight: 700,
                           cursor: "pointer",
                         }}
                       >
-                        ✏️ Editar
+                        <IconEdit size={13} />
+                        <span>Editar</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
                         style={{
-                          padding: "4px 8px",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 4,
+                          padding: "5px 8px",
                           borderRadius: 6,
                           border: "1px solid #fecaca",
                           background: "#fff1f2",
                           color: "#b91c1c",
                           fontSize: 11,
+                          fontWeight: 700,
                           cursor: "pointer",
                         }}
                       >
-                        🗑 Excluir
+                        <IconTrash size={12} />
+                        <span>Excluir</span>
                       </button>
                     </div>
                   </div>
@@ -1552,7 +2055,8 @@ export default function AdminPainelPage() {
                     textDecoration: "none",
                   }}
                 >
-                  Visualizar Seção de Autores no Site ↗
+                  <span>Visualizar Seção de Autores no Site</span>
+                  <IconExternal size={13} />
                 </Link>
               </div>
             </section>
