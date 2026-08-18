@@ -510,30 +510,44 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   overflow: "hidden",
                   background: "linear-gradient(135deg, #021a3a, #063c78)",
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
-                  justifyContent: "center",
+                  justifyContent: "space-between",
                   position: "relative",
                   boxShadow: "0 14px 30px rgba(0, 20, 50, 0.2)",
+                  padding: "20px 18px 18px",
+                  alignSelf: "center",
+                  height: "100%",
+                  maxHeight: "480px",
                 }}
               >
-                <img
-                  src="/assets/chapter-spine.png"
-                  alt="Radiografia e alinhamento sagital"
-                  style={{ maxHeight: "90%", width: "auto", objectFit: "contain", opacity: 0.9 }}
-                />
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", overflow: "hidden" }}>
+                  <img
+                    src="/assets/chapter-spine.png"
+                    alt="Radiografia e alinhamento sagital"
+                    style={{
+                      maxHeight: "360px",
+                      maxWidth: "100%",
+                      width: "auto",
+                      height: "auto",
+                      objectFit: "contain",
+                      opacity: 0.95,
+                      filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.4))",
+                    }}
+                  />
+                </div>
                 <div
                   style={{
-                    position: "absolute",
-                    bottom: 16,
-                    left: 16,
-                    right: 16,
-                    padding: "10px 14px",
-                    borderRadius: 10,
-                    background: "rgba(0, 16, 40, 0.8)",
+                    width: "100%",
+                    marginTop: 12,
+                    padding: "8px 12px",
+                    borderRadius: 8,
+                    background: "rgba(0, 16, 40, 0.85)",
                     backdropFilter: "blur(12px)",
                     fontSize: 12,
                     color: "#d0e4f7",
                     textAlign: "center",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
                 >
                   Esquema demonstrativo de balanço espinopélvico

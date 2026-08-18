@@ -497,9 +497,9 @@
 /* Modern Interactive Chapter Highlight Card */
 .modern-highlight-card {
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 40px;
-  padding: 40px;
+  grid-template-columns: 1fr 360px;
+  gap: 36px;
+  padding: 36px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 247, 255, 0.9));
   border: 1px solid rgba(220, 235, 250, 0.9);
   border-radius: 24px;
