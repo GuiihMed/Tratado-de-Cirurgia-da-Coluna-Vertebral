@@ -471,7 +471,9 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                             {author.role}
                           </span>
                           <h3 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: "0 0 2px" }}>
-                            {author.name}
+                            <Link href={`/${locale}/autor-new/${author.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                              {author.name}
+                            </Link>
                           </h3>
                           <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, fontWeight: 500 }}>
                             {author.institution}
@@ -522,8 +524,16 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
 
                     {/* Footer / Authored Chapters Action */}
                     <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 16 }}>
-                      <div style={{ fontSize: 12, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", marginBottom: 8 }}>
-                        Capítulos Relacionados:
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                        <span style={{ fontSize: 12, fontWeight: 800, color: "#001a3d", textTransform: "uppercase" }}>
+                          Capítulos no Tratado:
+                        </span>
+                        <Link
+                          href={`/${locale}/autor-new/${author.id}`}
+                          style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", textDecoration: "none" }}
+                        >
+                          Ver Perfil Completo →
+                        </Link>
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         {author.capitulos.map((cap) => (

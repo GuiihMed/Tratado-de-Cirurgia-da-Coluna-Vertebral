@@ -250,15 +250,33 @@ export default async function AutoresPage({ params }: AutoresPageProps) {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, borderBottom: "1px solid #f1f5f9", paddingBottom: 16, marginBottom: 18 }}>
                       <div>
                         <h3 style={{ fontSize: 26, fontWeight: 800, color: "#001a3d", margin: "0 0 6px" }}>
-                          {author.nome}
+                          <Link href={`/${locale}/autor/${author.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                            {author.nome}
+                          </Link>
                         </h3>
                         <p style={{ fontSize: 14.5, color: "#e11d48", fontWeight: 700, margin: 0 }}>
                           ⭐ {author.destaque}
                         </p>
                       </div>
-                      <span style={{ fontSize: 12.5, fontWeight: 800, color: "#94a3b8", background: "#f8fafc", padding: "6px 12px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
-                        AUTOR #{author.id.padStart(2, "0")}
-                      </span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <Link
+                          href={`/${locale}/autor/${author.id}`}
+                          style={{
+                            background: "#003382",
+                            color: "#ffffff",
+                            padding: "6px 14px",
+                            borderRadius: 8,
+                            fontSize: 12.5,
+                            fontWeight: 700,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Ver Perfil Completo →
+                        </Link>
+                        <span style={{ fontSize: 12.5, fontWeight: 800, color: "#94a3b8", background: "#f8fafc", padding: "6px 12px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
+                          AUTOR #{author.id.padStart(2, "0")}
+                        </span>
+                      </div>
                     </div>
 
                     <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.6, marginBottom: 20 }}>
