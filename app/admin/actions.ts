@@ -280,3 +280,78 @@ export async function excluirAutorAction(id: string): Promise<ActionResult> {
   }
 }
 
+/**
+ * Server action to update user role and status (Approve / Role Change / Block)
+ */
+export async function atualizarPerfilUsuarioAction(
+  id: string,
+  role: "super_admin" | "co_super_admin" | "admin_escritor" | "escritor",
+  status: "pendente" | "aprovado" | "bloqueado"
+): Promise<ActionResult> {
+  try {
+    const client = getSupabaseServerClient();
+    const { error } = await client
+      .from("perfis")
+      .update({
+        role,
+        status,
+        aprovado_em: status === "aprovado" ? new Date().toISOString() : null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", id);
+
+    if (error) {
+      return {
+        success: false,
+        message: `Erro ao atualizar usuário: ${error.message}`,
+        error: error.message,
+      };
+    }
+
+    revalidatePath("/admin/painel", "page");
+
+    return {
+      success: true,
+      message: `Usuário atualizado com sucesso para [${role}] (${status})!`,
+    };
+  } catch (err: any) {
+    return {
+      success: false,
+      message: "Erro ao atualizar permissão do usuário.",
+      error: err?.message,
+    };
+  }
+}
+
+/**
+ * Server action to delete user profile
+ */
+export async function excluirUsuarioAction(id: string): Promise<ActionResult> {
+  try {
+    const client = getSupabaseServerClient();
+    const { error } = await client.from("perfis").delete().eq("id", id);
+
+    if (error) {
+      return {
+        success: false,
+        message: `Erro ao remover usuário: ${error.message}`,
+        error: error.message,
+      };
+    }
+
+    revalidatePath("/admin/painel", "page");
+
+    return {
+      success: true,
+      message: "Usuário removido com sucesso.",
+    };
+  } catch (err: any) {
+    return {
+      success: false,
+      message: "Erro ao excluir usuário.",
+      error: err?.message,
+    };
+  }
+}
+
+

@@ -237,3 +237,128 @@ VALUES
 (3, 'Dr. Marcelo Risso', 'Editor / SBC', 'Comitê de Educação e Publicações SBC', 'Coordenador do Capítulo 8 (Plano Sagital)', 'Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.', 'Equilíbrio Sagital, Osteotomias 3D, Minimamente Invasiva', '/assets/marcelo-risso.png')
 ON CONFLICT DO NOTHING;
 
+-- ==============================================================================
+-- TABELA DE PERFIS DE USUÁRIOS & HIERARQUIA DE ACESSOS (RBAC)
+-- ==============================================================================
+CREATE TABLE IF NOT EXISTS public.perfis (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    nome TEXT NOT NULL,
+    email TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'escritor' CHECK (role IN ('super_admin', 'co_super_admin', 'admin_escritor', 'escritor')),
+    status TEXT NOT NULL DEFAULT 'pendente' CHECK (status IN ('pendente', 'aprovado', 'bloqueado')),
+    cargo_instituicao TEXT,
+    aprovado_por UUID REFERENCES auth.users(id),
+    aprovado_em TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_perfis_status ON public.perfis (status);
+CREATE INDEX IF NOT EXISTS idx_perfis_role ON public.perfis (role);
+
+ALTER TABLE public.perfis ENABLE ROW LEVEL SECURITY;
+
+-- Políticas de RLS para perfis
+DROP POLICY IF EXISTS "Leitura de perfil próprio ou por admins" ON public.perfis;
+CREATE POLICY "Leitura de perfil próprio ou por admins"
+    ON public.perfis
+    FOR SELECT
+    TO authenticated
+    USING (
+        auth.uid() = id
+        OR EXISTS (
+            SELECT 1 FROM public.perfis p
+            WHERE p.id = auth.uid()
+            AND p.role IN ('super_admin', 'co_super_admin')
+            AND p.status = 'aprovado'
+        )
+    );
+
+DROP POLICY IF EXISTS "Inserção de perfil próprio" ON public.perfis;
+CREATE POLICY "Inserção de perfil próprio"
+    ON public.perfis
+    FOR INSERT
+    TO authenticated
+    WITH CHECK (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Atualização por admins ou próprio usuário" ON public.perfis;
+CREATE POLICY "Atualização por admins ou próprio usuário"
+    ON public.perfis
+    FOR UPDATE
+    TO authenticated
+    USING (
+        auth.uid() = id
+        OR EXISTS (
+            SELECT 1 FROM public.perfis p
+            WHERE p.id = auth.uid()
+            AND p.role IN ('super_admin', 'co_super_admin')
+            AND p.status = 'aprovado'
+        )
+    )
+    WITH CHECK (
+        auth.uid() = id
+        OR EXISTS (
+            SELECT 1 FROM public.perfis p
+            WHERE p.id = auth.uid()
+            AND p.role IN ('super_admin', 'co_super_admin')
+            AND p.status = 'aprovado'
+        )
+    );
+
+DROP POLICY IF EXISTS "Exclusão por super admin" ON public.perfis;
+CREATE POLICY "Exclusão por super admin"
+    ON public.perfis
+    FOR DELETE
+    TO authenticated
+    USING (
+        EXISTS (
+            SELECT 1 FROM public.perfis p
+            WHERE p.id = auth.uid()
+            AND p.role = 'super_admin'
+            AND p.status = 'aprovado'
+        )
+    );
+
+-- Trigger para criar perfil automaticamente no SignUp
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+DECLARE
+    user_count INT;
+    initial_role TEXT;
+    initial_status TEXT;
+BEGIN
+    SELECT COUNT(*) INTO user_count FROM public.perfis;
+    
+    -- O primeiro usuário cadastrado torna-se automaticamente Super Admin aprovado
+    IF user_count = 0 THEN
+        initial_role := 'super_admin';
+        initial_status := 'aprovado';
+    ELSE
+        initial_role := 'escritor';
+        initial_status := 'pendente';
+    END IF;
+
+    INSERT INTO public.perfis (id, nome, email, role, status, cargo_instituicao)
+    VALUES (
+        NEW.id,
+        COALESCE(NEW.raw_user_meta_data->>'nome', split_part(NEW.email, '@', 1)),
+        NEW.email,
+        initial_role,
+        initial_status,
+        NEW.raw_user_meta_data->>'cargo_instituicao'
+    )
+    ON CONFLICT (id) DO UPDATE SET
+        nome = EXCLUDED.nome,
+        cargo_instituicao = EXCLUDED.cargo_instituicao,
+        updated_at = now();
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+    AFTER INSERT ON auth.users
+    FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+

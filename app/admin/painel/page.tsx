@@ -11,6 +11,8 @@ import {
   excluirCapituloAction,
   salvarAutorAction,
   excluirAutorAction,
+  atualizarPerfilUsuarioAction,
+  excluirUsuarioAction,
 } from "../actions";
 
 // ============================================================================
@@ -177,13 +179,59 @@ const DEFAULT_AUTHORS: AutorEditor[] = [
   },
 ];
 
+
+function IconShield({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+
+function IconUserCheck({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <polyline points="16 11 18 13 22 9" />
+    </svg>
+  );
+}
+
+function IconUserX({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <line x1="18" y1="8" x2="23" y2="13" />
+      <line x1="23" y1="8" x2="18" y2="13" />
+    </svg>
+  );
+}
+
+export type UserRole = "super_admin" | "co_super_admin" | "admin_escritor" | "escritor";
+export type UserStatus = "pendente" | "aprovado" | "bloqueado";
+
+export interface PerfilUsuario {
+  id: string;
+  nome: string;
+  email: string;
+  role: UserRole;
+  status: UserStatus;
+  cargo_instituicao?: string;
+  created_at: string;
+}
+
 export default function AdminPainelPage() {
   const router = useRouter();
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
   // Active Tab
-  const [activeTab, setActiveTab] = useState<"capitulos" | "autores">("capitulos");
+  const [activeTab, setActiveTab] = useState<"capitulos" | "autores" | "usuarios">("capitulos");
+  const [currentUserRole, setCurrentUserRole] = useState<UserRole>("super_admin");
+  const [usuarios, setUsuarios] = useState<PerfilUsuario[]>([]);
+  const [loadingUsuarios, setLoadingUsuarios] = useState(false);
 
   // Chapter Form states
   const [secaoId, setSecaoId] = useState("1");
@@ -222,6 +270,54 @@ export default function AdminPainelPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [loadingList, setLoadingList] = useState(false);
 
+  
+  const fetchUsuarios = async () => {
+    setLoadingUsuarios(true);
+    try {
+      if (isSupabaseConfigured()) {
+        const { data, error } = await supabase
+          .from("perfis")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (!error && data) {
+          setUsuarios(data as PerfilUsuario[]);
+        }
+      }
+    } catch (err) {
+      console.warn("Error loading perfis:", err);
+    } finally {
+      setLoadingUsuarios(false);
+    }
+  };
+
+  const handleUpdateUserStatus = async (
+    id: string,
+    role: UserRole,
+    status: UserStatus
+  ) => {
+    startTransition(async () => {
+      const res = await atualizarPerfilUsuarioAction(id, role, status);
+      setFeedback({
+        type: res.success ? "success" : "error",
+        message: res.message,
+      });
+      fetchUsuarios();
+    });
+  };
+
+  const handleDeleteUser = async (id: string, nome: string) => {
+    if (!confirm()) return;
+    startTransition(async () => {
+      const res = await excluirUsuarioAction(id);
+      setFeedback({
+        type: res.success ? "success" : "error",
+        message: res.message,
+      });
+      fetchUsuarios();
+    });
+  };
+
   // 1. Check active session on mount
   useEffect(() => {
     async function checkSession() {
@@ -244,6 +340,7 @@ export default function AdminPainelPage() {
           setUserEmail(parsed.email || "autor@sbc.med.br");
         }
         setCheckingAuth(false);
+        fetchUsuarios();
       } catch (err) {
         router.push("/admin/login");
       }
@@ -903,6 +1000,59 @@ export default function AdminPainelPage() {
               {authors.length}
             </span>
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("usuarios");
+              setFeedback({ type: null, message: "" });
+            }}
+            style={{
+              padding: "12px 24px",
+              borderRadius: 10,
+              border: "none",
+              background: activeTab === "usuarios" ? "#7c3aed" : "transparent",
+              color: activeTab === "usuarios" ? "#fff" : "#475569",
+              fontWeight: 700,
+              fontSize: 14.5,
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              boxShadow: activeTab === "usuarios" ? "0 4px 14px rgba(124, 58, 237, 0.3)" : "none",
+              transition: "all 0.2s ease",
+            }}
+          >
+            <IconShield size={18} />
+            <span>Usuários &amp; Acessos</span>
+            <span
+              style={{
+                fontSize: 11,
+                fontWeight: 800,
+                padding: "2px 8px",
+                borderRadius: 12,
+                background: activeTab === "usuarios" ? "rgba(255, 255, 255, 0.25)" : "#e2e8f0",
+                color: activeTab === "usuarios" ? "#fff" : "#475569",
+              }}
+            >
+              {usuarios.length}
+            </span>
+            {usuarios.filter(u => u.status === 'pendente').length > 0 && (
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: 900,
+                  padding: "2px 6px",
+                  borderRadius: 10,
+                  background: "#ef4444",
+                  color: "#ffffff",
+                  marginLeft: -4,
+                }}
+              >
+                {usuarios.filter(u => u.status === 'pendente').length} novo
+              </span>
+            )}
+          </button>
+
         </div>
 
         {/* Feedback Alert */}
