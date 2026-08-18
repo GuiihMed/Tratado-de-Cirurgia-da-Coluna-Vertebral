@@ -243,22 +243,13 @@ export default function AdminPainelPage() {
             alignItems: "center",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <span
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 8,
-                background: "#f52238",
-                display: "grid",
-                placeItems: "center",
-                fontWeight: 800,
-                fontSize: 18,
-              }}
-            >
-              SBC
-            </span>
-            <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <img
+              src="/assets/sbc-logo-white.svg"
+              alt="Sociedade Brasileira de Coluna"
+              style={{ height: 42, width: "auto", objectFit: "contain" }}
+            />
+            <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 14 }}>
               <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, letterSpacing: "-0.01em" }}>
                 Portal Editorial dos Autores
               </h1>

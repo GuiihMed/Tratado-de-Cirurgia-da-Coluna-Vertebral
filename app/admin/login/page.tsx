@@ -70,24 +70,14 @@ export default function AdminLoginPage() {
       <main className="admin-container">
         <div className="admin-login-box">
           <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <span
-              style={{
-                width: 52,
-                height: 52,
-                borderRadius: "50%",
-                background: "#001832",
-                color: "#ff3047",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 16,
-              }}
-            >
-              <svg style={{ width: 28, height: 28 }}>
-                <use href="#i-shield"></use>
-              </svg>
-            </span>
-            <h1>Acesso Restrito</h1>
+            <img
+              src="/assets/sbc-logo.svg"
+              alt="Sociedade Brasileira de Coluna"
+              style={{ height: 64, width: "auto", margin: "0 auto 16px", objectFit: "contain" }}
+            />
+            <h1 style={{ fontSize: 24, fontWeight: 800, color: "#001a3d", margin: "0 0 6px" }}>
+              Portal dos Autores SBC
+            </h1>
             <p>Painel de Gestão dos Autores &amp; Editores</p>
           </div>
 

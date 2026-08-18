@@ -59,13 +59,12 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
               Reunindo os maiores especialistas da SBC em um tratado completo de 10 seções e 109 capítulos.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 28, marginTop: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 28, fontWeight: 800, color: "#fff" }}>SBC</span>
-                <span style={{ fontSize: 11, lineHeight: 1.2, color: "#8ca8cb" }}>
-                  Sociedade Brasileira<br />de Coluna
-                </span>
-              </div>
-              <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.15)", height: 32 }} />
+              <img
+                src="/assets/sbc-logo-white.svg"
+                alt="Sociedade Brasileira de Coluna"
+                style={{ height: 48, width: "auto", objectFit: "contain" }}
+              />
+              <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.15)", height: 36 }} />
               <div style={{ fontSize: 22, fontWeight: 700, color: "#e2edfa" }}>Di Livros</div>
             </div>
           </div>

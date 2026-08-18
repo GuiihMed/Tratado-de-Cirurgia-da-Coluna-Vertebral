@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .sbc-white { fill: #ffffff; }
+      .sbc-red { fill: #f52238; }
+      .sbc-text-bold { font-family: 'Inter', 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-weight: 900; font-size: 145px; letter-spacing: -2px; fill: #ffffff; }
+      .sbc-text-sub { font-family: 'Inter', 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 48px; letter-spacing: -0.5px; fill: #d5e4f7; }
+    </style>
+  </defs>
+
+  <!-- Left Spinal / Anatomical Emblem -->
+  <g transform="translate(10, 10)">
+    <!-- Left Column Curve -->
+    <path class="sbc-white" d="M 0 0 L 72 0 C 48 55 46 115 72 170 C 88 205 90 240 70 295 L 0 295 C 24 235 24 175 6 125 C -6 75 -2 25 0 0 Z" />
+    
+    <!-- Right Column Curve -->
+    <path class="sbc-white" d="M 215 0 L 143 0 C 167 55 169 115 143 170 C 127 205 125 240 145 295 L 215 295 C 191 235 191 175 209 125 C 221 75 217 25 215 0 Z" />
+    
+    <!-- Center Red Sphere / Core -->
+    <circle class="sbc-red" cx="108" cy="245" r="54" />
+  </g>
+
+  <!-- Right Typography -->
+  <g transform="translate(265, 0)">
+    <!-- "SBC" -->
+    <text x="0" y="142" class="sbc-text-bold">SBC</text>
+    
+    <!-- "Sociedade Brasileira" -->
+    <text x="5" y="215" class="sbc-text-sub">Sociedade Brasileira</text>
+    
+    <!-- "de Coluna" -->
+    <text x="5" y="278" class="sbc-text-sub">de Coluna</text>
+  </g>
+</svg>

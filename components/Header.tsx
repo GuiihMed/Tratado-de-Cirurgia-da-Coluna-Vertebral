@@ -26,9 +26,16 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   return (
     <header className="topbar">
       <div className="shell nav-shell">
-        <Link href={`/${locale}`} className="brand" aria-label="Página inicial">
-          <span>{dict.brand.line1}</span>
-          <strong>{dict.brand.line2}</strong>
+        <Link href={`/${locale}`} className="brand" aria-label="Página inicial" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <img
+            src="/assets/sbc-logo-white.svg"
+            alt="Logo Sociedade Brasileira de Coluna"
+            style={{ height: 42, width: "auto", objectFit: "contain" }}
+          />
+          <div>
+            <span>{dict.brand.line1}</span>
+            <strong>{dict.brand.line2}</strong>
+          </div>
         </Link>
         <nav className="nav-links" aria-label="Navegação principal">
           <Link

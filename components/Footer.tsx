@@ -18,18 +18,12 @@ export default function Footer({ locale }: FooterProps) {
             <br />
             {dict.footer.brand2}
           </strong>
-          <div className="footer-logos">
-            <span className="sbc">
-              SBC
-              <small>
-                {dict.footer.sbc.split("\n").map((line, idx) => (
-                  <span key={idx}>
-                    {line}
-                    <br />
-                  </span>
-                ))}
-              </small>
-            </span>
+          <div className="footer-logos" style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <img
+              src="/assets/sbc-logo-white.svg"
+              alt="Sociedade Brasileira de Coluna"
+              style={{ height: 44, width: "auto", objectFit: "contain" }}
+            />
             <span className="dilivros">{dict.footer.dilivros}</span>
           </div>
           <small>{dict.footer.copyright}</small>

@@ -27,13 +27,13 @@ export default function ModernHeader({
     <div className="modern-nav-sticky">
       <header className="modern-nav-bar">
         <Link href={`/${locale}/home-new`} className="modern-brand-link">
-          <div className="modern-brand-symbol">
-            <svg>
-              <use href="#i-spine"></use>
-            </svg>
-          </div>
-          <div className="modern-brand-text">
-            <span>Tratado Oficial • SBC</span>
+          <img
+            src="/assets/sbc-logo-white.svg"
+            alt="Logo Sociedade Brasileira de Coluna (SBC)"
+            style={{ height: 40, width: "auto", objectFit: "contain" }}
+          />
+          <div className="modern-brand-text" style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 14 }}>
+            <span>Tratado Oficial</span>
             <strong>Cirurgia da Coluna Vertebral</strong>
           </div>
         </Link>
