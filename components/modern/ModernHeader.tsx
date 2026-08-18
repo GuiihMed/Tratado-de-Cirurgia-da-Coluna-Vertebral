@@ -54,7 +54,10 @@ export default function ModernHeader({
           <Link href={`/${locale}/home-new#debate`} className="modern-nav-link">
             {locale === "en" ? "Debate Cast" : "Videocast"}
           </Link>
-          <Link href={`/${locale}/home-new#autores`} className="modern-nav-link">
+          <Link
+            href={`/${locale}/autores-new`}
+            className={`modern-nav-link ${pathname?.includes("/autores-new") ? "active" : ""}`}
+          >
             {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
           </Link>
           <Link href={`/${locale}/home-new#comprar`} className="modern-nav-link">

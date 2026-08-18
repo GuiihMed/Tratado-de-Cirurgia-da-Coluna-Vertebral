@@ -56,7 +56,12 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           >
             {dict.nav.chapters}
           </Link>
-          <Link href={`/${locale}#autores`}>{dict.nav.authors}</Link>
+          <Link
+            href={`/${locale}/autores`}
+            className={currentPage === "other" && pathname?.includes("/autores") ? "active" : ""}
+          >
+            {dict.nav.authors}
+          </Link>
           <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
           <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
           <Link href={`/${locale}#comprar`}>{dict.nav.buy}</Link>
