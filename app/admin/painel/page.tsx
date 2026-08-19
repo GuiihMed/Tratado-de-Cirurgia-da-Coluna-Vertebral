@@ -14,6 +14,7 @@ import {
   atualizarPerfilUsuarioAction,
   excluirUsuarioAction,
 } from "../actions";
+import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor";
 
 // ============================================================================
 // SVG ICONS (Medical & Modern UI)
@@ -234,6 +235,7 @@ export default function AdminPainelPage() {
   const [loadingUsuarios, setLoadingUsuarios] = useState(false);
 
   // Chapter Form states
+  const [editingChapterData, setEditingChapterData] = useState<Capitulo | undefined>(undefined);
   const [secaoId, setSecaoId] = useState("1");
   const [numero, setNumero] = useState("");
   const [tituloPt, setTituloPt] = useState("");
@@ -423,6 +425,7 @@ export default function AdminPainelPage() {
 
   // Load a chapter into the form for editing
   const handleEditChapter = (cap: Capitulo) => {
+    setEditingChapterData({ ...cap });
     setSecaoId(cap.secao_id.toString());
     setNumero(cap.numero.toString());
     setTituloPt(cap.titulo_pt || "");
@@ -434,61 +437,23 @@ export default function AdminPainelPage() {
     setReferencias(cap.referencias || "");
     setStatus(cap.status || "publicado");
 
-    window.scrollTo({ top: 220, behavior: "smooth" });
+    window.scrollTo({ top: 180, behavior: "smooth" });
     setFeedback({
       type: "success",
-      message: `Capítulo ${cap.numero} ("${cap.titulo_pt}") carregado para edição. Altere os campos e clique em Salvar.`,
+      message: `Capítulo ${cap.numero} ("${cap.titulo_pt}") carregado no Editor Científico Avançado.`,
     });
   };
 
-  // Clear chapter form
-  const handleClearForm = () => {
-    setNumero("");
-    setTituloPt("");
-    setTituloEn("");
-    setTituloEs("");
-    setAutores("");
-    setResumoPt("");
-    setConteudoPt("");
-    setReferencias("");
-    setStatus("publicado");
+  // Submit Chapter Form via ScientificChapterEditor
+  const handleChapterSubmit = async (formData: FormData) => {
     setFeedback({ type: null, message: "" });
-  };
-
-  // Insert Standard Scientific Template
-  const handleInsertTemplate = () => {
-    if (!resumoPt) {
-      setResumoPt(
-        "Este capítulo aborda os fundamentos anátomo-cirúrgicos, princípios biomecânicos essenciais e o processo de tomada de decisão clínica na abordagem dos pacientes com afecções vertebrais. Destacam-se as indicações precisas, armadilhas diagnósticas e estratégias para prevenção de complicações perioperatórias."
-      );
-    }
-    if (!conteudoPt) {
-      setConteudoPt(
-        `## 1. Introdução e Contexto Clínico\nA cirurgia da coluna vertebral passou por profundas transformações conceituais e tecnológicas nas últimas décadas. O domínio das bases anatômicas e dos parâmetros espinopélvicos é o pilar indispensável para o sucesso dos procedimentos reconstrutivos e descompressivos.\n\n## 2. Anatomia Cirúrgica Aplicada e Vias de Acesso\nO planejamento pré-operatório criterioso requer o conhecimento milimétrico das relações entre os elementos ósseos, estruturas neurais (saco dural, raízes espinhais) e vasculares adjacentes. A preservação dos estabilizadores musculoligamentares posteriores contribui diretamente para a redução da dor residual e prevenção da doença do nível adjacente.\n\n## 3. Avaliação Radiográfica e Parâmetros Chave\n- Alinhamento no plano sagital e coronal\n- Avaliação tomográfica da densidade óssea e integridade dos pedículos\n- Ressonância magnética para graduação da estenose de canal e compressão foraminal\n\n## 4. Técnica Cirúrgica Passo a Passo\n1. Posicionamento adequado do paciente em mesa radiotransparente com alívio da pressão abdominal.\n2. Localização fluoroscópica precisa do nível operatório.\n3. Descompressão microcirúrgica cuidadosa sob magnificação e controle hemostático rigoroso.\n4. Instrumentação guiada por marcos anatômicos ou navegação intraoperatória.\n\n## 5. Cuidados Pós-Operatórios e Reabilitação\nMobilização precoce assistida, analgesia multimodal preemptiva e protocolo de seguimento radiográfico com 30 dias, 3 meses, 6 meses e 1 ano pós-operatório.`
-      );
-    }
-    if (!referencias) {
-      setReferencias(
-        `1. Sociedade Brasileira de Coluna (SBC). Diretrizes Clínicas em Cirurgia da Coluna. 2026.\n2. Bridwell KH, et al. The Textbook of Spinal Surgery. 4th ed. Wolters Kluwer, 2020.\n3. Schwab F, et al. Sagittal parameters in spinal deformity: radiographic assessment and clinical relevance. Spine, 2012.`
-      );
-    }
-    setFeedback({
-      type: "success",
-      message: "Modelo científico inserido com sucesso nos campos de Resumo, Conteúdo e Referências!",
-    });
-  };
-
-  // Submit Chapter Form
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFeedback({ type: null, message: "" });
-    const formData = new FormData(e.currentTarget);
 
     startTransition(async () => {
       const res = await cadastrarCapituloAction(null, formData);
       if (res.success) {
         setFeedback({ type: "success", message: res.message });
         await fetchChapters();
+        window.scrollTo({ top: 140, behavior: "smooth" });
       } else {
         setFeedback({ type: "error", message: res.message });
       }
@@ -1097,400 +1062,13 @@ export default function AdminPainelPage() {
         {/* ================= ABA 1: GESTÃO DE CAPÍTULOS ================= */}
         {activeTab === "capitulos" && (
           <>
-            {/* Editor de Conteúdo do Capítulo */}
-            <section
-              style={{
-                background: "#fff",
-                borderRadius: 18,
-                padding: "36px",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-                marginBottom: "40px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  marginBottom: 28,
-                  borderBottom: "1px solid #f1f5f9",
-                  paddingBottom: 20,
-                  flexWrap: "wrap",
-                  gap: 16,
-                }}
-              >
-                <div>
-                  <div
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      padding: "4px 10px",
-                      borderRadius: 6,
-                      background: "rgba(245, 34, 56, 0.1)",
-                      color: "#f52238",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      marginBottom: 6,
-                    }}
-                  >
-                    <IconBook size={14} />
-                    <span>Editor Científico da Obra</span>
-                  </div>
-                  <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0, letterSpacing: "-0.02em" }}>
-                    {numero ? `Editando Capítulo ${numero}: ${tituloPt || "Sem Título"}` : "Cadastrar / Publicar Novo Capítulo"}
-                  </h2>
-                  <p style={{ fontSize: 13.5, color: "#64748b", margin: "4px 0 0" }}>
-                    Preencha os metadados, títulos e o texto completo com formatação científica estruturada.
-                  </p>
-                </div>
-
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    onClick={handleInsertTemplate}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      padding: "9px 16px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      background: "#f8fafc",
-                      color: "#334155",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                    }}
-                  >
-                    <IconSparkles size={15} />
-                    <span>Inserir Modelo Científico</span>
-                  </button>
-
-                  {numero && (
-                    <Link
-                      href={`/pt/capitulo/${numero}`}
-                      target="_blank"
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        padding: "9px 16px",
-                        borderRadius: 8,
-                        border: "1px solid #93c5fd",
-                        background: "#eff6ff",
-                        color: "#1d4ed8",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        textDecoration: "none",
-                      }}
-                    >
-                      <IconEye size={15} />
-                      <span>Visualizar Leitor</span>
-                    </Link>
-                  )}
-
-                  <button
-                    type="button"
-                    onClick={handleClearForm}
-                    style={{
-                      padding: "9px 16px",
-                      borderRadius: 8,
-                      border: "1px solid #e2e8f0",
-                      background: "#fff",
-                      color: "#64748b",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      cursor: "pointer",
-                    }}
-                  >
-                    Limpar Formulário
-                  </button>
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit}>
-                {/* BLOCO 1: METADADOS */}
-                <div style={{ marginBottom: 28 }}>
-                  <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
-                    1. Metadados do Capítulo
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "1.4fr 120px 140px 2fr", gap: 16, flexWrap: "wrap" }}>
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Seção Temática *
-                      </label>
-                      <select
-                        name="secao_id"
-                        value={secaoId}
-                        onChange={(e) => setSecaoId(e.target.value)}
-                        required
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          background: "#fff",
-                          fontWeight: 600,
-                          color: "#0f172a",
-                        }}
-                      >
-                        {SECOES.map((s) => (
-                          <option key={s.id} value={s.id}>
-                            Seção {s.id}: {s.titulo_pt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Número *
-                      </label>
-                      <input
-                        type="number"
-                        name="numero"
-                        value={numero}
-                        onChange={(e) => setNumero(e.target.value)}
-                        placeholder="Ex: 8"
-                        required
-                        min={1}
-                        max={200}
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          fontWeight: 800,
-                          color: "#f52238",
-                          textAlign: "center",
-                        }}
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Status *
-                      </label>
-                      <select
-                        name="status"
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          fontWeight: 700,
-                          color: status === "publicado" ? "#166534" : "#92400e",
-                          background: status === "publicado" ? "#f0fdf4" : "#fefce8",
-                        }}
-                      >
-                        <option value="publicado">Publicado</option>
-                        <option value="rascunho">Rascunho</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Autores do Artigo
-                      </label>
-                      <input
-                        type="text"
-                        name="autores"
-                        value={autores}
-                        onChange={(e) => setAutores(e.target.value)}
-                        placeholder="Ex: Dr. Edson Pudles, Dr. Helton Defino"
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* BLOCO 2: TÍTULOS MULTILÍNGUES */}
-                <div style={{ marginBottom: 28, background: "#f8fafc", padding: "20px", borderRadius: 12, border: "1px solid #e2e8f0" }}>
-                  <h3 style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
-                    2. Títulos da Obra (Multilíngue)
-                  </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        🇧🇷 Título em Português *
-                      </label>
-                      <input
-                        type="text"
-                        name="titulo_pt"
-                        value={tituloPt}
-                        onChange={(e) => setTituloPt(e.target.value)}
-                        placeholder="Ex: Equilíbrio Sagital e Parâmetros Espinopélvicos"
-                        required
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          fontWeight: 600,
-                          color: "#0f172a",
-                        }}
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#64748b", marginBottom: 6 }}>
-                        🇺🇸 Título em Inglês (Opcional)
-                      </label>
-                      <input
-                        type="text"
-                        name="titulo_en"
-                        value={tituloEn}
-                        onChange={(e) => setTituloEn(e.target.value)}
-                        placeholder="Ex: Sagittal Balance and Spinopelvic Parameters"
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                        }}
-                      />
-                    </div>
-
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#64748b", marginBottom: 6 }}>
-                        🇪🇸 Título em Espanhol (Opcional)
-                      </label>
-                      <input
-                        type="text"
-                        name="titulo_es"
-                        value={tituloEs}
-                        onChange={(e) => setTituloEs(e.target.value)}
-                        placeholder="Ex: Equilibrio Sagital y Parámetros Espinopélvicos"
-                        style={{
-                          width: "100%",
-                          padding: "10px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* BLOCO 3: RESUMO CLÍNICO */}
-                <div style={{ marginBottom: 28 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    3. Resumo Clínico / Abstract do Capítulo
-                  </label>
-                  <textarea
-                    name="resumo_pt"
-                    value={resumoPt}
-                    onChange={(e) => setResumoPt(e.target.value)}
-                    rows={3}
-                    placeholder="Síntese dos objetivos, métodos diagnósticos, indicações cirúrgicas e relevância clínica deste tema..."
-                    style={{
-                      width: "100%",
-                      padding: "12px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 14,
-                      lineHeight: 1.5,
-                    }}
-                  />
-                </div>
-
-                {/* BLOCO 4: CONTEÚDO COMPLETO EM MARKDOWN */}
-                <div style={{ marginBottom: 28 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
-                      4. Conteúdo Científico do Capítulo (Markdown Completo)
-                    </label>
-                    <span style={{ fontSize: 12, color: "#64748b" }}>
-                      Suporta títulos ##, listas -, tabelas, imagens e citações
-                    </span>
-                  </div>
-                  <textarea
-                    name="conteudo_pt"
-                    value={conteudoPt}
-                    onChange={(e) => setConteudoPt(e.target.value)}
-                    rows={12}
-                    placeholder="## 1. Introdução&#10;Texto explicativo...&#10;&#10;## 2. Técnica Cirúrgica Passo a Passo&#10;1. Incisão...&#10;2. Exposição..."
-                    style={{
-                      width: "100%",
-                      padding: "14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 14,
-                      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
-                      lineHeight: 1.6,
-                      background: "#fafbfd",
-                    }}
-                  />
-                </div>
-
-                {/* BLOCO 5: REFERÊNCIAS BIBLIOGRÁFICAS */}
-                <div style={{ marginBottom: 32 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    5. Referências Bibliográficas (Estilo Vancouver / ABNT)
-                  </label>
-                  <textarea
-                    name="referencias"
-                    value={referencias}
-                    onChange={(e) => setReferencias(e.target.value)}
-                    rows={4}
-                    placeholder="1. Schwab F, et al. Sagittal parameters in spinal deformity. Spine, 2012.&#10;2. Sociedade Brasileira de Coluna. Diretrizes Clínicas, 2026."
-                    style={{
-                      width: "100%",
-                      padding: "12px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 13.5,
-                      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
-                    }}
-                  />
-                </div>
-
-                {/* BOTÃO DE SALVAMENTO */}
-                <button
-                  type="submit"
-                  disabled={isPending}
-                  style={{
-                    width: "100%",
-                    padding: "16px",
-                    borderRadius: 12,
-                    border: "none",
-                    background: "linear-gradient(135deg, #001a3d 0%, #003366 100%)",
-                    color: "#fff",
-                    fontSize: 16,
-                    fontWeight: 800,
-                    cursor: isPending ? "not-allowed" : "pointer",
-                    boxShadow: "0 8px 24px rgba(0, 26, 61, 0.25)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 10,
-                    transition: "all 0.2s ease",
-                  }}
-                >
-                  <IconSave size={20} />
-                  <span>{isPending ? "Processando publicação..." : "Publicar / Salvar Capítulo no Tratado"}</span>
-                </button>
-              </form>
-            </section>
+            {/* Editor de Conteúdo Científico Avançado */}
+            <ScientificChapterEditor
+              initialData={editingChapterData}
+              onSubmit={handleChapterSubmit}
+              isPending={isPending}
+              onClear={() => setEditingChapterData(undefined)}
+            />
 
             {/* ================= TABELA DE CAPÍTULOS ================= */}
             <section
