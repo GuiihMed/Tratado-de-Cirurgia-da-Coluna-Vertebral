@@ -648,8 +648,8 @@ CREATE TRIGGER on_auth_user_created
                               {user.role === "super_admin" && (
                                 <span title="Super Administrador" style={{ fontSize: 13 }}>👑</span>
                               )}
-                              {(currentUserEmail && user.email.toLowerCase() === currentUserEmail.toLowerCase()) ||
-                              (!currentUserEmail && user.id === "usr-1") ? (
+                              {(currentUserEmail && user.email?.toLowerCase() === currentUserEmail.toLowerCase()) ||
+                              user.id.startsWith("me-") ? (
                                 <span
                                   style={{
                                     padding: "2px 8px",

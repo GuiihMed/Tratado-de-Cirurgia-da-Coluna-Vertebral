@@ -219,16 +219,32 @@ export default function AdminPainelPage() {
   // Active Tab
   const [activeTab, setActiveTab] = useState<"capitulos" | "autores" | "usuarios">("capitulos");
   const [currentUserRole, setCurrentUserRole] = useState<UserRole>("super_admin");
-  const [currentUserName, setCurrentUserName] = useState<string>("Dr. Edson Pudles");
+  const [currentUserName, setCurrentUserName] = useState<string>("");
+  const [currentUserCargo, setCurrentUserCargo] = useState<string>("Super Admin • Coordenação Geral");
   const [usuarios, setUsuarios] = useState<PerfilUsuario[]>([]);
   const [loadingUsuarios, setLoadingUsuarios] = useState(false);
 
-  // Restore activeTab from sessionStorage on mount
+  // Edit My Account Modal States
+  const [showEditAccountModal, setShowEditAccountModal] = useState(false);
+  const [editAccountNome, setEditAccountNome] = useState("");
+  const [editAccountCargo, setEditAccountCargo] = useState("");
+  const [editAccountEmail, setEditAccountEmail] = useState("");
+  const [editAccountSenha, setEditAccountSenha] = useState("");
+  const [savingAccount, setSavingAccount] = useState(false);
+
+  // Restore activeTab and custom profile on mount
   useEffect(() => {
     try {
       const savedTab = sessionStorage.getItem("sbc_admin_active_tab");
       if (savedTab && ["capitulos", "autores", "usuarios"].includes(savedTab)) {
         setActiveTab(savedTab as any);
+      }
+      const customP = localStorage.getItem("sbc_custom_user_profile");
+      if (customP) {
+        const p = JSON.parse(customP);
+        if (p.nome) setCurrentUserName(p.nome);
+        if (p.cargo) setCurrentUserCargo(p.cargo);
+        if (p.email) setUserEmail(p.email);
       }
     } catch (e) {}
   }, []);
@@ -356,6 +372,51 @@ export default function AdminPainelPage() {
         }
       }
 
+      // Ensure the logged in user is always in the list with their custom name & Super Admin role
+      const customP = typeof window !== "undefined" ? localStorage.getItem("sbc_custom_user_profile") : null;
+      let customName = currentUserName;
+      let customCargo = currentUserCargo;
+      let customEmail = userEmail;
+      if (customP) {
+        try {
+          const cp = JSON.parse(customP);
+          if (cp.nome) customName = cp.nome;
+          if (cp.cargo) customCargo = cp.cargo;
+          if (cp.email) customEmail = cp.email;
+        } catch (e) {}
+      }
+
+      const loggedEmail = customEmail || userEmail || "atendimento@wdcom.com.br";
+
+      if (loggedEmail) {
+        const existingIdx = list.findIndex(
+          (u) => u.email?.toLowerCase() === loggedEmail.toLowerCase()
+        );
+
+        if (existingIdx >= 0) {
+          list[existingIdx] = {
+            ...list[existingIdx],
+            nome: customName || list[existingIdx].nome || "Super Admin",
+            cargo_instituicao: customCargo || list[existingIdx].cargo_instituicao || "Super Admin • SBC",
+            role: "super_admin",
+            status: "aprovado",
+          };
+        } else {
+          const myProfile: PerfilUsuario = {
+            id: "me-" + Date.now(),
+            email: loggedEmail,
+            nome: customName || "Super Admin",
+            cargo_instituicao: customCargo || "Super Admin • Coordenação Geral SBC",
+            role: "super_admin",
+            status: "aprovado",
+            created_at: new Date().toISOString(),
+            aprovado_em: new Date().toISOString(),
+          };
+          list = [myProfile, ...list];
+        }
+        localStorage.setItem("sbc_registered_users", JSON.stringify(list));
+      }
+
       setUsuarios(list);
     } catch (err) {
       console.warn("Error loading perfis:", err);
@@ -368,6 +429,124 @@ export default function AdminPainelPage() {
     } finally {
       setLoadingUsuarios(false);
     }
+  };
+
+  const handleOpenEditAccount = () => {
+    setEditAccountNome(currentUserName || "Super Admin");
+    setEditAccountCargo(currentUserCargo || "Super Admin • Coordenação Geral SBC");
+    setEditAccountEmail(userEmail || "atendimento@wdcom.com.br");
+    setEditAccountSenha("");
+    setShowEditAccountModal(true);
+  };
+
+  const handleSaveMyAccount = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editAccountNome.trim()) {
+      alert("Por favor, informe seu nome completo.");
+      return;
+    }
+
+    setSavingAccount(true);
+    const newNome = editAccountNome.trim();
+    const newCargo = editAccountCargo.trim() || "Super Admin • SBC";
+    const newEmail = editAccountEmail.trim() || userEmail || "atendimento@wdcom.com.br";
+
+    setCurrentUserName(newNome);
+    setCurrentUserCargo(newCargo);
+    setUserEmail(newEmail);
+
+    const profileData = {
+      nome: newNome,
+      cargo: newCargo,
+      email: newEmail,
+    };
+
+    localStorage.setItem("sbc_custom_user_profile", JSON.stringify(profileData));
+
+    // Update local admin session
+    const localSess = localStorage.getItem("sbc_admin_session");
+    if (localSess) {
+      try {
+        const parsed = JSON.parse(localSess);
+        parsed.nome = newNome;
+        parsed.email = newEmail;
+        localStorage.setItem("sbc_admin_session", JSON.stringify(parsed));
+      } catch (e) {}
+    }
+
+    // Update users list in state & local storage
+    setUsuarios((prev) => {
+      let found = false;
+      const updated = prev.map((u) => {
+        if (
+          u.email?.toLowerCase() === newEmail.toLowerCase() ||
+          u.email?.toLowerCase() === userEmail?.toLowerCase() ||
+          u.id.startsWith("me-")
+        ) {
+          found = true;
+          return {
+            ...u,
+            nome: newNome,
+            cargo_instituicao: newCargo,
+            email: newEmail,
+            role: "super_admin" as UserRole,
+            status: "aprovado" as UserStatus,
+          };
+        }
+        return u;
+      });
+
+      if (!found) {
+        updated.unshift({
+          id: "me-" + Date.now(),
+          email: newEmail,
+          nome: newNome,
+          cargo_instituicao: newCargo,
+          role: "super_admin",
+          status: "aprovado",
+          created_at: new Date().toISOString(),
+          aprovado_em: new Date().toISOString(),
+        });
+      }
+
+      localStorage.setItem("sbc_registered_users", JSON.stringify(updated));
+      return updated;
+    });
+
+    // Supabase update if configured
+    if (isSupabaseConfigured()) {
+      try {
+        const { data: sessData } = await supabase.auth.getSession();
+        if (sessData?.session?.user) {
+          await supabase.auth.updateUser({
+            data: {
+              nome: newNome,
+              cargo_instituicao: newCargo,
+            },
+            ...(editAccountSenha.trim() ? { password: editAccountSenha.trim() } : {}),
+          });
+
+          await supabase.from("perfis").upsert({
+            id: sessData.session.user.id,
+            email: newEmail,
+            nome: newNome,
+            cargo_instituicao: newCargo,
+            role: "super_admin",
+            status: "aprovado",
+            updated_at: new Date().toISOString(),
+          });
+        }
+      } catch (err) {
+        console.warn("Supabase update profile error:", err);
+      }
+    }
+
+    setSavingAccount(false);
+    setShowEditAccountModal(false);
+    setFeedback({
+      type: "success",
+      message: `✓ Sua conta foi atualizada com sucesso para "${newNome}"!`,
+    });
   };
 
   const handleUpdateUserStatus = async (
@@ -802,21 +981,25 @@ export default function AdminPainelPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
             {/* MINHA CONTA / USUÁRIO CONECTADO */}
             <div
+              onClick={handleOpenEditAccount}
+              title="Clique para editar seu perfil, nome e informações da conta"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 12,
                 padding: "6px 14px 6px 8px",
                 borderRadius: 12,
-                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%)",
+                border: "1px solid rgba(255, 255, 255, 0.25)",
+                boxShadow: "0 4px 14px rgba(0, 0, 0, 0.2)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
               }}
             >
               <div
                 style={{
-                  width: 38,
-                  height: 38,
+                  width: 40,
+                  height: 40,
                   borderRadius: "50%",
                   background: currentUserRole === "super_admin"
                     ? "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
@@ -827,16 +1010,16 @@ export default function AdminPainelPage() {
                   justifyContent: "center",
                   fontSize: 14,
                   fontWeight: 900,
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
                   flexShrink: 0,
                 }}
               >
-                {currentUserName ? currentUserName.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "EP"}
+                {currentUserName ? currentUserName.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "SA"}
               </div>
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                   <span style={{ fontSize: 13.5, fontWeight: 800, color: "#fff" }}>
-                    {currentUserName || "Dr. Edson Pudles"}
+                    {currentUserName || "Administrador Geral"}
                   </span>
                   <span
                     style={{
@@ -861,8 +1044,8 @@ export default function AdminPainelPage() {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "#94a3b8", margin: "1px 0 0" }}>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
-                  <span>{userEmail || "edson.pudles@sbc.med.br"}</span>
-                  <span>• Conectado</span>
+                  <span>{userEmail || "atendimento@wdcom.com.br"}</span>
+                  <span style={{ color: "#38bdf8", fontWeight: 700, marginLeft: 2 }}>• ✏️ Editar Perfil</span>
                 </div>
               </div>
             </div>
@@ -1990,6 +2173,238 @@ export default function AdminPainelPage() {
           />
         )}
       </main>
+
+      {/* ================= MODAL: EDITAR MINHA CONTA ================= */}
+      {showEditAccountModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0, 15, 40, 0.75)",
+            backdropFilter: "blur(8px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            padding: 20,
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: 20,
+              maxWidth: 540,
+              width: "100%",
+              padding: "32px",
+              boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)",
+              border: "1px solid #e2e8f0",
+              animation: "fadeIn 0.2s ease",
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)",
+                    color: "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    fontWeight: 900,
+                    boxShadow: "0 4px 12px rgba(124, 58, 237, 0.3)",
+                  }}
+                >
+                  {editAccountNome ? editAccountNome.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "SA"}
+                </div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 19, fontWeight: 900, color: "#001a3d" }}>
+                    Editar Minha Conta
+                  </h3>
+                  <p style={{ margin: "2px 0 0", fontSize: 13, color: "#64748b" }}>
+                    Atualize seu nome de exibição, cargo e credenciais de acesso
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowEditAccountModal(false)}
+                style={{
+                  background: "#f1f5f9",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: 32,
+                  height: 32,
+                  display: "grid",
+                  placeItems: "center",
+                  fontSize: 14,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  color: "#64748b",
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveMyAccount} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Seu Nome Completo *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editAccountNome}
+                  onChange={(e) => setEditAccountNome(e.target.value)}
+                  placeholder="Ex: Manoel Silva / Dr. Nome Sobrenome"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14.5,
+                    fontWeight: 600,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  E-mail de Acesso
+                </label>
+                <input
+                  type="email"
+                  value={editAccountEmail}
+                  onChange={(e) => setEditAccountEmail(e.target.value)}
+                  placeholder="seu.email@dominio.com"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                    background: "#f8fafc",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Cargo / Instituição Médica
+                </label>
+                <input
+                  type="text"
+                  value={editAccountCargo}
+                  onChange={(e) => setEditAccountCargo(e.target.value)}
+                  placeholder="Ex: Super Admin • SBC / Coordenador Geral"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  padding: "12px 16px",
+                  borderRadius: 10,
+                  background: "#f5f3ff",
+                  border: "1px solid #ddd6fe",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#6d28d9", textTransform: "uppercase" }}>
+                    Nível de Acesso no Sistema
+                  </div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#4c1d95", marginTop: 2 }}>
+                    👑 Super Admin (Acesso Total & Irrestrito)
+                  </div>
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "3px 8px", borderRadius: 6, background: "#7c3aed", color: "#fff" }}>
+                  ATIVO
+                </span>
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Nova Senha (Opcional)
+                </label>
+                <input
+                  type="password"
+                  value={editAccountSenha}
+                  onChange={(e) => setEditAccountSenha(e.target.value)}
+                  placeholder="Deixe em branco para não alterar"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 12 }}>
+                <button
+                  type="button"
+                  onClick={() => setShowEditAccountModal(false)}
+                  style={{
+                    padding: "11px 20px",
+                    borderRadius: 10,
+                    border: "1px solid #cbd5e1",
+                    background: "#f8fafc",
+                    color: "#475569",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={savingAccount}
+                  style={{
+                    padding: "11px 24px",
+                    borderRadius: 10,
+                    border: "none",
+                    background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+                    color: "#fff",
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                    boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
+                  }}
+                >
+                  {savingAccount ? "Salvando..." : "✓ Salvar Alterações"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
