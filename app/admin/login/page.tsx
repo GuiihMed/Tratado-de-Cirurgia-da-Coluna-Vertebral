@@ -231,10 +231,35 @@ export default function AdminLoginPage() {
           }
         }
       } else {
+        const customPassMap = JSON.parse(localStorage.getItem("sbc_custom_passwords") || "{}");
+        const requiredPass = customPassMap[email.toLowerCase()];
+        if (requiredPass && requiredPass !== password) {
+          setErrorMessage("Senha incorreta. Verifique a senha redefinida com o Super Admin.");
+          setLoading(false);
+          return;
+        }
+
+        const registered = JSON.parse(localStorage.getItem("sbc_registered_users") || "[]");
+        const userProfile = registered.find((u: any) => u.email?.toLowerCase() === email.toLowerCase());
+        if (userProfile) {
+          if (userProfile.status === "pendente") {
+            setErrorMessage("Sua conta está cadastrada, mas ainda aguarda aprovação de um Super Admin.");
+            setLoading(false);
+            return;
+          }
+          if (userProfile.status === "bloqueado") {
+            setErrorMessage("Seu acesso foi temporariamente suspenso. Contate a administração da SBC.");
+            setLoading(false);
+            return;
+          }
+        }
+
         localStorage.setItem(
           "sbc_admin_session",
           JSON.stringify({
             email,
+            nome: userProfile?.nome || "Membro SBC",
+            role: userProfile?.role || "escritor",
             authenticatedAt: new Date().toISOString(),
           })
         );

@@ -11,7 +11,7 @@ interface UsersManagementTabProps {
   onUpdateStatus: (id: string, role: UserRole, status: UserStatus) => void | Promise<void>;
   onDeleteUser: (id: string, nome: string) => void | Promise<void>;
   onAddUser: (usuario: PerfilUsuario) => void | Promise<void>;
-  onEditUser?: (usuario: PerfilUsuario) => void | Promise<void>;
+  onEditUser?: (usuario: PerfilUsuario, novaSenha?: string) => void | Promise<void>;
   isPending: boolean;
 }
 
@@ -97,6 +97,7 @@ export default function UsersManagementTab({
   const [editRole, setEditRole] = useState<UserRole>("escritor");
   const [editStatus, setEditStatus] = useState<UserStatus>("aprovado");
   const [editPassword, setEditPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleOpenEditModal = (user: PerfilUsuario) => {
     setEditingUserId(user.id);
@@ -106,6 +107,7 @@ export default function UsersManagementTab({
     setEditRole(user.role || "escritor");
     setEditStatus(user.status || "aprovado");
     setEditPassword("");
+    setShowPassword(false);
     setShowEditModal(true);
   };
 
@@ -130,7 +132,7 @@ export default function UsersManagementTab({
     };
 
     if (onEditUser) {
-      onEditUser(updatedUser);
+      onEditUser(updatedUser, editPassword.trim() || undefined);
     } else {
       onUpdateStatus(editingUserId, editRole, editStatus);
     }
@@ -1315,6 +1317,97 @@ CREATE TRIGGER on_auth_user_created
                     <option value="bloqueado">🚫 Acesso Suspenso</option>
                   </select>
                 </div>
+              </div>
+
+              {/* SEÇÃO DE REDEFINIÇÃO DE SENHA PELO SUPER ADMIN */}
+              <div
+                style={{
+                  background: "#fdf4ff",
+                  padding: "14px 16px",
+                  borderRadius: 12,
+                  border: "1.5px dashed #d946ef",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                  <label
+                    style={{
+                      display: "block",
+                      fontSize: 12,
+                      fontWeight: 900,
+                      color: "#86198f",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.04em",
+                      margin: 0,
+                    }}
+                  >
+                    🔑 Redefinir Senha do Usuário (Caso tenha esquecido)
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const randomPass = "SBC@" + Math.floor(100000 + Math.random() * 900000);
+                      setEditPassword(randomPass);
+                      setShowPassword(true);
+                    }}
+                    style={{
+                      background: "#f0abfc",
+                      border: "none",
+                      borderRadius: 6,
+                      padding: "4px 9px",
+                      fontSize: 11,
+                      fontWeight: 800,
+                      color: "#701a75",
+                      cursor: "pointer",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
+                    }}
+                  >
+                    ⚡ Gerar Senha Rápida
+                  </button>
+                </div>
+                <div style={{ position: "relative" }}>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={editPassword}
+                    onChange={(e) => setEditPassword(e.target.value)}
+                    placeholder="Digite a nova senha para o usuário ou use 'Gerar Senha Rápida'"
+                    style={{
+                      width: "100%",
+                      padding: "10px 42px 10px 14px",
+                      borderRadius: 8,
+                      border: "1.5px solid #e879f9",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: "#4a044e",
+                      boxSizing: "border-box",
+                      outline: "none",
+                      background: "#fff",
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    title={showPassword ? "Ocultar senha" : "Ver senha"}
+                    style={{
+                      position: "absolute",
+                      right: 8,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: 15,
+                      padding: 4,
+                      color: "#86198f",
+                    }}
+                  >
+                    {showPassword ? "👁️" : "🙈"}
+                  </button>
+                </div>
+                <p style={{ margin: "6px 0 0", fontSize: 11.5, color: "#a21caf", lineHeight: 1.4 }}>
+                  💡 O Super Admin pode definir uma nova senha direta aqui para entregar ao usuário caso ele tenha esquecido o acesso. Deixe em branco para manter a senha atual.
+                </p>
               </div>
 
               <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 12 }}>

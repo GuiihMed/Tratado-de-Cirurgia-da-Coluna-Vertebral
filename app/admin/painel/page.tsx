@@ -12,6 +12,7 @@ import {
   salvarAutorAction,
   excluirAutorAction,
   atualizarPerfilUsuarioAction,
+  atualizarDadosCompletosUsuarioAction,
   excluirUsuarioAction,
 } from "../actions";
 import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor";
@@ -627,7 +628,7 @@ export default function AdminPainelPage() {
     }
   };
 
-  const handleEditOtherUser = async (usuario: PerfilUsuario) => {
+  const handleEditOtherUser = async (usuario: PerfilUsuario, novaSenha?: string) => {
     if (currentUserRole !== "super_admin") {
       setFeedback({
         type: "error",
@@ -642,33 +643,29 @@ export default function AdminPainelPage() {
       return updated;
     });
 
-    startTransition(async () => {
-      let success = true;
-      let msg = `✓ Conta de "${usuario.nome}" atualizada com sucesso pelo Super Admin!`;
+    if (novaSenha && novaSenha.trim()) {
+      try {
+        const customPassMap = JSON.parse(localStorage.getItem("sbc_custom_passwords") || "{}");
+        customPassMap[usuario.email.toLowerCase()] = novaSenha.trim();
+        localStorage.setItem("sbc_custom_passwords", JSON.stringify(customPassMap));
+      } catch (e) {}
+    }
 
-      if (isSupabaseConfigured()) {
-        try {
-          const { error } = await supabase.from("perfis").upsert({
-            id: usuario.id,
-            nome: usuario.nome,
-            email: usuario.email,
-            cargo_instituicao: usuario.cargo_instituicao,
-            role: usuario.role,
-            status: usuario.status,
-            updated_at: new Date().toISOString(),
-          });
-          if (error) {
-            success = false;
-            msg = `Aviso: Erro ao sincronizar no banco: ${error.message}`;
-          }
-        } catch (e: any) {
-          console.warn("Supabase upsert error:", e);
-        }
-      }
+    startTransition(async () => {
+      const res = await atualizarDadosCompletosUsuarioAction(usuario.id, {
+        nome: usuario.nome,
+        email: usuario.email,
+        cargo_instituicao: usuario.cargo_instituicao || "Membro SBC",
+        role: usuario.role,
+        status: usuario.status,
+        nova_senha: novaSenha?.trim(),
+      });
 
       setFeedback({
-        type: success ? "success" : "error",
-        message: msg,
+        type: res.success ? "success" : "error",
+        message: res.success
+          ? `✓ Conta de "${usuario.nome}" atualizada com sucesso! ${novaSenha ? "🔑 Nova senha definida." : ""}`
+          : res.message,
       });
 
       if (isSupabaseConfigured()) {

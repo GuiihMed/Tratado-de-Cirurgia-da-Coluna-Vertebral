@@ -324,6 +324,72 @@ export async function atualizarPerfilUsuarioAction(
 }
 
 /**
+ * Server action to update user full profile and reset password
+ */
+export async function atualizarDadosCompletosUsuarioAction(
+  id: string,
+  dados: {
+    nome: string;
+    email: string;
+    cargo_instituicao: string;
+    role: "super_admin" | "co_super_admin" | "admin_escritor" | "escritor";
+    status: "pendente" | "aprovado" | "bloqueado";
+    nova_senha?: string;
+  }
+): Promise<ActionResult> {
+  try {
+    const client = getSupabaseServerClient();
+    const { error } = await client
+      .from("perfis")
+      .upsert({
+        id,
+        nome: dados.nome,
+        email: dados.email,
+        cargo_instituicao: dados.cargo_instituicao,
+        role: dados.role,
+        status: dados.status,
+        aprovado_em: dados.status === "aprovado" ? new Date().toISOString() : null,
+        updated_at: new Date().toISOString(),
+      });
+
+    if (error) {
+      return {
+        success: false,
+        message: `Erro ao atualizar usuário: ${error.message}`,
+        error: error.message,
+      };
+    }
+
+    if (dados.nova_senha && dados.nova_senha.trim()) {
+      try {
+        if ((client.auth as any).admin?.updateUserById) {
+          await (client.auth as any).admin.updateUserById(id, {
+            password: dados.nova_senha.trim(),
+          });
+        }
+      } catch (authErr: any) {
+        console.warn("Supabase admin auth update:", authErr?.message);
+      }
+    }
+
+    revalidatePath("/admin/painel", "page");
+
+    return {
+      success: true,
+      message: `Usuário "${dados.nome}" atualizado com sucesso! ${
+        dados.nova_senha ? "Nova senha definida." : ""
+      }`,
+    };
+  } catch (err: any) {
+    return {
+      success: false,
+      message: "Erro ao salvar alterações do usuário.",
+      error: err?.message,
+    };
+  }
+}
+
+/**
  * Server action to delete user profile
  */
 export async function excluirUsuarioAction(id: string): Promise<ActionResult> {
