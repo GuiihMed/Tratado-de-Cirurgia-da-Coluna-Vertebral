@@ -170,9 +170,9 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                 {/* Action Buttons */}
                 <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
                   <a
-                    href="https://www.dilivros.com.br/"
+                    href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -590,9 +590,9 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                   Uma obra para consulta, estudo e referência — exclusivamente em formato impresso.
                 </h3>
                 <a
-                  href="https://www.dilivros.com.br/"
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",

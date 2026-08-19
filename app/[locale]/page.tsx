@@ -70,7 +70,12 @@ export default async function HomePage({ params }: HomePageProps) {
                     <use href="#i-arrow"></use>
                   </svg>
                 </Link>
-                <a className="btn btn-outline" href="#comprar">
+                <a
+                  className="btn btn-outline"
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {dict.heroHome.whereToBuy} <span className="cart">⌑</span>
                 </a>
               </div>

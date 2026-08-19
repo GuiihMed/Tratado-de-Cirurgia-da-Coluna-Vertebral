@@ -63,9 +63,14 @@ export default function ModernHeader({
           >
             {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
           </Link>
-          <Link href={`/${locale}/home-new#comprar`} className="modern-nav-link">
+          <a
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modern-nav-link"
+          >
             {locale === "en" ? "Get Book" : locale === "es" ? "Comprar" : "Adquirir Obra"}
-          </Link>
+          </a>
         </nav>
 
         {/* Desktop Language Switcher */}
@@ -146,12 +151,14 @@ export default function ModernHeader({
             >
               {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
             </Link>
-            <Link
-              href={`/${locale}/home-new#comprar`}
+            <a
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "en" ? "Get Book" : locale === "es" ? "Comprar" : "Adquirir Obra"}
-            </Link>
+            </a>
           </nav>
 
           <div className="modern-drawer-footer">

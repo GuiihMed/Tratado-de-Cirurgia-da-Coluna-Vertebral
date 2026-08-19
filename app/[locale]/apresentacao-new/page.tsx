@@ -105,9 +105,9 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
-                    href="https://www.dilivros.com.br/"
+                    href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 transition-all hover:scale-[1.02]"
                   >
                     <span>Adquirir Edição Impressa</span>

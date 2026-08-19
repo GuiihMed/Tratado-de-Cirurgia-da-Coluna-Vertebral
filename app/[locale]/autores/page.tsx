@@ -408,9 +408,9 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 {locale === "en" ? "Acquire your printed edition published by DiLivros and SBC." : locale === "es" ? "Adquiera su edición impresa con la calidad DiLivros y el sello SBC." : "Adquira sua edição impressa com a qualidade DiLivros e o selo da SBC."}
               </p>
               <a
-                href="https://www.dilivros.com.br/"
+                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

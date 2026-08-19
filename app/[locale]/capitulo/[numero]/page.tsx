@@ -333,8 +333,10 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                 {/* Action Buttons */}
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-                  <Link
-                    href={`/${locale}#comprar`}
+                  <a
+                    href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -352,7 +354,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   >
                     <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                     <span>🛒</span>
-                  </Link>
+                  </a>
 
                   <a
                     href="#referencias"

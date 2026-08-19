@@ -104,7 +104,13 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </Link>
           <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
           <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
-          <Link href={`/${locale}#comprar`}>{dict.nav.buy}</Link>
+          <a
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {dict.nav.buy}
+          </a>
         </nav>
 
         {/* Desktop Languages & Account */}
@@ -189,12 +195,14 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             >
               {dict.nav.debate}
             </Link>
-            <Link
-              href={`/${locale}#comprar`}
+            <a
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
             >
               {dict.nav.buy}
-            </Link>
+            </a>
           </nav>
 
           <div className="mobile-drawer-footer">

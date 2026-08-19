@@ -348,8 +348,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
               {/* CTA Action Buttons */}
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-                <Link
-                  href={`/${locale}/home-new#comprar`}
+                <a
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -367,7 +369,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 >
                   <span>{locale === "en" ? "Acquire Printed Treatise" : locale === "es" ? "Adquirir Tratado Impreso" : "Adquirir Tratado Impresso"}</span>
                   <span>🛒</span>
-                </Link>
+                </a>
 
                 <a
                   href="#resumo"
@@ -1181,8 +1183,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     : "A íntegra com todos os esquemas cirúrgicos, tabelas e discussões técnicas completas é exclusiva do Tratado Impresso."}
                 </p>
 
-                <Link
-                  href={`/${locale}/home-new#comprar`}
+                <a
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     display: "block",
                     textAlign: "center",
@@ -1197,7 +1201,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   {locale === "en" ? "Explore Official Printed Edition →" : locale === "es" ? "Conocer Edición Impresa Oficial →" : "Conhecer Edição Impressa Oficial →"}
-                </Link>
+                </a>
               </div>
             </aside>
           </div>

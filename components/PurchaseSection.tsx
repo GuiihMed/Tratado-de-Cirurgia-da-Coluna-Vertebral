@@ -46,7 +46,13 @@ export default function PurchaseSection({
           />
           <div className="purchase-cta">
             <p>{dict.purchaseHome.ctaText}</p>
-            <a className="btn btn-primary" href="#comprar" id="btn-comprar-home">
+            <a
+              className="btn btn-primary"
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="btn-comprar-home"
+            >
               {dict.purchaseHome.ctaBtn}{" "}
               <svg>
                 <use href="#i-arrow"></use>
@@ -65,7 +71,13 @@ export default function PurchaseSection({
           <h2>{dict.purchaseIndice.title}</h2>
           <div className="red-rule"></div>
           <p>{dict.purchaseIndice.subtitle}</p>
-          <a className="btn btn-primary" href="#comprar" id="btn-comprar-indice">
+          <a
+            className="btn btn-primary"
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="btn-comprar-indice"
+          >
             {dict.purchaseIndice.ctaBtn}{" "}
             <svg>
               <use href="#i-cart"></use>

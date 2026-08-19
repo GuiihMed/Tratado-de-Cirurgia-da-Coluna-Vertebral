@@ -59,7 +59,12 @@ export default async function IndicePage({ params }: IndicePageProps) {
                     <use href="#i-arrow"></use>
                   </svg>
                 </a>
-                <a className="btn btn-outline" href="#comprar">
+                <a
+                  className="btn btn-outline"
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {dict.heroIndice.whereToBuy}{" "}
                   <svg>
                     <use href="#i-cart"></use>

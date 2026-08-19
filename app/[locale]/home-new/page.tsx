@@ -1200,7 +1200,9 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
 
                 <a
-                  href="#comprar"
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="modern-btn-glow"
                   style={{ height: 60, padding: "0 40px", fontSize: 17 }}
                 >

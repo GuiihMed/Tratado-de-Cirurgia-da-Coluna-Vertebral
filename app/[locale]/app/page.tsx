@@ -733,7 +733,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
               </p>
 
               <a
-                href="https://coluna.org.br"
+                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -751,8 +751,8 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   boxShadow: "0 8px 25px rgba(245, 34, 56, 0.45)",
                 }}
               >
-                <span>Comprar pelo Portal SBC Oficial</span>
-                <span>↗</span>
+                <span>Adquirir Exemplar Impresso (DiLivros)</span>
+                <span>🛒</span>
               </a>
             </div>
           </div>

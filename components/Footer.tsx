@@ -41,7 +41,13 @@ export default function Footer({ locale }: FooterProps) {
           <h3>{dict.footer.contentTitle}</h3>
           <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
           <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
-          <Link href={`/${locale}#comprar`}>{dict.nav.buy}</Link>
+          <a
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {dict.nav.buy}
+          </a>
           <Link href="/admin/login" style={{ color: "#ff8290" }}>
             {dict.nav.admin}
           </Link>
