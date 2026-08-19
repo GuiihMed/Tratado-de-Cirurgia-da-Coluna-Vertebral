@@ -299,6 +299,7 @@ export default function AdminPainelPage() {
   const [chapters, setChapters] = useState<Capitulo[]>([]);
   const [authors, setAuthors] = useState<AutorEditor[]>(DEFAULT_AUTHORS);
   const [filterSecao, setFilterSecao] = useState<string>("all");
+  const [authorCategoryFilter, setAuthorCategoryFilter] = useState<string>("todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [loadingList, setLoadingList] = useState(false);
 
@@ -1749,93 +1750,231 @@ export default function AdminPainelPage() {
         )}
 
         {/* ================= ABA 2: GESTÃO DO CORPO EDITORIAL & AUTORES ================= */}
-        {activeTab === "autores" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 32, alignItems: "start" }}>
-            {/* Form de Cadastro / Edição de Autor */}
-            <section
-              style={{
-                background: "#fff",
-                borderRadius: 18,
-                padding: "36px",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-              }}
-            >
-              <div
+        {activeTab === "autores" && (() => {
+          // Categorize authors for dividers & counts
+          const isEditorGeral = (cargo: string = "") => {
+            const c = cargo.toLowerCase();
+            return c.includes("chefe") || c.includes("editor-chefe") || c.includes("editor /") || c.includes("editor geral") || c === "editor";
+          };
+
+          const isEditorAssociado = (cargo: string = "") => {
+            const c = cargo.toLowerCase();
+            return c.includes("associado") || c.includes("coordenador") || c.includes("seção") || c.includes("secao");
+          };
+
+          const editoresGerais = authors.filter((a) => isEditorGeral(a.cargo));
+          const editoresAssociados = authors.filter((a) => isEditorAssociado(a.cargo));
+          const autoresColaboradores = authors.filter((a) => !isEditorGeral(a.cargo) && !isEditorAssociado(a.cargo));
+
+          const filteredCategories = [
+            {
+              id: "editores_gerais",
+              title: "Editores-Chefes & Editores Gerais",
+              icon: "👑",
+              badgeBg: "#fef2f2",
+              badgeColor: "#dc2626",
+              badgeBorder: "#fecaca",
+              accentColor: "#e11d48",
+              list: editoresGerais,
+            },
+            {
+              id: "editores_associados",
+              title: "Editores Associados & Coordenadores de Seção",
+              icon: "🏛️",
+              badgeBg: "#f0f9ff",
+              badgeColor: "#0284c7",
+              badgeBorder: "#bae6fd",
+              accentColor: "#0284c7",
+              list: editoresAssociados,
+            },
+            {
+              id: "autores_colaboradores",
+              title: "Autores de Capítulos & Colaboradores Científicos",
+              icon: "✍️",
+              badgeBg: "#faf5ff",
+              badgeColor: "#7c3aed",
+              badgeBorder: "#ddd6fe",
+              accentColor: "#7c3aed",
+              list: autoresColaboradores,
+            },
+          ].filter((cat) => {
+            if (authorCategoryFilter === "todos") return true;
+            return authorCategoryFilter === cat.id;
+          });
+
+          return (
+            <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 32, alignItems: "start" }}>
+              {/* Form de Cadastro / Edição de Autor */}
+              <section
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  marginBottom: 24,
-                  borderBottom: "1px solid #f1f5f9",
-                  paddingBottom: 18,
+                  background: "#fff",
+                  borderRadius: 18,
+                  padding: "36px",
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
                 }}
               >
-                <div>
-                  <div
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    marginBottom: 24,
+                    borderBottom: "1px solid #f1f5f9",
+                    paddingBottom: 18,
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        padding: "4px 10px",
+                        borderRadius: 6,
+                        background: "rgba(245, 34, 56, 0.1)",
+                        color: "#f52238",
+                        fontSize: 12,
+                        fontWeight: 800,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        marginBottom: 6,
+                      }}
+                    >
+                      <IconUsers size={14} />
+                      <span>Gestão do Corpo Editorial</span>
+                    </div>
+                    <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                      {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
+                    </h2>
+                    <p style={{ fontSize: 13, color: "#64748b", margin: "4px 0 0" }}>
+                      Preencha os dados do médico para publicação na página inicial e no catálogo de autores.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleClearAuthorForm}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
                       gap: 6,
-                      padding: "4px 10px",
-                      borderRadius: 6,
-                      background: "rgba(245, 34, 56, 0.1)",
-                      color: "#f52238",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      marginBottom: 6,
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      border: "1px solid #e2e8f0",
+                      background: "#fff",
+                      color: "#64748b",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      transition: "all 0.15s",
                     }}
                   >
-                    <IconUsers size={14} />
-                    <span>Gestão do Corpo Editorial</span>
-                  </div>
-                  <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0 }}>
-                    {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
-                  </h2>
+                    <IconPlus size={14} />
+                    <span>Novo Autor</span>
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={handleClearAuthorForm}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 14px",
-                    borderRadius: 8,
-                    border: "1px solid #e2e8f0",
-                    background: "#fff",
-                    color: "#64748b",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                  }}
-                >
-                  <IconPlus size={14} />
-                  <span>Novo Autor</span>
-                </button>
-              </div>
+                <form onSubmit={handleAuthorSubmit}>
+                  <input type="hidden" name="id" value={authorId} />
 
-              <form onSubmit={handleAuthorSubmit}>
-                <input type="hidden" name="id" value={authorId} />
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 120px", gap: 16, marginBottom: 18 }}>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Nome Completo do Médico / Autor *
+                      </label>
+                      <input
+                        type="text"
+                        name="nome"
+                        value={authorNome}
+                        onChange={(e) => setAuthorNome(e.target.value)}
+                        placeholder="Ex: Prof. Dr. Edson Pudles ou Dr. Helton Defino"
+                        required
+                        style={{
+                          width: "100%",
+                          padding: "11px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          fontWeight: 600,
+                        }}
+                      />
+                    </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 120px", gap: 16, marginBottom: 18 }}>
-                  <div>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                      Nome Completo do Médico / Autor *
-                    </label>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Ordem de Exibição #
+                      </label>
+                      <input
+                        type="number"
+                        name="ordem"
+                        value={authorOrdem}
+                        onChange={(e) => setAuthorOrdem(e.target.value)}
+                        min={1}
+                        max={99}
+                        style={{
+                          width: "100%",
+                          padding: "11px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                          textAlign: "center",
+                          fontWeight: 800,
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Cargo Selection & Chips */}
+                  <div style={{ marginBottom: 18 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                      <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+                        Cargo / Título Oficial no Tratado *
+                      </label>
+                      <span style={{ fontSize: 11, color: "#64748b" }}>
+                        Clique em um modelo para preencher rápido:
+                      </span>
+                    </div>
+
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+                      {[
+                        { label: "👑 Editor-Chefe / SBC", value: "Editor-Chefe / SBC" },
+                        { label: "⭐ Editor / FMRP-USP", value: "Editor / FMRP-USP" },
+                        { label: "⭐ Editor / SBC", value: "Editor / SBC" },
+                        { label: "🏛️ Editor Associado", value: "Editor Associado / MIS" },
+                        { label: "📑 Coordenador de Seção", value: "Coordenador de Seção" },
+                        { label: "✍️ Autor de Capítulo", value: "Autor / Especialista SBC" },
+                      ].map((preset, pIdx) => (
+                        <button
+                          key={pIdx}
+                          type="button"
+                          onClick={() => setAuthorCargo(preset.value)}
+                          style={{
+                            padding: "4px 8px",
+                            borderRadius: 6,
+                            border: authorCargo === preset.value ? "1px solid #f52238" : "1px solid #e2e8f0",
+                            background: authorCargo === preset.value ? "#fff1f2" : "#f8fafc",
+                            color: authorCargo === preset.value ? "#e11d48" : "#475569",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {preset.label}
+                        </button>
+                      ))}
+                    </div>
+
                     <input
                       type="text"
-                      name="nome"
-                      value={authorNome}
-                      onChange={(e) => setAuthorNome(e.target.value)}
-                      placeholder="Ex: Dr. Edson Pudles"
+                      name="cargo"
+                      value={authorCargo}
+                      onChange={(e) => setAuthorCargo(e.target.value)}
+                      placeholder="Ex: Editor-Chefe / SBC ou Editor Associado - Grupo de Deformidades"
                       required
                       style={{
                         width: "100%",
-                        padding: "10px 14px",
+                        padding: "11px 14px",
                         borderRadius: 8,
                         border: "1px solid #cbd5e1",
                         fontSize: 14,
@@ -1844,399 +1983,456 @@ export default function AdminPainelPage() {
                     />
                   </div>
 
-                  <div>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                      Ordem #
-                    </label>
-                    <input
-                      type="number"
-                      name="ordem"
-                      value={authorOrdem}
-                      onChange={(e) => setAuthorOrdem(e.target.value)}
-                      min={1}
-                      max={99}
-                      style={{
-                        width: "100%",
-                        padding: "10px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                        textAlign: "center",
-                        fontWeight: 800,
-                      }}
-                    />
-                  </div>
-                </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 18 }}>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Instituição / Universidade
+                      </label>
+                      <input
+                        type="text"
+                        name="instituicao"
+                        value={authorInstituicao}
+                        onChange={(e) => setAuthorInstituicao(e.target.value)}
+                        placeholder="Ex: Faculdade de Medicina de Ribeirão Preto - USP (FMRP-USP)"
+                        style={{
+                          width: "100%",
+                          padding: "11px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                        }}
+                      />
+                    </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 18 }}>
-                  <div>
+                    <div>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                        Destaque / Principal Conquista Editorial
+                      </label>
+                      <input
+                        type="text"
+                        name="destaque"
+                        value={authorDestaque}
+                        onChange={(e) => setAuthorDestaque(e.target.value)}
+                        placeholder="Ex: Coordenação Editorial de 109 Capítulos"
+                        style={{
+                          width: "100%",
+                          padding: "11px 14px",
+                          borderRadius: 8,
+                          border: "1px solid #cbd5e1",
+                          fontSize: 14,
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Foto Picker com Prévia e Upload de Arquivo */}
+                  <div style={{ marginBottom: 18, background: "#f8fafc", padding: "18px", borderRadius: 14, border: "1px solid #e2e8f0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                      <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+                        Foto Oficial do Autor *
+                      </label>
+                      <span style={{ fontSize: 11.5, color: "#64748b" }}>
+                        Envie uma foto ou escolha uma foto oficial
+                      </span>
+                    </div>
+
+                    <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 14 }}>
+                      <img
+                        src={authorFotoUrl}
+                        alt="Prévia da foto"
+                        style={{
+                          width: 58,
+                          height: 58,
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "3px solid #fff",
+                          boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
+                          background: "#021a3a",
+                          flexShrink: 0,
+                        }}
+                      />
+
+                      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                          <label
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 6,
+                              padding: "7px 12px",
+                              borderRadius: 8,
+                              background: "#002244",
+                              color: "#fff",
+                              fontSize: 12,
+                              fontWeight: 700,
+                              cursor: "pointer",
+                              boxShadow: "0 2px 6px rgba(0,34,68,0.2)",
+                            }}
+                          >
+                            <span>📷 Carregar Arquivo de Foto</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: "none" }}
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                  const reader = new FileReader();
+                                  reader.onloadend = () => {
+                                    setAuthorFotoUrl(reader.result as string);
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              }}
+                            />
+                          </label>
+
+                          <input
+                            type="text"
+                            name="foto_url"
+                            value={authorFotoUrl}
+                            onChange={(e) => setAuthorFotoUrl(e.target.value)}
+                            placeholder="/assets/edson-pudles.png"
+                            required
+                            style={{
+                              flex: 1,
+                              padding: "7px 10px",
+                              borderRadius: 8,
+                              border: "1px solid #cbd5e1",
+                              fontSize: 12.5,
+                              background: "#fff",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Quick Photo Presets */}
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+                      <span style={{ fontSize: 11.5, color: "#64748b", fontWeight: 700 }}>
+                        Atalhos de Fotos:
+                      </span>
+                      {[
+                        { name: "Dr. Edson Pudles", url: "/assets/edson-pudles.png" },
+                        { name: "Dr. Helton Defino", url: "/assets/helton-defino.png" },
+                        { name: "Dr. Marcelo Risso", url: "/assets/marcelo-risso.png" },
+                        { name: "Prof. Dr. Elcio Landim", url: "/assets/elcio-landim.jpg" },
+                      ].map((preset, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setAuthorFotoUrl(preset.url)}
+                          style={{
+                            fontSize: 11.5,
+                            padding: "4px 10px",
+                            borderRadius: 6,
+                            border: authorFotoUrl === preset.url ? "1.5px solid #001a3d" : "1px solid #cbd5e1",
+                            background: authorFotoUrl === preset.url ? "#001a3d" : "#fff",
+                            color: authorFotoUrl === preset.url ? "#fff" : "#334155",
+                            fontWeight: 700,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {preset.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: 18 }}>
                     <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                      Cargo / Título Oficial *
+                      Mini-Currículo e Trajetória Acadêmica *
                     </label>
-                    <input
-                      type="text"
-                      name="cargo"
-                      value={authorCargo}
-                      onChange={(e) => setAuthorCargo(e.target.value)}
-                      placeholder="Ex: Editor-Chefe / SBC"
+                    <textarea
+                      name="bio_pt"
+                      value={authorBioPt}
+                      onChange={(e) => setAuthorBioPt(e.target.value)}
+                      rows={4}
+                      placeholder="Ex: Professor Titular do Departamento de Ortopedia da Faculdade de Medicina de Ribeirão Preto (USP). Reconhecido pelo pioneirismo em fixação pedicular e pesquisas biomecânicas internacionais da coluna vertebral..."
                       required
                       style={{
                         width: "100%",
-                        padding: "10px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                      Instituição / Universidade
-                    </label>
-                    <input
-                      type="text"
-                      name="instituicao"
-                      value={authorInstituicao}
-                      onChange={(e) => setAuthorInstituicao(e.target.value)}
-                      placeholder="Ex: Sociedade Brasileira de Coluna"
-                      style={{
-                        width: "100%",
-                        padding: "10px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: 18 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    Destaque / Principal Conquista Editorial
-                  </label>
-                  <input
-                    type="text"
-                    name="destaque"
-                    value={authorDestaque}
-                    onChange={(e) => setAuthorDestaque(e.target.value)}
-                    placeholder="Ex: Coordenação Editorial de 109 Capítulos"
-                    style={{
-                      width: "100%",
-                      padding: "10px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 14,
-                    }}
-                  />
-                </div>
-
-                {/* Foto Picker com Prévia */}
-                <div style={{ marginBottom: 18, background: "#f8fafc", padding: "16px", borderRadius: 12, border: "1px solid #e2e8f0" }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8 }}>
-                    Foto Oficial do Autor *
-                  </label>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 12 }}>
-                    <img
-                      src={authorFotoUrl}
-                      alt="Prévia"
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "3px solid #fff",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                        background: "#021a3a",
-                      }}
-                    />
-                    <input
-                      type="text"
-                      name="foto_url"
-                      value={authorFotoUrl}
-                      onChange={(e) => setAuthorFotoUrl(e.target.value)}
-                      placeholder="/assets/edson-pudles.png"
-                      required
-                      style={{
-                        flex: 1,
-                        padding: "9px 12px",
+                        padding: "11px 14px",
                         borderRadius: 8,
                         border: "1px solid #cbd5e1",
                         fontSize: 13.5,
-                        background: "#fff",
+                        lineHeight: 1.6,
                       }}
                     />
                   </div>
 
-                  {/* Quick Photo Buttons */}
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-                    <span style={{ fontSize: 12, color: "#64748b", fontWeight: 600 }}>
-                      Fotos Oficiais:
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setAuthorFotoUrl("/assets/edson-pudles.png")}
+                  <div style={{ marginBottom: 24 }}>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      Especialidades &amp; Áreas de Foco (separadas por vírgula)
+                    </label>
+                    <input
+                      type="text"
+                      name="especialidades"
+                      value={authorEspecialidades}
+                      onChange={(e) => setAuthorEspecialidades(e.target.value)}
+                      placeholder="Ex: Deformidades Complexas, Liderança Editorial, Fixação Pedicular, Diretrizes SBC"
                       style={{
-                        fontSize: 12,
-                        padding: "5px 12px",
-                        borderRadius: 6,
-                        border: authorFotoUrl === "/assets/edson-pudles.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/edson-pudles.png" ? "#001a3d" : "#fff",
-                        color: authorFotoUrl === "/assets/edson-pudles.png" ? "#fff" : "#334155",
-                        fontWeight: 700,
-                        cursor: "pointer",
+                        width: "100%",
+                        padding: "11px 14px",
+                        borderRadius: 8,
+                        border: "1px solid #cbd5e1",
+                        fontSize: 14,
                       }}
-                    >
-                      Dr. Edson Pudles
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setAuthorFotoUrl("/assets/helton-defino.png")}
-                      style={{
-                        fontSize: 12,
-                        padding: "5px 12px",
-                        borderRadius: 6,
-                        border: authorFotoUrl === "/assets/helton-defino.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/helton-defino.png" ? "#001a3d" : "#fff",
-                        color: authorFotoUrl === "/assets/helton-defino.png" ? "#fff" : "#334155",
-                        fontWeight: 700,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Dr. Helton Defino
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setAuthorFotoUrl("/assets/marcelo-risso.png")}
-                      style={{
-                        fontSize: 12,
-                        padding: "5px 12px",
-                        borderRadius: 6,
-                        border: authorFotoUrl === "/assets/marcelo-risso.png" ? "2px solid #001a3d" : "1px solid #cbd5e1",
-                        background: authorFotoUrl === "/assets/marcelo-risso.png" ? "#001a3d" : "#fff",
-                        color: authorFotoUrl === "/assets/marcelo-risso.png" ? "#fff" : "#334155",
-                        fontWeight: 700,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Dr. Marcelo Risso
-                    </button>
+                    />
                   </div>
-                </div>
 
-                <div style={{ marginBottom: 18 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    Mini-Currículo e Trajetória Acadêmica *
-                  </label>
-                  <textarea
-                    name="bio_pt"
-                    value={authorBioPt}
-                    onChange={(e) => setAuthorBioPt(e.target.value)}
-                    rows={4}
-                    placeholder="Descreva a formação médica, títulos acadêmicos e contribuição para a cirurgia da coluna..."
-                    required
+                  <button
+                    type="submit"
+                    disabled={isPending}
                     style={{
                       width: "100%",
-                      padding: "10px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 14,
-                      lineHeight: 1.5,
-                    }}
-                  />
-                </div>
-
-                <div style={{ marginBottom: 24 }}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                    Especialidades &amp; Áreas de Foco (separadas por vírgula)
-                  </label>
-                  <input
-                    type="text"
-                    name="especialidades"
-                    value={authorEspecialidades}
-                    onChange={(e) => setAuthorEspecialidades(e.target.value)}
-                    placeholder="Ex: Deformidades Complexas, Liderança Editorial, Diretrizes SBC"
-                    style={{
-                      width: "100%",
-                      padding: "10px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 14,
-                    }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isPending}
-                  style={{
-                    width: "100%",
-                    padding: "15px",
-                    borderRadius: 10,
-                    border: "none",
-                    background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
-                    color: "#fff",
-                    fontSize: 16,
-                    fontWeight: 800,
-                    cursor: isPending ? "not-allowed" : "pointer",
-                    boxShadow: "0 8px 24px rgba(245, 34, 56, 0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 8,
-                    transition: "all 0.2s ease",
-                  }}
-                >
-                  <IconSave size={18} />
-                  <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
-                </button>
-              </form>
-            </section>
-
-            {/* Listagem dos Autores Cadastrados */}
-            <section
-              style={{
-                background: "#fff",
-                borderRadius: 18,
-                padding: "32px",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-              }}
-            >
-              <div style={{ marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
-                <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
-                  👥 Corpo Editorial Cadastrado ({authors.length})
-                </h3>
-                <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
-                  Estes são os autores e editores exibidos na página inicial e nos capítulos do Tratado.
-                </p>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {authors.map((author, idx) => (
-                  <div
-                    key={author.id || idx}
-                    style={{
+                      padding: "15px",
+                      borderRadius: 10,
+                      border: "none",
+                      background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                      color: "#fff",
+                      fontSize: 15.5,
+                      fontWeight: 800,
+                      cursor: isPending ? "not-allowed" : "pointer",
+                      boxShadow: "0 8px 24px rgba(245, 34, 56, 0.3)",
                       display: "flex",
-                      gap: 16,
-                      padding: 18,
-                      borderRadius: 14,
-                      border: authorId === author.id ? "2px solid #f52238" : "1px solid #e2e8f0",
-                      background: authorId === author.id ? "#fff5f6" : "#f8fafc",
                       alignItems: "center",
+                      justifyContent: "center",
+                      gap: 8,
                       transition: "all 0.2s ease",
                     }}
                   >
-                    <img
-                      src={author.foto_url}
-                      alt={author.nome}
-                      style={{
-                        width: 64,
-                        height: 64,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "3px solid #fff",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                        background: "#021a3a",
-                      }}
-                    />
+                    <IconSave size={18} />
+                    <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
+                  </button>
+                </form>
+              </section>
 
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
-                        <span
-                          style={{
-                            fontSize: 11,
-                            fontWeight: 800,
-                            padding: "3px 8px",
-                            borderRadius: 4,
-                            background: "#f52238",
-                            color: "#fff",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {author.cargo}
-                        </span>
-                        <span style={{ fontSize: 11.5, color: "#64748b", fontWeight: 700 }}>
-                          Ordem #{author.ordem}
-                        </span>
-                      </div>
+              {/* Listagem dos Autores Cadastrados com Divisórias de Cargos */}
+              <section
+                style={{
+                  background: "#fff",
+                  borderRadius: 18,
+                  padding: "32px",
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
+                }}
+              >
+                <div style={{ marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                      👥 Corpo Editorial Cadastrado ({authors.length})
+                    </h3>
+                  </div>
+                  <p style={{ fontSize: 13, color: "#64748b", margin: "0 0 14px" }}>
+                    Autores e editores organizados por categoria hierárquica e exibidos no site.
+                  </p>
 
-                      <h4 style={{ fontSize: 16.5, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
-                        {author.nome}
-                      </h4>
-
-                      <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                        {author.instituicao}
-                      </p>
-                    </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  {/* Filter Pills */}
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {[
+                      { id: "todos", label: `Todos (${authors.length})` },
+                      { id: "editores_gerais", label: `👑 Editores Gerais (${editoresGerais.length})` },
+                      { id: "editores_associados", label: `🏛️ Editores Associados (${editoresAssociados.length})` },
+                      { id: "autores_colaboradores", label: `✍️ Autores (${autoresColaboradores.length})` },
+                    ].map((f) => (
                       <button
+                        key={f.id}
                         type="button"
-                        onClick={() => handleEditAuthor(author)}
+                        onClick={() => setAuthorCategoryFilter(f.id)}
                         style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: 4,
-                          padding: "6px 12px",
-                          borderRadius: 6,
-                          border: "1px solid #cbd5e1",
-                          background: "#fff",
-                          color: "#001a3d",
+                          padding: "5px 12px",
+                          borderRadius: 20,
+                          border: authorCategoryFilter === f.id ? "none" : "1px solid #cbd5e1",
+                          background: authorCategoryFilter === f.id ? "#002b66" : "#fff",
+                          color: authorCategoryFilter === f.id ? "#fff" : "#475569",
                           fontSize: 12,
                           fontWeight: 700,
                           cursor: "pointer",
+                          transition: "all 0.15s",
                         }}
                       >
-                        <IconEdit size={13} />
-                        <span>Editar</span>
+                        {f.label}
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: 4,
-                          padding: "5px 8px",
-                          borderRadius: 6,
-                          border: "1px solid #fecaca",
-                          background: "#fff1f2",
-                          color: "#b91c1c",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          cursor: "pointer",
-                        }}
-                      >
-                        <IconTrash size={12} />
-                        <span>Excluir</span>
-                      </button>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <div style={{ marginTop: 24, textAlign: "center" }}>
-                <Link
-                  href="/pt/home-new#autores"
-                  target="_blank"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "#0284c7",
-                    textDecoration: "none",
-                  }}
-                >
-                  <span>Visualizar Seção de Autores no Site</span>
-                  <IconExternal size={13} />
-                </Link>
-              </div>
-            </section>
-          </div>
-        )}
+                {/* Categorized List with Beautiful Dividers */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                  {filteredCategories.map((category) => {
+                    if (category.list.length === 0) return null;
+
+                    return (
+                      <div key={category.id} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                        {/* Elegant Category Header / Divider */}
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 10,
+                            padding: "6px 12px",
+                            borderRadius: 8,
+                            background: "#f8fafc",
+                            borderLeft: `4px solid ${category.accentColor}`,
+                            borderTop: "1px solid #f1f5f9",
+                            borderRight: "1px solid #f1f5f9",
+                            borderBottom: "1px solid #f1f5f9",
+                          }}
+                        >
+                          <span style={{ fontSize: 16 }}>{category.icon}</span>
+                          <h4 style={{ fontSize: 13.5, fontWeight: 900, color: "#001a3d", margin: 0, flex: 1 }}>
+                            {category.title}
+                          </h4>
+                          <span
+                            style={{
+                              fontSize: 11,
+                              fontWeight: 800,
+                              padding: "2px 8px",
+                              borderRadius: 12,
+                              background: category.badgeBg,
+                              color: category.badgeColor,
+                              border: `1px solid ${category.badgeBorder}`,
+                            }}
+                          >
+                            {category.list.length} {category.list.length === 1 ? "médico" : "médicos"}
+                          </span>
+                        </div>
+
+                        {/* Category Authors Cards */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                          {category.list.map((author, idx) => (
+                            <div
+                              key={author.id || idx}
+                              style={{
+                                display: "flex",
+                                gap: 14,
+                                padding: 14,
+                                borderRadius: 12,
+                                border: authorId === author.id ? `2px solid ${category.accentColor}` : "1px solid #e2e8f0",
+                                background: authorId === author.id ? "#fffbfb" : "#ffffff",
+                                alignItems: "center",
+                                transition: "all 0.2s ease",
+                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.02)",
+                              }}
+                            >
+                              <img
+                                src={author.foto_url}
+                                alt={author.nome}
+                                style={{
+                                  width: 54,
+                                  height: 54,
+                                  borderRadius: "50%",
+                                  objectFit: "cover",
+                                  border: "2px solid #fff",
+                                  boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
+                                  background: "#021a3a",
+                                  flexShrink: 0,
+                                }}
+                              />
+
+                              <div style={{ flex: 1, minWidth: 0 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 3 }}>
+                                  <span
+                                    style={{
+                                      fontSize: 10.5,
+                                      fontWeight: 800,
+                                      padding: "2px 7px",
+                                      borderRadius: 4,
+                                      background: category.badgeBg,
+                                      color: category.badgeColor,
+                                      border: `1px solid ${category.badgeBorder}`,
+                                      textTransform: "uppercase",
+                                    }}
+                                  >
+                                    {author.cargo}
+                                  </span>
+                                  <span style={{ fontSize: 11, color: "#64748b", fontWeight: 700 }}>
+                                    #{author.ordem}
+                                  </span>
+                                </div>
+
+                                <h4 style={{ fontSize: 15, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
+                                  {author.nome}
+                                </h4>
+
+                                <p style={{ fontSize: 12, color: "#64748b", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                  {author.instituicao}
+                                </p>
+                              </div>
+
+                              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditAuthor(author)}
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                    padding: "5px 10px",
+                                    borderRadius: 6,
+                                    border: "1px solid #cbd5e1",
+                                    background: "#fff",
+                                    color: "#001a3d",
+                                    fontSize: 11.5,
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  <IconEdit size={12} />
+                                  <span>Editar</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 4,
+                                    padding: "4px 8px",
+                                    borderRadius: 6,
+                                    border: "1px solid #fecaca",
+                                    background: "#fff1f2",
+                                    color: "#b91c1c",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  <IconTrash size={11} />
+                                  <span>Excluir</span>
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div style={{ marginTop: 24, textAlign: "center", borderTop: "1px solid #f1f5f9", paddingTop: 16 }}>
+                  <Link
+                    href="/pt/home-new#autores"
+                    target="_blank"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "#0284c7",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span>Visualizar Seção de Autores no Site</span>
+                    <IconExternal size={13} />
+                  </Link>
+                </div>
+              </section>
+            </div>
+          );
+        })()}
 
         {/* ================= ABA 3: USUÁRIOS E PERMISSÕES ================= */}
         {activeTab === "usuarios" && (
