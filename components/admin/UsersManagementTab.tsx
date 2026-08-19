@@ -7,6 +7,8 @@ interface UsersManagementTabProps {
   usuarios: PerfilUsuario[];
   loading: boolean;
   currentUserEmail?: string | null;
+  currentUserName?: string;
+  currentUserFoto?: string;
   currentUserRole?: UserRole;
   onUpdateStatus: (id: string, role: UserRole, status: UserStatus) => void | Promise<void>;
   onDeleteUser: (id: string, nome: string) => void | Promise<void>;
@@ -67,6 +69,8 @@ export default function UsersManagementTab({
   usuarios,
   loading,
   currentUserEmail,
+  currentUserName,
+  currentUserFoto,
   currentUserRole = "super_admin",
   onUpdateStatus,
   onDeleteUser,
@@ -102,13 +106,18 @@ export default function UsersManagementTab({
   const [showPassword, setShowPassword] = useState(false);
 
   const handleOpenEditModal = (user: PerfilUsuario) => {
+    const isCurrentUser =
+      (currentUserEmail && user.email?.toLowerCase() === currentUserEmail.toLowerCase()) ||
+      (currentUserName && user.nome?.toLowerCase() === currentUserName.toLowerCase()) ||
+      user.id.startsWith("me-");
+
     setEditingUserId(user.id);
     setEditNome(user.nome || "");
     setEditEmail(user.email || "");
     setEditCargo(user.cargo_instituicao || "");
     setEditRole(user.role || "escritor");
     setEditStatus(user.status || "aprovado");
-    setEditFoto(user.foto_url || "");
+    setEditFoto(user.foto_url || (isCurrentUser && currentUserFoto ? currentUserFoto : ""));
     setEditPassword("");
     setShowPassword(false);
     setShowEditModal(true);
@@ -122,6 +131,11 @@ export default function UsersManagementTab({
     }
 
     const original = usuarios.find((u) => u.id === editingUserId);
+    const isCurrentUser =
+      (currentUserEmail && editEmail.trim().toLowerCase() === currentUserEmail.toLowerCase()) ||
+      (currentUserName && editNome.trim().toLowerCase() === currentUserName.toLowerCase()) ||
+      editingUserId.startsWith("me-");
+
     const updatedUser: PerfilUsuario = {
       id: editingUserId,
       nome: editNome.trim(),
@@ -129,11 +143,22 @@ export default function UsersManagementTab({
       cargo_instituicao: editCargo.trim() || "Membro SBC",
       role: editRole,
       status: editStatus,
-      foto_url: editFoto || null,
+      foto_url: editFoto || (isCurrentUser && currentUserFoto ? currentUserFoto : null),
       created_at: original?.created_at || new Date().toISOString(),
       aprovado_em: editStatus === "aprovado" ? (original?.aprovado_em || new Date().toISOString()) : null,
       updated_at: new Date().toISOString(),
     };
+
+    if (isCurrentUser) {
+      try {
+        const saved = JSON.parse(localStorage.getItem("sbc_custom_user_profile") || "{}");
+        saved.nome = editNome.trim();
+        saved.email = editEmail.trim().toLowerCase();
+        saved.cargo = editCargo.trim();
+        if (editFoto) saved.foto_url = editFoto;
+        localStorage.setItem("sbc_custom_user_profile", JSON.stringify(saved));
+      } catch (e) {}
+    }
 
     if (onEditUser) {
       onEditUser(updatedUser, editPassword.trim() || undefined);
@@ -665,6 +690,11 @@ CREATE TRIGGER on_auth_user_created
                     .toUpperCase();
 
                   const isPendingStatus = user.status === "pendente";
+                  const isCurrentUser =
+                    (currentUserEmail && user.email?.toLowerCase() === currentUserEmail.toLowerCase()) ||
+                    (currentUserName && user.nome?.toLowerCase() === currentUserName.toLowerCase()) ||
+                    user.id.startsWith("me-");
+                  const displayFoto = user.foto_url || (isCurrentUser && currentUserFoto ? currentUserFoto : null);
 
                   return (
                     <tr
@@ -702,9 +732,9 @@ CREATE TRIGGER on_auth_user_created
                               border: "1.5px solid rgba(0,0,0,0.08)",
                             }}
                           >
-                            {user.foto_url ? (
+                            {displayFoto ? (
                               <img
-                                src={user.foto_url}
+                                src={displayFoto}
                                 alt={user.nome}
                                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                               />

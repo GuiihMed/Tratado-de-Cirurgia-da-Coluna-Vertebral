@@ -497,7 +497,9 @@ export default function AdminPainelPage() {
       const updated = prev.map((u) => {
         if (
           u.email?.toLowerCase() === newEmail.toLowerCase() ||
-          u.email?.toLowerCase() === userEmail?.toLowerCase() ||
+          (userEmail && u.email?.toLowerCase() === userEmail.toLowerCase()) ||
+          (currentUserName && u.nome?.toLowerCase() === currentUserName.toLowerCase()) ||
+          u.nome?.toLowerCase() === newNome.toLowerCase() ||
           u.id.startsWith("me-")
         ) {
           found = true;
@@ -678,6 +680,7 @@ export default function AdminPainelPage() {
         cargo_instituicao: usuario.cargo_instituicao || "Membro SBC",
         role: usuario.role,
         status: usuario.status,
+        foto_url: usuario.foto_url || null,
         nova_senha: novaSenha?.trim(),
       });
 
@@ -2440,6 +2443,8 @@ export default function AdminPainelPage() {
             usuarios={usuarios}
             loading={loadingUsuarios}
             currentUserEmail={userEmail}
+            currentUserName={currentUserName}
+            currentUserFoto={currentUserFoto}
             currentUserRole={currentUserRole}
             onUpdateStatus={handleUpdateUserStatus}
             onDeleteUser={handleDeleteUser}
