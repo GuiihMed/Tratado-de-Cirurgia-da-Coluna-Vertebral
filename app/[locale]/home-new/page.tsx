@@ -733,6 +733,15 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             >
               {authorsList.map((author, index) => {
                 const isHovered = hoveredAuthor === index;
+                const authorUrl =
+                  author.id === "1" || author.name.includes("Edson")
+                    ? `/${locale}/autor-new/edson-pudles`
+                    : author.id === "2" || author.name.includes("Defino")
+                    ? `/${locale}/autor-new/helton-defino`
+                    : author.id === "3" || author.name.includes("Risso")
+                    ? `/${locale}/autor-new/marcelo-risso`
+                    : `/${locale}/autor-new/${author.id}`;
+
                 return (
                   <article
                     key={author.id}
@@ -750,7 +759,12 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
                     <div className="author-accordion-content">
                       {/* Default Minimalist State (Visible when not hovered) */}
-                      <div className="author-default-label">
+                      <Link
+                        href={authorUrl}
+                        className="author-default-label"
+                        style={{ textDecoration: "none" }}
+                        title={`Ver perfil de ${author.name} em Autores New`}
+                      >
                         <div>
                           <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#fff" }}>
                             {author.name}
@@ -769,11 +783,12 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                             placeItems: "center",
                             fontSize: 14,
                             color: "#fff",
+                            transition: "all 0.2s",
                           }}
                         >
                           +
                         </span>
-                      </div>
+                      </Link>
 
                       {/* Hover / Expanded State (Visible on mouse hover) */}
                       <div className="author-accordion-glass-box">
@@ -798,17 +813,22 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                           </span>
                         </div>
 
-                        <h3
-                          style={{
-                            fontSize: 22,
-                            fontWeight: 800,
-                            margin: "0 0 10px",
-                            letterSpacing: "-0.02em",
-                            color: "#fff",
-                          }}
+                        <Link
+                          href={authorUrl}
+                          style={{ textDecoration: "none", color: "#fff" }}
                         >
-                          {author.name}
-                        </h3>
+                          <h3
+                            style={{
+                              fontSize: 22,
+                              fontWeight: 800,
+                              margin: "0 0 10px",
+                              letterSpacing: "-0.02em",
+                              color: "#fff",
+                            }}
+                          >
+                            {author.name}
+                          </h3>
+                        </Link>
 
                         <p
                           style={{
@@ -821,7 +841,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                           {author.bio}
                         </p>
 
-                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
                           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                             {author.specialties.map((spec, i) => (
                               <span
@@ -842,24 +862,48 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                             ))}
                           </div>
 
-                          <Link
-                            href={`/${locale}/indice-new`}
-                            style={{
-                              fontSize: 12,
-                              fontWeight: 700,
-                              color: "#fff",
-                              textDecoration: "none",
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 4,
-                              padding: "6px 12px",
-                              borderRadius: 8,
-                              background: "#f52238",
-                              transition: "all 0.2s ease",
-                            }}
-                          >
-                            Ver no Índice →
-                          </Link>
+                          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                            <Link
+                              href={authorUrl}
+                              style={{
+                                fontSize: 12,
+                                fontWeight: 800,
+                                color: "#fff",
+                                textDecoration: "none",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 6,
+                                padding: "7px 14px",
+                                borderRadius: 8,
+                                background: "#f52238",
+                                boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
+                                transition: "all 0.2s ease",
+                              }}
+                            >
+                              <span>Ver Perfil em Autores New</span>
+                              <span>→</span>
+                            </Link>
+
+                            <Link
+                              href={`/${locale}/autores-new`}
+                              style={{
+                                fontSize: 11.5,
+                                fontWeight: 700,
+                                color: "#cbd5e1",
+                                textDecoration: "none",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 4,
+                                padding: "7px 10px",
+                                borderRadius: 8,
+                                background: "rgba(255, 255, 255, 0.1)",
+                                border: "1px solid rgba(255, 255, 255, 0.15)",
+                                transition: "all 0.2s ease",
+                              }}
+                            >
+                              <span>Todos Autores</span>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
