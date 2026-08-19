@@ -1373,24 +1373,6 @@ export default function AdminPainelPage() {
 
           {/* Topbar Actions */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            {/* Status Badge */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "5px 12px",
-                borderRadius: 20,
-                background: isSupabaseConfigured() ? "#f0fdf4" : "#f0f9ff",
-                border: `1px solid ${isSupabaseConfigured() ? "#bbf7d0" : "#bae6fd"}`,
-                color: isSupabaseConfigured() ? "#166534" : "#0369a1",
-                fontSize: 12,
-                fontWeight: 700,
-              }}
-            >
-              <span>{isSupabaseConfigured() ? "🟢 Supabase Conectado" : "🔵 Armazenamento Local"}</span>
-            </div>
-
             <Link
               href="/pt/indice-new"
               target="_blank"

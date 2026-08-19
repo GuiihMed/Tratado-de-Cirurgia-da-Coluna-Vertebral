@@ -110,23 +110,6 @@ export default function DashboardTab({
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f43f5e" }} />
               Painel de Controle Editorial
             </span>
-
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "4px 10px",
-                borderRadius: 20,
-                background: isSupabaseOnline ? "rgba(34, 197, 94, 0.15)" : "rgba(56, 189, 248, 0.15)",
-                border: `1px solid ${isSupabaseOnline ? "rgba(34, 197, 94, 0.35)" : "rgba(56, 189, 248, 0.35)"}`,
-                color: isSupabaseOnline ? "#86efac" : "#7dd3fc",
-                fontSize: 12,
-                fontWeight: 700,
-              }}
-            >
-              <span>{isSupabaseOnline ? "🟢 Supabase Cloud Live" : "🔵 Armazenamento Local Sincronizado"}</span>
-            </span>
           </div>
 
           <h1 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.02em" }}>
