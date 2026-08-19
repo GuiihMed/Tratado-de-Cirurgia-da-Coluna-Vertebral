@@ -87,6 +87,7 @@ export default function UsersManagementTab({
   const [newCargo, setNewCargo] = useState("");
   const [newRole, setNewRole] = useState<UserRole>("admin_escritor");
   const [newStatus, setNewStatus] = useState<UserStatus>("aprovado");
+  const [newFoto, setNewFoto] = useState("");
 
   // Form for editing existing user (Super Admin only)
   const [showEditModal, setShowEditModal] = useState(false);
@@ -96,6 +97,7 @@ export default function UsersManagementTab({
   const [editCargo, setEditCargo] = useState("");
   const [editRole, setEditRole] = useState<UserRole>("escritor");
   const [editStatus, setEditStatus] = useState<UserStatus>("aprovado");
+  const [editFoto, setEditFoto] = useState("");
   const [editPassword, setEditPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -106,6 +108,7 @@ export default function UsersManagementTab({
     setEditCargo(user.cargo_instituicao || "");
     setEditRole(user.role || "escritor");
     setEditStatus(user.status || "aprovado");
+    setEditFoto(user.foto_url || "");
     setEditPassword("");
     setShowPassword(false);
     setShowEditModal(true);
@@ -126,6 +129,7 @@ export default function UsersManagementTab({
       cargo_instituicao: editCargo.trim() || "Membro SBC",
       role: editRole,
       status: editStatus,
+      foto_url: editFoto || null,
       created_at: original?.created_at || new Date().toISOString(),
       aprovado_em: editStatus === "aprovado" ? (original?.aprovado_em || new Date().toISOString()) : null,
       updated_at: new Date().toISOString(),
@@ -173,6 +177,7 @@ export default function UsersManagementTab({
       cargo_instituicao: newCargo.trim() || "Membro SBC",
       role: newRole,
       status: newStatus,
+      foto_url: newFoto || null,
       aprovado_em: newStatus === "aprovado" ? new Date().toISOString() : null,
       created_at: new Date().toISOString(),
     };
@@ -182,6 +187,7 @@ export default function UsersManagementTab({
     setNewNome("");
     setNewEmail("");
     setNewCargo("");
+    setNewFoto("");
   };
 
   const sqlSchemaCode = `-- ============================================================
@@ -679,6 +685,7 @@ CREATE TRIGGER on_auth_user_created
                               width: 44,
                               height: 44,
                               borderRadius: "50%",
+                              overflow: "hidden",
                               background: isPendingStatus
                                 ? "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
                                 : user.role === "super_admin"
@@ -692,9 +699,18 @@ CREATE TRIGGER on_auth_user_created
                               fontWeight: 900,
                               flexShrink: 0,
                               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.12)",
+                              border: "1.5px solid rgba(0,0,0,0.08)",
                             }}
                           >
-                            {initials || "U"}
+                            {user.foto_url ? (
+                              <img
+                                src={user.foto_url}
+                                alt={user.nome}
+                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                              />
+                            ) : (
+                              initials || "U"
+                            )}
                           </div>
                           <div>
                             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
@@ -1011,6 +1027,91 @@ CREATE TRIGGER on_auth_user_created
                 />
               </div>
 
+              {/* FOTO DO USUÁRIO */}
+              <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "10px 12px", background: "#f8fafc", borderRadius: 10, border: "1px solid #e2e8f0" }}>
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    background: "#ede9fe",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    fontWeight: 900,
+                    color: "#7c3aed",
+                    border: "1.5px solid #c4b5fd",
+                    flexShrink: 0,
+                  }}
+                >
+                  {newFoto ? (
+                    <img src={newFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    newNome ? newNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                  )}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: 12, fontWeight: 800, color: "#334155", marginBottom: 3 }}>
+                    Foto de Perfil
+                  </label>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <label
+                      style={{
+                        padding: "5px 10px",
+                        borderRadius: 6,
+                        background: "#7c3aed",
+                        color: "#fff",
+                        fontSize: 11.5,
+                        fontWeight: 800,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                      }}
+                    >
+                      <span>📷 Carregar Foto</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                              if (typeof reader.result === "string") {
+                                setNewFoto(reader.result);
+                              }
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                      />
+                    </label>
+                    {newFoto && (
+                      <button
+                        type="button"
+                        onClick={() => setNewFoto("")}
+                        style={{
+                          padding: "5px 8px",
+                          borderRadius: 6,
+                          background: "#fee2e2",
+                          color: "#b91c1c",
+                          border: "1px solid #fecaca",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Remover
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
                   E-mail de Acesso *
@@ -1195,6 +1296,91 @@ CREATE TRIGGER on_auth_user_created
             </div>
 
             <form onSubmit={handleSaveEditUser} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {/* FOTO DO USUÁRIO NO MODAL DE EDIÇÃO */}
+              <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 14px", background: "#f8fafc", borderRadius: 12, border: "1px solid #e2e8f0" }}>
+                <div
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    background: "#ede9fe",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 20,
+                    fontWeight: 900,
+                    color: "#7c3aed",
+                    border: "2px solid #c4b5fd",
+                    flexShrink: 0,
+                  }}
+                >
+                  {editFoto ? (
+                    <img src={editFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    editNome ? editNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                  )}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 4 }}>
+                    Foto de Perfil do Usuário
+                  </label>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <label
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        background: "#7c3aed",
+                        color: "#fff",
+                        fontSize: 12,
+                        fontWeight: 800,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                      }}
+                    >
+                      <span>📷 Carregar Foto</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                              if (typeof reader.result === "string") {
+                                setEditFoto(reader.result);
+                              }
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                      />
+                    </label>
+                    {editFoto && (
+                      <button
+                        type="button"
+                        onClick={() => setEditFoto("")}
+                        style={{
+                          padding: "6px 10px",
+                          borderRadius: 8,
+                          background: "#fee2e2",
+                          color: "#b91c1c",
+                          border: "1px solid #fecaca",
+                          fontSize: 11.5,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Remover Foto
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Nome Completo *

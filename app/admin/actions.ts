@@ -334,6 +334,7 @@ export async function atualizarDadosCompletosUsuarioAction(
     cargo_instituicao: string;
     role: "super_admin" | "co_super_admin" | "admin_escritor" | "escritor";
     status: "pendente" | "aprovado" | "bloqueado";
+    foto_url?: string | null;
     nova_senha?: string;
   }
 ): Promise<ActionResult> {
@@ -348,6 +349,7 @@ export async function atualizarDadosCompletosUsuarioAction(
         cargo_instituicao: dados.cargo_instituicao,
         role: dados.role,
         status: dados.status,
+        foto_url: dados.foto_url || null,
         aprovado_em: dados.status === "aprovado" ? new Date().toISOString() : null,
         updated_at: new Date().toISOString(),
       });

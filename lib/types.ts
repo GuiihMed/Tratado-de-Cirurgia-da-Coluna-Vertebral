@@ -60,6 +60,7 @@ export interface PerfilUsuario {
   cargo_instituicao?: string | null;
   role: UserRole;
   status: UserStatus;
+  foto_url?: string | null;
   aprovado_em?: string | null;
   created_at?: string;
   updated_at?: string;

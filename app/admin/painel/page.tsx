@@ -222,6 +222,7 @@ export default function AdminPainelPage() {
   const [currentUserRole, setCurrentUserRole] = useState<UserRole>("super_admin");
   const [currentUserName, setCurrentUserName] = useState<string>("");
   const [currentUserCargo, setCurrentUserCargo] = useState<string>("Super Admin • Coordenação Geral");
+  const [currentUserFoto, setCurrentUserFoto] = useState<string>("");
   const [usuarios, setUsuarios] = useState<PerfilUsuario[]>([]);
   const [loadingUsuarios, setLoadingUsuarios] = useState(false);
 
@@ -231,6 +232,7 @@ export default function AdminPainelPage() {
   const [editAccountCargo, setEditAccountCargo] = useState("");
   const [editAccountEmail, setEditAccountEmail] = useState("");
   const [editAccountSenha, setEditAccountSenha] = useState("");
+  const [editAccountFoto, setEditAccountFoto] = useState("");
   const [savingAccount, setSavingAccount] = useState(false);
 
   // Restore activeTab and custom profile on mount
@@ -246,6 +248,10 @@ export default function AdminPainelPage() {
         if (p.nome) setCurrentUserName(p.nome);
         if (p.cargo) setCurrentUserCargo(p.cargo);
         if (p.email) setUserEmail(p.email);
+        if (p.foto_url || p.foto) {
+          setCurrentUserFoto(p.foto_url || p.foto);
+          setEditAccountFoto(p.foto_url || p.foto);
+        }
       }
     } catch (e) {}
   }, []);
@@ -378,12 +384,14 @@ export default function AdminPainelPage() {
       let customName = currentUserName;
       let customCargo = currentUserCargo;
       let customEmail = userEmail;
+      let customFoto = currentUserFoto;
       if (customP) {
         try {
           const cp = JSON.parse(customP);
           if (cp.nome) customName = cp.nome;
           if (cp.cargo) customCargo = cp.cargo;
           if (cp.email) customEmail = cp.email;
+          if (cp.foto_url || cp.foto) customFoto = cp.foto_url || cp.foto;
         } catch (e) {}
       }
 
@@ -399,6 +407,7 @@ export default function AdminPainelPage() {
             ...list[existingIdx],
             nome: customName || list[existingIdx].nome || "Super Admin",
             cargo_instituicao: customCargo || list[existingIdx].cargo_instituicao || "Super Admin • SBC",
+            foto_url: customFoto || list[existingIdx].foto_url || null,
             role: "super_admin",
             status: "aprovado",
           };
@@ -408,6 +417,7 @@ export default function AdminPainelPage() {
             email: loggedEmail,
             nome: customName || "Super Admin",
             cargo_instituicao: customCargo || "Super Admin • Coordenação Geral SBC",
+            foto_url: customFoto || null,
             role: "super_admin",
             status: "aprovado",
             created_at: new Date().toISOString(),
@@ -436,6 +446,7 @@ export default function AdminPainelPage() {
     setEditAccountNome(currentUserName || "Super Admin");
     setEditAccountCargo(currentUserCargo || "Super Admin • Coordenação Geral SBC");
     setEditAccountEmail(userEmail || "atendimento@wdcom.com.br");
+    setEditAccountFoto(currentUserFoto || "");
     setEditAccountSenha("");
     setShowEditAccountModal(true);
   };
@@ -451,15 +462,18 @@ export default function AdminPainelPage() {
     const newNome = editAccountNome.trim();
     const newCargo = editAccountCargo.trim() || "Super Admin • SBC";
     const newEmail = editAccountEmail.trim() || userEmail || "atendimento@wdcom.com.br";
+    const newFoto = editAccountFoto.trim();
 
     setCurrentUserName(newNome);
     setCurrentUserCargo(newCargo);
     setUserEmail(newEmail);
+    setCurrentUserFoto(newFoto);
 
     const profileData = {
       nome: newNome,
       cargo: newCargo,
       email: newEmail,
+      foto_url: newFoto,
     };
 
     localStorage.setItem("sbc_custom_user_profile", JSON.stringify(profileData));
@@ -471,6 +485,7 @@ export default function AdminPainelPage() {
         const parsed = JSON.parse(localSess);
         parsed.nome = newNome;
         parsed.email = newEmail;
+        parsed.foto_url = newFoto;
         localStorage.setItem("sbc_admin_session", JSON.stringify(parsed));
       } catch (e) {}
     }
@@ -490,6 +505,7 @@ export default function AdminPainelPage() {
             nome: newNome,
             cargo_instituicao: newCargo,
             email: newEmail,
+            foto_url: newFoto || null,
             role: "super_admin" as UserRole,
             status: "aprovado" as UserStatus,
           };
@@ -503,6 +519,7 @@ export default function AdminPainelPage() {
           email: newEmail,
           nome: newNome,
           cargo_instituicao: newCargo,
+          foto_url: newFoto || null,
           role: "super_admin",
           status: "aprovado",
           created_at: new Date().toISOString(),
@@ -523,6 +540,7 @@ export default function AdminPainelPage() {
             data: {
               nome: newNome,
               cargo_instituicao: newCargo,
+              foto_url: newFoto,
             },
             ...(editAccountSenha.trim() ? { password: editAccountSenha.trim() } : {}),
           });
@@ -532,6 +550,7 @@ export default function AdminPainelPage() {
             email: newEmail,
             nome: newNome,
             cargo_instituicao: newCargo,
+            foto_url: newFoto || null,
             role: "super_admin",
             status: "aprovado",
             updated_at: new Date().toISOString(),
@@ -1045,9 +1064,10 @@ export default function AdminPainelPage() {
             >
               <div
                 style={{
-                  width: 40,
-                  height: 40,
+                  width: 42,
+                  height: 42,
                   borderRadius: "50%",
+                  overflow: "hidden",
                   background: currentUserRole === "super_admin"
                     ? "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
                     : "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
@@ -1059,9 +1079,20 @@ export default function AdminPainelPage() {
                   fontWeight: 900,
                   boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
                   flexShrink: 0,
+                  border: "2px solid rgba(255, 255, 255, 0.4)",
                 }}
               >
-                {currentUserName ? currentUserName.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "SA"}
+                {currentUserFoto ? (
+                  <img
+                    src={currentUserFoto}
+                    alt={currentUserName || "Avatar"}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                ) : currentUserName ? (
+                  currentUserName.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
+                ) : (
+                  "SA"
+                )}
               </div>
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
@@ -2254,9 +2285,10 @@ export default function AdminPainelPage() {
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: 48,
+                    height: 48,
                     borderRadius: "50%",
+                    overflow: "hidden",
                     background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)",
                     color: "#fff",
                     display: "flex",
@@ -2265,16 +2297,23 @@ export default function AdminPainelPage() {
                     fontSize: 16,
                     fontWeight: 900,
                     boxShadow: "0 4px 12px rgba(124, 58, 237, 0.3)",
+                    flexShrink: 0,
                   }}
                 >
-                  {editAccountNome ? editAccountNome.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "SA"}
+                  {editAccountFoto ? (
+                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : editAccountNome ? (
+                    editAccountNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
+                  ) : (
+                    "SA"
+                  )}
                 </div>
                 <div>
                   <h3 style={{ margin: 0, fontSize: 19, fontWeight: 900, color: "#001a3d" }}>
                     Editar Minha Conta
                   </h3>
                   <p style={{ margin: "2px 0 0", fontSize: 13, color: "#64748b" }}>
-                    Atualize seu nome de exibição, cargo e credenciais de acesso
+                    Atualize seu nome de exibição, foto, cargo e credenciais
                   </p>
                 </div>
               </div>
@@ -2300,6 +2339,91 @@ export default function AdminPainelPage() {
             </div>
 
             <form onSubmit={handleSaveMyAccount} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {/* UPLOAD DE FOTO DE PERFIL */}
+              <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 14px", background: "#f8fafc", borderRadius: 12, border: "1px solid #e2e8f0" }}>
+                <div
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    background: "#ede9fe",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 20,
+                    fontWeight: 900,
+                    color: "#7c3aed",
+                    border: "2px solid #c4b5fd",
+                    flexShrink: 0,
+                  }}
+                >
+                  {editAccountFoto ? (
+                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    editAccountNome ? editAccountNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                  )}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 4 }}>
+                    Sua Foto de Perfil
+                  </label>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <label
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        background: "#7c3aed",
+                        color: "#fff",
+                        fontSize: 12,
+                        fontWeight: 800,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                      }}
+                    >
+                      <span>📷 Carregar Foto</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                              if (typeof reader.result === "string") {
+                                setEditAccountFoto(reader.result);
+                              }
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                      />
+                    </label>
+                    {editAccountFoto && (
+                      <button
+                        type="button"
+                        onClick={() => setEditAccountFoto("")}
+                        style={{
+                          padding: "6px 10px",
+                          borderRadius: 8,
+                          background: "#fee2e2",
+                          color: "#b91c1c",
+                          border: "1px solid #fecaca",
+                          fontSize: 11.5,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Remover Foto
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Seu Nome Completo *
