@@ -24,37 +24,6 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
   const [activeModalChapter, setActiveModalChapter] = useState<Capitulo | null>(null);
   const [copiedChapter, setCopiedChapter] = useState<number | null>(null);
 
-  // Filter scroll tracking
-  const filterScrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = () => {
-    const el = filterScrollRef.current;
-    if (el) {
-      setCanScrollLeft(el.scrollLeft > 10);
-      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    checkScroll();
-    const handleResize = () => checkScroll();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const handleScrollRight = () => {
-    if (filterScrollRef.current) {
-      filterScrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
-    }
-  };
-
-  const handleScrollLeft = () => {
-    if (filterScrollRef.current) {
-      filterScrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
-    }
-  };
 
   // Open / Closed state for all 10 sections (all open by default)
   const [openSections, setOpenSections] = useState<Record<number, boolean>>({
@@ -217,9 +186,13 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 </button>
               )}
             </div>
+          </div>
+        </section>
 
-            {/* Controls Bar (Layout Switcher & Expand/Collapse) */}
-            <div className="modern-controls-bar">
+        {/* ================= CONTROLS & LAYOUT TOOLBAR ================= */}
+        <section style={{ padding: "20px 0 16px", background: "rgba(0, 12, 28, 0.7)", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", position: "relative" }}>
+          <div className="shell">
+            <div className="modern-controls-bar" style={{ margin: 0, width: "100%" }}>
               <span style={{ color: "#c2dcf5", fontWeight: 500 }}>
                 Exibindo <strong style={{ color: "#ffffff" }}>{filteredChapters.length}</strong> de 109 capítulos
                 {searchQuery && ` para "${searchQuery}"`}
@@ -331,90 +304,6 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     Recolher Todos ↑
                   </button>
                 </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= SECTION FILTER PILLS ================= */}
-        <section style={{ padding: "24px 0 20px", background: "rgba(0, 12, 28, 0.7)", position: "relative" }}>
-          <div className="shell">
-            <div className="filter-scroll-wrapper">
-              {/* Left Arrow & Fade Indicator */}
-              {canScrollLeft && (
-                <>
-                  <div className="filter-fade-left" />
-                  <button
-                    type="button"
-                    onClick={handleScrollLeft}
-                    className="filter-arrow-btn left"
-                    aria-label="Ver seções anteriores"
-                    title="Seções anteriores"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-                </>
-              )}
-
-              {/* Scrollable Filter Pills Container */}
-              <div
-                ref={filterScrollRef}
-                onScroll={checkScroll}
-                className="modern-filter-row"
-                style={{ marginBottom: 0 }}
-              >
-                <button
-                  onClick={() => setSelectedSecao("all")}
-                  className={`modern-filter-chip ${selectedSecao === "all" ? "active" : ""}`}
-                  style={{
-                    background: selectedSecao === "all" ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "rgba(255, 255, 255, 0.06)",
-                    borderColor: selectedSecao === "all" ? "transparent" : "rgba(255, 255, 255, 0.12)",
-                    color: "#fff",
-                    boxShadow: selectedSecao === "all" ? "0 4px 15px rgba(245, 34, 56, 0.35)" : "none",
-                  }}
-                >
-                  <span>Todas as 10 Seções</span>
-                  <span className="modern-filter-count">109</span>
-                </button>
-
-                {SECOES.map((sec) => (
-                  <button
-                    key={sec.id}
-                    onClick={() => setSelectedSecao(sec.id)}
-                    className={`modern-filter-chip ${selectedSecao === sec.id ? "active" : ""}`}
-                    style={{
-                      background: selectedSecao === sec.id ? "linear-gradient(135deg, #f52238 0%, #003382 100%)" : "rgba(255, 255, 255, 0.06)",
-                      borderColor: selectedSecao === sec.id ? "transparent" : "rgba(255, 255, 255, 0.12)",
-                      color: "#fff",
-                      boxShadow: selectedSecao === sec.id ? "0 4px 15px rgba(245, 34, 56, 0.35)" : "none",
-                    }}
-                  >
-                    <span>
-                      Seção {sec.numero}: {locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}
-                    </span>
-                    <span className="modern-filter-count">{sec.totalCapitulos}</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Right Arrow & Fade Indicator */}
-              {canScrollRight && (
-                <>
-                  <div className="filter-fade-right" />
-                  <button
-                    type="button"
-                    onClick={handleScrollRight}
-                    className="filter-arrow-btn right"
-                    aria-label="Ver mais seções à direita"
-                    title="Mais seções à direita"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </>
               )}
             </div>
           </div>
