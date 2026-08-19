@@ -243,32 +243,6 @@ CREATE TRIGGER on_auth_user_created
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button
               type="button"
-              onClick={() => setShowSqlModal(true)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "10px 16px",
-                borderRadius: 8,
-                border: "1px solid #cbd5e1",
-                background: "#f8fafc",
-                color: "#334155",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-            >
-              <svg width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <ellipse cx="12" cy="5" rx="9" ry="3" />
-                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-              </svg>
-              <span>Configurar SQL Supabase</span>
-            </button>
-
-            <button
-              type="button"
               onClick={() => setShowAddModal(true)}
               style={{
                 display: "inline-flex",
@@ -1078,111 +1052,7 @@ CREATE TRIGGER on_auth_user_created
         </div>
       )}
 
-      {/* MODAL: SCRIPT SQL PARA SUPABASE */}
-      {showSqlModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0, 15, 40, 0.7)",
-            backdropFilter: "blur(6px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999,
-            padding: 20,
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 18,
-              maxWidth: 700,
-              width: "100%",
-              padding: "32px",
-              boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
-              border: "1px solid #e2e8f0",
-              maxHeight: "85vh",
-              overflowY: "auto",
-            }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-              <div>
-                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
-                  ⚡ Script SQL para Supabase (Tabela `perfis` & RLS)
-                </h3>
-                <p style={{ margin: "4px 0 0", fontSize: 13, color: "#64748b" }}>
-                  Copie e cole este código no <strong>SQL Editor</strong> do painel Supabase para ativar a sincronização na nuvem.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowSqlModal(false)}
-                style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", color: "#64748b" }}
-              >
-                ✕
-              </button>
-            </div>
-
-            <div style={{ position: "relative", marginBottom: 18 }}>
-              <pre
-                style={{
-                  background: "#0f172a",
-                  color: "#e2e8f0",
-                  padding: "16px",
-                  borderRadius: 10,
-                  fontSize: 12,
-                  fontFamily: "monospace",
-                  overflowX: "auto",
-                  lineHeight: 1.5,
-                  maxHeight: 340,
-                }}
-              >
-                {sqlSchemaCode}
-              </pre>
-
-              <button
-                type="button"
-                onClick={copySqlToClipboard}
-                style={{
-                  position: "absolute",
-                  top: 12,
-                  right: 12,
-                  padding: "6px 12px",
-                  borderRadius: 6,
-                  background: copiedSql ? "#16a34a" : "#3b82f6",
-                  color: "#fff",
-                  border: "none",
-                  fontSize: 12,
-                  fontWeight: 800,
-                  cursor: "pointer",
-                }}
-              >
-                {copiedSql ? "✓ Copiado!" : "📋 Copiar SQL"}
-              </button>
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <button
-                type="button"
-                onClick={() => setShowSqlModal(false)}
-                style={{
-                  padding: "9px 18px",
-                  borderRadius: 8,
-                  background: "#001a3d",
-                  color: "#fff",
-                  border: "none",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                }}
-              >
-                Fechar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* FIM DA TABELA DE USUÁRIOS */}
     </div>
   );
 }
