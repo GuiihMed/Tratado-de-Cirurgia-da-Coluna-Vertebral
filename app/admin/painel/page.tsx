@@ -17,6 +17,7 @@ import {
 } from "../actions";
 import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor";
 import UsersManagementTab from "@/components/admin/UsersManagementTab";
+import DashboardTab from "@/components/admin/DashboardTab";
 
 // ============================================================================
 // SVG ICONS (Medical & Modern UI)
@@ -146,6 +147,17 @@ function IconLogout({ size = 16 }: { size?: number }) {
   );
 }
 
+function IconGrid({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+      <rect x="3" y="3" width="7" height="7" />
+      <rect x="14" y="3" width="7" height="7" />
+      <rect x="14" y="14" width="7" height="7" />
+      <rect x="3" y="14" width="7" height="7" />
+    </svg>
+  );
+}
+
 const DEFAULT_AUTHORS: AutorEditor[] = [
   {
     id: "1",
@@ -212,13 +224,16 @@ function IconUserX({ size = 18 }: { size?: number }) {
   );
 }
 
+export type AdminTab = "dashboard" | "capitulos" | "autores" | "usuarios";
+
 export default function AdminPainelPage() {
   const router = useRouter();
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
-  // Active Tab
-  const [activeTab, setActiveTab] = useState<"capitulos" | "autores" | "usuarios">("capitulos");
+  // Active Tab & Layout
+  const [activeTab, setActiveTab] = useState<AdminTab>("dashboard");
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [currentUserRole, setCurrentUserRole] = useState<UserRole>("super_admin");
   const [currentUserName, setCurrentUserName] = useState<string>("");
   const [currentUserCargo, setCurrentUserCargo] = useState<string>("Super Admin • Coordenação Geral");
@@ -239,8 +254,8 @@ export default function AdminPainelPage() {
   useEffect(() => {
     try {
       const savedTab = sessionStorage.getItem("sbc_admin_active_tab");
-      if (savedTab && ["capitulos", "autores", "usuarios"].includes(savedTab)) {
-        setActiveTab(savedTab as any);
+      if (savedTab && ["dashboard", "capitulos", "autores", "usuarios"].includes(savedTab)) {
+        setActiveTab(savedTab as AdminTab);
       }
       const customP = localStorage.getItem("sbc_custom_user_profile");
       if (customP) {
@@ -256,8 +271,9 @@ export default function AdminPainelPage() {
     } catch (e) {}
   }, []);
 
-  const switchTab = (tab: "capitulos" | "autores" | "usuarios") => {
+  const switchTab = (tab: AdminTab) => {
     setActiveTab(tab);
+    setMobileSidebarOpen(false);
     try {
       sessionStorage.setItem("sbc_admin_active_tab", tab);
     } catch (e) {}
@@ -989,147 +1005,390 @@ export default function AdminPainelPage() {
   }
 
   return (
-    <div style={{ background: "#f1f5f9", minHeight: "100vh", paddingBottom: "100px" }}>
-      {/* ================= TOP NAVIGATION BAR ================= */}
-      <header
+    <div style={{ minHeight: "100vh", display: "flex", background: "#f8fafc", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      {/* ================= MOBILE SIDEBAR BACKDROP ================= */}
+      {mobileSidebarOpen && (
+        <div
+          onClick={() => setMobileSidebarOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0, 10, 25, 0.7)",
+            backdropFilter: "blur(4px)",
+            zIndex: 90,
+          }}
+        />
+      )}
+
+      {/* ================= LEFT MODERN SIDEBAR ================= */}
+      <aside
         style={{
-          background: "#001a3d",
+          width: 280,
+          background: "linear-gradient(180deg, #001229 0%, #000c1c 60%, #00060f 100%)",
           color: "#fff",
-          padding: "14px 28px",
-          borderBottom: "3px solid #f52238",
-          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.25)",
+          borderRight: "1px solid rgba(255, 255, 255, 0.08)",
+          display: "flex",
+          flexDirection: "column",
+          flexShrink: 0,
           position: "sticky",
           top: 0,
-          zIndex: 50,
+          height: "100vh",
+          zIndex: 100,
+          overflowY: "auto",
         }}
       >
-        <div
-          style={{
-            maxWidth: 1380,
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: 16,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <Link href="/pt/home-new" style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src="/assets/sbc-logo-white.svg"
-                alt="Sociedade Brasileira de Coluna"
-                style={{ height: 42, width: "auto", objectFit: "contain" }}
-              />
-            </Link>
-            <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 14 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <h1 style={{ fontSize: 17, fontWeight: 800, margin: 0, letterSpacing: "-0.01em" }}>
-                  Portal Editorial &amp; Autores
-                </h1>
-                <span
-                  style={{
-                    fontSize: 10,
-                    fontWeight: 800,
-                    padding: "2px 8px",
-                    borderRadius: 4,
-                    background: "rgba(245, 34, 56, 0.25)",
-                    border: "1px solid rgba(245, 34, 56, 0.5)",
-                    color: "#ff808f",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  SBC Oficial
-                </span>
+        {/* Brand Header */}
+        <div style={{ padding: "24px 20px 20px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <img
+              src="/assets/sbc-logo-white.svg"
+              alt="SBC"
+              style={{ height: 38, width: "auto", objectFit: "contain" }}
+            />
+            <div>
+              <div style={{ fontSize: 14.5, fontWeight: 900, color: "#fff", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+                Tratado de Coluna
               </div>
-              <span style={{ fontSize: 12, color: "#94a3b8" }}>
-                Gestão e Publicação Científica • Tratado de Cirurgia da Coluna Vertebral
-              </span>
+              <div style={{ fontSize: 11, color: "#94a3b8", display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f43f5e" }} />
+                <span>Painel Administrativo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* User Connected Card */}
+        <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+          <div
+            onClick={handleOpenEditAccount}
+            title="Clique para editar sua conta"
+            style={{
+              padding: "10px 12px",
+              borderRadius: 12,
+              background: "rgba(255, 255, 255, 0.04)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              transition: "all 0.2s ease",
+            }}
+          >
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                overflow: "hidden",
+                background: currentUserRole === "super_admin" ? "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)" : "#0284c7",
+                display: "grid",
+                placeItems: "center",
+                fontSize: 14,
+                fontWeight: 800,
+                flexShrink: 0,
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+              }}
+            >
+              {currentUserFoto ? (
+                <img src={currentUserFoto} alt={currentUserName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              ) : currentUserName ? (
+                currentUserName.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
+              ) : (
+                "SA"
+              )}
+            </div>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {currentUserName || "Administrador Geral"}
+              </div>
+              <div style={{ fontSize: 10.5, color: "#38bdf8", fontWeight: 700, marginTop: 1 }}>
+                {currentUserRole === "super_admin" ? "👑 Super Admin" : "🛡️ Editor SBC"}
+              </div>
+            </div>
+            <span style={{ fontSize: 12, opacity: 0.6 }}>⚙️</span>
+          </div>
+        </div>
+
+        {/* Navigation Categories */}
+        <div style={{ padding: "20px 14px", flex: 1, display: "flex", flexDirection: "column", gap: 24 }}>
+          {/* Category 1: VISÃO GERAL */}
+          <div>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+              Visão Geral
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <button
+                onClick={() => switchTab("dashboard")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  background: activeTab === "dashboard" ? "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)" : "transparent",
+                  color: activeTab === "dashboard" ? "#fff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "dashboard" ? 800 : 600,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <IconGrid size={18} />
+                <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
+              </button>
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-            {/* MINHA CONTA / USUÁRIO CONECTADO */}
+          {/* Category 2: CONTEÚDO EDITORIAL */}
+          <div>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+              Conteúdo Editorial
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <button
+                onClick={() => switchTab("capitulos")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  background: activeTab === "capitulos" ? "linear-gradient(135deg, #002b66 0%, #001f4d 100%)" : "transparent",
+                  color: activeTab === "capitulos" ? "#fff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "capitulos" ? 800 : 600,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <IconBook size={18} />
+                <span style={{ flex: 1 }}>Capítulos</span>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
+                  {chapters.length}
+                </span>
+              </button>
+
+              <button
+                onClick={() => switchTab("autores")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  background: activeTab === "autores" ? "linear-gradient(135deg, #e11d48 0%, #be123c 100%)" : "transparent",
+                  color: activeTab === "autores" ? "#fff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "autores" ? 800 : 600,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <IconUsers size={18} />
+                <span style={{ flex: 1 }}>Autores &amp; Editores</span>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
+                  {authors.length}
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Category 3: CONTROLE DE ACESSO */}
+          <div>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+              Controle &amp; Segurança
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <button
+                onClick={() => switchTab("usuarios")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
+                  color: activeTab === "usuarios" ? "#fff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "usuarios" ? 800 : 600,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <IconShield size={18} />
+                <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
+                {usuarios.filter((u) => u.status === "pendente").length > 0 && (
+                  <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 6px", borderRadius: 10, background: "#ef4444", color: "#fff" }}>
+                    {usuarios.filter((u) => u.status === "pendente").length}
+                  </span>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Category 4: ATALHOS DO SITE */}
+          <div>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+              Portal Público &amp; Vendas
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <Link
+                href="/pt/home-new"
+                target="_blank"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "8px 14px",
+                  borderRadius: 8,
+                  color: "#94a3b8",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                <span>🌐</span>
+                <span style={{ flex: 1 }}>Home New (4K)</span>
+                <IconExternal size={12} />
+              </Link>
+
+              <Link
+                href="/pt/indice-new"
+                target="_blank"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "8px 14px",
+                  borderRadius: 8,
+                  color: "#94a3b8",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                <span>📑</span>
+                <span style={{ flex: 1 }}>Índice Interativo</span>
+                <IconExternal size={12} />
+              </Link>
+
+              <a
+                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "8px 14px",
+                  borderRadius: 8,
+                  color: "#fb7185",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                }}
+              >
+                <span>🛒</span>
+                <span style={{ flex: 1 }}>Loja DiLivros Oficial</span>
+                <IconExternal size={12} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Sidebar Footer */}
+        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ fontSize: 11, color: "#64748b" }}>
+            SBC Tratado v2.4 • Next 15
+          </div>
+          <button
+            onClick={handleLogout}
+            title="Encerrar sessão"
+            style={{
+              background: "rgba(239, 68, 68, 0.15)",
+              border: "1px solid rgba(239, 68, 68, 0.3)",
+              color: "#fca5a5",
+              borderRadius: 6,
+              padding: "5px 10px",
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+            }}
+          >
+            <IconLogout size={12} />
+            <span>Sair</span>
+          </button>
+        </div>
+      </aside>
+
+      {/* ================= RIGHT MAIN WRAPPER ================= */}
+      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
+        {/* ================= TOPBAR ================= */}
+        <header
+          style={{
+            height: 70,
+            background: "#fff",
+            borderBottom: "1px solid #e2e8f0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "0 28px",
+            position: "sticky",
+            top: 0,
+            zIndex: 40,
+            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.02)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            {/* Breadcrumbs */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13.5, color: "#64748b" }}>
+              <span style={{ fontWeight: 600 }}>Painel SBC</span>
+              <span>/</span>
+              <strong style={{ color: "#001a3d" }}>
+                {activeTab === "dashboard"
+                  ? "Dashboard & Métricas"
+                  : activeTab === "capitulos"
+                  ? "Gestão de Capítulos (109)"
+                  : activeTab === "autores"
+                  ? "Corpo Editorial & Autores"
+                  : "Usuários & Acessos"}
+              </strong>
+            </div>
+          </div>
+
+          {/* Topbar Actions */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {/* Status Badge */}
             <div
-              onClick={handleOpenEditAccount}
-              title="Clique para editar seu perfil, nome e informações da conta"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 12,
-                padding: "6px 14px 6px 8px",
-                borderRadius: 12,
-                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.25)",
-                boxShadow: "0 4px 14px rgba(0, 0, 0, 0.2)",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
+                gap: 6,
+                padding: "5px 12px",
+                borderRadius: 20,
+                background: isSupabaseConfigured() ? "#f0fdf4" : "#f0f9ff",
+                border: `1px solid ${isSupabaseConfigured() ? "#bbf7d0" : "#bae6fd"}`,
+                color: isSupabaseConfigured() ? "#166534" : "#0369a1",
+                fontSize: 12,
+                fontWeight: 700,
               }}
             >
-              <div
-                style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: "50%",
-                  overflow: "hidden",
-                  background: currentUserRole === "super_admin"
-                    ? "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
-                    : "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 14,
-                  fontWeight: 900,
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
-                  flexShrink: 0,
-                  border: "2px solid rgba(255, 255, 255, 0.4)",
-                }}
-              >
-                {currentUserFoto ? (
-                  <img
-                    src={currentUserFoto}
-                    alt={currentUserName || "Avatar"}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                ) : currentUserName ? (
-                  currentUserName.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
-                ) : (
-                  "SA"
-                )}
-              </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 13.5, fontWeight: 800, color: "#fff" }}>
-                    {currentUserName || "Administrador Geral"}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 10,
-                      fontWeight: 900,
-                      padding: "2px 7px",
-                      borderRadius: 4,
-                      background: currentUserRole === "super_admin" ? "#7c3aed" : "#0284c7",
-                      color: "#fff",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {currentUserRole === "super_admin"
-                      ? "👑 Super Admin"
-                      : currentUserRole === "co_super_admin"
-                      ? "🛡️ Co-Super Admin"
-                      : currentUserRole === "admin_escritor"
-                      ? "✍️ Admin Escritor"
-                      : "📝 Escritor"}
-                  </span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "#94a3b8", margin: "1px 0 0" }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
-                  <span>{userEmail || "atendimento@wdcom.com.br"}</span>
-                  <span style={{ color: "#38bdf8", fontWeight: 700, marginLeft: 2 }}>• ✏️ Editar Perfil</span>
-                </div>
-              </div>
+              <span>{isSupabaseConfigured() ? "🟢 Supabase Conectado" : "🔵 Armazenamento Local"}</span>
             </div>
 
             <Link
@@ -1139,389 +1398,101 @@ export default function AdminPainelPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 6,
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#67e8f9",
+                fontSize: 12.5,
+                fontWeight: 700,
+                color: "#0284c7",
                 textDecoration: "none",
-                padding: "8px 14px",
+                padding: "7px 12px",
                 borderRadius: 8,
-                background: "rgba(103, 232, 249, 0.1)",
-                border: "1px solid rgba(103, 232, 249, 0.3)",
-                transition: "all 0.2s ease",
+                background: "#f0f9ff",
+                border: "1px solid #bae6fd",
               }}
             >
               <span>Ver Índice Público</span>
-              <IconExternal size={13} />
+              <IconExternal size={12} />
             </Link>
+          </div>
+        </header>
 
-            <button
-              onClick={handleLogout}
+        {/* ================= MAIN CONTENT CONTAINER ================= */}
+        <main style={{ padding: "32px 28px", maxWidth: 1400, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+          {/* Feedback Alert */}
+          {feedback.message && (
+            <div
               style={{
-                display: "inline-flex",
+                padding: "16px 20px",
+                borderRadius: 12,
+                marginBottom: 24,
+                fontSize: 14,
+                fontWeight: 600,
+                background: feedback.type === "success" ? "#ecfdf5" : "#fef2f2",
+                color: feedback.type === "success" ? "#065f46" : "#991b1b",
+                border: feedback.type === "success" ? "1px solid #a7f3d0" : "1px solid #fecaca",
+                display: "flex",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: 6,
-                padding: "8px 14px",
-                borderRadius: 8,
-                border: "none",
-                background: "rgba(239, 68, 68, 0.2)",
-                color: "#fca5a5",
-                borderWidth: "1px",
-                borderStyle: "solid",
-                borderColor: "rgba(239, 68, 68, 0.4)",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
               }}
             >
-              <IconLogout size={14} />
-              <span>Sair</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main style={{ maxWidth: 1380, margin: "28px auto 0", padding: "0 24px" }}>
-        {/* ================= METRICS & KPI STRIP ================= */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 16,
-            marginBottom: 28,
-          }}
-        >
-          {/* Card 1: Total Chapters */}
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px 24px",
-              borderRadius: 14,
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                background: "rgba(0, 26, 61, 0.08)",
-                color: "#001a3d",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <IconBook size={24} />
-            </div>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Capítulos Cadastrados
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                {feedback.type === "success" ? <IconCheckCircle size={20} /> : <IconTrash size={20} />}
+                <span>{feedback.message}</span>
               </div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
-                {chapters.length} <span style={{ fontSize: 13, fontWeight: 600, color: "#059669" }}>• 100% da Obra</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Sections */}
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px 24px",
-              borderRadius: 14,
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                background: "rgba(14, 116, 144, 0.1)",
-                color: "#0e7490",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <IconLayers size={24} />
-            </div>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Seções Temáticas
-              </div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
-                10 <span style={{ fontSize: 13, fontWeight: 600, color: "#64748b" }}>Módulos Clínicos</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3: Authors */}
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px 24px",
-              borderRadius: 14,
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                background: "rgba(245, 34, 56, 0.1)",
-                color: "#f52238",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <IconUsers size={24} />
-            </div>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Corpo Editorial
-              </div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", lineHeight: 1.2 }}>
-                {authors.length} <span style={{ fontSize: 13, fontWeight: 600, color: "#f52238" }}>Editores Oficiais</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 4: Status */}
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px 24px",
-              borderRadius: 14,
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 12px rgba(0, 30, 80, 0.03)",
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 12,
-                background: "rgba(16, 185, 129, 0.1)",
-                color: "#059669",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <IconCheckCircle size={24} />
-            </div>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Status de Publicação
-              </div>
-              <div style={{ fontSize: 26, fontWeight: 900, color: "#059669", lineHeight: 1.2 }}>
-                Ativo <span style={{ fontSize: 13, fontWeight: 600, color: "#64748b" }}>• Online</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ================= TAB SWITCHER ================= */}
-        <div
-          style={{
-            background: "#fff",
-            padding: "8px",
-            borderRadius: 16,
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.02)",
-            display: "inline-flex",
-            gap: 8,
-            marginBottom: 28,
-            flexWrap: "wrap",
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => switchTab("capitulos")}
-            style={{
-              padding: "12px 24px",
-              borderRadius: 10,
-              border: "none",
-              background: activeTab === "capitulos" ? "#001a3d" : "transparent",
-              color: activeTab === "capitulos" ? "#fff" : "#475569",
-              fontWeight: 700,
-              fontSize: 14.5,
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              boxShadow: activeTab === "capitulos" ? "0 4px 14px rgba(0, 26, 61, 0.25)" : "none",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <IconBook size={18} />
-            <span>Gestão dos 109 Capítulos</span>
-            <span
-              style={{
-                fontSize: 11,
-                fontWeight: 800,
-                padding: "2px 8px",
-                borderRadius: 12,
-                background: activeTab === "capitulos" ? "rgba(255, 255, 255, 0.2)" : "#e2e8f0",
-                color: activeTab === "capitulos" ? "#fff" : "#475569",
-              }}
-            >
-              {chapters.length}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => switchTab("autores")}
-            style={{
-              padding: "12px 24px",
-              borderRadius: 10,
-              border: "none",
-              background: activeTab === "autores" ? "#f52238" : "transparent",
-              color: activeTab === "autores" ? "#fff" : "#475569",
-              fontWeight: 700,
-              fontSize: 14.5,
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              boxShadow: activeTab === "autores" ? "0 4px 14px rgba(245, 34, 56, 0.3)" : "none",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <IconUsers size={18} />
-            <span>Corpo Editorial &amp; Autores</span>
-            <span
-              style={{
-                fontSize: 11,
-                fontWeight: 800,
-                padding: "2px 8px",
-                borderRadius: 12,
-                background: activeTab === "autores" ? "rgba(255, 255, 255, 0.25)" : "#e2e8f0",
-                color: activeTab === "autores" ? "#fff" : "#475569",
-              }}
-            >
-              {authors.length}
-            </span>
-          </button>
-          <button
-            type="button"
-            onClick={() => switchTab("usuarios")}
-            style={{
-              padding: "12px 24px",
-              borderRadius: 10,
-              border: "none",
-              background: activeTab === "usuarios" ? "#7c3aed" : "transparent",
-              color: activeTab === "usuarios" ? "#fff" : "#475569",
-              fontWeight: 700,
-              fontSize: 14.5,
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              boxShadow: activeTab === "usuarios" ? "0 4px 14px rgba(124, 58, 237, 0.3)" : "none",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <IconShield size={18} />
-            <span>Usuários &amp; Acessos</span>
-            <span
-              style={{
-                fontSize: 11,
-                fontWeight: 800,
-                padding: "2px 8px",
-                borderRadius: 12,
-                background: activeTab === "usuarios" ? "rgba(255, 255, 255, 0.25)" : "#e2e8f0",
-                color: activeTab === "usuarios" ? "#fff" : "#475569",
-              }}
-            >
-              {usuarios.length}
-            </span>
-            {usuarios.filter(u => u.status === 'pendente').length > 0 && (
-              <span
+              <button
+                onClick={() => setFeedback({ type: null, message: "" })}
                 style={{
-                  fontSize: 10,
-                  fontWeight: 900,
-                  padding: "2px 6px",
-                  borderRadius: 10,
-                  background: "#ef4444",
-                  color: "#ffffff",
-                  marginLeft: -4,
+                  background: "none",
+                  border: "none",
+                  color: "inherit",
+                  cursor: "pointer",
+                  fontWeight: 800,
+                  fontSize: 16,
+                  padding: "4px",
                 }}
               >
-                {usuarios.filter(u => u.status === 'pendente').length} novo
-              </span>
-            )}
-          </button>
-
-        </div>
-
-        {/* Feedback Alert */}
-        {feedback.message && (
-          <div
-            style={{
-              padding: "16px 20px",
-              borderRadius: 12,
-              marginBottom: 28,
-              fontSize: 14,
-              fontWeight: 600,
-              background: feedback.type === "success" ? "#ecfdf5" : "#fef2f2",
-              color: feedback.type === "success" ? "#065f46" : "#991b1b",
-              border: feedback.type === "success" ? "1px solid #a7f3d0" : "1px solid #fecaca",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              {feedback.type === "success" ? <IconCheckCircle size={20} /> : <IconTrash size={20} />}
-              <span>{feedback.message}</span>
+                ✕
+              </button>
             </div>
-            <button
-              onClick={() => setFeedback({ type: null, message: "" })}
-              style={{
-                background: "none",
-                border: "none",
-                color: "inherit",
-                cursor: "pointer",
-                fontWeight: 800,
-                fontSize: 16,
-                padding: "4px",
+          )}
+
+          {/* ================= ABA 0: DASHBOARD ================= */}
+          {activeTab === "dashboard" && (
+            <DashboardTab
+              chapters={chapters}
+              authors={authors}
+              usuarios={usuarios}
+              onNavigateToTab={(t) => switchTab(t)}
+              onFilterSection={(sId) => {
+                setFilterSecao(sId);
+                switchTab("capitulos");
               }}
-            >
-              ✕
-            </button>
-          </div>
-        )}
-
-        {/* ================= ABA 1: GESTÃO DE CAPÍTULOS ================= */}
-        {activeTab === "capitulos" && (
-          <>
-            {/* Editor de Conteúdo Científico Avançado */}
-            <ScientificChapterEditor
-              initialData={editingChapterData}
-              onSubmit={handleChapterSubmit}
-              isPending={isPending}
-              onClear={() => setEditingChapterData(undefined)}
+              onOpenNewChapter={() => {
+                setEditingChapterData(undefined);
+                switchTab("capitulos");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              onOpenNewAuthor={() => {
+                setAuthorId("");
+                setAuthorNome("");
+                switchTab("autores");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              isSupabaseOnline={isSupabaseConfigured()}
             />
+          )}
 
-            {/* ================= TABELA DE CAPÍTULOS ================= */}
+          {/* ================= ABA 1: GESTÃO DE CAPÍTULOS ================= */}
+          {activeTab === "capitulos" && (
+            <>
+              {/* Editor de Conteúdo Científico Avançado */}
+              <ScientificChapterEditor
+                initialData={editingChapterData}
+                onSubmit={handleChapterSubmit}
+                isPending={isPending}
+                onClear={() => setEditingChapterData(undefined)}
+              />
+
+              {/* ================= TABELA DE CAPÍTULOS ================= */}
             <section
               style={{
                 background: "#fff",
@@ -2453,7 +2424,8 @@ export default function AdminPainelPage() {
             isPending={isPending}
           />
         )}
-      </main>
+        </main>
+      </div>
 
       {/* ================= MODAL: EDITAR MINHA CONTA ================= */}
       {showEditAccountModal && (
