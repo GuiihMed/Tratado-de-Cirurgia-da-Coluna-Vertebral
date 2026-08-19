@@ -9,7 +9,7 @@ import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface HeaderProps {
   locale: Locale;
-  currentPage?: "home" | "indice" | "other";
+  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "other";
 }
 
 export default function Header({ locale, currentPage = "home" }: HeaderProps) {
@@ -73,10 +73,16 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
         {/* Desktop Navigation */}
         <nav className="nav-links desktop-only-nav" aria-label="Navegação principal">
           <Link
-            href={`/${locale}#sobre`}
-            className={currentPage === "home" ? "" : ""}
+            href={`/${locale}/prefacio`}
+            className={currentPage === "prefacio" ? "active" : ""}
           >
-            {dict.nav.about}
+            Prefácio
+          </Link>
+          <Link
+            href={`/${locale}/apresentacao`}
+            className={currentPage === "apresentacao" ? "active" : ""}
+          >
+            Apresentação
           </Link>
           <Link
             href={`/${locale}/indice`}
@@ -92,7 +98,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </Link>
           <Link
             href={`/${locale}/autores`}
-            className={currentPage === "other" && pathname?.includes("/autores") ? "active" : ""}
+            className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
           >
             {dict.nav.authors}
           </Link>
@@ -179,12 +185,20 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
       {/* Mobile Drawer Dropdown */}
       {mobileMenuOpen && (
         <div className="mobile-menu-drawer">
-          <nav className="mobile-drawer-links">
+          <nav className="mobile-drawer-nav">
             <Link
-              href={`/${locale}#sobre`}
+              href={`/${locale}/prefacio`}
+              className={pathname?.includes("/prefacio") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {dict.nav.about}
+              Prefácio
+            </Link>
+            <Link
+              href={`/${locale}/apresentacao`}
+              className={pathname?.includes("/apresentacao") ? "active" : ""}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Apresentação
             </Link>
             <Link
               href={`/${locale}/indice`}

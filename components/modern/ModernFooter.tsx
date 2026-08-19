@@ -78,13 +78,16 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
               <Link href={`/${locale}/home-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
                 Visão Geral da Obra
               </Link>
+              <Link href={`/${locale}/prefacio-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+                Prefácio dos Editores
+              </Link>
+              <Link href={`/${locale}/apresentacao-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+                Apresentação Institucional
+              </Link>
               <Link href={`/${locale}/indice-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
                 Índice Interativo (109 Cap.)
               </Link>
-              <Link href={`/${locale}/home-new#sobre`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Sobre o Tratado
-              </Link>
-              <Link href={`/${locale}/home-new#autores`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+              <Link href={`/${locale}/autores-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
                 Autores e Colaboradores
               </Link>
             </div>
