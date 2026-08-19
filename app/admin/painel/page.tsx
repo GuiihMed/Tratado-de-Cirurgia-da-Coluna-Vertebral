@@ -627,6 +627,56 @@ export default function AdminPainelPage() {
     }
   };
 
+  const handleEditOtherUser = async (usuario: PerfilUsuario) => {
+    if (currentUserRole !== "super_admin") {
+      setFeedback({
+        type: "error",
+        message: "Apenas o Super Admin tem permissão para editar contas de outros usuários.",
+      });
+      return;
+    }
+
+    setUsuarios((prev) => {
+      const updated = prev.map((u) => (u.id === usuario.id ? usuario : u));
+      localStorage.setItem("sbc_registered_users", JSON.stringify(updated));
+      return updated;
+    });
+
+    startTransition(async () => {
+      let success = true;
+      let msg = `✓ Conta de "${usuario.nome}" atualizada com sucesso pelo Super Admin!`;
+
+      if (isSupabaseConfigured()) {
+        try {
+          const { error } = await supabase.from("perfis").upsert({
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            cargo_instituicao: usuario.cargo_instituicao,
+            role: usuario.role,
+            status: usuario.status,
+            updated_at: new Date().toISOString(),
+          });
+          if (error) {
+            success = false;
+            msg = `Aviso: Erro ao sincronizar no banco: ${error.message}`;
+          }
+        } catch (e: any) {
+          console.warn("Supabase upsert error:", e);
+        }
+      }
+
+      setFeedback({
+        type: success ? "success" : "error",
+        message: msg,
+      });
+
+      if (isSupabaseConfigured()) {
+        await fetchUsuarios();
+      }
+    });
+  };
+
   // 1. Check active session on mount
   useEffect(() => {
     async function checkSession() {
@@ -2166,9 +2216,11 @@ export default function AdminPainelPage() {
             usuarios={usuarios}
             loading={loadingUsuarios}
             currentUserEmail={userEmail}
+            currentUserRole={currentUserRole}
             onUpdateStatus={handleUpdateUserStatus}
             onDeleteUser={handleDeleteUser}
             onAddUser={handleAddUser}
+            onEditUser={handleEditOtherUser}
             isPending={isPending}
           />
         )}

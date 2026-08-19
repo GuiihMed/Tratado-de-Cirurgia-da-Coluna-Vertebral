@@ -7,9 +7,11 @@ interface UsersManagementTabProps {
   usuarios: PerfilUsuario[];
   loading: boolean;
   currentUserEmail?: string | null;
+  currentUserRole?: UserRole;
   onUpdateStatus: (id: string, role: UserRole, status: UserStatus) => void | Promise<void>;
   onDeleteUser: (id: string, nome: string) => void | Promise<void>;
   onAddUser: (usuario: PerfilUsuario) => void | Promise<void>;
+  onEditUser?: (usuario: PerfilUsuario) => void | Promise<void>;
   isPending: boolean;
 }
 
@@ -30,32 +32,32 @@ export const ROLE_LABELS: Record<UserRole, { label: string; badgeBg: string; bad
     label: "Admin Escritor (Editor)",
     badgeBg: "rgba(2, 132, 199, 0.12)",
     badgeColor: "#0284c7",
-    desc: "Cria e edita seções e capítulos da obra",
+    desc: "Cria e edita todas as seções e capítulos",
   },
   escritor: {
     label: "Escritor (Autor)",
-    badgeBg: "rgba(71, 85, 105, 0.12)",
-    badgeColor: "#334155",
-    desc: "Redige e submete capítulos atribuídos",
+    badgeBg: "rgba(100, 116, 139, 0.12)",
+    badgeColor: "#475569",
+    desc: "Escreve e submete capítulos para aprovação",
   },
 };
 
 export const STATUS_LABELS: Record<UserStatus, { label: string; badgeBg: string; badgeColor: string; border: string }> = {
   pendente: {
-    label: "Aguardando Aprovação",
-    badgeBg: "#fffbeb",
+    label: "Pendente Aprovação",
+    badgeBg: "#fef3c7",
     badgeColor: "#b45309",
     border: "#fde68a",
   },
   aprovado: {
     label: "Acesso Aprovado",
-    badgeBg: "#f0fdf4",
+    badgeBg: "#dcfce7",
     badgeColor: "#15803d",
     border: "#bbf7d0",
   },
   bloqueado: {
     label: "Acesso Suspenso",
-    badgeBg: "#fef2f2",
+    badgeBg: "#fee2e2",
     badgeColor: "#b91c1c",
     border: "#fecaca",
   },
@@ -65,9 +67,11 @@ export default function UsersManagementTab({
   usuarios,
   loading,
   currentUserEmail,
+  currentUserRole = "super_admin",
   onUpdateStatus,
   onDeleteUser,
   onAddUser,
+  onEditUser,
   isPending,
 }: UsersManagementTabProps) {
   const [search, setSearch] = useState("");
@@ -83,6 +87,56 @@ export default function UsersManagementTab({
   const [newCargo, setNewCargo] = useState("");
   const [newRole, setNewRole] = useState<UserRole>("admin_escritor");
   const [newStatus, setNewStatus] = useState<UserStatus>("aprovado");
+
+  // Form for editing existing user (Super Admin only)
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingUserId, setEditingUserId] = useState<string>("");
+  const [editNome, setEditNome] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editCargo, setEditCargo] = useState("");
+  const [editRole, setEditRole] = useState<UserRole>("escritor");
+  const [editStatus, setEditStatus] = useState<UserStatus>("aprovado");
+  const [editPassword, setEditPassword] = useState("");
+
+  const handleOpenEditModal = (user: PerfilUsuario) => {
+    setEditingUserId(user.id);
+    setEditNome(user.nome || "");
+    setEditEmail(user.email || "");
+    setEditCargo(user.cargo_instituicao || "");
+    setEditRole(user.role || "escritor");
+    setEditStatus(user.status || "aprovado");
+    setEditPassword("");
+    setShowEditModal(true);
+  };
+
+  const handleSaveEditUser = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editNome.trim() || !editEmail.trim()) {
+      alert("Por favor, preencha o nome e e-mail do usuário.");
+      return;
+    }
+
+    const original = usuarios.find((u) => u.id === editingUserId);
+    const updatedUser: PerfilUsuario = {
+      id: editingUserId,
+      nome: editNome.trim(),
+      email: editEmail.trim().toLowerCase(),
+      cargo_instituicao: editCargo.trim() || "Membro SBC",
+      role: editRole,
+      status: editStatus,
+      created_at: original?.created_at || new Date().toISOString(),
+      aprovado_em: editStatus === "aprovado" ? (original?.aprovado_em || new Date().toISOString()) : null,
+      updated_at: new Date().toISOString(),
+    };
+
+    if (onEditUser) {
+      onEditUser(updatedUser);
+    } else {
+      onUpdateStatus(editingUserId, editRole, editStatus);
+    }
+
+    setShowEditModal(false);
+  };
 
   // Filtered list
   const filteredUsers = useMemo(() => {
@@ -840,6 +894,32 @@ CREATE TRIGGER on_auth_user_created
                             </>
                           )}
 
+                          {/* BOTÃO EDITAR CONTA (EXCLUSIVO SUPER ADMIN) */}
+                          {currentUserRole === "super_admin" && (
+                            <button
+                              type="button"
+                              disabled={isPending}
+                              onClick={() => handleOpenEditModal(user)}
+                              title="Editar dados da conta (Exclusivo Super Admin)"
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 4,
+                                padding: "6px 12px",
+                                borderRadius: 6,
+                                background: "#ede9fe",
+                                color: "#6d28d9",
+                                border: "1px solid #c4b5fd",
+                                fontSize: 12,
+                                fontWeight: 800,
+                                cursor: "pointer",
+                                transition: "all 0.2s",
+                              }}
+                            >
+                              <span>✏️ Editar</span>
+                            </button>
+                          )}
+
                           {/* BOTÃO EXCLUIR */}
                           <button
                             type="button"
@@ -1045,6 +1125,231 @@ CREATE TRIGGER on_auth_user_created
                   }}
                 >
                   Salvar e Criar Usuário
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: EDITAR CONTA DO USUÁRIO (EXCLUSIVO SUPER ADMIN) */}
+      {showEditModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0, 15, 40, 0.75)",
+            backdropFilter: "blur(8px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            padding: 20,
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: 20,
+              maxWidth: 540,
+              width: "100%",
+              padding: "32px",
+              boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)",
+              border: "1px solid #e2e8f0",
+              animation: "fadeIn 0.2s ease",
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontSize: 24 }}>✏️</span>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
+                    Editar Conta do Usuário
+                  </h3>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#7c3aed", textTransform: "uppercase" }}>
+                    👑 Gestão Super Admin
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowEditModal(false)}
+                style={{
+                  background: "#f1f5f9",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: 32,
+                  height: 32,
+                  display: "grid",
+                  placeItems: "center",
+                  fontSize: 14,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  color: "#64748b",
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveEditUser} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Nome Completo *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editNome}
+                  onChange={(e) => setEditNome(e.target.value)}
+                  placeholder="Nome do usuário"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14.5,
+                    fontWeight: 600,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  E-mail de Acesso *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={editEmail}
+                  onChange={(e) => setEditEmail(e.target.value)}
+                  placeholder="email@dominio.com"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Cargo / Especialidade / Instituição Médica
+                </label>
+                <input
+                  type="text"
+                  value={editCargo}
+                  onChange={(e) => setEditCargo(e.target.value)}
+                  placeholder="Ex: Cirurgião de Coluna / HC-FMUSP"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
+                    fontSize: 14,
+                    color: "#0f172a",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                    Nível de Acesso (Papel)
+                  </label>
+                  <select
+                    value={editRole}
+                    onChange={(e) => setEditRole(e.target.value as UserRole)}
+                    style={{
+                      width: "100%",
+                      padding: "11px 12px",
+                      borderRadius: 10,
+                      border: "1.5px solid #cbd5e1",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      color: "#0f172a",
+                      boxSizing: "border-box",
+                      outline: "none",
+                      background: "#fff",
+                    }}
+                  >
+                    <option value="super_admin">👑 Super Admin (Total)</option>
+                    <option value="co_super_admin">🛡️ Co-Super Admin</option>
+                    <option value="admin_escritor">✍️ Admin Escritor</option>
+                    <option value="escritor">📝 Escritor (Autor)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                    Status da Conta
+                  </label>
+                  <select
+                    value={editStatus}
+                    onChange={(e) => setEditStatus(e.target.value as UserStatus)}
+                    style={{
+                      width: "100%",
+                      padding: "11px 12px",
+                      borderRadius: 10,
+                      border: "1.5px solid #cbd5e1",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      color: "#0f172a",
+                      boxSizing: "border-box",
+                      outline: "none",
+                      background: "#fff",
+                    }}
+                  >
+                    <option value="aprovado">✅ Acesso Aprovado</option>
+                    <option value="pendente">⏳ Pendente Aprovação</option>
+                    <option value="bloqueado">🚫 Acesso Suspenso</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 12 }}>
+                <button
+                  type="button"
+                  onClick={() => setShowEditModal(false)}
+                  style={{
+                    padding: "11px 20px",
+                    borderRadius: 10,
+                    border: "1px solid #cbd5e1",
+                    background: "#f8fafc",
+                    color: "#475569",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                  }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  style={{
+                    padding: "11px 24px",
+                    borderRadius: 10,
+                    border: "none",
+                    background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+                    color: "#fff",
+                    fontSize: 14,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                    boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
+                  }}
+                >
+                  {isPending ? "Salvando..." : "✓ Salvar Alterações"}
                 </button>
               </div>
             </form>
