@@ -4,7 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
-import { Capitulo, AutorEditor } from "@/lib/types";
+import { Capitulo, AutorEditor, PerfilUsuario, UserRole, UserStatus } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import {
   cadastrarCapituloAction,
@@ -15,6 +15,7 @@ import {
   excluirUsuarioAction,
 } from "../actions";
 import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor";
+import UsersManagementTab from "@/components/admin/UsersManagementTab";
 
 // ============================================================================
 // SVG ICONS (Medical & Modern UI)
@@ -210,19 +211,6 @@ function IconUserX({ size = 18 }: { size?: number }) {
   );
 }
 
-export type UserRole = "super_admin" | "co_super_admin" | "admin_escritor" | "escritor";
-export type UserStatus = "pendente" | "aprovado" | "bloqueado";
-
-export interface PerfilUsuario {
-  id: string;
-  nome: string;
-  email: string;
-  role: UserRole;
-  status: UserStatus;
-  cargo_instituicao?: string;
-  created_at: string;
-}
-
 export default function AdminPainelPage() {
   const router = useRouter();
   const [checkingAuth, setCheckingAuth] = useState(true);
@@ -273,21 +261,91 @@ export default function AdminPainelPage() {
   const [loadingList, setLoadingList] = useState(false);
 
   
+  const DEFAULT_USERS: PerfilUsuario[] = [
+    {
+      id: "usr-1",
+      email: "edson.pudles@sbc.med.br",
+      nome: "Dr. Edson Pudles",
+      cargo_instituicao: "Presidente SBC & Coordenador Geral",
+      role: "super_admin",
+      status: "aprovado",
+      aprovado_em: "2026-01-10T10:00:00Z",
+      created_at: "2026-01-10T10:00:00Z",
+    },
+    {
+      id: "usr-2",
+      email: "helton.defino@sbc.med.br",
+      nome: "Dr. Helton Defino",
+      cargo_instituicao: "FMRP-USP / Co-Editor do Tratado",
+      role: "co_super_admin",
+      status: "aprovado",
+      aprovado_em: "2026-01-15T14:30:00Z",
+      created_at: "2026-01-15T14:30:00Z",
+    },
+    {
+      id: "usr-3",
+      email: "cristiano.menezes@sbc.med.br",
+      nome: "Dr. Cristiano Menezes",
+      cargo_instituicao: "Editor de Seção Cirúrgica",
+      role: "admin_escritor",
+      status: "aprovado",
+      aprovado_em: "2026-02-01T09:15:00Z",
+      created_at: "2026-02-01T09:15:00Z",
+    },
+    {
+      id: "usr-4",
+      email: "mariana.oliveira@medicina.ufrj.br",
+      nome: "Dra. Mariana Costa Oliveira",
+      cargo_instituicao: "Especialista em Coluna / UFRJ",
+      role: "escritor",
+      status: "pendente",
+      created_at: "2026-08-18T19:30:00Z",
+    },
+    {
+      id: "usr-5",
+      email: "rafael.silva.coluna@usp.br",
+      nome: "Dr. Rafael Silva Santos",
+      cargo_instituicao: "Cirurgião de Coluna / IOT-HCFMUSP",
+      role: "escritor",
+      status: "pendente",
+      created_at: "2026-08-18T20:15:00Z",
+    },
+  ];
+
   const fetchUsuarios = async () => {
     setLoadingUsuarios(true);
     try {
+      let list: PerfilUsuario[] = [];
       if (isSupabaseConfigured()) {
         const { data, error } = await supabase
           .from("perfis")
           .select("*")
           .order("created_at", { ascending: false });
 
-        if (!error && data) {
-          setUsuarios(data as PerfilUsuario[]);
+        if (!error && data && data.length > 0) {
+          list = data as PerfilUsuario[];
         }
       }
+
+      if (list.length === 0) {
+        const local = localStorage.getItem("sbc_registered_users");
+        if (local) {
+          list = JSON.parse(local);
+        } else {
+          list = DEFAULT_USERS;
+          localStorage.setItem("sbc_registered_users", JSON.stringify(DEFAULT_USERS));
+        }
+      }
+
+      setUsuarios(list);
     } catch (err) {
       console.warn("Error loading perfis:", err);
+      const local = localStorage.getItem("sbc_registered_users");
+      if (local) {
+        setUsuarios(JSON.parse(local));
+      } else {
+        setUsuarios(DEFAULT_USERS);
+      }
     } finally {
       setLoadingUsuarios(false);
     }
@@ -298,26 +356,77 @@ export default function AdminPainelPage() {
     role: UserRole,
     status: UserStatus
   ) => {
+    setUsuarios((prev) => {
+      const updated = prev.map((u) =>
+        u.id === id
+          ? {
+              ...u,
+              role,
+              status,
+              aprovado_em: status === "aprovado" ? new Date().toISOString() : u.aprovado_em,
+              updated_at: new Date().toISOString(),
+            }
+          : u
+      );
+      localStorage.setItem("sbc_registered_users", JSON.stringify(updated));
+      return updated;
+    });
+
     startTransition(async () => {
       const res = await atualizarPerfilUsuarioAction(id, role, status);
       setFeedback({
         type: res.success ? "success" : "error",
-        message: res.message,
+        message: res.success
+          ? `Status do usuário atualizado para [${status.toUpperCase()}] com nível [${role}]!`
+          : res.message,
       });
-      fetchUsuarios();
+      if (isSupabaseConfigured()) {
+        await fetchUsuarios();
+      }
     });
   };
 
   const handleDeleteUser = async (id: string, nome: string) => {
-    if (!confirm()) return;
+    const confirmed = window.confirm(`Tem certeza que deseja remover o usuário "${nome}"?`);
+    if (!confirmed) return;
+
+    setUsuarios((prev) => {
+      const updated = prev.filter((u) => u.id !== id);
+      localStorage.setItem("sbc_registered_users", JSON.stringify(updated));
+      return updated;
+    });
+
     startTransition(async () => {
       const res = await excluirUsuarioAction(id);
       setFeedback({
         type: res.success ? "success" : "error",
-        message: res.message,
+        message: res.success ? `Usuário "${nome}" excluído com sucesso.` : res.message,
       });
-      fetchUsuarios();
+      if (isSupabaseConfigured()) {
+        await fetchUsuarios();
+      }
     });
+  };
+
+  const handleAddUser = async (novo: PerfilUsuario) => {
+    setUsuarios((prev) => {
+      const updated = [novo, ...prev];
+      localStorage.setItem("sbc_registered_users", JSON.stringify(updated));
+      return updated;
+    });
+
+    setFeedback({
+      type: "success",
+      message: `Usuário "${novo.nome}" cadastrado com sucesso!`,
+    });
+
+    if (isSupabaseConfigured()) {
+      try {
+        await supabase.from("perfis").upsert(novo);
+      } catch (e) {
+        console.warn("Supabase upsert user:", e);
+      }
+    }
   };
 
   // 1. Check active session on mount
@@ -1789,6 +1898,18 @@ export default function AdminPainelPage() {
               </div>
             </section>
           </div>
+        )}
+
+        {/* ================= ABA 3: USUÁRIOS E PERMISSÕES ================= */}
+        {activeTab === "usuarios" && (
+          <UsersManagementTab
+            usuarios={usuarios}
+            loading={loadingUsuarios}
+            onUpdateStatus={handleUpdateUserStatus}
+            onDeleteUser={handleDeleteUser}
+            onAddUser={handleAddUser}
+            isPending={isPending}
+          />
         )}
       </main>
     </div>

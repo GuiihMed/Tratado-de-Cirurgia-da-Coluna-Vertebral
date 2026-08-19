@@ -50,3 +50,18 @@ export interface AutorEditor {
   updated_at?: string;
 }
 
+export type UserRole = "super_admin" | "co_super_admin" | "admin_escritor" | "escritor";
+export type UserStatus = "pendente" | "aprovado" | "bloqueado";
+
+export interface PerfilUsuario {
+  id: string;
+  email: string;
+  nome: string;
+  cargo_instituicao?: string | null;
+  role: UserRole;
+  status: UserStatus;
+  aprovado_em?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+

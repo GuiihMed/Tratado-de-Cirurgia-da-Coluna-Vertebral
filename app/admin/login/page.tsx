@@ -126,6 +126,23 @@ export default function AdminLoginPage() {
             return;
           }
 
+          const novoPerfil = {
+            id: data?.user?.id || `usr-${Date.now()}`,
+            nome,
+            email,
+            cargo_instituicao: cargoInstituicao || "Membro SBC",
+            role: "escritor",
+            status: "pendente",
+            created_at: new Date().toISOString(),
+          };
+
+          try {
+            const existing = localStorage.getItem("sbc_registered_users");
+            const parsed = existing ? JSON.parse(existing) : [];
+            parsed.unshift(novoPerfil);
+            localStorage.setItem("sbc_registered_users", JSON.stringify(parsed));
+          } catch (lsErr) {}
+
           if (data?.user) {
             try {
               await supabase.from("perfis").upsert({
@@ -148,7 +165,26 @@ export default function AdminLoginPage() {
           setLoading(false);
           return;
         } else {
-          setSuccessMessage("Cadastro efetuado em modo de demonstração.");
+          const novoPerfil = {
+            id: `usr-${Date.now()}`,
+            nome,
+            email,
+            cargo_instituicao: cargoInstituicao || "Membro SBC",
+            role: "escritor",
+            status: "pendente",
+            created_at: new Date().toISOString(),
+          };
+
+          try {
+            const existing = localStorage.getItem("sbc_registered_users");
+            const parsed = existing ? JSON.parse(existing) : [];
+            parsed.unshift(novoPerfil);
+            localStorage.setItem("sbc_registered_users", JSON.stringify(parsed));
+          } catch (lsErr) {}
+
+          setSuccessMessage(
+            "Cadastro realizado com sucesso! Sua solicitação está pendente de aprovação por um Super Admin."
+          );
           setMode("login");
           setLoading(false);
           return;
