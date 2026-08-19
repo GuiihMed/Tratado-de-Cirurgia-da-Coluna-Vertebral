@@ -5,7 +5,7 @@ import Link from "next/link";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
-import { PREFACIO_DATA, EDITORES_TRATADO } from "@/lib/data/institutional-data";
+import { getPrefacioData, EDITORES_TRATADO } from "@/lib/data/institutional-data";
 
 interface PrefacioNewProps {
   params: Promise<{ locale: string }>;
@@ -17,6 +17,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
+  const PREFACIO_DATA = getPrefacioData(locale);
 
   const [fontSizeMultiplier, setFontSizeMultiplier] = useState<number>(1);
   const [highlightKeyConcepts, setHighlightKeyConcepts] = useState<boolean>(true);

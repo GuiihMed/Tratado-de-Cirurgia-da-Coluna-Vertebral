@@ -83,11 +83,11 @@ export default async function AutorPage({ params }: AutorPageProps) {
               }}
             >
               <Link href={`/${locale}`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>/</span>
               <Link href={`/${locale}/autores`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
-                Autores
+                {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
               </Link>
               <span>/</span>
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
@@ -181,7 +181,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ color: "#003382" }}>📖</span> Biografia e Trajetória Profissional
+                  <span style={{ color: "#003382" }}>📖</span> {locale === "en" ? "Biography and Professional Trajectory" : locale === "es" ? "Biografía y Trayectoria Profesional" : "Biografia e Trajetória Profissional"}
                 </h2>
                 <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.7, margin: 0 }}>
                   {author.bio_completa}
@@ -200,10 +200,10 @@ export default async function AutorPage({ params }: AutorPageProps) {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
                   <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ color: "#e11d48" }}>📚</span> Capítulos no Tratado de Coluna ({author.capitulos_tratado.length})
+                    <span style={{ color: "#e11d48" }}>📚</span> {locale === "en" ? `Chapters in Treatise (${author.capitulos_tratado.length})` : locale === "es" ? `Capítulos en el Tratado (${author.capitulos_tratado.length})` : `Capítulos no Tratado de Coluna (${author.capitulos_tratado.length})`}
                   </h2>
                   <span style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", background: "#f0f7ff", padding: "4px 12px", borderRadius: 12, border: "1px solid #dbeafe" }}>
-                    Obra Oficial SBC
+                    {locale === "en" ? "Official SBC Masterwork" : locale === "es" ? "Obra Oficial SBC" : "Obra Oficial SBC"}
                   </span>
                 </div>
 
@@ -221,10 +221,10 @@ export default async function AutorPage({ params }: AutorPageProps) {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 13, fontWeight: 800 }}>
-                            Cap. {cap.num}
+                            {locale === "en" ? "Ch." : locale === "es" ? "Cap." : "Cap."} {cap.num}
                           </span>
                           <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
-                            Seção {cap.secao_id}: {cap.secao_nome}
+                            {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}: {cap.secao_nome}
                           </span>
                         </div>
                         <Link
@@ -239,7 +239,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                             textDecoration: "none",
                           }}
                         >
-                          <span>Acessar Capítulo</span>
+                          <span>{locale === "en" ? "Access Chapter" : locale === "es" ? "Acceder al Capítulo" : "Acessar Capítulo"}</span>
                           <span>→</span>
                         </Link>
                       </div>
@@ -285,7 +285,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ color: "#003382" }}>🔬</span> Publicações Científicas de Referência
+                  <span style={{ color: "#003382" }}>🔬</span> {locale === "en" ? "Featured Scientific Publications" : locale === "es" ? "Publicaciones Científicas Destacadas" : "Publicações Científicas de Referência"}
                 </h2>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -334,7 +334,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Titulação Acadêmica
+                  {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
                   {author.titulacao_academica.map((tit, i) => (
@@ -356,7 +356,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Cargos em Sociedades
+                  {locale === "en" ? "Positions in Medical Societies" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
                   {author.cargos_sociedades.map((cargo, i) => (
@@ -378,7 +378,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Áreas de Atuação
+                  {locale === "en" ? "Practice Areas" : locale === "es" ? "Áreas de Práctica" : "Áreas de Atuação"}
                 </h3>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {author.especialidades.map((esp, i) => (
@@ -411,10 +411,14 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <h4 style={{ fontSize: 18, fontWeight: 800, margin: "0 0 10px" }}>
-                  Corpo Editorial Completo
+                  {locale === "en" ? "Complete Editorial Board" : locale === "es" ? "Cuerpo Editorial Completo" : "Corpo Editorial Completo"}
                 </h4>
                 <p style={{ fontSize: 13.5, color: "#cbd5e1", margin: "0 0 18px", lineHeight: 1.5 }}>
-                  Conheça os demais editores e autores responsáveis pelos 109 capítulos da obra.
+                  {locale === "en"
+                    ? "Meet the editors and authors responsible for all 109 chapters of the masterwork."
+                    : locale === "es"
+                    ? "Conozca a los editores y autores responsables de los 109 capítulos de la obra."
+                    : "Conheça os demais editores e autores responsáveis pelos 109 capítulos da obra."}
                 </p>
                 <Link
                   href={`/${locale}/autores`}
@@ -431,7 +435,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                     boxSizing: "border-box",
                   }}
                 >
-                  Ver Todos os Autores →
+                  {locale === "en" ? "View All Authors →" : locale === "es" ? "Ver Todos los Autores →" : "Ver Todos os Autores →"}
                 </Link>
               </div>
             </aside>

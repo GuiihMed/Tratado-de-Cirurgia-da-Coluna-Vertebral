@@ -12,6 +12,86 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const t = {
+    pt: {
+      brand: "Tratado de Cirurgia da Coluna Vertebral",
+      mission:
+        "A principal referência científica e cirúrgica da coluna vertebral na América Latina. Reunindo os maiores especialistas da SBC em um tratado completo de 10 seções e 109 capítulos.",
+      navTitle: "Navegação",
+      overview: "Visão Geral da Obra",
+      preface: "Prefácio dos Editores",
+      presentation: "Apresentação Institucional",
+      index: "Índice Interativo (109 Cap.)",
+      authors: "Autores e Colaboradores",
+      editionsTitle: "Edições & Idiomas",
+      certifiedTitle: "Edição Oficial Impressa",
+      certifiedDesc:
+        "A obra completa existe exclusivamente no formato impresso para garantir integridade acadêmica e qualidade editorial.",
+      backToTop: "Voltar ao topo ↑",
+      copyright: "© 2026 Tratado de Cirurgia da Coluna Vertebral • Sociedade Brasileira de Coluna (SBC).",
+      terms: "Termos de Uso",
+      privacy: "Privacidade",
+      support: "Suporte Editorial",
+    },
+    en: {
+      brand: "Treatise on Spine Surgery",
+      mission:
+        "The leading scientific and surgical spine reference in Latin America. Bringing together top SBC specialists in a comprehensive work of 10 sections and 109 chapters.",
+      navTitle: "Navigation",
+      overview: "Overview",
+      preface: "Editors' Preface",
+      presentation: "Institutional Presentation",
+      index: "Interactive Index (109 Chapters)",
+      authors: "Authors & Collaborators",
+      editionsTitle: "Editions & Languages",
+      certifiedTitle: "Official Printed Edition",
+      certifiedDesc:
+        "The complete treatise is available exclusively in printed format to ensure academic integrity and editorial excellence.",
+      backToTop: "Back to top ↑",
+      copyright: "© 2026 Treatise on Spine Surgery • Brazilian Spine Society (SBC).",
+      terms: "Terms of Use",
+      privacy: "Privacy Policy",
+      support: "Editorial Support",
+    },
+    es: {
+      brand: "Tratado de Cirugía de la Columna Vertebral",
+      mission:
+        "La principal referencia científica y quirúrgica de columna vertebral en América Latina. Reuniendo a los mayores especialistas de la SBC en una obra completa de 10 secciones y 109 capítulos.",
+      navTitle: "Navegación",
+      overview: "Visión General",
+      preface: "Prefacio de los Editores",
+      presentation: "Presentación Institucional",
+      index: "Índice Interactivo (109 Cap.)",
+      authors: "Autores y Colaboradores",
+      editionsTitle: "Ediciones e Idiomas",
+      certifiedTitle: "Edición Oficial Impresa",
+      certifiedDesc:
+        "La obra completa existe exclusivamente en formato impreso para garantizar integridad académica y calidad editorial.",
+      backToTop: "Volver arriba ↑",
+      copyright: "© 2026 Tratado de Cirugía de la Columna Vertebral • Sociedad Brasileña de Coluna (SBC).",
+      terms: "Términos de Uso",
+      privacy: "Privacidad",
+      support: "Soporte Editorial",
+    },
+  }[locale] || {
+    brand: "Tratado de Cirurgia da Coluna Vertebral",
+    mission: "A principal referência científica e cirúrgica da coluna vertebral na América Latina.",
+    navTitle: "Navegação",
+    overview: "Visão Geral",
+    preface: "Prefácio",
+    presentation: "Apresentação",
+    index: "Índice",
+    authors: "Autores",
+    editionsTitle: "Idiomas",
+    certifiedTitle: "Edição Oficial Impressa",
+    certifiedDesc: "A obra completa existe exclusivamente no formato impresso.",
+    backToTop: "Voltar ao topo ↑",
+    copyright: "© 2026 Tratado de Cirurgia da Coluna Vertebral.",
+    terms: "Termos",
+    privacy: "Privacidade",
+    support: "Suporte",
+  };
+
   return (
     <footer
       style={{
@@ -51,12 +131,11 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 </svg>
               </span>
               <strong style={{ fontSize: 20, letterSpacing: "-0.02em" }}>
-                Tratado de Cirurgia da Coluna Vertebral
+                {t.brand}
               </strong>
             </div>
             <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#9db8d7", maxWidth: 420 }}>
-              A principal referência científica e cirúrgica da coluna vertebral na América Latina.
-              Reunindo os maiores especialistas da SBC em um tratado completo de 10 seções e 109 capítulos.
+              {t.mission}
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 28, marginTop: 24 }}>
               <img
@@ -72,23 +151,23 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
           {/* Quick Links */}
           <div>
             <h4 style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              Navegação
+              {t.navTitle}
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <Link href={`/${locale}/home-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Visão Geral da Obra
+                {t.overview}
               </Link>
               <Link href={`/${locale}/prefacio-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Prefácio dos Editores
+                {t.preface}
               </Link>
               <Link href={`/${locale}/apresentacao-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Apresentação Institucional
+                {t.presentation}
               </Link>
               <Link href={`/${locale}/indice-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Índice Interativo (109 Cap.)
+                {t.index}
               </Link>
               <Link href={`/${locale}/autores-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                Autores e Colaboradores
+                {t.authors}
               </Link>
             </div>
           </div>
@@ -96,7 +175,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
           {/* Languages & Resources */}
           <div>
             <h4 style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              Edições &amp; Idiomas
+              {t.editionsTitle}
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <Link href="/pt/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
@@ -109,7 +188,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 🇪🇸 Español (Resúmenes)
               </Link>
               <Link href="/admin/login" style={{ color: "#ff7380", textDecoration: "none", fontSize: 14, fontWeight: 600 }}>
-                🔐 Painel de Autores
+                🔐 {locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}
               </Link>
             </div>
           </div>
@@ -130,10 +209,10 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   <use href="#i-award"></use>
                 </svg>
               </span>
-              <strong style={{ fontSize: 15 }}>Edição Oficial Impressa</strong>
+              <strong style={{ fontSize: 15 }}>{t.certifiedTitle}</strong>
             </div>
             <p style={{ fontSize: 13, lineHeight: 1.5, color: "#8faecf", margin: "0 0 16px" }}>
-              A obra completa existe exclusivamente no formato impresso para garantir integridade acadêmica e qualidade editorial.
+              {t.certifiedDesc}
             </p>
             <button
               onClick={scrollToTop}
@@ -153,7 +232,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 gap: 8,
               }}
             >
-              Voltar ao topo ↑
+              {t.backToTop}
             </button>
           </div>
         </div>
@@ -172,11 +251,11 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
             gap: 16,
           }}
         >
-          <span>© 2026 Tratado de Cirurgia da Coluna Vertebral • Sociedade Brasileira de Coluna (SBC).</span>
+          <span>{t.copyright}</span>
           <div style={{ display: "flex", gap: 20 }}>
-            <span>Termos de Uso</span>
-            <span>Privacidade</span>
-            <span>Suporte Editorial</span>
+            <span>{t.terms}</span>
+            <span>{t.privacy}</span>
+            <span>{t.support}</span>
           </div>
         </div>
       </div>

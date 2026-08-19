@@ -144,6 +144,8 @@ export default function ChapterAccordion({
                     <li style={{ gridColumn: "1 / -1", opacity: 0.7 }}>
                       {locale === "en"
                         ? "No chapters registered for this section."
+                        : locale === "es"
+                        ? "No hay capítulos registrados para esta sección."
                         : "Nenhum capítulo cadastrado nesta seção."}
                     </li>
                   )}

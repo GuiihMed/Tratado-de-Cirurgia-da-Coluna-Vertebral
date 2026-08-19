@@ -133,7 +133,13 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               }}
             >
               <span className="pulse-dot" style={{ background: "#f52238" }} />
-              <span style={{ color: "#ffffff" }}>Índice Oficial • 10 Seções &amp; 109 Capítulos</span>
+              <span style={{ color: "#ffffff" }}>
+                {locale === "en"
+                  ? "Official Index • 10 Sections & 109 Chapters"
+                  : locale === "es"
+                  ? "Índice Oficial • 10 Secciones & 109 Capítulos"
+                  : "Índice Oficial • 10 Seções & 109 Capítulos"}
+              </span>
             </div>
 
             <h1 style={{ fontSize: 50, letterSpacing: "-0.035em", margin: "0 0 16px", fontWeight: 800, color: "#fff", lineHeight: 1.15 }}>
@@ -182,7 +188,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   className="modern-search-clear"
                   onClick={() => setSearchQuery("")}
                 >
-                  Limpar ✕
+                  {locale === "en" ? "Clear ✕" : locale === "es" ? "Limpiar ✕" : "Limpar ✕"}
                 </button>
               )}
             </div>
@@ -194,8 +200,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           <div className="shell">
             <div className="modern-controls-bar" style={{ margin: 0, width: "100%" }}>
               <span style={{ color: "#c2dcf5", fontWeight: 500 }}>
-                Exibindo <strong style={{ color: "#ffffff" }}>{filteredChapters.length}</strong> de 109 capítulos
-                {searchQuery && ` para "${searchQuery}"`}
+                {locale === "en" ? "Showing " : locale === "es" ? "Mostrando " : "Exibindo "}
+                <strong style={{ color: "#ffffff" }}>{filteredChapters.length}</strong>
+                {locale === "en" ? " of 109 chapters" : locale === "es" ? " de 109 capítulos" : " de 109 capítulos"}
+                {searchQuery && (locale === "en" ? ` for "${searchQuery}"` : locale === "es" ? ` para "${searchQuery}"` : ` para "${searchQuery}"`)}
               </span>
 
               {/* Layout Display Switcher */}
@@ -220,7 +228,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   }}
                 >
                   <span>📑</span>
-                  <span>Por Seções</span>
+                  <span>{locale === "en" ? "By Sections" : locale === "es" ? "Por Secciones" : "Por Seções"}</span>
                 </button>
 
                 <button
@@ -243,7 +251,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   }}
                 >
                   <span>⊞</span>
-                  <span>Grade de Cards</span>
+                  <span>{locale === "en" ? "Card Grid" : locale === "es" ? "Cuadrícula" : "Grade de Cards"}</span>
                 </button>
 
                 <button
@@ -266,7 +274,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   }}
                 >
                   <span>☰</span>
-                  <span>Tabela Compacta</span>
+                  <span>{locale === "en" ? "Compact Table" : locale === "es" ? "Tabla Compacta" : "Tabela Compacta"}</span>
                 </button>
               </div>
 
@@ -286,7 +294,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                       cursor: "pointer",
                     }}
                   >
-                    Expandir Todos ↓
+                    {locale === "en" ? "Expand All ↓" : locale === "es" ? "Expandir Todos ↓" : "Expandir Todos ↓"}
                   </button>
                   <button
                     onClick={() => setAllSections(false)}
@@ -301,7 +309,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                       cursor: "pointer",
                     }}
                   >
-                    Recolher Todos ↑
+                    {locale === "en" ? "Collapse All ↑" : locale === "es" ? "Colapsar Todos ↑" : "Recolher Todos ↑"}
                   </button>
                 </div>
               )}
@@ -383,7 +391,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                             </strong>
                             <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 500, marginTop: 2, display: "block" }}>
-                              {secChapters.length} capítulos nesta seção
+                              {secChapters.length} {locale === "en" ? "chapters in this section" : locale === "es" ? "capítulos en esta sección" : "capítulos nesta seção"}
                             </span>
                           </div>
                         </div>
@@ -477,7 +485,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                     flexShrink: 0,
                                   }}
                                 >
-                                  Ver →
+                                  {locale === "en" ? "View →" : locale === "es" ? "Ver →" : "Ver →"}
                                 </span>
                               </Link>
                             );
@@ -534,10 +542,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               boxShadow: "0 3px 10px rgba(245, 34, 56, 0.3)",
                             }}
                           >
-                            Capítulo {cap.numero}
+                            {locale === "en" ? `Chapter ${cap.numero}` : locale === "es" ? `Capítulo ${cap.numero}` : `Capítulo ${cap.numero}`}
                           </span>
                           <span style={{ fontSize: 11.5, fontWeight: 700, color: "#003382", background: "rgba(0, 51, 130, 0.07)", padding: "3px 8px", borderRadius: 4, border: "1px solid rgba(0, 51, 130, 0.15)" }}>
-                            Seção {cap.secao_id}
+                            {locale === "en" ? `Section ${cap.secao_id}` : locale === "es" ? `Sección ${cap.secao_id}` : `Seção ${cap.secao_id}`}
                           </span>
                         </div>
 
@@ -570,7 +578,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             boxShadow: "0 3px 10px rgba(245, 34, 56, 0.35)",
                           }}
                         >
-                          <span>Ver Capítulo</span>
+                          <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
                           <span>→</span>
                         </Link>
                         <button
@@ -587,12 +595,12 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             cursor: "pointer",
                           }}
                         >
-                          Resumo 📖
+                          {locale === "en" ? "Abstract 📖" : locale === "es" ? "Resumen 📖" : "Resumo 📖"}
                         </button>
                         <button
                           type="button"
                           onClick={() => copyCitation(cap)}
-                          title="Copiar citação ABNT"
+                          title={locale === "en" ? "Copy citation" : locale === "es" ? "Copiar cita" : "Copiar citação ABNT"}
                           style={{
                             padding: "9px 10px",
                             borderRadius: 8,
@@ -632,9 +640,9 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   <thead>
                     <tr style={{ background: "linear-gradient(135deg, #00122e 0%, #002255 100%)", color: "#ffffff", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                       <th style={{ padding: "16px 20px", width: 75, textAlign: "center" }}>Nº</th>
-                      <th style={{ padding: "16px 20px" }}>Título do Capítulo</th>
-                      <th style={{ padding: "16px 20px", width: 240 }}>Seção Temática</th>
-                      <th style={{ padding: "16px 20px", width: 220, textAlign: "right" }}>Ações Rápidas</th>
+                      <th style={{ padding: "16px 20px" }}>{locale === "en" ? "Chapter Title" : locale === "es" ? "Título del Capítulo" : "Título do Capítulo"}</th>
+                      <th style={{ padding: "16px 20px", width: 240 }}>{locale === "en" ? "Thematic Section" : locale === "es" ? "Sección Temática" : "Seção Temática"}</th>
+                      <th style={{ padding: "16px 20px", width: 220, textAlign: "right" }}>{locale === "en" ? "Quick Actions" : locale === "es" ? "Acciones Rápidas" : "Ações Rápidas"}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -686,7 +694,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             </Link>
                           </td>
                           <td style={{ padding: "14px 20px", fontSize: 13, color: "#64748b", fontWeight: 600 }}>
-                            {sec ? `Seção ${sec.numero}: ${locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}` : ""}
+                            {sec ? `${locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} ${sec.numero}: ${locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}` : ""}
                           </td>
                           <td style={{ padding: "14px 20px", textAlign: "right" }}>
                             <div style={{ display: "inline-flex", gap: 8, alignItems: "center" }}>
@@ -703,7 +711,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                   boxShadow: "0 2px 8px rgba(245, 34, 56, 0.25)",
                                 }}
                               >
-                                Abrir →
+                                {locale === "en" ? "Open →" : locale === "es" ? "Abrir →" : "Abrir →"}
                               </Link>
                               <button
                                 type="button"
@@ -719,7 +727,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                   cursor: "pointer",
                                 }}
                               >
-                                Resumo
+                                {locale === "en" ? "Abstract" : locale === "es" ? "Resumen" : "Resumo"}
                               </button>
                               <button
                                 type="button"
@@ -733,7 +741,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                   fontSize: 12,
                                   cursor: "pointer",
                                 }}
-                                title="Copiar citação"
+                                title={locale === "en" ? "Copy citation" : locale === "es" ? "Copiar cita" : "Copiar citação"}
                               >
                                 {copiedChapter === cap.numero ? "✓" : "📋"}
                               </button>
@@ -810,31 +818,35 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     borderRadius: 6,
                   }}
                 >
-                  Capítulo {activeModalChapter.numero}
+                  {locale === "en" ? `Chapter ${activeModalChapter.numero}` : locale === "es" ? `Capítulo ${activeModalChapter.numero}` : `Capítulo ${activeModalChapter.numero}`}
                 </span>
                 <span style={{ fontSize: 13, color: "#8cb7e4", fontWeight: 700 }}>
-                  Seção {activeModalChapter.secao_id}: {getSectionName(activeModalChapter.secao_id)}
+                  {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {activeModalChapter.secao_id}: {getSectionName(activeModalChapter.secao_id)}
                 </span>
               </div>
 
               <h2 style={{ fontSize: 24, color: "#fff", margin: "0 0 18px", lineHeight: 1.25 }}>
-                {activeModalChapter.titulo_pt}
+                {getChapterTitle(activeModalChapter)}
               </h2>
 
               <div style={{ padding: 16, borderRadius: 12, background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)", marginBottom: 20 }}>
                 <div style={{ fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", color: "#8da9cc", marginBottom: 8 }}>
-                  Títulos em outros idiomas:
+                  {locale === "en" ? "Titles in other languages:" : locale === "es" ? "Títulos en otros idiomas:" : "Títulos em outros idiomas:"}
                 </div>
                 <div style={{ fontSize: 13.5, color: "#e2effe", marginBottom: 6 }}>
-                  🇺🇸 <strong>EN:</strong> {activeModalChapter.titulo_en || "Disponível na edição impressa"}
+                  🇺🇸 <strong>EN:</strong> {activeModalChapter.titulo_en || (locale === "en" ? "Available in printed edition" : "Disponível na edição impressa")}
                 </div>
                 <div style={{ fontSize: 13.5, color: "#e2effe" }}>
-                  🇪🇸 <strong>ES:</strong> {activeModalChapter.titulo_es || "Disponible en la edición impresa"}
+                  🇪🇸 <strong>ES:</strong> {activeModalChapter.titulo_es || (locale === "es" ? "Disponible en la edición impresa" : "Disponível na edição impressa")}
                 </div>
               </div>
 
               <p style={{ fontSize: 13.5, color: "#9db8d7", lineHeight: 1.55, margin: "0 0 24px" }}>
-                O conteúdo completo, técnica cirúrgica passo a passo, algoritmos e referências deste capítulo constam com exclusividade na obra impressa oficial do Tratado.
+                {locale === "en"
+                  ? "The complete content, step-by-step surgical techniques, algorithms, and references for this chapter are published exclusively in the official printed edition."
+                  : locale === "es"
+                  ? "El contenido completo, técnica quirúrgica paso a paso, algoritmos y referencias de este capítulo se encuentran exclusivamente en la obra impresa oficial del Tratado."
+                  : "O conteúdo completo, técnica cirúrgica passo a passo, algoritmos e referências deste capítulo constam com exclusividade na obra impressa oficial do Tratado."}
               </p>
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -843,14 +855,16 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   className="modern-btn-glow"
                   style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
                 >
-                  Ler Capítulo Completo 📖
+                  {locale === "en" ? "Read Full Chapter 📖" : locale === "es" ? "Leer Capítulo Completo 📖" : "Ler Capítulo Completo 📖"}
                 </Link>
                 <button
                   onClick={() => copyCitation(activeModalChapter)}
                   className="modern-btn-glass"
                   style={{ height: 44, fontSize: 13, padding: "0 16px" }}
                 >
-                  {copiedChapter === activeModalChapter.numero ? "Citação Copiada! ✓" : "Copiar Citação"}
+                  {copiedChapter === activeModalChapter.numero
+                    ? (locale === "en" ? "Citation Copied! ✓" : locale === "es" ? "¡Cita Copiada! ✓" : "Citação Copiada! ✓")
+                    : (locale === "en" ? "Copy Citation" : locale === "es" ? "Copiar Cita" : "Copiar Citação")}
                 </button>
               </div>
             </div>

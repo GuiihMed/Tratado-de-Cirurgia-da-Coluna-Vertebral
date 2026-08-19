@@ -76,13 +76,13 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             href={`/${locale}/prefacio`}
             className={currentPage === "prefacio" ? "active" : ""}
           >
-            Prefácio
+            {dict.nav.preface}
           </Link>
           <Link
             href={`/${locale}/apresentacao`}
             className={currentPage === "apresentacao" ? "active" : ""}
           >
-            Apresentação
+            {dict.nav.presentation}
           </Link>
           <Link
             href={`/${locale}/indice`}
@@ -148,14 +148,14 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
               className={pathname?.includes("/prefacio") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Prefácio
+              {dict.nav.preface}
             </Link>
             <Link
               href={`/${locale}/apresentacao`}
               className={pathname?.includes("/apresentacao") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Apresentação
+              {dict.nav.presentation}
             </Link>
             <Link
               href={`/${locale}/indice`}

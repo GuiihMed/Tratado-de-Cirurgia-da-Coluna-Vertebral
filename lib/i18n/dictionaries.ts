@@ -8,6 +8,8 @@ export const DICTIONARY = {
     },
     nav: {
       about: "O Tratado",
+      preface: "Prefácio",
+      presentation: "Apresentação",
       index: "Índice",
       chapters: "Capítulos",
       authors: "Autores",
@@ -15,6 +17,8 @@ export const DICTIONARY = {
       debate: "Tratado em Debate",
       buy: "Onde Comprar",
       admin: "Painel Autores",
+      overview: "Visão Geral",
+      interactiveIndex: "Índice Interativo",
     },
     heroHome: {
       titleLine1: "Tratado de Cirurgia",
@@ -129,6 +133,8 @@ export const DICTIONARY = {
     },
     nav: {
       about: "The Treatise",
+      preface: "Preface",
+      presentation: "Presentation",
       index: "Index",
       chapters: "Chapters",
       authors: "Authors",
@@ -136,6 +142,8 @@ export const DICTIONARY = {
       debate: "Treatise in Debate",
       buy: "Where to Buy",
       admin: "Author Portal",
+      overview: "Overview",
+      interactiveIndex: "Interactive Index",
     },
     heroHome: {
       titleLine1: "Treatise on Spine",
@@ -250,6 +258,8 @@ export const DICTIONARY = {
     },
     nav: {
       about: "El Tratado",
+      preface: "Prefacio",
+      presentation: "Presentación",
       index: "Índice",
       chapters: "Capítulos",
       authors: "Autores",
@@ -257,6 +267,8 @@ export const DICTIONARY = {
       debate: "Tratado en Debate",
       buy: "Dónde Comprar",
       admin: "Panel Autores",
+      overview: "Inicio",
+      interactiveIndex: "Índice Interactivo",
     },
     heroHome: {
       titleLine1: "Tratado de Cirugía",

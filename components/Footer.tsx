@@ -31,8 +31,8 @@ export default function Footer({ locale }: FooterProps) {
 
         <div className="footer-links">
           <h3>{dict.footer.navTitle}</h3>
-          <Link href={`/${locale}/prefacio`}>Prefácio</Link>
-          <Link href={`/${locale}/apresentacao`}>Apresentação</Link>
+          <Link href={`/${locale}/prefacio`}>{dict.nav.preface}</Link>
+          <Link href={`/${locale}/apresentacao`}>{dict.nav.presentation}</Link>
           <Link href={`/${locale}/indice`}>{dict.nav.index}</Link>
           <Link href={`/${locale}/autores`}>{dict.nav.authors}</Link>
         </div>

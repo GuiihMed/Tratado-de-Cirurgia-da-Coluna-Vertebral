@@ -237,7 +237,13 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   backdropFilter: "blur(8px)",
                 }}
               >
-                <span>👥 CORPO EDITORIAL CIENTÍFICO</span>
+                <span>
+                  {locale === "en"
+                    ? "👥 SCIENTIFIC EDITORIAL BOARD"
+                    : locale === "es"
+                    ? "👥 CUERPO EDITORIAL CIENTÍFICO"
+                    : "👥 CORPO EDITORIAL CIENTÍFICO"}
+                </span>
               </div>
 
               <h1
@@ -287,7 +293,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                     fontSize: 14.5,
                   }}
                 >
-                  <span>Explorar Autores</span>
+                  <span>{locale === "en" ? "Explore Authors" : locale === "es" ? "Explorar Autores" : "Explorar Autores"}</span>
                   <span>↓</span>
                 </a>
                 <Link
@@ -304,7 +310,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                     fontSize: 14.5,
                   }}
                 >
-                  <span>Índice dos 109 Capítulos</span>
+                  <span>{locale === "en" ? "109 Chapters Index" : locale === "es" ? "Índice de 109 Capítulos" : "Índice dos 109 Capítulos"}</span>
                   <span>→</span>
                 </Link>
               </div>
@@ -334,7 +340,13 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                 <div style={{ position: "relative", flex: "1 1 320px", maxWidth: 460 }}>
                   <input
                     type="text"
-                    placeholder="Buscar autor por nome, cargo ou instituição..."
+                    placeholder={
+                      locale === "en"
+                        ? "Search author by name, role or institution..."
+                        : locale === "es"
+                        ? "Buscar autor por nombre, cargo o institución..."
+                        : "Buscar autor por nome, cargo ou instituição..."
+                    }
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     style={{
@@ -353,14 +365,16 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                 </div>
 
                 <div style={{ fontSize: 13.5, color: "#64748b", fontWeight: 600 }}>
-                  Exibindo <strong>{filteredAuthors.length}</strong> de {authorsList.length} especialistas
+                  {locale === "en" ? "Showing " : locale === "es" ? "Mostrando " : "Exibindo "}
+                  <strong>{filteredAuthors.length}</strong>
+                  {locale === "en" ? ` of ${authorsList.length} specialists` : locale === "es" ? ` de ${authorsList.length} especialistas` : ` de ${authorsList.length} especialistas`}
                 </div>
               </div>
 
               {/* Specialty Chips */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                 <span style={{ fontSize: 12.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", marginRight: 4 }}>
-                  Filtrar por Área:
+                  {locale === "en" ? "Filter by Area:" : locale === "es" ? "Filtrar por Área:" : "Filtrar por Área:"}
                 </span>
                 <button
                   type="button"
@@ -377,7 +391,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  Todas as Áreas
+                  {locale === "en" ? "All Areas" : locale === "es" ? "Todas las Áreas" : "Todas as Áreas"}
                 </button>
                 {allSpecialties.map((spec) => (
                   <button
@@ -526,13 +540,13 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                     <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 16 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                         <span style={{ fontSize: 12, fontWeight: 800, color: "#001a3d", textTransform: "uppercase" }}>
-                          Capítulos no Tratado:
+                          {locale === "en" ? "Treatise Chapters:" : locale === "es" ? "Capítulos en el Tratado:" : "Capítulos no Tratado:"}
                         </span>
                         <Link
                           href={`/${locale}/autor-new/${author.id}`}
                           style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", textDecoration: "none" }}
                         >
-                          Ver Perfil Completo →
+                          {locale === "en" ? "View Full Profile →" : locale === "es" ? "Ver Perfil Completo →" : "Ver Perfil Completo →"}
                         </Link>
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -555,7 +569,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                               transition: "all 0.2s ease",
                             }}
                           >
-                            <span>Cap. {cap.num} - {cap.titulo.length > 28 ? cap.titulo.slice(0, 28) + "..." : cap.titulo}</span>
+                            <span>{locale === "en" ? `Ch. ${cap.num}` : `Cap. ${cap.num}`} - {cap.titulo.length > 28 ? cap.titulo.slice(0, 28) + "..." : cap.titulo}</span>
                             <span style={{ color: "#f52238", fontSize: 12 }}>→</span>
                           </Link>
                         ))}

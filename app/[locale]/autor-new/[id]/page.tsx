@@ -79,11 +79,11 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
               }}
             >
               <Link href={`/${locale}/home-new`} style={{ color: "#94a3b8", textDecoration: "none" }}>
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>/</span>
               <Link href={`/${locale}/autores-new`} style={{ color: "#94a3b8", textDecoration: "none" }}>
-                Autores
+                {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
               </Link>
               <span>/</span>
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
@@ -210,7 +210,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  📖 Biografia & Perfil
+                  {locale === "en" ? "📖 Biography & Profile" : locale === "es" ? "📖 Biografía y Perfil" : "📖 Biografia & Perfil"}
                 </button>
                 <button
                   type="button"
@@ -228,7 +228,11 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  📚 Capítulos no Tratado ({author.capitulos_tratado.length})
+                  {locale === "en"
+                    ? `📚 Treatise Chapters (${author.capitulos_tratado.length})`
+                    : locale === "es"
+                    ? `📚 Capítulos en el Tratado (${author.capitulos_tratado.length})`
+                    : `📚 Capítulos no Tratado (${author.capitulos_tratado.length})`}
                 </button>
                 <button
                   type="button"
@@ -246,7 +250,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  🔬 Produção Científica
+                  {locale === "en" ? "🔬 Scientific Output" : locale === "es" ? "🔬 Producción Científica" : "🔬 Produção Científica"}
                 </button>
               </div>
 
@@ -262,14 +266,14 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   }}
                 >
                   <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px" }}>
-                    Trajetória Acadêmica e Cirúrgica
+                    {locale === "en" ? "Academic & Surgical Career" : locale === "es" ? "Trayectoria Académica y Quirúrgica" : "Trajetória Acadêmica e Cirúrgica"}
                   </h2>
                   <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.75, margin: "0 0 28px" }}>
                     {author.bio_completa}
                   </p>
 
                   <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: "0 0 14px" }}>
-                    Linhas de Pesquisa e Investigação Clínica
+                    {locale === "en" ? "Research Lines & Clinical Investigation" : locale === "es" ? "Líneas de Investigación Clínica" : "Linhas de Pesquisa e Investigação Clínica"}
                   </h3>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
                     {author.linhas_pesquisa.map((linha, i) => (
@@ -295,7 +299,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   </div>
 
                   <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: "0 0 14px" }}>
-                    Especialidades e Áreas de Domínio
+                    {locale === "en" ? "Specialties & Areas of Expertise" : locale === "es" ? "Especialidades y Áreas de Dominio" : "Especialidades e Áreas de Domínio"}
                   </h3>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     {author.especialidades.map((esp, i) => (
@@ -331,10 +335,14 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
                     <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                      Capítulos Escritos / Coordenados ({author.capitulos_tratado.length})
+                      {locale === "en"
+                        ? `Authored / Coordinated Chapters (${author.capitulos_tratado.length})`
+                        : locale === "es"
+                        ? `Capítulos Escritos / Coordinados (${author.capitulos_tratado.length})`
+                        : `Capítulos Escritos / Coordenados (${author.capitulos_tratado.length})`}
                     </h2>
                     <span style={{ fontSize: 12.5, fontWeight: 700, color: "#f52238", background: "#fef2f2", padding: "4px 12px", borderRadius: 20, border: "1px solid #fecaca" }}>
-                      Tratado Oficial SBC
+                      {locale === "en" ? "Official SBC Treatise" : locale === "es" ? "Tratado Oficial SBC" : "Tratado Oficial SBC"}
                     </span>
                   </div>
 
@@ -353,10 +361,10 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                             <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 12.5, fontWeight: 800 }}>
-                              Capítulo {cap.num}
+                              {locale === "en" ? `Chapter ${cap.num}` : locale === "es" ? `Capítulo ${cap.num}` : `Capítulo ${cap.num}`}
                             </span>
                             <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
-                              Seção {cap.secao_id}: {cap.secao_nome}
+                              {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}: {cap.secao_nome}
                             </span>
                           </div>
                           <Link
@@ -373,7 +381,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                               textDecoration: "none",
                             }}
                           >
-                            <span>Ver Capítulo</span>
+                            <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
                             <span>→</span>
                           </Link>
                         </div>
@@ -422,7 +430,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   }}
                 >
                   <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px" }}>
-                    Publicações Científicas de Referência
+                    {locale === "en" ? "Benchmark Scientific Publications" : locale === "es" ? "Publicaciones Científicas de Referencia" : "Publicações Científicas de Referência"}
                   </h2>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -472,7 +480,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Titulação Acadêmica
+                  {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
                   {author.titulacao_academica.map((tit, i) => (
@@ -494,7 +502,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Cargos em Sociedades
+                  {locale === "en" ? "Society Leadership & Appointments" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
                   {author.cargos_sociedades.map((cargo, i) => (
@@ -516,7 +524,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 }}
               >
                 <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  Outros Editores do Tratado
+                  {locale === "en" ? "Other Treatise Editors" : locale === "es" ? "Otros Editores del Tratado" : "Outros Editores do Tratado"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {otherAuthors.map((other) => (

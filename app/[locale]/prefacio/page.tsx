@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
-import { PREFACIO_DATA, EDITORES_TRATADO } from "@/lib/data/institutional-data";
+import { getPrefacioData, EDITORES_TRATADO } from "@/lib/data/institutional-data";
 
 export const revalidate = 0;
 
@@ -19,6 +19,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
+  const PREFACIO_DATA = getPrefacioData(locale);
 
   return (
     <>

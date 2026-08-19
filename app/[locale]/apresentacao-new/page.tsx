@@ -5,7 +5,7 @@ import Link from "next/link";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
-import { APRESENTACAO_DATA } from "@/lib/data/institutional-data";
+import { getApresentacaoData } from "@/lib/data/institutional-data";
 
 interface ApresentacaoNewProps {
   params: Promise<{ locale: string }>;
@@ -17,6 +17,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
+  const APRESENTACAO_DATA = getApresentacaoData(locale);
 
   const [fontSizeMultiplier, setFontSizeMultiplier] = useState<number>(1);
 

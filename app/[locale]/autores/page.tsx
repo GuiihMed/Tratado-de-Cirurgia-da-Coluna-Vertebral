@@ -105,7 +105,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     lineHeight: 1.15,
                   }}
                 >
-                  Autores
+                  {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
                 </h1>
 
                 <p
@@ -118,7 +118,11 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     maxWidth: 700,
                   }}
                 >
-                  Conheça os editores, autores e colaboradores do Tratado de Cirurgia da Coluna Vertebral.
+                  {locale === "en"
+                    ? "Meet the editors, authors, and contributors of the Treatise on Spine Surgery."
+                    : locale === "es"
+                    ? "Conozca a los editores, autores y colaboradores del Tratado de Cirugía de Columna Vertebral."
+                    : "Conheça os editores, autores e colaboradores do Tratado de Cirurgia da Coluna Vertebral."}
                 </p>
 
                 <p
@@ -130,7 +134,11 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     maxWidth: 680,
                   }}
                 >
-                  A obra completa existe exclusivamente em formato impresso. Este site organiza autores, capítulos, resumos e referências para estudo e consulta.
+                  {locale === "en"
+                    ? "The complete masterwork is exclusively available in printed format. This portal organizes authors, chapters, summaries, and references for clinical study."
+                    : locale === "es"
+                    ? "La obra completa existe exclusivamente en formato impreso. Este portal organiza autores, capítulos, resúmenes y referencias para estudio y consulta."
+                    : "A obra completa existe exclusivamente em formato impresso. Este site organiza autores, capítulos, resumos e referências para estudo e consulta."}
                 </p>
 
                 {/* Print Notice Box */}
@@ -147,7 +155,11 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 >
                   <span style={{ fontSize: 18, color: "#f43f5e" }}>📖</span>
                   <span style={{ fontSize: 13.5, color: "rgba(255, 255, 255, 0.9)" }}>
-                    A obra completa existe exclusivamente em formato impresso.
+                    {locale === "en"
+                      ? "The complete treatise is exclusively available in printed format."
+                      : locale === "es"
+                      ? "La obra completa existe exclusivamente en formato impreso."
+                      : "A obra completa existe exclusivamente em formato impresso."}
                   </span>
                 </div>
               </div>
@@ -169,7 +181,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
               letterSpacing: "-0.01em",
             }}
           >
-            Editores
+            {locale === "en" ? "Editors" : locale === "es" ? "Editores" : "Editores"}
           </h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
@@ -242,10 +254,10 @@ export default function AutoresPage({ params }: AutoresPageProps) {
         <section style={{ maxWidth: 1200, margin: "0 auto 64px", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
             <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: "0 0 6px" }}>
-              Autores e colaboradores
+              {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e colaboradores"}
             </h2>
             <p style={{ fontSize: 14, color: "#64748b", margin: 0 }}>
-              Ordem alfabética
+              {locale === "en" ? "Alphabetical Order" : locale === "es" ? "Orden Alfabético" : "Ordem alfabética"}
             </p>
           </div>
 
@@ -279,7 +291,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     boxShadow: isSelected ? "0 2px 8px rgba(0, 43, 102, 0.25)" : "none",
                   }}
                 >
-                  {letra === "TODOS" ? "Todos" : letra}
+                  {letra === "TODOS" ? (locale === "en" ? "All" : locale === "es" ? "Todos" : "Todos") : letra}
                 </button>
               );
             })}
@@ -377,19 +389,23 @@ export default function AutoresPage({ params }: AutoresPageProps) {
               />
               <div>
                 <h3 style={{ fontSize: 19, fontWeight: 900, margin: "0 0 12px", color: "#fff" }}>
-                  Uma obra para consulta, estudo e referência — exclusivamente em formato impresso.
+                  {locale === "en"
+                    ? "A landmark masterwork for clinical practice, study, and reference — exclusively printed."
+                    : locale === "es"
+                    ? "Una obra de referencia para consulta y estudio — exclusivamente en formato impreso."
+                    : "Uma obra para consulta, estudo e referência — exclusivamente em formato impresso."}
                 </h3>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 12.5, color: "rgba(255, 255, 255, 0.8)", marginBottom: 16 }}>
-                  <span>✓ Conteúdo completo disponível apenas na edição impressa</span>
-                  <span>✓ Atualização contínua e revista por especialistas</span>
-                  <span>✓ Qualidade editorial para bibliotecas e profissionais</span>
+                  <span>✓ {locale === "en" ? "Full content available only in the printed edition" : locale === "es" ? "Contenido completo disponible solo en edición impresa" : "Conteúdo completo disponível apenas na edição impressa"}</span>
+                  <span>✓ {locale === "en" ? "Peer-reviewed and continuously updated" : locale === "es" ? "Revisado por especialistas reconocidos" : "Atualização contínua e revista por especialistas"}</span>
+                  <span>✓ {locale === "en" ? "Editorial excellence for hospitals and specialists" : locale === "es" ? "Calidad editorial para bibliotecas y profesionales" : "Qualidade editorial para bibliotecas e profissionais"}</span>
                 </div>
               </div>
             </div>
 
             <div style={{ textAlign: "right", flexShrink: 0 }}>
               <p style={{ margin: "0 0 10px", fontSize: 13.5, fontWeight: 700, color: "rgba(255, 255, 255, 0.9)" }}>
-                Adquira sua edição impressa com a qualidade DiLivros e o selo da SBC.
+                {locale === "en" ? "Acquire your printed edition published by DiLivros and SBC." : locale === "es" ? "Adquiera su edición impresa con la calidad DiLivros y el sello SBC." : "Adquira sua edição impressa com a qualidade DiLivros e o selo da SBC."}
               </p>
               <a
                 href="https://www.dilivros.com.br/"
@@ -408,7 +424,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                   textDecoration: "none",
                 }}
               >
-                <span>Onde Comprar</span>
+                <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                 <span>→</span>
               </a>
             </div>

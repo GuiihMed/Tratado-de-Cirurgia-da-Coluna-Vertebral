@@ -217,14 +217,16 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               }}
             >
               <Link href={`/${locale}`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
               <Link href={`/${locale}/indice`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
-                Capítulos
+                {locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}
               </Link>
               <span>›</span>
-              <span style={{ color: "#fff", fontWeight: 600 }}>Capítulo {num}</span>
+              <span style={{ color: "#fff", fontWeight: 600 }}>
+                {locale === "en" ? `Chapter ${num}` : locale === "es" ? `Capítulo ${num}` : `Capítulo ${num}`}
+              </span>
             </nav>
 
             {/* Hero Main Grid */}
@@ -263,7 +265,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       letterSpacing: "0.06em",
                     }}
                   >
-                    SEÇÃO {cap.secao_id} • {sectionTitle}
+                    {locale === "en" ? "SECTION" : locale === "es" ? "SECCIÓN" : "SEÇÃO"} {cap.secao_id} • {sectionTitle}
                   </span>
                 </div>
 
@@ -271,7 +273,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 14 }}>
                   <div style={{ textAlign: "center" }}>
                     <span style={{ display: "block", fontSize: 12, color: "#94b8db", textTransform: "uppercase", fontWeight: 700 }}>
-                      Capítulo
+                      {locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"}
                     </span>
                     <span style={{ fontSize: 56, fontWeight: 900, lineHeight: 1, color: "#fff", letterSpacing: "-0.03em" }}>
                       {num}
@@ -321,7 +323,11 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                   </svg>
                   <span style={{ fontSize: 13.5, color: "#ffebee", fontWeight: 500 }}>
-                    A leitura completa deste capítulo está disponível exclusivamente na <strong>edição impressa do Tratado</strong>.
+                    {locale === "en"
+                      ? "Full reading of this chapter is available exclusively in the printed edition of the Treatise."
+                      : locale === "es"
+                      ? "La lectura completa de este capítulo está disponible exclusivamente en la edición impresa del Tratado."
+                      : "A leitura completa deste capítulo está disponível exclusivamente na edição impressa do Tratado."}
                   </span>
                 </div>
 
@@ -344,7 +350,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       transition: "all 0.2s ease",
                     }}
                   >
-                    <span>Onde Comprar</span>
+                    <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                     <span>🛒</span>
                   </Link>
 
@@ -364,7 +370,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       fontWeight: 600,
                     }}
                   >
-                    <span>Ver referências</span>
+                    <span>{locale === "en" ? "View references" : locale === "es" ? "Ver referencias" : "Ver referências"}</span>
                     <span>📖</span>
                   </a>
 
@@ -384,7 +390,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       fontWeight: 600,
                     }}
                   >
-                    <span>Ver episódio relacionado</span>
+                    <span>{locale === "en" ? "View related episode" : locale === "es" ? "Ver episodio relacionado" : "Ver episódio relacionado"}</span>
                     <span>▶</span>
                   </a>
                 </div>
@@ -421,7 +427,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 }}
               >
                 <div style={{ fontSize: 18, marginBottom: 4 }}>🔖</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>Seção {cap.secao_id}</div>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}</div>
                 <div style={{ fontSize: 11.5, color: "#94b8db" }}>{sectionTitle}</div>
               </div>
 
@@ -437,7 +443,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 }}
               >
                 <div style={{ fontSize: 18, marginBottom: 4 }}>📖</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>Capítulo {num}</div>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"} {num}</div>
                 <div style={{ fontSize: 11.5, color: "#94b8db", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {title}
                 </div>
@@ -455,7 +461,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 }}
               >
                 <div style={{ fontSize: 18, marginBottom: 4 }}>🌐</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>Resumo em</div>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Summary in" : locale === "es" ? "Resumen en" : "Resumo em"}</div>
                 <div style={{ fontSize: 11.5, color: "#94b8db" }}>PT | ES | EN</div>
               </div>
 
@@ -471,8 +477,8 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 }}
               >
                 <div style={{ fontSize: 18, marginBottom: 4 }}>📄</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>Referências</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>bibliográficas</div>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}</div>
+                <div style={{ fontSize: 11.5, color: "#94b8db" }}>{locale === "en" ? "indexed" : locale === "es" ? "bibliográficas" : "bibliográficas"}</div>
               </div>
 
               {/* Card 5 */}
@@ -487,8 +493,8 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 }}
               >
                 <div style={{ fontSize: 18, marginBottom: 4 }}>📚</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>Obra</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>impressa</div>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Masterwork" : locale === "es" ? "Obra" : "Obra"}</div>
+                <div style={{ fontSize: 11.5, color: "#94b8db" }}>{locale === "en" ? "printed" : locale === "es" ? "impresa" : "impressa"}</div>
               </div>
             </div>
           </div>
@@ -512,25 +518,50 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
                   <span style={{ fontSize: 20 }}>📑</span>
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Resumo do capítulo
+                    {locale === "en" ? "Chapter Summary" : locale === "es" ? "Resumen del capítulo" : "Resumo do capítulo"}
                   </h2>
                 </div>
 
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14, fontSize: 14.5, lineHeight: 1.6, color: "#334155" }}>
                   <li>
-                    <strong style={{ color: "#001a3d" }}>• Contexto:</strong> O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível.
+                    <strong style={{ color: "#001a3d" }}>• {locale === "en" ? "Context" : locale === "es" ? "Contexto" : "Contexto"}:</strong>{" "}
+                    {locale === "en"
+                      ? "Sagittal spinal alignment has become a cornerstone in clinical evaluation, surgical planning, and understanding functional outcomes for patients with degenerative diseases and spinal deformities. Upright human posture relies on harmonious integration among spine, pelvis, hips, and lower limbs to maintain center of mass with minimal energy expenditure."
+                      : locale === "es"
+                      ? "El equilibrio sagital de la columna vertebral se ha convertido en un concepto central en la evaluación clínica, planificación quirúrgica y comprensión de resultados funcionales. La postura erguida humana depende de la integración armónica entre columna, pelvis, caderas y extremidades inferiores con el menor gasto energético posible."
+                      : "O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível."}
                   </li>
                   <li>
-                    <strong style={{ color: "#001a3d" }}>• Objetivo do capítulo:</strong> Apresentar os fundamentos anatômicos, biomecânicos e radiográficos do alinhamento sagital, destacando sua relevância para a avaliação clínica e para o planejamento de procedimentos cirúrgicos da coluna.
+                    <strong style={{ color: "#001a3d" }}>• {locale === "en" ? "Chapter Objective" : locale === "es" ? "Objetivo del capítulo" : "Objetivo do capítulo"}:</strong>{" "}
+                    {locale === "en"
+                      ? "Present the anatomical, biomechanical, and radiographic foundations of sagittal alignment, highlighting its clinical relevance for precision spinal surgery planning."
+                      : locale === "es"
+                      ? "Presentar los fundamentos anatómicos, biomecánicos y radiográficos de la alineación sagital, destacando su relevancia para la evaluación clínica y la planificación quirúrgica."
+                      : "Apresentar os fundamentos anatômicos, biomecânicos e radiográficos do alinhamento sagital, destacando sua relevância para a avaliação clínica e para o planejamento de procedimentos cirúrgicos da coluna."}
                   </li>
                   <li>
-                    <strong style={{ color: "#001a3d" }}>• Conteúdo principal:</strong> O capítulo discute a evolução da postura ereta, o conceito do "cone de economia", os parâmetros pélvicos e vertebrais do equilíbrio sagital, incluindo incidência pélvica, versão pélvica, inclinação sacral, eixo vertical sagital, lordose lombar, cifose torácica, T1 slope e parâmetros cervicais. Também são abordadas a distribuição regional da lordose lombar, a classificação de Roussouly, os modificadores sagitais da classificação SRS-Schwab, as ponderações da escola francesa em relação à escola americana, os mecanismos compensatórios e o conceito de Global Alignment and Proportion Score.
+                    <strong style={{ color: "#001a3d" }}>• {locale === "en" ? "Main Content" : locale === "es" ? "Contenido principal" : "Conteúdo principal"}:</strong>{" "}
+                    {locale === "en"
+                      ? "The chapter discusses erect posture evolution, Dubousset's cone of economy, and pelvic/vertebral parameters (PI, PT, SS, SVA, LL, TK, T1 slope), Roussouly classification, SRS-Schwab modifiers, and the Global Alignment and Proportion (GAP) Score."
+                      : locale === "es"
+                      ? "El capítulo aborda la evolución de la postura erecta, el cono de economía de Dubousset, los parámetros pélvicos y vertebrales de equilibrio sagital (PI, PT, SS, SVA, LL, TK, T1 slope), la clasificación de Roussouly, modificadores SRS-Schwab y el GAP Score."
+                      : "O capítulo discute a evolução da postura ereta, o conceito do \"cone de economia\", os parâmetros pélvicos e vertebrais do equilíbrio sagital, incluindo incidência pélvica, versão pélvica, inclinação sacral, eixo vertical sagital, lordose lombar, cifose torácica, T1 slope e parâmetros cervicais. Também são abordadas a distribuição regional da lordose lombar, a classificação de Roussouly, os modificadores sagitais da classificação SRS-Schwab, as ponderações da escola francesa em relação à escola americana, os mecanismos compensatórios e o conceito de Global Alignment and Proportion Score."}
                   </li>
                   <li>
-                    <strong style={{ color: "#001a3d" }}>• Aplicação clínica:</strong> A compreensão dos parâmetros sagitais permite interpretar melhor a dor, a incapacidade, os mecanismos compensatórios e o risco de falha mecânica, especialmente em cirurgias de deformidade e procedimentos corretivos complexos.
+                    <strong style={{ color: "#001a3d" }}>• {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación clínica" : "Aplicação clínica"}:</strong>{" "}
+                    {locale === "en"
+                      ? "Understanding sagittal parameters enables better interpretation of pain, disability, compensatory mechanisms, and mechanical failure risks, especially in deformity and complex corrective surgeries."
+                      : locale === "es"
+                      ? "La comprensión de los parámetros sagitales permite interpretar mejor el dolor, la incapacidad, los mecanismos compensatorios y el riesgo de fallo mecánico en cirugías complejas."
+                      : "A compreensão dos parâmetros sagitais permite interpretar melhor a dor, a incapacidade, os mecanismos compensatórios e o risco de falha mecânica, especialmente em cirurgias de deformidade e procedimentos corretivos complexos."}
                   </li>
                   <li>
-                    <strong style={{ color: "#001a3d" }}>• Mensagem central:</strong> O alinhamento sagital não deve ser analisado por fórmulas rígidas ou valores universais. A avaliação deve ser individualizada, considerando morfologia pélvica, distribuição de lordose, capacidade compensatória, quadril, membros inferiores e necessidade de manter o olhar horizontal.
+                    <strong style={{ color: "#001a3d" }}>• {locale === "en" ? "Core Message" : locale === "es" ? "Mensaje central" : "Mensagem central"}:</strong>{" "}
+                    {locale === "en"
+                      ? "Sagittal alignment cannot be evaluated by rigid universal formulas. Evaluation must be tailored individually to pelvic morphology, lordosis distribution, compensatory capacity, hips, and horizontal gaze."
+                      : locale === "es"
+                      ? "La alineación sagital no debe analizarse mediante fórmulas rígidas. La evaluación debe individualizarse considerando morfología pélvica, distribución de lordosis, capacidad compensatoria y mirada horizontal."
+                      : "O alinhamento sagital não deve ser analisado por fórmulas rígidas ou valores universais. A avaliação deve ser individualizada, considerando morfologia pélvica, distribuição de lordose, capacidade compensatória, quadril, membros inferiores e necessidade de manter o olhar horizontal."}
                   </li>
                 </ul>
               </article>
@@ -548,12 +579,12 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span style={{ fontSize: 18 }}>🏷️</span>
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Palavras-chave
+                    {locale === "en" ? "Keywords" : locale === "es" ? "Palabras clave" : "Palavras-chave"}
                   </h3>
                 </div>
 
                 <div style={{ fontSize: 12.5, fontWeight: 700, color: "#64748b", marginBottom: 10 }}>
-                  Descritores DeCS/MeSH preferenciais:
+                  {locale === "en" ? "Preferred DeCS/MeSH Descriptors:" : locale === "es" ? "Descriptores DeCS/MeSH preferenciales:" : "Descritores DeCS/MeSH preferenciais:"}
                 </div>
 
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -589,12 +620,16 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span style={{ fontSize: 18 }}>⭐</span>
                   <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Por que este capítulo importa
+                    {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
                   </h3>
                 </div>
 
                 <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#334155", margin: "0 0 20px" }}>
-                  O alinhamento sagital tornou-se um dos pilares da cirurgia moderna da coluna. Alterações nos parâmetros espinopélvicos estão associadas à dor, incapacidade e pior qualidade de vida. O reconhecimento precoce do desequilíbrio e o entendimento dos mecanismos compensatórios permitem intervenções mais seguras e eficazes, com menores taxas de complicações e melhores desfechos clínicos a longo prazo.
+                  {locale === "en"
+                    ? "Sagittal alignment is now a cornerstone of modern spinal surgery. Alterations in spinopelvic parameters are directly associated with chronic pain, functional disability, and diminished quality of life. Early recognition of imbalance and understanding compensatory mechanisms enable safer, more effective surgical outcomes."
+                    : locale === "es"
+                    ? "La alineación sagital se ha convertido en un pilar de la cirugía moderna de columna. Las alteraciones espinopélvicas se asocian con dolor, incapacidad y menor calidad de vida. El reconocimiento temprano y el entendimiento biomecánico permiten intervenciones más seguras y duraderas."
+                    : "O alinhamento sagital tornou-se um dos pilares da cirurgia moderna da coluna. Alterações nos parâmetros espinopélvicos estão associadas à dor, incapacidade e pior qualidade de vida. O reconhecimento precoce do desequilíbrio e o entendimento dos mecanismos compensatórios permitem intervenções mais seguras e eficazes, com menores taxas de complicações e melhores desfechos clínicos a longo prazo."}
                 </p>
 
                 {/* Highlight Quote Box */}
@@ -609,7 +644,11 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 >
                   <span style={{ fontSize: 24, color: "#f52238", display: "inline-block", marginRight: 8, lineHeight: 0 }}>“</span>
                   <span style={{ fontSize: 15, fontWeight: 700, color: "#b91c1c" }}>
-                    Restaurar o equilíbrio sagital é restaurar função, reduzir dor e melhorar a qualidade de vida.
+                    {locale === "en"
+                      ? "Restoring sagittal balance is restoring function, reducing pain, and improving quality of life."
+                      : locale === "es"
+                      ? "Restaurar el equilibrio sagital es restaurar función, reducir dolor y mejorar la calidad de vida."
+                      : "Restaurar o equilíbrio sagital é restaurar função, reduzir dor e melhorar a qualidade de vida."}
                   </span>
                   <span style={{ fontSize: 24, color: "#f52238", display: "inline-block", marginLeft: 8, lineHeight: 0 }}>”</span>
                 </div>
@@ -628,7 +667,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <span style={{ fontSize: 18 }}>✨</span>
                   <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Destaques do capítulo
+                    {locale === "en" ? "Chapter Highlights" : locale === "es" ? "Destacados del capítulo" : "Destaques do capítulo"}
                   </h3>
                 </div>
 
@@ -659,10 +698,14 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       🌐
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
-                      Base conceitual
+                      {locale === "en" ? "Conceptual Base" : locale === "es" ? "Base conceptual" : "Base conceitual"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
-                      Conceitos anatômicos e biomecânicos que sustentam o equilíbrio sagital e o "cone de economia".
+                      {locale === "en"
+                        ? "Anatomical and biomechanical concepts supporting sagittal balance and the cone of economy."
+                        : locale === "es"
+                        ? "Conceptos anatómicos y biomecánicos que sustentan el equilibrio sagital y el cono de economía."
+                        : "Conceitos anatômicos e biomecânicos que sustentam o equilíbrio sagital e o \"cone de economia\"."}
                     </p>
                   </div>
 
@@ -692,10 +735,14 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       🩺
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
-                      Aplicação clínica
+                      {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación clínica" : "Aplicação clínica"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
-                      Interpretação dos principais parâmetros radiográficos e sua relação com sintomas e prognóstico.
+                      {locale === "en"
+                        ? "Interpretation of radiographic parameters and their direct relationship to symptoms and prognosis."
+                        : locale === "es"
+                        ? "Interpretación de parámetros radiográficos y su relación con síntomas y pronóstico."
+                        : "Interpretação dos principais parâmetros radiográficos e sua relação com sintomas e prognóstico."}
                     </p>
                   </div>
 
@@ -725,10 +772,14 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       📐
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
-                      Planejamento cirúrgico
+                      {locale === "en" ? "Surgical Planning" : locale === "es" ? "Planificación quirúrgica" : "Planejamento cirúrgico"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
-                      Princípios para restauração do alinhamento espinopélvico, considerando compensações e morfologia pélvica.
+                      {locale === "en"
+                        ? "Principles for spinopelvic harmony restoration, considering pelvic morphology and adjacent segment stress."
+                        : locale === "es"
+                        ? "Principios para restaurar la alineación espinopélvica, considerando morfología pélvica y sobrecarga adyacente."
+                        : "Princípios para restauração do alinhamento espinopélvico, considerando compensações e morfologia pélvica."}
                     </p>
                   </div>
                 </div>
@@ -748,7 +799,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
                   <span style={{ fontSize: 20 }}>📚</span>
                   <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Referências bibliográficas
+                    {locale === "en" ? "Bibliographic References" : locale === "es" ? "Referencias bibliográficas" : "Referências bibliográficas"}
                   </h3>
                 </div>
 
@@ -811,24 +862,6 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     </div>
                   ))}
                 </div>
-
-                <div style={{ marginTop: 20, textAlign: "center" }}>
-                  <button
-                    type="button"
-                    style={{
-                      padding: "8px 20px",
-                      borderRadius: 8,
-                      border: "none",
-                      background: "#001a3d",
-                      color: "#fff",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                    }}
-                  >
-                    Ver todas as referências ›
-                  </button>
-                </div>
               </article>
 
               {/* BOTTOM ROW: TRATADO EM DEBATE & CAPÍTULOS RELACIONADOS */}
@@ -847,13 +880,17 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 >
                   <div>
                     <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "#f52238", letterSpacing: "0.05em", marginBottom: 6 }}>
-                      Tratado em Debate
+                      {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
                     </div>
                     <h4 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 8px", color: "#fff" }}>
-                      Episódio {isCap8 ? "1" : num} – Capítulo {num}: {title}
+                      {locale === "en" ? `Episode ${isCap8 ? "1" : num} – Chapter ${num}: ${title}` : locale === "es" ? `Episodio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}` : `Episódio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}`}
                     </h4>
                     <p style={{ fontSize: 12.5, color: "#cbd5e1", lineHeight: 1.45, margin: "0 0 16px" }}>
-                      Discussão com os autores sobre os principais pontos do capítulo, casos clínicos e aplicação prática dos conceitos.
+                      {locale === "en"
+                        ? "Clinical discussion with the authors analyzing case studies and practical applications."
+                        : locale === "es"
+                        ? "Discusión con los autores sobre puntos clave del capítulo, casos clínicos y aplicación práctica."
+                        : "Discussão com os autores sobre os principais pontos do capítulo, casos clínicos e aplicação prática dos conceitos."}
                     </p>
                   </div>
 
@@ -873,7 +910,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       textDecoration: "none",
                     }}
                   >
-                    <span>Assistir episódio</span>
+                    <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
                     <span>▶</span>
                   </Link>
                 </div>
@@ -893,7 +930,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 14, display: "flex", alignItems: "center", gap: 6 }}>
                       <span>🔗</span>
-                      <span>Capítulos relacionados</span>
+                      <span>{locale === "en" ? "Related chapters" : locale === "es" ? "Capítulos relacionados" : "Capítulos relacionados"}</span>
                     </div>
 
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
@@ -916,7 +953,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                         >
                           <div style={{ fontSize: 14, marginBottom: 2 }}>📖</div>
                           <div style={{ fontSize: 11, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                            {rc.titulo_pt}
+                            {locale === "en" ? (rc.titulo_en || rc.titulo_pt) : locale === "es" ? (rc.titulo_es || rc.titulo_pt) : rc.titulo_pt}
                           </div>
                         </Link>
                       ))}
@@ -934,7 +971,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       textDecoration: "none",
                     }}
                   >
-                    Ver todos os capítulos ›
+                    {locale === "en" ? "View all chapters ›" : locale === "es" ? "Ver todos los capítulos ›" : "Ver todos os capítulos ›"}
                   </Link>
                 </div>
               </div>
@@ -955,7 +992,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18, borderBottom: "1px solid #f1f5f9", paddingBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>👥</span>
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Autores
+                    {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
                   </h3>
                 </div>
 
@@ -976,7 +1013,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d" }}>
                         Marcelo Ítalo Risso Neto
                       </div>
-                      <div style={{ fontSize: 12, color: "#64748b" }}>Coordenador &amp; Autor</div>
+                      <div style={{ fontSize: 12, color: "#64748b" }}>
+                        {locale === "en" ? "Coordinator & Author" : locale === "es" ? "Coordinador y Autor" : "Coordenador & Autor"}
+                      </div>
                     </div>
                   </div>
 
@@ -996,7 +1035,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d" }}>
                         Paulo Tadeu Maia Cavali
                       </div>
-                      <div style={{ fontSize: 12, color: "#64748b" }}>Autor Convidado</div>
+                      <div style={{ fontSize: 12, color: "#64748b" }}>
+                        {locale === "en" ? "Guest Author" : locale === "es" ? "Autor Invitado" : "Autor Convidado"}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1015,12 +1056,12 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>🌐</span>
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Idiomas
+                    {locale === "en" ? "Languages" : locale === "es" ? "Idiomas" : "Idiomas"}
                   </h3>
                 </div>
 
                 <p style={{ fontSize: 12.5, color: "#64748b", margin: "0 0 14px" }}>
-                  Leia o resumo deste capítulo em outros idiomas.
+                  {locale === "en" ? "Read this chapter summary in other languages." : locale === "es" ? "Lea el resumen de este capítulo en otros idiomas." : "Leia o resumo deste capítulo em outros idiomas."}
                 </p>
 
                 <div style={{ display: "flex", gap: 8 }}>
@@ -1088,18 +1129,30 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>🛡️</span>
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
-                    Aviso importante
+                    {locale === "en" ? "Important Notice" : locale === "es" ? "Aviso importante" : "Aviso importante"}
                   </h3>
                 </div>
 
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: "#475569", margin: "0 0 12px" }}>
-                  Este site é uma plataforma de apoio à leitura.
+                  {locale === "en"
+                    ? "This website is a reading support platform."
+                    : locale === "es"
+                    ? "Este sitio es una plataforma de apoyo a la lectura."
+                    : "Este site é uma plataforma de apoio à leitura."}
                 </p>
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: "#475569", margin: "0 0 12px" }}>
-                  Aqui você encontra o índice, resumo, autores e referências bibliográficas de cada capítulo.
+                  {locale === "en"
+                    ? "Here you find the index, summary, authors, and bibliographic references for each chapter."
+                    : locale === "es"
+                    ? "Aquí encontrará el índice, resumen, autores y referencias bibliográficas de cada capítulo."
+                    : "Aqui você encontra o índice, resumo, autores e referências bibliográficas de cada capítulo."}
                 </p>
                 <p style={{ fontSize: 12.5, lineHeight: 1.5, color: "#475569", margin: "0 0 20px" }}>
-                  A leitura completa deste capítulo e de toda a obra está disponível exclusivamente na <strong>edição impressa</strong> do Tratado de Cirurgia da Coluna Vertebral.
+                  {locale === "en"
+                    ? "Full reading of this chapter and the complete treatise is available exclusively in the printed edition of the Treatise on Spine Surgery."
+                    : locale === "es"
+                    ? "La lectura completa de este capítulo y de toda la obra está disponible exclusivamente en la edición impresa del Tratado de Cirugía de Columna Vertebral."
+                    : "A leitura completa deste capítulo e de toda a obra está disponível exclusivamente na edição impressa do Tratado de Cirurgia da Coluna Vertebral."}
                 </p>
 
                 <div style={{ textAlign: "center", color: "#f52238" }}>

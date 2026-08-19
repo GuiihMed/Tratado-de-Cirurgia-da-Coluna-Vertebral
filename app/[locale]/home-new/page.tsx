@@ -122,36 +122,282 @@ export default function HomeNewPage({ params }: HomeNewProps) {
     loadAuthors();
   }, []);
 
+  const homeI18n = {
+    pt: {
+      badge: "Sociedade Brasileira de Coluna • Edição Oficial",
+      titleLine1: "Tratado de Cirurgia",
+      titleLine2: "da Coluna Vertebral",
+      lead: "O compêndio definitivo de referência científica e prática cirúrgica. 10 seções temáticas, 109 capítulos detalhados e a colaboração dos maiores especialistas do país.",
+      exploreBtn: "Explorar Índice Interativo",
+      highlightBtn: "Ver Destaque Científico",
+      buyBtn: "Adquirir Livro Impresso",
+      printNotice: "A obra completa existe exclusivamente no formato impresso físico de alta qualidade.",
+      goldSeal: "Selo Oficial SBC",
+      goldSub: "Padrão Ouro Editorial",
+      sectionsChip: "10 Seções & 109 Capítulos",
+      sectionsSub: "Da base à robótica",
+      statChapters: "Capítulos Aprofundados",
+      statSections: "Seções Temáticas",
+      statAuthors: "Autores Especialistas",
+      statLangs: "Idiomas (PT / EN / ES)",
+      aboutPill: "Conhecimento de Vanguarda",
+      aboutTitle: "Sobre o Tratado",
+      aboutSubtitle: "Uma realização editorial sem precedentes da Sociedade Brasileira de Coluna (SBC), consolidando décadas de experiência clínica, acadêmica e cirúrgica.",
+      pillar1Title: "Fundamentação Rigorosa",
+      pillar1Desc: "Desde embriologia, biomecânica e diagnóstico diferencial até neurofisiologia intraoperatória avançada.",
+      pillar2Title: "Arsenal Cirúrgico Moderno",
+      pillar2Desc: "Cobertura detalhada de técnicas minimamente invasivas, endoscopia uni/biportal, ALIF, OLIF, osteotomias, navegação e robótica.",
+      pillar3Title: "Segurança & Complicações",
+      pillar3Desc: "Prevenção, diagnóstico precoce e manejo sistemático de lesões neurais, infecções, perda de sinal intraoperatório e falhas mecânicas.",
+      sectionsPill: "Mapa Curricular da Obra",
+      sectionsTitle: "Explore as 10 Seções Temáticas",
+      sectionsSubtitle: "Uma organização didática e progressiva, pensada para o cirurgião em formação e para o especialista sênior.",
+      viewSec: "Ver →",
+      capSuffix: "capítulos",
+      highlightPill: "Capítulo em Evidência",
+      highlightTitle: "Coluna Vertebral no Plano Sagital",
+      highlightSubtitle: "Explore os princípios biomecânicos e radiográficos que transformaram o planejamento cirúrgico moderno da coluna.",
+      capBadge: "Capítulo 08",
+      capSection: "Seção 1: Conceitos Básicos",
+      capAuthors: "Autores: Marcelo Italo Risso Neto • Paulo Tadeu Maia Cavali",
+      formulaLabel: "Fórmula / Referência:",
+      clinicalLabel: "Implicação Clínica:",
+      viewIndexBtn: "Ver no Índice Completo",
+      watchDebateBtn: "Assistir Debate do Cap. 8",
+      radiographCaption: "Esquema demonstrativo de balanço espinopélvico",
+      debatePill: "Videocast Oficial SBC",
+      debateTitle: "Tratado em Debate",
+      debateDesc: "Discussões clínicas profundas com os autores de cada capítulo. Apresentando controvérsias cirúrgicas, tomada de decisão e casos complexos.",
+      debateFeatured: "Episódio 01 em Destaque",
+      debateEpTitle: "Capítulo 8 – Coluna Vertebral no Plano Sagital",
+      debateEpDesc: "Com Dr. Marcelo Risso e Dr. Paulo Cavali sobre parametrização e resultados a longo prazo.",
+      authorsPill: "Corpo Editorial",
+      authorsTitle: "Autores & Editores do Tratado",
+      authorsSubtitle: "Conheça os editores responsáveis pela coordenação acadêmica, diretrizes da SBC e rigor científico da obra.",
+      viewProfile: "Ver Perfil em Autores New",
+      allAuthors: "Todos Autores",
+      buyPill: "Adquira seu Exemplar",
+      buyTitle: "Uma obra indispensável para consulta e decisão cirúrgica.",
+      buyDesc: "Disponível exclusivamente em formato impresso de luxo com acabamento gráfico premium, encadernação especial e ilustrações anatômicas em alta resolução.",
+      buyItem1: "109 capítulos completos",
+      buyItem2: "1.200+ páginas coloridas",
+      buyItem3: "Capa dura de alta durabilidade",
+      buyItem4: "Distribuição DiLivros",
+      buyCta: "Onde Comprar a Edição Impressa",
+      tabEquilibrio: "Equilíbrio Sagital (SVA)",
+      tabIncidencia: "Incidência Pélvica (PI)",
+      tabCone: "Cone de Economia",
+      tabLordose: "Lordose Lombar (LL)",
+      tabT1: "T1 Slope",
+    },
+    en: {
+      badge: "Brazilian Spine Society • Official Edition",
+      titleLine1: "Treatise on Spine",
+      titleLine2: "Surgery",
+      lead: "The definitive compendium of scientific reference and surgical practice. 10 thematic sections, 109 in-depth chapters, and the collaboration of leading spine specialists.",
+      exploreBtn: "Explore Interactive Index",
+      highlightBtn: "View Scientific Highlight",
+      buyBtn: "Acquire Printed Book",
+      printNotice: "The complete work is available exclusively in high-quality physical printed format.",
+      goldSeal: "Official SBC Seal",
+      goldSub: "Gold Editorial Standard",
+      sectionsChip: "10 Sections & 109 Chapters",
+      sectionsSub: "From basics to robotics",
+      statChapters: "In-depth Chapters",
+      statSections: "Thematic Sections",
+      statAuthors: "Expert Authors",
+      statLangs: "Languages (PT / EN / ES)",
+      aboutPill: "Cutting-edge Knowledge",
+      aboutTitle: "About the Treatise",
+      aboutSubtitle: "An unprecedented editorial milestone of the Brazilian Spine Society (SBC), consolidating decades of clinical, academic, and surgical excellence.",
+      pillar1Title: "Rigorous Foundations",
+      pillar1Desc: "From embryology, biomechanics, and differential diagnosis to advanced intraoperative neurophysiology.",
+      pillar2Title: "Modern Surgical Arsenal",
+      pillar2Desc: "Comprehensive coverage of minimally invasive techniques, uni/biportal endoscopy, ALIF, OLIF, osteotomies, navigation, and robotics.",
+      pillar3Title: "Safety & Complications",
+      pillar3Desc: "Prevention, early diagnosis, and systematic management of neural injuries, infections, intraoperative signal loss, and mechanical failures.",
+      sectionsPill: "Curricular Map of the Work",
+      sectionsTitle: "Explore the 10 Thematic Sections",
+      sectionsSubtitle: "A progressive, didactic organization tailored for residents in training and senior surgical specialists.",
+      viewSec: "View →",
+      capSuffix: "chapters",
+      highlightPill: "Featured Chapter",
+      highlightTitle: "The Spine in the Sagittal Plane",
+      highlightSubtitle: "Explore the biomechanical and radiographic principles that revolutionized modern spinal surgical planning.",
+      capBadge: "Chapter 08",
+      capSection: "Section 1: Basic Concepts",
+      capAuthors: "Authors: Marcelo Italo Risso Neto • Paulo Tadeu Maia Cavali",
+      formulaLabel: "Formula / Reference:",
+      clinicalLabel: "Clinical Implication:",
+      viewIndexBtn: "View in Full Index",
+      watchDebateBtn: "Watch Ch. 8 Debate",
+      radiographCaption: "Demonstrative diagram of spinopelvic balance",
+      debatePill: "Official SBC Videocast",
+      debateTitle: "Treatise in Debate",
+      debateDesc: "In-depth clinical discussions with chapter authors. Addressing surgical controversies, decision-making algorithms, and complex cases.",
+      debateFeatured: "Featured Episode 01",
+      debateEpTitle: "Chapter 8 – The Spine in the Sagittal Plane",
+      debateEpDesc: "With Dr. Marcelo Risso and Dr. Paulo Cavali discussing radiographic parametrization and long-term surgical outcomes.",
+      authorsPill: "Editorial Board",
+      authorsTitle: "Authors & Editors of the Treatise",
+      authorsSubtitle: "Meet the editors leading the academic coordination, SBC guidelines, and scientific rigor of this landmark publication.",
+      viewProfile: "View Profile in Authors New",
+      allAuthors: "All Authors",
+      buyPill: "Acquire Your Copy",
+      buyTitle: "An indispensable masterwork for surgical decision-making and clinical consultation.",
+      buyDesc: "Available exclusively in deluxe printed format with premium graphic finishing, durable hardcover, and high-resolution anatomical illustrations.",
+      buyItem1: "109 complete chapters",
+      buyItem2: "1,200+ full-color pages",
+      buyItem3: "Heavy-duty durable hardcover",
+      buyItem4: "DiLivros Publishing & Distribution",
+      buyCta: "Where to Buy the Printed Edition",
+      tabEquilibrio: "Sagittal Balance (SVA)",
+      tabIncidencia: "Pelvic Incidence (PI)",
+      tabCone: "Cone of Economy",
+      tabLordose: "Lumbar Lordosis (LL)",
+      tabT1: "T1 Slope",
+    },
+    es: {
+      badge: "Sociedad Brasileña de Columna • Edición Oficial",
+      titleLine1: "Tratado de Cirugía",
+      titleLine2: "de la Columna Vertebral",
+      lead: "El compendio definitivo de referencia científica y práctica quirúrgica. 10 secciones temáticas, 109 capítulos detallados y la colaboración de los mayores especialistas.",
+      exploreBtn: "Explorar Índice Interactivo",
+      highlightBtn: "Ver Destacado Científico",
+      buyBtn: "Adquirir Libro Impreso",
+      printNotice: "La obra completa existe exclusivamente en formato impreso físico de alta calidad.",
+      goldSeal: "Sello Oficial SBC",
+      goldSub: "Estándar de Oro Editorial",
+      sectionsChip: "10 Secciones & 109 Capítulos",
+      sectionsSub: "De la base a la robótica",
+      statChapters: "Capítulos Profundos",
+      statSections: "Secciones Temáticas",
+      statAuthors: "Autores Especialistas",
+      statLangs: "Idiomas (PT / EN / ES)",
+      aboutPill: "Conocimiento de Vanguardia",
+      aboutTitle: "Sobre el Tratado",
+      aboutSubtitle: "Una realización editorial sin precedentes de la Sociedad Brasileña de Columna (SBC), consolidando décadas de experiencia clínica, académica y quirúrgica.",
+      pillar1Title: "Fundamentos Rigurosos",
+      pillar1Desc: "Desde embriología, biomecánica y diagnóstico diferencial hasta neurofisiología intraoperatoria avanzada.",
+      pillar2Title: "Arsenal Quirúrgico Moderno",
+      pillar2Desc: "Cobertura detallada de técnicas mínimamente invasivas, endoscopia uni/biportal, ALIF, OLIF, osteotomías, navegación y robótica.",
+      pillar3Title: "Seguridad & Complicaciones",
+      pillar3Desc: "Prevención, diagnóstico precoz y manejo sistemático de lesiones neurales, infecciones, pérdida de señal intraoperatoria y fallas mecánicas.",
+      sectionsPill: "Mapa Curricular de la Obra",
+      sectionsTitle: "Explore las 10 Secciones Temáticas",
+      sectionsSubtitle: "Una organización didáctica y progresiva, diseñada para el cirujano en formación y para el especialista senior.",
+      viewSec: "Ver →",
+      capSuffix: "capítulos",
+      highlightPill: "Capítulo en Evidencia",
+      highlightTitle: "Columna Vertebral en el Plano Sagital",
+      highlightSubtitle: "Explore los principios biomecánicos y radiográficos que transformaron la planificación quirúrgica moderna de la columna.",
+      capBadge: "Capítulo 08",
+      capSection: "Sección 1: Conceptos Básicos",
+      capAuthors: "Autores: Marcelo Italo Risso Neto • Paulo Tadeu Maia Cavali",
+      formulaLabel: "Fórmula / Referencia:",
+      clinicalLabel: "Implicación Clínica:",
+      viewIndexBtn: "Ver en Índice Completo",
+      watchDebateBtn: "Ver Debate del Cap. 8",
+      radiographCaption: "Esquema demostrativo de balance espinopélvico",
+      debatePill: "Videocast Oficial SBC",
+      debateTitle: "Tratado en Debate",
+      debateDesc: "Discusiones clínicas profundas con los autores de cada capítulo. Presentando controversias quirúrgicas, toma de decisiones y casos complejos.",
+      debateFeatured: "Episodio 01 Destacado",
+      debateEpTitle: "Capítulo 8 – Columna Vertebral en el Plano Sagital",
+      debateEpDesc: "Con el Dr. Marcelo Risso y el Dr. Paulo Cavali sobre parametrización y resultados a largo plazo.",
+      authorsPill: "Cuerpo Editorial",
+      authorsTitle: "Autores y Editores del Tratado",
+      authorsSubtitle: "Conozca a los editores responsables de la coordinación académica, directrices de la SBC y rigor científico de la obra.",
+      viewProfile: "Ver Perfil en Autores New",
+      allAuthors: "Todos los Autores",
+      buyPill: "Adquiera su Ejemplar",
+      buyTitle: "Una obra indispensable para consulta y decisión quirúrgica.",
+      buyDesc: "Disponible exclusivamente en formato impreso de lujo con acabado gráfico premium, encuadernación especial e ilustraciones anatómicas en alta resolución.",
+      buyItem1: "109 capítulos completos",
+      buyItem2: "1.200+ páginas a color",
+      buyItem3: "Tapa dura de alta durabilidad",
+      buyItem4: "Distribución DiLivros",
+      buyCta: "Dónde Comprar la Edición Impresa",
+      tabEquilibrio: "Equilibrio Sagital (SVA)",
+      tabIncidencia: "Incidencia Pélvica (PI)",
+      tabCone: "Cono de Economía",
+      tabLordose: "Lordosis Lumbar (LL)",
+      tabT1: "T1 Slope",
+    },
+  };
+
+  const t = homeI18n[locale] || homeI18n.pt;
+
   const sagittalDetails = {
     equilibrio: {
-      title: "Equilíbrio Sagital Global (SVA)",
-      desc: "Alinhamento tridimensional que minimiza o gasto energético postural. A linha de prumo de C7 (Sagittal Vertical Axis - SVA) deve situar-se preferencialmente a ±3 cm do promontório sacral.",
-      formula: "SVA ideal: < 40-50 mm em adultos",
-      clinical: "Desbalanços positivos (> 5 cm) aumentam a fadiga muscular e correlacionam-se diretamente com piora nos escores ODI e SRS-22.",
+      title: locale === "en" ? "Global Sagittal Balance (SVA)" : locale === "es" ? "Equilibrio Sagital Global (SVA)" : "Equilíbrio Sagital Global (SVA)",
+      desc: locale === "en"
+        ? "Three-dimensional alignment minimizing postural energetic expenditure. The C7 plumb line (Sagittal Vertical Axis - SVA) should ideally sit within ±3 cm of the sacral promontory."
+        : locale === "es"
+        ? "Alineación tridimensional que minimiza el gasto energético postural. La línea de plomada de C7 (Sagittal Vertical Axis - SVA) debe situarse preferentemente a ±3 cm del promontorio sacro."
+        : "Alinhamento tridimensional que minimiza o gasto energético postural. A linha de prumo de C7 (Sagittal Vertical Axis - SVA) deve situar-se preferencialmente a ±3 cm do promontório sacral.",
+      formula: locale === "en" ? "Ideal SVA: < 40-50 mm in adults" : locale === "es" ? "SVA ideal: < 40-50 mm en adultos" : "SVA ideal: < 40-50 mm em adultos",
+      clinical: locale === "en"
+        ? "Positive imbalances (> 5 cm) increase muscular fatigue and directly correlate with worsening ODI and SRS-22 scores."
+        : locale === "es"
+        ? "Desbalances positivos (> 5 cm) aumentan la fatiga muscular y se correlacionan directamente con empeoramiento en las escalas ODI y SRS-22."
+        : "Desbalanços positivos (> 5 cm) aumentam a fadiga muscular e correlacionam-se diretamente com piora nos escores ODI e SRS-22.",
     },
     incidencia: {
-      title: "Incidência Pélvica (Pelvic Incidence - PI)",
-      desc: "Parâmetro anatômico intrínseco fixo na vida adulta. É a soma do tilt pélvico (PT) com a inclinação sacral (SS).",
+      title: locale === "en" ? "Pelvic Incidence (PI)" : locale === "es" ? "Incidencia Pélvica (PI)" : "Incidência Pélvica (Pelvic Incidence - PI)",
+      desc: locale === "en"
+        ? "Intrinsic anatomical parameter fixed in adulthood. It is the sum of pelvic tilt (PT) and sacral slope (SS)."
+        : locale === "es"
+        ? "Parámetro anatómico intrínseco fijo en la vida adulta. Es la suma del tilt pélvico (PT) con la inclinación sacra (SS)."
+        : "Parâmetro anatômico intrínseco fixo na vida adulta. É a soma do tilt pélvico (PT) com a inclinação sacral (SS).",
       formula: "PI = PT + SS (Normal: ~50° ± 10°)",
-      clinical: "Fundamental para prever a quantidade exata de lordose lombar que a coluna necessita na cirurgia reconstrutiva.",
+      clinical: locale === "en"
+        ? "Essential for predicting the exact amount of lumbar lordosis required in reconstructive spine surgery."
+        : locale === "es"
+        ? "Fundamental para prever la cantidad exacta de lordosis lumbar que la columna necesita en la cirugía reconstructiva."
+        : "Fundamental para prever a quantidade exata de lordose lombar que a coluna necessita na cirurgia reconstrutiva.",
     },
     cone: {
-      title: "Cone de Economia de Jean Dubousset",
-      desc: "Conceito biomecânico clássico que descreve o corpo humano oscilando dentro de um cone imaginário de estabilidade sobre a base dos pés com mínimo consumo de energia.",
-      formula: "Mínimo esforço muscular antigravitacional",
-      clinical: "A cirurgia deve restaurar a postura ereta sem exigir mecanismos compensatórios exaustivos (retroversão pélvica, flexão de joelhos).",
+      title: locale === "en" ? "Jean Dubousset's Cone of Economy" : locale === "es" ? "Cono de Economía de Jean Dubousset" : "Cone de Economia de Jean Dubousset",
+      desc: locale === "en"
+        ? "Classic biomechanical concept describing the human body oscillating within an imaginary cone of stability over the feet with minimal energy expenditure."
+        : locale === "es"
+        ? "Concepto biomecánico clásico que describe el cuerpo humano oscilando dentro de un cono imaginario de estabilidad sobre los pies con mínimo consumo de energía."
+        : "Conceito biomecânico clássico que descreve o corpo humano oscilando dentro de um cone imaginário de estabilidade sobre a base dos pés com mínimo consumo de energia.",
+      formula: locale === "en" ? "Minimal antigravity muscular effort" : locale === "es" ? "Mínimo esfuerzo muscular antigravitacional" : "Mínimo esforço muscular antigravitacional",
+      clinical: locale === "en"
+        ? "Surgery must restore erect posture without requiring exhausting compensatory mechanisms (pelvic retroversion, knee flexion)."
+        : locale === "es"
+        ? "La cirugía debe restaurar la postura erecta sin exigir mecanismos compensatorios exhaustivos (retroversión pélvica, flexión de rodillas)."
+        : "A cirurgia deve restaurar a postura ereta sem exigir mecanismos compensatórios exaustivos (retroversão pélvica, flexão de joelhos).",
     },
     lordose: {
-      title: "Lordose Lombar e Distribuição Segmentar (LL)",
-      desc: "Aproximadamente 65% a 70% da lordose lombar total localiza-se nos segmentos L4-L5 e L5-S1. O alinhamento correto deve respeitar a harmonia com a Incidência Pélvica.",
-      formula: "Meta cirúrgica: LL = PI ± 9°",
-      clinical: "Sub-correção da lordose em fusões lombares é a principal causa da Síndrome do Dorso Plano e degeneração do segmento adjacente.",
+      title: locale === "en" ? "Lumbar Lordosis & Segmental Distribution (LL)" : locale === "es" ? "Lordosis Lumbar y Distribución Segmentaria (LL)" : "Lordose Lombar e Distribuição Segmentar (LL)",
+      desc: locale === "en"
+        ? "Approximately 65% to 70% of total lumbar lordosis is located at L4-L5 and L5-S1. Correct alignment must maintain harmony with Pelvic Incidence."
+        : locale === "es"
+        ? "Aproximadamente el 65% al 70% de la lordosis lumbar total se localiza en los segmentos L4-L5 y L5-S1. La alineación debe respetar la armonía con la Incidencia Pélvica."
+        : "Aproximadamente 65% a 70% da lordose lombar total localiza-se nos segmentos L4-L5 e L5-S1. O alinhamento correto deve respeitar a harmonia com a Incidência Pélvica.",
+      formula: locale === "en" ? "Surgical target: LL = PI ± 9°" : locale === "es" ? "Meta quirúrgica: LL = PI ± 9°" : "Meta cirúrgica: LL = PI ± 9°",
+      clinical: locale === "en"
+        ? "Under-correction of lordosis in lumbar fusion is the main cause of Flat Back Syndrome and adjacent segment degeneration."
+        : locale === "es"
+        ? "La subcorrección de la lordosis en fusiones lumbares es la causa principal del Síndrome de Espalda Plana y degeneración de segmento adyacente."
+        : "Sub-correção da lordose em fusões lombares é a principal causa da Síndrome do Dorso Plano e degeneração do segmento adjacente.",
     },
     t1: {
-      title: "T1 Slope & Balanço Cervical",
-      desc: "Ângulo formado entre o platô superior de T1 e o plano horizontal. Determina o grau de lordose cervical necessário para manter o olhar horizontal.",
-      formula: "Lordose Cervical = T1 Slope ± 10°",
-      clinical: "Essencial no planejamento de osteotomias cervicais e no tratamento de deformidades complexas cervicotorácicas.",
+      title: locale === "en" ? "T1 Slope & Cervical Balance" : locale === "es" ? "T1 Slope y Balance Cervical" : "T1 Slope & Balanço Cervical",
+      desc: locale === "en"
+        ? "Angle formed between T1 upper endplate and the horizontal plane. Determines the degree of cervical lordosis required to maintain horizontal gaze."
+        : locale === "es"
+        ? "Ángulo formado entre el platillo superior de T1 y el plano horizontal. Determina el grado de lordosis cervical necesario para mantener la mirada horizontal."
+        : "Ângulo formado entre o platô superior de T1 e o plano horizontal. Determina o grau de lordose cervical necessário para manter o olhar horizontal.",
+      formula: locale === "en" ? "Cervical Lordosis = T1 Slope ± 10°" : locale === "es" ? "Lordosis Cervical = T1 Slope ± 10°" : "Lordose Cervical = T1 Slope ± 10°",
+      clinical: locale === "en"
+        ? "Essential in planning cervical osteotomies and treating complex cervicothoracic spinal deformities."
+        : locale === "es"
+        ? "Esencial en la planificación de osteotomías cervicales y en el tratamiento de deformidades cervicotorácicas complejas."
+        : "Essencial no planejamento de osteotomias cervicais e no tratamento de deformidades complexas cervicotorácicas.",
     },
   };
 
@@ -169,36 +415,35 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             <div>
               <div className="modern-hero-badge">
                 <span className="pulse-dot" />
-                <span>Sociedade Brasileira de Coluna • Edição Oficial</span>
+                <span>{t.badge}</span>
               </div>
 
               <h1 className="modern-hero-title">
-                Tratado de Cirurgia <br />
-                <span className="gradient-text">da Coluna Vertebral</span>
+                {t.titleLine1} <br />
+                <span className="gradient-text">{t.titleLine2}</span>
               </h1>
 
               <p className="modern-hero-lead">
-                O compêndio definitivo de referência científica e prática cirúrgica.
-                10 seções temáticas, 109 capítulos detalhados e a colaboração dos maiores especialistas do país.
+                {t.lead}
               </p>
 
               <div className="modern-hero-actions">
                 <Link href={`/${locale}/indice-new`} className="modern-btn-glow">
-                  <span>Explorar Índice Interativo</span>
+                  <span>{t.exploreBtn}</span>
                   <svg style={{ width: 20, height: 20 }}>
                     <use href="#i-arrow"></use>
                   </svg>
                 </Link>
 
                 <a href="#destaque" className="modern-btn-glass">
-                  <span>Ver Destaque Científico</span>
+                  <span>{t.highlightBtn}</span>
                   <svg style={{ width: 18, height: 18 }}>
                     <use href="#i-spine"></use>
                   </svg>
                 </a>
 
                 <a href="#comprar" className="modern-btn-glass" style={{ borderColor: "rgba(245, 34, 56, 0.4)" }}>
-                  <span>Adquirir Livro Impresso</span>
+                  <span>{t.buyBtn}</span>
                   <svg style={{ width: 18, height: 18, color: "#ff5060" }}>
                     <use href="#i-cart"></use>
                   </svg>
@@ -223,7 +468,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 <svg style={{ width: 20, height: 20, color: "#ff4d61" }}>
                   <use href="#i-book"></use>
                 </svg>
-                <span>A obra completa existe exclusivamente no formato impresso físico de alta qualidade.</span>
+                <span>{t.printNotice}</span>
               </div>
             </div>
 
@@ -242,8 +487,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   <use href="#i-award"></use>
                 </svg>
                 <div>
-                  <strong>Selo Oficial SBC</strong>
-                  <div style={{ fontSize: 11, opacity: 0.8 }}>Padrão Ouro Editorial</div>
+                  <strong>{t.goldSeal}</strong>
+                  <div style={{ fontSize: 11, opacity: 0.8 }}>{t.goldSub}</div>
                 </div>
               </div>
 
@@ -252,8 +497,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   <use href="#i-grid"></use>
                 </svg>
                 <div>
-                  <strong>10 Seções &amp; 109 Capítulos</strong>
-                  <div style={{ fontSize: 11, opacity: 0.8 }}>Da base à robótica</div>
+                  <strong>{t.sectionsChip}</strong>
+                  <div style={{ fontSize: 11, opacity: 0.8 }}>{t.sectionsSub}</div>
                 </div>
               </div>
             </div>
@@ -270,7 +515,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
                 <div className="modern-stat-info">
                   <strong>109</strong>
-                  <span>Capítulos Aprofundados</span>
+                  <span>{t.statChapters}</span>
                 </div>
               </div>
 
@@ -282,7 +527,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
                 <div className="modern-stat-info">
                   <strong>10</strong>
-                  <span>Seções Temáticas</span>
+                  <span>{t.statSections}</span>
                 </div>
               </div>
 
@@ -294,7 +539,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
                 <div className="modern-stat-info">
                   <strong>200+</strong>
-                  <span>Autores Especialistas</span>
+                  <span>{t.statAuthors}</span>
                 </div>
               </div>
 
@@ -306,7 +551,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
                 <div className="modern-stat-info">
                   <strong>3</strong>
-                  <span>Idiomas (PT / EN / ES)</span>
+                  <span>{t.statLangs}</span>
                 </div>
               </div>
             </div>
@@ -317,11 +562,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         <section id="sobre" style={{ padding: "90px 0 70px" }}>
           <div className="shell">
             <div className="modern-section-header">
-              <span className="modern-tag-pill">Conhecimento de Vanguarda</span>
-              <h2 className="modern-section-title">Sobre o Tratado</h2>
+              <span className="modern-tag-pill">{t.aboutPill}</span>
+              <h2 className="modern-section-title">{t.aboutTitle}</h2>
               <p className="modern-section-subtitle">
-                Uma realização editorial sem precedentes da Sociedade Brasileira de Coluna (SBC),
-                consolidando décadas de experiência clínica, acadêmica e cirúrgica.
+                {t.aboutSubtitle}
               </p>
             </div>
 
@@ -344,10 +588,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
-                  Fundamentação Rigorosa
+                  {t.pillar1Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
-                  Desde embriologia, biomecânica e diagnóstico diferencial até neurofisiologia intraoperatória avançada.
+                  {t.pillar1Desc}
                 </p>
               </div>
 
@@ -370,10 +614,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
-                  Arsenal Cirúrgico Moderno
+                  {t.pillar2Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
-                  Cobertura detalhada de técnicas minimamente invasivas, endoscopia uni/biportal, ALIF, OLIF, osteotomias, navegação e robótica.
+                  {t.pillar2Desc}
                 </p>
               </div>
 
@@ -395,10 +639,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
-                  Segurança &amp; Complicações
+                  {t.pillar3Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
-                  Prevenção, diagnóstico precoce e manejo sistemático de lesões neurais, infecções, perda de sinal intraoperatório e falhas mecânicas.
+                  {t.pillar3Desc}
                 </p>
               </div>
             </div>
@@ -409,10 +653,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         <section id="areas" style={{ padding: "40px 0 80px", background: "linear-gradient(180deg, #f8fbfe 0%, #edf4fc 100%)" }}>
           <div className="shell">
             <div className="modern-section-header">
-              <span className="modern-tag-pill">Mapa Curricular da Obra</span>
-              <h2 className="modern-section-title">Explore as 10 Seções Temáticas</h2>
+              <span className="modern-tag-pill">{t.sectionsPill}</span>
+              <h2 className="modern-section-title">{t.sectionsTitle}</h2>
               <p className="modern-section-subtitle">
-                Uma organização didática e progressiva, pensada para o cirurgião em formação e para o especialista sênior.
+                {t.sectionsSubtitle}
               </p>
             </div>
 
@@ -461,10 +705,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 12, borderTop: "1px solid rgba(0, 30, 80, 0.08)" }}>
                     <span style={{ fontSize: 12, color: "#627995", fontWeight: 600 }}>
-                      {sec.totalCapitulos} capítulos
+                      {sec.totalCapitulos} {t.capSuffix}
                     </span>
                     <span style={{ fontSize: 12, color: "#0e65a2", fontWeight: 700 }}>
-                      Ver →
+                      {t.viewSec}
                     </span>
                   </div>
                 </Link>
@@ -478,11 +722,11 @@ export default function HomeNewPage({ params }: HomeNewProps) {
           <div className="shell">
             <div className="modern-section-header">
               <span className="modern-tag-pill" style={{ background: "rgba(245, 34, 56, 0.1)", color: "#f52238", borderColor: "rgba(245, 34, 56, 0.3)" }}>
-                Capítulo em Evidência
+                {t.highlightPill}
               </span>
-              <h2 className="modern-section-title">Coluna Vertebral no Plano Sagital</h2>
+              <h2 className="modern-section-title">{t.highlightTitle}</h2>
               <p className="modern-section-subtitle">
-                Explore os princípios biomecânicos e radiográficos que transformaram o planejamento cirúrgico moderno da coluna.
+                {t.highlightSubtitle}
               </p>
             </div>
 
@@ -500,19 +744,19 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                       textTransform: "uppercase",
                     }}
                   >
-                    Capítulo 08
+                    {t.capBadge}
                   </span>
                   <span style={{ fontSize: 14, color: "#506884", fontWeight: 600 }}>
-                    Seção 1: Conceitos Básicos
+                    {t.capSection}
                   </span>
                 </div>
 
                 <h3 style={{ fontSize: 32, lineHeight: 1.1, color: "var(--navy)", margin: "0 0 14px", letterSpacing: "-0.03em" }}>
-                  Equilíbrio Espinopélvico &amp; Compensações
+                  {locale === "en" ? "Spinopelvic Balance & Compensations" : locale === "es" ? "Equilibrio Espinopélvico y Compensaciones" : "Equilíbrio Espinopélvico & Compensações"}
                 </h3>
 
                 <p style={{ fontSize: 15, color: "#284668", fontWeight: 600, margin: "0 0 18px" }}>
-                  Autores: Marcelo Italo Risso Neto • Paulo Tadeu Maia Cavali
+                  {t.capAuthors}
                 </p>
 
                 {/* Interactive Parameter Tabs */}
@@ -521,31 +765,31 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     onClick={() => setActiveSagittalTab("equilibrio")}
                     className={`modern-pill-tab ${activeSagittalTab === "equilibrio" ? "active" : ""}`}
                   >
-                    Equilíbrio Sagital (SVA)
+                    {t.tabEquilibrio}
                   </button>
                   <button
                     onClick={() => setActiveSagittalTab("incidencia")}
                     className={`modern-pill-tab ${activeSagittalTab === "incidencia" ? "active" : ""}`}
                   >
-                    Incidência Pélvica (PI)
+                    {t.tabIncidencia}
                   </button>
                   <button
                     onClick={() => setActiveSagittalTab("cone")}
                     className={`modern-pill-tab ${activeSagittalTab === "cone" ? "active" : ""}`}
                   >
-                    Cone de Economia
+                    {t.tabCone}
                   </button>
                   <button
                     onClick={() => setActiveSagittalTab("lordose")}
                     className={`modern-pill-tab ${activeSagittalTab === "lordose" ? "active" : ""}`}
                   >
-                    Lordose Lombar (LL)
+                    {t.tabLordose}
                   </button>
                   <button
                     onClick={() => setActiveSagittalTab("t1")}
                     className={`modern-pill-tab ${activeSagittalTab === "t1" ? "active" : ""}`}
                   >
-                    T1 Slope
+                    {t.tabT1}
                   </button>
                 </div>
 
@@ -569,7 +813,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, paddingTop: 12, borderTop: "1px solid #edf4fb" }}>
                     <div>
                       <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#f52238" }}>
-                        Fórmula / Referência:
+                        {t.formulaLabel}
                       </span>
                       <div style={{ fontSize: 13, fontWeight: 700, color: "#0e345f", marginTop: 2 }}>
                         {sagittalDetails[activeSagittalTab].formula}
@@ -577,7 +821,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </div>
                     <div>
                       <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#0e65a2" }}>
-                        Implicação Clínica:
+                        {t.clinicalLabel}
                       </span>
                       <div style={{ fontSize: 13, color: "#37506e", marginTop: 2 }}>
                         {sagittalDetails[activeSagittalTab].clinical}
@@ -588,13 +832,13 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
                 <div style={{ display: "flex", gap: 14 }}>
                   <Link href={`/${locale}/indice-new?secao=1`} className="modern-btn-glow" style={{ height: 48, fontSize: 14 }}>
-                    <span>Ver no Índice Completo</span>
+                    <span>{t.viewIndexBtn}</span>
                     <svg style={{ width: 16, height: 16 }}>
                       <use href="#i-arrow"></use>
                     </svg>
                   </Link>
                   <a href="#debate" className="modern-btn-glass" style={{ height: 48, fontSize: 14, color: "#073d77", borderColor: "#c2d8ed", background: "#fff" }}>
-                    <span>Assistir Debate do Cap. 8</span>
+                    <span>{t.watchDebateBtn}</span>
                     <svg style={{ width: 16, height: 16, color: "#f52238" }}>
                       <use href="#i-play"></use>
                     </svg>
@@ -649,7 +893,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                   }}
                 >
-                  Esquema demonstrativo de balanço espinopélvico
+                  {t.radiographCaption}
                 </div>
               </div>
             </div>
@@ -664,27 +908,26 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 <div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 12px", borderRadius: 20, background: "rgba(245, 34, 56, 0.25)", border: "1px solid rgba(245, 34, 56, 0.4)", color: "#ff8290", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 16 }}>
                     <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />
-                    Videocast Oficial SBC
+                    {t.debatePill}
                   </div>
 
                   <h3 style={{ fontSize: 36, letterSpacing: "-0.03em", margin: "0 0 12px", fontWeight: 800 }}>
-                    Tratado em Debate
+                    {t.debateTitle}
                   </h3>
 
                   <p style={{ fontSize: 16, lineHeight: 1.6, color: "#b9d4f2", margin: "0 0 24px" }}>
-                    Discussões clínicas profundas com os autores de cada capítulo.
-                    Apresentando controvérsias cirúrgicas, tomada de decisão e casos complexos.
+                    {t.debateDesc}
                   </p>
 
                   <div style={{ padding: 18, borderRadius: 14, background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.12)", marginBottom: 24 }}>
                     <span style={{ fontSize: 12, color: "#ff6b7a", fontWeight: 800, textTransform: "uppercase" }}>
-                      Episódio 01 em Destaque
+                      {t.debateFeatured}
                     </span>
                     <h4 style={{ fontSize: 17, margin: "4px 0 6px", color: "#fff" }}>
-                      Capítulo 8 – Coluna Vertebral no Plano Sagital
+                      {t.debateEpTitle}
                     </h4>
                     <p style={{ fontSize: 13.5, color: "#9fc0e5", margin: 0 }}>
-                      Com Dr. Marcelo Risso e Dr. Paulo Cavali sobre parametrização e resultados a longo prazo.
+                      {t.debateEpDesc}
                     </p>
                   </div>
 
@@ -719,10 +962,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         <section id="autores" style={{ padding: "80px 0 100px", background: "#fff" }}>
           <div className="shell">
             <div className="modern-section-header" style={{ marginBottom: 40 }}>
-              <span className="modern-tag-pill">Corpo Editorial</span>
-              <h2 className="modern-section-title">Autores &amp; Editores do Tratado</h2>
+              <span className="modern-tag-pill">{t.authorsPill}</span>
+              <h2 className="modern-section-title">{t.authorsTitle}</h2>
               <p className="modern-section-subtitle">
-                Conheça os editores responsáveis pela coordenação acadêmica, diretrizes da SBC e rigor científico da obra.
+                {t.authorsSubtitle}
               </p>
             </div>
 
@@ -763,7 +1006,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                         href={authorUrl}
                         className="author-default-label"
                         style={{ textDecoration: "none" }}
-                        title={`Ver perfil de ${author.name} em Autores New`}
+                        title={`${t.viewProfile}: ${author.name}`}
                       >
                         <div>
                           <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#fff" }}>
@@ -880,7 +1123,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                                 transition: "all 0.2s ease",
                               }}
                             >
-                              <span>Ver Perfil em Autores New</span>
+                              <span>{t.viewProfile}</span>
                               <span>→</span>
                             </Link>
 
@@ -901,7 +1144,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                                 transition: "all 0.2s ease",
                               }}
                             >
-                              <span>Todos Autores</span>
+                              <span>{t.allAuthors}</span>
                             </Link>
                           </div>
                         </div>
@@ -920,13 +1163,13 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "center" }}>
               <div>
                 <span className="modern-tag-pill" style={{ background: "rgba(255, 255, 255, 0.1)", color: "#fff", borderColor: "rgba(255, 255, 255, 0.2)" }}>
-                  Adquira seu Exemplar
+                  {t.buyPill}
                 </span>
                 <h2 style={{ fontSize: 44, lineHeight: 1.1, margin: "14px 0 20px", fontWeight: 800 }}>
-                  Uma obra indispensável para consulta e decisão cirúrgica.
+                  {t.buyTitle}
                 </h2>
                 <p style={{ fontSize: 18, lineHeight: 1.6, color: "#bfdbfe", margin: "0 0 32px" }}>
-                  Disponível exclusivamente em formato impresso de luxo com acabamento gráfico premium, encadernação especial e ilustrações anatômicas em alta resolução.
+                  {t.buyDesc}
                 </p>
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 36 }}>
@@ -934,25 +1177,25 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <svg style={{ width: 28, height: 28, color: "#f52238" }}>
                       <use href="#i-check"></use>
                     </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>109 capítulos completos</span>
+                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem1}</span>
                   </div>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <svg style={{ width: 28, height: 28, color: "#f52238" }}>
                       <use href="#i-check"></use>
                     </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>1.200+ páginas coloridas</span>
+                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem2}</span>
                   </div>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <svg style={{ width: 28, height: 28, color: "#f52238" }}>
                       <use href="#i-check"></use>
                     </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>Capa dura de alta durabilidade</span>
+                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem3}</span>
                   </div>
                   <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                     <svg style={{ width: 28, height: 28, color: "#f52238" }}>
                       <use href="#i-check"></use>
                     </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>Distribuição DiLivros</span>
+                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem4}</span>
                   </div>
                 </div>
 
@@ -961,7 +1204,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   className="modern-btn-glow"
                   style={{ height: 60, padding: "0 40px", fontSize: 17 }}
                 >
-                  <span>Onde Comprar a Edição Impressa</span>
+                  <span>{t.buyCta}</span>
                   <svg style={{ width: 20, height: 20 }}>
                     <use href="#i-cart"></use>
                   </svg>
