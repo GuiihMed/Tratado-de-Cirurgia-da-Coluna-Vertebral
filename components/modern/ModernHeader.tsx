@@ -68,25 +68,8 @@ export default function ModernHeader({
           </Link>
         </nav>
 
-        {/* Desktop Language Switcher & Classic Switcher */}
+        {/* Desktop Language Switcher */}
         <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link
-            href={`/${locale}`}
-            title="Ver versão clássica"
-            style={{
-              fontSize: 12,
-              color: "#9dbad9",
-              textDecoration: "none",
-              padding: "6px 12px",
-              borderRadius: 8,
-              border: "1px solid rgba(255, 255, 255, 0.12)",
-              background: "rgba(255, 255, 255, 0.04)",
-              fontWeight: 600,
-            }}
-          >
-            ↺ Versão Clássica
-          </Link>
-
           <div className="modern-lang-pills">
             <Link
               href={getLocalePath("pt")}
@@ -172,14 +155,6 @@ export default function ModernHeader({
           </nav>
 
           <div className="modern-drawer-footer">
-            <Link
-              href={`/${locale}`}
-              className="modern-switch-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              ↺ Alternar para Versão Clássica
-            </Link>
-
             <div className="modern-drawer-langs">
               <span style={{ fontSize: 13, color: "#8da9cc" }}>Idioma:</span>
               <div className="modern-lang-pills">

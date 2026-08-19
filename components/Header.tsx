@@ -114,49 +114,6 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
             {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
           </div>
-
-          {userAccount ? (
-            <Link
-              href="/admin/painel"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "6px 12px",
-                borderRadius: 8,
-                background: "linear-gradient(135deg, rgba(124, 58, 237, 0.3) 0%, rgba(76, 29, 149, 0.4) 100%)",
-                border: "1px solid rgba(196, 181, 253, 0.4)",
-                color: "#fff",
-                fontSize: 12.5,
-                fontWeight: 800,
-                textDecoration: "none",
-                transition: "all 0.2s ease",
-              }}
-            >
-              <span style={{ fontSize: 13 }}>👑</span>
-              <span>Minha Conta ({userAccount.nome ? userAccount.nome.split(" ")[0] : "Painel"})</span>
-            </Link>
-          ) : (
-            <Link
-              href="/admin/login"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 5,
-                padding: "6px 12px",
-                borderRadius: 8,
-                background: "rgba(255, 255, 255, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                color: "#e2e8f0",
-                fontSize: 12,
-                fontWeight: 700,
-                textDecoration: "none",
-                transition: "all 0.2s ease",
-              }}
-            >
-              <span>🔐 Área do Autor</span>
-            </Link>
-          )}
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -238,48 +195,6 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             >
               {dict.nav.buy}
             </Link>
-
-            {userAccount ? (
-              <Link
-                href="/admin/painel"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  marginTop: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  background: "linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(76, 29, 149, 0.3) 100%)",
-                  border: "1px solid rgba(196, 181, 253, 0.4)",
-                  color: "#fff",
-                  fontWeight: 800,
-                  fontSize: 14,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <span>👑 Minha Conta ({userAccount.nome?.split(" ")[0] || "Painel"})</span>
-              </Link>
-            ) : (
-              <Link
-                href="/admin/login"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  marginTop: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  background: "rgba(255, 255, 255, 0.08)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  color: "#e2e8f0",
-                  fontWeight: 700,
-                  fontSize: 13.5,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <span>🔐 Área do Autor / Painel</span>
-              </Link>
-            )}
           </nav>
 
           <div className="mobile-drawer-footer">

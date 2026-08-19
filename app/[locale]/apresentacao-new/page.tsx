@@ -52,19 +52,6 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 <span>›</span>
                 <span className="text-rose-400 font-semibold">Apresentação</span>
               </div>
-
-              {/* Version Switcher Pill */}
-              <div className="inline-flex items-center gap-1.5 p-1 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-md text-xs font-semibold">
-                <Link
-                  href={`/${locale}/apresentacao`}
-                  className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all"
-                >
-                  🏛️ Versão Clássica
-                </Link>
-                <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-lg shadow-rose-600/30">
-                  ✨ Versão New
-                </span>
-              </div>
             </div>
 
             {/* Hero Main Content */}
