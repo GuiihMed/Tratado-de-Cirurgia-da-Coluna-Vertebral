@@ -954,7 +954,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   className="modern-btn-glow"
                   style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
                 >
-                  Ler Capítulo no Novo Layout 📖
+                  Ler Capítulo Completo 📖
                 </Link>
                 <button
                   onClick={() => copyCitation(activeModalChapter)}

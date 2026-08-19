@@ -71,21 +71,8 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           <Link href={`/${locale}#comprar`}>{dict.nav.buy}</Link>
         </nav>
 
-        {/* Desktop Languages & Modern Toggle */}
+        {/* Desktop Languages */}
         <div className="languages desktop-only-nav">
-          <Link
-            href={`/${locale}/home-new`}
-            title="Ver novo layout moderno"
-            style={{
-              fontSize: 11.5,
-              color: "#ff8090",
-              textDecoration: "none",
-              marginRight: 6,
-              fontWeight: 700,
-            }}
-          >
-            ✨ Novo Layout
-          </Link>
           {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
           {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
           {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
@@ -165,14 +152,6 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </nav>
 
           <div className="mobile-drawer-footer">
-            <Link
-              href={`/${locale}/home-new`}
-              className="mobile-switch-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              ✨ Alternar para Novo Layout
-            </Link>
-
             <div className="mobile-drawer-langs">
               <span>Idioma:</span>
               <div className="mobile-lang-row">
