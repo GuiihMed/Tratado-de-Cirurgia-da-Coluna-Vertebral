@@ -6,6 +6,7 @@ import { PerfilUsuario, UserRole, UserStatus } from "@/lib/types";
 interface UsersManagementTabProps {
   usuarios: PerfilUsuario[];
   loading: boolean;
+  currentUserEmail?: string | null;
   onUpdateStatus: (id: string, role: UserRole, status: UserStatus) => void | Promise<void>;
   onDeleteUser: (id: string, nome: string) => void | Promise<void>;
   onAddUser: (usuario: PerfilUsuario) => void | Promise<void>;
@@ -63,6 +64,7 @@ export const STATUS_LABELS: Record<UserStatus, { label: string; badgeBg: string;
 export default function UsersManagementTab({
   usuarios,
   loading,
+  currentUserEmail,
   onUpdateStatus,
   onDeleteUser,
   onAddUser,
@@ -665,13 +667,32 @@ CREATE TRIGGER on_auth_user_created
                             {initials || "U"}
                           </div>
                           <div>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                               <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800, color: "#001a3d" }}>
                                 {user.nome}
                               </h4>
                               {user.role === "super_admin" && (
                                 <span title="Super Administrador" style={{ fontSize: 13 }}>👑</span>
                               )}
+                              {(currentUserEmail && user.email.toLowerCase() === currentUserEmail.toLowerCase()) ||
+                              (!currentUserEmail && user.id === "usr-1") ? (
+                                <span
+                                  style={{
+                                    padding: "2px 8px",
+                                    borderRadius: 12,
+                                    background: "linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%)",
+                                    color: "#6d28d9",
+                                    fontSize: 10.5,
+                                    fontWeight: 900,
+                                    border: "1px solid #c4b5fd",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 3,
+                                  }}
+                                >
+                                  ⭐ Sua Conta
+                                </span>
+                              ) : null}
                             </div>
                             <div style={{ fontSize: 12.5, color: "#64748b", margin: "2px 0 0" }}>
                               {user.email}

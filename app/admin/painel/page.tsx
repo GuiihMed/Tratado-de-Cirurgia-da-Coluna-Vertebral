@@ -219,8 +219,27 @@ export default function AdminPainelPage() {
   // Active Tab
   const [activeTab, setActiveTab] = useState<"capitulos" | "autores" | "usuarios">("capitulos");
   const [currentUserRole, setCurrentUserRole] = useState<UserRole>("super_admin");
+  const [currentUserName, setCurrentUserName] = useState<string>("Dr. Edson Pudles");
   const [usuarios, setUsuarios] = useState<PerfilUsuario[]>([]);
   const [loadingUsuarios, setLoadingUsuarios] = useState(false);
+
+  // Restore activeTab from sessionStorage on mount
+  useEffect(() => {
+    try {
+      const savedTab = sessionStorage.getItem("sbc_admin_active_tab");
+      if (savedTab && ["capitulos", "autores", "usuarios"].includes(savedTab)) {
+        setActiveTab(savedTab as any);
+      }
+    } catch (e) {}
+  }, []);
+
+  const switchTab = (tab: "capitulos" | "autores" | "usuarios") => {
+    setActiveTab(tab);
+    try {
+      sessionStorage.setItem("sbc_admin_active_tab", tab);
+    } catch (e) {}
+    setFeedback({ type: null, message: "" });
+  };
 
   // Chapter Form states
   const [editingChapterData, setEditingChapterData] = useState<Capitulo | undefined>(undefined);
@@ -439,7 +458,22 @@ export default function AdminPainelPage() {
             router.push("/admin/login");
             return;
           }
-          setUserEmail(data.session.user.email || "autor@sbc.med.br");
+          const email = data.session.user.email || "edson.pudles@sbc.med.br";
+          setUserEmail(email);
+          const metaName = data.session.user.user_metadata?.nome;
+          if (metaName) setCurrentUserName(metaName);
+
+          try {
+            const { data: pData } = await supabase
+              .from("perfis")
+              .select("*")
+              .eq("id", data.session.user.id)
+              .single();
+            if (pData) {
+              if (pData.nome) setCurrentUserName(pData.nome);
+              if (pData.role) setCurrentUserRole(pData.role);
+            }
+          } catch (e) {}
         } else {
           // Local fallback check
           const localSession = localStorage.getItem("sbc_admin_session");
@@ -448,7 +482,9 @@ export default function AdminPainelPage() {
             return;
           }
           const parsed = JSON.parse(localSession);
-          setUserEmail(parsed.email || "autor@sbc.med.br");
+          setUserEmail(parsed.email || "edson.pudles@sbc.med.br");
+          if (parsed.nome) setCurrentUserName(parsed.nome);
+          if (parsed.role) setCurrentUserRole(parsed.role || "super_admin");
         }
         setCheckingAuth(false);
         fetchUsuarios();
@@ -763,22 +799,72 @@ export default function AdminPainelPage() {
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+            {/* MINHA CONTA / USUÁRIO CONECTADO */}
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 8,
-                padding: "6px 14px",
-                borderRadius: 8,
-                background: "rgba(255, 255, 255, 0.06)",
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                fontSize: 13,
-                color: "#cbd5e1",
+                gap: 12,
+                padding: "6px 14px 6px 8px",
+                borderRadius: 12,
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
               }}
             >
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e" }} />
-              <span>{userEmail}</span>
+              <div
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: "50%",
+                  background: currentUserRole === "super_admin"
+                    ? "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)"
+                    : "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 14,
+                  fontWeight: 900,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+                  flexShrink: 0,
+                }}
+              >
+                {currentUserName ? currentUserName.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase() : "EP"}
+              </div>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                  <span style={{ fontSize: 13.5, fontWeight: 800, color: "#fff" }}>
+                    {currentUserName || "Dr. Edson Pudles"}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 900,
+                      padding: "2px 7px",
+                      borderRadius: 4,
+                      background: currentUserRole === "super_admin" ? "#7c3aed" : "#0284c7",
+                      color: "#fff",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {currentUserRole === "super_admin"
+                      ? "👑 Super Admin"
+                      : currentUserRole === "co_super_admin"
+                      ? "🛡️ Co-Super Admin"
+                      : currentUserRole === "admin_escritor"
+                      ? "✍️ Admin Escritor"
+                      : "📝 Escritor"}
+                  </span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "#94a3b8", margin: "1px 0 0" }}>
+                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
+                  <span>{userEmail || "edson.pudles@sbc.med.br"}</span>
+                  <span>• Conectado</span>
+                </div>
+              </div>
             </div>
 
             <Link
@@ -792,7 +878,7 @@ export default function AdminPainelPage() {
                 fontWeight: 600,
                 color: "#67e8f9",
                 textDecoration: "none",
-                padding: "7px 14px",
+                padding: "8px 14px",
                 borderRadius: 8,
                 background: "rgba(103, 232, 249, 0.1)",
                 border: "1px solid rgba(103, 232, 249, 0.3)",
@@ -809,7 +895,7 @@ export default function AdminPainelPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 6,
-                padding: "7px 14px",
+                padding: "8px 14px",
                 borderRadius: 8,
                 border: "none",
                 background: "rgba(239, 68, 68, 0.2)",
@@ -1001,10 +1087,7 @@ export default function AdminPainelPage() {
         >
           <button
             type="button"
-            onClick={() => {
-              setActiveTab("capitulos");
-              setFeedback({ type: null, message: "" });
-            }}
+            onClick={() => switchTab("capitulos")}
             style={{
               padding: "12px 24px",
               borderRadius: 10,
@@ -1039,10 +1122,7 @@ export default function AdminPainelPage() {
 
           <button
             type="button"
-            onClick={() => {
-              setActiveTab("autores");
-              setFeedback({ type: null, message: "" });
-            }}
+            onClick={() => switchTab("autores")}
             style={{
               padding: "12px 24px",
               borderRadius: 10,
@@ -1076,10 +1156,7 @@ export default function AdminPainelPage() {
           </button>
           <button
             type="button"
-            onClick={() => {
-              setActiveTab("usuarios");
-              setFeedback({ type: null, message: "" });
-            }}
+            onClick={() => switchTab("usuarios")}
             style={{
               padding: "12px 24px",
               borderRadius: 10,
@@ -1905,6 +1982,7 @@ export default function AdminPainelPage() {
           <UsersManagementTab
             usuarios={usuarios}
             loading={loadingUsuarios}
+            currentUserEmail={userEmail}
             onUpdateStatus={handleUpdateUserStatus}
             onDeleteUser={handleDeleteUser}
             onAddUser={handleAddUser}

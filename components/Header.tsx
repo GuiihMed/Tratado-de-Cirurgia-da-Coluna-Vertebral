@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface HeaderProps {
   locale: Locale;
@@ -15,6 +16,35 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   const dict = getDictionary(locale);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userAccount, setUserAccount] = useState<{ email: string; nome?: string; role?: string } | null>(null);
+
+  useEffect(() => {
+    async function loadAccount() {
+      try {
+        if (isSupabaseConfigured()) {
+          const { data } = await supabase.auth.getSession();
+          if (data?.session) {
+            setUserAccount({
+              email: data.session.user.email || "edson.pudles@sbc.med.br",
+              nome: data.session.user.user_metadata?.nome || "Dr. Edson Pudles",
+              role: "Super Admin",
+            });
+            return;
+          }
+        }
+        const local = localStorage.getItem("sbc_admin_session");
+        if (local) {
+          const parsed = JSON.parse(local);
+          setUserAccount({
+            email: parsed.email || "edson.pudles@sbc.med.br",
+            nome: parsed.nome || "Dr. Edson Pudles",
+            role: parsed.role === "super_admin" ? "Super Admin" : "Autor SBC",
+          });
+        }
+      } catch (e) {}
+    }
+    loadAccount();
+  }, []);
 
   // Helper to switch locale in the current URL path
   const getLocalePath = (targetLocale: Locale) => {
@@ -71,11 +101,56 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           <Link href={`/${locale}#comprar`}>{dict.nav.buy}</Link>
         </nav>
 
-        {/* Desktop Languages */}
-        <div className="languages desktop-only-nav">
-          {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
-          {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
-          {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+        {/* Desktop Languages & Account */}
+        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div className="languages">
+            {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
+            {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
+            {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+          </div>
+
+          {userAccount ? (
+            <Link
+              href="/admin/painel"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 7,
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: "linear-gradient(135deg, rgba(124, 58, 237, 0.3) 0%, rgba(76, 29, 149, 0.4) 100%)",
+                border: "1px solid rgba(196, 181, 253, 0.4)",
+                color: "#fff",
+                fontSize: 12.5,
+                fontWeight: 800,
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <span style={{ fontSize: 13 }}>👑</span>
+              <span>Minha Conta ({userAccount.nome ? userAccount.nome.split(" ")[0] : "Painel"})</span>
+            </Link>
+          ) : (
+            <Link
+              href="/admin/login"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 5,
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: "rgba(255, 255, 255, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                color: "#e2e8f0",
+                fontSize: 12,
+                fontWeight: 700,
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <span>🔐 Área do Autor</span>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -149,6 +224,48 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             >
               {dict.nav.buy}
             </Link>
+
+            {userAccount ? (
+              <Link
+                href="/admin/painel"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  marginTop: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  background: "linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(76, 29, 149, 0.3) 100%)",
+                  border: "1px solid rgba(196, 181, 253, 0.4)",
+                  color: "#fff",
+                  fontWeight: 800,
+                  fontSize: 14,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                <span>👑 Minha Conta ({userAccount.nome?.split(" ")[0] || "Painel"})</span>
+              </Link>
+            ) : (
+              <Link
+                href="/admin/login"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  marginTop: 12,
+                  padding: "10px 14px",
+                  borderRadius: 10,
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  color: "#e2e8f0",
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                <span>🔐 Área do Autor / Painel</span>
+              </Link>
+            )}
           </nav>
 
           <div className="mobile-drawer-footer">

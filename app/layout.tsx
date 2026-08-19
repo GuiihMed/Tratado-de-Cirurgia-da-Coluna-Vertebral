@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 import SvgSprite from "@/components/SvgSprite";
+import GlobalScrollRestorer from "@/components/GlobalScrollRestorer";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -97,6 +99,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Suspense fallback={null}>
+          <GlobalScrollRestorer />
+        </Suspense>
         <SvgSprite />
         {children}
       </body>
