@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tratado-de-cirurgiada-coluna-verteb.vercel.app"),
+  metadataBase: new URL("https://livro-sbc.vercel.app"),
   title: {
     default: "Tratado de Cirurgia da Coluna Vertebral | Sociedade Brasileira de Coluna (SBC)",
     template: "%s | Tratado de Cirurgia da Coluna Vertebral",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     alternateLocale: ["en_US", "es_ES"],
-    url: "https://tratado-de-cirurgiada-coluna-verteb.vercel.app",
+    url: "https://livro-sbc.vercel.app",
     siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
     title: "Tratado de Cirurgia da Coluna Vertebral | Obra Oficial SBC",
     description:
