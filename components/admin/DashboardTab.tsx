@@ -668,7 +668,7 @@ export default function DashboardTab({
 
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <button
-                onClick={onOpenNewChapter}
+                onClick={() => window.location.href = "/admin/editar/novo"}
                 style={{
                   width: "100%",
                   display: "flex",

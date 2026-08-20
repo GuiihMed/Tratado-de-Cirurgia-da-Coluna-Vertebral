@@ -1755,9 +1755,8 @@ export default function AdminPainelPage() {
                               </td>
                               <td style={{ padding: "14px", textAlign: "right" }}>
                                 <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "flex-end", gap: 6, whiteSpace: "nowrap" }}>
-                                  <button
-                                    type="button"
-                                    onClick={() => handleEditChapter(c)}
+                                  <Link
+                                    href={`/admin/editar/${c.numero}`}
                                     title="Editar Capítulo"
                                     style={{
                                       display: "inline-flex",
@@ -1775,7 +1774,7 @@ export default function AdminPainelPage() {
                                   >
                                     <Edit3 size={13} color="#0284c7" />
                                     <span>Editar</span>
-                                  </button>
+                                  </Link>
                                   <Link
                                     href={`/pt/capitulo/${c.numero}`}
                                     target="_blank"
