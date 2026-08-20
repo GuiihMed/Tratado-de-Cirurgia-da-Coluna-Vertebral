@@ -1258,17 +1258,14 @@ export default function AdminPainelPage() {
         </div>
 
         {/* Sidebar Footer */}
-        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 11, color: "#64748b" }}>
-            SBC Tratado v2.4
-          </div>
+        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
           <button
             onClick={handleLogout}
             title="Encerrar sessão"
-            className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all duration-200 cursor-pointer"
+            className="group w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all duration-200 cursor-pointer"
           >
             <LogOut size={13} className="transition-transform duration-200 group-hover:-translate-x-0.5" />
-            <span>Sair</span>
+            <span>Encerrar Sessão</span>
           </button>
         </div>
       </aside>
