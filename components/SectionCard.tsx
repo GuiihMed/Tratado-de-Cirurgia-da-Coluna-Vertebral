@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Locale, SecaoInfo } from "@/lib/types";
+import SectionIcon from "./SectionIcon";
 
 interface SectionCardProps {
   secao: SecaoInfo;
@@ -26,10 +27,8 @@ export default function SectionCard({
         className="area-card"
         id={`area-card-${secao.numero}`}
       >
-        <span className="area-icon">
-          <svg>
-            <use href={`#${secao.iconId}`}></use>
-          </svg>
+        <span className="area-icon" style={{ display: "grid", placeItems: "center" }}>
+          <SectionIcon sectionId={secao.id} size={24} />
         </span>
         <b>{secao.numero}</b>
         <h3>{title}</h3>
@@ -48,10 +47,8 @@ export default function SectionCard({
 
   return (
     <a className="section-card" href={`#${secao.tag}`}>
-      <span className="section-icon">
-        <svg>
-          <use href={`#${secao.iconId}`}></use>
-        </svg>
+      <span className="section-icon" style={{ display: "grid", placeItems: "center" }}>
+        <SectionIcon sectionId={secao.id} size={24} />
       </span>
       <b>
         {sectionWord} {secao.numero}

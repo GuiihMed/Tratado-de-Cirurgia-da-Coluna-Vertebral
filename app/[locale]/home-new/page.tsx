@@ -6,6 +6,8 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale, AutorEditor } from "@/lib/types";
 import { SECOES } from "@/lib/data/sections-and-chapters";
+import SectionIcon from "@/components/SectionIcon";
+import { ArrowRight, BookOpen, ShoppingCart, Award, Layers, Users, Globe, Brain, Wrench, Shield, Play, Check, ChevronRight } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface HomeNewProps {
@@ -689,9 +691,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                           placeItems: "center",
                         }}
                       >
-                        <svg style={{ width: 24, height: 24 }}>
-                          <use href={`#${sec.iconId}`}></use>
-                        </svg>
+                        <SectionIcon sectionId={sec.id} size={22} color={sec.id <= 5 ? "#f52238" : "#0e65a2"} />
                       </span>
                       <span style={{ fontSize: 12, fontWeight: 800, color: sec.id <= 5 ? "#f52238" : "#0e65a2" }}>
                         #{sec.numero}

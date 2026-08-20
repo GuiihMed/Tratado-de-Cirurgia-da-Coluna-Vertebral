@@ -6,6 +6,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale, Capitulo } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import SectionIcon from "@/components/SectionIcon";
 import {
   LayoutGrid,
   List,
@@ -179,9 +180,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 marginBottom: 26,
               }}
             >
-              <svg style={{ width: 22, height: 22, color: "#f52238", flexShrink: 0 }}>
-                <use href="#i-search"></use>
-              </svg>
+              <Search size={22} color="#f52238" style={{ flexShrink: 0 }} />
               <input
                 type="text"
                 className="modern-search-input"
@@ -398,13 +397,11 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               borderRadius: 12,
                               background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                               color: "#ffffff",
-                              fontWeight: 850,
-                              fontSize: 18,
                               boxShadow: "0 4px 14px rgba(245, 34, 56, 0.4)",
                               flexShrink: 0,
                             }}
                           >
-                            {secao.numero}
+                            <SectionIcon sectionId={secao.id} size={20} color="#fff" />
                           </span>
                           <div>
                             <strong style={{ fontSize: 19, fontWeight: 800, display: "block", color: "#fff", letterSpacing: "-0.01em", lineHeight: 1.2 }}>
@@ -418,7 +415,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
 
                         <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 10 }}>
                           <span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700 }}>
-                            {isOpen ? "▲" : "▼"}
+                            isOpen ? <ChevronUp size={20} color="#94a3b8" /> : <ChevronDown size={20} color="#94a3b8" />
                           </span>
                         </div>
                       </button>

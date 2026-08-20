@@ -1,5 +1,7 @@
 "use client";
 
+import SectionIcon from "./SectionIcon";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { Capitulo, Locale, SecaoInfo } from "@/lib/types";
@@ -104,10 +106,8 @@ export default function ChapterAccordion({
                   id={`toggle-secao-${secao.id}`}
                 >
                   <span className="row-title">
-                    <span className="row-icon">
-                      <svg>
-                        <use href={`#${secao.iconId}`}></use>
-                      </svg>
+                    <span className="row-icon" style={{ display: "grid", placeItems: "center" }}>
+                      <SectionIcon sectionId={secao.id} size={18} />
                     </span>
                     <span>
                       <b>
@@ -117,10 +117,8 @@ export default function ChapterAccordion({
                       <small>{secao.range}</small>
                     </span>
                   </span>
-                  <span className="toggle-icon">
-                    <svg>
-                      <use href="#i-down"></use>
-                    </svg>
+                  <span className="toggle-icon" style={{ display: "grid", placeItems: "center" }}>
+                    <ChevronDown size={18} />
                   </span>
                 </button>
 
