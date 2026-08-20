@@ -57,10 +57,18 @@
   position: sticky;
   top: 16px;
   z-index: 100;
-  width: var(--shell);
-  max-width: calc(100% - 150px);
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 20px;
   margin: 0 auto;
-  padding: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .modern-nav-sticky {
+    top: 8px;
+    padding: 0 16px;
+  }
 }
 
 .modern-nav-bar {

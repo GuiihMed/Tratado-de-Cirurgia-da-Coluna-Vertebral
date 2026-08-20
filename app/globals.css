@@ -25,7 +25,9 @@ html {
 
 body {
   margin: 0;
-  min-width: 1180px;
+  min-width: 0;
+  width: 100%;
+  overflow-x: hidden;
   font-family: "Inter", "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
   background: #fff;
@@ -49,9 +51,11 @@ svg {
 }
 
 .shell {
-  width: var(--shell);
-  max-width: calc(100% - 150px);
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 20px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* TOPBAR / HEADER */
@@ -2114,5 +2118,194 @@ svg {
     transform: translateX(0) !important;
     z-index: 100 !important;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE SYSTEM (REFATORED FOR SMARTPHONES)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+  }
+
+  /* 1. Tipografia e Legibilidade */
+  .modern-hero-title,
+  .hero-copy h1,
+  h1.modern-hero-title {
+    font-size: clamp(24px, 7vw, 28px) !important;
+    line-height: 1.25 !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .modern-section-title,
+  .center-title,
+  h2.modern-section-title {
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+    font-weight: 800 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .modern-section-subtitle,
+  .modern-hero-lead,
+  .hero-lead,
+  .about p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #4b627d;
+  }
+
+  .modern-hero-badge,
+  .modern-tag-pill,
+  .print-notice {
+    font-size: 12.5px !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    gap: 8px !important;
+  }
+
+  /* 2. Botões e Ações (Hero Section) */
+  .modern-hero-actions,
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
+  }
+
+  .modern-btn-glow,
+  .modern-btn-glass,
+  .btn,
+  .btn-primary,
+  .btn-outline {
+    width: 100% !important;
+    min-height: 50px !important;
+    height: 50px !important;
+    font-size: 15px !important;
+    font-weight: 650 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 18px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Elementos Gráficos e Imagens */
+  .modern-book-stage,
+  .hero-book,
+  .book-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 20px 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .modern-book-3d img,
+  .book-cover,
+  .book-mockup {
+    width: 72% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+    border-radius: 12px !important;
+  }
+
+  /* 4. Cards e Métricas (Grid) */
+  .modern-stats-banner,
+  .stats-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .modern-stat-box,
+  .stat {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 8px !important;
+  }
+
+  .modern-stat-info strong,
+  .stat strong {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+  }
+
+  .modern-stat-info span,
+  .stat span {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #9db8d7 !important;
+    margin-top: 4px !important;
+  }
+
+  .modern-stat-icon,
+  .stat svg {
+    width: 24px !important;
+    height: 24px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Cards de Conteúdo (Pillars / Destaques) empilhados em coluna única */
+  .modern-features-grid,
+  .area-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .glass-card,
+  .area-card {
+    width: 100% !important;
+    padding: 24px 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .glass-card h3,
+  .area-card h3 {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    margin: 0 0 8px !important;
+  }
+
+  .glass-card p,
+  .area-card p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .modern-sections-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* 5. Espaçamento e Viewport */
+  section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
