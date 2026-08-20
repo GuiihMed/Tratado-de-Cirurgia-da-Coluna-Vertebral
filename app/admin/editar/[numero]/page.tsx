@@ -325,7 +325,7 @@ export default function ChapterEditPage() {
     return (
       <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: pageBg, color: textPrimary }}>
         <div style={{ textAlign: "center" }}>
-          <img src="/assets/sbc-logo-white.svg" alt="SBC" style={{ height: 44, margin: "0 auto 16px", filter: isDark ? "none" : "invert(1)" }} />
+          <img src={isDark ? "/assets/sbc-logo-white.png" : "/assets/sbc-logo.png"} alt="SBC" style={{ height: 44, margin: "0 auto 16px", objectFit: "contain" }} />
           <p style={{ color: textMuted, fontWeight: 700, fontSize: 14 }}>Carregando editor científico...</p>
         </div>
       </div>

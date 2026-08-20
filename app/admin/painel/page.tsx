@@ -1043,7 +1043,7 @@ export default function AdminPainelPage() {
     return (
       <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: isDark ? "#001026" : "#f1f5f9" }}>
         <div style={{ textAlign: "center", color: isDark ? "#fff" : "#0f172a" }}>
-          <img src="/assets/sbc-logo-white.svg" alt="SBC" style={{ height: 48, margin: "0 auto 16px", filter: isDark ? "none" : "invert(1)" }} />
+          <img src={isDark ? "/assets/sbc-logo-white.png" : "/assets/sbc-logo.png"} alt="SBC" style={{ height: 48, margin: "0 auto 16px", objectFit: "contain" }} />
           <p style={{ color: isDark ? "#94a3b8" : "#64748b", fontWeight: 600, fontSize: 15 }}>Autenticando acesso editorial...</p>
         </div>
       </div>
@@ -1115,9 +1115,9 @@ export default function AdminPainelPage() {
         <div style={{ padding: "24px 20px 20px", borderBottom: sidebarBorder }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
-              src="/assets/sbc-logo-white.svg"
+              src={isDark ? "/assets/sbc-logo-white.png" : "/assets/sbc-logo.png"}
               alt="SBC"
-              style={{ height: 38, width: "auto", objectFit: "contain", filter: isDark ? "none" : "invert(1)" }}
+              style={{ height: 38, width: "auto", objectFit: "contain" }}
             />
             <div>
               <div style={{ fontSize: 14.5, fontWeight: 900, color: textPrimary, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
