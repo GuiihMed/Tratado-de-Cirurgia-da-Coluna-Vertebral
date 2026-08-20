@@ -42,6 +42,9 @@ import {
   Layers,
   Award,
   Building2,
+  Save,
+  Camera,
+  User,
 } from "lucide-react";
 
 function IconBook({ className = "w-5 h-5", size = 20 }: { className?: string; size?: number }) {
@@ -1026,18 +1029,16 @@ export default function AdminPainelPage() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", background: "#f8fafc", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div className="min-h-screen flex bg-slate-950 text-slate-100 font-sans selection:bg-rose-500 selection:text-white relative overflow-x-hidden">
+      {/* Background Ambient Glows */}
+      <div className="fixed -top-40 -right-40 w-96 h-96 rounded-full bg-rose-500/10 blur-[120px] pointer-events-none" />
+      <div className="fixed -bottom-40 -left-40 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
+
       {/* ================= MOBILE SIDEBAR BACKDROP ================= */}
       {mobileSidebarOpen && (
         <div
           onClick={() => setMobileSidebarOpen(false)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0, 10, 25, 0.7)",
-            backdropFilter: "blur(4px)",
-            zIndex: 90,
-          }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
         />
       )}
 
@@ -1045,7 +1046,7 @@ export default function AdminPainelPage() {
       <aside
         style={{
           width: 280,
-          background: "linear-gradient(180deg, #001229 0%, #000c1c 60%, #00060f 100%)",
+          background: "rgba(2, 6, 23, 0.85)",
           color: "#fff",
           borderRight: "1px solid rgba(255, 255, 255, 0.08)",
           display: "flex",
@@ -1056,6 +1057,7 @@ export default function AdminPainelPage() {
           height: "100vh",
           zIndex: 100,
           overflowY: "auto",
+          backdropFilter: "blur(20px)",
         }}
       >
         {/* Brand Header */}
@@ -1072,7 +1074,7 @@ export default function AdminPainelPage() {
               </div>
               <div style={{ fontSize: 11, color: "#94a3b8", display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f43f5e" }} />
-                <span>Painel Administrativo</span>
+                <span>Painel Executivo</span>
               </div>
             </div>
           </div>
@@ -1083,17 +1085,7 @@ export default function AdminPainelPage() {
           <div
             onClick={handleOpenEditAccount}
             title="Clique para editar sua conta"
-            style={{
-              padding: "10px 12px",
-              borderRadius: 12,
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              transition: "all 0.2s ease",
-            }}
+            className="group p-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 cursor-pointer flex items-center gap-3 transition-all duration-200"
           >
             <div
               style={{
@@ -1136,7 +1128,7 @@ export default function AdminPainelPage() {
                 )}
               </div>
             </div>
-            <Settings size={14} className="text-slate-400 opacity-70" />
+            <Settings size={14} className="text-slate-400 opacity-70 group-hover:rotate-45 transition-transform duration-300" />
           </div>
         </div>
 
@@ -1150,25 +1142,14 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("dashboard")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  border: "none",
-                  background: activeTab === "dashboard" ? "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)" : "transparent",
-                  color: activeTab === "dashboard" ? "#fff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "dashboard" ? 800 : 600,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  transition: "all 0.15s ease",
-                }}
+                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  activeTab === "dashboard"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-950/50"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                }`}
               >
-                <Layers size={18} />
-                <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
+                <Layers size={18} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1 text-left">Dashboard &amp; Métricas</span>
               </button>
             </div>
           </div>
@@ -1181,52 +1162,30 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("capitulos")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  border: "none",
-                  background: activeTab === "capitulos" ? "linear-gradient(135deg, #002b66 0%, #001f4d 100%)" : "transparent",
-                  color: activeTab === "capitulos" ? "#fff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "capitulos" ? 800 : 600,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  transition: "all 0.15s ease",
-                }}
+                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  activeTab === "capitulos"
+                    ? "bg-gradient-to-r from-cyan-600 to-blue-700 text-white shadow-lg shadow-cyan-950/50"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                }`}
               >
-                <BookOpen size={18} />
-                <span style={{ flex: 1 }}>Capítulos</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
+                <BookOpen size={18} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1 text-left">Capítulos</span>
+                <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-white/15 text-white">
                   {chapters.length}
                 </span>
               </button>
 
               <button
                 onClick={() => switchTab("autores")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  border: "none",
-                  background: activeTab === "autores" ? "linear-gradient(135deg, #e11d48 0%, #be123c 100%)" : "transparent",
-                  color: activeTab === "autores" ? "#fff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "autores" ? 800 : 600,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  transition: "all 0.15s ease",
-                }}
+                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  activeTab === "autores"
+                    ? "bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-lg shadow-rose-950/50"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                }`}
               >
-                <Users size={18} />
-                <span style={{ flex: 1 }}>Autores &amp; Editores</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
+                <Users size={18} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1 text-left">Autores &amp; Editores</span>
+                <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-white/15 text-white">
                   {authors.length}
                 </span>
               </button>
@@ -1241,27 +1200,16 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("usuarios")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 10,
-                  border: "none",
-                  background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
-                  color: activeTab === "usuarios" ? "#fff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "usuarios" ? 800 : 600,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  transition: "all 0.15s ease",
-                }}
+                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  activeTab === "usuarios"
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg shadow-purple-950/50"
+                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
+                }`}
               >
-                <ShieldCheck size={18} />
-                <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
+                <ShieldCheck size={18} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1 text-left">Usuários &amp; Acessos</span>
                 {usuarios.filter((u) => u.status === "pendente").length > 0 && (
-                  <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 6px", borderRadius: 10, background: "#ef4444", color: "#fff" }}>
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-rose-500 text-white animate-pulse">
                     {usuarios.filter((u) => u.status === "pendente").length}
                   </span>
                 )}
@@ -1278,62 +1226,32 @@ export default function AdminPainelPage() {
               <Link
                 href="/pt/home-new"
                 target="_blank"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  color: "#94a3b8",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
+                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-all duration-200"
               >
-                <Globe size={15} />
-                <span style={{ flex: 1 }}>Home New (4K)</span>
-                <ExternalLink size={12} />
+                <Globe size={15} className="transition-transform duration-200 group-hover:rotate-12" />
+                <span className="flex-1">Home Portal</span>
+                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
               </Link>
 
               <Link
                 href="/pt/indice-new"
                 target="_blank"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  color: "#94a3b8",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
+                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
               >
-                <FileText size={15} />
-                <span style={{ flex: 1 }}>Índice Interativo</span>
-                <ExternalLink size={12} />
+                <FileText size={15} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1">Índice Interativo</span>
+                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
               </Link>
 
               <a
                 href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  padding: "8px 14px",
-                  borderRadius: 8,
-                  color: "#fb7185",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                }}
+                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-bold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-200"
               >
-                <ShoppingCart size={15} />
-                <span style={{ flex: 1 }}>Loja DiLivros Oficial</span>
-                <ExternalLink size={12} />
+                <ShoppingCart size={15} className="transition-transform duration-200 group-hover:scale-110" />
+                <span className="flex-1">Loja DiLivros Oficial</span>
+                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
               </a>
             </div>
           </div>
@@ -1342,93 +1260,55 @@ export default function AdminPainelPage() {
         {/* Sidebar Footer */}
         <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ fontSize: 11, color: "#64748b" }}>
-            SBC Tratado v2.4 • Next 15
+            SBC Tratado v2.4
           </div>
           <button
             onClick={handleLogout}
             title="Encerrar sessão"
-            style={{
-              background: "rgba(239, 68, 68, 0.15)",
-              border: "1px solid rgba(239, 68, 68, 0.3)",
-              color: "#fca5a5",
-              borderRadius: 6,
-              padding: "5px 10px",
-              fontSize: 12,
-              fontWeight: 700,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-            }}
+            className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all duration-200 cursor-pointer"
           >
-            <LogOut size={13} />
+            <LogOut size={13} className="transition-transform duration-200 group-hover:-translate-x-0.5" />
             <span>Sair</span>
           </button>
         </div>
       </aside>
 
       {/* ================= RIGHT MAIN WRAPPER ================= */}
-      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
-        {/* ================= TOPBAR ================= */}
-        <header
-          style={{
-            height: 70,
-            background: "#fff",
-            borderBottom: "1px solid #e2e8f0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 28px",
-            position: "sticky",
-            top: 0,
-            zIndex: 40,
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.02)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <div className="flex-1 min-w-0 flex flex-col">
+        {/* ================= TOPBAR (GLASSMORPHISM) ================= */}
+        <header className="h-16 bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 flex items-center justify-between px-6 sm:px-8 sticky top-0 z-40 shadow-sm">
+          <div className="flex items-center gap-3">
             {/* Breadcrumbs */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13.5, color: "#64748b" }}>
-              <span style={{ fontWeight: 600 }}>Painel SBC</span>
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-400">
+              <span className="text-slate-500 font-bold uppercase tracking-wider text-[11px]">SBC Admin</span>
               <span>/</span>
-              <strong style={{ color: "#001a3d" }}>
+              <strong className="text-white font-extrabold">
                 {activeTab === "dashboard"
-                  ? "Dashboard & Métricas"
+                  ? "Dashboard Executivo & Métricas"
                   : activeTab === "capitulos"
-                  ? "Gestão de Capítulos (109)"
+                  ? "Catálogo de Capítulos (109)"
                   : activeTab === "autores"
                   ? "Corpo Editorial & Autores"
-                  : "Usuários & Acessos"}
+                  : "Governança de Usuários"}
               </strong>
             </div>
           </div>
 
           {/* Topbar Actions */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div className="flex items-center gap-3">
             <Link
               href="/pt/indice-new"
               target="_blank"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: 12.5,
-                fontWeight: 700,
-                color: "#0284c7",
-                textDecoration: "none",
-                padding: "7px 12px",
-                borderRadius: 8,
-                background: "#f0f9ff",
-                border: "1px solid #bae6fd",
-              }}
+              className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-semibold text-slate-200 transition-all duration-200"
             >
               <span>Ver Índice Público</span>
-              <IconExternal size={12} />
+              <ExternalLink size={12} className="text-slate-400 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         </header>
 
         {/* ================= MAIN CONTENT CONTAINER ================= */}
-        <main style={{ padding: "32px 28px", maxWidth: 1400, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+        <main className="p-6 sm:p-8 max-w-7xl w-full mx-auto box-border">
           {/* Feedback Alert */}
           {feedback.message && (
             <div
@@ -1506,73 +1386,37 @@ export default function AdminPainelPage() {
               />
 
               {/* ================= TABELA DE CAPÍTULOS ================= */}
-            <section
-              style={{
-                background: "#fff",
-                borderRadius: 18,
-                padding: "32px",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: 24,
-                  flexWrap: "wrap",
-                  gap: 16,
-                }}
-              >
+            <section className="rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl mt-8">
+              <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
                 <div>
-                  <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
-                    Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)
+                  <h3 className="text-xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
+                    <BookOpen size={20} className="text-cyan-400" />
+                    <span>Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)</span>
                   </h3>
-                  <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1">
                     Navegue por seções, busque títulos ou edite o conteúdo de qualquer capítulo em tempo real.
                   </p>
                 </div>
 
                 {/* Filtros e Busca */}
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-                  <div
-                    style={{
-                      position: "relative",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div style={{ position: "absolute", left: 12, color: "#94a3b8" }}>
-                      <IconSearch size={16} />
+                <div className="flex gap-3 flex-wrap items-center">
+                  <div className="relative flex items-center">
+                    <div className="absolute left-3.5 text-slate-400">
+                      <Search size={15} />
                     </div>
                     <input
                       type="text"
                       placeholder="Buscar por título ou autor..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      style={{
-                        padding: "9px 14px 9px 36px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 13.5,
-                        width: 260,
-                      }}
+                      className="pl-9 pr-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-400 text-xs sm:text-sm w-64 focus:outline-none focus:border-cyan-500 transition-colors"
                     />
                   </div>
 
                   <select
                     value={filterSecao}
                     onChange={(e) => setFilterSecao(e.target.value)}
-                    style={{
-                      padding: "9px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #cbd5e1",
-                      fontSize: 13.5,
-                      background: "#fff",
-                      color: "#0f172a",
-                      fontWeight: 600,
-                    }}
+                    className="px-3.5 py-2 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white text-xs sm:text-sm font-semibold focus:outline-none focus:border-cyan-500 transition-colors cursor-pointer"
                   >
                     <option value="all">Todas as 10 Seções</option>
                     {SECOES.map((s) => (
@@ -1585,28 +1429,28 @@ export default function AdminPainelPage() {
               </div>
 
               {/* Tabela */}
-              <div style={{ overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 14 }}>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-left text-sm">
                   <thead>
-                    <tr style={{ background: "#f8fafc", borderBottom: "2px solid #e2e8f0", color: "#475569" }}>
-                      <th style={{ padding: "12px 14px", width: 60 }}>#</th>
-                      <th style={{ padding: "12px 14px" }}>Título do Capítulo</th>
-                      <th style={{ padding: "12px 14px", width: 220 }}>Seção</th>
-                      <th style={{ padding: "12px 14px", width: 180 }}>Autores</th>
-                      <th style={{ padding: "12px 14px", width: 110 }}>Status</th>
-                      <th style={{ padding: "12px 14px", width: 160, textAlign: "right" }}>Ações</th>
+                    <tr className="border-b border-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider">
+                      <th className="py-3 px-3.5 w-14">#</th>
+                      <th className="py-3 px-3.5">Título do Capítulo</th>
+                      <th className="py-3 px-3.5 w-48">Seção</th>
+                      <th className="py-3 px-3.5 w-44">Autores</th>
+                      <th className="py-3 px-3.5 w-28">Status</th>
+                      <th className="py-3 px-3.5 w-36 text-right">Ações</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-slate-800/60">
                     {loadingList ? (
                       <tr>
-                        <td colSpan={6} style={{ padding: 40, textAlign: "center", color: "#64748b" }}>
+                        <td colSpan={6} className="py-12 text-center text-slate-400 text-sm">
                           Carregando catálogo de capítulos...
                         </td>
                       </tr>
                     ) : displayedChapters.length === 0 ? (
                       <tr>
-                        <td colSpan={6} style={{ padding: 40, textAlign: "center", color: "#64748b" }}>
+                        <td colSpan={6} className="py-12 text-center text-slate-400 text-sm">
                           Nenhum capítulo encontrado para o filtro selecionado.
                         </td>
                       </tr>
@@ -1616,112 +1460,65 @@ export default function AdminPainelPage() {
                         return (
                           <tr
                             key={c.numero}
-                            style={{ borderBottom: "1px solid #f1f5f9", transition: "background 0.15s ease" }}
-                            onMouseEnter={(e) => (e.currentTarget.style.background = "#f8fafc")}
-                            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                            className="hover:bg-slate-800/30 transition-colors"
                           >
-                            <td style={{ padding: "12px 14px", fontWeight: 900, color: "#f52238" }}>
+                            <td className="py-3.5 px-3.5 font-black text-rose-400">
                               {c.numero}
                             </td>
-                            <td style={{ padding: "12px 14px" }}>
-                              <strong style={{ color: "#001a3d" }}>{c.titulo_pt}</strong>
+                            <td className="py-3.5 px-3.5">
+                              <strong className="text-slate-100 font-bold">{c.titulo_pt}</strong>
                               {c.titulo_en && (
-                                <div style={{ fontSize: 12, color: "#64748b", fontStyle: "italic" }}>
+                                <div className="text-xs text-slate-400 italic mt-0.5">
                                   EN: {c.titulo_en}
                                 </div>
                               )}
                             </td>
-                            <td style={{ padding: "12px 14px", color: "#334155", fontSize: 13 }}>
-                              <span
-                                style={{
-                                  display: "inline-block",
-                                  padding: "2px 8px",
-                                  borderRadius: 6,
-                                  fontSize: 11.5,
-                                  fontWeight: 700,
-                                  background: sec?.colorClass === "red-row" ? "#fee2e2" : "#e0f2fe",
-                                  color: sec?.colorClass === "red-row" ? "#991b1b" : "#0369a1",
-                                }}
-                              >
+                            <td className="py-3.5 px-3.5 text-xs font-semibold">
+                              <span className="inline-block px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-300">
                                 S{c.secao_id} • {sec?.titulo_pt || `Seção ${c.secao_id}`}
                               </span>
                             </td>
-                            <td style={{ padding: "12px 14px", color: "#64748b", fontSize: 13 }}>
+                            <td className="py-3.5 px-3.5 text-xs text-slate-400 font-medium">
                               {c.autores || "Corpo Editorial SBC"}
                             </td>
-                            <td style={{ padding: "12px 14px" }}>
+                            <td className="py-3.5 px-3.5">
                               <span
-                                style={{
-                                  padding: "3px 10px",
-                                  borderRadius: 12,
-                                  fontSize: 11.5,
-                                  fontWeight: 700,
-                                  background: c.status === "rascunho" ? "#fef3c7" : "#dcfce7",
-                                  color: c.status === "rascunho" ? "#92400e" : "#15803d",
-                                }}
+                                className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                                  c.status === "rascunho"
+                                    ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
+                                    : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"
+                                }`}
                               >
                                 {c.status === "rascunho" ? "Rascunho" : "Publicado"}
                               </span>
                             </td>
-                            <td style={{ padding: "12px 14px", textAlign: "right" }}>
-                              <div style={{ display: "flex", justifyContent: "flex-end", gap: 6 }}>
+                            <td className="py-3.5 px-3.5 text-right">
+                              <div className="inline-flex items-center justify-end gap-1.5">
                                 <button
                                   type="button"
                                   onClick={() => handleEditChapter(c)}
                                   title="Editar Capítulo"
-                                  style={{
-                                    padding: "6px 10px",
-                                    borderRadius: 6,
-                                    border: "1px solid #cbd5e1",
-                                    background: "#fff",
-                                    color: "#001a3d",
-                                    fontSize: 12,
-                                    fontWeight: 700,
-                                    cursor: "pointer",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 4,
-                                  }}
+                                  className="group p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition-all duration-150 inline-flex items-center gap-1 cursor-pointer"
                                 >
-                                  <IconEdit size={13} />
+                                  <Edit3 size={13} className="text-cyan-400 transition-transform group-hover:scale-110" />
                                   <span>Editar</span>
                                 </button>
                                 <Link
                                   href={`/pt/capitulo/${c.numero}`}
                                   target="_blank"
                                   title="Abrir no Leitor"
-                                  style={{
-                                    padding: "6px 10px",
-                                    borderRadius: 6,
-                                    border: "1px solid #93c5fd",
-                                    background: "#eff6ff",
-                                    color: "#1d4ed8",
-                                    fontSize: 12,
-                                    fontWeight: 700,
-                                    textDecoration: "none",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 4,
-                                  }}
+                                  className="group p-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/60 border border-blue-800 text-blue-300 text-xs font-bold transition-all duration-150 inline-flex items-center gap-1"
                                 >
-                                  <IconEye size={13} />
+                                  <Eye size={13} className="transition-transform group-hover:scale-110" />
                                   <span>Ver</span>
                                 </Link>
                                 <button
                                   type="button"
                                   onClick={() => handleDelete(c.numero, c.titulo_pt)}
                                   title="Excluir Capítulo"
-                                  style={{
-                                    padding: "6px 8px",
-                                    borderRadius: 6,
-                                    border: "1px solid #fecaca",
-                                    background: "#fff1f2",
-                                    color: "#b91c1c",
-                                    fontSize: 12,
-                                    cursor: "pointer",
-                                  }}
+                                  className="p-1.5 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs transition-all duration-150 cursor-pointer"
                                 >
-                                  <IconTrash size={13} />
+                                  <Trash2 size={13} />
                                 </button>
                               </div>
                             </td>
@@ -1790,51 +1587,19 @@ export default function AdminPainelPage() {
           });
 
           return (
-            <div style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 32, alignItems: "start" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Form de Cadastro / Edição de Autor */}
-              <section
-                style={{
-                  background: "#fff",
-                  borderRadius: 18,
-                  padding: "36px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    marginBottom: 24,
-                    borderBottom: "1px solid #f1f5f9",
-                    paddingBottom: 18,
-                  }}
-                >
+              <section className="lg:col-span-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
+                <div className="flex justify-between items-start mb-6 border-b border-slate-800 pb-4">
                   <div>
-                    <div
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        padding: "4px 10px",
-                        borderRadius: 6,
-                        background: "rgba(245, 34, 56, 0.1)",
-                        color: "#f52238",
-                        fontSize: 12,
-                        fontWeight: 800,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <IconUsers size={14} />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-black uppercase tracking-wider mb-2">
+                      <Users size={13} />
                       <span>Gestão do Corpo Editorial</span>
                     </div>
-                    <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                    <h2 className="text-xl font-black text-white tracking-tight">
                       {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
                     </h2>
-                    <p style={{ fontSize: 13, color: "#64748b", margin: "4px 0 0" }}>
+                    <p className="text-xs sm:text-sm text-slate-400 mt-1">
                       Preencha os dados do médico para publicação na página inicial e no catálogo de autores.
                     </p>
                   </div>
@@ -1842,32 +1607,19 @@ export default function AdminPainelPage() {
                   <button
                     type="button"
                     onClick={handleClearAuthorForm}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      padding: "8px 14px",
-                      borderRadius: 8,
-                      border: "1px solid #e2e8f0",
-                      background: "#fff",
-                      color: "#64748b",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      transition: "all 0.15s",
-                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold transition-all cursor-pointer"
                   >
-                    <IconPlus size={14} />
+                    <Plus size={13} />
                     <span>Novo Autor</span>
                   </button>
                 </div>
 
-                <form onSubmit={handleAuthorSubmit}>
+                <form onSubmit={handleAuthorSubmit} className="space-y-4">
                   <input type="hidden" name="id" value={authorId} />
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 120px", gap: 16, marginBottom: 18 }}>
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                         Nome Completo do Médico / Autor *
                       </label>
                       <input
@@ -1875,22 +1627,15 @@ export default function AdminPainelPage() {
                         name="nome"
                         value={authorNome}
                         onChange={(e) => setAuthorNome(e.target.value)}
-                        placeholder="Ex: Prof. Dr. Edson Pudles ou Dr. Helton Defino"
+                        placeholder="Ex: Prof. Dr. Edson Pudles"
                         required
-                        style={{
-                          width: "100%",
-                          padding: "11px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          fontWeight: 600,
-                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-rose-500"
                       />
                     </div>
 
-                    <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Ordem de Exibição #
+                    <div className="sm:col-span-1">
+                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                        Ordem #
                       </label>
                       <input
                         type="number"
@@ -1899,34 +1644,26 @@ export default function AdminPainelPage() {
                         onChange={(e) => setAuthorOrdem(e.target.value)}
                         min={1}
                         max={99}
-                        style={{
-                          width: "100%",
-                          padding: "11px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                          textAlign: "center",
-                          fontWeight: 800,
-                        }}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white text-center text-sm font-black focus:outline-none focus:border-rose-500"
                       />
                     </div>
                   </div>
 
                   {/* Cargo Selection & Chips */}
-                  <div style={{ marginBottom: 18 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                      <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+                  <div>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                         Cargo / Título Oficial no Tratado *
                       </label>
-                      <span style={{ fontSize: 11, color: "#64748b" }}>
-                        Clique em um modelo para preencher rápido:
+                      <span className="text-[11px] text-slate-400">
+                        Atalhos de preenchimento rápido:
                       </span>
                     </div>
 
-                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+                    <div className="flex gap-1.5 flex-wrap mb-2">
                       {[
-                        { label: "Editor-Chefe / SBC", value: "Editor-Chefe / SBC" },
-                        { label: "Editor / FMRP-USP", value: "Editor / FMRP-USP" },
+                        { label: "Editor-Chefe", value: "Editor-Chefe / SBC" },
+                        { label: "Editor / USP", value: "Editor / FMRP-USP" },
                         { label: "Editor / SBC", value: "Editor / SBC" },
                         { label: "Editor Associado", value: "Editor Associado / MIS" },
                         { label: "Coordenador de Seção", value: "Coordenador de Seção" },
@@ -1936,17 +1673,11 @@ export default function AdminPainelPage() {
                           key={pIdx}
                           type="button"
                           onClick={() => setAuthorCargo(preset.value)}
-                          style={{
-                            padding: "4px 8px",
-                            borderRadius: 6,
-                            border: authorCargo === preset.value ? "1px solid #f52238" : "1px solid #e2e8f0",
-                            background: authorCargo === preset.value ? "#fef2f2" : "#f8fafc",
-                            color: authorCargo === preset.value ? "#be123c" : "#475569",
-                            fontSize: 11.5,
-                            fontWeight: 700,
-                            cursor: "pointer",
-                            transition: "all 0.15s",
-                          }}
+                          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                            authorCargo === preset.value
+                              ? "bg-rose-500/20 border border-rose-500 text-rose-300"
+                              : "bg-slate-800/60 hover:bg-slate-800 border border-slate-700 text-slate-300"
+                          }`}
                         >
                           {preset.label}
                         </button>
@@ -1958,22 +1689,15 @@ export default function AdminPainelPage() {
                       name="cargo"
                       value={authorCargo}
                       onChange={(e) => setAuthorCargo(e.target.value)}
-                      placeholder="Ex: Editor-Chefe / SBC ou Editor Associado - Grupo de Deformidades"
+                      placeholder="Ex: Editor-Chefe / SBC"
                       required
-                      style={{
-                        width: "100%",
-                        padding: "11px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                        fontWeight: 600,
-                      }}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-rose-500"
                     />
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 18 }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                         Instituição / Universidade
                       </label>
                       <input
@@ -1981,87 +1705,53 @@ export default function AdminPainelPage() {
                         name="instituicao"
                         value={authorInstituicao}
                         onChange={(e) => setAuthorInstituicao(e.target.value)}
-                        placeholder="Ex: Faculdade de Medicina de Ribeirão Preto - USP (FMRP-USP)"
-                        style={{
-                          width: "100%",
-                          padding: "11px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                        }}
+                        placeholder="Ex: FMRP-USP"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
                       />
                     </div>
 
                     <div>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
-                        Destaque / Principal Conquista Editorial
+                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                        Destaque Principal
                       </label>
                       <input
                         type="text"
                         name="destaque"
                         value={authorDestaque}
                         onChange={(e) => setAuthorDestaque(e.target.value)}
-                        placeholder="Ex: Coordenação Editorial de 109 Capítulos"
-                        style={{
-                          width: "100%",
-                          padding: "11px 14px",
-                          borderRadius: 8,
-                          border: "1px solid #cbd5e1",
-                          fontSize: 14,
-                        }}
+                        placeholder="Ex: Coordenação de 109 Capítulos"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
                       />
                     </div>
                   </div>
 
-                  {/* Foto Picker com Prévia e Upload de Arquivo */}
-                  <div style={{ marginBottom: 18, background: "#f8fafc", padding: "18px", borderRadius: 14, border: "1px solid #e2e8f0" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                      <label style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
+                  {/* Foto Picker com Prévia e Upload */}
+                  <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-3">
+                    <div className="flex justify-between items-center">
+                      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                         Foto Oficial do Autor *
                       </label>
-                      <span style={{ fontSize: 11.5, color: "#64748b" }}>
-                        Envie uma foto ou escolha uma foto oficial
+                      <span className="text-[11px] text-slate-400">
+                        Upload ou seleção rápida
                       </span>
                     </div>
 
-                    <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 14 }}>
+                    <div className="flex gap-3 items-center">
                       <img
                         src={authorFotoUrl}
                         alt="Prévia da foto"
-                        style={{
-                          width: 58,
-                          height: 58,
-                          borderRadius: "50%",
-                          objectFit: "cover",
-                          border: "3px solid #fff",
-                          boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
-                          background: "#021a3a",
-                          flexShrink: 0,
-                        }}
+                        className="w-14 h-14 rounded-full object-cover border-2 border-slate-700 bg-slate-900 shadow-md shrink-0"
                       />
 
-                      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                          <label
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 6,
-                              padding: "7px 12px",
-                              borderRadius: 8,
-                              background: "#002244",
-                              color: "#fff",
-                              fontSize: 12,
-                              fontWeight: 700,
-                              cursor: "pointer",
-                              boxShadow: "0 2px 6px rgba(0,34,68,0.2)",
-                            }}
-                          >
-                            <span>📷 Carregar Arquivo de Foto</span>
+                      <div className="flex-1 space-y-2">
+                        <div className="flex gap-2 items-center">
+                          <label className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-bold cursor-pointer transition-colors shrink-0">
+                            <Camera size={13} className="text-rose-400" />
+                            <span>Carregar Arquivo</span>
                             <input
                               type="file"
                               accept="image/*"
-                              style={{ display: "none" }}
+                              className="hidden"
                               onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) {
@@ -2082,23 +1772,16 @@ export default function AdminPainelPage() {
                             onChange={(e) => setAuthorFotoUrl(e.target.value)}
                             placeholder="/assets/edson-pudles.png"
                             required
-                            style={{
-                              flex: 1,
-                              padding: "7px 10px",
-                              borderRadius: 8,
-                              border: "1px solid #cbd5e1",
-                              fontSize: 12.5,
-                              background: "#fff",
-                            }}
+                            className="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-rose-500"
                           />
                         </div>
                       </div>
                     </div>
 
                     {/* Quick Photo Presets */}
-                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-                      <span style={{ fontSize: 11.5, color: "#64748b", fontWeight: 700 }}>
-                        Atalhos de Fotos:
+                    <div className="flex gap-2 flex-wrap items-center pt-1">
+                      <span className="text-[11px] text-slate-400 font-bold">
+                        Atalhos:
                       </span>
                       {[
                         { name: "Dr. Edson Pudles", url: "/assets/edson-pudles.png" },
@@ -2110,16 +1793,11 @@ export default function AdminPainelPage() {
                           key={idx}
                           type="button"
                           onClick={() => setAuthorFotoUrl(preset.url)}
-                          style={{
-                            fontSize: 11.5,
-                            padding: "4px 10px",
-                            borderRadius: 6,
-                            border: authorFotoUrl === preset.url ? "1.5px solid #001a3d" : "1px solid #cbd5e1",
-                            background: authorFotoUrl === preset.url ? "#001a3d" : "#fff",
-                            color: authorFotoUrl === preset.url ? "#fff" : "#334155",
-                            fontWeight: 700,
-                            cursor: "pointer",
-                          }}
+                          className={`text-xs px-2.5 py-1 rounded-lg border font-semibold transition-all cursor-pointer ${
+                            authorFotoUrl === preset.url
+                              ? "bg-rose-500/20 border-rose-500 text-rose-300"
+                              : "bg-slate-900 border-slate-700 text-slate-300 hover:bg-slate-800"
+                          }`}
                         >
                           {preset.name}
                         </button>
@@ -2127,8 +1805,8 @@ export default function AdminPainelPage() {
                     </div>
                   </div>
 
-                  <div style={{ marginBottom: 18 }}>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                       Mini-Currículo e Trajetória Acadêmica *
                     </label>
                     <textarea
@@ -2136,21 +1814,14 @@ export default function AdminPainelPage() {
                       value={authorBioPt}
                       onChange={(e) => setAuthorBioPt(e.target.value)}
                       rows={4}
-                      placeholder="Ex: Professor Titular do Departamento de Ortopedia da Faculdade de Medicina de Ribeirão Preto (USP). Reconhecido pelo pioneirismo em fixação pedicular e pesquisas biomecânicas internacionais da coluna vertebral..."
+                      placeholder="Ex: Professor Titular do Departamento de Ortopedia da Faculdade de Medicina de Ribeirão Preto (USP)..."
                       required
-                      style={{
-                        width: "100%",
-                        padding: "11px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 13.5,
-                        lineHeight: 1.6,
-                      }}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-xs sm:text-sm leading-relaxed focus:outline-none focus:border-rose-500"
                     />
                   </div>
 
-                  <div style={{ marginBottom: 24 }}>
-                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 6 }}>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                       Especialidades &amp; Áreas de Foco (separadas por vírgula)
                     </label>
                     <input
@@ -2158,66 +1829,37 @@ export default function AdminPainelPage() {
                       name="especialidades"
                       value={authorEspecialidades}
                       onChange={(e) => setAuthorEspecialidades(e.target.value)}
-                      placeholder="Ex: Deformidades Complexas, Liderança Editorial, Fixação Pedicular, Diretrizes SBC"
-                      style={{
-                        width: "100%",
-                        padding: "11px 14px",
-                        borderRadius: 8,
-                        border: "1px solid #cbd5e1",
-                        fontSize: 14,
-                      }}
+                      placeholder="Ex: Deformidades Complexas, Fixação Pedicular"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isPending}
-                    style={{
-                      width: "100%",
-                      padding: "15px",
-                      borderRadius: 10,
-                      border: "none",
-                      background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
-                      color: "#fff",
-                      fontSize: 15.5,
-                      fontWeight: 800,
-                      cursor: isPending ? "not-allowed" : "pointer",
-                      boxShadow: "0 8px 24px rgba(245, 34, 56, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 8,
-                      transition: "all 0.2s ease",
-                    }}
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-extrabold text-sm shadow-xl shadow-rose-950/50 flex items-center justify-center gap-2 cursor-pointer transition-all duration-200"
                   >
-                    <IconSave size={18} />
+                    <Save size={16} />
                     <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
                   </button>
                 </form>
               </section>
 
               {/* Listagem dos Autores Cadastrados com Divisórias de Cargos */}
-              <section
-                style={{
-                  background: "#fff",
-                  borderRadius: 18,
-                  padding: "32px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 30, 80, 0.04)",
-                }}
-              >
-                <div style={{ marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: 0 }}>
-                      👥 Corpo Editorial Cadastrado ({authors.length})
+              <section className="lg:col-span-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
+                <div className="mb-6 border-b border-slate-800 pb-4">
+                  <div className="flex justify-between items-center mb-1">
+                    <h3 className="text-xl font-black text-white tracking-tight flex items-center gap-2">
+                      <Users size={18} className="text-rose-400" />
+                      <span>Corpo Editorial Cadastrado ({authors.length})</span>
                     </h3>
                   </div>
-                  <p style={{ fontSize: 13, color: "#64748b", margin: "0 0 14px" }}>
+                  <p className="text-xs sm:text-sm text-slate-400 mb-4">
                     Autores e editores organizados por categoria hierárquica e exibidos no site.
                   </p>
 
                   {/* Filter Pills */}
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  <div className="flex gap-2 flex-wrap">
                     {[
                       { id: "todos", label: `Todos (${authors.length})` },
                       { id: "editores_gerais", label: `Editores Gerais (${editoresGerais.length})` },
@@ -2228,17 +1870,11 @@ export default function AdminPainelPage() {
                         key={f.id}
                         type="button"
                         onClick={() => setAuthorCategoryFilter(f.id)}
-                        style={{
-                          padding: "5px 12px",
-                          borderRadius: 20,
-                          border: authorCategoryFilter === f.id ? "none" : "1px solid #cbd5e1",
-                          background: authorCategoryFilter === f.id ? "#002b66" : "#fff",
-                          color: authorCategoryFilter === f.id ? "#fff" : "#475569",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          cursor: "pointer",
-                          transition: "all 0.15s",
-                        }}
+                        className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                          authorCategoryFilter === f.id
+                            ? "bg-rose-500 text-white shadow-md shadow-rose-950/50"
+                            : "bg-slate-800/60 hover:bg-slate-800 border border-slate-700 text-slate-400"
+                        }`}
                       >
                         {f.label}
                       </button>
@@ -2247,151 +1883,78 @@ export default function AdminPainelPage() {
                 </div>
 
                 {/* Categorized List with Beautiful Dividers */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                <div className="space-y-6">
                   {filteredCategories.map((category) => {
                     if (category.list.length === 0) return null;
 
                     return (
-                      <div key={category.id} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                        {/* Elegant Category Header / Divider */}
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 10,
-                            padding: "8px 14px",
-                            borderRadius: 10,
-                            background: "#f8fafc",
-                            borderLeft: `4px solid ${category.accentColor}`,
-                            borderTop: "1px solid #f1f5f9",
-                            borderRight: "1px solid #f1f5f9",
-                            borderBottom: "1px solid #f1f5f9",
-                          }}
-                        >
-                          <div style={{ color: category.accentColor, display: "flex", alignItems: "center" }}>
+                      <div key={category.id} className="space-y-3">
+                        {/* Category Header / Divider */}
+                        <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-800/40 border border-slate-800">
+                          <div className="text-rose-400 flex items-center">
                             {category.iconType === "crown" && <Award size={16} />}
                             {category.iconType === "building" && <Building2 size={16} />}
                             {category.iconType === "pen" && <Users size={16} />}
                           </div>
-                          <h4 style={{ fontSize: 13.5, fontWeight: 900, color: "#001a3d", margin: 0, flex: 1 }}>
+                          <h4 className="text-xs sm:text-sm font-extrabold text-white flex-1">
                             {category.title}
                           </h4>
-                          <span
-                            style={{
-                              fontSize: 11,
-                              fontWeight: 800,
-                              padding: "2px 8px",
-                              borderRadius: 12,
-                              background: category.badgeBg,
-                              color: category.badgeColor,
-                              border: `1px solid ${category.badgeBorder}`,
-                            }}
-                          >
+                          <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
                             {category.list.length} {category.list.length === 1 ? "médico" : "médicos"}
                           </span>
                         </div>
 
                         {/* Category Authors Cards */}
-                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                        <div className="space-y-2.5">
                           {category.list.map((author, idx) => (
                             <div
                               key={author.id || idx}
-                              style={{
-                                display: "flex",
-                                gap: 14,
-                                padding: 14,
-                                borderRadius: 12,
-                                border: authorId === author.id ? `2px solid ${category.accentColor}` : "1px solid #e2e8f0",
-                                background: authorId === author.id ? "#fffbfb" : "#ffffff",
-                                alignItems: "center",
-                                transition: "all 0.2s ease",
-                                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.02)",
-                              }}
+                              className={`flex gap-3.5 p-3.5 rounded-2xl border transition-all duration-200 items-center ${
+                                authorId === author.id
+                                  ? "bg-rose-950/20 border-rose-500 shadow-lg shadow-rose-950/30"
+                                  : "bg-slate-800/30 hover:bg-slate-800/60 border-slate-800"
+                              }`}
                             >
                               <img
                                 src={author.foto_url}
                                 alt={author.nome}
-                                style={{
-                                  width: 54,
-                                  height: 54,
-                                  borderRadius: "50%",
-                                  objectFit: "cover",
-                                  border: "2px solid #fff",
-                                  boxShadow: "0 3px 10px rgba(0,0,0,0.1)",
-                                  background: "#021a3a",
-                                  flexShrink: 0,
-                                }}
+                                className="w-12 h-12 rounded-full object-cover border-2 border-slate-700 bg-slate-900 shrink-0"
                               />
 
-                              <div style={{ flex: 1, minWidth: 0 }}>
-                                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 3 }}>
-                                  <span
-                                    style={{
-                                      fontSize: 10.5,
-                                      fontWeight: 800,
-                                      padding: "2px 7px",
-                                      borderRadius: 4,
-                                      background: category.badgeBg,
-                                      color: category.badgeColor,
-                                      border: `1px solid ${category.badgeBorder}`,
-                                      textTransform: "uppercase",
-                                    }}
-                                  >
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                                  <span className="text-[10.5px] font-black px-2 py-0.5 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-300 uppercase">
                                     {author.cargo}
                                   </span>
-                                  <span style={{ fontSize: 11, color: "#64748b", fontWeight: 700 }}>
+                                  <span className="text-[11px] text-slate-400 font-bold">
                                     #{author.ordem}
                                   </span>
                                 </div>
 
-                                <h4 style={{ fontSize: 15, fontWeight: 800, margin: "2px 0", color: "#001a3d" }}>
+                                <h4 className="text-sm font-extrabold text-white truncate">
                                   {author.nome}
                                 </h4>
 
-                                <p style={{ fontSize: 12, color: "#64748b", margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                <p className="text-xs text-slate-400 truncate">
                                   {author.instituicao}
                                 </p>
                               </div>
 
-                              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                              <div className="flex flex-col gap-1 shrink-0">
                                 <button
                                   type="button"
                                   onClick={() => handleEditAuthor(author)}
-                                  style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 4,
-                                    padding: "5px 10px",
-                                    borderRadius: 6,
-                                    border: "1px solid #cbd5e1",
-                                    background: "#fff",
-                                    color: "#001a3d",
-                                    fontSize: 11.5,
-                                    fontWeight: 700,
-                                    cursor: "pointer",
-                                  }}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition-colors cursor-pointer"
                                 >
-                                  <IconEdit size={12} />
+                                  <Edit3 size={11} className="text-cyan-400" />
                                   <span>Editar</span>
                                 </button>
                                 <button
                                   type="button"
                                   onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
-                                  style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: 4,
-                                    padding: "4px 8px",
-                                    borderRadius: 6,
-                                    border: "1px solid #fecaca",
-                                    background: "#fff1f2",
-                                    color: "#b91c1c",
-                                    fontSize: 11,
-                                    fontWeight: 700,
-                                    cursor: "pointer",
-                                  }}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs font-bold transition-colors cursor-pointer"
                                 >
-                                  <IconTrash size={11} />
+                                  <Trash2 size={11} />
                                   <span>Excluir</span>
                                 </button>
                               </div>
@@ -2403,22 +1966,14 @@ export default function AdminPainelPage() {
                   })}
                 </div>
 
-                <div style={{ marginTop: 24, textAlign: "center", borderTop: "1px solid #f1f5f9", paddingTop: 16 }}>
+                <div className="mt-6 text-center border-t border-slate-800 pt-4">
                   <Link
                     href="/pt/home-new#autores"
                     target="_blank"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "#0284c7",
-                      textDecoration: "none",
-                    }}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
                     <span>Visualizar Seção de Autores no Site</span>
-                    <IconExternal size={13} />
+                    <ExternalLink size={12} />
                   </Link>
                 </div>
               </section>
@@ -2447,52 +2002,13 @@ export default function AdminPainelPage() {
 
       {/* ================= MODAL: EDITAR MINHA CONTA ================= */}
       {showEditAccountModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0, 15, 40, 0.75)",
-            backdropFilter: "blur(8px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999,
-            padding: 20,
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 20,
-              maxWidth: 540,
-              width: "100%",
-              padding: "32px",
-              boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)",
-              border: "1px solid #e2e8f0",
-              animation: "fadeIn 0.2s ease",
-            }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)",
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 16,
-                    fontWeight: 900,
-                    boxShadow: "0 4px 12px rgba(124, 58, 237, 0.3)",
-                    flexShrink: 0,
-                  }}
-                >
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-900/95 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-slate-100 animate-in fade-in zoom-in duration-200">
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-sm font-black shadow-lg shadow-purple-950/50 shrink-0">
                   {editAccountFoto ? (
-                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={editAccountFoto} alt="Foto" className="w-full h-full object-cover" />
                   ) : editAccountNome ? (
                     editAccountNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
                   ) : (
@@ -2500,85 +2016,45 @@ export default function AdminPainelPage() {
                   )}
                 </div>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 19, fontWeight: 900, color: "#001a3d" }}>
+                  <h3 className="text-lg font-black text-white">
                     Editar Minha Conta
                   </h3>
-                  <p style={{ margin: "2px 0 0", fontSize: 13, color: "#64748b" }}>
-                    Atualize seu nome de exibição, foto, cargo e credenciais
+                  <p className="text-xs text-slate-400">
+                    Atualize seus dados institucionais e de acesso
                   </p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setShowEditAccountModal(false)}
-                style={{
-                  background: "#f1f5f9",
-                  border: "none",
-                  borderRadius: "50%",
-                  width: 32,
-                  height: 32,
-                  display: "grid",
-                  placeItems: "center",
-                  fontSize: 14,
-                  fontWeight: 800,
-                  cursor: "pointer",
-                  color: "#64748b",
-                }}
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center font-bold text-sm transition-colors cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleSaveMyAccount} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <form onSubmit={handleSaveMyAccount} className="space-y-4">
               {/* UPLOAD DE FOTO DE PERFIL */}
-              <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 14px", background: "#f8fafc", borderRadius: 12, border: "1px solid #e2e8f0" }}>
-                <div
-                  style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    background: "#ede9fe",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 20,
-                    fontWeight: 900,
-                    color: "#7c3aed",
-                    border: "2px solid #c4b5fd",
-                    flexShrink: 0,
-                  }}
-                >
+              <div className="flex items-center gap-4 p-3.5 bg-slate-950/60 rounded-2xl border border-slate-800">
+                <div className="w-14 h-14 rounded-full overflow-hidden bg-purple-950/40 border-2 border-purple-500/40 flex items-center justify-center text-lg font-black text-purple-400 shrink-0">
                   {editAccountFoto ? (
-                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={editAccountFoto} alt="Foto" className="w-full h-full object-cover" />
                   ) : (
-                    editAccountNome ? editAccountNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                    <User size={24} className="text-purple-400" />
                   )}
                 </div>
-                <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 4 }}>
+                <div className="flex-1">
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
                     Sua Foto de Perfil
                   </label>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                    <label
-                      style={{
-                        padding: "6px 12px",
-                        borderRadius: 8,
-                        background: "#7c3aed",
-                        color: "#fff",
-                        fontSize: 12,
-                        fontWeight: 800,
-                        cursor: "pointer",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 4,
-                      }}
-                    >
-                      <span>📷 Carregar Foto</span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <label className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold cursor-pointer inline-flex items-center gap-1.5 transition-colors">
+                      <Camera size={13} />
+                      <span>Carregar Foto</span>
                       <input
                         type="file"
                         accept="image/*"
-                        style={{ display: "none" }}
+                        className="hidden"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
@@ -2597,16 +2073,7 @@ export default function AdminPainelPage() {
                       <button
                         type="button"
                         onClick={() => setEditAccountFoto("")}
-                        style={{
-                          padding: "6px 10px",
-                          borderRadius: 8,
-                          background: "#fee2e2",
-                          color: "#b91c1c",
-                          border: "1px solid #fecaca",
-                          fontSize: 11.5,
-                          fontWeight: 700,
-                          cursor: "pointer",
-                        }}
+                        className="px-2.5 py-1.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs font-bold transition-colors cursor-pointer"
                       >
                         Remover Foto
                       </button>
@@ -2616,7 +2083,7 @@ export default function AdminPainelPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                   Seu Nome Completo *
                 </label>
                 <input
@@ -2624,23 +2091,13 @@ export default function AdminPainelPage() {
                   required
                   value={editAccountNome}
                   onChange={(e) => setEditAccountNome(e.target.value)}
-                  placeholder="Ex: Manoel Silva / Dr. Nome Sobrenome"
-                  style={{
-                    width: "100%",
-                    padding: "11px 14px",
-                    borderRadius: 10,
-                    border: "1.5px solid #cbd5e1",
-                    fontSize: 14.5,
-                    fontWeight: 600,
-                    color: "#0f172a",
-                    boxSizing: "border-box",
-                    outline: "none",
-                  }}
+                  placeholder="Ex: Dr. Nome Sobrenome"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                   E-mail de Acesso
                 </label>
                 <input
@@ -2648,122 +2105,66 @@ export default function AdminPainelPage() {
                   value={editAccountEmail}
                   onChange={(e) => setEditAccountEmail(e.target.value)}
                   placeholder="seu.email@dominio.com"
-                  style={{
-                    width: "100%",
-                    padding: "11px 14px",
-                    borderRadius: 10,
-                    border: "1.5px solid #cbd5e1",
-                    fontSize: 14,
-                    color: "#0f172a",
-                    boxSizing: "border-box",
-                    outline: "none",
-                    background: "#f8fafc",
-                  }}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                   Cargo / Instituição Médica
                 </label>
                 <input
                   type="text"
                   value={editAccountCargo}
                   onChange={(e) => setEditAccountCargo(e.target.value)}
-                  placeholder="Ex: Super Admin • SBC / Coordenador Geral"
-                  style={{
-                    width: "100%",
-                    padding: "11px 14px",
-                    borderRadius: 10,
-                    border: "1.5px solid #cbd5e1",
-                    fontSize: 14,
-                    color: "#0f172a",
-                    boxSizing: "border-box",
-                    outline: "none",
-                  }}
+                  placeholder="Ex: Super Admin • SBC"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
                 />
               </div>
 
-              <div
-                style={{
-                  padding: "12px 16px",
-                  borderRadius: 10,
-                  background: "#f5f3ff",
-                  border: "1px solid #ddd6fe",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
+              <div className="p-3.5 rounded-2xl bg-purple-950/30 border border-purple-900/50 flex items-center justify-between">
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 800, color: "#6d28d9", textTransform: "uppercase" }}>
+                  <div className="text-[11px] font-black text-purple-400 uppercase tracking-wider">
                     Nível de Acesso no Sistema
                   </div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#4c1d95", marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
-                    <Shield size={15} className="text-purple-600" />
+                  <div className="text-sm font-bold text-purple-200 mt-0.5 flex items-center gap-1.5">
+                    <Shield size={14} className="text-purple-400" />
                     <span>Super Admin (Acesso Total & Irrestrito)</span>
                   </div>
                 </div>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "3px 8px", borderRadius: 6, background: "#7c3aed", color: "#fff" }}>
+                <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-purple-600 text-white">
                   ATIVO
                 </span>
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
                   Nova Senha (Opcional)
                 </label>
                 <input
                   type="password"
                   value={editAccountSenha}
                   onChange={(e) => setEditAccountSenha(e.target.value)}
-                  placeholder="Deixe em branco para não alterar"
-                  style={{
-                    width: "100%",
-                    padding: "11px 14px",
-                    borderRadius: 10,
-                    border: "1.5px solid #cbd5e1",
-                    fontSize: 14,
-                    color: "#0f172a",
-                    boxSizing: "border-box",
-                    outline: "none",
-                  }}
+                  placeholder="Deixe em branco para manter a atual"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
                 />
               </div>
 
-              <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 12 }}>
+              <div className="flex justify-end gap-2.5 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowEditAccountModal(false)}
-                  style={{
-                    padding: "11px 20px",
-                    borderRadius: 10,
-                    border: "1px solid #cbd5e1",
-                    background: "#f8fafc",
-                    color: "#475569",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                  }}
+                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={savingAccount}
-                  style={{
-                    padding: "11px 24px",
-                    borderRadius: 10,
-                    border: "none",
-                    background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
-                    color: "#fff",
-                    fontSize: 14,
-                    fontWeight: 800,
-                    cursor: "pointer",
-                    boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
-                  }}
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-black shadow-lg shadow-purple-950/50 flex items-center gap-1.5 cursor-pointer transition-all"
                 >
-                  {savingAccount ? "Salvando..." : "✓ Salvar Alterações"}
+                  <Save size={14} />
+                  <span>{savingAccount ? "Salvando..." : "Salvar Alterações"}</span>
                 </button>
               </div>
             </form>
