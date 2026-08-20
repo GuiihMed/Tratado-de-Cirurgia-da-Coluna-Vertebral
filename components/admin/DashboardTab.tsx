@@ -32,19 +32,20 @@ interface DashboardTabProps {
   onOpenNewChapter: () => void;
   onOpenNewAuthor: () => void;
   isSupabaseOnline: boolean;
+  theme?: "dark" | "light";
 }
 
-const SECTION_COLORS: Record<string, { bg: string; border: string; text: string; bar: string }> = {
-  "1": { bg: "rgba(59, 130, 246, 0.12)", border: "rgba(59, 130, 246, 0.3)", text: "#60a5fa", bar: "#3b82f6" },
-  "2": { bg: "rgba(34, 197, 94, 0.12)", border: "rgba(34, 197, 94, 0.3)", text: "#4ade80", bar: "#22c55e" },
-  "3": { bg: "rgba(244, 63, 94, 0.12)", border: "rgba(244, 63, 94, 0.3)", text: "#fb7185", bar: "#f43f5e" },
-  "4": { bg: "rgba(217, 70, 239, 0.12)", border: "rgba(217, 70, 239, 0.3)", text: "#e879f9", bar: "#d946ef" },
-  "5": { bg: "rgba(249, 115, 22, 0.12)", border: "rgba(249, 115, 22, 0.3)", text: "#fb923c", bar: "#f97316" },
-  "6": { bg: "rgba(168, 85, 247, 0.12)", border: "rgba(168, 85, 247, 0.3)", text: "#c084fc", bar: "#a855f7" },
-  "7": { bg: "rgba(6, 182, 212, 0.12)", border: "rgba(6, 182, 212, 0.3)", text: "#22d3ee", bar: "#06b6d4" },
-  "8": { bg: "rgba(20, 184, 166, 0.12)", border: "rgba(20, 184, 166, 0.3)", text: "#2dd4bf", bar: "#14b8a6" },
-  "9": { bg: "rgba(245, 158, 11, 0.12)", border: "rgba(245, 158, 11, 0.3)", text: "#fbbf24", bar: "#f59e0b" },
-  "10": { bg: "rgba(148, 163, 184, 0.12)", border: "rgba(148, 163, 184, 0.3)", text: "#cbd5e1", bar: "#94a3b8" },
+const SECTION_COLORS: Record<string, { bgDark: string; borderDark: string; textDark: string; bgLight: string; borderLight: string; textLight: string; bar: string }> = {
+  "1": { bgDark: "rgba(59, 130, 246, 0.15)", borderDark: "rgba(59, 130, 246, 0.35)", textDark: "#60a5fa", bgLight: "#eff6ff", borderLight: "#bfdbfe", textLight: "#1d4ed8", bar: "#3b82f6" },
+  "2": { bgDark: "rgba(34, 197, 94, 0.15)", borderDark: "rgba(34, 197, 94, 0.35)", textDark: "#4ade80", bgLight: "#f0fdf4", borderLight: "#bbf7d0", textLight: "#15803d", bar: "#22c55e" },
+  "3": { bgDark: "rgba(244, 63, 94, 0.15)", borderDark: "rgba(244, 63, 94, 0.35)", textDark: "#fb7185", bgLight: "#fff1f2", borderLight: "#fecdd3", textLight: "#be123c", bar: "#f43f5e" },
+  "4": { bgDark: "rgba(217, 70, 239, 0.15)", borderDark: "rgba(217, 70, 239, 0.35)", textDark: "#e879f9", bgLight: "#fdf4ff", borderLight: "#f5d0fe", textLight: "#a21caf", bar: "#d946ef" },
+  "5": { bgDark: "rgba(249, 115, 22, 0.15)", borderDark: "rgba(249, 115, 22, 0.35)", textDark: "#fb923c", bgLight: "#fff7ed", borderLight: "#fed7aa", textLight: "#c2410c", bar: "#f97316" },
+  "6": { bgDark: "rgba(168, 85, 247, 0.15)", borderDark: "rgba(168, 85, 247, 0.35)", textDark: "#c084fc", bgLight: "#faf5ff", borderLight: "#e9d5ff", textLight: "#7e22ce", bar: "#a855f7" },
+  "7": { bgDark: "rgba(6, 182, 212, 0.15)", borderDark: "rgba(6, 182, 212, 0.35)", textDark: "#22d3ee", bgLight: "#ecfeff", borderLight: "#a5f3fc", textLight: "#0e7490", bar: "#06b6d4" },
+  "8": { bgDark: "rgba(20, 184, 166, 0.15)", borderDark: "rgba(20, 184, 166, 0.35)", textDark: "#2dd4bf", bgLight: "#f0fdfa", borderLight: "#99f6e4", textLight: "#0f766e", bar: "#14b8a6" },
+  "9": { bgDark: "rgba(245, 158, 11, 0.15)", borderDark: "rgba(245, 158, 11, 0.35)", textDark: "#fbbf24", bgLight: "#fffbeb", borderLight: "#fde68a", textLight: "#b45309", bar: "#f59e0b" },
+  "10": { bgDark: "rgba(148, 163, 184, 0.15)", borderDark: "rgba(148, 163, 184, 0.35)", textDark: "#cbd5e1", bgLight: "#f8fafc", borderLight: "#cbd5e1", textLight: "#334155", bar: "#64748b" },
 };
 
 export default function DashboardTab({
@@ -55,7 +56,9 @@ export default function DashboardTab({
   onFilterSection,
   onOpenNewChapter,
   onOpenNewAuthor,
+  theme = "dark",
 }: DashboardTabProps) {
+  const isDark = theme === "dark";
   const totalChapters = chapters.length;
   const approvedUsers = usuarios.filter((u) => u.status === "aprovado").length;
   const pendingUsers = usuarios.filter((u) => u.status === "pendente").length;
@@ -73,20 +76,30 @@ export default function DashboardTab({
     };
   });
 
+  const cardBg = isDark ? "rgba(15, 23, 42, 0.7)" : "rgba(255, 255, 255, 0.92)";
+  const cardBorder = isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0";
+  const textPrimary = isDark ? "#ffffff" : "#0f172a";
+  const textSecondary = isDark ? "#cbd5e1" : "#334155";
+  const textMuted = isDark ? "#94a3b8" : "#64748b";
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 32, width: "100%", boxSizing: "border-box" }}>
       {/* ========================================================================= */}
-      {/* WELCOME HERO BANNER (DARK EXECUTIVE GLASSMORPHISM) */}
+      {/* WELCOME HERO BANNER */}
       {/* ========================================================================= */}
       <div
         style={{
           position: "relative",
           overflow: "hidden",
           borderRadius: 24,
-          background: "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.98) 100%)",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+          background: isDark
+            ? "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.98) 100%)"
+            : "linear-gradient(135deg, #001a3d 0%, #002b59 100%)",
+          border: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 43, 89, 0.3)",
           padding: "36px 36px",
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset",
+          boxShadow: isDark
+            ? "0 20px 50px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset"
+            : "0 20px 40px rgba(0, 26, 61, 0.18)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           color: "#fff",
@@ -102,8 +115,8 @@ export default function DashboardTab({
                 gap: 7,
                 padding: "6px 14px",
                 borderRadius: 999,
-                background: "rgba(225, 29, 72, 0.15)",
-                border: "1px solid rgba(225, 29, 72, 0.35)",
+                background: "rgba(225, 29, 72, 0.2)",
+                border: "1px solid rgba(225, 29, 72, 0.4)",
                 color: "#fda4af",
                 fontSize: 11.5,
                 fontWeight: 800,
@@ -122,8 +135,8 @@ export default function DashboardTab({
                 gap: 7,
                 padding: "6px 14px",
                 borderRadius: 999,
-                background: "rgba(16, 185, 129, 0.12)",
-                border: "1px solid rgba(16, 185, 129, 0.3)",
+                background: "rgba(16, 185, 129, 0.15)",
+                border: "1px solid rgba(16, 185, 129, 0.35)",
                 color: "#6ee7b7",
                 fontSize: 11.5,
                 fontWeight: 700,
@@ -152,7 +165,7 @@ export default function DashboardTab({
               style={{
                 margin: "10px 0 0",
                 fontSize: 14.5,
-                color: "#94a3b8",
+                color: "#cbd5e1",
                 lineHeight: 1.6,
                 maxWidth: 680,
                 fontWeight: 400,
@@ -194,8 +207,8 @@ export default function DashboardTab({
                 gap: 9,
                 padding: "11px 20px",
                 borderRadius: 12,
-                background: "rgba(255, 255, 255, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
                 color: "#f1f5f9",
                 fontWeight: 700,
                 fontSize: 13.5,
@@ -211,9 +224,9 @@ export default function DashboardTab({
                   style={{
                     padding: "2px 8px",
                     borderRadius: 999,
-                    background: "rgba(245, 158, 11, 0.25)",
+                    background: "rgba(245, 158, 11, 0.3)",
                     color: "#fcd34d",
-                    border: "1px solid rgba(245, 158, 11, 0.4)",
+                    border: "1px solid rgba(245, 158, 11, 0.5)",
                     fontSize: 11,
                     fontWeight: 800,
                   }}
@@ -232,8 +245,8 @@ export default function DashboardTab({
                 gap: 8,
                 padding: "11px 18px",
                 borderRadius: 12,
-                background: "rgba(6, 182, 212, 0.12)",
-                border: "1px solid rgba(6, 182, 212, 0.3)",
+                background: "rgba(6, 182, 212, 0.15)",
+                border: "1px solid rgba(6, 182, 212, 0.35)",
                 color: "#67e8f9",
                 fontWeight: 700,
                 fontSize: 13.5,
@@ -251,7 +264,7 @@ export default function DashboardTab({
       </div>
 
       {/* ========================================================================= */}
-      {/* 4 MAIN KPI METRIC CARDS (GLASSMORPHISM & LUCIDE ICONS) */}
+      {/* 4 MAIN KPI METRIC CARDS */}
       {/* ========================================================================= */}
       <div
         style={{
@@ -264,13 +277,13 @@ export default function DashboardTab({
         {/* Metric 1 */}
         <div
           style={{
-            background: "rgba(15, 23, 42, 0.7)",
+            background: cardBg,
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
+            border: cardBorder,
             borderRadius: 20,
             padding: "22px 24px",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.35)",
+            boxShadow: isDark ? "0 10px 30px rgba(0, 0, 0, 0.35)" : "0 8px 24px rgba(0, 30, 80, 0.04)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -278,10 +291,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#94a3b8" }}>
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Capítulos Publicados
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {totalChapters}
               </div>
             </div>
@@ -290,9 +303,9 @@ export default function DashboardTab({
                 width: 46,
                 height: 46,
                 borderRadius: 14,
-                background: "rgba(59, 130, 246, 0.15)",
-                border: "1px solid rgba(59, 130, 246, 0.3)",
-                color: "#60a5fa",
+                background: isDark ? "rgba(59, 130, 246, 0.15)" : "#eff6ff",
+                border: isDark ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid #bfdbfe",
+                color: isDark ? "#60a5fa" : "#2563eb",
                 display: "grid",
                 placeItems: "center",
               }}
@@ -300,7 +313,7 @@ export default function DashboardTab({
               <BookOpen size={22} />
             </div>
           </div>
-          <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid rgba(255, 255, 255, 0.06)", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 700, color: "#34d399" }}>
+          <div style={{ marginTop: 16, paddingTop: 12, borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #f1f5f9", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 700, color: "#10b981" }}>
             <CheckCircle2 size={15} />
             <span>100% da Obra Catalogada</span>
           </div>
@@ -309,13 +322,13 @@ export default function DashboardTab({
         {/* Metric 2 */}
         <div
           style={{
-            background: "rgba(15, 23, 42, 0.7)",
+            background: cardBg,
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
+            border: cardBorder,
             borderRadius: 20,
             padding: "22px 24px",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.35)",
+            boxShadow: isDark ? "0 10px 30px rgba(0, 0, 0, 0.35)" : "0 8px 24px rgba(0, 30, 80, 0.04)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -323,10 +336,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#94a3b8" }}>
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Seções Temáticas
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {SECOES.length}
               </div>
             </div>
@@ -335,9 +348,9 @@ export default function DashboardTab({
                 width: 46,
                 height: 46,
                 borderRadius: 14,
-                background: "rgba(244, 63, 94, 0.15)",
-                border: "1px solid rgba(244, 63, 94, 0.3)",
-                color: "#fb7185",
+                background: isDark ? "rgba(244, 63, 94, 0.15)" : "#fff1f2",
+                border: isDark ? "1px solid rgba(244, 63, 94, 0.3)" : "1px solid #fecdd3",
+                color: isDark ? "#fb7185" : "#e11d48",
                 display: "grid",
                 placeItems: "center",
               }}
@@ -345,7 +358,7 @@ export default function DashboardTab({
               <Layers size={22} />
             </div>
           </div>
-          <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid rgba(255, 255, 255, 0.06)", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 600, color: "#cbd5e1" }}>
+          <div style={{ marginTop: 16, paddingTop: 12, borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #f1f5f9", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 600, color: textSecondary }}>
             <Activity size={15} color="#f43f5e" />
             <span>Da Base à Robótica Avançada</span>
           </div>
@@ -354,13 +367,13 @@ export default function DashboardTab({
         {/* Metric 3 */}
         <div
           style={{
-            background: "rgba(15, 23, 42, 0.7)",
+            background: cardBg,
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
+            border: cardBorder,
             borderRadius: 20,
             padding: "22px 24px",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.35)",
+            boxShadow: isDark ? "0 10px 30px rgba(0, 0, 0, 0.35)" : "0 8px 24px rgba(0, 30, 80, 0.04)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -368,10 +381,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#94a3b8" }}>
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Corpo de Autores
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {authors.length}+
               </div>
             </div>
@@ -380,9 +393,9 @@ export default function DashboardTab({
                 width: 46,
                 height: 46,
                 borderRadius: 14,
-                background: "rgba(16, 185, 129, 0.15)",
-                border: "1px solid rgba(16, 185, 129, 0.3)",
-                color: "#34d399",
+                background: isDark ? "rgba(16, 185, 129, 0.15)" : "#f0fdf4",
+                border: isDark ? "1px solid rgba(16, 185, 129, 0.3)" : "1px solid #bbf7d0",
+                color: isDark ? "#34d399" : "#16a34a",
                 display: "grid",
                 placeItems: "center",
               }}
@@ -390,7 +403,7 @@ export default function DashboardTab({
               <Users size={22} />
             </div>
           </div>
-          <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid rgba(255, 255, 255, 0.06)", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 600, color: "#cbd5e1" }}>
+          <div style={{ marginTop: 16, paddingTop: 12, borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #f1f5f9", display: "flex", alignItems: "center", gap: 7, fontSize: 12, fontWeight: 600, color: textSecondary }}>
             <Award size={15} color="#10b981" />
             <span>Editores &amp; Especialistas SBC</span>
           </div>
@@ -399,13 +412,13 @@ export default function DashboardTab({
         {/* Metric 4 */}
         <div
           style={{
-            background: "rgba(15, 23, 42, 0.7)",
+            background: cardBg,
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
+            border: cardBorder,
             borderRadius: 20,
             padding: "22px 24px",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.35)",
+            boxShadow: isDark ? "0 10px 30px rgba(0, 0, 0, 0.35)" : "0 8px 24px rgba(0, 30, 80, 0.04)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -413,10 +426,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#94a3b8" }}>
+              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Acessos &amp; Usuários
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#fff", marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {usuarios.length}
               </div>
             </div>
@@ -425,9 +438,9 @@ export default function DashboardTab({
                 width: 46,
                 height: 46,
                 borderRadius: 14,
-                background: "rgba(168, 85, 247, 0.15)",
-                border: "1px solid rgba(168, 85, 247, 0.3)",
-                color: "#c084fc",
+                background: isDark ? "rgba(168, 85, 247, 0.15)" : "#faf5ff",
+                border: isDark ? "1px solid rgba(168, 85, 247, 0.3)" : "1px solid #e9d5ff",
+                color: isDark ? "#c084fc" : "#9333ea",
                 display: "grid",
                 placeItems: "center",
               }}
@@ -435,12 +448,12 @@ export default function DashboardTab({
               <ShieldCheck size={22} />
             </div>
           </div>
-          <div style={{ marginTop: 16, paddingTop: 12, borderTop: "1px solid rgba(255, 255, 255, 0.06)", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11.5, fontWeight: 700 }}>
-            <span style={{ color: "#34d399" }}>{approvedUsers} ativos</span>
-            <span style={{ color: "#475569" }}>•</span>
-            <span style={{ color: pendingUsers > 0 ? "#fbbf24" : "#94a3b8" }}>{pendingUsers} pendentes</span>
-            <span style={{ color: "#475569" }}>•</span>
-            <span style={{ color: "#c084fc" }}>{adminUsers} admins</span>
+          <div style={{ marginTop: 16, paddingTop: 12, borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #f1f5f9", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11.5, fontWeight: 700 }}>
+            <span style={{ color: "#10b981" }}>{approvedUsers} ativos</span>
+            <span style={{ color: textMuted }}>•</span>
+            <span style={{ color: pendingUsers > 0 ? "#f59e0b" : textMuted }}>{pendingUsers} pendentes</span>
+            <span style={{ color: textMuted }}>•</span>
+            <span style={{ color: isDark ? "#c084fc" : "#7c3aed" }}>{adminUsers} admins</span>
           </div>
         </div>
       </div>
@@ -459,25 +472,25 @@ export default function DashboardTab({
         {/* Sections Distribution */}
         <div
           style={{
-            background: "rgba(15, 23, 42, 0.7)",
+            background: cardBg,
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
+            border: cardBorder,
             borderRadius: 24,
             padding: "28px",
-            boxShadow: "0 16px 40px rgba(0, 0, 0, 0.4)",
+            boxShadow: isDark ? "0 16px 40px rgba(0, 0, 0, 0.4)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
             display: "flex",
             flexDirection: "column",
             gap: 20,
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: 16, borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: 16, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
                 <TrendingUp size={18} color="#38bdf8" />
                 <span>Distribuição Curricular por Seção</span>
               </div>
-              <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>
+              <div style={{ fontSize: 12, color: textMuted, marginTop: 2 }}>
                 Capítulos organizados nas 10 seções do Tratado
               </div>
             </div>
@@ -487,7 +500,7 @@ export default function DashboardTab({
               style={{
                 background: "none",
                 border: "none",
-                color: "#38bdf8",
+                color: isDark ? "#38bdf8" : "#0284c7",
                 fontSize: 12.5,
                 fontWeight: 700,
                 cursor: "pointer",
@@ -504,6 +517,10 @@ export default function DashboardTab({
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {sectionStats.map((sec) => {
               const colors = SECTION_COLORS[String(sec.id)] || SECTION_COLORS["1"];
+              const secBg = isDark ? colors.bgDark : colors.bgLight;
+              const secBorder = isDark ? colors.borderDark : colors.borderLight;
+              const secText = isDark ? colors.textDark : colors.textLight;
+
               return (
                 <div
                   key={sec.id}
@@ -514,8 +531,8 @@ export default function DashboardTab({
                   style={{
                     padding: "12px 16px",
                     borderRadius: 14,
-                    background: "rgba(255, 255, 255, 0.03)",
-                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                    background: isDark ? "rgba(255, 255, 255, 0.03)" : "#f8fafc",
+                    border: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0",
                     cursor: "pointer",
                   }}
                 >
@@ -527,27 +544,27 @@ export default function DashboardTab({
                           borderRadius: 6,
                           fontSize: 11,
                           fontWeight: 800,
-                          background: colors.bg,
-                          color: colors.text,
-                          border: `1px solid ${colors.border}`,
+                          background: secBg,
+                          color: secText,
+                          border: `1px solid ${secBorder}`,
                           flexShrink: 0,
                         }}
                       >
                         Seção {sec.id}
                       </span>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: "#f1f5f9", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: textPrimary, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {sec.titulo_pt}
                       </span>
                     </div>
 
-                    <div style={{ fontSize: 12, fontWeight: 800, color: "#e2e8f0", flexShrink: 0, display: "flex", alignItems: "center", gap: 5 }}>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: textPrimary, flexShrink: 0, display: "flex", alignItems: "center", gap: 5 }}>
                       <span>{sec.count} cap.</span>
-                      <span style={{ color: "#64748b", fontSize: 11, fontWeight: 500 }}>({sec.percentage}%)</span>
+                      <span style={{ color: textMuted, fontSize: 11, fontWeight: 500 }}>({sec.percentage}%)</span>
                     </div>
                   </div>
 
                   {/* Progress Bar */}
-                  <div style={{ width: "100%", height: 6, borderRadius: 999, background: "rgba(255, 255, 255, 0.08)", overflow: "hidden" }}>
+                  <div style={{ width: "100%", height: 6, borderRadius: 999, background: isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", overflow: "hidden" }}>
                     <div
                       style={{
                         width: `${Math.max(sec.percentage * 4.5, 6)}%`,
@@ -568,24 +585,24 @@ export default function DashboardTab({
           {/* Compliance Card */}
           <div
             style={{
-              background: "rgba(15, 23, 42, 0.7)",
+              background: cardBg,
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
+              border: cardBorder,
               borderRadius: 24,
               padding: "28px",
-              boxShadow: "0 16px 40px rgba(0, 0, 0, 0.4)",
+              boxShadow: isDark ? "0 16px 40px rgba(0, 0, 0, 0.4)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
               display: "flex",
               flexDirection: "column",
               gap: 18,
             }}
           >
-            <div style={{ paddingBottom: 14, borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
-              <div style={{ fontSize: 16, fontWeight: 800, color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ paddingBottom: 14, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
                 <FileCheck2 size={18} color="#10b981" />
                 <span>Conformidade &amp; Qualidade</span>
               </div>
-              <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>
+              <div style={{ fontSize: 12, color: textMuted, marginTop: 2 }}>
                 Indexação médica e padronização científica
               </div>
             </div>
@@ -606,18 +623,18 @@ export default function DashboardTab({
                     justifyContent: "space-between",
                     padding: "11px 14px",
                     borderRadius: 12,
-                    background: "rgba(16, 185, 129, 0.08)",
-                    border: "1px solid rgba(16, 185, 129, 0.2)",
+                    background: isDark ? "rgba(16, 185, 129, 0.08)" : "#f0fdf4",
+                    border: isDark ? "1px solid rgba(16, 185, 129, 0.2)" : "1px solid #bbf7d0",
                     fontSize: 12.5,
                     fontWeight: 600,
-                    color: "#a7f3d0",
+                    color: isDark ? "#a7f3d0" : "#15803d",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <CheckCircle2 size={16} color="#34d399" />
+                    <CheckCircle2 size={16} color="#10b981" />
                     <span>{item.title}</span>
                   </div>
-                  <span style={{ fontWeight: 800, fontFamily: "monospace", color: "#6ee7b7" }}>
+                  <span style={{ fontWeight: 800, fontFamily: "monospace", color: isDark ? "#6ee7b7" : "#166534" }}>
                     {item.value}
                   </span>
                 </div>
@@ -628,21 +645,23 @@ export default function DashboardTab({
           {/* Quick Actions Card */}
           <div
             style={{
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)",
+              background: isDark
+                ? "linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.95) 100%)"
+                : "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              border: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0",
               borderRadius: 24,
               padding: "24px 28px",
-              boxShadow: "0 16px 40px rgba(0, 0, 0, 0.5)",
+              boxShadow: isDark ? "0 16px 40px rgba(0, 0, 0, 0.5)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
               display: "flex",
               flexDirection: "column",
               gap: 16,
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 12, borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
-              <Zap size={16} color="#fbbf24" />
-              <span style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#fff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 12, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
+              <Zap size={16} color="#f59e0b" />
+              <span style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textPrimary }}>
                 Ações Rápidas
               </span>
             </div>
@@ -657,9 +676,9 @@ export default function DashboardTab({
                   justifyContent: "space-between",
                   padding: "12px 16px",
                   borderRadius: 12,
-                  background: "rgba(255, 255, 255, 0.06)",
-                  border: "1px solid rgba(255, 255, 255, 0.12)",
-                  color: "#fff",
+                  background: isDark ? "rgba(255, 255, 255, 0.06)" : "#f1f5f9",
+                  border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #e2e8f0",
+                  color: textPrimary,
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: "pointer",
@@ -669,7 +688,7 @@ export default function DashboardTab({
                   <Plus size={16} color="#f43f5e" />
                   <span>Cadastrar Novo Capítulo</span>
                 </span>
-                <ArrowRight size={14} color="#94a3b8" />
+                <ArrowRight size={14} color={textMuted} />
               </button>
 
               <button
@@ -681,19 +700,19 @@ export default function DashboardTab({
                   justifyContent: "space-between",
                   padding: "12px 16px",
                   borderRadius: 12,
-                  background: "rgba(255, 255, 255, 0.06)",
-                  border: "1px solid rgba(255, 255, 255, 0.12)",
-                  color: "#fff",
+                  background: isDark ? "rgba(255, 255, 255, 0.06)" : "#f1f5f9",
+                  border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #e2e8f0",
+                  color: textPrimary,
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: "pointer",
                 }}
               >
                 <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <UserPlus size={16} color="#38bdf8" />
+                  <UserPlus size={16} color="#0284c7" />
                   <span>Cadastrar Novo Autor</span>
                 </span>
-                <ArrowRight size={14} color="#94a3b8" />
+                <ArrowRight size={14} color={textMuted} />
               </button>
 
               <a

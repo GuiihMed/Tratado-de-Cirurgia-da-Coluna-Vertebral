@@ -19,6 +19,8 @@ import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor"
 import UsersManagementTab from "@/components/admin/UsersManagementTab";
 import DashboardTab from "@/components/admin/DashboardTab";
 import {
+  Sun,
+  Moon,
   BookOpen,
   Users,
   Shield,
@@ -254,6 +256,26 @@ export default function AdminPainelPage() {
   const router = useRouter();
   const [checkingAuth, setCheckingAuth] = useState(true);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem("sbc_admin_theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      }
+    } catch (e) {}
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem("sbc_admin_theme", next);
+    } catch (e) {}
+  };
+
+  const isDark = theme === "dark";
 
   // Active Tab & Layout
   const [activeTab, setActiveTab] = useState<AdminTab>("dashboard");
@@ -1019,47 +1041,63 @@ export default function AdminPainelPage() {
 
   if (checkingAuth) {
     return (
-      <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: "#001026" }}>
-        <div style={{ textAlign: "center", color: "#fff" }}>
-          <img src="/assets/sbc-logo-white.svg" alt="SBC" style={{ height: 48, margin: "0 auto 16px" }} />
-          <p style={{ color: "#94a3b8", fontWeight: 600, fontSize: 15 }}>Autenticando acesso editorial...</p>
+      <div style={{ display: "grid", placeItems: "center", minHeight: "100vh", background: isDark ? "#001026" : "#f1f5f9" }}>
+        <div style={{ textAlign: "center", color: isDark ? "#fff" : "#0f172a" }}>
+          <img src="/assets/sbc-logo-white.svg" alt="SBC" style={{ height: 48, margin: "0 auto 16px", filter: isDark ? "none" : "invert(1)" }} />
+          <p style={{ color: isDark ? "#94a3b8" : "#64748b", fontWeight: 600, fontSize: 15 }}>Autenticando acesso editorial...</p>
         </div>
       </div>
     );
   }
+
+  const pageBg = isDark ? "#020617" : "#f8fafc";
+  const pageBgImage = isDark
+    ? "radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.08) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.6) 0px, transparent 100%)"
+    : "radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.04) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.05) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(241, 245, 249, 0.6) 0px, transparent 100%)";
+  const sidebarBg = isDark ? "rgba(2, 6, 23, 0.92)" : "rgba(255, 255, 255, 0.96)";
+  const sidebarBorder = isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0";
+  const topbarBg = isDark ? "rgba(15, 23, 42, 0.8)" : "rgba(255, 255, 255, 0.92)";
+  const topbarBorder = isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0";
+  const cardBg = isDark ? "rgba(15, 23, 42, 0.65)" : "rgba(255, 255, 255, 0.92)";
+  const cardBorder = isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0";
+  const textPrimary = isDark ? "#ffffff" : "#0f172a";
+  const textSecondary = isDark ? "#cbd5e1" : "#334155";
+  const textMuted = isDark ? "#94a3b8" : "#64748b";
+  const inputBg = isDark ? "rgba(15, 23, 42, 0.85)" : "#ffffff";
+  const inputBorder = isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #cbd5e1";
 
   return (
     <div
       style={{
         minHeight: "100vh",
         display: "flex",
-        background: "#020617",
-        backgroundImage: "radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.08) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.6) 0px, transparent 100%)",
-        color: "#f8fafc",
+        background: pageBg,
+        backgroundImage: pageBgImage,
+        color: textPrimary,
         fontFamily: "'Inter', 'Plus Jakarta Sans', system-ui, sans-serif",
         position: "relative",
         overflowX: "hidden",
       }}
     >
       {/* Background Ambient Glows */}
-      <div className="fixed -top-40 -right-40 w-96 h-96 rounded-full bg-rose-500/10 blur-[120px] pointer-events-none" />
-      <div className="fixed -bottom-40 -left-40 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
+      <div style={{ position: "fixed", top: -160, right: -160, width: 380, height: 380, borderRadius: "50%", background: "rgba(244, 63, 94, 0.08)", filter: "blur(120px)", pointerEvents: "none" }} />
+      <div style={{ position: "fixed", bottom: -160, left: -160, width: 380, height: 380, borderRadius: "50%", background: "rgba(14, 165, 233, 0.08)", filter: "blur(120px)", pointerEvents: "none" }} />
 
-      {/* ================= MOBILE SIDEBAR BACKDROP ================= */}
+      {/* Mobile Sidebar Backdrop */}
       {mobileSidebarOpen && (
         <div
           onClick={() => setMobileSidebarOpen(false)}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
+          style={{ position: "fixed", inset: 0, background: "rgba(0, 0, 0, 0.7)", backdropFilter: "blur(10px)", zIndex: 90 }}
         />
       )}
 
-      {/* ================= LEFT MODERN SIDEBAR ================= */}
+      {/* ================= LEFT SIDEBAR ================= */}
       <aside
         style={{
           width: 280,
-          background: "rgba(2, 6, 23, 0.85)",
-          color: "#fff",
-          borderRight: "1px solid rgba(255, 255, 255, 0.08)",
+          background: sidebarBg,
+          color: textPrimary,
+          borderRight: sidebarBorder,
           display: "flex",
           flexDirection: "column",
           flexShrink: 0,
@@ -1068,22 +1106,24 @@ export default function AdminPainelPage() {
           height: "100vh",
           zIndex: 100,
           overflowY: "auto",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          boxShadow: isDark ? "none" : "4px 0 20px rgba(0, 30, 80, 0.03)",
         }}
       >
         {/* Brand Header */}
-        <div style={{ padding: "24px 20px 20px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+        <div style={{ padding: "24px 20px 20px", borderBottom: sidebarBorder }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
               src="/assets/sbc-logo-white.svg"
               alt="SBC"
-              style={{ height: 38, width: "auto", objectFit: "contain" }}
+              style={{ height: 38, width: "auto", objectFit: "contain", filter: isDark ? "none" : "invert(1)" }}
             />
             <div>
-              <div style={{ fontSize: 14.5, fontWeight: 900, color: "#fff", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+              <div style={{ fontSize: 14.5, fontWeight: 900, color: textPrimary, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
                 Tratado de Coluna
               </div>
-              <div style={{ fontSize: 11, color: "#94a3b8", display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
+              <div style={{ fontSize: 11, color: textMuted, display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f43f5e" }} />
                 <span>Painel Executivo</span>
               </div>
@@ -1092,15 +1132,15 @@ export default function AdminPainelPage() {
         </div>
 
         {/* User Connected Card */}
-        <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+        <div style={{ padding: "16px 20px", borderBottom: sidebarBorder }}>
           <div
             onClick={handleOpenEditAccount}
             title="Clique para editar sua conta"
             style={{
               padding: 12,
               borderRadius: 16,
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              background: isDark ? "rgba(255, 255, 255, 0.04)" : "#f1f5f9",
+              border: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
@@ -1119,6 +1159,7 @@ export default function AdminPainelPage() {
                 placeItems: "center",
                 fontSize: 14,
                 fontWeight: 800,
+                color: "#fff",
                 flexShrink: 0,
                 border: "2px solid rgba(255, 255, 255, 0.3)",
               }}
@@ -1132,64 +1173,62 @@ export default function AdminPainelPage() {
               )}
             </div>
             <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: textPrimary, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {currentUserName || "Administrador Geral"}
               </div>
-              <div style={{ fontSize: 10.5, color: "#38bdf8", fontWeight: 700, marginTop: 1, display: "flex", alignItems: "center", gap: 4 }}>
+              <div style={{ fontSize: 10.5, color: isDark ? "#38bdf8" : "#0284c7", fontWeight: 700, marginTop: 1, display: "flex", alignItems: "center", gap: 4 }}>
                 {currentUserRole === "super_admin" ? (
                   <>
-                    <Crown size={12} className="text-amber-400" />
+                    <Crown size={12} color="#f59e0b" />
                     <span>Super Admin</span>
                   </>
                 ) : (
                   <>
-                    <Shield size={12} className="text-sky-400" />
+                    <Shield size={12} color="#0284c7" />
                     <span>Editor SBC</span>
                   </>
                 )}
               </div>
             </div>
-            <Settings size={14} className="text-slate-400 opacity-70 group-hover:rotate-45 transition-transform duration-300" />
+            <Settings size={14} color={textMuted} />
           </div>
         </div>
 
         {/* Navigation Categories */}
-        <div style={{ padding: "20px 14px", flex: 1, display: "flex", flexDirection: "column", gap: 24 }}>
+        <div style={{ padding: "20px 14px", flex: 1, display: "flex", flexDirection: "column", gap: 22 }}>
           {/* Category 1: VISÃO GERAL */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Visão Geral
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <button
-                onClick={() => switchTab("dashboard")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 12,
-                  border: activeTab === "dashboard" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
-                  background: activeTab === "dashboard" ? "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)" : "transparent",
-                  color: activeTab === "dashboard" ? "#ffffff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "dashboard" ? 800 : 600,
-                  cursor: "pointer",
-                  boxShadow: activeTab === "dashboard" ? "0 6px 20px rgba(37, 99, 235, 0.4)" : "none",
-                  textAlign: "left",
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <Layers size={18} />
-                <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
-              </button>
-            </div>
+            <button
+              onClick={() => switchTab("dashboard")}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "10px 14px",
+                borderRadius: 12,
+                border: activeTab === "dashboard" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                background: activeTab === "dashboard" ? "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)" : "transparent",
+                color: activeTab === "dashboard" ? "#ffffff" : textMuted,
+                fontSize: 13.5,
+                fontWeight: activeTab === "dashboard" ? 800 : 600,
+                cursor: "pointer",
+                boxShadow: activeTab === "dashboard" ? "0 6px 20px rgba(37, 99, 235, 0.35)" : "none",
+                textAlign: "left",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <Layers size={18} />
+              <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
+            </button>
           </div>
 
           {/* Category 2: CONTEÚDO EDITORIAL */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Conteúdo Editorial
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -1204,18 +1243,18 @@ export default function AdminPainelPage() {
                   borderRadius: 12,
                   border: activeTab === "capitulos" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
                   background: activeTab === "capitulos" ? "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)" : "transparent",
-                  color: activeTab === "capitulos" ? "#ffffff" : "#94a3b8",
+                  color: activeTab === "capitulos" ? "#ffffff" : textMuted,
                   fontSize: 13.5,
                   fontWeight: activeTab === "capitulos" ? 800 : 600,
                   cursor: "pointer",
-                  boxShadow: activeTab === "capitulos" ? "0 6px 20px rgba(2, 132, 199, 0.4)" : "none",
+                  boxShadow: activeTab === "capitulos" ? "0 6px 20px rgba(2, 132, 199, 0.35)" : "none",
                   textAlign: "left",
                   transition: "all 0.2s ease",
                 }}
               >
                 <BookOpen size={18} />
                 <span style={{ flex: 1 }}>Capítulos</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: "rgba(255, 255, 255, 0.15)", color: "#fff" }}>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: activeTab === "capitulos" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "capitulos" ? "#fff" : textMuted }}>
                   {chapters.length}
                 </span>
               </button>
@@ -1231,18 +1270,18 @@ export default function AdminPainelPage() {
                   borderRadius: 12,
                   border: activeTab === "autores" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
                   background: activeTab === "autores" ? "linear-gradient(135deg, #e11d48 0%, #be123c 100%)" : "transparent",
-                  color: activeTab === "autores" ? "#ffffff" : "#94a3b8",
+                  color: activeTab === "autores" ? "#ffffff" : textMuted,
                   fontSize: 13.5,
                   fontWeight: activeTab === "autores" ? 800 : 600,
                   cursor: "pointer",
-                  boxShadow: activeTab === "autores" ? "0 6px 20px rgba(225, 29, 72, 0.4)" : "none",
+                  boxShadow: activeTab === "autores" ? "0 6px 20px rgba(225, 29, 72, 0.35)" : "none",
                   textAlign: "left",
                   transition: "all 0.2s ease",
                 }}
               >
                 <Users size={18} />
                 <span style={{ flex: 1 }}>Autores &amp; Editores</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: "rgba(255, 255, 255, 0.15)", color: "#fff" }}>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: activeTab === "autores" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "autores" ? "#fff" : textMuted }}>
                   {authors.length}
                 </span>
               </button>
@@ -1251,89 +1290,141 @@ export default function AdminPainelPage() {
 
           {/* Category 3: CONTROLE DE ACESSO */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Controle &amp; Segurança
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <button
-                onClick={() => switchTab("usuarios")}
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  borderRadius: 12,
-                  border: activeTab === "usuarios" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
-                  background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
-                  color: activeTab === "usuarios" ? "#ffffff" : "#94a3b8",
-                  fontSize: 13.5,
-                  fontWeight: activeTab === "usuarios" ? 800 : 600,
-                  cursor: "pointer",
-                  boxShadow: activeTab === "usuarios" ? "0 6px 20px rgba(124, 58, 237, 0.4)" : "none",
-                  textAlign: "left",
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <ShieldCheck size={18} />
-                <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
-                {usuarios.filter((u) => u.status === "pendente").length > 0 && (
-                  <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
-                    {usuarios.filter((u) => u.status === "pendente").length}
-                  </span>
-                )}
-              </button>
-            </div>
+            <button
+              onClick={() => switchTab("usuarios")}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "10px 14px",
+                borderRadius: 12,
+                border: activeTab === "usuarios" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
+                color: activeTab === "usuarios" ? "#ffffff" : textMuted,
+                fontSize: 13.5,
+                fontWeight: activeTab === "usuarios" ? 800 : 600,
+                cursor: "pointer",
+                boxShadow: activeTab === "usuarios" ? "0 6px 20px rgba(124, 58, 237, 0.35)" : "none",
+                textAlign: "left",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <ShieldCheck size={18} />
+              <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
+              {usuarios.filter((u) => u.status === "pendente").length > 0 && (
+                <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
+                  {usuarios.filter((u) => u.status === "pendente").length}
+                </span>
+              )}
+            </button>
           </div>
 
-          {/* Category 4: ATALHOS DO SITE */}
+          {/* Category 4: PORTAL PÚBLICO & VENDAS (FIX FOR IMAGE 1) */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Portal Público &amp; Vendas
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               <Link
                 href="/pt/home-new"
                 target="_blank"
-                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-all duration-200"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "9px 12px",
+                  borderRadius: 10,
+                  background: isDark ? "rgba(255, 255, 255, 0.03)" : "#f8fafc",
+                  border: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0",
+                  color: textSecondary,
+                  fontSize: 12.5,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <Globe size={15} className="transition-transform duration-200 group-hover:rotate-12" />
-                <span className="flex-1">Home Portal</span>
-                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
+                <Globe size={15} color={isDark ? "#38bdf8" : "#0284c7"} />
+                <span style={{ flex: 1 }}>Home Portal</span>
+                <ExternalLink size={12} color={textMuted} />
               </Link>
 
               <Link
                 href="/pt/indice-new"
                 target="_blank"
-                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "9px 12px",
+                  borderRadius: 10,
+                  background: isDark ? "rgba(255, 255, 255, 0.03)" : "#f8fafc",
+                  border: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0",
+                  color: textSecondary,
+                  fontSize: 12.5,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <FileText size={15} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1">Índice Interativo</span>
-                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
+                <FileText size={15} color={isDark ? "#60a5fa" : "#2563eb"} />
+                <span style={{ flex: 1 }}>Índice Interativo</span>
+                <ExternalLink size={12} color={textMuted} />
               </Link>
 
               <a
                 href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs font-bold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all duration-200"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "9px 12px",
+                  borderRadius: 10,
+                  background: isDark ? "rgba(225, 29, 72, 0.1)" : "#fff1f2",
+                  border: isDark ? "1px solid rgba(225, 29, 72, 0.25)" : "1px solid #fecdd3",
+                  color: isDark ? "#fda4af" : "#be123c",
+                  fontSize: 12.5,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <ShoppingCart size={15} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1">Loja DiLivros Oficial</span>
-                <ExternalLink size={12} className="opacity-60 group-hover:translate-x-0.5" />
+                <ShoppingCart size={15} color="#f43f5e" />
+                <span style={{ flex: 1 }}>Loja DiLivros Oficial</span>
+                <ExternalLink size={12} color="#f43f5e" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Sidebar Footer */}
-        <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+        {/* Sidebar Footer (FIX FOR IMAGE 2) */}
+        <div style={{ padding: "16px 20px", borderTop: sidebarBorder }}>
           <button
             onClick={handleLogout}
             title="Encerrar sessão"
-            className="group w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all duration-200 cursor-pointer"
+            style={{
+              width: "100%",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              padding: "10px 16px",
+              borderRadius: 12,
+              background: isDark ? "rgba(225, 29, 72, 0.12)" : "#ffe4e6",
+              border: isDark ? "1px solid rgba(225, 29, 72, 0.3)" : "1px solid #fecdd3",
+              color: isDark ? "#fda4af" : "#be123c",
+              fontSize: 13,
+              fontWeight: 800,
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
           >
-            <LogOut size={13} className="transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <LogOut size={14} />
             <span>Encerrar Sessão</span>
           </button>
         </div>
@@ -1341,14 +1432,31 @@ export default function AdminPainelPage() {
 
       {/* ================= RIGHT MAIN WRAPPER ================= */}
       <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
-        {/* ================= TOPBAR (GLASSMORPHISM) ================= */}
-        <header style={{ height: 68, background: "rgba(15, 23, 42, 0.75)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", position: "sticky", top: 0, zIndex: 40, boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)" }}>
-          <div className="flex items-center gap-3">
-            {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-400">
-              <span className="text-slate-500 font-bold uppercase tracking-wider text-[11px]">SBC Admin</span>
+        {/* ================= TOPBAR (FIX FOR IMAGE 3 & THEME TOGGLE) ================= */}
+        <header
+          style={{
+            height: 68,
+            background: topbarBg,
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            borderBottom: topbarBorder,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "0 32px",
+            position: "sticky",
+            top: 0,
+            zIndex: 40,
+            boxShadow: isDark ? "0 4px 20px rgba(0, 0, 0, 0.2)" : "0 2px 10px rgba(0, 30, 80, 0.03)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: textMuted }}>
+              <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                SBC Admin
+              </span>
               <span>/</span>
-              <strong className="text-white font-extrabold">
+              <strong style={{ color: textPrimary, fontWeight: 800 }}>
                 {activeTab === "dashboard"
                   ? "Dashboard Executivo & Métricas"
                   : activeTab === "capitulos"
@@ -1360,15 +1468,53 @@ export default function AdminPainelPage() {
             </div>
           </div>
 
-          {/* Topbar Actions */}
-          <div className="flex items-center gap-3">
+          {/* Topbar Actions: Theme Toggle + Public Link */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={isDark ? "Alternar para Tema Claro" : "Alternar para Tema Escuro"}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 7,
+                padding: "8px 14px",
+                borderRadius: 10,
+                background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                color: textPrimary,
+                fontSize: 12.5,
+                fontWeight: 700,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {isDark ? <Sun size={15} color="#f59e0b" /> : <Moon size={15} color="#6366f1" />}
+              <span>{isDark ? "Tema Claro" : "Tema Escuro"}</span>
+            </button>
+
+            {/* Public Link Button (Image 3 fix) */}
             <Link
               href="/pt/indice-new"
               target="_blank"
-              className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-semibold text-slate-200 transition-all duration-200"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 16px",
+                borderRadius: 10,
+                background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                color: textPrimary,
+                fontSize: 12.5,
+                fontWeight: 700,
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
             >
               <span>Ver Índice Público</span>
-              <ExternalLink size={12} className="text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+              <ExternalLink size={13} color={textMuted} />
             </Link>
           </div>
         </header>
@@ -1380,17 +1526,17 @@ export default function AdminPainelPage() {
             <div
               style={{
                 padding: "16px 20px",
-                borderRadius: 12,
+                borderRadius: 14,
                 marginBottom: 24,
                 fontSize: 14,
-                fontWeight: 600,
-                background: feedback.type === "success" ? "#ecfdf5" : "#fef2f2",
-                color: feedback.type === "success" ? "#065f46" : "#991b1b",
-                border: feedback.type === "success" ? "1px solid #a7f3d0" : "1px solid #fecaca",
+                fontWeight: 700,
+                background: feedback.type === "success" ? (isDark ? "rgba(16, 185, 129, 0.15)" : "#ecfdf5") : (isDark ? "rgba(225, 29, 72, 0.15)" : "#fef2f2"),
+                color: feedback.type === "success" ? (isDark ? "#6ee7b7" : "#065f46") : (isDark ? "#fda4af" : "#991b1b"),
+                border: feedback.type === "success" ? "1px solid #10b981" : "1px solid #f43f5e",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -1437,6 +1583,7 @@ export default function AdminPainelPage() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               isSupabaseOnline={isSupabaseConfigured()}
+              theme={theme}
             />
           )}
 
@@ -1451,630 +1598,899 @@ export default function AdminPainelPage() {
                 onClear={() => setEditingChapterData(undefined)}
               />
 
-              {/* ================= TABELA DE CAPÍTULOS ================= */}
-            <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)", marginTop: 32 }}>
-              <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
-                <div>
-                  <h3 className="text-xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
-                    <BookOpen size={20} className="text-cyan-400" />
-                    <span>Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)</span>
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                    Navegue por seções, busque títulos ou edite o conteúdo de qualquer capítulo em tempo real.
-                  </p>
-                </div>
-
-                {/* Filtros e Busca */}
-                <div className="flex gap-3 flex-wrap items-center">
-                  <div className="relative flex items-center">
-                    <div className="absolute left-3.5 text-slate-400">
-                      <Search size={15} />
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Buscar por título ou autor..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      style={{ padding: "8px 14px 8px 34px", borderRadius: 12, background: "rgba(15, 23, 42, 0.8)", border: "1px solid rgba(255, 255, 255, 0.12)", color: "#fff", fontSize: 13, width: 260, outline: "none" }}
-                    />
-                  </div>
-
-                  <select
-                    value={filterSecao}
-                    onChange={(e) => setFilterSecao(e.target.value)}
-                    style={{ padding: "8px 14px", borderRadius: 12, background: "rgba(15, 23, 42, 0.8)", border: "1px solid rgba(255, 255, 255, 0.12)", color: "#fff", fontSize: 13, fontWeight: 600, outline: "none", cursor: "pointer" }}
-                  >
-                    <option value="all">Todas as 10 Seções</option>
-                    {SECOES.map((s) => (
-                      <option key={s.id} value={s.id.toString()}>
-                        Seção {s.id}: {s.titulo_pt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Tabela */}
-              <div className="overflow-x-auto">
-                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 13.5, color: "#e2e8f0" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)", color: "#94a3b8", fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                      <th className="py-3 px-3.5 w-14">#</th>
-                      <th className="py-3 px-3.5">Título do Capítulo</th>
-                      <th className="py-3 px-3.5 w-48">Seção</th>
-                      <th className="py-3 px-3.5 w-44">Autores</th>
-                      <th className="py-3 px-3.5 w-28">Status</th>
-                      <th className="py-3 px-3.5 w-36 text-right">Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-800/60">
-                    {loadingList ? (
-                      <tr>
-                        <td colSpan={6} className="py-12 text-center text-slate-400 text-sm">
-                          Carregando catálogo de capítulos...
-                        </td>
-                      </tr>
-                    ) : displayedChapters.length === 0 ? (
-                      <tr>
-                        <td colSpan={6} className="py-12 text-center text-slate-400 text-sm">
-                          Nenhum capítulo encontrado para o filtro selecionado.
-                        </td>
-                      </tr>
-                    ) : (
-                      displayedChapters.map((c) => {
-                        const sec = SECOES.find((s) => s.id === c.secao_id);
-                        return (
-                          <tr
-                            key={c.numero}
-                            className="hover:bg-slate-800/30 transition-colors"
-                          >
-                            <td className="py-3.5 px-3.5 font-black text-rose-400">
-                              {c.numero}
-                            </td>
-                            <td className="py-3.5 px-3.5">
-                              <strong className="text-slate-100 font-bold">{c.titulo_pt}</strong>
-                              {c.titulo_en && (
-                                <div className="text-xs text-slate-400 italic mt-0.5">
-                                  EN: {c.titulo_en}
-                                </div>
-                              )}
-                            </td>
-                            <td className="py-3.5 px-3.5 text-xs font-semibold">
-                              <span className="inline-block px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-300">
-                                S{c.secao_id} • {sec?.titulo_pt || `Seção ${c.secao_id}`}
-                              </span>
-                            </td>
-                            <td className="py-3.5 px-3.5 text-xs text-slate-400 font-medium">
-                              {c.autores || "Corpo Editorial SBC"}
-                            </td>
-                            <td className="py-3.5 px-3.5">
-                              <span
-                                className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold ${
-                                  c.status === "rascunho"
-                                    ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
-                                    : "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300"
-                                }`}
-                              >
-                                {c.status === "rascunho" ? "Rascunho" : "Publicado"}
-                              </span>
-                            </td>
-                            <td className="py-3.5 px-3.5 text-right">
-                              <div className="inline-flex items-center justify-end gap-1.5">
-                                <button
-                                  type="button"
-                                  onClick={() => handleEditChapter(c)}
-                                  title="Editar Capítulo"
-                                  className="group p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition-all duration-150 inline-flex items-center gap-1 cursor-pointer"
-                                >
-                                  <Edit3 size={13} className="text-cyan-400 transition-transform group-hover:scale-110" />
-                                  <span>Editar</span>
-                                </button>
-                                <Link
-                                  href={`/pt/capitulo/${c.numero}`}
-                                  target="_blank"
-                                  title="Abrir no Leitor"
-                                  className="group p-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/60 border border-blue-800 text-blue-300 text-xs font-bold transition-all duration-150 inline-flex items-center gap-1"
-                                >
-                                  <Eye size={13} className="transition-transform group-hover:scale-110" />
-                                  <span>Ver</span>
-                                </Link>
-                                <button
-                                  type="button"
-                                  onClick={() => handleDelete(c.numero, c.titulo_pt)}
-                                  title="Excluir Capítulo"
-                                  className="p-1.5 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs transition-all duration-150 cursor-pointer"
-                                >
-                                  <Trash2 size={13} />
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          </>
-        )}
-
-        {/* ================= ABA 2: GESTÃO DO CORPO EDITORIAL & AUTORES ================= */}
-        {activeTab === "autores" && (() => {
-          // Categorize authors for dividers & counts
-          const isEditorGeral = (cargo: string = "") => {
-            const c = cargo.toLowerCase();
-            return c.includes("chefe") || c.includes("editor-chefe") || c.includes("editor /") || c.includes("editor geral") || c === "editor";
-          };
-
-          const isEditorAssociado = (cargo: string = "") => {
-            const c = cargo.toLowerCase();
-            return c.includes("associado") || c.includes("coordenador") || c.includes("seção") || c.includes("secao");
-          };
-
-          const editoresGerais = authors.filter((a) => isEditorGeral(a.cargo));
-          const editoresAssociados = authors.filter((a) => isEditorAssociado(a.cargo));
-          const autoresColaboradores = authors.filter((a) => !isEditorGeral(a.cargo) && !isEditorAssociado(a.cargo));
-
-          const filteredCategories = [
-            {
-              id: "editores_gerais",
-              title: "Editores-Chefes & Editores Gerais",
-              iconType: "crown",
-              badgeBg: "#fef2f2",
-              badgeColor: "#dc2626",
-              badgeBorder: "#fecaca",
-              accentColor: "#e11d48",
-              list: editoresGerais,
-            },
-            {
-              id: "editores_associados",
-              title: "Editores Associados & Coordenadores de Seção",
-              iconType: "building",
-              badgeBg: "#f0f9ff",
-              badgeColor: "#0284c7",
-              badgeBorder: "#bae6fd",
-              accentColor: "#0284c7",
-              list: editoresAssociados,
-            },
-            {
-              id: "autores_colaboradores",
-              title: "Autores de Capítulos & Colaboradores Científicos",
-              iconType: "pen",
-              badgeBg: "#faf5ff",
-              badgeColor: "#7c3aed",
-              badgeBorder: "#ddd6fe",
-              accentColor: "#7c3aed",
-              list: autoresColaboradores,
-            },
-          ].filter((cat) => {
-            if (authorCategoryFilter === "todos") return true;
-            return authorCategoryFilter === cat.id;
-          });
-
-          return (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 32, alignItems: "flex-start" }}>
-              {/* Form de Cadastro / Edição de Autor */}
-              <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)" }}>
-                <div className="flex justify-between items-start mb-6 border-b border-slate-800 pb-4">
+              {/* ================= TABELA DE CAPÍTULOS (FIX FOR IMAGE 4) ================= */}
+              <section
+                style={{
+                  borderRadius: 24,
+                  background: cardBg,
+                  border: cardBorder,
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  padding: "28px 32px",
+                  boxShadow: isDark ? "0 20px 45px rgba(0, 0, 0, 0.5)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
+                  marginTop: 32,
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, flexWrap: "wrap", gap: 16 }}>
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-black uppercase tracking-wider mb-2">
-                      <Users size={13} />
-                      <span>Gestão do Corpo Editorial</span>
-                    </div>
-                    <h2 className="text-xl font-black text-white tracking-tight">
-                      {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                      Preencha os dados do médico para publicação na página inicial e no catálogo de autores.
+                    <h3 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
+                      <BookOpen size={22} color="#0284c7" />
+                      <span>Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)</span>
+                    </h3>
+                    <p style={{ fontSize: 13, color: textMuted, margin: "4px 0 0" }}>
+                      Navegue por seções, busque títulos ou edite o conteúdo de qualquer capítulo em tempo real.
                     </p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={handleClearAuthorForm}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold transition-all cursor-pointer"
-                  >
-                    <Plus size={13} />
-                    <span>Novo Autor</span>
-                  </button>
+                  {/* Filtros e Busca */}
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                    <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                      <div style={{ position: "absolute", left: 12, color: textMuted, display: "flex", alignItems: "center", pointerEvents: "none" }}>
+                        <Search size={15} />
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Buscar por título ou autor..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        style={{
+                          padding: "9px 14px 9px 36px",
+                          borderRadius: 12,
+                          background: inputBg,
+                          border: inputBorder,
+                          color: textPrimary,
+                          fontSize: 13,
+                          width: 260,
+                          outline: "none",
+                        }}
+                      />
+                    </div>
+
+                    <select
+                      value={filterSecao}
+                      onChange={(e) => setFilterSecao(e.target.value)}
+                      style={{
+                        padding: "9px 14px",
+                        borderRadius: 12,
+                        background: inputBg,
+                        border: inputBorder,
+                        color: textPrimary,
+                        fontSize: 13,
+                        fontWeight: 700,
+                        outline: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <option value="all">Todas as 10 Seções</option>
+                      {SECOES.map((s) => (
+                        <option key={s.id} value={s.id.toString()}>
+                          Seção {s.id}: {s.titulo_pt}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
-                <form onSubmit={handleAuthorSubmit} className="space-y-4">
-                  <input type="hidden" name="id" value={authorId} />
+                {/* Tabela de Capítulos */}
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 13.5, color: textSecondary }}>
+                    <thead>
+                      <tr style={{ borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0", color: textMuted, fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                        <th style={{ padding: "12px 14px", width: 50 }}>#</th>
+                        <th style={{ padding: "12px 14px" }}>Título do Capítulo</th>
+                        <th style={{ padding: "12px 14px", width: 190 }}>Seção</th>
+                        <th style={{ padding: "12px 14px", width: 170 }}>Autores</th>
+                        <th style={{ padding: "12px 14px", width: 110 }}>Status</th>
+                        <th style={{ padding: "12px 14px", width: 180, textAlign: "right" }}>Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {loadingList ? (
+                        <tr>
+                          <td colSpan={6} style={{ padding: "40px 20px", textAlign: "center", color: textMuted, fontSize: 14 }}>
+                            Carregando catálogo de capítulos...
+                          </td>
+                        </tr>
+                      ) : displayedChapters.length === 0 ? (
+                        <tr>
+                          <td colSpan={6} style={{ padding: "40px 20px", textAlign: "center", color: textMuted, fontSize: 14 }}>
+                            Nenhum capítulo encontrado para o filtro selecionado.
+                          </td>
+                        </tr>
+                      ) : (
+                        displayedChapters.map((c) => {
+                          const sec = SECOES.find((s) => s.id === c.secao_id);
+                          return (
+                            <tr
+                              key={c.numero}
+                              style={{
+                                borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.05)" : "1px solid #f1f5f9",
+                                transition: "background 0.15s ease",
+                              }}
+                            >
+                              <td style={{ padding: "14px", fontWeight: 900, color: "#f43f5e" }}>
+                                {c.numero}
+                              </td>
+                              <td style={{ padding: "14px" }}>
+                                <strong style={{ color: textPrimary, fontWeight: 800 }}>{c.titulo_pt}</strong>
+                                {c.titulo_en && (
+                                  <div style={{ fontSize: 12, color: textMuted, fontStyle: "italic", marginTop: 2 }}>
+                                    EN: {c.titulo_en}
+                                  </div>
+                                )}
+                              </td>
+                              <td style={{ padding: "14px", fontSize: 12.5, fontWeight: 700 }}>
+                                <span
+                                  style={{
+                                    display: "inline-block",
+                                    padding: "3px 9px",
+                                    borderRadius: 6,
+                                    background: isDark ? "rgba(59, 130, 246, 0.15)" : "#eff6ff",
+                                    border: isDark ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid #bfdbfe",
+                                    color: isDark ? "#60a5fa" : "#1d4ed8",
+                                  }}
+                                >
+                                  S{c.secao_id} • {sec?.titulo_pt || `Seção ${c.secao_id}`}
+                                </span>
+                              </td>
+                              <td style={{ padding: "14px", fontSize: 12.5, color: textMuted, fontWeight: 500 }}>
+                                {c.autores || "Corpo Editorial SBC"}
+                              </td>
+                              <td style={{ padding: "14px" }}>
+                                <span
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    padding: "3px 10px",
+                                    borderRadius: 999,
+                                    fontSize: 11,
+                                    fontWeight: 800,
+                                    background: c.status === "rascunho" ? (isDark ? "rgba(245, 158, 11, 0.15)" : "#fffbeb") : (isDark ? "rgba(16, 185, 129, 0.15)" : "#f0fdf4"),
+                                    border: c.status === "rascunho" ? "1px solid #f59e0b" : "1px solid #10b981",
+                                    color: c.status === "rascunho" ? "#f59e0b" : "#10b981",
+                                  }}
+                                >
+                                  {c.status === "rascunho" ? "Rascunho" : "Publicado"}
+                                </span>
+                              </td>
+                              <td style={{ padding: "14px", textAlign: "right" }}>
+                                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "flex-end", gap: 6, whiteSpace: "nowrap" }}>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleEditChapter(c)}
+                                    title="Editar Capítulo"
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      gap: 5,
+                                      padding: "6px 11px",
+                                      borderRadius: 8,
+                                      background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                                      border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                                      color: textPrimary,
+                                      fontSize: 12,
+                                      fontWeight: 700,
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <Edit3 size={13} color="#0284c7" />
+                                    <span>Editar</span>
+                                  </button>
+                                  <Link
+                                    href={`/pt/capitulo/${c.numero}`}
+                                    target="_blank"
+                                    title="Abrir no Leitor"
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      gap: 5,
+                                      padding: "6px 11px",
+                                      borderRadius: 8,
+                                      background: isDark ? "rgba(2, 132, 199, 0.15)" : "#e0f2fe",
+                                      border: isDark ? "1px solid rgba(2, 132, 199, 0.3)" : "1px solid #bae6fd",
+                                      color: isDark ? "#38bdf8" : "#0284c7",
+                                      fontSize: 12,
+                                      fontWeight: 700,
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    <Eye size={13} />
+                                    <span>Ver</span>
+                                  </Link>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDelete(c.numero, c.titulo_pt)}
+                                    title="Excluir Capítulo"
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      padding: "6px 9px",
+                                      borderRadius: 8,
+                                      background: isDark ? "rgba(225, 29, 72, 0.15)" : "#ffe4e6",
+                                      border: isDark ? "1px solid rgba(225, 29, 72, 0.3)" : "1px solid #fecdd3",
+                                      color: isDark ? "#fda4af" : "#be123c",
+                                      fontSize: 12,
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <Trash2 size={13} />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </>
+          )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                    <div className="sm:col-span-3">
-                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                        Nome Completo do Médico / Autor *
-                      </label>
+          {/* ================= ABA 2: GESTÃO DO CORPO EDITORIAL & AUTORES (FIX FOR IMAGE 5) ================= */}
+          {activeTab === "autores" && (() => {
+            const isEditorGeral = (cargo: string = "") => {
+              const c = cargo.toLowerCase();
+              return c.includes("chefe") || c.includes("editor-chefe") || c.includes("editor /") || c.includes("editor geral") || c === "editor";
+            };
+
+            const isEditorAssociado = (cargo: string = "") => {
+              const c = cargo.toLowerCase();
+              return c.includes("associado") || c.includes("coordenador") || c.includes("seção") || c.includes("secao");
+            };
+
+            const editoresGerais = authors.filter((a) => isEditorGeral(a.cargo));
+            const editoresAssociados = authors.filter((a) => isEditorAssociado(a.cargo));
+            const autoresColaboradores = authors.filter((a) => !isEditorGeral(a.cargo) && !isEditorAssociado(a.cargo));
+
+            const filteredCategories = [
+              {
+                id: "editores_gerais",
+                title: "Editores-Chefes & Editores Gerais",
+                iconType: "crown",
+                list: editoresGerais,
+              },
+              {
+                id: "editores_associados",
+                title: "Editores Associados & Coordenadores de Seção",
+                iconType: "building",
+                list: editoresAssociados,
+              },
+              {
+                id: "autores_colaboradores",
+                title: "Autores de Capítulos & Colaboradores Científicos",
+                iconType: "pen",
+                list: autoresColaboradores,
+              },
+            ].filter((cat) => {
+              if (authorCategoryFilter === "todos") return true;
+              return authorCategoryFilter === cat.id;
+            });
+
+            return (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 32, alignItems: "flex-start" }}>
+                {/* Form de Cadastro / Edição de Autor */}
+                <section
+                  style={{
+                    borderRadius: 24,
+                    background: cardBg,
+                    border: cardBorder,
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    padding: "28px 32px",
+                    boxShadow: isDark ? "0 20px 45px rgba(0, 0, 0, 0.5)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
+                  }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingBottom: 18 }}>
+                    <div>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 10px", borderRadius: 6, background: "rgba(225, 29, 72, 0.12)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
+                        <Users size={13} />
+                        <span>Gestão do Corpo Editorial</span>
+                      </div>
+                      <h2 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: "0 0 4px" }}>
+                        {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
+                      </h2>
+                      <p style={{ fontSize: 13, color: textMuted, margin: 0 }}>
+                        Preencha os dados do médico para publicação na página inicial e no catálogo de autores.
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleClearAuthorForm}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        padding: "8px 14px",
+                        borderRadius: 10,
+                        background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                        border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                        color: textPrimary,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                    >
+                      <Plus size={13} />
+                      <span>Novo Autor</span>
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleAuthorSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                    <input type="hidden" name="id" value={authorId} />
+
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 90px", gap: 16 }}>
+                      <div>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                          Nome Completo do Médico / Autor *
+                        </label>
+                        <input
+                          type="text"
+                          name="nome"
+                          value={authorNome}
+                          onChange={(e) => setAuthorNome(e.target.value)}
+                          placeholder="Ex: Prof. Dr. Edson Pudles"
+                          required
+                          style={{
+                            width: "100%",
+                            padding: "10px 14px",
+                            borderRadius: 12,
+                            background: inputBg,
+                            border: inputBorder,
+                            color: textPrimary,
+                            fontSize: 13.5,
+                            fontWeight: 700,
+                            outline: "none",
+                            boxSizing: "border-box",
+                          }}
+                        />
+                      </div>
+
+                      <div>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                          Ordem #
+                        </label>
+                        <input
+                          type="number"
+                          name="ordem"
+                          value={authorOrdem}
+                          onChange={(e) => setAuthorOrdem(e.target.value)}
+                          min={1}
+                          max={99}
+                          style={{
+                            width: "100%",
+                            padding: "10px 8px",
+                            borderRadius: 12,
+                            background: inputBg,
+                            border: inputBorder,
+                            color: textPrimary,
+                            textAlign: "center",
+                            fontSize: 14,
+                            fontWeight: 900,
+                            outline: "none",
+                            boxSizing: "border-box",
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Cargo Selection & Chips */}
+                    <div>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                        <label style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                          Cargo / Título Oficial no Tratado *
+                        </label>
+                        <span style={{ fontSize: 11, color: textMuted }}>
+                          Atalhos rápidos:
+                        </span>
+                      </div>
+
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+                        {[
+                          { label: "Editor-Chefe", value: "Editor-Chefe / SBC" },
+                          { label: "Editor / USP", value: "Editor / FMRP-USP" },
+                          { label: "Editor / SBC", value: "Editor / SBC" },
+                          { label: "Editor Associado", value: "Editor Associado / MIS" },
+                          { label: "Coordenador de Seção", value: "Coordenador de Seção" },
+                          { label: "Autor de Capítulo", value: "Autor / Especialista SBC" },
+                        ].map((preset, pIdx) => (
+                          <button
+                            key={pIdx}
+                            type="button"
+                            onClick={() => setAuthorCargo(preset.value)}
+                            style={{
+                              padding: "4px 10px",
+                              borderRadius: 8,
+                              fontSize: 11.5,
+                              fontWeight: 700,
+                              cursor: "pointer",
+                              background: authorCargo === preset.value ? (isDark ? "rgba(225, 29, 72, 0.25)" : "#ffe4e6") : (isDark ? "rgba(255, 255, 255, 0.05)" : "#f1f5f9"),
+                              border: authorCargo === preset.value ? "1px solid #f43f5e" : isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0",
+                              color: authorCargo === preset.value ? "#f43f5e" : textSecondary,
+                            }}
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                      </div>
+
                       <input
                         type="text"
-                        name="nome"
-                        value={authorNome}
-                        onChange={(e) => setAuthorNome(e.target.value)}
-                        placeholder="Ex: Prof. Dr. Edson Pudles"
+                        name="cargo"
+                        value={authorCargo}
+                        onChange={(e) => setAuthorCargo(e.target.value)}
+                        placeholder="Ex: Editor-Chefe / SBC"
                         required
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-rose-500"
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 12,
+                          background: inputBg,
+                          border: inputBorder,
+                          color: textPrimary,
+                          fontSize: 13.5,
+                          fontWeight: 600,
+                          outline: "none",
+                          boxSizing: "border-box",
+                        }}
                       />
                     </div>
 
-                    <div className="sm:col-span-1">
-                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                        Ordem #
-                      </label>
-                      <input
-                        type="number"
-                        name="ordem"
-                        value={authorOrdem}
-                        onChange={(e) => setAuthorOrdem(e.target.value)}
-                        min={1}
-                        max={99}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white text-center text-sm font-black focus:outline-none focus:border-rose-500"
-                      />
-                    </div>
-                  </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                      <div>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                          Instituição / Universidade
+                        </label>
+                        <input
+                          type="text"
+                          name="instituicao"
+                          value={authorInstituicao}
+                          onChange={(e) => setAuthorInstituicao(e.target.value)}
+                          placeholder="Ex: FMRP-USP"
+                          style={{
+                            width: "100%",
+                            padding: "10px 14px",
+                            borderRadius: 12,
+                            background: inputBg,
+                            border: inputBorder,
+                            color: textPrimary,
+                            fontSize: 13,
+                            outline: "none",
+                            boxSizing: "border-box",
+                          }}
+                        />
+                      </div>
 
-                  {/* Cargo Selection & Chips */}
-                  <div>
-                    <div className="flex justify-between items-center mb-1.5">
-                      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                        Cargo / Título Oficial no Tratado *
-                      </label>
-                      <span className="text-[11px] text-slate-400">
-                        Atalhos de preenchimento rápido:
-                      </span>
-                    </div>
-
-                    <div className="flex gap-1.5 flex-wrap mb-2">
-                      {[
-                        { label: "Editor-Chefe", value: "Editor-Chefe / SBC" },
-                        { label: "Editor / USP", value: "Editor / FMRP-USP" },
-                        { label: "Editor / SBC", value: "Editor / SBC" },
-                        { label: "Editor Associado", value: "Editor Associado / MIS" },
-                        { label: "Coordenador de Seção", value: "Coordenador de Seção" },
-                        { label: "Autor de Capítulo", value: "Autor / Especialista SBC" },
-                      ].map((preset, pIdx) => (
-                        <button
-                          key={pIdx}
-                          type="button"
-                          onClick={() => setAuthorCargo(preset.value)}
-                          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                            authorCargo === preset.value
-                              ? "bg-rose-500/20 border border-rose-500 text-rose-300"
-                              : "bg-slate-800/60 hover:bg-slate-800 border border-slate-700 text-slate-300"
-                          }`}
-                        >
-                          {preset.label}
-                        </button>
-                      ))}
-                    </div>
-
-                    <input
-                      type="text"
-                      name="cargo"
-                      value={authorCargo}
-                      onChange={(e) => setAuthorCargo(e.target.value)}
-                      placeholder="Ex: Editor-Chefe / SBC"
-                      required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-rose-500"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                        Instituição / Universidade
-                      </label>
-                      <input
-                        type="text"
-                        name="instituicao"
-                        value={authorInstituicao}
-                        onChange={(e) => setAuthorInstituicao(e.target.value)}
-                        placeholder="Ex: FMRP-USP"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
-                      />
+                      <div>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                          Destaque Principal
+                        </label>
+                        <input
+                          type="text"
+                          name="destaque"
+                          value={authorDestaque}
+                          onChange={(e) => setAuthorDestaque(e.target.value)}
+                          placeholder="Ex: Coordenação de 109 Capítulos"
+                          style={{
+                            width: "100%",
+                            padding: "10px 14px",
+                            borderRadius: 12,
+                            background: inputBg,
+                            border: inputBorder,
+                            color: textPrimary,
+                            fontSize: 13,
+                            outline: "none",
+                            boxSizing: "border-box",
+                          }}
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                        Destaque Principal
-                      </label>
-                      <input
-                        type="text"
-                        name="destaque"
-                        value={authorDestaque}
-                        onChange={(e) => setAuthorDestaque(e.target.value)}
-                        placeholder="Ex: Coordenação de 109 Capítulos"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
-                      />
-                    </div>
-                  </div>
+                    {/* Foto Picker com Prévia e Upload (IMAGE 5 FIX: STRICTLY CONSTRAINED PHOTO) */}
+                    <div style={{ padding: 18, borderRadius: 16, background: isDark ? "rgba(2, 6, 23, 0.6)" : "#f8fafc", border: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                        <label style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                          Foto Oficial do Autor *
+                        </label>
+                        <span style={{ fontSize: 11, color: textMuted }}>
+                          Upload ou seleção rápida
+                        </span>
+                      </div>
 
-                  {/* Foto Picker com Prévia e Upload */}
-                  <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-3">
-                    <div className="flex justify-between items-center">
-                      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                        Foto Oficial do Autor *
-                      </label>
-                      <span className="text-[11px] text-slate-400">
-                        Upload ou seleção rápida
-                      </span>
-                    </div>
+                      <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+                        <img
+                          src={authorFotoUrl}
+                          alt="Prévia da foto"
+                          style={{
+                            width: 64,
+                            height: 64,
+                            borderRadius: "50%",
+                            objectFit: "cover",
+                            border: "2px solid #e11d48",
+                            background: "#0f172a",
+                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                            flexShrink: 0,
+                          }}
+                        />
 
-                    <div className="flex gap-3 items-center">
-                      <img
-                        src={authorFotoUrl}
-                        alt="Prévia da foto"
-                        className="w-14 h-14 rounded-full object-cover border-2 border-slate-700 bg-slate-900 shadow-md shrink-0"
-                      />
+                        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                            <label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "8px 14px", borderRadius: 10, background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9", border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1", color: textPrimary, fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
+                              <Camera size={14} color="#f43f5e" />
+                              <span>Carregar Foto</span>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                style={{ display: "none" }}
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) {
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => {
+                                      setAuthorFotoUrl(reader.result as string);
+                                    };
+                                    reader.readAsDataURL(file);
+                                  }
+                                }}
+                              />
+                            </label>
 
-                      <div className="flex-1 space-y-2">
-                        <div className="flex gap-2 items-center">
-                          <label className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-bold cursor-pointer transition-colors shrink-0">
-                            <Camera size={13} className="text-rose-400" />
-                            <span>Carregar Arquivo</span>
                             <input
-                              type="file"
-                              accept="image/*"
-                              className="hidden"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  const reader = new FileReader();
-                                  reader.onloadend = () => {
-                                    setAuthorFotoUrl(reader.result as string);
-                                  };
-                                  reader.readAsDataURL(file);
-                                }
+                              type="text"
+                              name="foto_url"
+                              value={authorFotoUrl}
+                              onChange={(e) => setAuthorFotoUrl(e.target.value)}
+                              placeholder="/assets/edson-pudles.png"
+                              required
+                              style={{
+                                flex: 1,
+                                padding: "8px 12px",
+                                borderRadius: 10,
+                                background: inputBg,
+                                border: inputBorder,
+                                color: textPrimary,
+                                fontSize: 12,
+                                outline: "none",
                               }}
                             />
-                          </label>
-
-                          <input
-                            type="text"
-                            name="foto_url"
-                            value={authorFotoUrl}
-                            onChange={(e) => setAuthorFotoUrl(e.target.value)}
-                            placeholder="/assets/edson-pudles.png"
-                            required
-                            className="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-rose-500"
-                          />
+                          </div>
                         </div>
+                      </div>
+
+                      {/* Quick Photo Presets */}
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", marginTop: 12, paddingTop: 10, borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0" }}>
+                        <span style={{ fontSize: 11, color: textMuted, fontWeight: 700 }}>
+                          Atalhos:
+                        </span>
+                        {[
+                          { name: "Dr. Edson Pudles", url: "/assets/edson-pudles.png" },
+                          { name: "Dr. Helton Defino", url: "/assets/helton-defino.png" },
+                          { name: "Dr. Marcelo Risso", url: "/assets/marcelo-risso.png" },
+                          { name: "Prof. Dr. Elcio Landim", url: "/assets/elcio-landim.jpg" },
+                        ].map((preset, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setAuthorFotoUrl(preset.url)}
+                            style={{
+                              fontSize: 11.5,
+                              padding: "4px 9px",
+                              borderRadius: 8,
+                              border: authorFotoUrl === preset.url ? "1px solid #f43f5e" : isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #cbd5e1",
+                              fontWeight: 600,
+                              cursor: "pointer",
+                              background: authorFotoUrl === preset.url ? (isDark ? "rgba(225, 29, 72, 0.2)" : "#ffe4e6") : (isDark ? "rgba(255, 255, 255, 0.05)" : "#ffffff"),
+                              color: authorFotoUrl === preset.url ? "#f43f5e" : textSecondary,
+                            }}
+                          >
+                            {preset.name}
+                          </button>
+                        ))}
                       </div>
                     </div>
 
-                    {/* Quick Photo Presets */}
-                    <div className="flex gap-2 flex-wrap items-center pt-1">
-                      <span className="text-[11px] text-slate-400 font-bold">
-                        Atalhos:
-                      </span>
+                    <div>
+                      <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        Mini-Currículo e Trajetória Acadêmica *
+                      </label>
+                      <textarea
+                        name="bio_pt"
+                        value={authorBioPt}
+                        onChange={(e) => setAuthorBioPt(e.target.value)}
+                        rows={4}
+                        placeholder="Ex: Professor Titular do Departamento de Ortopedia da Faculdade de Medicina de Ribeirão Preto (USP)..."
+                        required
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 12,
+                          background: inputBg,
+                          border: inputBorder,
+                          color: textPrimary,
+                          fontSize: 13,
+                          lineHeight: 1.6,
+                          outline: "none",
+                          boxSizing: "border-box",
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        Especialidades &amp; Áreas de Foco (separadas por vírgula)
+                      </label>
+                      <input
+                        type="text"
+                        name="especialidades"
+                        value={authorEspecialidades}
+                        onChange={(e) => setAuthorEspecialidades(e.target.value)}
+                        placeholder="Ex: Deformidades Complexas, Fixação Pedicular"
+                        style={{
+                          width: "100%",
+                          padding: "10px 14px",
+                          borderRadius: 12,
+                          background: inputBg,
+                          border: inputBorder,
+                          color: textPrimary,
+                          fontSize: 13,
+                          outline: "none",
+                          boxSizing: "border-box",
+                        }}
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isPending}
+                      style={{
+                        width: "100%",
+                        padding: "13px 20px",
+                        borderRadius: 12,
+                        background: "linear-gradient(135deg, #e11d48 0%, #be123c 100%)",
+                        border: "none",
+                        color: "#fff",
+                        fontWeight: 900,
+                        fontSize: 14,
+                        boxShadow: "0 8px 24px rgba(225, 29, 72, 0.4)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
+                        cursor: "pointer",
+                      }}
+                    >
+                      <Save size={16} />
+                      <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
+                    </button>
+                  </form>
+                </section>
+
+                {/* Listagem dos Autores Cadastrados (IMAGE 5 FIX) */}
+                <section
+                  style={{
+                    borderRadius: 24,
+                    background: cardBg,
+                    border: cardBorder,
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    padding: "28px 32px",
+                    boxShadow: isDark ? "0 20px 45px rgba(0, 0, 0, 0.5)" : "0 10px 30px rgba(0, 30, 80, 0.04)",
+                  }}
+                >
+                  <div style={{ marginBottom: 24, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingBottom: 18 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                      <h3 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 8 }}>
+                        <Users size={20} color="#f43f5e" />
+                        <span>Corpo Editorial Cadastrado ({authors.length})</span>
+                      </h3>
+                    </div>
+                    <p style={{ fontSize: 13, color: textMuted, margin: "0 0 16px" }}>
+                      Autores e editores organizados por categoria hierárquica e exibidos no site.
+                    </p>
+
+                    {/* Filter Pills */}
+                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                       {[
-                        { name: "Dr. Edson Pudles", url: "/assets/edson-pudles.png" },
-                        { name: "Dr. Helton Defino", url: "/assets/helton-defino.png" },
-                        { name: "Dr. Marcelo Risso", url: "/assets/marcelo-risso.png" },
-                        { name: "Prof. Dr. Elcio Landim", url: "/assets/elcio-landim.jpg" },
-                      ].map((preset, idx) => (
+                        { id: "todos", label: `Todos (${authors.length})` },
+                        { id: "editores_gerais", label: `Editores Gerais (${editoresGerais.length})` },
+                        { id: "editores_associados", label: `Editores Associados (${editoresAssociados.length})` },
+                        { id: "autores_colaboradores", label: `Autores (${autoresColaboradores.length})` },
+                      ].map((f) => (
                         <button
-                          key={idx}
+                          key={f.id}
                           type="button"
-                          onClick={() => setAuthorFotoUrl(preset.url)}
-                          className={`text-xs px-2.5 py-1 rounded-lg border font-semibold transition-all cursor-pointer ${
-                            authorFotoUrl === preset.url
-                              ? "bg-rose-500/20 border-rose-500 text-rose-300"
-                              : "bg-slate-900 border-slate-700 text-slate-300 hover:bg-slate-800"
-                          }`}
+                          onClick={() => setAuthorCategoryFilter(f.id)}
+                          style={{
+                            padding: "5px 14px",
+                            borderRadius: 999,
+                            fontSize: 12,
+                            fontWeight: 800,
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                            background: authorCategoryFilter === f.id ? "#e11d48" : isDark ? "rgba(255, 255, 255, 0.06)" : "#f1f5f9",
+                            border: authorCategoryFilter === f.id ? "1px solid #f43f5e" : isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0",
+                            color: authorCategoryFilter === f.id ? "#ffffff" : textMuted,
+                          }}
                         >
-                          {preset.name}
+                          {f.label}
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                      Mini-Currículo e Trajetória Acadêmica *
-                    </label>
-                    <textarea
-                      name="bio_pt"
-                      value={authorBioPt}
-                      onChange={(e) => setAuthorBioPt(e.target.value)}
-                      rows={4}
-                      placeholder="Ex: Professor Titular do Departamento de Ortopedia da Faculdade de Medicina de Ribeirão Preto (USP)..."
-                      required
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-xs sm:text-sm leading-relaxed focus:outline-none focus:border-rose-500"
-                    />
-                  </div>
+                  {/* Categorized List with Beautiful Dividers */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                    {filteredCategories.map((category) => {
+                      if (category.list.length === 0) return null;
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                      Especialidades &amp; Áreas de Foco (separadas por vírgula)
-                    </label>
-                    <input
-                      type="text"
-                      name="especialidades"
-                      value={authorEspecialidades}
-                      onChange={(e) => setAuthorEspecialidades(e.target.value)}
-                      placeholder="Ex: Deformidades Complexas, Fixação Pedicular"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isPending}
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-extrabold text-sm shadow-xl shadow-rose-950/50 flex items-center justify-center gap-2 cursor-pointer transition-all duration-200"
-                  >
-                    <Save size={16} />
-                    <span>{isPending ? "Salvando informações..." : "Salvar Informações do Autor"}</span>
-                  </button>
-                </form>
-              </section>
-
-              {/* Listagem dos Autores Cadastrados com Divisórias de Cargos */}
-              <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)" }}>
-                <div className="mb-6 border-b border-slate-800 pb-4">
-                  <div className="flex justify-between items-center mb-1">
-                    <h3 className="text-xl font-black text-white tracking-tight flex items-center gap-2">
-                      <Users size={18} className="text-rose-400" />
-                      <span>Corpo Editorial Cadastrado ({authors.length})</span>
-                    </h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-400 mb-4">
-                    Autores e editores organizados por categoria hierárquica e exibidos no site.
-                  </p>
-
-                  {/* Filter Pills */}
-                  <div className="flex gap-2 flex-wrap">
-                    {[
-                      { id: "todos", label: `Todos (${authors.length})` },
-                      { id: "editores_gerais", label: `Editores Gerais (${editoresGerais.length})` },
-                      { id: "editores_associados", label: `Editores Associados (${editoresAssociados.length})` },
-                      { id: "autores_colaboradores", label: `Autores (${autoresColaboradores.length})` },
-                    ].map((f) => (
-                      <button
-                        key={f.id}
-                        type="button"
-                        onClick={() => setAuthorCategoryFilter(f.id)}
-                        className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                          authorCategoryFilter === f.id
-                            ? "bg-rose-500 text-white shadow-md shadow-rose-950/50"
-                            : "bg-slate-800/60 hover:bg-slate-800 border border-slate-700 text-slate-400"
-                        }`}
-                      >
-                        {f.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Categorized List with Beautiful Dividers */}
-                <div className="space-y-6">
-                  {filteredCategories.map((category) => {
-                    if (category.list.length === 0) return null;
-
-                    return (
-                      <div key={category.id} className="space-y-3">
-                        {/* Category Header / Divider */}
-                        <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-800/40 border border-slate-800">
-                          <div className="text-rose-400 flex items-center">
-                            {category.iconType === "crown" && <Award size={16} />}
-                            {category.iconType === "building" && <Building2 size={16} />}
-                            {category.iconType === "pen" && <Users size={16} />}
+                      return (
+                        <div key={category.id} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                          {/* Category Header / Divider */}
+                          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", borderRadius: 12, background: isDark ? "rgba(255, 255, 255, 0.04)" : "#f1f5f9", border: isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0" }}>
+                            <div style={{ color: "#f43f5e", display: "flex", alignItems: "center" }}>
+                              {category.iconType === "crown" && <Award size={16} />}
+                              {category.iconType === "building" && <Building2 size={16} />}
+                              {category.iconType === "pen" && <Users size={16} />}
+                            </div>
+                            <h4 style={{ fontSize: 13, fontWeight: 800, color: textPrimary, margin: 0, flex: 1 }}>
+                              {category.title}
+                            </h4>
+                            <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0", color: textMuted }}>
+                              {category.list.length} {category.list.length === 1 ? "médico" : "médicos"}
+                            </span>
                           </div>
-                          <h4 className="text-xs sm:text-sm font-extrabold text-white flex-1">
-                            {category.title}
-                          </h4>
-                          <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-                            {category.list.length} {category.list.length === 1 ? "médico" : "médicos"}
-                          </span>
-                        </div>
 
-                        {/* Category Authors Cards */}
-                        <div className="space-y-2.5">
-                          {category.list.map((author, idx) => (
-                            <div
-                              key={author.id || idx}
-                              className={`flex gap-3.5 p-3.5 rounded-2xl border transition-all duration-200 items-center ${
-                                authorId === author.id
-                                  ? "bg-rose-950/20 border-rose-500 shadow-lg shadow-rose-950/30"
-                                  : "bg-slate-800/30 hover:bg-slate-800/60 border-slate-800"
-                              }`}
-                            >
-                              <img
-                                src={author.foto_url}
-                                alt={author.nome}
-                                className="w-12 h-12 rounded-full object-cover border-2 border-slate-700 bg-slate-900 shrink-0"
-                              />
+                          {/* Category Authors Cards (IMAGE 5 FIX: STRICTLY 52px CIRCULAR AVATARS) */}
+                          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                            {category.list.map((author, idx) => (
+                              <div
+                                key={author.id || idx}
+                                style={{
+                                  display: "flex",
+                                  gap: 14,
+                                  padding: 14,
+                                  borderRadius: 16,
+                                  alignItems: "center",
+                                  background: authorId === author.id ? (isDark ? "rgba(225, 29, 72, 0.15)" : "#fff1f2") : isDark ? "rgba(255, 255, 255, 0.03)" : "#f8fafc",
+                                  border: authorId === author.id ? "1px solid #f43f5e" : isDark ? "1px solid rgba(255, 255, 255, 0.06)" : "1px solid #e2e8f0",
+                                }}
+                              >
+                                <img
+                                  src={author.foto_url}
+                                  alt={author.nome}
+                                  style={{
+                                    width: 52,
+                                    height: 52,
+                                    borderRadius: "50%",
+                                    objectFit: "cover",
+                                    border: "2px solid rgba(255, 255, 255, 0.2)",
+                                    background: "#0f172a",
+                                    flexShrink: 0,
+                                  }}
+                                />
 
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                                  <span className="text-[10.5px] font-black px-2 py-0.5 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-300 uppercase">
-                                    {author.cargo}
-                                  </span>
-                                  <span className="text-[11px] text-slate-400 font-bold">
-                                    #{author.ordem}
-                                  </span>
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 2 }}>
+                                    <span style={{ fontSize: 10.5, fontWeight: 900, padding: "2px 7px", borderRadius: 6, background: "rgba(225, 29, 72, 0.15)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", textTransform: "uppercase" }}>
+                                      {author.cargo}
+                                    </span>
+                                    <span style={{ fontSize: 11, color: textMuted, fontWeight: 700 }}>
+                                      #{author.ordem}
+                                    </span>
+                                  </div>
+
+                                  <h4 style={{ fontSize: 14, fontWeight: 800, color: textPrimary, margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                    {author.nome}
+                                  </h4>
+
+                                  <p style={{ fontSize: 12, color: textMuted, margin: "2px 0 0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                    {author.instituicao}
+                                  </p>
                                 </div>
 
-                                <h4 className="text-sm font-extrabold text-white truncate">
-                                  {author.nome}
-                                </h4>
-
-                                <p className="text-xs text-slate-400 truncate">
-                                  {author.instituicao}
-                                </p>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 5, flexShrink: 0 }}>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleEditAuthor(author)}
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      gap: 4,
+                                      padding: "5px 10px",
+                                      borderRadius: 8,
+                                      background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                                      border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                                      color: textPrimary,
+                                      fontSize: 11.5,
+                                      fontWeight: 700,
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <Edit3 size={11} color="#0284c7" />
+                                    <span>Editar</span>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
+                                    style={{
+                                      display: "inline-flex",
+                                      alignItems: "center",
+                                      gap: 4,
+                                      padding: "5px 10px",
+                                      borderRadius: 8,
+                                      background: isDark ? "rgba(225, 29, 72, 0.15)" : "#ffe4e6",
+                                      border: isDark ? "1px solid rgba(225, 29, 72, 0.3)" : "1px solid #fecdd3",
+                                      color: isDark ? "#fda4af" : "#be123c",
+                                      fontSize: 11.5,
+                                      fontWeight: 700,
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    <Trash2 size={11} />
+                                    <span>Excluir</span>
+                                  </button>
+                                </div>
                               </div>
-
-                              <div className="flex flex-col gap-1 shrink-0">
-                                <button
-                                  type="button"
-                                  onClick={() => handleEditAuthor(author)}
-                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition-colors cursor-pointer"
-                                >
-                                  <Edit3 size={11} className="text-cyan-400" />
-                                  <span>Editar</span>
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => handleDeleteAuthor(author.id || "", author.nome)}
-                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs font-bold transition-colors cursor-pointer"
-                                >
-                                  <Trash2 size={11} />
-                                  <span>Excluir</span>
-                                </button>
-                              </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
 
-                <div className="mt-6 text-center border-t border-slate-800 pt-4">
-                  <Link
-                    href="/pt/home-new#autores"
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
-                  >
-                    <span>Visualizar Seção de Autores no Site</span>
-                    <ExternalLink size={12} />
-                  </Link>
-                </div>
-              </section>
-            </div>
-          );
-        })()}
+                  <div style={{ marginTop: 24, textAlign: "center", borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingTop: 16 }}>
+                    <Link
+                      href="/pt/home-new#autores"
+                      target="_blank"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        fontSize: 12.5,
+                        fontWeight: 700,
+                        color: isDark ? "#38bdf8" : "#0284c7",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <span>Visualizar Seção de Autores no Site</span>
+                      <ExternalLink size={13} />
+                    </Link>
+                  </div>
+                </section>
+              </div>
+            );
+          })()}
 
-        {/* ================= ABA 3: USUÁRIOS E PERMISSÕES ================= */}
-        {activeTab === "usuarios" && (
-          <UsersManagementTab
-            usuarios={usuarios}
-            loading={loadingUsuarios}
-            currentUserEmail={userEmail}
-            currentUserName={currentUserName}
-            currentUserFoto={currentUserFoto}
-            currentUserRole={currentUserRole}
-            onUpdateStatus={handleUpdateUserStatus}
-            onDeleteUser={handleDeleteUser}
-            onAddUser={handleAddUser}
-            onEditUser={handleEditOtherUser}
-            isPending={isPending}
-          />
-        )}
+          {/* ================= ABA 3: USUÁRIOS E PERMISSÕES ================= */}
+          {activeTab === "usuarios" && (
+            <UsersManagementTab
+              usuarios={usuarios}
+              loading={loadingUsuarios}
+              currentUserEmail={userEmail}
+              currentUserName={currentUserName}
+              currentUserFoto={currentUserFoto}
+              currentUserRole={currentUserRole}
+              onUpdateStatus={handleUpdateUserStatus}
+              onDeleteUser={handleDeleteUser}
+              onAddUser={handleAddUser}
+              onEditUser={handleEditOtherUser}
+              isPending={isPending}
+            />
+          )}
         </main>
       </div>
 
       {/* ================= MODAL: EDITAR MINHA CONTA ================= */}
       {showEditAccountModal && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0, 0, 0, 0.8)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: 16 }}>
-          <div style={{ background: "rgba(15, 23, 42, 0.95)", border: "1px solid rgba(255, 255, 255, 0.12)", borderRadius: 24, maxWidth: 520, width: "100%", padding: "32px", boxShadow: "0 25px 60px rgba(0, 0, 0, 0.8)", color: "#f8fafc" }}>
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-sm font-black shadow-lg shadow-purple-950/50 shrink-0">
+          <div style={{ background: isDark ? "rgba(15, 23, 42, 0.95)" : "#ffffff", border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #cbd5e1", borderRadius: 24, maxWidth: 520, width: "100%", padding: 32, boxShadow: "0 25px 60px rgba(0, 0, 0, 0.6)", color: textPrimary }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 900, flexShrink: 0 }}>
                   {editAccountFoto ? (
-                    <img src={editAccountFoto} alt="Foto" className="w-full h-full object-cover" />
+                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : editAccountNome ? (
                     editAccountNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
                   ) : (
@@ -2082,10 +2498,10 @@ export default function AdminPainelPage() {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-lg font-black text-white">
+                  <h3 style={{ fontSize: 18, fontWeight: 900, color: textPrimary, margin: 0 }}>
                     Editar Minha Conta
                   </h3>
-                  <p className="text-xs text-slate-400">
+                  <p style={{ fontSize: 12, color: textMuted, margin: "2px 0 0" }}>
                     Atualize seus dados institucionais e de acesso
                   </p>
                 </div>
@@ -2093,34 +2509,34 @@ export default function AdminPainelPage() {
               <button
                 type="button"
                 onClick={() => setShowEditAccountModal(false)}
-                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center font-bold text-sm transition-colors cursor-pointer"
+                style={{ width: 32, height: 32, borderRadius: "50%", background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9", border: "none", color: textMuted, cursor: "pointer", fontWeight: 800, fontSize: 14 }}
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleSaveMyAccount} className="space-y-4">
+            <form onSubmit={handleSaveMyAccount} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {/* UPLOAD DE FOTO DE PERFIL */}
-              <div className="flex items-center gap-4 p-3.5 bg-slate-950/60 rounded-2xl border border-slate-800">
-                <div className="w-14 h-14 rounded-full overflow-hidden bg-purple-950/40 border-2 border-purple-500/40 flex items-center justify-center text-lg font-black text-purple-400 shrink-0">
+              <div style={{ display: "flex", alignItems: "center", gap: 14, padding: 14, background: isDark ? "rgba(2, 6, 23, 0.6)" : "#f8fafc", borderRadius: 16, border: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0" }}>
+                <div style={{ width: 56, height: 56, borderRadius: "50%", overflow: "hidden", background: "rgba(124, 58, 237, 0.2)", border: "2px solid #7c3aed", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   {editAccountFoto ? (
-                    <img src={editAccountFoto} alt="Foto" className="w-full h-full object-cover" />
+                    <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
-                    <User size={24} className="text-purple-400" />
+                    <User size={24} color="#7c3aed" />
                   )}
                 </div>
-                <div className="flex-1">
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 4 }}>
                     Sua Foto de Perfil
                   </label>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <label className="px-3 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold cursor-pointer inline-flex items-center gap-1.5 transition-colors">
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <label style={{ padding: "6px 12px", borderRadius: 8, background: "#7c3aed", color: "#fff", fontSize: 11.5, fontWeight: 700, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6 }}>
                       <Camera size={13} />
                       <span>Carregar Foto</span>
                       <input
                         type="file"
                         accept="image/*"
-                        className="hidden"
+                        style={{ display: "none" }}
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
@@ -2139,7 +2555,7 @@ export default function AdminPainelPage() {
                       <button
                         type="button"
                         onClick={() => setEditAccountFoto("")}
-                        className="px-2.5 py-1.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 border border-rose-900/80 text-rose-300 text-xs font-bold transition-colors cursor-pointer"
+                        style={{ padding: "6px 10px", borderRadius: 8, background: isDark ? "rgba(225, 29, 72, 0.15)" : "#ffe4e6", border: isDark ? "1px solid rgba(225, 29, 72, 0.3)" : "1px solid #fecdd3", color: isDark ? "#fda4af" : "#be123c", fontSize: 11.5, fontWeight: 700, cursor: "pointer" }}
                       >
                         Remover Foto
                       </button>
@@ -2149,7 +2565,7 @@ export default function AdminPainelPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Seu Nome Completo *
                 </label>
                 <input
@@ -2158,12 +2574,12 @@ export default function AdminPainelPage() {
                   value={editAccountNome}
                   onChange={(e) => setEditAccountNome(e.target.value)}
                   placeholder="Ex: Dr. Nome Sobrenome"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm font-semibold focus:outline-none focus:border-purple-500"
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 12, background: inputBg, border: inputBorder, color: textPrimary, fontSize: 13.5, fontWeight: 600, outline: "none", boxSizing: "border-box" }}
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   E-mail de Acesso
                 </label>
                 <input
@@ -2171,12 +2587,12 @@ export default function AdminPainelPage() {
                   value={editAccountEmail}
                   onChange={(e) => setEditAccountEmail(e.target.value)}
                   placeholder="seu.email@dominio.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 12, background: inputBg, border: inputBorder, color: textPrimary, fontSize: 13, outline: "none", boxSizing: "border-box" }}
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Cargo / Instituição Médica
                 </label>
                 <input
@@ -2184,27 +2600,27 @@ export default function AdminPainelPage() {
                   value={editAccountCargo}
                   onChange={(e) => setEditAccountCargo(e.target.value)}
                   placeholder="Ex: Super Admin • SBC"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 12, background: inputBg, border: inputBorder, color: textPrimary, fontSize: 13, outline: "none", boxSizing: "border-box" }}
                 />
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-purple-950/30 border border-purple-900/50 flex items-center justify-between">
+              <div style={{ padding: 14, borderRadius: 14, background: isDark ? "rgba(124, 58, 237, 0.15)" : "#faf5ff", border: isDark ? "1px solid rgba(124, 58, 237, 0.3)" : "1px solid #e9d5ff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                  <div className="text-[11px] font-black text-purple-400 uppercase tracking-wider">
+                  <div style={{ fontSize: 11, fontWeight: 900, color: "#7c3aed", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Nível de Acesso no Sistema
                   </div>
-                  <div className="text-sm font-bold text-purple-200 mt-0.5 flex items-center gap-1.5">
-                    <Shield size={14} className="text-purple-400" />
-                    <span>Super Admin (Acesso Total & Irrestrito)</span>
+                  <div style={{ fontSize: 13.5, fontWeight: 800, color: isDark ? "#e9d5ff" : "#581c87", marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
+                    <Shield size={14} color="#7c3aed" />
+                    <span>Super Admin (Acesso Total &amp; Irrestrito)</span>
                   </div>
                 </div>
-                <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-purple-600 text-white">
+                <span style={{ fontSize: 11, fontWeight: 900, padding: "3px 9px", borderRadius: 999, background: "#7c3aed", color: "#fff" }}>
                   ATIVO
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Nova Senha (Opcional)
                 </label>
                 <input
@@ -2212,22 +2628,22 @@ export default function AdminPainelPage() {
                   value={editAccountSenha}
                   onChange={(e) => setEditAccountSenha(e.target.value)}
                   placeholder="Deixe em branco para manter a atual"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500"
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 12, background: inputBg, border: inputBorder, color: textPrimary, fontSize: 13, outline: "none", boxSizing: "border-box" }}
                 />
               </div>
 
-              <div className="flex justify-end gap-2.5 pt-2">
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, paddingTop: 8 }}>
                 <button
                   type="button"
                   onClick={() => setShowEditAccountModal(false)}
-                  className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
+                  style={{ padding: "10px 18px", borderRadius: 10, background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9", border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1", color: textPrimary, fontSize: 12.5, fontWeight: 700, cursor: "pointer" }}
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={savingAccount}
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-black shadow-lg shadow-purple-950/50 flex items-center gap-1.5 cursor-pointer transition-all"
+                  style={{ padding: "10px 22px", borderRadius: 10, background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", border: "none", color: "#fff", fontSize: 12.5, fontWeight: 800, cursor: "pointer", boxShadow: "0 6px 20px rgba(124, 58, 237, 0.35)", display: "inline-flex", alignItems: "center", gap: 6 }}
                 >
                   <Save size={14} />
                   <span>{savingAccount ? "Salvando..." : "Salvar Alterações"}</span>
