@@ -1783,3 +1783,203 @@
   transform: translateY(-1px);
 }
 
+
+/* ==========================================================================
+   MOBILE SMARTPHONE REFACTOR (< 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .modern-nav-sticky {
+    top: 8px !important;
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
+    margin: 0 auto !important;
+  }
+
+  .modern-nav-bar {
+    height: 56px !important;
+    padding: 0 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .modern-brand-link img {
+    height: 32px !important;
+  }
+
+  .modern-brand-text strong {
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+  }
+
+  .modern-brand-text span {
+    font-size: 10px !important;
+  }
+
+  /* Hero Section */
+  .modern-hero {
+    margin-top: 0 !important;
+    padding-top: 24px !important;
+    padding-bottom: 40px !important;
+    overflow: hidden !important;
+  }
+
+  .modern-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 20px !important;
+  }
+
+  .modern-hero-badge {
+    display: inline-flex !important;
+    padding: 5px 12px !important;
+    font-size: 11.5px !important;
+    font-weight: 750 !important;
+    margin: 0 auto 10px !important;
+    border-radius: 20px !important;
+    gap: 6px !important;
+    max-width: 90% !important;
+    white-space: normal !important;
+  }
+
+  .modern-hero-badge span.pulse-dot {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  .modern-hero-title {
+    font-size: 25px !important;
+    line-height: 1.22 !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 10px !important;
+    padding: 0 4px !important;
+  }
+
+  .modern-hero-lead {
+    font-size: 14.5px !important;
+    line-height: 1.48 !important;
+    color: #cbd5e1 !important;
+    margin: 0 auto 16px !important;
+    max-width: 95% !important;
+    font-weight: 400 !important;
+  }
+
+  /* 3D Book on Mobile - Positioned elegantly */
+  .modern-book-stage {
+    order: -1 !important; /* Shows right under title/badge */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 8px 0 16px !important;
+    width: 100% !important;
+    perspective: 800px !important;
+  }
+
+  .modern-book-3d {
+    width: 190px !important;
+    max-width: 210px !important;
+    margin: 0 auto !important;
+    transform: rotateY(-8deg) rotateX(4deg) !important;
+  }
+
+  .modern-book-3d img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .modern-floating-chip {
+    display: none !important;
+  }
+
+  /* Hero Actions */
+  .modern-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin: 4px 0 16px !important;
+  }
+
+  .modern-btn-glow {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    font-size: 15px !important;
+    font-weight: 750 !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: 0 8px 24px rgba(245, 34, 56, 0.4) !important;
+  }
+
+  .modern-btn-glass {
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    font-size: 14px !important;
+    font-weight: 650 !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  /* Stats Banner 2x2 Grid */
+  .modern-stats-banner {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    margin-top: 20px !important;
+  }
+
+  .modern-stat-box {
+    padding: 10px 8px !important;
+    gap: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .modern-stat-info strong {
+    font-size: 21px !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+  }
+
+  .modern-stat-info span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin-top: 2px !important;
+  }
+
+  /* Section cards */
+  .modern-sections-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .modern-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .glass-card {
+    padding: 20px 18px !important;
+    border-radius: 14px !important;
+  }
+}

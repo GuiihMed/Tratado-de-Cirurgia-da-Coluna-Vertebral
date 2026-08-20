@@ -444,7 +444,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </svg>
                 </a>
 
-                <a href="#comprar" className="modern-btn-glass" style={{ borderColor: "rgba(245, 34, 56, 0.4)" }}>
+                <a href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html" target="_blank" rel="noopener noreferrer" className="modern-btn-glass" style={{ borderColor: "rgba(245, 34, 56, 0.4)" }}>
                   <span>{t.buyBtn}</span>
                   <svg style={{ width: 18, height: 18, color: "#ff5060" }}>
                     <use href="#i-cart"></use>
