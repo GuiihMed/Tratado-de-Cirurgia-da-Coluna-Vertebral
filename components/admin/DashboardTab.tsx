@@ -17,6 +17,10 @@ import {
   Zap,
   ArrowRight,
   Sparkles,
+  Activity,
+  Award,
+  TrendingUp,
+  FileCheck2,
 } from "lucide-react";
 
 interface DashboardTabProps {
@@ -30,17 +34,17 @@ interface DashboardTabProps {
   isSupabaseOnline: boolean;
 }
 
-const SECTION_COLORS: Record<string, { bg: string; border: string; text: string; glow: string }> = {
-  "1": { bg: "#eff6ff", border: "#bfdbfe", text: "#1d4ed8", glow: "rgba(59, 130, 246, 0.15)" },
-  "2": { bg: "#f0fdf4", border: "#bbf7d0", text: "#15803d", glow: "rgba(34, 197, 94, 0.15)" },
-  "3": { bg: "#fff1f2", border: "#fecdd3", text: "#be123c", glow: "rgba(244, 63, 94, 0.15)" },
-  "4": { bg: "#fdf4ff", border: "#f5d0fe", text: "#a21caf", glow: "rgba(217, 70, 239, 0.15)" },
-  "5": { bg: "#fff7ed", border: "#fed7aa", text: "#c2410c", glow: "rgba(249, 115, 22, 0.15)" },
-  "6": { bg: "#faf5ff", border: "#e9d5ff", text: "#7e22ce", glow: "rgba(168, 85, 247, 0.15)" },
-  "7": { bg: "#ecfeff", border: "#a5f3fc", text: "#0e7490", glow: "rgba(6, 182, 212, 0.15)" },
-  "8": { bg: "#f0fdfa", border: "#99f6e4", text: "#0f766e", glow: "rgba(20, 184, 166, 0.15)" },
-  "9": { bg: "#fffbeb", border: "#fde68a", text: "#b45309", glow: "rgba(245, 158, 11, 0.15)" },
-  "10": { bg: "#f8fafc", border: "#cbd5e1", text: "#334155", glow: "rgba(100, 116, 139, 0.15)" },
+const SECTION_COLORS: Record<string, { bg: string; border: string; text: string; bar: string }> = {
+  "1": { bg: "rgba(59, 130, 246, 0.08)", border: "rgba(59, 130, 246, 0.25)", text: "#2563eb", bar: "#3b82f6" },
+  "2": { bg: "rgba(34, 197, 94, 0.08)", border: "rgba(34, 197, 94, 0.25)", text: "#16a34a", bar: "#22c55e" },
+  "3": { bg: "rgba(244, 63, 94, 0.08)", border: "rgba(244, 63, 94, 0.25)", text: "#e11d48", bar: "#f43f5e" },
+  "4": { bg: "rgba(217, 70, 239, 0.08)", border: "rgba(217, 70, 239, 0.25)", text: "#c026d3", bar: "#d946ef" },
+  "5": { bg: "rgba(249, 115, 22, 0.08)", border: "rgba(249, 115, 22, 0.25)", text: "#ea580c", bar: "#f97316" },
+  "6": { bg: "rgba(168, 85, 247, 0.08)", border: "rgba(168, 85, 247, 0.25)", text: "#9333ea", bar: "#a855f7" },
+  "7": { bg: "rgba(6, 182, 212, 0.08)", border: "rgba(6, 182, 212, 0.25)", text: "#0891b2", bar: "#06b6d4" },
+  "8": { bg: "rgba(20, 184, 166, 0.08)", border: "rgba(20, 184, 166, 0.25)", text: "#0d9488", bar: "#14b8a6" },
+  "9": { bg: "rgba(245, 158, 11, 0.08)", border: "rgba(245, 158, 11, 0.25)", text: "#d97706", bar: "#f59e0b" },
+  "10": { bg: "rgba(100, 116, 139, 0.08)", border: "rgba(100, 116, 139, 0.25)", text: "#475569", bar: "#64748b" },
 };
 
 export default function DashboardTab({
@@ -51,7 +55,6 @@ export default function DashboardTab({
   onFilterSection,
   onOpenNewChapter,
   onOpenNewAuthor,
-  isSupabaseOnline,
 }: DashboardTabProps) {
   const totalChapters = chapters.length;
   const approvedUsers = usuarios.filter((u) => u.status === "aprovado").length;
@@ -60,7 +63,6 @@ export default function DashboardTab({
     (u) => u.role === "super_admin" || u.role === "co_super_admin" || u.role === "admin_escritor"
   ).length;
 
-  // Calculate chapters per section
   const sectionStats = SECOES.map((secao) => {
     const count = chapters.filter((c) => String(c.secao_id) === String(secao.id)).length;
     const percentage = totalChapters > 0 ? Math.round((count / totalChapters) * 100) : 0;
@@ -72,119 +74,55 @@ export default function DashboardTab({
   });
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+    <div className="flex flex-col gap-8">
       {/* ========================================================================= */}
-      {/* WELCOME HERO BANNER */}
+      {/* WELCOME HERO BANNER (GLASSMORPHISM & SUBTLE GLOW) */}
       {/* ========================================================================= */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, #001a3d 0%, #000c1e 50%, #00040a 100%)",
-          borderRadius: 20,
-          padding: "36px 32px",
-          color: "#fff",
-          position: "relative",
-          overflow: "hidden",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
-          boxShadow: "0 10px 30px rgba(0, 15, 40, 0.2)",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            right: -20,
-            top: -20,
-            width: 320,
-            height: 320,
-            background: "radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(0,0,0,0) 70%)",
-            filter: "blur(40px)",
-            pointerEvents: "none",
-          }}
-        />
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800/80 p-8 sm:p-10 shadow-2xl backdrop-blur-2xl">
+        {/* Ambient Glows */}
+        <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute -left-16 -bottom-16 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14, flexWrap: "wrap" }}>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "4px 10px",
-                borderRadius: 20,
-                background: "rgba(244, 63, 94, 0.2)",
-                border: "1px solid rgba(244, 63, 94, 0.4)",
-                color: "#fda4af",
-                fontSize: 12,
-                fontWeight: 800,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-              }}
-            >
-              <Sparkles size={12} />
-              Painel de Controle Editorial
+        <div className="relative z-10 max-w-4xl space-y-6">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5 text-rose-400 animate-pulse" />
+              <span>Painel Executivo Editorial</span>
+            </span>
+
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>Edição Oficial SBC</span>
             </span>
           </div>
 
-          <h1 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.02em" }}>
-            Tratado de Cirurgia da Coluna Vertebral
-          </h1>
+          <div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+              Tratado de Cirurgia da Coluna Vertebral
+            </h1>
+            <p className="mt-2.5 text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl font-normal">
+              Ambiente de curadoria acadêmica e gestão científica dos 109 capítulos, revisão do corpo editorial e governança de acessos institucionais.
+            </p>
+          </div>
 
-          <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#94a3b8", margin: "0 0 24px" }}>
-            Ambiente executivo para curadoria científica, gestão dos 109 capítulos, revisão de autores e controle de acessos da Sociedade Brasileira de Coluna.
-          </p>
-
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={() => onNavigateToTab("capitulos")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 20px",
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #e11d48 0%, #be123c 100%)",
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: 13.5,
-                border: "none",
-                cursor: "pointer",
-                boxShadow: "0 4px 16px rgba(225, 29, 72, 0.4)",
-                transition: "all 0.2s ease",
-              }}
+              className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-sm shadow-lg shadow-rose-950/50 hover:shadow-rose-900/60 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
-              <BookOpen size={16} />
+              <BookOpen className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
               <span>Gerenciar Capítulos ({totalChapters})</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
             <button
               onClick={() => onNavigateToTab("usuarios")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 18px",
-                borderRadius: 10,
-                background: "rgba(255, 255, 255, 0.12)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: 13.5,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
+              className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 hover:border-slate-600 text-slate-100 font-semibold text-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
-              <Users size={16} />
+              <Users className="w-4 h-4 text-slate-300 transition-transform duration-300 group-hover:scale-110" />
               <span>Usuários ({usuarios.length})</span>
               {pendingUsers > 0 && (
-                <span
-                  style={{
-                    background: "#f59e0b",
-                    color: "#000",
-                    fontSize: 11,
-                    fontWeight: 900,
-                    padding: "2px 7px",
-                    borderRadius: 10,
-                  }}
-                >
+                <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold animate-pulse">
                   {pendingUsers} pendentes
                 </span>
               )}
@@ -193,250 +131,137 @@ export default function DashboardTab({
             <Link
               href="/pt/home-new"
               target="_blank"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 18px",
-                borderRadius: 10,
-                background: "rgba(14, 165, 233, 0.15)",
-                border: "1px solid rgba(14, 165, 233, 0.35)",
-                color: "#38bdf8",
-                fontWeight: 700,
-                fontSize: 13.5,
-                textDecoration: "none",
-                transition: "all 0.2s ease",
-              }}
+              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 font-semibold text-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
             >
-              <Globe size={16} />
-              <span>Visualizar Portal 4K</span>
-              <ExternalLink size={13} />
+              <Globe className="w-4 h-4 transition-transform duration-300 group-hover:rotate-12" />
+              <span>Visualizar Portal</span>
+              <ExternalLink className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
         </div>
       </div>
 
       {/* ========================================================================= */}
-      {/* 4 MAIN KPI METRICS */}
+      {/* 4 MAIN KPI METRIC CARDS (GLASSMORPHISM & ANIMATED ICONS) */}
       {/* ========================================================================= */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Metric 1 */}
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "22px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.03)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: 14,
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Capítulos Publicados
-              </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#001a3d", marginTop: 4 }}>
+              </span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 {totalChapters}
               </div>
             </div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: "#eff6ff",
-                color: "#1d4ed8",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <BookOpen size={22} />
+            <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <BookOpen className="w-6 h-6" />
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#059669", fontWeight: 600 }}>
-            <CheckCircle2 size={15} />
-            <span>100% da Obra Impressa Catalogada</span>
+          <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+            <span>100% da Obra Catalogada</span>
           </div>
         </div>
 
         {/* Metric 2 */}
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "22px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.03)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: 14,
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Seções Curriculares
-              </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#001a3d", marginTop: 4 }}>
+        <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                Seções Temáticas
+              </span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 {SECOES.length}
               </div>
             </div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: "#fdf2f8",
-                color: "#be185d",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <Layers size={22} />
+            <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/50 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <Layers className="w-6 h-6" />
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#64748b", fontWeight: 600 }}>
-            <span>Módulos de Ciências Básicas a Cirurgia 3D</span>
+          <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+            <Activity className="w-4 h-4 text-rose-500 flex-shrink-0" />
+            <span>Da Base à Robótica Avançada</span>
           </div>
         </div>
 
         {/* Metric 3 */}
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "22px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.03)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: 14,
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+        <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Corpo de Autores
-              </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#001a3d", marginTop: 4 }}>
+              </span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 {authors.length}+
               </div>
             </div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: "#f0fdf4",
-                color: "#15803d",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <Users size={22} />
+            <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <Users className="w-6 h-6" />
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#0284c7", fontWeight: 600 }}>
-            <span>Editores SBC e Especialistas A-Z</span>
+          <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+            <Award className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+            <span>Editores & Especialistas SBC</span>
           </div>
         </div>
 
         {/* Metric 4 */}
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 16,
-            padding: "22px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 16px rgba(0, 0, 0, 0.03)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: 14,
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-            <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Usuários & Permissões
-              </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: "#001a3d", marginTop: 4 }}>
+        <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                Acessos & Usuários
+              </span>
+              <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                 {usuarios.length}
               </div>
             </div>
-            <div
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: "#faf5ff",
-                color: "#7e22ce",
-                display: "grid",
-                placeItems: "center",
-              }}
-            >
-              <ShieldCheck size={22} />
+            <div className="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-900/50 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <ShieldCheck className="w-6 h-6" />
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700 }}>
-            <span style={{ color: "#059669" }}>{approvedUsers} ativos</span>
-            <span>•</span>
-            <span style={{ color: pendingUsers > 0 ? "#ea580c" : "#64748b" }}>{pendingUsers} pendentes</span>
-            <span>•</span>
-            <span style={{ color: "#7c3aed" }}>{adminUsers} admins</span>
+          <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-xs font-semibold">
+            <span className="text-emerald-600 dark:text-emerald-400">{approvedUsers} ativos</span>
+            <span className="text-slate-400">•</span>
+            <span className={pendingUsers > 0 ? "text-amber-600 dark:text-amber-400 font-bold" : "text-slate-400"}>
+              {pendingUsers} pendentes
+            </span>
+            <span className="text-slate-400">•</span>
+            <span className="text-purple-600 dark:text-purple-400">{adminUsers} admins</span>
           </div>
         </div>
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTIONS DISTRIBUTION & HEALTH CHECKLIST */}
+      {/* SECTIONS DISTRIBUTION & QUALITY COMPLIANCE */}
       {/* ========================================================================= */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 24, alignItems: "start" }}>
-        {/* Left: Sections Breakdown Chart */}
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 18,
-            padding: "28px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Left (7 cols): Sections Breakdown */}
+        <div className="lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm space-y-5">
+          <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-slate-100 dark:border-slate-800/70">
             <div>
-              <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
-                Distribuição Curricular por Seção
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-blue-500" />
+                <span>Distribuição Curricular por Seção</span>
               </h3>
-              <p style={{ fontSize: 13, color: "#64748b", margin: 0 }}>
-                Densidade de capítulos distribuídos nas 10 seções do Tratado
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Capítulos organizados nas 10 seções do Tratado
               </p>
             </div>
+
             <button
               onClick={() => onNavigateToTab("capitulos")}
-              style={{
-                fontSize: 12.5,
-                fontWeight: 700,
-                color: "#0284c7",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 4,
-              }}
+              className="group inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors cursor-pointer"
             >
               <span>Ver Tabela Completa</span>
-              <ArrowRight size={13} />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="space-y-2.5">
             {sectionStats.map((sec) => {
               const colors = SECTION_COLORS[String(sec.id)] || SECTION_COLORS["1"];
               return (
@@ -446,31 +271,13 @@ export default function DashboardTab({
                     onFilterSection(String(sec.id));
                     onNavigateToTab("capitulos");
                   }}
-                  style={{
-                    padding: "12px 16px",
-                    borderRadius: 12,
-                    background: "#f8fafc",
-                    border: "1px solid #e2e8f0",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = colors.border;
-                    e.currentTarget.style.background = colors.bg;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "#e2e8f0";
-                    e.currentTarget.style.background = "#f8fafc";
-                  }}
+                  className="group p-3 sm:p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-800/60 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 hover:bg-slate-100/70 dark:hover:bg-slate-800/60 cursor-pointer transition-all duration-200"
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <div className="flex items-center gap-2.5 min-w-0">
                       <span
+                        className="px-2 py-0.5 rounded text-[11px] font-black tracking-wide flex-shrink-0"
                         style={{
-                          fontSize: 11,
-                          fontWeight: 900,
-                          padding: "2px 6px",
-                          borderRadius: 4,
                           background: colors.bg,
                           color: colors.text,
                           border: `1px solid ${colors.border}`,
@@ -478,21 +285,24 @@ export default function DashboardTab({
                       >
                         Seção {sec.id}
                       </span>
-                      <strong style={{ fontSize: 13.5, color: "#1e293b" }}>{sec.titulo_pt}</strong>
+                      <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 truncate">
+                        {sec.titulo_pt}
+                      </span>
                     </div>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: "#001a3d" }}>
-                      {sec.count} capítulos <span style={{ fontSize: 11, color: "#64748b", fontWeight: 600 }}>({sec.percentage}%)</span>
-                    </span>
+
+                    <div className="text-xs font-bold text-slate-700 dark:text-slate-300 flex-shrink-0 flex items-center gap-1.5">
+                      <span>{sec.count} cap.</span>
+                      <span className="text-[11px] text-slate-400 font-medium">({sec.percentage}%)</span>
+                    </div>
                   </div>
 
-                  {/* Progress bar */}
-                  <div style={{ height: 6, borderRadius: 3, background: "#e2e8f0", overflow: "hidden" }}>
+                  {/* Progress Bar */}
+                  <div className="h-1.5 w-full rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
                     <div
+                      className="h-full rounded-full transition-all duration-500 group-hover:brightness-110"
                       style={{
-                        height: "100%",
-                        width: `${Math.max(sec.percentage * 4, 8)}%`,
-                        background: colors.text,
-                        borderRadius: 3,
+                        width: `${Math.max(sec.percentage * 4.5, 6)}%`,
+                        background: colors.bar,
                       }}
                     />
                   </div>
@@ -502,154 +312,87 @@ export default function DashboardTab({
           </div>
         </div>
 
-        {/* Right: Scientific Quality Checklist & Quick Tools */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {/* Quality Checklist */}
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 18,
-              padding: "28px",
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
-            }}
-          >
-            <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: "0 0 6px" }}>
-              Qualidade & Conformidade Editorial
-            </h3>
-            <p style={{ fontSize: 12.5, color: "#64748b", margin: "0 0 18px" }}>
-              Padrões acadêmicos e indexação médica
-            </p>
+        {/* Right (5 cols): Editorial Compliance & Quick Tools */}
+        <div className="lg:col-span-5 space-y-6">
+          {/* Quality Checklist Card */}
+          <div className="p-6 sm:p-7 rounded-3xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xl shadow-sm space-y-4">
+            <div className="pb-3 border-b border-slate-100 dark:border-slate-800/70">
+              <h3 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <FileCheck2 className="w-4 h-4 text-emerald-500" />
+                <span>Conformidade & Qualidade</span>
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Indexação médica e padronização científica
+              </p>
+            </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
-                  <CheckCircle2 size={15} />
-                  <span>Resumos Clínicos Estruturados</span>
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>109 / 109</span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
-                  <CheckCircle2 size={15} />
-                  <span>Descritores DeCS / MeSH</span>
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>100% Cobertos</span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
-                  <CheckCircle2 size={15} />
-                  <span>Referências Bibliográficas (DOI)</span>
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>Indexadas</span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
-                  <CheckCircle2 size={15} />
-                  <span>Suporte Multilíngue (PT, EN, ES)</span>
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>739 Páginas</span>
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
-                  <CheckCircle2 size={15} />
-                  <span>Link Direto DiLivros Oficial</span>
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>Ativo</span>
-              </div>
+            <div className="space-y-2.5">
+              {[
+                { title: "Resumos Clínicos Estruturados", value: "109 / 109", status: "ok" },
+                { title: "Descritores DeCS / MeSH", value: "100% Cobertos", status: "ok" },
+                { title: "Referências Bibliográficas (DOI)", value: "Indexadas", status: "ok" },
+                { title: "Suporte Multilíngue (PT, EN, ES)", value: "739 Páginas", status: "ok" },
+                { title: "Link Direto DiLivros Oficial", value: "Ativo", status: "ok" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between p-3 rounded-xl bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-700 dark:text-emerald-300"
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                    <span className="truncate">{item.title}</span>
+                  </div>
+                  <span className="font-extrabold font-mono text-emerald-800 dark:text-emerald-200 flex-shrink-0">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Quick Actions Card */}
-          <div
-            style={{
-              background: "linear-gradient(135deg, #001a3d 0%, #001026 100%)",
-              borderRadius: 18,
-              padding: "24px",
-              color: "#fff",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
-          >
-            <h4 style={{ fontSize: 15, fontWeight: 800, margin: "0 0 14px", color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>
-              <Zap size={16} className="text-amber-400" />
-              <span>Ações Rápidas do Editor</span>
-            </h4>
+          <div className="relative overflow-hidden p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-white shadow-xl space-y-4">
+            <div className="flex items-center gap-2 pb-3 border-b border-slate-800">
+              <Zap className="w-4 h-4 text-amber-400 animate-pulse" />
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider">
+                Ações Rápidas
+              </h4>
+            </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div className="space-y-2.5">
               <button
                 onClick={onOpenNewChapter}
-                style={{
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  background: "rgba(255, 255, 255, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  color: "#fff",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
+                className="group w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
               >
-                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <Plus size={15} />
+                <span className="flex items-center gap-2.5">
+                  <Plus className="w-4 h-4 text-rose-400 transition-transform duration-200 group-hover:scale-125" />
                   <span>Cadastrar Novo Capítulo</span>
                 </span>
-                <ArrowRight size={14} />
+                <ArrowRight className="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
 
               <button
                 onClick={onOpenNewAuthor}
-                style={{
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  background: "rgba(255, 255, 255, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  color: "#fff",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  textAlign: "left",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
+                className="group w-full flex items-center justify-between p-3 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
               >
-                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <UserPlus size={15} />
+                <span className="flex items-center gap-2.5">
+                  <UserPlus className="w-4 h-4 text-blue-400 transition-transform duration-200 group-hover:scale-125" />
                   <span>Cadastrar Novo Autor</span>
                 </span>
-                <ArrowRight size={14} />
+                <ArrowRight className="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 group-hover:translate-x-1" />
               </button>
 
               <a
                 href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  background: "#e11d48",
-                  color: "#fff",
-                  fontSize: 13,
-                  fontWeight: 800,
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
+                className="group w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-xs font-bold text-white shadow-md shadow-rose-950/50 transition-all duration-200 hover:-translate-y-0.5"
               >
-                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <ShoppingCart size={15} />
-                  <span>Comprar Tratado na DiLivros</span>
+                <span className="flex items-center gap-2.5">
+                  <ShoppingCart className="w-4 h-4 transition-transform duration-200 group-hover:scale-125" />
+                  <span>Adquirir Edição Impressa</span>
                 </span>
-                <ExternalLink size={14} />
+                <ExternalLink className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
           </div>

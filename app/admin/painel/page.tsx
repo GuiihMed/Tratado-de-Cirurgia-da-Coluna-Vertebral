@@ -40,6 +40,8 @@ import {
   Search,
   Lock,
   Layers,
+  Award,
+  Building2,
 } from "lucide-react";
 
 function IconBook({ className = "w-5 h-5", size = 20 }: { className?: string; size?: number }) {
@@ -1755,7 +1757,7 @@ export default function AdminPainelPage() {
             {
               id: "editores_gerais",
               title: "Editores-Chefes & Editores Gerais",
-              icon: "👑",
+              iconType: "crown",
               badgeBg: "#fef2f2",
               badgeColor: "#dc2626",
               badgeBorder: "#fecaca",
@@ -1765,7 +1767,7 @@ export default function AdminPainelPage() {
             {
               id: "editores_associados",
               title: "Editores Associados & Coordenadores de Seção",
-              icon: "🏛️",
+              iconType: "building",
               badgeBg: "#f0f9ff",
               badgeColor: "#0284c7",
               badgeBorder: "#bae6fd",
@@ -1775,7 +1777,7 @@ export default function AdminPainelPage() {
             {
               id: "autores_colaboradores",
               title: "Autores de Capítulos & Colaboradores Científicos",
-              icon: "✍️",
+              iconType: "pen",
               badgeBg: "#faf5ff",
               badgeColor: "#7c3aed",
               badgeBorder: "#ddd6fe",
@@ -1923,12 +1925,12 @@ export default function AdminPainelPage() {
 
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
                       {[
-                        { label: "👑 Editor-Chefe / SBC", value: "Editor-Chefe / SBC" },
-                        { label: "⭐ Editor / FMRP-USP", value: "Editor / FMRP-USP" },
-                        { label: "⭐ Editor / SBC", value: "Editor / SBC" },
-                        { label: "🏛️ Editor Associado", value: "Editor Associado / MIS" },
-                        { label: "📑 Coordenador de Seção", value: "Coordenador de Seção" },
-                        { label: "✍️ Autor de Capítulo", value: "Autor / Especialista SBC" },
+                        { label: "Editor-Chefe / SBC", value: "Editor-Chefe / SBC" },
+                        { label: "Editor / FMRP-USP", value: "Editor / FMRP-USP" },
+                        { label: "Editor / SBC", value: "Editor / SBC" },
+                        { label: "Editor Associado", value: "Editor Associado / MIS" },
+                        { label: "Coordenador de Seção", value: "Coordenador de Seção" },
+                        { label: "Autor de Capítulo", value: "Autor / Especialista SBC" },
                       ].map((preset, pIdx) => (
                         <button
                           key={pIdx}
@@ -1938,11 +1940,12 @@ export default function AdminPainelPage() {
                             padding: "4px 8px",
                             borderRadius: 6,
                             border: authorCargo === preset.value ? "1px solid #f52238" : "1px solid #e2e8f0",
-                            background: authorCargo === preset.value ? "#fff1f2" : "#f8fafc",
-                            color: authorCargo === preset.value ? "#e11d48" : "#475569",
-                            fontSize: 11,
+                            background: authorCargo === preset.value ? "#fef2f2" : "#f8fafc",
+                            color: authorCargo === preset.value ? "#be123c" : "#475569",
+                            fontSize: 11.5,
                             fontWeight: 700,
                             cursor: "pointer",
+                            transition: "all 0.15s",
                           }}
                         >
                           {preset.label}
@@ -2217,9 +2220,9 @@ export default function AdminPainelPage() {
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                     {[
                       { id: "todos", label: `Todos (${authors.length})` },
-                      { id: "editores_gerais", label: `👑 Editores Gerais (${editoresGerais.length})` },
-                      { id: "editores_associados", label: `🏛️ Editores Associados (${editoresAssociados.length})` },
-                      { id: "autores_colaboradores", label: `✍️ Autores (${autoresColaboradores.length})` },
+                      { id: "editores_gerais", label: `Editores Gerais (${editoresGerais.length})` },
+                      { id: "editores_associados", label: `Editores Associados (${editoresAssociados.length})` },
+                      { id: "autores_colaboradores", label: `Autores (${autoresColaboradores.length})` },
                     ].map((f) => (
                       <button
                         key={f.id}
@@ -2256,8 +2259,8 @@ export default function AdminPainelPage() {
                             display: "flex",
                             alignItems: "center",
                             gap: 10,
-                            padding: "6px 12px",
-                            borderRadius: 8,
+                            padding: "8px 14px",
+                            borderRadius: 10,
                             background: "#f8fafc",
                             borderLeft: `4px solid ${category.accentColor}`,
                             borderTop: "1px solid #f1f5f9",
@@ -2265,7 +2268,11 @@ export default function AdminPainelPage() {
                             borderBottom: "1px solid #f1f5f9",
                           }}
                         >
-                          <span style={{ fontSize: 16 }}>{category.icon}</span>
+                          <div style={{ color: category.accentColor, display: "flex", alignItems: "center" }}>
+                            {category.iconType === "crown" && <Award size={16} />}
+                            {category.iconType === "building" && <Building2 size={16} />}
+                            {category.iconType === "pen" && <Users size={16} />}
+                          </div>
                           <h4 style={{ fontSize: 13.5, fontWeight: 900, color: "#001a3d", margin: 0, flex: 1 }}>
                             {category.title}
                           </h4>
@@ -2692,8 +2699,9 @@ export default function AdminPainelPage() {
                   <div style={{ fontSize: 12, fontWeight: 800, color: "#6d28d9", textTransform: "uppercase" }}>
                     Nível de Acesso no Sistema
                   </div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#4c1d95", marginTop: 2 }}>
-                    👑 Super Admin (Acesso Total & Irrestrito)
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#4c1d95", marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
+                    <Shield size={15} className="text-purple-600" />
+                    <span>Super Admin (Acesso Total & Irrestrito)</span>
                   </div>
                 </div>
                 <span style={{ fontSize: 11, fontWeight: 800, padding: "3px 8px", borderRadius: 6, background: "#7c3aed", color: "#fff" }}>

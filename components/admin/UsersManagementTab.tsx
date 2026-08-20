@@ -16,11 +16,19 @@ import {
   Save,
   X,
   Key,
+  KeyRound,
   Check,
   Award,
   Building2,
   Sparkles,
   Users,
+  Eye,
+  EyeOff,
+  Camera,
+  User,
+  Lightbulb,
+  Zap,
+  RotateCw,
 } from "lucide-react";
 
 interface UsersManagementTabProps {
@@ -405,12 +413,10 @@ CREATE TRIGGER on_auth_user_created
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 18,
-                  fontWeight: 900,
                   flexShrink: 0,
                 }}
               >
-                ⏳
+                <Clock size={18} className="animate-pulse" />
               </div>
               <div>
                 <h4 style={{ margin: 0, fontSize: 14.5, fontWeight: 800, color: "#92400e" }}>
@@ -580,9 +586,11 @@ CREATE TRIGGER on_auth_user_created
                 top: "50%",
                 transform: "translateY(-50%)",
                 color: "#94a3b8",
+                display: "flex",
+                alignItems: "center",
               }}
             >
-              🔍
+              <Search size={16} />
             </span>
             <input
               type="text"
@@ -617,9 +625,9 @@ CREATE TRIGGER on_auth_user_created
               }}
             >
               <option value="all">Todos os Status ({countTotal})</option>
-              <option value="pendente">⏳ Pendentes ({countPendentes})</option>
-              <option value="aprovado">✅ Aprovados ({countAprovados})</option>
-              <option value="bloqueado">🚫 Suspensos ({countBloqueados})</option>
+              <option value="pendente">Pendentes ({countPendentes})</option>
+              <option value="aprovado">Aprovados ({countAprovados})</option>
+              <option value="bloqueado">Suspensos ({countBloqueados})</option>
             </select>
 
             <span style={{ fontSize: 12.5, fontWeight: 700, color: "#64748b", marginLeft: 8 }}>Função:</span>
@@ -648,7 +656,9 @@ CREATE TRIGGER on_auth_user_created
         {/* LISTAGEM / TABELA */}
         {loading ? (
           <div style={{ padding: "60px 20px", textAlign: "center", color: "#64748b" }}>
-            <div style={{ fontSize: 24, marginBottom: 8 }}>🔄</div>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>
+              <RotateCw size={28} className="animate-spin text-purple-600" />
+            </div>
             <p style={{ margin: 0, fontWeight: 600 }}>Carregando dados de usuários...</p>
           </div>
         ) : filteredUsers.length === 0 ? (
@@ -661,7 +671,9 @@ CREATE TRIGGER on_auth_user_created
               border: "1px dashed #cbd5e1",
             }}
           >
-            <div style={{ fontSize: 32, marginBottom: 8 }}>👥</div>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
+              <Users size={32} className="text-slate-400" />
+            </div>
             <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 800, color: "#001a3d" }}>
               Nenhum usuário encontrado com os filtros atuais
             </h4>
@@ -1035,8 +1047,8 @@ CREATE TRIGGER on_auth_user_created
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0, 15, 40, 0.7)",
-            backdropFilter: "blur(6px)",
+            background: "rgba(0, 15, 40, 0.75)",
+            backdropFilter: "blur(8px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -1047,24 +1059,39 @@ CREATE TRIGGER on_auth_user_created
           <div
             style={{
               background: "#fff",
-              borderRadius: 18,
+              borderRadius: 20,
               maxWidth: 520,
               width: "100%",
               padding: "32px",
-              boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
+              boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)",
               border: "1px solid #e2e8f0",
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
-                ➕ Convidar / Cadastrar Novo Usuário
-              </h3>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ padding: 8, borderRadius: 10, background: "#ede9fe", color: "#7c3aed" }}>
+                  <UserPlus size={20} />
+                </div>
+                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
+                  Cadastrar Novo Usuário
+                </h3>
+              </div>
               <button
                 type="button"
                 onClick={() => setShowAddModal(false)}
-                style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", color: "#64748b" }}
+                style={{
+                  background: "#f1f5f9",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: 32,
+                  height: 32,
+                  display: "grid",
+                  placeItems: "center",
+                  cursor: "pointer",
+                  color: "#64748b",
+                }}
               >
-                ✕
+                <X size={16} />
               </button>
             </div>
 
@@ -1110,8 +1137,10 @@ CREATE TRIGGER on_auth_user_created
                 >
                   {newFoto ? (
                     <img src={newFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : newNome ? (
+                    newNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
                   ) : (
-                    newNome ? newNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                    <User size={20} />
                   )}
                 </div>
                 <div style={{ flex: 1 }}>
@@ -1121,7 +1150,7 @@ CREATE TRIGGER on_auth_user_created
                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                     <label
                       style={{
-                        padding: "5px 10px",
+                        padding: "6px 12px",
                         borderRadius: 6,
                         background: "#7c3aed",
                         color: "#fff",
@@ -1130,10 +1159,11 @@ CREATE TRIGGER on_auth_user_created
                         cursor: "pointer",
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: 4,
+                        gap: 6,
                       }}
                     >
-                      <span>📷 Carregar Foto</span>
+                      <Camera size={13} />
+                      <span>Carregar Foto</span>
                       <input
                         type="file"
                         accept="image/*"
@@ -1230,10 +1260,10 @@ CREATE TRIGGER on_auth_user_created
                       fontWeight: 700,
                     }}
                   >
-                    <option value="super_admin">👑 Super Admin</option>
-                    <option value="co_super_admin">🛡️ Co-Super Admin</option>
-                    <option value="admin_escritor">✍️ Admin Escritor</option>
-                    <option value="escritor">📝 Escritor</option>
+                    <option value="super_admin">Super Admin</option>
+                    <option value="co_super_admin">Co-Super Admin</option>
+                    <option value="admin_escritor">Admin Escritor (Editor)</option>
+                    <option value="escritor">Escritor (Autor)</option>
                   </select>
                 </div>
 
@@ -1253,8 +1283,8 @@ CREATE TRIGGER on_auth_user_created
                       fontWeight: 700,
                     }}
                   >
-                    <option value="aprovado">✅ Liberado / Aprovado</option>
-                    <option value="pendente">⏳ Pendente de Validação</option>
+                    <option value="aprovado">Liberado / Aprovado</option>
+                    <option value="pendente">Pendente de Validação</option>
                   </select>
                 </div>
               </div>
@@ -1321,18 +1351,20 @@ CREATE TRIGGER on_auth_user_created
               padding: "32px",
               boxShadow: "0 24px 60px rgba(0, 0, 0, 0.35)",
               border: "1px solid #e2e8f0",
-              animation: "fadeIn 0.2s ease",
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 24 }}>✏️</span>
+                <div style={{ padding: 8, borderRadius: 10, background: "#ede9fe", color: "#7c3aed" }}>
+                  <Edit3 size={20} />
+                </div>
                 <div>
                   <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
                     Editar Conta do Usuário
                   </h3>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#7c3aed", textTransform: "uppercase" }}>
-                    👑 Gestão Super Admin
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#7c3aed", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
+                    <Crown size={12} />
+                    <span>Gestão Super Admin</span>
                   </span>
                 </div>
               </div>
@@ -1347,13 +1379,11 @@ CREATE TRIGGER on_auth_user_created
                   height: 32,
                   display: "grid",
                   placeItems: "center",
-                  fontSize: 14,
-                  fontWeight: 800,
                   cursor: "pointer",
                   color: "#64748b",
                 }}
               >
-                ✕
+                <X size={16} />
               </button>
             </div>
 
@@ -1379,8 +1409,10 @@ CREATE TRIGGER on_auth_user_created
                 >
                   {editFoto ? (
                     <img src={editFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : editNome ? (
+                    editNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
                   ) : (
-                    editNome ? editNome.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase() : "👤"
+                    <User size={24} />
                   )}
                 </div>
                 <div style={{ flex: 1 }}>
@@ -1399,10 +1431,11 @@ CREATE TRIGGER on_auth_user_created
                         cursor: "pointer",
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: 4,
+                        gap: 6,
                       }}
                     >
-                      <span>📷 Carregar Foto</span>
+                      <Camera size={13} />
+                      <span>Carregar Foto</span>
                       <input
                         type="file"
                         accept="image/*"
@@ -1533,10 +1566,10 @@ CREATE TRIGGER on_auth_user_created
                       background: "#fff",
                     }}
                   >
-                    <option value="super_admin">👑 Super Admin (Total)</option>
-                    <option value="co_super_admin">🛡️ Co-Super Admin</option>
-                    <option value="admin_escritor">✍️ Admin Escritor</option>
-                    <option value="escritor">📝 Escritor (Autor)</option>
+                    <option value="super_admin">Super Admin (Total)</option>
+                    <option value="co_super_admin">Co-Super Admin</option>
+                    <option value="admin_escritor">Admin Escritor</option>
+                    <option value="escritor">Escritor (Autor)</option>
                   </select>
                 </div>
 
@@ -1560,9 +1593,9 @@ CREATE TRIGGER on_auth_user_created
                       background: "#fff",
                     }}
                   >
-                    <option value="aprovado">✅ Acesso Aprovado</option>
-                    <option value="pendente">⏳ Pendente Aprovação</option>
-                    <option value="bloqueado">🚫 Acesso Suspenso</option>
+                    <option value="aprovado">Acesso Aprovado</option>
+                    <option value="pendente">Pendente Aprovação</option>
+                    <option value="bloqueado">Acesso Suspenso</option>
                   </select>
                 </div>
               </div>
@@ -1579,7 +1612,9 @@ CREATE TRIGGER on_auth_user_created
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
                   <label
                     style={{
-                      display: "block",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
                       fontSize: 12,
                       fontWeight: 900,
                       color: "#86198f",
@@ -1588,7 +1623,8 @@ CREATE TRIGGER on_auth_user_created
                       margin: 0,
                     }}
                   >
-                    🔑 Redefinir Senha do Usuário (Caso tenha esquecido)
+                    <KeyRound size={14} />
+                    <span>Redefinir Senha do Usuário</span>
                   </label>
                   <button
                     type="button"
@@ -1611,7 +1647,8 @@ CREATE TRIGGER on_auth_user_created
                       gap: 4,
                     }}
                   >
-                    ⚡ Gerar Senha Rápida
+                    <Zap size={12} />
+                    <span>Gerar Senha Rápida</span>
                   </button>
                 </div>
                 <div style={{ position: "relative" }}>
@@ -1645,16 +1682,18 @@ CREATE TRIGGER on_auth_user_created
                       background: "none",
                       border: "none",
                       cursor: "pointer",
-                      fontSize: 15,
                       padding: 4,
                       color: "#86198f",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    {showPassword ? "👁️" : "🙈"}
+                    {showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
                   </button>
                 </div>
-                <p style={{ margin: "6px 0 0", fontSize: 11.5, color: "#a21caf", lineHeight: 1.4 }}>
-                  💡 O Super Admin pode definir uma nova senha direta aqui para entregar ao usuário caso ele tenha esquecido o acesso. Deixe em branco para manter a senha atual.
+                <p style={{ margin: "6px 0 0", fontSize: 11.5, color: "#a21caf", lineHeight: 1.4, display: "flex", alignItems: "flex-start", gap: 6 }}>
+                  <Lightbulb size={14} className="flex-shrink-0 mt-0.5" />
+                  <span>O Super Admin pode definir uma nova senha direta aqui para entregar ao usuário caso ele tenha esquecido o acesso. Deixe em branco para manter a senha atual.</span>
                 </p>
               </div>
 
@@ -1688,9 +1727,13 @@ CREATE TRIGGER on_auth_user_created
                     fontWeight: 800,
                     cursor: "pointer",
                     boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
                   }}
                 >
-                  {isPending ? "Salvando..." : "✓ Salvar Alterações"}
+                  <Check size={16} />
+                  <span>{isPending ? "Salvando..." : "Salvar Alterações"}</span>
                 </button>
               </div>
             </form>

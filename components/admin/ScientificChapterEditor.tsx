@@ -136,7 +136,7 @@ export default function ScientificChapterEditor({
     const template = `## 1. Introdução & Contexto Clínico
 A abordagem cirúrgica contemporânea das patologias vertebrais exige profundo entendimento biomecânico e análise criteriosa dos parâmetros espinopélvicos.
 
-> 📌 **PONTO CHAVE:** A restauração do equilíbrio sagital global está diretamente associada à melhora dos escores de qualidade de vida (SRS-22, ODI) e à redução de complicações mecânicas.
+> **PONTO CHAVE:** A restauração do equilíbrio sagital global está diretamente associada à melhora dos escores de qualidade de vida (SRS-22, ODI) e à redução de complicações mecânicas.
 
 ## 2. Anatomia Cirúrgica e Considerações Biomecânicas
 A correlação anatômica tridimensional entre a incidência pélvica (PI) e a lordose lombar (LL) rege o alinhamento fisiológico espinhal.
@@ -159,7 +159,7 @@ A correlação anatômica tridimensional entre a incidência pélvica (PI) e a l
 2. Proteção de proeminências ósseas e liberação da pressão abdominal para reduzir o sangramento venoso peridural.
 3. Incisão mediana longitudinal e dissecação subperiosteal minuciosa da musculatura paravertebral.
 
-> ⚠️ **ALERTA CIRÚRGICO:** Manter a hemostasia rigorosa durante a exposição das lâminas e articulares facetárias para prevenir sangramento da veia epidural.
+> **ALERTA CIRÚRGICO:** Manter a hemostasia rigorosa durante a exposição das lâminas e articulares facetárias para prevenir sangramento da veia epidural.
 
 ### 4.2 Descompressão e Instrumentação Pedicular
 - Inserção de parafusos pediculares sob navegação ou radioscopia biplanar intraoperatória.
@@ -186,7 +186,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
   };
 
   const handleInsertAlert = () => {
-    const snippet = `\n> ⚠️ **ALERTA CIRÚRGICO:** Atenção crítica às raízes nervosas emergentes e plexo venoso peridural durante a manipulação foraminocanalicular.\n`;
+    const snippet = `\n> **ALERTA CIRÚRGICO:** Atenção crítica às raízes nervosas emergentes e plexo venoso peridural durante a manipulação foraminocanalicular.\n`;
     insertMarkdown(snippet);
   };
 
@@ -233,10 +233,10 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
       .replace(/>/g, "&gt;");
 
     // Blockquotes & Callouts
-    html = html.replace(/^&gt; ⚠️ \*\*ALERTA CIRÚRGICO:\*\*(.*)$/gim, '<div class="preview-alert alert-warning"><span class="alert-icon">⚠️</span><div><strong>ALERTA CIRÚRGICO:</strong>$1</div></div>');
-    html = html.replace(/^&gt; 💡 \*\*DICA PRÁTICA:\*\*(.*)$/gim, '<div class="preview-alert alert-tip"><span class="alert-icon">💡</span><div><strong>DICA PRÁTICA:</strong>$1</div></div>');
-    html = html.replace(/^&gt; 📌 \*\*PONTO CHAVE:\*\*(.*)$/gim, '<div class="preview-alert alert-info"><span class="alert-icon">📌</span><div><strong>PONTO CHAVE:</strong>$1</div></div>');
-    html = html.replace(/^&gt; 🔬 \*\*NÍVEL DE EVIDÊNCIA:\*\*(.*)$/gim, '<div class="preview-alert alert-evidence"><span class="alert-icon">🔬</span><div><strong>NÍVEL DE EVIDÊNCIA:</strong>$1</div></div>');
+    html = html.replace(/^&gt; (?:⚠️ )?\*\*ALERTA CIRÚRGICO:\*\*(.*)$/gim, '<div class="preview-alert alert-warning"><div><strong>ALERTA CIRÚRGICO:</strong>$1</div></div>');
+    html = html.replace(/^&gt; (?:💡 )?\*\*DICA PRÁTICA:\*\*(.*)$/gim, '<div class="preview-alert alert-tip"><div><strong>DICA PRÁTICA:</strong>$1</div></div>');
+    html = html.replace(/^&gt; (?:📌 )?\*\*PONTO CHAVE:\*\*(.*)$/gim, '<div class="preview-alert alert-info"><div><strong>PONTO CHAVE:</strong>$1</div></div>');
+    html = html.replace(/^&gt; (?:🔬 )?\*\*NÍVEL DE EVIDÊNCIA:\*\*(.*)$/gim, '<div class="preview-alert alert-evidence"><div><strong>NÍVEL DE EVIDÊNCIA:</strong>$1</div></div>');
     html = html.replace(/^&gt; (.*)$/gim, '<blockquote class="preview-blockquote">$1</blockquote>');
 
     // Headings
@@ -857,7 +857,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               </button>
               <button
                 type="button"
-                onClick={() => insertMarkdown("\n> 💡 **DICA PRÁTICA:** ", "\n", "Orientação clínica cirúrgica...")}
+                onClick={() => insertMarkdown("\n> **DICA PRÁTICA:** ", "\n", "Orientação clínica cirúrgica...")}
                 style={{ ...toolbarBtnStyle, color: "#fef08a", display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Dica Prática"
               >
@@ -866,7 +866,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               </button>
               <button
                 type="button"
-                onClick={() => insertMarkdown("\n> 📌 **PONTO CHAVE:** ", "\n", "Conceito fundamental...")}
+                onClick={() => insertMarkdown("\n> **PONTO CHAVE:** ", "\n", "Conceito fundamental...")}
                 style={{ ...toolbarBtnStyle, color: "#93c5fd", display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Ponto Chave"
               >
