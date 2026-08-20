@@ -18,10 +18,29 @@ import {
 import ScientificChapterEditor from "@/components/admin/ScientificChapterEditor";
 import UsersManagementTab from "@/components/admin/UsersManagementTab";
 import DashboardTab from "@/components/admin/DashboardTab";
-
-// ============================================================================
-// SVG ICONS (Medical & Modern UI)
-// ============================================================================
+import {
+  BookOpen,
+  Users,
+  Shield,
+  ShieldCheck,
+  Crown,
+  Settings,
+  Globe,
+  FileText,
+  ShoppingCart,
+  Eye,
+  Edit3,
+  Trash2,
+  Plus,
+  Sparkles,
+  ExternalLink,
+  LogOut,
+  Check,
+  X,
+  Search,
+  Lock,
+  Layers,
+} from "lucide-react";
 
 function IconBook({ className = "w-5 h-5", size = 20 }: { className?: string; size?: number }) {
   return (
@@ -495,7 +514,7 @@ export default function AdminPainelPage() {
 
     localStorage.setItem("sbc_custom_user_profile", JSON.stringify(profileData));
 
-    // Update local admin session
+    
     const localSess = localStorage.getItem("sbc_admin_session");
     if (localSess) {
       try {
@@ -507,7 +526,7 @@ export default function AdminPainelPage() {
       } catch (e) {}
     }
 
-    // Update users list in state & local storage
+    
     setUsuarios((prev) => {
       let found = false;
       const updated = prev.map((u) => {
@@ -1101,11 +1120,21 @@ export default function AdminPainelPage() {
               <div style={{ fontSize: 13, fontWeight: 800, color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {currentUserName || "Administrador Geral"}
               </div>
-              <div style={{ fontSize: 10.5, color: "#38bdf8", fontWeight: 700, marginTop: 1 }}>
-                {currentUserRole === "super_admin" ? "👑 Super Admin" : "🛡️ Editor SBC"}
+              <div style={{ fontSize: 10.5, color: "#38bdf8", fontWeight: 700, marginTop: 1, display: "flex", alignItems: "center", gap: 4 }}>
+                {currentUserRole === "super_admin" ? (
+                  <>
+                    <Crown size={12} className="text-amber-400" />
+                    <span>Super Admin</span>
+                  </>
+                ) : (
+                  <>
+                    <Shield size={12} className="text-sky-400" />
+                    <span>Editor SBC</span>
+                  </>
+                )}
               </div>
             </div>
-            <span style={{ fontSize: 12, opacity: 0.6 }}>⚙️</span>
+            <Settings size={14} className="text-slate-400 opacity-70" />
           </div>
         </div>
 
@@ -1136,7 +1165,7 @@ export default function AdminPainelPage() {
                   transition: "all 0.15s ease",
                 }}
               >
-                <IconGrid size={18} />
+                <Layers size={18} />
                 <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
               </button>
             </div>
@@ -1167,7 +1196,7 @@ export default function AdminPainelPage() {
                   transition: "all 0.15s ease",
                 }}
               >
-                <IconBook size={18} />
+                <BookOpen size={18} />
                 <span style={{ flex: 1 }}>Capítulos</span>
                 <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
                   {chapters.length}
@@ -1193,7 +1222,7 @@ export default function AdminPainelPage() {
                   transition: "all 0.15s ease",
                 }}
               >
-                <IconUsers size={18} />
+                <Users size={18} />
                 <span style={{ flex: 1 }}>Autores &amp; Editores</span>
                 <span style={{ fontSize: 11, fontWeight: 800, padding: "1px 6px", borderRadius: 8, background: "rgba(255,255,255,0.15)", color: "#fff" }}>
                   {authors.length}
@@ -1227,7 +1256,7 @@ export default function AdminPainelPage() {
                   transition: "all 0.15s ease",
                 }}
               >
-                <IconShield size={18} />
+                <ShieldCheck size={18} />
                 <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
                 {usuarios.filter((u) => u.status === "pendente").length > 0 && (
                   <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 6px", borderRadius: 10, background: "#ef4444", color: "#fff" }}>
@@ -1259,9 +1288,9 @@ export default function AdminPainelPage() {
                   textDecoration: "none",
                 }}
               >
-                <span>🌐</span>
+                <Globe size={15} />
                 <span style={{ flex: 1 }}>Home New (4K)</span>
-                <IconExternal size={12} />
+                <ExternalLink size={12} />
               </Link>
 
               <Link
@@ -1279,9 +1308,9 @@ export default function AdminPainelPage() {
                   textDecoration: "none",
                 }}
               >
-                <span>📑</span>
+                <FileText size={15} />
                 <span style={{ flex: 1 }}>Índice Interativo</span>
-                <IconExternal size={12} />
+                <ExternalLink size={12} />
               </Link>
 
               <a
@@ -1300,9 +1329,9 @@ export default function AdminPainelPage() {
                   textDecoration: "none",
                 }}
               >
-                <span>🛒</span>
+                <ShoppingCart size={15} />
                 <span style={{ flex: 1 }}>Loja DiLivros Oficial</span>
-                <IconExternal size={12} />
+                <ExternalLink size={12} />
               </a>
             </div>
           </div>
@@ -1327,10 +1356,10 @@ export default function AdminPainelPage() {
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
-              gap: 4,
+              gap: 6,
             }}
           >
-            <IconLogout size={12} />
+            <LogOut size={13} />
             <span>Sair</span>
           </button>
         </div>

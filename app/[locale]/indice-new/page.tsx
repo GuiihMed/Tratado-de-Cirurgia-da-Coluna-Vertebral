@@ -6,6 +6,18 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale, Capitulo } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import {
+  LayoutGrid,
+  List,
+  ChevronDown,
+  ChevronUp,
+  BookOpen,
+  Copy,
+  Check,
+  ArrowRight,
+  ExternalLink,
+  Search,
+} from "lucide-react";
 
 interface IndiceNewProps {
   params: Promise<{ locale: string }>;
@@ -227,7 +239,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <span>📑</span>
+                  <List size={14} />
                   <span>{locale === "en" ? "By Sections" : locale === "es" ? "Por Secciones" : "Por Seções"}</span>
                 </button>
 
@@ -250,7 +262,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <span>⊞</span>
+                  <LayoutGrid size={14} />
                   <span>{locale === "en" ? "Card Grid" : locale === "es" ? "Cuadrícula" : "Grade de Cards"}</span>
                 </button>
 
@@ -273,7 +285,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <span>☰</span>
+                  <List size={14} />
                   <span>{locale === "en" ? "Compact Table" : locale === "es" ? "Tabla Compacta" : "Tabela Compacta"}</span>
                 </button>
               </div>
@@ -284,6 +296,9 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   <button
                     onClick={() => setAllSections(true)}
                     style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
                       padding: "6px 14px",
                       borderRadius: 8,
                       border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -294,11 +309,15 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                       cursor: "pointer",
                     }}
                   >
-                    {locale === "en" ? "Expand All ↓" : locale === "es" ? "Expandir Todos ↓" : "Expandir Todos ↓"}
+                    <span>{locale === "en" ? "Expand All" : locale === "es" ? "Expandir Todos" : "Expandir Todos"}</span>
+                    <ChevronDown size={13} />
                   </button>
                   <button
                     onClick={() => setAllSections(false)}
                     style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
                       padding: "6px 14px",
                       borderRadius: 8,
                       border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -309,7 +328,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                       cursor: "pointer",
                     }}
                   >
-                    {locale === "en" ? "Collapse All ↑" : locale === "es" ? "Colapsar Todos ↑" : "Recolher Todos ↑"}
+                    <span>{locale === "en" ? "Collapse All" : locale === "es" ? "Contraer Todos" : "Recolher Todos"}</span>
+                    <ChevronUp size={13} />
                   </button>
                 </div>
               )}
@@ -579,12 +599,15 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           }}
                         >
                           <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
-                          <span>→</span>
+                          <ArrowRight size={13} />
                         </Link>
                         <button
                           type="button"
                           onClick={() => setActiveModalChapter(cap)}
                           style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 6,
                             padding: "9px 12px",
                             borderRadius: 8,
                             background: "#f8fafc",
@@ -595,13 +618,17 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             cursor: "pointer",
                           }}
                         >
-                          {locale === "en" ? "Abstract 📖" : locale === "es" ? "Resumen 📖" : "Resumo 📖"}
+                          <BookOpen size={13} />
+                          <span>{locale === "en" ? "Abstract" : locale === "es" ? "Resumen" : "Resumo"}</span>
                         </button>
                         <button
                           type="button"
                           onClick={() => copyCitation(cap)}
                           title={locale === "en" ? "Copy citation" : locale === "es" ? "Copiar cita" : "Copiar citação ABNT"}
                           style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
                             padding: "9px 10px",
                             borderRadius: 8,
                             background: "#f8fafc",
@@ -612,7 +639,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             cursor: "pointer",
                           }}
                         >
-                          {copiedChapter === cap.numero ? "✓" : "📋"}
+                          {copiedChapter === cap.numero ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
                         </button>
                       </div>
                     </article>
@@ -701,6 +728,9 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               <Link
                                 href={`/${locale}/capitulo-new/${cap.numero}`}
                                 style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4,
                                   padding: "6px 14px",
                                   borderRadius: 6,
                                   background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
@@ -711,7 +741,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                   boxShadow: "0 2px 8px rgba(245, 34, 56, 0.25)",
                                 }}
                               >
-                                {locale === "en" ? "Open →" : locale === "es" ? "Abrir →" : "Abrir →"}
+                                <span>{locale === "en" ? "Open" : locale === "es" ? "Abrir" : "Abrir"}</span>
+                                <ArrowRight size={12} />
                               </Link>
                               <button
                                 type="button"
@@ -733,6 +764,9 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                 type="button"
                                 onClick={() => copyCitation(cap)}
                                 style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
                                   padding: "6px 8px",
                                   borderRadius: 6,
                                   background: "#f1f5f9",
@@ -743,7 +777,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                 }}
                                 title={locale === "en" ? "Copy citation" : locale === "es" ? "Copiar cita" : "Copiar citação"}
                               >
-                                {copiedChapter === cap.numero ? "✓" : "📋"}
+                                {copiedChapter === cap.numero ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
                               </button>
                             </div>
                           </td>
@@ -758,32 +792,35 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           </div>
         </section>
 
-        {/* ================= CHAPTER DETAIL MODAL ================= */}
+        {/* MODAL: RESUMO RÁPIDO DO CAPÍTULO */}
         {activeModalChapter && (
           <div
             style={{
               position: "fixed",
-              inset: 0,
-              zIndex: 999,
-              background: "rgba(0, 10, 25, 0.75)",
-              backdropFilter: "blur(12px)",
-              display: "grid",
-              placeItems: "center",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0, 16, 38, 0.8)",
+              backdropFilter: "blur(8px)",
+              zIndex: 9999,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               padding: 20,
             }}
             onClick={() => setActiveModalChapter(null)}
           >
             <div
-              className="glass-card"
               style={{
-                maxWidth: 600,
+                background: "linear-gradient(135deg, #001a3d 0%, #000c1e 100%)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                borderRadius: 20,
+                padding: "36px",
+                maxWidth: 620,
                 width: "100%",
-                padding: 36,
-                background: "#061833",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "#fff",
-                position: "relative",
                 boxShadow: "0 25px 60px rgba(0, 0, 0, 0.6)",
+                position: "relative",
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -791,17 +828,14 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 onClick={() => setActiveModalChapter(null)}
                 style={{
                   position: "absolute",
-                  top: 18,
-                  right: 18,
-                  background: "rgba(255, 255, 255, 0.1)",
+                  top: 20,
+                  right: 20,
+                  background: "transparent",
                   border: "none",
-                  borderRadius: "50%",
-                  width: 34,
-                  height: 34,
+                  color: "#94a3b8",
+                  fontSize: 20,
                   cursor: "pointer",
-                  fontSize: 15,
                   fontWeight: 700,
-                  color: "#cbd5e1",
                 }}
               >
                 ✕
@@ -810,12 +844,13 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                 <span
                   style={{
-                    background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
+                    background: "#f52238",
                     color: "#fff",
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: 800,
-                    padding: "4px 10px",
-                    borderRadius: 6,
+                    padding: "3px 8px",
+                    borderRadius: 4,
+                    textTransform: "uppercase",
                   }}
                 >
                   {locale === "en" ? `Chapter ${activeModalChapter.numero}` : locale === "es" ? `Capítulo ${activeModalChapter.numero}` : `Capítulo ${activeModalChapter.numero}`}
@@ -831,13 +866,15 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
 
               <div style={{ padding: 16, borderRadius: 12, background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)", marginBottom: 20 }}>
                 <div style={{ fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", color: "#8da9cc", marginBottom: 8 }}>
-                  {locale === "en" ? "Titles in other languages:" : locale === "es" ? "Títulos en otros idiomas:" : "Títulos em outros idiomas:"}
+                  {locale === "en" ? "Titles in other languages:" : locale === "es" ? "Títulos en outros idiomas:" : "Títulos em outros idiomas:"}
                 </div>
-                <div style={{ fontSize: 13.5, color: "#e2effe", marginBottom: 6 }}>
-                  🇺🇸 <strong>EN:</strong> {activeModalChapter.titulo_en || (locale === "en" ? "Available in printed edition" : "Disponível na edição impressa")}
+                <div style={{ fontSize: 13.5, color: "#e2effe", marginBottom: 6, display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 10, fontWeight: 900, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>EN</span>
+                  <span><strong>EN:</strong> {activeModalChapter.titulo_en || (locale === "en" ? "Available in printed edition" : "Disponível na edição impressa")}</span>
                 </div>
-                <div style={{ fontSize: 13.5, color: "#e2effe" }}>
-                  🇪🇸 <strong>ES:</strong> {activeModalChapter.titulo_es || (locale === "es" ? "Disponible en la edición impresa" : "Disponível na edição impressa")}
+                <div style={{ fontSize: 13.5, color: "#e2effe", display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 10, fontWeight: 900, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>ES</span>
+                  <span><strong>ES:</strong> {activeModalChapter.titulo_es || (locale === "es" ? "Disponible en la edición impresa" : "Disponível na edição impressa")}</span>
                 </div>
               </div>
 
@@ -853,18 +890,27 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                 <Link
                   href={`/${locale}/capitulo-new/${activeModalChapter.numero}`}
                   className="modern-btn-glow"
-                  style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", justifyContent: "center" }}
+                  style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                 >
-                  {locale === "en" ? "Read Full Chapter 📖" : locale === "es" ? "Leer Capítulo Completo 📖" : "Ler Capítulo Completo 📖"}
+                  <BookOpen size={16} />
+                  <span>{locale === "en" ? "Read Full Chapter" : locale === "es" ? "Leer Capítulo Completo" : "Ler Capítulo Completo"}</span>
                 </Link>
                 <button
                   onClick={() => copyCitation(activeModalChapter)}
                   className="modern-btn-glass"
-                  style={{ height: 44, fontSize: 13, padding: "0 16px" }}
+                  style={{ height: 44, fontSize: 13, padding: "0 16px", display: "inline-flex", alignItems: "center", gap: 6 }}
                 >
-                  {copiedChapter === activeModalChapter.numero
-                    ? (locale === "en" ? "Citation Copied! ✓" : locale === "es" ? "¡Cita Copiada! ✓" : "Citação Copiada! ✓")
-                    : (locale === "en" ? "Copy Citation" : locale === "es" ? "Copiar Cita" : "Copiar Citação")}
+                  {copiedChapter === activeModalChapter.numero ? (
+                    <>
+                      <Check size={14} className="text-emerald-400" />
+                      <span>{locale === "en" ? "Citation Copied!" : locale === "es" ? "¡Cita Copiada!" : "Citação Copiada!"}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} />
+                      <span>{locale === "en" ? "Copy Citation" : locale === "es" ? "Copiar Cita" : "Copiar Citação"}</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>

@@ -6,6 +6,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { getApresentacaoData } from "@/lib/data/institutional-data";
+import { BookOpen, ShoppingCart, FileText, Layers, User, ShieldCheck } from "lucide-react";
 
 interface ApresentacaoNewProps {
   params: Promise<{ locale: string }>;
@@ -96,7 +97,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
 
                 {/* Print Notice Glass Card */}
                 <div className="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-slate-900/90 to-blue-950/60 border border-slate-700/60 backdrop-blur-md max-w-2xl shadow-xl">
-                  <span className="text-2xl text-rose-400">📖</span>
+                  <BookOpen className="w-6 h-6 text-rose-400 flex-shrink-0" />
                   <span className="text-sm text-slate-300">
                     {APRESENTACAO_DATA.avisoImpresso}
                   </span>
@@ -111,7 +112,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 transition-all hover:scale-[1.02]"
                   >
                     <span>Adquirir Edição Impressa</span>
-                    <span>🛒</span>
+                    <ShoppingCart className="w-4 h-4" />
                   </a>
 
                   <Link
@@ -119,7 +120,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
                   >
                     <span>Ver Prefácio New</span>
-                    <span>📖</span>
+                    <FileText className="w-4 h-4" />
                   </Link>
 
                   <Link
@@ -127,7 +128,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
                   >
                     <span>Explorar Índice</span>
-                    <span>📑</span>
+                    <Layers className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -245,7 +246,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
               {/* About the Work Card */}
               <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800/70 space-y-3">
                 <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <span>📖</span>
+                  <BookOpen className="w-4 h-4" />
                   <span>Sobre a Obra & Plataforma Digital</span>
                 </div>
                 <p className="text-sm text-slate-400 leading-relaxed">
@@ -259,7 +260,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
               {/* Author Card */}
               <div className="p-6 rounded-3xl bg-slate-900/70 border border-slate-800/80 backdrop-blur-xl shadow-xl space-y-5">
                 <h3 className="text-base font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
-                  <span>👤</span>
+                  <User className="w-4 h-4 text-rose-400" />
                   <span>Autor da Apresentação</span>
                 </h3>
 
@@ -294,15 +295,15 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 </h4>
                 <div className="space-y-2 text-slate-300 text-xs font-semibold">
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📄</span>
+                    <FileText className="w-4 h-4 text-blue-400" />
                     <span>Texto Institucional Oficial</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📖</span>
+                    <BookOpen className="w-4 h-4 text-rose-400" />
                     <span>Apresentação SBC</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📚</span>
+                    <Layers className="w-4 h-4 text-emerald-400" />
                     <span>Guia de Apoio à Leitura</span>
                   </div>
                 </div>
@@ -311,7 +312,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
               {/* Warning Notice Card */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-rose-950/40 to-slate-900/80 border border-rose-900/40 space-y-3">
                 <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <span>🛡️</span>
+                  <ShieldCheck className="w-4 h-4" />
                   <span>Aviso Importante</span>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">

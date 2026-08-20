@@ -6,6 +6,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { getPrefacioData, EDITORES_TRATADO } from "@/lib/data/institutional-data";
+import { BookOpen, ShoppingCart, FileText, Layers, Users, ShieldCheck, ArrowRight, User } from "lucide-react";
 
 interface PrefacioNewProps {
   params: Promise<{ locale: string }>;
@@ -91,7 +92,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
 
                 {/* Print Notice Glass Card */}
                 <div className="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-slate-900/90 to-blue-950/60 border border-slate-700/60 backdrop-blur-md max-w-2xl shadow-xl">
-                  <span className="text-2xl text-rose-400">📖</span>
+                  <BookOpen className="w-6 h-6 text-rose-400 flex-shrink-0" />
                   <span className="text-sm text-slate-300">
                     {PREFACIO_DATA.avisoImpresso}
                   </span>
@@ -106,7 +107,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                     className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 transition-all hover:scale-[1.02]"
                   >
                     <span>Adquirir Edição Impressa</span>
-                    <span>🛒</span>
+                    <ShoppingCart className="w-4 h-4" />
                   </a>
 
                   <Link
@@ -114,7 +115,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                     className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
                   >
                     <span>Ver Apresentação New</span>
-                    <span>📄</span>
+                    <FileText className="w-4 h-4" />
                   </Link>
 
                   <Link
@@ -122,7 +123,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                     className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
                   >
                     <span>Explorar Índice</span>
-                    <span>📑</span>
+                    <Layers className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -240,7 +241,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
               {/* About the Work Card */}
               <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800/70 space-y-3">
                 <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <span>📖</span>
+                  <BookOpen className="w-4 h-4" />
                   <span>Sobre a Obra & Plataforma Digital</span>
                 </div>
                 <p className="text-sm text-slate-400 leading-relaxed">
@@ -254,7 +255,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
               {/* Editors Card */}
               <div className="p-6 rounded-3xl bg-slate-900/70 border border-slate-800/80 backdrop-blur-xl shadow-xl space-y-5">
                 <h3 className="text-base font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
-                  <span>👥</span>
+                  <Users className="w-4 h-4 text-rose-400" />
                   <span>Autores do Prefácio (Editores)</span>
                 </h3>
 
@@ -283,9 +284,10 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
 
                 <Link
                   href={`/${locale}/autores-new`}
-                  className="block text-center py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-xs font-bold text-slate-200 transition-colors border border-slate-700"
+                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-xs font-bold text-slate-200 transition-colors border border-slate-700"
                 >
-                  Ver Todos os Autores da Obra →
+                  <span>Ver Todos os Autores da Obra</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
@@ -296,15 +298,15 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                 </h4>
                 <div className="space-y-2 text-slate-300 text-xs font-semibold">
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📄</span>
+                    <FileText className="w-4 h-4 text-blue-400" />
                     <span>Texto Institucional Oficial</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📖</span>
+                    <BookOpen className="w-4 h-4 text-rose-400" />
                     <span>Prefácio dos Editores</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <span>📚</span>
+                    <Layers className="w-4 h-4 text-emerald-400" />
                     <span>Guia de Apoio à Leitura</span>
                   </div>
                 </div>
@@ -313,7 +315,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
               {/* Warning Notice Card */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-rose-950/40 to-slate-900/80 border border-rose-900/40 space-y-3">
                 <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <span>🛡️</span>
+                  <ShieldCheck className="w-4 h-4" />
                   <span>Aviso Importante</span>
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed">

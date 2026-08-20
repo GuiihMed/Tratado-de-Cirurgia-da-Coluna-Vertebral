@@ -5,6 +5,25 @@ import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import { getCapituloByNumero } from "@/lib/supabase/server";
+import {
+  BookOpen,
+  ShoppingCart,
+  ArrowDown,
+  ArrowRight,
+  ArrowLeft,
+  ExternalLink,
+  FileText,
+  Tag,
+  Award,
+  Check,
+  Building2,
+  Users,
+  Globe,
+  Stethoscope,
+  Compass,
+  Play,
+  ShieldCheck,
+} from "lucide-react";
 
 interface CapituloNewPageProps {
   params: Promise<{
@@ -331,11 +350,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     display: "grid",
                     placeItems: "center",
                     color: "#ff808f",
-                    fontSize: 18,
                     flexShrink: 0,
                   }}
                 >
-                  📖
+                  <BookOpen size={20} />
                 </div>
                 <span style={{ fontSize: 13.5, color: "#fce7f3", fontWeight: 500 }}>
                   {locale === "en"
@@ -368,7 +386,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <span>{locale === "en" ? "Acquire Printed Treatise" : locale === "es" ? "Adquirir Tratado Impreso" : "Adquirir Tratado Impresso"}</span>
-                  <span>🛒</span>
+                  <ShoppingCart size={16} />
                 </a>
 
                 <a
@@ -390,7 +408,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <span>{locale === "en" ? "Explore Summary" : locale === "es" ? "Explorar Resumen" : "Explorar Resumo"}</span>
-                  <span>↓</span>
+                  <ArrowDown size={14} />
                 </a>
 
                 <a
@@ -412,7 +430,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <span>{locale === "en" ? `References (${referencesList.length})` : locale === "es" ? `Referencias (${referencesList.length})` : `Referências (${referencesList.length})`}</span>
-                  <span>↗</span>
+                  <ExternalLink size={14} />
                 </a>
               </div>
             </div>
@@ -458,8 +476,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
           <div className="shell" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 40, alignItems: "center" }}>
             {/* MAIN COLUMN */}
             <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-              {/* CARD 1: RESUMO CIENTÍFICO ESTRUTURADO (HIGH CONTRAST & BEAUTIFUL) */}
-              <article
+                       <article
                 id="resumo"
                 style={{
                   background: "#ffffff",
@@ -479,10 +496,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       background: "rgba(0, 26, 61, 0.06)",
                       display: "grid",
                       placeItems: "center",
-                      fontSize: 22,
+                      color: "#001a3d",
                     }}
                   >
-                    📑
+                    <FileText size={22} />
                   </div>
                   <div>
                     <h2 style={{ fontSize: 22, fontWeight: 900, color: "#001a3d", margin: "0 0 2px" }}>
@@ -601,7 +618,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <span style={{ fontSize: 20 }}>🏷️</span>
+                  <Tag size={18} className="text-rose-600" />
                   <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "DeCS / MeSH Scientific Descriptors" : locale === "es" ? "Descriptores Científicos DeCS / MeSH" : "Descritores Científicos DeCS / MeSH"}
                   </h3>
@@ -639,7 +656,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <span style={{ fontSize: 22 }}>⭐</span>
+                  <Award size={20} className="text-amber-400" />
                   <h3 style={{ fontSize: 20, fontWeight: 900, color: "#fff", margin: 0 }}>
                     {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
                   </h3>
@@ -693,11 +710,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       color: "#6b21a8",
                       display: "grid",
                       placeItems: "center",
-                      fontSize: 22,
                       marginBottom: 14,
                     }}
                   >
-                    🌐
+                    <Globe size={22} />
                   </div>
                   <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "Conceptual Foundation" : locale === "es" ? "Base Conceptual" : "Base Conceitual"}
@@ -729,11 +745,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       color: "#b91c1c",
                       display: "grid",
                       placeItems: "center",
-                      fontSize: 22,
                       marginBottom: 14,
                     }}
                   >
-                    🩺
+                    <Stethoscope size={22} />
                   </div>
                   <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación Clínica" : "Aplicação Clínica"}
@@ -765,11 +780,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       color: "#0369a1",
                       display: "grid",
                       placeItems: "center",
-                      fontSize: 22,
                       marginBottom: 14,
                     }}
                   >
-                    📐
+                    <Compass size={22} />
                   </div>
                   <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "3D Planning" : locale === "es" ? "Planificación 3D" : "Planejamento 3D"}
@@ -847,9 +861,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             fontSize: 12,
                             fontWeight: 700,
                             textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 4,
                           }}
                         >
-                          DOI ↗
+                          <span>DOI</span>
+                          <ExternalLink size={12} />
                         </a>
                         <a
                           href={ref.pmid}
@@ -864,9 +882,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             fontSize: 12,
                             fontWeight: 700,
                             textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 4,
                           }}
                         >
-                          PubMed ↗
+                          <span>PubMed</span>
+                          <ExternalLink size={12} />
                         </a>
                       </div>
                     </div>
@@ -924,7 +946,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     }}
                   >
                     <span>{locale === "en" ? "Watch Full Episode" : locale === "es" ? "Ver Episodio Completo" : "Assistir Episódio Completo"}</span>
-                    <span>▶</span>
+                    <Play size={14} className="fill-current" />
                   </Link>
                 </div>
 
@@ -959,11 +981,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             fontSize: 12.5,
                             fontWeight: 700,
                             display: "flex",
-                            justifyContent: "space-between",
                             alignItems: "center",
+                            gap: 6,
                           }}
                         >
-                          <span>← {locale === "en" ? `Ch. ${prevCap.numero}: ${prevCap.titulo_en || prevCap.titulo_pt}` : locale === "es" ? `Cap. ${prevCap.numero}: ${prevCap.titulo_es || prevCap.titulo_pt}` : `Cap. ${prevCap.numero}: ${prevCap.titulo_pt}`}</span>
+                          <ArrowLeft size={13} />
+                          <span>{locale === "en" ? `Ch. ${prevCap.numero}: ${prevCap.titulo_en || prevCap.titulo_pt}` : locale === "es" ? `Cap. ${prevCap.numero}: ${prevCap.titulo_es || prevCap.titulo_pt}` : `Cap. ${prevCap.numero}: ${prevCap.titulo_pt}`}</span>
                         </Link>
                       )}
 
@@ -982,9 +1005,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
+                            gap: 6,
                           }}
                         >
-                          <span>{locale === "en" ? `Ch. ${nextCap.numero}: ${nextCap.titulo_en || nextCap.titulo_pt}` : locale === "es" ? `Cap. ${nextCap.numero}: ${nextCap.titulo_es || nextCap.titulo_pt}` : `Cap. ${nextCap.numero}: ${nextCap.titulo_pt}`} →</span>
+                          <span>{locale === "en" ? `Ch. ${nextCap.numero}: ${nextCap.titulo_en || nextCap.titulo_pt}` : locale === "es" ? `Cap. ${nextCap.numero}: ${nextCap.titulo_es || nextCap.titulo_pt}` : `Cap. ${nextCap.numero}: ${nextCap.titulo_pt}`}</span>
+                          <ArrowRight size={13} />
                         </Link>
                       )}
                     </div>
@@ -999,10 +1024,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       color: "#f52238",
                       textDecoration: "none",
                       textAlign: "center",
-                      display: "block",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 6,
                     }}
                   >
-                    {locale === "en" ? "View Complete 109 Chapters Index ↗" : locale === "es" ? "Ver Índice Completo de 109 Capítulos ↗" : "Ver Índice Completo de 109 Capítulos ↗"}
+                    <span>{locale === "en" ? "View Complete 109 Chapters Index" : locale === "es" ? "Ver Índice Completo de 109 Capítulos" : "Ver Índice Completo de 109 Capítulos"}</span>
+                    <ExternalLink size={13} />
                   </Link>
                 </div>
               </div>
@@ -1021,7 +1050,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
-                  <span style={{ fontSize: 20 }}>👨‍⚕️</span>
+                  <Users size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Chapter Authors" : locale === "es" ? "Autores del Capítulo" : "Autores do Capítulo"}
                   </h3>
@@ -1085,7 +1114,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: 20 }}>🌐</span>
+                  <Globe size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Available Languages" : locale === "es" ? "Idiomas Disponibles" : "Idiomas Disponíveis"}
                   </h3>
@@ -1114,7 +1143,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       boxShadow: locale === "pt" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                     }}
                   >
-                    PT 🇧🇷
+                    PT
                   </Link>
                   <Link
                     href={`/es/capitulo-new/${num}`}
@@ -1130,7 +1159,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       boxShadow: locale === "es" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                     }}
                   >
-                    ES 🇪🇸
+                    ES
                   </Link>
                   <Link
                     href={`/en/capitulo-new/${num}`}
@@ -1146,7 +1175,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       boxShadow: locale === "en" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                     }}
                   >
-                    EN 🇺🇸
+                    EN
                   </Link>
                 </div>
               </div>
@@ -1162,7 +1191,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                  <span style={{ fontSize: 20 }}>🛡️</span>
+                  <ShieldCheck size={18} className="text-blue-400" />
                   <h3 style={{ fontSize: 16, fontWeight: 800, color: "#fff", margin: 0 }}>
                     {locale === "en" ? "SBC Institutional Notice" : locale === "es" ? "Aviso Institucional SBC" : "Aviso Institucional SBC"}
                   </h3>
@@ -1188,7 +1217,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: "block",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 6,
+                    width: "100%",
+                    boxSizing: "border-box",
                     textAlign: "center",
                     padding: "11px",
                     borderRadius: 10,
@@ -1200,7 +1234,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     textDecoration: "none",
                   }}
                 >
-                  {locale === "en" ? "Explore Official Printed Edition →" : locale === "es" ? "Conocer Edición Impresa Oficial →" : "Conhecer Edição Impressa Oficial →"}
+                  <span>{locale === "en" ? "Explore Official Printed Edition" : locale === "es" ? "Conocer Edición Impresa Oficial" : "Conhecer Edição Impressa Oficial"}</span>
+                  <ArrowRight size={13} />
                 </a>
               </div>
             </aside>

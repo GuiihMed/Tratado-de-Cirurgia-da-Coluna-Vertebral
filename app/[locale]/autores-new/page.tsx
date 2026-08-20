@@ -6,6 +6,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import { Users, Award, ArrowDown, ArrowRight, Search, BookOpen, ExternalLink } from "lucide-react";
 
 interface AutoresNewProps {
   params: Promise<{ locale: string }>;
@@ -237,12 +238,13 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   backdropFilter: "blur(8px)",
                 }}
               >
+                <Users size={14} />
                 <span>
                   {locale === "en"
-                    ? "👥 SCIENTIFIC EDITORIAL BOARD"
+                    ? "SCIENTIFIC EDITORIAL BOARD"
                     : locale === "es"
-                    ? "👥 CUERPO EDITORIAL CIENTÍFICO"
-                    : "👥 CORPO EDITORIAL CIENTÍFICO"}
+                    ? "CUERPO EDITORIAL CIENTÍFICO"
+                    : "CORPO EDITORIAL CIENTÍFICO"}
                 </span>
               </div>
 
@@ -294,7 +296,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   }}
                 >
                   <span>{locale === "en" ? "Explore Authors" : locale === "es" ? "Explorar Autores" : "Explorar Autores"}</span>
-                  <span>↓</span>
+                  <ArrowDown size={14} />
                 </a>
                 <Link
                   href={`/${locale}/indice-new`}
@@ -311,7 +313,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   }}
                 >
                   <span>{locale === "en" ? "109 Chapters Index" : locale === "es" ? "Índice de 109 Capítulos" : "Índice dos 109 Capítulos"}</span>
-                  <span>→</span>
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
@@ -361,7 +363,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                       boxSizing: "border-box",
                     }}
                   />
-                  <span style={{ position: "absolute", left: 14, top: 12, fontSize: 16, color: "#64748b" }}>🔍</span>
+                  <Search size={16} style={{ position: "absolute", left: 14, top: 14, color: "#64748b" }} />
                 </div>
 
                 <div style={{ fontSize: 13.5, color: "#64748b", fontWeight: 600 }}>
@@ -506,9 +508,13 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                           fontWeight: 700,
                           color: "#be123c",
                           marginBottom: 16,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 6,
                         }}
                       >
-                        ⭐ {author.highlight}
+                        <Award size={15} />
+                        <span>{author.highlight}</span>
                       </div>
 
                       {/* Bio */}
@@ -544,9 +550,10 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                         </span>
                         <Link
                           href={`/${locale}/autor-new/${author.id}`}
-                          style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", textDecoration: "none" }}
+                          style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}
                         >
-                          {locale === "en" ? "View Full Profile →" : locale === "es" ? "Ver Perfil Completo →" : "Ver Perfil Completo →"}
+                          <span>{locale === "en" ? "View Full Profile" : locale === "es" ? "Ver Perfil Completo" : "Ver Perfil Completo"}</span>
+                          <ArrowRight size={13} />
                         </Link>
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -570,7 +577,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                             }}
                           >
                             <span>{locale === "en" ? `Ch. ${cap.num}` : `Cap. ${cap.num}`} - {cap.titulo.length > 28 ? cap.titulo.slice(0, 28) + "..." : cap.titulo}</span>
-                            <span style={{ color: "#f52238", fontSize: 12 }}>→</span>
+                            <ArrowRight size={13} className="text-rose-600" />
                           </Link>
                         ))}
                       </div>

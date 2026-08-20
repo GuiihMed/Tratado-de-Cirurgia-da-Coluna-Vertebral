@@ -3,6 +3,21 @@
 import { Capitulo, AutorEditor, PerfilUsuario } from "@/lib/types";
 import { SECOES } from "@/lib/data/sections-and-chapters";
 import Link from "next/link";
+import {
+  BookOpen,
+  Layers,
+  Users,
+  ShieldCheck,
+  Globe,
+  ExternalLink,
+  CheckCircle2,
+  Plus,
+  UserPlus,
+  ShoppingCart,
+  Zap,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 
 interface DashboardTabProps {
   chapters: Capitulo[];
@@ -59,38 +74,35 @@ export default function DashboardTab({
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
       {/* ========================================================================= */}
-      {/* TOP WELCOME BANNER */}
+      {/* WELCOME HERO BANNER */}
       {/* ========================================================================= */}
       <div
         style={{
-          background: "linear-gradient(135deg, #001f4d 0%, #00122b 60%, #000917 100%)",
+          background: "linear-gradient(135deg, #001a3d 0%, #000c1e 50%, #00040a 100%)",
           borderRadius: 20,
-          padding: "32px 36px",
+          padding: "36px 32px",
           color: "#fff",
           position: "relative",
           overflow: "hidden",
-          border: "1px solid rgba(255, 255, 255, 0.12)",
-          boxShadow: "0 12px 36px rgba(0, 18, 43, 0.25)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          boxShadow: "0 10px 30px rgba(0, 15, 40, 0.2)",
         }}
       >
         <div
           style={{
             position: "absolute",
-            right: "-20px",
-            top: "-20px",
-            width: "320px",
-            height: "100%",
-            backgroundImage: "url('/assets/hero-spine.png')",
-            backgroundPosition: "center right",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            opacity: 0.2,
+            right: -20,
+            top: -20,
+            width: 320,
+            height: 320,
+            background: "radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, rgba(0,0,0,0) 70%)",
+            filter: "blur(40px)",
             pointerEvents: "none",
           }}
         />
 
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 820 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14, flexWrap: "wrap" }}>
             <span
               style={{
                 display: "inline-flex",
@@ -107,7 +119,7 @@ export default function DashboardTab({
                 letterSpacing: "0.06em",
               }}
             >
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f43f5e" }} />
+              <Sparkles size={12} />
               Painel de Controle Editorial
             </span>
           </div>
@@ -116,11 +128,11 @@ export default function DashboardTab({
             Tratado de Cirurgia da Coluna Vertebral
           </h1>
 
-          <p style={{ fontSize: 15, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 24px" }}>
-            Gerenciamento centralizado de conteúdos clínicos, 10 seções temáticas, 109 capítulos completos com indexação DeCS/MeSH, corpo de autores e controle de acessos da Sociedade Brasileira de Coluna (SBC).
+          <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#94a3b8", margin: "0 0 24px" }}>
+            Ambiente executivo para curadoria científica, gestão dos 109 capítulos, revisão de autores e controle de acessos da Sociedade Brasileira de Coluna.
           </p>
 
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
             <button
               onClick={() => onNavigateToTab("capitulos")}
               style={{
@@ -139,7 +151,8 @@ export default function DashboardTab({
                 transition: "all 0.2s ease",
               }}
             >
-              <span>📚 Gerenciar Capítulos ({totalChapters})</span>
+              <BookOpen size={16} />
+              <span>Gerenciar Capítulos ({totalChapters})</span>
             </button>
 
             <button
@@ -159,7 +172,8 @@ export default function DashboardTab({
                 transition: "all 0.2s ease",
               }}
             >
-              <span>👥 Usuários ({usuarios.length})</span>
+              <Users size={16} />
+              <span>Usuários ({usuarios.length})</span>
               {pendingUsers > 0 && (
                 <span
                   style={{
@@ -194,8 +208,9 @@ export default function DashboardTab({
                 transition: "all 0.2s ease",
               }}
             >
-              <span>🌐 Visualizar Portal 4K</span>
-              <span>↗</span>
+              <Globe size={16} />
+              <span>Visualizar Portal 4K</span>
+              <ExternalLink size={13} />
             </Link>
           </div>
         </div>
@@ -237,14 +252,14 @@ export default function DashboardTab({
                 color: "#1d4ed8",
                 display: "grid",
                 placeItems: "center",
-                fontSize: 20,
               }}
             >
-              📖
+              <BookOpen size={22} />
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#059669", fontWeight: 600 }}>
-            <span>✓ 100% da Obra Impressa Catalogada</span>
+            <CheckCircle2 size={15} />
+            <span>100% da Obra Impressa Catalogada</span>
           </div>
         </div>
 
@@ -280,10 +295,9 @@ export default function DashboardTab({
                 color: "#be185d",
                 display: "grid",
                 placeItems: "center",
-                fontSize: 20,
               }}
             >
-              📑
+              <Layers size={22} />
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#64748b", fontWeight: 600 }}>
@@ -323,10 +337,9 @@ export default function DashboardTab({
                 color: "#15803d",
                 display: "grid",
                 placeItems: "center",
-                fontSize: 20,
               }}
             >
-              👨‍⚕️
+              <Users size={22} />
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12.5, color: "#0284c7", fontWeight: 600 }}>
@@ -366,10 +379,9 @@ export default function DashboardTab({
                 color: "#7e22ce",
                 display: "grid",
                 placeItems: "center",
-                fontSize: 20,
               }}
             >
-              🔐
+              <ShieldCheck size={22} />
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700 }}>
@@ -414,9 +426,13 @@ export default function DashboardTab({
                 background: "transparent",
                 border: "none",
                 cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 4,
               }}
             >
-              Ver Tabela Completa →
+              <span>Ver Tabela Completa</span>
+              <ArrowRight size={13} />
             </button>
           </div>
 
@@ -507,36 +523,41 @@ export default function DashboardTab({
 
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>
-                  ✓ Resumos Clínicos Estruturados
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
+                  <CheckCircle2 size={15} />
+                  <span>Resumos Clínicos Estruturados</span>
                 </span>
                 <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>109 / 109</span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>
-                  ✓ Descritores DeCS / MeSH
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
+                  <CheckCircle2 size={15} />
+                  <span>Descritores DeCS / MeSH</span>
                 </span>
                 <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>100% Cobertos</span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>
-                  ✓ Referências Bibliográficas (DOI)
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
+                  <CheckCircle2 size={15} />
+                  <span>Referências Bibliográficas (DOI)</span>
                 </span>
                 <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>Indexadas</span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>
-                  ✓ Suporte Multilíngue (PT, EN, ES)
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
+                  <CheckCircle2 size={15} />
+                  <span>Suporte Multilíngue (PT, EN, ES)</span>
                 </span>
                 <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>739 Páginas</span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", borderRadius: 8, background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534" }}>
-                  ✓ Link Direto DiLivros Oficial
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", display: "flex", alignItems: "center", gap: 6 }}>
+                  <CheckCircle2 size={15} />
+                  <span>Link Direto DiLivros Oficial</span>
                 </span>
                 <span style={{ fontSize: 12, fontWeight: 900, color: "#166534" }}>Ativo</span>
               </div>
@@ -553,8 +574,9 @@ export default function DashboardTab({
               border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
-            <h4 style={{ fontSize: 15, fontWeight: 800, margin: "0 0 14px", color: "#fff" }}>
-              ⚡ Ações Rápidas do Editor
+            <h4 style={{ fontSize: 15, fontWeight: 800, margin: "0 0 14px", color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>
+              <Zap size={16} className="text-amber-400" />
+              <span>Ações Rápidas do Editor</span>
             </h4>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -575,8 +597,11 @@ export default function DashboardTab({
                   justifyContent: "space-between",
                 }}
               >
-                <span>➕ Cadastrar Novo Capítulo</span>
-                <span>→</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <Plus size={15} />
+                  <span>Cadastrar Novo Capítulo</span>
+                </span>
+                <ArrowRight size={14} />
               </button>
 
               <button
@@ -596,8 +621,11 @@ export default function DashboardTab({
                   justifyContent: "space-between",
                 }}
               >
-                <span>👤 Cadastrar Novo Autor</span>
-                <span>→</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <UserPlus size={15} />
+                  <span>Cadastrar Novo Autor</span>
+                </span>
+                <ArrowRight size={14} />
               </button>
 
               <a
@@ -617,8 +645,11 @@ export default function DashboardTab({
                   justifyContent: "space-between",
                 }}
               >
-                <span>🛒 Comprar Tratado na DiLivros</span>
-                <span>↗</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <ShoppingCart size={15} />
+                  <span>Comprar Tratado na DiLivros</span>
+                </span>
+                <ExternalLink size={14} />
               </a>
             </div>
           </div>

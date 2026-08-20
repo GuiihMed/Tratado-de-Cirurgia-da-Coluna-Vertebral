@@ -3,6 +3,24 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { SECOES } from "@/lib/data/sections-and-chapters";
 import { Capitulo } from "@/lib/types";
+import {
+  BookOpen,
+  Sparkles,
+  Eye,
+  Edit3,
+  Columns,
+  Highlighter,
+  List,
+  ListOrdered,
+  AlertTriangle,
+  Lightbulb,
+  Pin,
+  Table,
+  Image,
+  ListChecks,
+  Check,
+  RotateCcw,
+} from "lucide-react";
 
 interface ScientificChapterEditorProps {
   initialData?: Capitulo | Partial<Capitulo> | null;
@@ -296,12 +314,14 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                 letterSpacing: "0.05em",
               }}
             >
-              📖 Editor Científico da Obra
+              <BookOpen size={14} className="text-rose-500" />
+              <span>Editor Científico da Obra</span>
             </span>
 
             {lastSavedTime && (
               <span style={{ fontSize: 12, color: "#16a34a", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 4 }}>
-                ✓ Rascunho salvo às {lastSavedTime}
+                <Check size={14} />
+                <span>Rascunho salvo às {lastSavedTime}</span>
               </span>
             )}
           </div>
@@ -335,7 +355,8 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             }}
             title="Preencher com estrutura padrão completa de capítulo do Tratado"
           >
-            <span>✨ Modelo Científico Completo</span>
+            <Sparkles size={14} className="text-amber-500" />
+            <span>Modelo Científico Completo</span>
           </button>
 
           {numero && (
@@ -357,7 +378,8 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                 textDecoration: "none",
               }}
             >
-              <span>👁️ Ver no Leitor</span>
+              <Eye size={14} />
+              <span>Ver no Leitor</span>
             </a>
           )}
 
@@ -365,6 +387,9 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             type="button"
             onClick={handleClearAll}
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
               padding: "8px 14px",
               borderRadius: 8,
               border: "1px solid #e2e8f0",
@@ -375,7 +400,8 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               cursor: "pointer",
             }}
           >
-            Limpar
+            <RotateCcw size={13} />
+            <span>Limpar</span>
           </button>
         </div>
       </div>
@@ -668,9 +694,13 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                   cursor: "pointer",
                   boxShadow: viewMode === "edit" ? "0 2px 6px rgba(0,0,0,0.08)" : "none",
                   transition: "all 0.15s ease",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
                 }}
               >
-                ✍️ Editor
+                <Edit3 size={13} />
+                <span>Editor</span>
               </button>
 
               <button
@@ -687,9 +717,13 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                   cursor: "pointer",
                   boxShadow: viewMode === "split" ? "0 2px 6px rgba(0,0,0,0.12)" : "none",
                   transition: "all 0.15s ease",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
                 }}
               >
-                🔀 Lado a Lado
+                <Columns size={13} />
+                <span>Lado a Lado</span>
               </button>
 
               <button
@@ -706,9 +740,13 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                   cursor: "pointer",
                   boxShadow: viewMode === "preview" ? "0 2px 6px rgba(0,0,0,0.08)" : "none",
                   transition: "all 0.15s ease",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
                 }}
               >
-                👁️ Pré-Visualização
+                <Eye size={13} />
+                <span>Pré-Visualização</span>
               </button>
             </div>
           </div>
@@ -777,10 +815,10 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               <button
                 type="button"
                 onClick={() => insertMarkdown("==", "==", "termo chave")}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", justifyContent: "center" }}
                 title="Marca-texto amarelo (==termo==)"
               >
-                🖍️
+                <Highlighter size={13} />
               </button>
             </div>
 
@@ -789,18 +827,20 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               <button
                 type="button"
                 onClick={() => insertMarkdown("- ", "\n", "Item com marcador")}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Lista com Marcadores"
               >
-                • Lista
+                <List size={13} />
+                <span>Lista</span>
               </button>
               <button
                 type="button"
                 onClick={() => insertMarkdown("1. ", "\n", "Primeiro passo cirúrgico")}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Lista Numerada"
               >
-                1. Passo
+                <ListOrdered size={13} />
+                <span>Passos</span>
               </button>
             </div>
 
@@ -809,26 +849,29 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               <button
                 type="button"
                 onClick={handleInsertAlert}
-                style={{ ...toolbarBtnStyle, color: "#fca5a5" }}
+                style={{ ...toolbarBtnStyle, color: "#fca5a5", display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Caixa de Alerta Cirúrgico"
               >
-                ⚠️ Alerta
+                <AlertTriangle size={13} />
+                <span>Alerta</span>
               </button>
               <button
                 type="button"
                 onClick={() => insertMarkdown("\n> 💡 **DICA PRÁTICA:** ", "\n", "Orientação clínica cirúrgica...")}
-                style={{ ...toolbarBtnStyle, color: "#fef08a" }}
+                style={{ ...toolbarBtnStyle, color: "#fef08a", display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Dica Prática"
               >
-                💡 Dica
+                <Lightbulb size={13} />
+                <span>Dica</span>
               </button>
               <button
                 type="button"
                 onClick={() => insertMarkdown("\n> 📌 **PONTO CHAVE:** ", "\n", "Conceito fundamental...")}
-                style={{ ...toolbarBtnStyle, color: "#93c5fd" }}
+                style={{ ...toolbarBtnStyle, color: "#93c5fd", display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Ponto Chave"
               >
-                📌 Ponto
+                <Pin size={13} />
+                <span>Ponto</span>
               </button>
             </div>
 
@@ -837,26 +880,29 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               <button
                 type="button"
                 onClick={handleInsertTable}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Tabela Médica"
               >
-                📊 Tabela
+                <Table size={13} />
+                <span>Tabela</span>
               </button>
               <button
                 type="button"
                 onClick={handleInsertImage}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Figura / Radiografia com legenda"
               >
-                🖼️ Imagem
+                <Image size={13} />
+                <span>Imagem</span>
               </button>
               <button
                 type="button"
                 onClick={handleInsertStepByStep}
-                style={toolbarBtnStyle}
+                style={{ ...toolbarBtnStyle, display: "inline-flex", alignItems: "center", gap: 4 }}
                 title="Inserir Estrutura de Técnica Cirúrgica"
               >
-                🔪 Passo a Passo
+                <ListChecks size={13} />
+                <span>Passo a Passo</span>
               </button>
             </div>
           </div>

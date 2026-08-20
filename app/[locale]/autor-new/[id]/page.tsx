@@ -7,6 +7,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { AUTHORS_DIRECTORY, getAuthorByIdOrSlug } from "@/lib/data/authors";
+import { BookOpen, Layers, FlaskConical, Search, Tag, ArrowRight, Award, Building2 } from "lucide-react";
 
 interface AutorNewPageProps {
   params: Promise<{ locale: string; id: string }>;
@@ -199,6 +200,10 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   onClick={() => setActiveTab("bio")}
                   style={{
                     flex: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
                     padding: "10px 16px",
                     borderRadius: 10,
                     border: "none",
@@ -210,13 +215,18 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  {locale === "en" ? "📖 Biography & Profile" : locale === "es" ? "📖 Biografía y Perfil" : "📖 Biografia & Perfil"}
+                  <BookOpen size={15} />
+                  <span>{locale === "en" ? "Biography & Profile" : locale === "es" ? "Biografía y Perfil" : "Biografia & Perfil"}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("capitulos")}
                   style={{
                     flex: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
                     padding: "10px 16px",
                     borderRadius: 10,
                     border: "none",
@@ -228,17 +238,24 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  {locale === "en"
-                    ? `📚 Treatise Chapters (${author.capitulos_tratado.length})`
-                    : locale === "es"
-                    ? `📚 Capítulos en el Tratado (${author.capitulos_tratado.length})`
-                    : `📚 Capítulos no Tratado (${author.capitulos_tratado.length})`}
+                  <Layers size={15} />
+                  <span>
+                    {locale === "en"
+                      ? `Treatise Chapters (${author.capitulos_tratado.length})`
+                      : locale === "es"
+                      ? `Capítulos en el Tratado (${author.capitulos_tratado.length})`
+                      : `Capítulos no Tratado (${author.capitulos_tratado.length})`}
+                  </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("publicacoes")}
                   style={{
                     flex: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
                     padding: "10px 16px",
                     borderRadius: 10,
                     border: "none",
@@ -250,7 +267,8 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     transition: "all 0.2s ease",
                   }}
                 >
-                  {locale === "en" ? "🔬 Scientific Output" : locale === "es" ? "🔬 Producción Científica" : "🔬 Produção Científica"}
+                  <FlaskConical size={15} />
+                  <span>{locale === "en" ? "Scientific Output" : locale === "es" ? "Producción Científica" : "Produção Científica"}</span>
                 </button>
               </div>
 
@@ -292,7 +310,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                           color: "#1e293b",
                         }}
                       >
-                        <span style={{ color: "#003382" }}>🔍</span>
+                        <Search size={14} className="text-blue-700" />
                         <span>{linha}</span>
                       </div>
                     ))}
@@ -306,6 +324,9 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                       <span
                         key={i}
                         style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 6,
                           background: "rgba(0, 51, 130, 0.06)",
                           color: "#003382",
                           border: "1px solid rgba(0, 51, 130, 0.15)",
@@ -315,7 +336,8 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                           fontWeight: 700,
                         }}
                       >
-                        🏷️ {esp}
+                        <Tag size={12} className="text-blue-600" />
+                        <span>{esp}</span>
                       </span>
                     ))}
                   </div>
@@ -382,7 +404,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                             }}
                           >
                             <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
-                            <span>→</span>
+                            <ArrowRight size={13} />
                           </Link>
                         </div>
 

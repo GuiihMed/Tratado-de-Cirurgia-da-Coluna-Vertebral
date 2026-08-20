@@ -2,6 +2,26 @@
 
 import React, { useState, useMemo } from "react";
 import { PerfilUsuario, UserRole, UserStatus } from "@/lib/types";
+import {
+  Crown,
+  ShieldCheck,
+  Shield,
+  Clock,
+  CheckCircle2,
+  Ban,
+  Search,
+  UserPlus,
+  Trash2,
+  Edit3,
+  Save,
+  X,
+  Key,
+  Check,
+  Award,
+  Building2,
+  Sparkles,
+  Users,
+} from "lucide-react";
 
 interface UsersManagementTabProps {
   usuarios: PerfilUsuario[];
@@ -464,8 +484,9 @@ CREATE TRIGGER on_auth_user_created
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ fontSize: 12, fontWeight: 800, color: "#b45309", textTransform: "uppercase" }}>
-                ⏳ Aguardando Aprovação
+              <span style={{ fontSize: 12, fontWeight: 800, color: "#b45309", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+                <Clock size={14} />
+                <span>Aguardando Aprovação</span>
               </span>
               {countPendentes > 0 && (
                 <span
@@ -498,8 +519,9 @@ CREATE TRIGGER on_auth_user_created
               transition: "all 0.2s",
             }}
           >
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#166534", textTransform: "uppercase" }}>
-              ✅ Aprovados & Ativos
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#166534", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+              <CheckCircle2 size={14} />
+              <span>Aprovados &amp; Ativos</span>
             </span>
             <div style={{ fontSize: 26, fontWeight: 900, color: "#15803d", marginTop: 4 }}>
               {countAprovados}
@@ -517,8 +539,9 @@ CREATE TRIGGER on_auth_user_created
               transition: "all 0.2s",
             }}
           >
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#6d28d9", textTransform: "uppercase" }}>
-              👑 Super & Co-Admins
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#6d28d9", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+              <Crown size={14} />
+              <span>Super &amp; Co-Admins</span>
             </span>
             <div style={{ fontSize: 26, fontWeight: 900, color: "#7c3aed", marginTop: 4 }}>
               {countSuperAdmins}
@@ -748,7 +771,9 @@ CREATE TRIGGER on_auth_user_created
                                 {user.nome}
                               </h4>
                               {user.role === "super_admin" && (
-                                <span title="Super Administrador" style={{ fontSize: 13 }}>👑</span>
+                                <span title="Super Administrador" style={{ display: "inline-flex", alignItems: "center" }}>
+                                  <Crown size={14} className="text-amber-500" />
+                                </span>
                               )}
                               {(currentUserEmail && user.email?.toLowerCase() === currentUserEmail.toLowerCase()) ||
                               user.id.startsWith("me-") ? (
@@ -766,7 +791,8 @@ CREATE TRIGGER on_auth_user_created
                                     gap: 3,
                                   }}
                                 >
-                                  ⭐ Sua Conta
+                                  <Award size={11} />
+                                  <span>Sua Conta</span>
                                 </span>
                               ) : null}
                             </div>
@@ -774,8 +800,9 @@ CREATE TRIGGER on_auth_user_created
                               {user.email}
                             </div>
                             {user.cargo_instituicao && (
-                              <div style={{ fontSize: 11.5, color: "#0284c7", fontWeight: 700, margin: "2px 0 0" }}>
-                                🏥 {user.cargo_instituicao}
+                              <div style={{ fontSize: 11.5, color: "#0284c7", fontWeight: 700, margin: "2px 0 0", display: "flex", alignItems: "center", gap: 4 }}>
+                                <Building2 size={12} />
+                                <span>{user.cargo_instituicao}</span>
                               </div>
                             )}
                           </div>
@@ -802,10 +829,10 @@ CREATE TRIGGER on_auth_user_created
                               cursor: "pointer",
                             }}
                           >
-                            <option value="super_admin">👑 Super Admin (Total)</option>
-                            <option value="co_super_admin">🛡️ Co-Super Admin</option>
-                            <option value="admin_escritor">✍️ Admin Escritor (Editor)</option>
-                            <option value="escritor">📝 Escritor (Autor)</option>
+                            <option value="super_admin">Super Admin (Total)</option>
+                            <option value="co_super_admin">Co-Super Admin</option>
+                            <option value="admin_escritor">Admin Escritor (Editor)</option>
+                            <option value="escritor">Escritor (Autor)</option>
                           </select>
                           <span style={{ fontSize: 10.5, color: "#64748b" }}>
                             {roleConfig.desc}
@@ -879,7 +906,8 @@ CREATE TRIGGER on_auth_user_created
                                   transition: "all 0.2s",
                                 }}
                               >
-                                <span>✓ Aceitar / Aprovar Acesso</span>
+                                <Check size={14} />
+                                <span>Aceitar / Aprovar Acesso</span>
                               </button>
 
                               <button
@@ -964,7 +992,8 @@ CREATE TRIGGER on_auth_user_created
                                 transition: "all 0.2s",
                               }}
                             >
-                              <span>✏️ Editar</span>
+                              <Edit3 size={13} />
+                              <span>Editar</span>
                             </button>
                           )}
 
@@ -982,9 +1011,12 @@ CREATE TRIGGER on_auth_user_created
                               border: "1px solid #e2e8f0",
                               fontSize: 12,
                               cursor: "pointer",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
                             }}
                           >
-                            🗑️
+                            <Trash2 size={13} />
                           </button>
                         </div>
                       </td>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Lock } from "lucide-react";
 import { Locale } from "@/lib/types";
 
 interface ModernFooterProps {
@@ -178,17 +179,21 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
               {t.editionsTitle}
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link href="/pt/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                🇧🇷 Português (Brasil)
+              <Link href="/pt/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>PT</span>
+                <span>Português (Brasil)</span>
               </Link>
-              <Link href="/en/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                🇺🇸 English (Abstracts)
+              <Link href="/en/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>EN</span>
+                <span>English (Abstracts)</span>
               </Link>
-              <Link href="/es/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
-                🇪🇸 Español (Resúmenes)
+              <Link href="/es/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>ES</span>
+                <span>Español (Resúmenes)</span>
               </Link>
-              <Link href="/admin/login" style={{ color: "#ff7380", textDecoration: "none", fontSize: 14, fontWeight: 600 }}>
-                🔐 {locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}
+              <Link href="/admin/login" style={{ color: "#ff7380", textDecoration: "none", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 8 }}>
+                <Lock size={14} className="text-rose-400" />
+                <span>{locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}</span>
               </Link>
             </div>
           </div>
