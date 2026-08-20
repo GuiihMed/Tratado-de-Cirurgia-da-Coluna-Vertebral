@@ -1029,7 +1029,18 @@ export default function AdminPainelPage() {
   }
 
   return (
-    <div className="min-h-screen flex bg-slate-950 text-slate-100 font-sans selection:bg-rose-500 selection:text-white relative overflow-x-hidden">
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        background: "#020617",
+        backgroundImage: "radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.08) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.6) 0px, transparent 100%)",
+        color: "#f8fafc",
+        fontFamily: "'Inter', 'Plus Jakarta Sans', system-ui, sans-serif",
+        position: "relative",
+        overflowX: "hidden",
+      }}
+    >
       {/* Background Ambient Glows */}
       <div className="fixed -top-40 -right-40 w-96 h-96 rounded-full bg-rose-500/10 blur-[120px] pointer-events-none" />
       <div className="fixed -bottom-40 -left-40 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
@@ -1085,7 +1096,17 @@ export default function AdminPainelPage() {
           <div
             onClick={handleOpenEditAccount}
             title="Clique para editar sua conta"
-            className="group p-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 cursor-pointer flex items-center gap-3 transition-all duration-200"
+            style={{
+              padding: 12,
+              borderRadius: 16,
+              background: "rgba(255, 255, 255, 0.04)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              transition: "all 0.2s ease",
+            }}
           >
             <div
               style={{
@@ -1142,14 +1163,26 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("dashboard")}
-                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-                  activeTab === "dashboard"
-                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-950/50"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
-                }`}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: activeTab === "dashboard" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                  background: activeTab === "dashboard" ? "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)" : "transparent",
+                  color: activeTab === "dashboard" ? "#ffffff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "dashboard" ? 800 : 600,
+                  cursor: "pointer",
+                  boxShadow: activeTab === "dashboard" ? "0 6px 20px rgba(37, 99, 235, 0.4)" : "none",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <Layers size={18} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1 text-left">Dashboard &amp; Métricas</span>
+                <Layers size={18} />
+                <span style={{ flex: 1 }}>Dashboard &amp; Métricas</span>
               </button>
             </div>
           </div>
@@ -1162,30 +1195,54 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("capitulos")}
-                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-                  activeTab === "capitulos"
-                    ? "bg-gradient-to-r from-cyan-600 to-blue-700 text-white shadow-lg shadow-cyan-950/50"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
-                }`}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: activeTab === "capitulos" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                  background: activeTab === "capitulos" ? "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)" : "transparent",
+                  color: activeTab === "capitulos" ? "#ffffff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "capitulos" ? 800 : 600,
+                  cursor: "pointer",
+                  boxShadow: activeTab === "capitulos" ? "0 6px 20px rgba(2, 132, 199, 0.4)" : "none",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <BookOpen size={18} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1 text-left">Capítulos</span>
-                <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-white/15 text-white">
+                <BookOpen size={18} />
+                <span style={{ flex: 1 }}>Capítulos</span>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: "rgba(255, 255, 255, 0.15)", color: "#fff" }}>
                   {chapters.length}
                 </span>
               </button>
 
               <button
                 onClick={() => switchTab("autores")}
-                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-                  activeTab === "autores"
-                    ? "bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-lg shadow-rose-950/50"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
-                }`}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: activeTab === "autores" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                  background: activeTab === "autores" ? "linear-gradient(135deg, #e11d48 0%, #be123c 100%)" : "transparent",
+                  color: activeTab === "autores" ? "#ffffff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "autores" ? 800 : 600,
+                  cursor: "pointer",
+                  boxShadow: activeTab === "autores" ? "0 6px 20px rgba(225, 29, 72, 0.4)" : "none",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <Users size={18} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1 text-left">Autores &amp; Editores</span>
-                <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-white/15 text-white">
+                <Users size={18} />
+                <span style={{ flex: 1 }}>Autores &amp; Editores</span>
+                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: "rgba(255, 255, 255, 0.15)", color: "#fff" }}>
                   {authors.length}
                 </span>
               </button>
@@ -1200,16 +1257,28 @@ export default function AdminPainelPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <button
                 onClick={() => switchTab("usuarios")}
-                className={`group w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 cursor-pointer ${
-                  activeTab === "usuarios"
-                    ? "bg-gradient-to-r from-purple-600 to-indigo-700 text-white shadow-lg shadow-purple-950/50"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/60"
-                }`}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: activeTab === "usuarios" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                  background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
+                  color: activeTab === "usuarios" ? "#ffffff" : "#94a3b8",
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "usuarios" ? 800 : 600,
+                  cursor: "pointer",
+                  boxShadow: activeTab === "usuarios" ? "0 6px 20px rgba(124, 58, 237, 0.4)" : "none",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
               >
-                <ShieldCheck size={18} className="transition-transform duration-200 group-hover:scale-110" />
-                <span className="flex-1 text-left">Usuários &amp; Acessos</span>
+                <ShieldCheck size={18} />
+                <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
                 {usuarios.filter((u) => u.status === "pendente").length > 0 && (
-                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-rose-500 text-white animate-pulse">
+                  <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
                     {usuarios.filter((u) => u.status === "pendente").length}
                   </span>
                 )}
@@ -1271,9 +1340,9 @@ export default function AdminPainelPage() {
       </aside>
 
       {/* ================= RIGHT MAIN WRAPPER ================= */}
-      <div className="flex-1 min-w-0 flex flex-col">
+      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
         {/* ================= TOPBAR (GLASSMORPHISM) ================= */}
-        <header className="h-16 bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 flex items-center justify-between px-6 sm:px-8 sticky top-0 z-40 shadow-sm">
+        <header style={{ height: 68, background: "rgba(15, 23, 42, 0.75)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", position: "sticky", top: 0, zIndex: 40, boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)" }}>
           <div className="flex items-center gap-3">
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-400">
@@ -1305,7 +1374,7 @@ export default function AdminPainelPage() {
         </header>
 
         {/* ================= MAIN CONTENT CONTAINER ================= */}
-        <main className="p-6 sm:p-8 max-w-7xl w-full mx-auto box-border">
+        <main style={{ padding: "32px", maxWidth: 1400, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
           {/* Feedback Alert */}
           {feedback.message && (
             <div
@@ -1383,7 +1452,7 @@ export default function AdminPainelPage() {
               />
 
               {/* ================= TABELA DE CAPÍTULOS ================= */}
-            <section className="rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl mt-8">
+            <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)", marginTop: 32 }}>
               <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
                 <div>
                   <h3 className="text-xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
@@ -1406,14 +1475,14 @@ export default function AdminPainelPage() {
                       placeholder="Buscar por título ou autor..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-9 pr-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white placeholder-slate-400 text-xs sm:text-sm w-64 focus:outline-none focus:border-cyan-500 transition-colors"
+                      style={{ padding: "8px 14px 8px 34px", borderRadius: 12, background: "rgba(15, 23, 42, 0.8)", border: "1px solid rgba(255, 255, 255, 0.12)", color: "#fff", fontSize: 13, width: 260, outline: "none" }}
                     />
                   </div>
 
                   <select
                     value={filterSecao}
                     onChange={(e) => setFilterSecao(e.target.value)}
-                    className="px-3.5 py-2 rounded-xl bg-slate-800/60 border border-slate-700/80 text-white text-xs sm:text-sm font-semibold focus:outline-none focus:border-cyan-500 transition-colors cursor-pointer"
+                    style={{ padding: "8px 14px", borderRadius: 12, background: "rgba(15, 23, 42, 0.8)", border: "1px solid rgba(255, 255, 255, 0.12)", color: "#fff", fontSize: 13, fontWeight: 600, outline: "none", cursor: "pointer" }}
                   >
                     <option value="all">Todas as 10 Seções</option>
                     {SECOES.map((s) => (
@@ -1427,9 +1496,9 @@ export default function AdminPainelPage() {
 
               {/* Tabela */}
               <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-left text-sm">
+                <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 13.5, color: "#e2e8f0" }}>
                   <thead>
-                    <tr className="border-b border-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider">
+                    <tr style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.1)", color: "#94a3b8", fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>
                       <th className="py-3 px-3.5 w-14">#</th>
                       <th className="py-3 px-3.5">Título do Capítulo</th>
                       <th className="py-3 px-3.5 w-48">Seção</th>
@@ -1584,9 +1653,9 @@ export default function AdminPainelPage() {
           });
 
           return (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 32, alignItems: "flex-start" }}>
               {/* Form de Cadastro / Edição de Autor */}
-              <section className="lg:col-span-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
+              <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)" }}>
                 <div className="flex justify-between items-start mb-6 border-b border-slate-800 pb-4">
                   <div>
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-black uppercase tracking-wider mb-2">
@@ -1843,7 +1912,7 @@ export default function AdminPainelPage() {
               </section>
 
               {/* Listagem dos Autores Cadastrados com Divisórias de Cargos */}
-              <section className="lg:col-span-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl p-6 sm:p-8 shadow-2xl">
+              <section style={{ borderRadius: 24, background: "rgba(15, 23, 42, 0.65)", border: "1px solid rgba(255, 255, 255, 0.08)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", padding: "28px 32px", boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)" }}>
                 <div className="mb-6 border-b border-slate-800 pb-4">
                   <div className="flex justify-between items-center mb-1">
                     <h3 className="text-xl font-black text-white tracking-tight flex items-center gap-2">
@@ -1999,8 +2068,8 @@ export default function AdminPainelPage() {
 
       {/* ================= MODAL: EDITAR MINHA CONTA ================= */}
       {showEditAccountModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900/95 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-slate-100 animate-in fade-in zoom-in duration-200">
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0, 0, 0, 0.8)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, padding: 16 }}>
+          <div style={{ background: "rgba(15, 23, 42, 0.95)", border: "1px solid rgba(255, 255, 255, 0.12)", borderRadius: 24, maxWidth: 520, width: "100%", padding: "32px", boxShadow: "0 25px 60px rgba(0, 0, 0, 0.8)", color: "#f8fafc" }}>
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-sm font-black shadow-lg shadow-purple-950/50 shrink-0">
