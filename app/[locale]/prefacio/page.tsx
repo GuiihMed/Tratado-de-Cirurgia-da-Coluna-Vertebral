@@ -3,6 +3,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
 import { getPrefacioData, EDITORES_TRATADO } from "@/lib/data/institutional-data";
+import {
+  BookOpen,
+  ShoppingCart,
+  FileText,
+  Layers,
+  Building2,
+  Users,
+  Globe,
+  Quote,
+  Award,
+  FlaskConical,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 
 export const revalidate = 0;
 
@@ -34,7 +48,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
             position: "relative",
             background: "radial-gradient(ellipse at 70% 30%, #00224d 0%, #00122b 50%, #000917 100%)",
             color: "#fff",
-            padding: "48px 0 0",
+            padding: "48px 0 40px",
             overflow: "hidden",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           }}
@@ -162,14 +176,14 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     maxWidth: 640,
                   }}
                 >
-                  <span style={{ fontSize: 20, color: "#f43f5e" }}>📖</span>
+                  <BookOpen size={20} className="text-rose-400" />
                   <span style={{ fontSize: 13.5, color: "rgba(255, 255, 255, 0.9)", lineHeight: 1.4 }}>
                     {PREFACIO_DATA.avisoImpresso}
                   </span>
                 </div>
 
                 {/* Action Buttons */}
-                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", marginBottom: 12 }}>
                   <a
                     href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
@@ -190,7 +204,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     }}
                   >
                     <span>Onde Comprar</span>
-                    <span>🛒</span>
+                    <ShoppingCart size={15} />
                   </a>
 
                   <Link
@@ -211,7 +225,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     }}
                   >
                     <span>Ver apresentação</span>
-                    <span>📄</span>
+                    <FileText size={15} />
                   </Link>
 
                   <Link
@@ -232,7 +246,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     }}
                   >
                     <span>Ver índice</span>
-                    <span>📑</span>
+                    <Layers size={15} />
                   </Link>
                 </div>
               </div>
@@ -242,23 +256,22 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(5, 1fr)",
+                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
                 gap: 12,
-                marginTop: 20,
+                marginTop: 36,
                 padding: "14px 16px",
                 background: "rgba(0, 16, 40, 0.6)",
                 border: "1px solid rgba(255, 255, 255, 0.14)",
                 borderRadius: 10,
-                transform: "translateY(50%)",
                 backdropFilter: "blur(6px)",
               }}
             >
               {[
-                { icon: "🏛️", title: "Texto institucional" },
-                { icon: "📖", title: "Prefácio" },
-                { icon: "👥", title: "Editores da obra", href: `/${locale}/autores` },
-                { icon: "📚", title: "Obra impressa" },
-                { icon: "🌐", title: "Navegação do site" },
+                { icon: <Building2 size={18} className="text-blue-400" />, title: "Texto institucional" },
+                { icon: <BookOpen size={18} className="text-rose-400" />, title: "Prefácio" },
+                { icon: <Users size={18} className="text-purple-400" />, title: "Editores da obra", href: `/${locale}/autores` },
+                { icon: <Layers size={18} className="text-emerald-400" />, title: "Obra impressa" },
+                { icon: <Globe size={18} className="text-cyan-400" />, title: "Navegação do site" },
               ].map((item, idx) => (
                 <div
                   key={idx}
@@ -270,10 +283,10 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     padding: "8px 12px",
                     borderRight: idx < 4 ? "1px solid rgba(255, 255, 255, 0.12)" : "none",
                     textAlign: "center",
-                    gap: 4,
+                    gap: 6,
                   }}
                 >
-                  <span style={{ fontSize: 20 }}>{item.icon}</span>
+                  <div>{item.icon}</div>
                   <span style={{ fontSize: 12.5, fontWeight: 700, color: "rgba(255, 255, 255, 0.9)" }}>
                     {item.title}
                   </span>
@@ -286,7 +299,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
         {/* ========================================================================= */}
         {/* MAIN BODY CONTENT (2 Columns) */}
         {/* ========================================================================= */}
-        <section style={{ maxWidth: 1200, margin: "64px auto 48px", padding: "0 24px" }}>
+        <section style={{ maxWidth: 1200, margin: "40px auto 48px", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 32, alignItems: "start" }}>
             {/* LEFT COLUMN: Main Text & Highlights */}
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
@@ -301,7 +314,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                  <span style={{ fontSize: 22 }}>📄</span>
+                  <FileText size={22} className="text-blue-700" />
                   <h2 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Texto do prefácio
                   </h2>
@@ -327,7 +340,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <span style={{ fontSize: 22 }}>💬</span>
+                  <Quote size={20} className="text-rose-600" />
                   <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Mensagem central
                   </h3>
@@ -344,7 +357,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span style={{ fontSize: 32, color: "#2563eb", lineHeight: 1, fontWeight: 900 }}>❝</span>
+                  <Quote size={28} className="text-blue-600 flex-shrink-0" />
                   <p style={{ margin: 0, fontSize: 15.5, fontWeight: 700, color: "#1e3a8a", lineHeight: 1.6 }}>
                     {PREFACIO_DATA.mensagemCentral}
                   </p>
@@ -362,7 +375,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                  <span style={{ fontSize: 22 }}>⭐</span>
+                  <Award size={22} className="text-amber-500" />
                   <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Destaques do prefácio
                   </h3>
@@ -397,10 +410,15 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                           alignItems: "center",
                           justifyContent: "center",
                           color: "#fff",
-                          fontSize: 18,
                         }}
                       >
-                        {item.cor === "red" ? "🏛️" : item.cor === "blue" ? "👥" : "🔬"}
+                        {item.cor === "red" ? (
+                          <Building2 size={20} />
+                        ) : item.cor === "blue" ? (
+                          <Users size={20} />
+                        ) : (
+                          <FlaskConical size={20} />
+                        )}
                       </div>
                       <div>
                         <h4 style={{ margin: "0 0 4px", fontSize: 14.5, fontWeight: 800, color: "#001a3d" }}>
@@ -426,7 +444,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <span style={{ fontSize: 22 }}>📖</span>
+                  <BookOpen size={20} className="text-blue-700" />
                   <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Sobre a obra
                   </h3>
@@ -450,7 +468,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <span style={{ fontSize: 20 }}>👥</span>
+                  <Users size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 16.5, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Autores do prefácio
                   </h3>
@@ -500,7 +518,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                  <span style={{ fontSize: 20 }}>📄</span>
+                  <Layers size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 16.5, fontWeight: 900, color: "#001a3d", margin: 0 }}>
                     Tipo de conteúdo
                   </h3>
@@ -508,15 +526,15 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
-                    <span>📄</span>
+                    <FileText size={15} className="text-blue-600" />
                     <span>Texto institucional</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
-                    <span>📖</span>
+                    <BookOpen size={15} className="text-rose-600" />
                     <span>Prefácio</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
-                    <span>📚</span>
+                    <Layers size={15} className="text-emerald-600" />
                     <span>Apoio à leitura</span>
                   </div>
                 </div>
@@ -535,7 +553,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12, color: "#ea580c" }}>
-                  <span style={{ fontSize: 18 }}>🛡️</span>
+                  <ShieldCheck size={18} className="text-amber-600" />
                   <h3 style={{ fontSize: 15, fontWeight: 800, margin: 0, color: "#c2410c" }}>
                     Aviso importante
                   </h3>
@@ -548,10 +566,6 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
                   O conteúdo integral do prefácio e de toda a obra está disponível exclusivamente na edição impressa do Tratado de Cirurgia da Coluna Vertebral.
                 </p>
-
-                <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 14 }}>
-                  <span style={{ fontSize: 40, opacity: 0.25, color: "#ea580c" }}>📖</span>
-                </div>
               </div>
             </div>
           </div>
@@ -610,13 +624,13 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                   }}
                 >
                   <span>Onde Comprar</span>
-                  <span>🛒</span>
+                  <ShoppingCart size={15} />
                 </a>
               </div>
             </div>
 
-            <div style={{ fontSize: 60, opacity: 0.2, color: "#fff" }}>
-              📖
+            <div style={{ opacity: 0.15, color: "#fff" }}>
+              <BookOpen size={64} />
             </div>
           </div>
         </section>
