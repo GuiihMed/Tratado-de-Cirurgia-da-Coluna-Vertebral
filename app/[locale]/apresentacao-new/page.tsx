@@ -6,7 +6,17 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { getApresentacaoData } from "@/lib/data/institutional-data";
-import { BookOpen, ShoppingCart, FileText, Layers, User, ShieldCheck } from "lucide-react";
+import {
+  BookOpen,
+  ShoppingCart,
+  FileText,
+  Layers,
+  ChevronRight,
+  ExternalLink,
+  Award,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 
 interface ApresentacaoNewProps {
   params: Promise<{ locale: string }>;
@@ -23,112 +33,249 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
   const [fontSizeMultiplier, setFontSizeMultiplier] = useState<number>(1);
 
   return (
-    <div className="min-h-screen bg-[#000814] text-white flex flex-col selection:bg-rose-500 selection:text-white font-sans antialiased">
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#000c1e",
+        color: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      }}
+    >
       <ModernHeader locale={locale} />
 
-      <main className="flex-1">
-        {/* ========================================================================= */}
-        {/* HERO SECTION (MODERN 4K GLASSMORPHIC) */}
-        {/* ========================================================================= */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-          {/* Ambient Lighting Glows */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-rose-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
-          <div className="absolute top-1/3 right-10 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/30 via-transparent to-transparent pointer-events-none -z-10" />
-
-          {/* Background spine texture */}
-          <div
-            className="absolute top-0 right-0 w-full md:w-1/2 h-full opacity-20 pointer-events-none bg-no-repeat bg-contain bg-right-top -z-10"
-            style={{ backgroundImage: "url('/assets/hero-spine.png')" }}
-          />
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Top Navigation Switcher */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <div className="flex items-center gap-2 text-sm text-slate-400">
-                <Link href={`/${locale}/home-new`} className="hover:text-white transition-colors">
-                  Início
-                </Link>
-                <span>›</span>
-                <span className="text-slate-400">O Tratado</span>
-                <span>›</span>
-                <span className="text-rose-400 font-semibold">Apresentação</span>
-              </div>
+      <main style={{ flex: 1 }}>
+        {/* ================= HERO SECTION ================= */}
+        <section
+          style={{
+            position: "relative",
+            padding: "140px 24px 70px",
+            background:
+              "radial-gradient(circle at 20% 30%, rgba(245, 34, 56, 0.22), transparent 45%), radial-gradient(circle at 80% 40%, rgba(14, 101, 162, 0.28), transparent 50%), linear-gradient(180deg, #001433 0%, #000c1e 100%)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+            {/* Breadcrumb */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 13,
+                color: "#94a3b8",
+                marginBottom: 32,
+              }}
+            >
+              <Link
+                href={`/${locale}/home-new`}
+                style={{ color: "#94a3b8", textDecoration: "none" }}
+              >
+                Início
+              </Link>
+              <span>›</span>
+              <span style={{ color: "#cbd5e1" }}>O Tratado</span>
+              <span>›</span>
+              <span style={{ color: "#f52238", fontWeight: 700 }}>Apresentação</span>
             </div>
 
-            {/* Hero Main Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              {/* 3D Book Visual */}
-              <div className="lg:col-span-4 flex justify-center">
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-rose-500 to-blue-600 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500" />
+            {/* Hero Grid */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: 48,
+                alignItems: "center",
+              }}
+            >
+              {/* Book Cover */}
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: -12,
+                      background: "linear-gradient(135deg, rgba(245, 34, 56, 0.35), rgba(14, 101, 162, 0.35))",
+                      borderRadius: 20,
+                      filter: "blur(28px)",
+                      zIndex: 0,
+                    }}
+                  />
                   <img
                     src="/assets/book-cover.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
-                    className="relative w-64 md:w-72 h-auto rounded-xl shadow-2xl shadow-black/80 transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+                    style={{
+                      position: "relative",
+                      zIndex: 1,
+                      width: "100%",
+                      maxWidth: 280,
+                      height: "auto",
+                      borderRadius: 12,
+                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                    }}
                   />
                 </div>
               </div>
 
-              {/* Hero Details */}
-              <div className="lg:col-span-8 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+              {/* Text Info */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "6px 14px",
+                    borderRadius: 20,
+                    background: "rgba(245, 34, 56, 0.15)",
+                    border: "1px solid rgba(245, 34, 56, 0.35)",
+                    color: "#ff8290",
+                    fontSize: 12,
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    width: "fit-content",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      background: "#f52238",
+                      boxShadow: "0 0 10px #f52238",
+                    }}
+                  />
                   {APRESENTACAO_DATA.badge}
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                <h1
+                  style={{
+                    fontSize: "clamp(30px, 4.5vw, 48px)",
+                    fontWeight: 850,
+                    lineHeight: 1.15,
+                    letterSpacing: "-0.03em",
+                    margin: 0,
+                    color: "#ffffff",
+                  }}
+                >
                   {APRESENTACAO_DATA.titulo}
                 </h1>
 
-                <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed max-w-3xl">
+                <p
+                  style={{
+                    fontSize: "clamp(16px, 1.8vw, 19px)",
+                    color: "#cbd5e1",
+                    lineHeight: 1.6,
+                    margin: 0,
+                    fontWeight: 400,
+                  }}
+                >
                   {APRESENTACAO_DATA.subtitulo}
                 </p>
 
-                {/* Author credentials highlight */}
-                <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 backdrop-blur-md max-w-3xl space-y-1">
-                  <h3 className="text-base font-bold text-white">
-                    {APRESENTACAO_DATA.autor.nome}
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    {APRESENTACAO_DATA.autor.titulos.join(" • ")}
-                  </p>
-                </div>
+                {/* Author badge */}
+                {APRESENTACAO_DATA.autor && (
+                  <div
+                    style={{
+                      padding: "16px 20px",
+                      borderRadius: 14,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      border: "1px solid rgba(255, 255, 255, 0.12)",
+                      backdropFilter: "blur(12px)",
+                    }}
+                  >
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+                      {APRESENTACAO_DATA.autor.nome}
+                    </div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
+                      {APRESENTACAO_DATA.autor.titulos.join(" • ")}
+                    </div>
+                  </div>
+                )}
 
-                {/* Print Notice Glass Card */}
-                <div className="flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-slate-900/90 to-blue-950/60 border border-slate-700/60 backdrop-blur-md max-w-2xl shadow-xl">
-                  <BookOpen className="w-6 h-6 text-rose-400 flex-shrink-0" />
-                  <span className="text-sm text-slate-300">
+                {/* Print Notice Box */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                    padding: "14px 18px",
+                    borderRadius: 12,
+                    background: "rgba(0, 34, 77, 0.4)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                  }}
+                >
+                  <BookOpen size={22} color="#f52238" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: 13.5, color: "#e2e8f0", lineHeight: 1.4 }}>
                     {APRESENTACAO_DATA.avisoImpresso}
                   </span>
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                {/* Action Buttons */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 12, paddingTop: 6 }}>
                   <a
                     href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 transition-all hover:scale-[1.02]"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "14px 24px",
+                      borderRadius: 12,
+                      background: "linear-gradient(135deg, #f52238 0%, #be123c 100%)",
+                      color: "#fff",
+                      fontSize: 14,
+                      fontWeight: 750,
+                      textDecoration: "none",
+                      boxShadow: "0 8px 24px rgba(245, 34, 56, 0.35)",
+                    }}
                   >
-                    <span>Adquirir Edição Impressa</span>
-                    <ShoppingCart className="w-4 h-4" />
+                    <span>Adquirir Livro Impresso</span>
+                    <ShoppingCart size={16} />
                   </a>
 
                   <Link
                     href={`/${locale}/prefacio-new`}
-                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "14px 20px",
+                      borderRadius: 12,
+                      background: "rgba(255, 255, 255, 0.08)",
+                      border: "1px solid rgba(255, 255, 255, 0.16)",
+                      color: "#e2e8f0",
+                      fontSize: 14,
+                      fontWeight: 650,
+                      textDecoration: "none",
+                    }}
                   >
-                    <span>Ver Prefácio New</span>
-                    <FileText className="w-4 h-4" />
+                    <span>Ver Prefácio</span>
+                    <FileText size={16} />
                   </Link>
 
                   <Link
                     href={`/${locale}/indice-new`}
-                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm backdrop-blur-md transition-all"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "14px 20px",
+                      borderRadius: 12,
+                      background: "rgba(255, 255, 255, 0.08)",
+                      border: "1px solid rgba(255, 255, 255, 0.16)",
+                      color: "#e2e8f0",
+                      fontSize: 14,
+                      fontWeight: 650,
+                      textDecoration: "none",
+                    }}
                   >
                     <span>Explorar Índice</span>
-                    <Layers className="w-4 h-4" />
+                    <Layers size={16} />
                   </Link>
                 </div>
               </div>
@@ -136,188 +283,297 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
           </div>
         </section>
 
-        {/* ========================================================================= */}
-        {/* BODY CONTENT GRID */}
-        {/* ========================================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Main Reading Column (8 cols) */}
-            <div className="lg:col-span-8 space-y-8">
-              {/* Text Card with Reading Controls */}
-              <div className="p-8 md:p-10 rounded-3xl bg-slate-900/70 border border-slate-800/80 backdrop-blur-xl shadow-2xl space-y-6">
-                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
-                  <div className="flex items-center gap-3">
-                    <span className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400 text-xl border border-rose-500/20">
-                      📄
-                    </span>
-                    <h2 className="text-2xl font-bold text-white tracking-tight">
-                      Texto da Apresentação
+        {/* ================= MAIN BODY CONTENT ================= */}
+        <section style={{ maxWidth: 1240, margin: "0 auto", padding: "60px 24px" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: 36,
+              alignItems: "start",
+            }}
+          >
+            {/* Reading Column */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 32, gridColumn: "span 2" }}>
+              {/* Reading Card */}
+              <div
+                style={{
+                  padding: "36px 40px",
+                  borderRadius: 20,
+                  background: "rgba(255, 255, 255, 0.03)",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+                  backdropFilter: "blur(20px)",
+                }}
+              >
+                {/* Header Controls */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    paddingBottom: 24,
+                    borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+                    marginBottom: 28,
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div
+                      style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: 10,
+                        background: "rgba(245, 34, 56, 0.15)",
+                        color: "#f52238",
+                        display: "grid",
+                        placeItems: "center",
+                      }}
+                    >
+                      <FileText size={20} />
+                    </div>
+                    <h2 style={{ fontSize: 22, fontWeight: 800, margin: 0, color: "#fff" }}>
+                      Texto Oficial da Apresentação
                     </h2>
                   </div>
 
-                  {/* Reading Size Controls */}
-                  <div className="flex items-center gap-2 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs">
-                    <button
-                      onClick={() => setFontSizeMultiplier(0.9)}
-                      className={`px-2.5 py-1 rounded-lg transition-all ${
-                        fontSizeMultiplier === 0.9 ? "bg-rose-600 text-white font-bold" : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      A-
-                    </button>
-                    <button
-                      onClick={() => setFontSizeMultiplier(1)}
-                      className={`px-2.5 py-1 rounded-lg transition-all ${
-                        fontSizeMultiplier === 1 ? "bg-rose-600 text-white font-bold" : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      A
-                    </button>
-                    <button
-                      onClick={() => setFontSizeMultiplier(1.15)}
-                      className={`px-2.5 py-1 rounded-lg transition-all ${
-                        fontSizeMultiplier === 1.15 ? "bg-rose-600 text-white font-bold" : "text-slate-400 hover:text-white"
-                      }`}
-                    >
-                      A+
-                    </button>
+                  {/* Size toggles */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      background: "rgba(0, 0, 0, 0.4)",
+                      padding: 4,
+                      borderRadius: 10,
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                    }}
+                  >
+                    {[0.9, 1, 1.15].map((multiplier, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setFontSizeMultiplier(multiplier)}
+                        style={{
+                          padding: "4px 10px",
+                          borderRadius: 6,
+                          background: fontSizeMultiplier === multiplier ? "#f52238" : "transparent",
+                          color: fontSizeMultiplier === multiplier ? "#fff" : "#94a3b8",
+                          border: "none",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        {idx === 0 ? "A-" : idx === 1 ? "A" : "A+"}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
                 {/* Paragraphs */}
                 <div
-                  className="space-y-6 text-slate-300 font-light leading-relaxed transition-all"
-                  style={{ fontSize: `${16 * fontSizeMultiplier}px` }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 22,
+                    fontSize: `${17 * fontSizeMultiplier}px`,
+                    color: "#d1d5db",
+                    lineHeight: 1.8,
+                    fontWeight: 350,
+                  }}
                 >
                   {APRESENTACAO_DATA.paragrafos.map((p, idx) => (
-                    <p key={idx} className="leading-relaxed">
+                    <p key={idx} style={{ margin: 0 }}>
                       {p}
                     </p>
                   ))}
                 </div>
               </div>
 
-              {/* Central Quote Card */}
-              <div className="p-8 rounded-3xl bg-gradient-to-r from-blue-950/40 via-slate-900/60 to-rose-950/30 border border-blue-800/40 backdrop-blur-xl shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 translate-x-4 -translate-y-4 text-9xl text-blue-500/10 font-serif select-none pointer-events-none">
-                  “
-                </div>
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl text-blue-400 font-serif leading-none">❝</span>
-                  <div>
-                    <h3 className="text-xs uppercase tracking-widest font-bold text-blue-400 mb-2">
-                      Mensagem do Autor da Apresentação
-                    </h3>
-                    <p className="text-lg md:text-xl font-medium text-blue-100 leading-relaxed">
-                      {APRESENTACAO_DATA.mensagemCentral}
-                    </p>
+              {/* Central Message Highlight */}
+              {APRESENTACAO_DATA.mensagemCentral && (
+                <div
+                  style={{
+                    padding: "32px 36px",
+                    borderRadius: 16,
+                    background: "linear-gradient(135deg, rgba(245, 34, 56, 0.12) 0%, rgba(14, 101, 162, 0.12) 100%)",
+                    border: "1px solid rgba(245, 34, 56, 0.25)",
+                    borderLeft: "6px solid #f52238",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 12,
+                  }}
+                >
+                  <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", color: "#ff8290", letterSpacing: "0.05em" }}>
+                    Mensagem Central
+                  </div>
+                  <div style={{ fontSize: 18, fontStyle: "italic", lineHeight: 1.6, color: "#f8fafc" }}>
+                    "{APRESENTACAO_DATA.mensagemCentral}"
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Highlights 3-Card Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {APRESENTACAO_DATA.destaques.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all hover:translate-y-[-2px] space-y-3"
-                  >
+              {/* Destaques Grid */}
+              {APRESENTACAO_DATA.destaques && APRESENTACAO_DATA.destaques.length > 0 && (
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: 16,
+                  }}
+                >
+                  {APRESENTACAO_DATA.destaques.map((d, idx) => (
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl ${
-                        item.cor === "red"
-                          ? "bg-rose-500/15 text-rose-400 border border-rose-500/30"
-                          : item.cor === "blue"
-                          ? "bg-sky-500/15 text-sky-400 border border-sky-500/30"
-                          : "bg-indigo-500/15 text-indigo-400 border border-indigo-500/30"
-                      }`}
+                      key={idx}
+                      style={{
+                        padding: 22,
+                        borderRadius: 14,
+                        background: "rgba(255, 255, 255, 0.04)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 8,
+                      }}
                     >
-                      {item.cor === "red" ? "🏛️" : item.cor === "blue" ? "👥" : "🎯"}
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <Sparkles size={18} color="#f52238" />
+                        <strong style={{ fontSize: 15, color: "#fff" }}>{d.titulo}</strong>
+                      </div>
+                      <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, margin: 0 }}>
+                        {d.descricao}
+                      </p>
                     </div>
-                    <h4 className="text-base font-bold text-white">
-                      {item.titulo}
-                    </h4>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      {item.descricao}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* About the Work Card */}
-              <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800/70 space-y-3">
-                <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <BookOpen className="w-4 h-4" />
-                  <span>Sobre a Obra & Plataforma Digital</span>
+                  ))}
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  {APRESENTACAO_DATA.sobreAObra}
-                </p>
-              </div>
+              )}
             </div>
 
-            {/* Sidebar (4 cols) */}
-            <div className="lg:col-span-4 space-y-6">
-              {/* Author Card */}
-              <div className="p-6 rounded-3xl bg-slate-900/70 border border-slate-800/80 backdrop-blur-xl shadow-xl space-y-5">
-                <h3 className="text-base font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
-                  <User className="w-4 h-4 text-rose-400" />
-                  <span>Autor da Apresentação</span>
+            {/* Sidebar Column */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+              {/* Book Overview KPI Card */}
+              <div
+                style={{
+                  padding: 28,
+                  borderRadius: 18,
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <h3 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 16px", color: "#fff" }}>
+                  Dados da Publicação
                 </h3>
-
-                <div className="space-y-4">
-                  <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg">
-                    <img
-                      src={APRESENTACAO_DATA.autor.foto_url}
-                      alt={APRESENTACAO_DATA.autor.nome}
-                      className="w-full h-full object-cover"
-                    />
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                    <span style={{ color: "#94a3b8" }}>Capítulos</span>
+                    <strong style={{ color: "#fff" }}>109 Capítulos</strong>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white">
-                      {APRESENTACAO_DATA.autor.nome}
-                    </h4>
-                    <div className="space-y-1.5 mt-2">
-                      {APRESENTACAO_DATA.autor.titulos.map((t, idx) => (
-                        <p key={idx} className="text-xs text-slate-400 leading-relaxed flex items-start gap-1.5">
-                          <span className="text-rose-400">•</span>
-                          <span>{t}</span>
-                        </p>
-                      ))}
-                    </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                    <span style={{ color: "#94a3b8" }}>Seções Temáticas</span>
+                    <strong style={{ color: "#fff" }}>10 Seções</strong>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                    <span style={{ color: "#94a3b8" }}>Autores e Colaboradores</span>
+                    <strong style={{ color: "#fff" }}>198 Especialistas</strong>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
+                    <span style={{ color: "#94a3b8" }}>Chancela Oficial</span>
+                    <strong style={{ color: "#f52238" }}>SBC & DiLivros</strong>
                   </div>
                 </div>
+
+                <a
+                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    marginTop: 20,
+                    padding: "12px 16px",
+                    borderRadius: 10,
+                    background: "rgba(245, 34, 56, 0.15)",
+                    border: "1px solid rgba(245, 34, 56, 0.3)",
+                    color: "#ff8290",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    textDecoration: "none",
+                  }}
+                >
+                  <span>Adquirir no site da DiLivros</span>
+                  <ExternalLink size={14} />
+                </a>
               </div>
 
-              {/* Content Type Card */}
-              <div className="p-6 rounded-3xl bg-slate-900/50 border border-slate-800 space-y-3 text-sm">
-                <h4 className="text-xs uppercase font-bold tracking-widest text-slate-400">
-                  Estrutura do Conteúdo
-                </h4>
-                <div className="space-y-2 text-slate-300 text-xs font-semibold">
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <FileText className="w-4 h-4 text-blue-400" />
-                    <span>Texto Institucional Oficial</span>
-                  </div>
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <BookOpen className="w-4 h-4 text-rose-400" />
-                    <span>Apresentação SBC</span>
-                  </div>
-                  <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/40">
-                    <Layers className="w-4 h-4 text-emerald-400" />
-                    <span>Guia de Apoio à Leitura</span>
-                  </div>
+              {/* Navigation Jump Card */}
+              <div
+                style={{
+                  padding: 28,
+                  borderRadius: 18,
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <h3 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 16px", color: "#fff" }}>
+                  Navegação Rápida
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <Link
+                    href={`/${locale}/prefacio-new`}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      background: "rgba(255, 255, 255, 0.03)",
+                      color: "#cbd5e1",
+                      textDecoration: "none",
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span>Prefácio dos Editores</span>
+                    <ChevronRight size={16} color="#94a3b8" />
+                  </Link>
+                  <Link
+                    href={`/${locale}/indice-new`}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      background: "rgba(255, 255, 255, 0.03)",
+                      color: "#cbd5e1",
+                      textDecoration: "none",
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span>Índice Completo de Capítulos</span>
+                    <ChevronRight size={16} color="#94a3b8" />
+                  </Link>
+                  <Link
+                    href={`/${locale}/autores-new`}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      background: "rgba(255, 255, 255, 0.03)",
+                      color: "#cbd5e1",
+                      textDecoration: "none",
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span>Corpo Editorial e Autores</span>
+                    <ChevronRight size={16} color="#94a3b8" />
+                  </Link>
                 </div>
-              </div>
-
-              {/* Warning Notice Card */}
-              <div className="p-6 rounded-3xl bg-gradient-to-br from-rose-950/40 to-slate-900/80 border border-rose-900/40 space-y-3">
-                <div className="flex items-center gap-2 text-rose-400 font-bold text-sm">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Aviso Importante</span>
-                </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  O conteúdo integral e detalhado dos capítulos, com ilustrações cirúrgicas de alta definição, está disponível exclusivamente na edição impressa do Tratado.
-                </p>
               </div>
             </div>
           </div>
