@@ -826,7 +826,7 @@ CREATE TRIGGER on_auth_user_created
                         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                           <select
                             value={user.role}
-                            disabled={isPending}
+                            disabled={isPending || (currentUserRole !== "super_admin" && user.role === "super_admin")}
                             onChange={(e) =>
                               onUpdateStatus(user.id, e.target.value as UserRole, user.status)
                             }
@@ -841,7 +841,9 @@ CREATE TRIGGER on_auth_user_created
                               cursor: "pointer",
                             }}
                           >
-                            <option value="super_admin">Super Admin (Total)</option>
+                            {currentUserRole === "super_admin" && (
+                              <option value="super_admin">Super Admin (Total)</option>
+                            )}
                             <option value="co_super_admin">Co-Super Admin</option>
                             <option value="admin_escritor">Admin Escritor (Editor)</option>
                             <option value="escritor">Escritor (Autor)</option>
@@ -1260,7 +1262,9 @@ CREATE TRIGGER on_auth_user_created
                       fontWeight: 700,
                     }}
                   >
-                    <option value="super_admin">Super Admin</option>
+                    {currentUserRole === "super_admin" && (
+                      <option value="super_admin">Super Admin</option>
+                    )}
                     <option value="co_super_admin">Co-Super Admin</option>
                     <option value="admin_escritor">Admin Escritor (Editor)</option>
                     <option value="escritor">Escritor (Autor)</option>
@@ -1566,7 +1570,9 @@ CREATE TRIGGER on_auth_user_created
                       background: "#fff",
                     }}
                   >
-                    <option value="super_admin">Super Admin (Total)</option>
+                    {currentUserRole === "super_admin" && (
+                      <option value="super_admin">Super Admin (Total)</option>
+                    )}
                     <option value="co_super_admin">Co-Super Admin</option>
                     <option value="admin_escritor">Admin Escritor</option>
                     <option value="escritor">Escritor (Autor)</option>

@@ -713,10 +713,11 @@ export default function AdminPainelPage() {
   };
 
   const handleEditOtherUser = async (usuario: PerfilUsuario, novaSenha?: string) => {
-    if (currentUserRole !== "super_admin") {
+    // Co-Super Admin cannot edit Super Admin or promote to Super Admin
+    if (currentUserRole !== "super_admin" && (usuario.role === "super_admin" || usuario.id === "1")) {
       setFeedback({
         type: "error",
-        message: "Apenas o Super Admin tem permissão para editar contas de outros usuários.",
+        message: "Permissão Negada: Apenas o Super Admin pode conceder ou alterar contas de Super Admin.",
       });
       return;
     }
