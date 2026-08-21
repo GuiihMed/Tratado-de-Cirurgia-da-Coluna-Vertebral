@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
@@ -35,6 +35,11 @@ export default async function AutorPage({ params }: AutorPageProps) {
 
   if (!author) {
     notFound();
+  }
+
+  // Redirect numerical ID to clean author name URL (e.g. /autor/3 -> /autor/marcelo-risso)
+  if (id !== author.slug && author.slug) {
+    redirect(`/${locale}/autor/${author.slug}`);
   }
 
   return (

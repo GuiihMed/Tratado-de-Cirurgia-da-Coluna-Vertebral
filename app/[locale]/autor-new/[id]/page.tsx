@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
@@ -25,6 +25,10 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
 
   if (!author) {
     notFound();
+  }
+
+  if (id !== author.slug && author.slug) {
+    redirect(`/${locale}/autor-new/${author.slug}`);
   }
 
   const [activeTab, setActiveTab] = useState<"bio" | "capitulos" | "publicacoes">("bio");

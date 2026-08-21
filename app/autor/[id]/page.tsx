@@ -1,10 +1,13 @@
 import { redirect } from "next/navigation";
+import { getAuthorByIdOrSlug } from "@/lib/data/authors";
 
-interface AutorRedirectProps {
+interface RootAutorPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function AutorRootPage({ params }: AutorRedirectProps) {
+export default async function RootAutorPage({ params }: RootAutorPageProps) {
   const { id } = await params;
-  redirect(`/pt/autor/${id}`);
+  const author = getAuthorByIdOrSlug(id);
+  const slug = author?.slug || id;
+  redirect(`/pt/autor/${slug}`);
 }

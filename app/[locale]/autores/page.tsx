@@ -220,7 +220,13 @@ export default function AutoresPage({ params }: AutoresPageProps) {
 
                 <div>
                   <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 900, color: "#001a3d" }}>
-                    {editor.nome}
+                    <Link
+                      href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-defino" : "marcelo-risso"}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      className="hover:underline hover:text-blue-700"
+                    >
+                      {editor.nome}
+                    </Link>
                   </h3>
                   <p style={{ margin: "0 0 10px", fontSize: 13, color: "#64748b", lineHeight: 1.4 }}>
                     {editor.cargo}

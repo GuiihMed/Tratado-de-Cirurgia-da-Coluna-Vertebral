@@ -263,21 +263,21 @@ export default async function HomePage({ params }: HomePageProps) {
 
                 {/* 3 Real Editors with Direct Links */}
                 <div className="portraits" style={{ display: "flex", gap: 16, margin: "12px 0 24px", alignItems: "center" }}>
-                  <Link href={`/${locale}/autor/1`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <Link href={`/${locale}/autor/edson-pudles`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
                     <img
                       src="/assets/edson-pudles.png"
                       alt="Dr. Edson Pudles"
                       style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
                     />
                   </Link>
-                  <Link href={`/${locale}/autor/2`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <Link href={`/${locale}/autor/helton-defino`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
                     <img
                       src="/assets/helton-defino.png"
                       alt="Dr. Helton Defino"
                       style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
                     />
                   </Link>
-                  <Link href={`/${locale}/autor/3`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <Link href={`/${locale}/autor/marcelo-risso`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
                     <img
                       src="/assets/marcelo-risso.png"
                       alt="Dr. Marcelo Risso"
