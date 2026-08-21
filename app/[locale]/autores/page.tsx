@@ -72,7 +72,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
 
               {/* Right Column: Hero Info */}
               <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight mb-3">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-3">
                   {locale === "en" ? "Authors & Editors" : locale === "es" ? "Autores y Editores" : "Autores e Editores"}
                 </h1>
 
@@ -119,7 +119,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
             style={{
               textAlign: "center",
               fontSize: 26,
-              fontWeight: 900,
+              fontWeight: 700,
               color: "#001a3d",
               margin: "0 0 32px",
               letterSpacing: "-0.01em",
@@ -163,7 +163,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 </div>
 
                 <div>
-                  <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 900, color: "#001a3d" }}>
+                  <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 700, color: "#001a3d" }}>
                     <Link
                       href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-defino" : "marcelo-risso"}`}
                       style={{ color: "inherit", textDecoration: "none" }}
@@ -203,7 +203,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
         {/* ========================================================================= */}
         <section style={{ maxWidth: 1200, margin: "0 auto 64px", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: "0 0 6px" }}>
+            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#001a3d", margin: "0 0 6px" }}>
               {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e colaboradores"}
             </h2>
             <p style={{ fontSize: 14, color: "#64748b", margin: 0 }}>
@@ -235,7 +235,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     background: isSelected ? "#002b66" : "#fff",
                     color: isSelected ? "#fff" : "#475569",
                     fontSize: 12.5,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     cursor: "pointer",
                     transition: "all 0.15s ease",
                     boxShadow: isSelected ? "0 2px 8px rgba(0, 43, 102, 0.25)" : "none",
@@ -271,7 +271,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 <div
                   style={{
                     fontSize: 18,
-                    fontWeight: 900,
+                    fontWeight: 700,
                     color: "#e11d48",
                     borderBottom: "1.5px solid #ffe4e6",
                     paddingBottom: 4,
@@ -338,7 +338,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 style={{ width: 70, height: "auto", borderRadius: 4, boxShadow: "0 6px 16px rgba(0,0,0,0.4)" }}
               />
               <div>
-                <h3 style={{ fontSize: 19, fontWeight: 900, margin: "0 0 12px", color: "#fff" }}>
+                <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px", color: "#fff" }}>
                   {locale === "en"
                     ? "A landmark masterwork for clinical practice, study, and reference — exclusively printed."
                     : locale === "es"
@@ -369,7 +369,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                   borderRadius: 8,
                   background: "#e11d48",
                   color: "#fff",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: 14,
                   textDecoration: "none",
                 }}

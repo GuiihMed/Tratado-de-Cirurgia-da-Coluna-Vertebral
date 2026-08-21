@@ -280,7 +280,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     border: "1px solid #f52238",
                     color: "#ff99a8",
                     fontSize: 12,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "0.06em",
                   }}
@@ -290,7 +290,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 <span
                   style={{
                     fontSize: 12,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     padding: "4px 10px",
                     borderRadius: 20,
                     background: "rgba(255, 255, 255, 0.12)",
@@ -306,7 +306,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               <h1
                 style={{
                   fontSize: "clamp(32px, 3.8vw, 46px)",
-                  fontWeight: 900,
+                  fontWeight: 700,
                   color: "#fff",
                   lineHeight: 1.15,
                   letterSpacing: "-0.03em",
@@ -380,7 +380,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     color: "#fff",
                     textDecoration: "none",
                     fontSize: 14.5,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     boxShadow: "0 8px 24px rgba(245, 34, 56, 0.45)",
                     transition: "all 0.2s ease",
                   }}
@@ -502,7 +502,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     <FileText size={22} />
                   </div>
                   <div>
-                    <h2 style={{ fontSize: 22, fontWeight: 900, color: "#001a3d", margin: "0 0 2px" }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 2px" }}>
                       {locale === "en" ? "Chapter Clinical Summary" : locale === "es" ? "Resumen Clínico del Capítulo" : "Resumo Clínico do Capítulo"}
                     </h2>
                     <span style={{ fontSize: 13, color: "#64748b" }}>
@@ -527,7 +527,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#dc2626", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#dc2626", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • {locale === "en" ? "Clinical Context" : locale === "es" ? "Contexto Clínico" : "Contexto Clínico"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -549,7 +549,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • {locale === "en" ? "Objective of the Approach" : locale === "es" ? "Objetivo del Enfoque" : "Objetivo da Abordagem"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -571,7 +571,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#d97706", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#d97706", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • {locale === "en" ? "Main Content & Key Parameters" : locale === "es" ? "Contenido Principal y Parámetros Clave" : "Conteúdo Principal & Parâmetros Chave"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -593,7 +593,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
                       • {locale === "en" ? "Core Takeaway for Surgeons" : locale === "es" ? "Mensaje Central a los Cirujanos" : "Mensagem Central aos Cirurgiões"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -619,7 +619,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Tag size={18} className="text-rose-600" />
-                  <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "DeCS / MeSH Scientific Descriptors" : locale === "es" ? "Descriptores Científicos DeCS / MeSH" : "Descritores Científicos DeCS / MeSH"}
                   </h3>
                 </div>
@@ -657,7 +657,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Award size={20} className="text-amber-400" />
-                  <h3 style={{ fontSize: 20, fontWeight: 900, color: "#fff", margin: 0 }}>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0 }}>
                     {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
                   </h3>
                 </div>
@@ -680,7 +680,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     textAlign: "center",
                   }}
                 >
-                  <span style={{ fontSize: 16.5, fontWeight: 800, color: "#fff", fontStyle: "italic", lineHeight: 1.5 }}>
+                  <span style={{ fontSize: 16.5, fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.5 }}>
                     {locale === "en"
                       ? "“ Restoring sagittal balance is restoring function, alleviating pain, and elevating patient quality of life. ”"
                       : locale === "es"
@@ -715,7 +715,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     <Globe size={22} />
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "Conceptual Foundation" : locale === "es" ? "Base Conceptual" : "Base Conceitual"}
                   </h4>
                   <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
@@ -750,7 +750,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     <Stethoscope size={22} />
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación Clínica" : "Aplicação Clínica"}
                   </h4>
                   <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
@@ -785,7 +785,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   >
                     <Compass size={22} />
                   </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 8px" }}>
+                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
                     {locale === "en" ? "3D Planning" : locale === "es" ? "Planificación 3D" : "Planejamento 3D"}
                   </h4>
                   <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
@@ -811,14 +811,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
                   <div>
-                    <h3 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "0 0 4px" }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: "0 0 4px" }}>
                       {locale === "en" ? "Selected Bibliographic References" : locale === "es" ? "Referencias Bibliográficas Seleccionadas" : "Referências Bibliográficas Selecionadas"}
                     </h3>
                     <span style={{ fontSize: 13, color: "#64748b" }}>
                       {locale === "en" ? "High-impact peer-reviewed literature indexed on PubMed / DOI" : locale === "es" ? "Literatura de alto impacto indexada en PubMed / DOI" : "Literatura de alto impacto indexada no PubMed / DOI"}
                     </span>
                   </div>
-                  <span style={{ fontSize: 12, fontWeight: 800, padding: "4px 12px", borderRadius: 12, background: "#f1f5f9", color: "#475569" }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 12, background: "#f1f5f9", color: "#475569" }}>
                     {referencesList.length} {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
                   </span>
                 </div>
@@ -839,7 +839,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       }}
                     >
                       <div>
-                        <div style={{ fontSize: 14, fontWeight: 750, color: "#001a3d", marginBottom: 4 }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d", marginBottom: 4 }}>
                           {ref.num}. {ref.author} {ref.title}
                         </div>
                         <div style={{ fontSize: 12.5, color: "#64748b", fontStyle: "italic" }}>
@@ -913,10 +913,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 850, textTransform: "uppercase", color: "#ff808f", letterSpacing: "0.08em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#ff808f", letterSpacing: "0.08em", marginBottom: 6 }}>
                       {locale === "en" ? "Treatise in Debate • Official Videocast" : locale === "es" ? "Tratado en Debate • Videocast Oficial" : "Tratado em Debate • Podcast Oficial"}
                     </div>
-                    <h4 style={{ fontSize: 18, fontWeight: 900, color: "#fff", margin: "0 0 10px" }}>
+                    <h4 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "0 0 10px" }}>
                       {locale === "en" ? `Episode ${isCap8 ? "1" : num} – Chapter ${num}: ${title}` : locale === "es" ? `Episodio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}` : `Episódio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}`}
                     </h4>
                     <p style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5, margin: "0 0 20px" }}>
@@ -941,7 +941,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       color: "#fff",
                       textDecoration: "none",
                       fontSize: 13.5,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       boxShadow: "0 6px 18px rgba(245, 34, 56, 0.4)",
                     }}
                   >
@@ -964,7 +964,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <div>
-                    <h4 style={{ fontSize: 16, fontWeight: 900, color: "#001a3d", margin: "0 0 14px" }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
                       {locale === "en" ? "Browse Treatise" : locale === "es" ? "Navegar en la Obra" : "Navegar na Obra"}
                     </h4>
                     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1020,7 +1020,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     style={{
                       marginTop: 16,
                       fontSize: 13,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: "#f52238",
                       textDecoration: "none",
                       textAlign: "center",
@@ -1051,7 +1051,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
                   <Users size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Chapter Authors" : locale === "es" ? "Autores del Capítulo" : "Autores do Capítulo"}
                   </h3>
                 </div>
@@ -1070,7 +1070,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       }}
                     />
                     <div>
-                      <div style={{ fontSize: 14.5, fontWeight: 800, color: "#001a3d" }}>
+                      <div style={{ fontSize: 14.5, fontWeight: 700, color: "#001a3d" }}>
                         Dr. Marcelo Ítalo Risso
                       </div>
                       <div style={{ fontSize: 12, color: "#f52238", fontWeight: 700 }}>
@@ -1092,7 +1092,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       }}
                     />
                     <div>
-                      <div style={{ fontSize: 14.5, fontWeight: 800, color: "#001a3d" }}>
+                      <div style={{ fontSize: 14.5, fontWeight: 700, color: "#001a3d" }}>
                         Dr. Paulo Tadeu Maia Cavali
                       </div>
                       <div style={{ fontSize: 12, color: "#64748b", fontWeight: 600 }}>
@@ -1115,7 +1115,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <Globe size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 17, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Available Languages" : locale === "es" ? "Idiomas Disponibles" : "Idiomas Disponíveis"}
                   </h3>
                 </div>
@@ -1137,7 +1137,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       borderRadius: 8,
                       background: locale === "pt" ? "#f52238" : "#f1f5f9",
                       color: locale === "pt" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13.5,
                       textDecoration: "none",
                       boxShadow: locale === "pt" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
@@ -1153,7 +1153,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       borderRadius: 8,
                       background: locale === "es" ? "#f52238" : "#f1f5f9",
                       color: locale === "es" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13.5,
                       textDecoration: "none",
                       boxShadow: locale === "es" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
@@ -1169,7 +1169,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       borderRadius: 8,
                       background: locale === "en" ? "#f52238" : "#f1f5f9",
                       color: locale === "en" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13.5,
                       textDecoration: "none",
                       boxShadow: locale === "en" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
@@ -1192,7 +1192,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
                   <ShieldCheck size={18} className="text-blue-400" />
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#fff", margin: 0 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", margin: 0 }}>
                     {locale === "en" ? "SBC Institutional Notice" : locale === "es" ? "Aviso Institucional SBC" : "Aviso Institucional SBC"}
                   </h3>
                 </div>
@@ -1230,7 +1230,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     border: "1px solid rgba(255, 255, 255, 0.25)",
                     color: "#fff",
                     fontSize: 13,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     textDecoration: "none",
                   }}
                 >

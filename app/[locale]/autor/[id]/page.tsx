@@ -128,7 +128,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   <span>{author.cargo}</span>
                 </div>
 
-                <h1 style={{ fontSize: "clamp(32px, 3.5vw, 46px)", fontWeight: 800, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
+                <h1 style={{ fontSize: "clamp(32px, 3.5vw, 46px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
                   {author.nome}
                 </h1>
 
@@ -174,7 +174,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
                   <span style={{ color: "#003382" }}>📖</span> {locale === "en" ? "Biography and Professional Trajectory" : locale === "es" ? "Biografía y Trayectoria Profesional" : "Biografia e Trajetória Profissional"}
                 </h2>
                 <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.7, margin: 0 }}>
@@ -193,7 +193,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                  <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
+                  <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
                     <span style={{ color: "#e11d48" }}>📚</span> {locale === "en" ? `Chapters in Treatise (${author.capitulos_tratado.length})` : locale === "es" ? `Capítulos en el Tratado (${author.capitulos_tratado.length})` : `Capítulos no Tratado de Coluna (${author.capitulos_tratado.length})`}
                   </h2>
                   <span style={{ fontSize: 12.5, fontWeight: 700, color: "#003382", background: "#f0f7ff", padding: "4px 12px", borderRadius: 12, border: "1px solid #dbeafe" }}>
@@ -214,7 +214,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 13, fontWeight: 800 }}>
+                          <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 13, fontWeight: 700 }}>
                             {locale === "en" ? "Ch." : locale === "es" ? "Cap." : "Cap."} {cap.num}
                           </span>
                           <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
@@ -238,7 +238,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                         </Link>
                       </div>
 
-                      <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: "0 0 8px" }}>
+                      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
                         {cap.titulo}
                       </h3>
 
@@ -278,7 +278,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
                   <span style={{ color: "#003382" }}>🔬</span> {locale === "en" ? "Featured Scientific Publications" : locale === "es" ? "Publicaciones Científicas Destacadas" : "Publicações Científicas de Referência"}
                 </h2>
 
@@ -294,7 +294,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#003382", background: "#e0f2fe", padding: "2px 8px", borderRadius: 4 }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: "#003382", background: "#e0f2fe", padding: "2px 8px", borderRadius: 4 }}>
                           {pub.ano}
                         </span>
                         <span style={{ fontSize: 13, fontWeight: 700, color: "#64748b" }}>
@@ -327,7 +327,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
@@ -349,7 +349,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Positions in Medical Societies" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
@@ -371,7 +371,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Practice Areas" : locale === "es" ? "Áreas de Práctica" : "Áreas de Atuação"}
                 </h3>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -404,7 +404,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   textAlign: "center",
                 }}
               >
-                <h4 style={{ fontSize: 18, fontWeight: 800, margin: "0 0 10px" }}>
+                <h4 style={{ fontSize: 18, fontWeight: 700, margin: "0 0 10px" }}>
                   {locale === "en" ? "Complete Editorial Board" : locale === "es" ? "Cuerpo Editorial Completo" : "Corpo Editorial Completo"}
                 </h4>
                 <p style={{ fontSize: 13.5, color: "#cbd5e1", margin: "0 0 18px", lineHeight: 1.5 }}>

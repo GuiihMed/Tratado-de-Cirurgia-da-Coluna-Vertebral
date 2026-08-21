@@ -1125,7 +1125,7 @@ export default function AdminPainelPage() {
               style={{ height: 38, width: "auto", objectFit: "contain" }}
             />
             <div>
-              <div style={{ fontSize: 14.5, fontWeight: 900, color: textPrimary, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+              <div style={{ fontSize: 14.5, fontWeight: 700, color: textPrimary, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
                 Tratado de Coluna
               </div>
               <div style={{ fontSize: 11, color: textMuted, display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
@@ -1163,7 +1163,7 @@ export default function AdminPainelPage() {
                 display: "grid",
                 placeItems: "center",
                 fontSize: 14,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: "#fff",
                 flexShrink: 0,
                 border: "2px solid rgba(255, 255, 255, 0.3)",
@@ -1178,7 +1178,7 @@ export default function AdminPainelPage() {
               )}
             </div>
             <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: textPrimary, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: textPrimary, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {currentUserName || "Administrador Geral"}
               </div>
               <div style={{ fontSize: 10.5, color: isDark ? "#38bdf8" : "#0284c7", fontWeight: 700, marginTop: 1, display: "flex", alignItems: "center", gap: 4 }}>
@@ -1203,7 +1203,7 @@ export default function AdminPainelPage() {
         <div style={{ padding: "20px 14px", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 22 }}>
           {/* Category 1: VISÃO GERAL */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Visão Geral
             </div>
             <button
@@ -1233,7 +1233,7 @@ export default function AdminPainelPage() {
 
           {/* Category 2: CONTEÚDO EDITORIAL */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Conteúdo Editorial
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -1259,7 +1259,7 @@ export default function AdminPainelPage() {
               >
                 <BookOpen size={18} />
                 <span style={{ flex: 1 }}>Capítulos</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: activeTab === "capitulos" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "capitulos" ? "#fff" : textMuted }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 999, background: activeTab === "capitulos" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "capitulos" ? "#fff" : textMuted }}>
                   {chapters.length}
                 </span>
               </button>
@@ -1286,7 +1286,7 @@ export default function AdminPainelPage() {
               >
                 <Users size={18} />
                 <span style={{ flex: 1 }}>Autores &amp; Editores</span>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: activeTab === "autores" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "autores" ? "#fff" : textMuted }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 999, background: activeTab === "autores" ? "rgba(255, 255, 255, 0.2)" : isDark ? "rgba(255, 255, 255, 0.08)" : "#e2e8f0", color: activeTab === "autores" ? "#fff" : textMuted }}>
                   {authors.length}
                 </span>
               </button>
@@ -1295,7 +1295,7 @@ export default function AdminPainelPage() {
 
           {/* Category 3: CONTROLE DE ACESSO */}
           <div>
-            <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+            <div style={{ fontSize: 10.5, fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
               Controle &amp; Segurança
             </div>
             <button
@@ -1321,7 +1321,7 @@ export default function AdminPainelPage() {
               <ShieldCheck size={18} />
               <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
               {usuarios.filter((u) => u.status === "pendente").length > 0 && (
-                <span style={{ fontSize: 10, fontWeight: 900, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
                   {usuarios.filter((u) => u.status === "pendente").length}
                 </span>
               )}
@@ -1348,7 +1348,7 @@ export default function AdminPainelPage() {
               border: isDark ? "1px solid rgba(225, 29, 72, 0.3)" : "1px solid #fecdd3",
               color: isDark ? "#fda4af" : "#be123c",
               fontSize: 13,
-              fontWeight: 800,
+              fontWeight: 700,
               cursor: "pointer",
               transition: "all 0.2s ease",
             }}
@@ -1393,11 +1393,11 @@ export default function AdminPainelPage() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: textMuted }}>
-              <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 SBC Admin
               </span>
               <span>/</span>
-              <strong style={{ color: textPrimary, fontWeight: 800 }}>
+              <strong style={{ color: textPrimary, fontWeight: 700 }}>
                 {activeTab === "dashboard"
                   ? "Dashboard Executivo & Métricas"
                   : activeTab === "capitulos"
@@ -1491,7 +1491,7 @@ export default function AdminPainelPage() {
                   border: "none",
                   color: "inherit",
                   cursor: "pointer",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: 16,
                   padding: "4px",
                 }}
@@ -1554,7 +1554,7 @@ export default function AdminPainelPage() {
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, flexWrap: "wrap", gap: 16 }}>
                   <div>
-                    <h3 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
                       <BookOpen size={22} color="#0284c7" />
                       <span>Catálogo Geral da Obra ({displayedChapters.length} de {chapters.length} Capítulos)</span>
                     </h3>
@@ -1616,7 +1616,7 @@ export default function AdminPainelPage() {
                 <div style={{ overflowX: "auto" }}>
                   <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: 13.5, color: textSecondary }}>
                     <thead>
-                      <tr style={{ borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0", color: textMuted, fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                      <tr style={{ borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e2e8f0", color: textMuted, fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
                         <th style={{ padding: "12px 14px", width: 50 }}>#</th>
                         <th style={{ padding: "12px 14px" }}>Título do Capítulo</th>
                         <th style={{ padding: "12px 14px", width: 190 }}>Seção</th>
@@ -1649,11 +1649,11 @@ export default function AdminPainelPage() {
                                 transition: "background 0.15s ease",
                               }}
                             >
-                              <td style={{ padding: "14px", fontWeight: 900, color: "#f43f5e" }}>
+                              <td style={{ padding: "14px", fontWeight: 700, color: "#f43f5e" }}>
                                 {c.numero}
                               </td>
                               <td style={{ padding: "14px" }}>
-                                <strong style={{ color: textPrimary, fontWeight: 800 }}>{c.titulo_pt}</strong>
+                                <strong style={{ color: textPrimary, fontWeight: 700 }}>{c.titulo_pt}</strong>
                                 {c.titulo_en && (
                                   <div style={{ fontSize: 12, color: textMuted, fontStyle: "italic", marginTop: 2 }}>
                                     EN: {c.titulo_en}
@@ -1685,7 +1685,7 @@ export default function AdminPainelPage() {
                                     padding: "3px 10px",
                                     borderRadius: 999,
                                     fontSize: 11,
-                                    fontWeight: 800,
+                                    fontWeight: 700,
                                     background: c.status === "rascunho" ? (isDark ? "rgba(245, 158, 11, 0.15)" : "#fffbeb") : (isDark ? "rgba(16, 185, 129, 0.15)" : "#f0fdf4"),
                                     border: c.status === "rascunho" ? "1px solid #f59e0b" : "1px solid #10b981",
                                     color: c.status === "rascunho" ? "#f59e0b" : "#10b981",
@@ -1824,11 +1824,11 @@ export default function AdminPainelPage() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingBottom: 18 }}>
                     <div>
-                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 10px", borderRadius: 6, background: "rgba(225, 29, 72, 0.12)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 10px", borderRadius: 6, background: "rgba(225, 29, 72, 0.12)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
                         <Users size={13} />
                         <span>Gestão do Corpo Editorial</span>
                       </div>
-                      <h2 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: "0 0 4px" }}>
+                      <h2 style={{ fontSize: 20, fontWeight: 700, color: textPrimary, letterSpacing: "-0.02em", margin: "0 0 4px" }}>
                         {authorId ? `Editando: ${authorNome}` : "Cadastrar Novo Autor / Editor"}
                       </h2>
                       <p style={{ fontSize: 13, color: textMuted, margin: 0 }}>
@@ -1863,7 +1863,7 @@ export default function AdminPainelPage() {
 
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 90px", gap: 16 }}>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                           Nome Completo do Médico / Autor *
                         </label>
                         <input
@@ -1889,7 +1889,7 @@ export default function AdminPainelPage() {
                       </div>
 
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                           Ordem #
                         </label>
                         <input
@@ -1908,7 +1908,7 @@ export default function AdminPainelPage() {
                             color: textPrimary,
                             textAlign: "center",
                             fontSize: 14,
-                            fontWeight: 900,
+                            fontWeight: 700,
                             outline: "none",
                             boxSizing: "border-box",
                           }}
@@ -1919,7 +1919,7 @@ export default function AdminPainelPage() {
                     {/* Cargo Selection & Chips */}
                     <div>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                        <label style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                        <label style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                           Cargo / Título Oficial no Tratado *
                         </label>
                         <span style={{ fontSize: 11, color: textMuted }}>
@@ -1980,7 +1980,7 @@ export default function AdminPainelPage() {
 
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                           Instituição / Universidade
                         </label>
                         <input
@@ -2004,7 +2004,7 @@ export default function AdminPainelPage() {
                       </div>
 
                       <div>
-                        <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                        <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                           Destaque Principal
                         </label>
                         <input
@@ -2031,7 +2031,7 @@ export default function AdminPainelPage() {
                     {/* Foto Picker com Prévia e Upload (IMAGE 5 FIX: STRICTLY CONSTRAINED PHOTO) */}
                     <div style={{ padding: 18, borderRadius: 16, background: isDark ? "rgba(2, 6, 23, 0.6)" : "#f8fafc", border: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                        <label style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                        <label style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                           Foto Oficial do Autor *
                         </label>
                         <span style={{ fontSize: 11, color: textMuted }}>
@@ -2132,7 +2132,7 @@ export default function AdminPainelPage() {
                     </div>
 
                     <div>
-                      <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                      <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                         Mini-Currículo e Trajetória Acadêmica *
                       </label>
                       <textarea
@@ -2158,7 +2158,7 @@ export default function AdminPainelPage() {
                     </div>
 
                     <div>
-                      <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                      <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                         Especialidades &amp; Áreas de Foco (separadas por vírgula)
                       </label>
                       <input
@@ -2191,7 +2191,7 @@ export default function AdminPainelPage() {
                         background: "linear-gradient(135deg, #e11d48 0%, #be123c 100%)",
                         border: "none",
                         color: "#fff",
-                        fontWeight: 900,
+                        fontWeight: 700,
                         fontSize: 14,
                         boxShadow: "0 8px 24px rgba(225, 29, 72, 0.4)",
                         display: "flex",
@@ -2221,7 +2221,7 @@ export default function AdminPainelPage() {
                 >
                   <div style={{ marginBottom: 24, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingBottom: 18 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-                      <h3 style={{ fontSize: 20, fontWeight: 900, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 8 }}>
+                      <h3 style={{ fontSize: 20, fontWeight: 700, color: textPrimary, letterSpacing: "-0.02em", margin: 0, display: "flex", alignItems: "center", gap: 8 }}>
                         <Users size={20} color="#f43f5e" />
                         <span>Corpo Editorial Cadastrado ({authors.length})</span>
                       </h3>
@@ -2246,7 +2246,7 @@ export default function AdminPainelPage() {
                             padding: "5px 14px",
                             borderRadius: 999,
                             fontSize: 12,
-                            fontWeight: 800,
+                            fontWeight: 700,
                             cursor: "pointer",
                             transition: "all 0.2s ease",
                             background: authorCategoryFilter === f.id ? "#e11d48" : isDark ? "rgba(255, 255, 255, 0.06)" : "#f1f5f9",
@@ -2274,10 +2274,10 @@ export default function AdminPainelPage() {
                               {category.iconType === "building" && <Building2 size={16} />}
                               {category.iconType === "pen" && <Users size={16} />}
                             </div>
-                            <h4 style={{ fontSize: 13, fontWeight: 800, color: textPrimary, margin: 0, flex: 1 }}>
+                            <h4 style={{ fontSize: 13, fontWeight: 700, color: textPrimary, margin: 0, flex: 1 }}>
                               {category.title}
                             </h4>
-                            <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 8px", borderRadius: 999, background: isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0", color: textMuted }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 999, background: isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0", color: textMuted }}>
                               {category.list.length} {category.list.length === 1 ? "médico" : "médicos"}
                             </span>
                           </div>
@@ -2313,7 +2313,7 @@ export default function AdminPainelPage() {
 
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                   <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 2 }}>
-                                    <span style={{ fontSize: 10.5, fontWeight: 900, padding: "2px 7px", borderRadius: 6, background: "rgba(225, 29, 72, 0.15)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", textTransform: "uppercase" }}>
+                                    <span style={{ fontSize: 10.5, fontWeight: 700, padding: "2px 7px", borderRadius: 6, background: "rgba(225, 29, 72, 0.15)", border: "1px solid rgba(225, 29, 72, 0.3)", color: "#f43f5e", textTransform: "uppercase" }}>
                                       {author.cargo}
                                     </span>
                                     <span style={{ fontSize: 11, color: textMuted, fontWeight: 700 }}>
@@ -2321,7 +2321,7 @@ export default function AdminPainelPage() {
                                     </span>
                                   </div>
 
-                                  <h4 style={{ fontSize: 14, fontWeight: 800, color: textPrimary, margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                                  <h4 style={{ fontSize: 14, fontWeight: 700, color: textPrimary, margin: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                                     {author.nome}
                                   </h4>
 
@@ -2428,7 +2428,7 @@ export default function AdminPainelPage() {
           <div style={{ background: isDark ? "rgba(15, 23, 42, 0.95)" : "#ffffff", border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #cbd5e1", borderRadius: 24, maxWidth: 520, width: "100%", padding: 32, boxShadow: "0 25px 60px rgba(0, 0, 0, 0.6)", color: textPrimary }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 900, flexShrink: 0 }}>
+                <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, fontWeight: 700, flexShrink: 0 }}>
                   {editAccountFoto ? (
                     <img src={editAccountFoto} alt="Foto" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : editAccountNome ? (
@@ -2438,7 +2438,7 @@ export default function AdminPainelPage() {
                   )}
                 </div>
                 <div>
-                  <h3 style={{ fontSize: 18, fontWeight: 900, color: textPrimary, margin: 0 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: textPrimary, margin: 0 }}>
                     Editar Minha Conta
                   </h3>
                   <p style={{ fontSize: 12, color: textMuted, margin: "2px 0 0" }}>
@@ -2449,7 +2449,7 @@ export default function AdminPainelPage() {
               <button
                 type="button"
                 onClick={() => setShowEditAccountModal(false)}
-                style={{ width: 32, height: 32, borderRadius: "50%", background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9", border: "none", color: textMuted, cursor: "pointer", fontWeight: 800, fontSize: 14 }}
+                style={{ width: 32, height: 32, borderRadius: "50%", background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9", border: "none", color: textMuted, cursor: "pointer", fontWeight: 700, fontSize: 14 }}
               >
                 ✕
               </button>
@@ -2466,7 +2466,7 @@ export default function AdminPainelPage() {
                   )}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 4 }}>
+                  <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 4 }}>
                     Sua Foto de Perfil
                   </label>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
@@ -2505,7 +2505,7 @@ export default function AdminPainelPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Seu Nome Completo *
                 </label>
                 <input
@@ -2519,7 +2519,7 @@ export default function AdminPainelPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   E-mail de Acesso
                 </label>
                 <input
@@ -2532,7 +2532,7 @@ export default function AdminPainelPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Cargo / Instituição Médica
                 </label>
                 <input
@@ -2546,21 +2546,21 @@ export default function AdminPainelPage() {
 
               <div style={{ padding: 14, borderRadius: 14, background: isDark ? "rgba(124, 58, 237, 0.15)" : "#faf5ff", border: isDark ? "1px solid rgba(124, 58, 237, 0.3)" : "1px solid #e9d5ff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 11, fontWeight: 900, color: "#7c3aed", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                     Nível de Acesso no Sistema
                   </div>
-                  <div style={{ fontSize: 13.5, fontWeight: 800, color: isDark ? "#e9d5ff" : "#581c87", marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ fontSize: 13.5, fontWeight: 700, color: isDark ? "#e9d5ff" : "#581c87", marginTop: 2, display: "flex", alignItems: "center", gap: 6 }}>
                     <Shield size={14} color="#7c3aed" />
                     <span>Super Admin (Acesso Total &amp; Irrestrito)</span>
                   </div>
                 </div>
-                <span style={{ fontSize: 11, fontWeight: 900, padding: "3px 9px", borderRadius: 999, background: "#7c3aed", color: "#fff" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "3px 9px", borderRadius: 999, background: "#7c3aed", color: "#fff" }}>
                   ATIVO
                 </span>
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Nova Senha (Opcional)
                 </label>
                 <input
@@ -2583,7 +2583,7 @@ export default function AdminPainelPage() {
                 <button
                   type="submit"
                   disabled={savingAccount}
-                  style={{ padding: "10px 22px", borderRadius: 10, background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", border: "none", color: "#fff", fontSize: 12.5, fontWeight: 800, cursor: "pointer", boxShadow: "0 6px 20px rgba(124, 58, 237, 0.35)", display: "inline-flex", alignItems: "center", gap: 6 }}
+                  style={{ padding: "10px 22px", borderRadius: 10, background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)", border: "none", color: "#fff", fontSize: 12.5, fontWeight: 700, cursor: "pointer", boxShadow: "0 6px 20px rgba(124, 58, 237, 0.35)", display: "inline-flex", alignItems: "center", gap: 6 }}
                 >
                   <Save size={14} />
                   <span>{savingAccount ? "Salvando..." : "Salvar Alterações"}</span>

@@ -119,7 +119,7 @@ export default function DashboardTab({
                 border: "1px solid rgba(225, 29, 72, 0.4)",
                 color: "#fda4af",
                 fontSize: 11.5,
-                fontWeight: 800,
+                fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.06em",
               }}
@@ -152,7 +152,7 @@ export default function DashboardTab({
             <h1
               style={{
                 fontSize: 32,
-                fontWeight: 900,
+                fontWeight: 700,
                 color: "#ffffff",
                 letterSpacing: "-0.03em",
                 margin: 0,
@@ -187,7 +187,7 @@ export default function DashboardTab({
                 borderRadius: 12,
                 background: "linear-gradient(135deg, #e11d48 0%, #be123c 100%)",
                 color: "#fff",
-                fontWeight: 800,
+                fontWeight: 700,
                 fontSize: 13.5,
                 border: "none",
                 cursor: "pointer",
@@ -228,7 +228,7 @@ export default function DashboardTab({
                     color: "#fcd34d",
                     border: "1px solid rgba(245, 158, 11, 0.5)",
                     fontSize: 11,
-                    fontWeight: 800,
+                    fontWeight: 700,
                   }}
                 >
                   {pendingUsers} pendentes
@@ -291,10 +291,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Capítulos Publicados
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {totalChapters}
               </div>
             </div>
@@ -336,10 +336,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Seções Temáticas
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {SECOES.length}
               </div>
             </div>
@@ -381,10 +381,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Corpo de Autores
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {authors.length}+
               </div>
             </div>
@@ -426,10 +426,10 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Acessos &amp; Usuários
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
+              <div style={{ fontSize: 32, fontWeight: 700, color: textPrimary, marginTop: 4, letterSpacing: "-0.02em" }}>
                 {usuarios.length}
               </div>
             </div>
@@ -486,7 +486,7 @@ export default function DashboardTab({
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: 16, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ fontSize: 16, fontWeight: 700, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
                 <TrendingUp size={18} color="#38bdf8" />
                 <span>Distribuição Curricular por Seção</span>
               </div>
@@ -543,7 +543,7 @@ export default function DashboardTab({
                           padding: "2px 8px",
                           borderRadius: 6,
                           fontSize: 11,
-                          fontWeight: 800,
+                          fontWeight: 700,
                           background: secBg,
                           color: secText,
                           border: `1px solid ${secBorder}`,
@@ -557,7 +557,7 @@ export default function DashboardTab({
                       </span>
                     </div>
 
-                    <div style={{ fontSize: 12, fontWeight: 800, color: textPrimary, flexShrink: 0, display: "flex", alignItems: "center", gap: 5 }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: textPrimary, flexShrink: 0, display: "flex", alignItems: "center", gap: 5 }}>
                       <span>{sec.count} cap.</span>
                       <span style={{ color: textMuted, fontSize: 11, fontWeight: 500 }}>({sec.percentage}%)</span>
                     </div>
@@ -598,7 +598,7 @@ export default function DashboardTab({
             }}
           >
             <div style={{ paddingBottom: 14, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
-              <div style={{ fontSize: 16, fontWeight: 800, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ fontSize: 16, fontWeight: 700, color: textPrimary, display: "flex", alignItems: "center", gap: 8 }}>
                 <FileCheck2 size={18} color="#10b981" />
                 <span>Conformidade &amp; Qualidade</span>
               </div>
@@ -634,7 +634,7 @@ export default function DashboardTab({
                     <CheckCircle2 size={16} color="#10b981" />
                     <span>{item.title}</span>
                   </div>
-                  <span style={{ fontWeight: 800, fontFamily: "monospace", color: isDark ? "#6ee7b7" : "#166534" }}>
+                  <span style={{ fontWeight: 700, fontFamily: "monospace", color: isDark ? "#6ee7b7" : "#166534" }}>
                     {item.value}
                   </span>
                 </div>
@@ -661,7 +661,7 @@ export default function DashboardTab({
           >
             <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 12, borderBottom: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #f1f5f9" }}>
               <Zap size={16} color="#f59e0b" />
-              <span style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textPrimary }}>
+              <span style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textPrimary }}>
                 Ações Rápidas
               </span>
             </div>
@@ -730,7 +730,7 @@ export default function DashboardTab({
                   border: "none",
                   color: "#fff",
                   fontSize: 13,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   textDecoration: "none",
                   boxShadow: "0 6px 20px rgba(225, 29, 72, 0.35)",
                   boxSizing: "border-box",

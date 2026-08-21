@@ -107,7 +107,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   <use href="#i-spine"></use>
                 </svg>
               </span>
-              <strong className="text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
+              <strong className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
                 {t.brand}
               </strong>
             </div>
@@ -124,7 +124,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 className="h-10 sm:h-12 w-auto object-contain"
               />
               <div className="border-l border-white/20 h-9" />
-              <div className="text-xl font-extrabold text-slate-100 tracking-tight">
+              <div className="text-xl font-bold text-slate-100 tracking-tight">
                 Di Livros
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
 
           {/* 2. Navegação (Embaixo no mobile) */}
           <div className="md:col-span-3 flex flex-col">
-            <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+            <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
               <span>{t.navTitle}</span>
             </h4>
@@ -159,7 +159,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
           {/* 3. Edições e Idiomas & Painel Autores (Depois no mobile) */}
           <div className="md:col-span-4 flex flex-col gap-5">
             <div>
-              <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+              <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                 <span>{t.editionsTitle}</span>
               </h4>
@@ -169,7 +169,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   href="/pt/home-new"
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
-                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
                     PT
                   </span>
                   <span>Português (Brasil)</span>
@@ -179,7 +179,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   href="/en/home-new"
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
-                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
                     EN
                   </span>
                   <span>English (Abstracts)</span>
@@ -189,7 +189,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   href="/es/home-new"
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
-                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
                     ES
                   </span>
                   <span>Español (Resúmenes)</span>

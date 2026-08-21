@@ -309,7 +309,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                 background: "linear-gradient(135deg, rgba(245, 34, 56, 0.12) 0%, rgba(0, 51, 130, 0.12) 100%)",
                 color: "#f52238",
                 fontSize: 11.5,
-                fontWeight: 800,
+                fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
               }}
@@ -326,7 +326,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             )}
           </div>
 
-          <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: 0, letterSpacing: "-0.02em" }}>
+          <h2 style={{ fontSize: 24, fontWeight: 700, color: "#001a3d", margin: 0, letterSpacing: "-0.02em" }}>
             {numero ? `Editando Capítulo ${numero}: ${tituloPt || "Sem Título"}` : "Cadastrar / Publicar Novo Capítulo"}
           </h2>
           <p style={{ fontSize: 13.5, color: "#64748b", margin: "4px 0 0" }}>
@@ -415,7 +415,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
       >
         {/* ================= 1. METADADOS ================= */}
         <div style={{ marginBottom: 28 }}>
-          <h3 style={{ fontSize: 13.5, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
+          <h3 style={{ fontSize: 13.5, fontWeight: 700, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 14 }}>
             1. Metadados & Classificação do Capítulo
           </h3>
 
@@ -467,7 +467,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                   borderRadius: 10,
                   border: "1px solid #cbd5e1",
                   fontSize: 14,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   color: "#f52238",
                   textAlign: "center",
                 }}
@@ -524,7 +524,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
         {/* ================= 2. TÍTULOS MULTILÍNGUES ================= */}
         <div style={{ marginBottom: 28, background: "#f8fafc", padding: "20px", borderRadius: 14, border: "1px solid #e2e8f0" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-            <h3 style={{ fontSize: 13.5, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
+            <h3 style={{ fontSize: 13.5, fontWeight: 700, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
               2. Títulos da Obra (Multilíngue)
             </h3>
             <div style={{ display: "flex", gap: 6 }}>
@@ -662,7 +662,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             }}
           >
             <div>
-              <label style={{ fontSize: 13.5, fontWeight: 800, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+              <label style={{ fontSize: 13.5, fontWeight: 700, color: "#001a3d", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                 4. Conteúdo Científico Completo
               </label>
               <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>
@@ -791,7 +791,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
               <button
                 type="button"
                 onClick={() => insertMarkdown("**", "**", "texto em negrito")}
-                style={{ ...toolbarBtnStyle, fontWeight: 900 }}
+                style={{ ...toolbarBtnStyle, fontWeight: 700 }}
                 title="Negrito (**texto**)"
               >
                 B
@@ -926,7 +926,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             {(viewMode === "edit" || viewMode === "split") && (
               <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                 {viewMode === "split" && (
-                  <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "#64748b", marginBottom: 6, letterSpacing: "0.05em" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#64748b", marginBottom: 6, letterSpacing: "0.05em" }}>
                     Código Markdown
                   </div>
                 )}
@@ -973,7 +973,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #f1f5f9", paddingBottom: 10, marginBottom: 16 }}>
-                  <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "#003382", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#003382", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 6 }}>
                     <span>🔬</span> Pré-visualização do Tratado
                   </span>
                   <span style={{ fontSize: 11, color: "#94a3b8" }}>
@@ -984,10 +984,10 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
                 {/* Simulated Chapter Title in Preview */}
                 {tituloPt && (
                   <div style={{ marginBottom: 18, borderBottom: "2px solid #f52238", paddingBottom: 12 }}>
-                    <div style={{ fontSize: 12, fontWeight: 800, color: "#f52238", textTransform: "uppercase" }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "#f52238", textTransform: "uppercase" }}>
                       Capítulo {numero || "?"} • {SECOES.find((s) => s.id.toString() === secaoId)?.titulo_pt || `Seção ${secaoId}`}
                     </div>
-                    <h1 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: "4px 0 6px" }}>
+                    <h1 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: "4px 0 6px" }}>
                       {tituloPt}
                     </h1>
                     {autores && (
@@ -1065,7 +1065,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
             background: "linear-gradient(135deg, #001a3d 0%, #003366 100%)",
             color: "#fff",
             fontSize: 15.5,
-            fontWeight: 800,
+            fontWeight: 700,
             cursor: isPending ? "not-allowed" : "pointer",
             display: "flex",
             justifyContent: "center",
@@ -1084,7 +1084,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
       <style jsx global>{`
         .scientific-content-preview h1.preview-h1 {
           font-size: 1.4rem;
-          font-weight: 850;
+          font-weight: 700;
           color: #001a3d;
           margin: 24px 0 10px;
           border-bottom: 1px solid #e2e8f0;
@@ -1092,7 +1092,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
         }
         .scientific-content-preview h2.preview-h2 {
           font-size: 1.25rem;
-          font-weight: 800;
+          font-weight: 700;
           color: #001a3d;
           margin: 20px 0 10px;
           border-left: 4px solid #f52238;
@@ -1100,7 +1100,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
         }
         .scientific-content-preview h3.preview-h3 {
           font-size: 1.1rem;
-          font-weight: 750;
+          font-weight: 700;
           color: #1e293b;
           margin: 16px 0 8px;
         }

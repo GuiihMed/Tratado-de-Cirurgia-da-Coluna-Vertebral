@@ -336,7 +336,7 @@ CREATE TRIGGER on_auth_user_created
                 background: "rgba(124, 58, 237, 0.1)",
                 color: "#7c3aed",
                 fontSize: 12,
-                fontWeight: 800,
+                fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 marginBottom: 8,
@@ -347,7 +347,7 @@ CREATE TRIGGER on_auth_user_created
               </svg>
               <span>Controle de Permissões e Acessos Hierárquicos</span>
             </div>
-            <h2 style={{ fontSize: 24, fontWeight: 900, color: "#001a3d", margin: "0 0 6px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#001a3d", margin: "0 0 6px", letterSpacing: "-0.02em" }}>
               Gestão de Usuários & Aprovação de Cadastros
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748b", margin: 0, maxWidth: 750, lineHeight: 1.5 }}>
@@ -369,7 +369,7 @@ CREATE TRIGGER on_auth_user_created
                 background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
                 color: "#fff",
                 fontSize: 13.5,
-                fontWeight: 800,
+                fontWeight: 700,
                 cursor: "pointer",
                 boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
                 transition: "all 0.2s ease",
@@ -419,7 +419,7 @@ CREATE TRIGGER on_auth_user_created
                 <Clock size={18} className="animate-pulse" />
               </div>
               <div>
-                <h4 style={{ margin: 0, fontSize: 14.5, fontWeight: 800, color: "#92400e" }}>
+                <h4 style={{ margin: 0, fontSize: 14.5, fontWeight: 700, color: "#92400e" }}>
                   {countPendentes === 1
                     ? "Existe 1 nova solicitação de cadastro pendente de aprovação!"
                     : `Existem ${countPendentes} novas solicitações de cadastro pendentes de aprovação!`}
@@ -440,7 +440,7 @@ CREATE TRIGGER on_auth_user_created
                 color: "#fff",
                 border: "none",
                 fontSize: 12.5,
-                fontWeight: 800,
+                fontWeight: 700,
                 cursor: "pointer",
                 boxShadow: "0 2px 8px rgba(217, 119, 6, 0.3)",
               }}
@@ -473,7 +473,7 @@ CREATE TRIGGER on_auth_user_created
             <span style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase" }}>
               Total de Usuários
             </span>
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#001a3d", marginTop: 4 }}>
+            <div style={{ fontSize: 26, fontWeight: 700, color: "#001a3d", marginTop: 4 }}>
               {countTotal}
             </div>
           </div>
@@ -490,7 +490,7 @@ CREATE TRIGGER on_auth_user_created
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ fontSize: 12, fontWeight: 800, color: "#b45309", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#b45309", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
                 <Clock size={14} />
                 <span>Aguardando Aprovação</span>
               </span>
@@ -502,14 +502,14 @@ CREATE TRIGGER on_auth_user_created
                     background: "#f52238",
                     color: "#fff",
                     fontSize: 11,
-                    fontWeight: 800,
+                    fontWeight: 700,
                   }}
                 >
                   Novo
                 </span>
               )}
             </div>
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#b45309", marginTop: 4 }}>
+            <div style={{ fontSize: 26, fontWeight: 700, color: "#b45309", marginTop: 4 }}>
               {countPendentes}
             </div>
           </div>
@@ -529,7 +529,7 @@ CREATE TRIGGER on_auth_user_created
               <CheckCircle2 size={14} />
               <span>Aprovados &amp; Ativos</span>
             </span>
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#15803d", marginTop: 4 }}>
+            <div style={{ fontSize: 26, fontWeight: 700, color: "#15803d", marginTop: 4 }}>
               {countAprovados}
             </div>
           </div>
@@ -549,7 +549,7 @@ CREATE TRIGGER on_auth_user_created
               <Crown size={14} />
               <span>Super &amp; Co-Admins</span>
             </span>
-            <div style={{ fontSize: 26, fontWeight: 900, color: "#7c3aed", marginTop: 4 }}>
+            <div style={{ fontSize: 26, fontWeight: 700, color: "#7c3aed", marginTop: 4 }}>
               {countSuperAdmins}
             </div>
           </div>
@@ -674,7 +674,7 @@ CREATE TRIGGER on_auth_user_created
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
               <Users size={32} className="text-slate-400" />
             </div>
-            <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 800, color: "#001a3d" }}>
+            <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 700, color: "#001a3d" }}>
               Nenhum usuário encontrado com os filtros atuais
             </h4>
             <p style={{ margin: 0, fontSize: 13.5, color: "#64748b" }}>
@@ -706,11 +706,11 @@ CREATE TRIGGER on_auth_user_created
             <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0 10px" }}>
               <thead>
                 <tr style={{ color: "#64748b", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", textAlign: "left" }}>
-                  <th style={{ padding: "8px 16px", fontWeight: 800 }}>Usuário / Autor</th>
-                  <th style={{ padding: "8px 16px", fontWeight: 800 }}>Papel / Nível de Acesso</th>
-                  <th style={{ padding: "8px 16px", fontWeight: 800 }}>Status da Conta</th>
-                  <th style={{ padding: "8px 16px", fontWeight: 800 }}>Data Cadastro</th>
-                  <th style={{ padding: "8px 16px", fontWeight: 800, textAlign: "right" }}>Ações & Decisões</th>
+                  <th style={{ padding: "8px 16px", fontWeight: 700 }}>Usuário / Autor</th>
+                  <th style={{ padding: "8px 16px", fontWeight: 700 }}>Papel / Nível de Acesso</th>
+                  <th style={{ padding: "8px 16px", fontWeight: 700 }}>Status da Conta</th>
+                  <th style={{ padding: "8px 16px", fontWeight: 700 }}>Data Cadastro</th>
+                  <th style={{ padding: "8px 16px", fontWeight: 700, textAlign: "right" }}>Ações & Decisões</th>
                 </tr>
               </thead>
               <tbody>
@@ -761,7 +761,7 @@ CREATE TRIGGER on_auth_user_created
                               alignItems: "center",
                               justifyContent: "center",
                               fontSize: 15,
-                              fontWeight: 900,
+                              fontWeight: 700,
                               flexShrink: 0,
                               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.12)",
                               border: "1.5px solid rgba(0,0,0,0.08)",
@@ -779,7 +779,7 @@ CREATE TRIGGER on_auth_user_created
                           </div>
                           <div>
                             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                              <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800, color: "#001a3d" }}>
+                              <h4 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: "#001a3d" }}>
                                 {user.nome}
                               </h4>
                               {user.role === "super_admin" && (
@@ -796,7 +796,7 @@ CREATE TRIGGER on_auth_user_created
                                     background: "linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%)",
                                     color: "#6d28d9",
                                     fontSize: 10.5,
-                                    fontWeight: 900,
+                                    fontWeight: 700,
                                     border: "1px solid #c4b5fd",
                                     display: "inline-flex",
                                     alignItems: "center",
@@ -834,7 +834,7 @@ CREATE TRIGGER on_auth_user_created
                               padding: "6px 10px",
                               borderRadius: 6,
                               fontSize: 12.5,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               background: roleConfig.badgeBg,
                               color: roleConfig.badgeColor,
                               border: `1px solid ${roleConfig.badgeColor}33`,
@@ -867,7 +867,7 @@ CREATE TRIGGER on_auth_user_created
                             color: statusConfig.badgeColor,
                             border: `1px solid ${statusConfig.border}`,
                             fontSize: 12,
-                            fontWeight: 800,
+                            fontWeight: 700,
                           }}
                         >
                           <span
@@ -914,7 +914,7 @@ CREATE TRIGGER on_auth_user_created
                                   color: "#fff",
                                   border: "none",
                                   fontSize: 12.5,
-                                  fontWeight: 800,
+                                  fontWeight: 700,
                                   cursor: "pointer",
                                   boxShadow: "0 2px 8px rgba(22, 163, 74, 0.3)",
                                   transition: "all 0.2s",
@@ -974,7 +974,7 @@ CREATE TRIGGER on_auth_user_created
                                     color: "#15803d",
                                     border: "1px solid #bbf7d0",
                                     fontSize: 11.5,
-                                    fontWeight: 800,
+                                    fontWeight: 700,
                                     cursor: "pointer",
                                   }}
                                 >
@@ -1001,7 +1001,7 @@ CREATE TRIGGER on_auth_user_created
                                 color: "#6d28d9",
                                 border: "1px solid #c4b5fd",
                                 fontSize: 12,
-                                fontWeight: 800,
+                                fontWeight: 700,
                                 cursor: "pointer",
                                 transition: "all 0.2s",
                               }}
@@ -1074,7 +1074,7 @@ CREATE TRIGGER on_auth_user_created
                 <div style={{ padding: 8, borderRadius: 10, background: "#ede9fe", color: "#7c3aed" }}>
                   <UserPlus size={20} />
                 </div>
-                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
+                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: "#001a3d" }}>
                   Cadastrar Novo Usuário
                 </h3>
               </div>
@@ -1131,7 +1131,7 @@ CREATE TRIGGER on_auth_user_created
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: 16,
-                    fontWeight: 900,
+                    fontWeight: 700,
                     color: "#7c3aed",
                     border: "1.5px solid #c4b5fd",
                     flexShrink: 0,
@@ -1146,7 +1146,7 @@ CREATE TRIGGER on_auth_user_created
                   )}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: 12, fontWeight: 800, color: "#334155", marginBottom: 3 }}>
+                  <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#334155", marginBottom: 3 }}>
                     Foto de Perfil
                   </label>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
@@ -1157,7 +1157,7 @@ CREATE TRIGGER on_auth_user_created
                         background: "#7c3aed",
                         color: "#fff",
                         fontSize: 11.5,
-                        fontWeight: 800,
+                        fontWeight: 700,
                         cursor: "pointer",
                         display: "inline-flex",
                         alignItems: "center",
@@ -1319,7 +1319,7 @@ CREATE TRIGGER on_auth_user_created
                     background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
                     color: "#fff",
                     fontSize: 13.5,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     cursor: "pointer",
                   }}
                 >
@@ -1363,10 +1363,10 @@ CREATE TRIGGER on_auth_user_created
                   <Edit3 size={20} />
                 </div>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: "#001a3d" }}>
+                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: "#001a3d" }}>
                     Editar Conta do Usuário
                   </h3>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#7c3aed", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
                     <Crown size={12} />
                     <span>Gestão Super Admin</span>
                   </span>
@@ -1405,7 +1405,7 @@ CREATE TRIGGER on_auth_user_created
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: 20,
-                    fontWeight: 900,
+                    fontWeight: 700,
                     color: "#7c3aed",
                     border: "2px solid #c4b5fd",
                     flexShrink: 0,
@@ -1420,7 +1420,7 @@ CREATE TRIGGER on_auth_user_created
                   )}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 4 }}>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 4 }}>
                     Foto de Perfil do Usuário
                   </label>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
@@ -1431,7 +1431,7 @@ CREATE TRIGGER on_auth_user_created
                         background: "#7c3aed",
                         color: "#fff",
                         fontSize: 12,
-                        fontWeight: 800,
+                        fontWeight: 700,
                         cursor: "pointer",
                         display: "inline-flex",
                         alignItems: "center",
@@ -1481,7 +1481,7 @@ CREATE TRIGGER on_auth_user_created
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Nome Completo *
                 </label>
                 <input
@@ -1505,7 +1505,7 @@ CREATE TRIGGER on_auth_user_created
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   E-mail de Acesso *
                 </label>
                 <input
@@ -1528,7 +1528,7 @@ CREATE TRIGGER on_auth_user_created
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Cargo / Especialidade / Instituição Médica
                 </label>
                 <input
@@ -1551,7 +1551,7 @@ CREATE TRIGGER on_auth_user_created
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                 <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     Nível de Acesso (Papel)
                   </label>
                   <select
@@ -1563,7 +1563,7 @@ CREATE TRIGGER on_auth_user_created
                       borderRadius: 10,
                       border: "1.5px solid #cbd5e1",
                       fontSize: 13,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: "#0f172a",
                       boxSizing: "border-box",
                       outline: "none",
@@ -1580,7 +1580,7 @@ CREATE TRIGGER on_auth_user_created
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 800, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 700, color: "#334155", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     Status da Conta
                   </label>
                   <select
@@ -1592,7 +1592,7 @@ CREATE TRIGGER on_auth_user_created
                       borderRadius: 10,
                       border: "1.5px solid #cbd5e1",
                       fontSize: 13,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: "#0f172a",
                       boxSizing: "border-box",
                       outline: "none",
@@ -1622,7 +1622,7 @@ CREATE TRIGGER on_auth_user_created
                       alignItems: "center",
                       gap: 6,
                       fontSize: 12,
-                      fontWeight: 900,
+                      fontWeight: 700,
                       color: "#86198f",
                       textTransform: "uppercase",
                       letterSpacing: "0.04em",
@@ -1645,7 +1645,7 @@ CREATE TRIGGER on_auth_user_created
                       borderRadius: 6,
                       padding: "4px 9px",
                       fontSize: 11,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       color: "#701a75",
                       cursor: "pointer",
                       display: "inline-flex",
@@ -1730,7 +1730,7 @@ CREATE TRIGGER on_auth_user_created
                     background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
                     color: "#fff",
                     fontSize: 14,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     cursor: "pointer",
                     boxShadow: "0 4px 14px rgba(124, 58, 237, 0.3)",
                     display: "inline-flex",

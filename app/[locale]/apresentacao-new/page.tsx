@@ -133,7 +133,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     border: "1px solid rgba(245, 34, 56, 0.35)",
                     color: "#ff8290",
                     fontSize: 12,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
                     width: "fit-content",
@@ -154,7 +154,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 <h1
                   style={{
                     fontSize: "clamp(30px, 4.5vw, 48px)",
-                    fontWeight: 850,
+                    fontWeight: 700,
                     lineHeight: 1.15,
                     letterSpacing: "-0.03em",
                     margin: 0,
@@ -229,7 +229,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       background: "linear-gradient(135deg, #f52238 0%, #be123c 100%)",
                       color: "#fff",
                       fontSize: 14,
-                      fontWeight: 750,
+                      fontWeight: 700,
                       textDecoration: "none",
                       boxShadow: "0 8px 24px rgba(245, 34, 56, 0.35)",
                     }}
@@ -331,7 +331,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     >
                       <FileText size={20} />
                     </div>
-                    <h2 style={{ fontSize: 22, fontWeight: 800, margin: 0, color: "#fff" }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: "#fff" }}>
                       Texto Oficial da Apresentação
                     </h2>
                   </div>
@@ -404,7 +404,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     gap: 12,
                   }}
                 >
-                  <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", color: "#ff8290", letterSpacing: "0.05em" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: "#ff8290", letterSpacing: "0.05em" }}>
                     Mensagem Central
                   </div>
                   <div style={{ fontSize: 18, fontStyle: "italic", lineHeight: 1.6, color: "#f8fafc" }}>
@@ -459,7 +459,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 16px", color: "#fff" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
                   Dados da Publicação
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -515,7 +515,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 16px", color: "#fff" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
                   Navegação Rápida
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

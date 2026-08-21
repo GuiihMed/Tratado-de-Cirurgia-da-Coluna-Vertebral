@@ -260,7 +260,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       border: "1px solid #f52238",
                       color: "#ff808f",
                       fontSize: 12,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: "0.06em",
                     }}
@@ -275,7 +275,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     <span style={{ display: "block", fontSize: 12, color: "#94b8db", textTransform: "uppercase", fontWeight: 700 }}>
                       {locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"}
                     </span>
-                    <span style={{ fontSize: 56, fontWeight: 900, lineHeight: 1, color: "#fff", letterSpacing: "-0.03em" }}>
+                    <span style={{ fontSize: 56, fontWeight: 700, lineHeight: 1, color: "#fff", letterSpacing: "-0.03em" }}>
                       {num}
                     </span>
                   </div>
@@ -283,7 +283,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   <h1
                     style={{
                       fontSize: 38,
-                      fontWeight: 900,
+                      fontWeight: 700,
                       lineHeight: 1.15,
                       margin: 0,
                       color: "#fff",
@@ -347,7 +347,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       color: "#fff",
                       textDecoration: "none",
                       fontSize: 14.5,
-                      fontWeight: 800,
+                      fontWeight: 700,
                       boxShadow: "0 6px 18px rgba(245, 34, 56, 0.4)",
                       transition: "all 0.2s ease",
                     }}
@@ -519,7 +519,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
                   <span style={{ fontSize: 20 }}>📑</span>
-                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Chapter Summary" : locale === "es" ? "Resumen del capítulo" : "Resumo do capítulo"}
                   </h2>
                 </div>
@@ -580,7 +580,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span style={{ fontSize: 18 }}>🏷️</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Keywords" : locale === "es" ? "Palabras clave" : "Palavras-chave"}
                   </h3>
                 </div>
@@ -621,7 +621,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <span style={{ fontSize: 18 }}>⭐</span>
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
                   </h3>
                 </div>
@@ -668,7 +668,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <span style={{ fontSize: 18 }}>✨</span>
-                  <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Chapter Highlights" : locale === "es" ? "Destacados del capítulo" : "Destaques do capítulo"}
                   </h3>
                 </div>
@@ -699,7 +699,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     >
                       🌐
                     </div>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d", marginBottom: 6 }}>
                       {locale === "en" ? "Conceptual Base" : locale === "es" ? "Base conceptual" : "Base conceitual"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
@@ -736,7 +736,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     >
                       🩺
                     </div>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d", marginBottom: 6 }}>
                       {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación clínica" : "Aplicação clínica"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
@@ -773,7 +773,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     >
                       📐
                     </div>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d", marginBottom: 6 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d", marginBottom: 6 }}>
                       {locale === "en" ? "Surgical Planning" : locale === "es" ? "Planificación quirúrgica" : "Planejamento cirúrgico"}
                     </div>
                     <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.45 }}>
@@ -800,7 +800,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
                   <span style={{ fontSize: 20 }}>📚</span>
-                  <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Bibliographic References" : locale === "es" ? "Referencias bibliográficas" : "Referências bibliográficas"}
                   </h3>
                 </div>
@@ -881,10 +881,10 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", color: "#f52238", letterSpacing: "0.05em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#f52238", letterSpacing: "0.05em", marginBottom: 6 }}>
                       {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
                     </div>
-                    <h4 style={{ fontSize: 17, fontWeight: 800, margin: "0 0 8px", color: "#fff" }}>
+                    <h4 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 8px", color: "#fff" }}>
                       {locale === "en" ? `Episode ${isCap8 ? "1" : num} – Chapter ${num}: ${title}` : locale === "es" ? `Episodio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}` : `Episódio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}`}
                     </h4>
                     <p style={{ fontSize: 12.5, color: "#cbd5e1", lineHeight: 1.45, margin: "0 0 16px" }}>
@@ -930,7 +930,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 14, display: "flex", alignItems: "center", gap: 6 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 14, display: "flex", alignItems: "center", gap: 6 }}>
                       <span>🔗</span>
                       <span>{locale === "en" ? "Related chapters" : locale === "es" ? "Capítulos relacionados" : "Capítulos relacionados"}</span>
                     </div>
@@ -993,7 +993,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18, borderBottom: "1px solid #f1f5f9", paddingBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>👥</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
                   </h3>
                 </div>
@@ -1012,7 +1012,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       }}
                     />
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d" }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d" }}>
                         Marcelo Ítalo Risso Neto
                       </div>
                       <div style={{ fontSize: 12, color: "#64748b" }}>
@@ -1034,7 +1034,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       }}
                     />
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: "#001a3d" }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d" }}>
                         Paulo Tadeu Maia Cavali
                       </div>
                       <div style={{ fontSize: 12, color: "#64748b" }}>
@@ -1057,7 +1057,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>🌐</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Languages" : locale === "es" ? "Idiomas" : "Idiomas"}
                   </h3>
                 </div>
@@ -1076,7 +1076,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       borderRadius: 6,
                       background: locale === "pt" ? "#001a3d" : "#f1f5f9",
                       color: locale === "pt" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13,
                       textDecoration: "none",
                     }}
@@ -1092,7 +1092,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       borderRadius: 6,
                       background: locale === "es" ? "#001a3d" : "#f1f5f9",
                       color: locale === "es" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13,
                       textDecoration: "none",
                     }}
@@ -1108,7 +1108,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       borderRadius: 6,
                       background: locale === "en" ? "#001a3d" : "#f1f5f9",
                       color: locale === "en" ? "#fff" : "#334155",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 13,
                       textDecoration: "none",
                     }}
@@ -1130,7 +1130,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <span style={{ fontSize: 18 }}>🛡️</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     {locale === "en" ? "Important Notice" : locale === "es" ? "Aviso importante" : "Aviso importante"}
                   </h3>
                 </div>

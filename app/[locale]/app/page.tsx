@@ -95,7 +95,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "0.06em", color: "#ff808f", textTransform: "uppercase" }}>
               Tratado Oficial
             </span>
-            <strong style={{ fontSize: 13.5, color: "#ffffff", fontWeight: 800, lineHeight: 1.1 }}>
+            <strong style={{ fontSize: 13.5, color: "#ffffff", fontWeight: 700, lineHeight: 1.1 }}>
               Cirurgia da Coluna
             </strong>
           </div>
@@ -166,7 +166,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   border: "1px solid rgba(245, 34, 56, 0.5)",
                   color: "#ff808f",
                   fontSize: 11.5,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: "0.06em",
                   marginBottom: 16,
@@ -194,7 +194,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
               <h1
                 style={{
                   fontSize: 26,
-                  fontWeight: 900,
+                  fontWeight: 700,
                   lineHeight: 1.2,
                   margin: "0 0 10px",
                   color: "#ffffff",
@@ -225,7 +225,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     borderRadius: 12,
                     background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                     color: "#ffffff",
-                    fontWeight: 750,
+                    fontWeight: 700,
                     fontSize: 15,
                     border: "none",
                     boxShadow: "0 6px 20px rgba(245, 34, 56, 0.4)",
@@ -271,7 +271,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", marginBottom: 2 }}>109</div>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>109</div>
                 <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Capítulos</div>
               </div>
 
@@ -285,7 +285,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", marginBottom: 2 }}>10</div>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>10</div>
                 <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Seções</div>
               </div>
 
@@ -299,7 +299,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", marginBottom: 2 }}>200+</div>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>200+</div>
                 <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Autores</div>
               </div>
 
@@ -313,14 +313,14 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 26, fontWeight: 900, color: "#ffffff", marginBottom: 2 }}>3</div>
+                <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>3</div>
                 <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Idiomas</div>
               </div>
             </div>
 
             {/* ================= EXPANDABLE CARDS (PILARES CLÍNICOS) ================= */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", padding: "4px 2px" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", padding: "4px 2px" }}>
                 Pilares Científicos da Obra
               </div>
 
@@ -348,7 +348,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     border: "none",
                     color: "#ffffff",
                     fontSize: 15.5,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     textAlign: "left",
                     cursor: "pointer",
                   }}
@@ -392,7 +392,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     border: "none",
                     color: "#ffffff",
                     fontSize: 15.5,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     textAlign: "left",
                     cursor: "pointer",
                   }}
@@ -436,7 +436,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     border: "none",
                     color: "#ffffff",
                     fontSize: 15.5,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     textAlign: "left",
                     cursor: "pointer",
                   }}
@@ -480,7 +480,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     border: "none",
                     color: "#ffffff",
                     fontSize: 15.5,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     textAlign: "left",
                     cursor: "pointer",
                   }}
@@ -524,7 +524,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
         {activeTab === "indice" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ textAlign: "center", marginBottom: 6 }}>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#fff", margin: "0 0 6px" }}>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>
                 Índice Oficial da Obra
               </h2>
               <p style={{ fontSize: 14, color: "#94a3b8", margin: 0 }}>
@@ -602,14 +602,14 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                             display: "grid",
                             placeItems: "center",
                             fontSize: 14,
-                            fontWeight: 800,
+                            fontWeight: 700,
                             flexShrink: 0,
                           }}
                         >
                           {secao.numero}
                         </span>
                         <div style={{ textAlign: "left" }}>
-                          <strong style={{ fontSize: 15.5, display: "block", color: "#ffffff", fontWeight: 800 }}>
+                          <strong style={{ fontSize: 15.5, display: "block", color: "#ffffff", fontWeight: 700 }}>
                             {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                           </strong>
                           <span style={{ fontSize: 12, color: "#94a3b8" }}>
@@ -682,13 +682,13 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   border: "1px solid rgba(245, 34, 56, 0.4)",
                   color: "#ff808f",
                   fontSize: 11.5,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   marginBottom: 12,
                 }}
               >
                 Sociedade Brasileira de Coluna
               </span>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#ffffff", margin: "0 0 14px" }}>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: "#ffffff", margin: "0 0 14px" }}>
                 Histórico &amp; Autoridade Científica
               </h2>
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#cbd5e1", margin: "0 0 16px" }}>
@@ -725,7 +725,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
               }}
             >
               <div style={{ fontSize: 36, marginBottom: 10 }}>📚</div>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#ffffff", margin: "0 0 10px" }}>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
                 Adquira a Obra Impressa
               </h2>
               <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 22px" }}>
@@ -745,7 +745,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   borderRadius: 12,
                   background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                   color: "#ffffff",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: 15.5,
                   textDecoration: "none",
                   boxShadow: "0 8px 25px rgba(245, 34, 56, 0.45)",

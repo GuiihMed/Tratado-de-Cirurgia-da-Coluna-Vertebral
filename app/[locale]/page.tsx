@@ -60,7 +60,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Right Column: Copy & Actions */}
               <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
                 {/* Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-white leading-[1.08] tracking-tight mb-4 drop-shadow-md">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white leading-[1.08] tracking-tight mb-4 drop-shadow-md">
                   {dict.heroHome.titleLine1} <br />
                   {dict.heroHome.titleLine2}
                 </h1>
@@ -130,14 +130,14 @@ export default async function HomePage({ params }: HomePageProps) {
                 {/* 1. Capítulos */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-book"></use></svg>
-                  <strong className="text-2xl sm:text-3xl font-black text-white leading-tight">109</strong>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">109</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">capítulos</span>
                 </div>
 
                 {/* 2. Seções */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-grid"></use></svg>
-                  <strong className="text-2xl sm:text-3xl font-black text-white leading-tight">10</strong>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">seções temáticas</span>
                 </div>
 
@@ -225,14 +225,14 @@ export default async function HomePage({ params }: HomePageProps) {
                   <span className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-200">
                     {dict.chapterHighlight.badge}
                   </span>
-                  <strong className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none">
+                  <strong className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none">
                     {dict.chapterHighlight.number}
                   </strong>
                 </div>
 
                 {/* 2. Chapter Content & Chips */}
                 <div className="lg:col-span-7 flex flex-col justify-center lg:px-2">
-                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-white leading-tight tracking-tight mb-3">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-white leading-tight tracking-tight mb-3">
                     {dict.chapterHighlight.title}
                   </h2>
 
@@ -317,10 +317,10 @@ export default async function HomePage({ params }: HomePageProps) {
 
                     {/* Episode 01 Badge in bottom-left */}
                     <div className="absolute left-5 bottom-4 z-10 text-left">
-                      <small className="block text-[11px] font-extrabold uppercase tracking-widest text-slate-300 drop-shadow">
+                      <small className="block text-[11px] font-bold uppercase tracking-widest text-slate-300 drop-shadow">
                         {dict.debate.ep || "EPISÓDIO"}
                       </small>
-                      <strong className="block text-4xl sm:text-5xl font-black text-white leading-none drop-shadow-md">
+                      <strong className="block text-4xl sm:text-5xl font-bold text-white leading-none drop-shadow-md">
                         {dict.debate.epNumber || "01"}
                       </strong>
                     </div>
@@ -347,7 +347,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     {dict.debate.kicker || "VIDEOCAST OFICIAL DERIVADO DOS CAPÍTULOS DO TRATADO."}
                   </p>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#001026] leading-tight tracking-tight mb-3.5">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#001026] leading-tight tracking-tight mb-3.5">
                     {dict.debate.subtitle || "Episódio 1 – Capítulo 8 Coluna Vertebral no Plano Sagital"}
                   </h3>
 
@@ -358,7 +358,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   <div>
                     <Link
                       href={`/${locale}/video`}
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
+                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
                       style={{ textDecoration: "none" }}
                     >
                       <span>{dict.debate.cta || "Assistir episódio"}</span>
@@ -380,7 +380,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Card Autores */}
               <article className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-black text-[#001026] flex items-center gap-3 mb-3">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#001026] flex items-center gap-3 mb-3">
                     <svg className="w-7 h-7 text-[#093c78]">
                       <use href="#i-users"></use>
                     </svg>
@@ -432,7 +432,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Card Idiomas */}
               <article id="referencias" className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#001433] to-[#042452] text-white flex flex-col justify-between">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-3 mb-3">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3 mb-3">
                     <svg className="w-7 h-7 text-sky-400">
                       <use href="#i-globe"></use>
                     </svg>

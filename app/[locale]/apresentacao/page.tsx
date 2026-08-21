@@ -115,7 +115,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                     borderRadius: 4,
                     border: "1px solid rgba(255, 255, 255, 0.35)",
                     fontSize: 11,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     letterSpacing: "0.08em",
                     color: "rgba(255, 255, 255, 0.9)",
                     marginBottom: 16,
@@ -128,7 +128,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                 <h1
                   style={{
                     fontSize: "clamp(32px, 4.5vw, 44px)",
-                    fontWeight: 900,
+                    fontWeight: 700,
                     margin: "0 0 12px",
                     color: "#fff",
                     letterSpacing: "-0.02em",
@@ -152,7 +152,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
 
                 {/* Author Title & Details */}
                 <div style={{ marginBottom: 20 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 900, color: "#fff", margin: "0 0 4px" }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", margin: "0 0 4px" }}>
                     {APRESENTACAO_DATA.autor.nome}
                   </h3>
                   <p style={{ fontSize: 12.5, color: "rgba(255, 255, 255, 0.7)", margin: 0, lineHeight: 1.4, maxWidth: 680 }}>
@@ -194,7 +194,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                       borderRadius: 8,
                       background: "#e11d48",
                       color: "#fff",
-                      fontWeight: 800,
+                      fontWeight: 700,
                       fontSize: 14,
                       textDecoration: "none",
                       boxShadow: "0 4px 14px rgba(225, 29, 72, 0.4)",
@@ -313,7 +313,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <FileText size={22} className="text-blue-700" />
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Texto da apresentação
                   </h2>
                 </div>
@@ -339,7 +339,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Quote size={20} className="text-rose-600" />
-                  <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Mensagem central
                   </h3>
                 </div>
@@ -374,7 +374,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <Award size={22} className="text-amber-500" />
-                  <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Destaques da apresentação
                   </h3>
                 </div>
@@ -419,7 +419,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                         )}
                       </div>
                       <div>
-                        <h4 style={{ margin: "0 0 4px", fontSize: 14.5, fontWeight: 800, color: "#001a3d" }}>
+                        <h4 style={{ margin: "0 0 4px", fontSize: 14.5, fontWeight: 700, color: "#001a3d" }}>
                           {item.titulo}
                         </h4>
                         <p style={{ margin: 0, fontSize: 12.5, color: "#64748b", lineHeight: 1.45 }}>
@@ -443,7 +443,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                   <BookOpen size={20} className="text-blue-700" />
-                  <h3 style={{ fontSize: 18, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Sobre a obra
                   </h3>
                 </div>
@@ -467,7 +467,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <User size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 16.5, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16.5, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Autor da apresentação
                   </h3>
                 </div>
@@ -489,7 +489,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                     />
                   </div>
                   <div>
-                    <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 900, color: "#001a3d" }}>
+                    <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 700, color: "#001a3d" }}>
                       {APRESENTACAO_DATA.autor.nome}
                     </h4>
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -515,7 +515,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                   <Layers size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 16.5, fontWeight: 900, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 16.5, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                     Tipo de conteúdo
                   </h3>
                 </div>
@@ -550,7 +550,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12, color: "#ea580c" }}>
                   <ShieldCheck size={18} className="text-amber-600" />
-                  <h3 style={{ fontSize: 15, fontWeight: 800, margin: 0, color: "#c2410c" }}>
+                  <h3 style={{ fontSize: 15, fontWeight: 700, margin: 0, color: "#c2410c" }}>
                     Aviso importante
                   </h3>
                 </div>
@@ -599,7 +599,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                 style={{ width: 70, height: "auto", borderRadius: 4, boxShadow: "0 6px 16px rgba(0,0,0,0.4)" }}
               />
               <div>
-                <h3 style={{ fontSize: 19, fontWeight: 900, margin: "0 0 12px", color: "#fff" }}>
+                <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px", color: "#fff" }}>
                   Uma obra para consulta, estudo e referência — exclusivamente em formato impresso.
                 </h3>
                 <a
@@ -614,7 +614,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                     borderRadius: 8,
                     background: "#e11d48",
                     color: "#fff",
-                    fontWeight: 800,
+                    fontWeight: 700,
                     fontSize: 13.5,
                     textDecoration: "none",
                   }}

@@ -27,7 +27,7 @@ export default function PurchaseSection({
             
             {/* 1. Left Column: Title & 3 Feature Badges */}
             <div className="lg:col-span-6 flex flex-col justify-between">
-              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-white leading-tight tracking-tight mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-white leading-tight tracking-tight mb-8">
                 {dict.purchaseHome.title}
               </h2>
 
@@ -84,7 +84,7 @@ export default function PurchaseSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 id="btn-comprar-home"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-black text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
                 style={{ textDecoration: "none" }}
               >
                 <span>{dict.purchaseHome.ctaBtn}</span>
@@ -113,7 +113,7 @@ export default function PurchaseSection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-5 flex flex-col">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight mb-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight mb-2">
               {dict.purchaseIndice.title}
             </h2>
             <div className="w-14 h-1.5 rounded-full bg-[#f52238] mb-4" />
@@ -126,7 +126,7 @@ export default function PurchaseSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 id="btn-comprar-indice"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-extrabold text-sm sm:text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-sm sm:text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
                 style={{ textDecoration: "none" }}
               >
                 <span>{dict.purchaseIndice.ctaBtn}</span>

@@ -589,7 +589,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-brain"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 700 }}>
                   {t.pillar1Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
@@ -615,7 +615,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-tools"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 700 }}>
                   {t.pillar2Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
@@ -640,7 +640,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     <use href="#i-shield"></use>
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 800 }}>
+                <h3 style={{ fontSize: 22, margin: "0 0 12px", color: "var(--navy)", fontWeight: 700 }}>
                   {t.pillar3Title}
                 </h3>
                 <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#4b627d", margin: 0 }}>
@@ -693,12 +693,12 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                       >
                         <SectionIcon sectionId={sec.id} size={22} color={sec.id <= 5 ? "#f52238" : "#0e65a2"} />
                       </span>
-                      <span style={{ fontSize: 12, fontWeight: 800, color: sec.id <= 5 ? "#f52238" : "#0e65a2" }}>
+                      <span style={{ fontSize: 12, fontWeight: 700, color: sec.id <= 5 ? "#f52238" : "#0e65a2" }}>
                         #{sec.numero}
                       </span>
                     </div>
 
-                    <h4 style={{ fontSize: 17, lineHeight: 1.25, margin: "0 0 8px", color: "var(--navy)", fontWeight: 750 }}>
+                    <h4 style={{ fontSize: 17, lineHeight: 1.25, margin: "0 0 8px", color: "var(--navy)", fontWeight: 700 }}>
                       {locale === "en" ? sec.titulo_en : locale === "es" ? sec.titulo_es : sec.titulo_pt}
                     </h4>
                   </div>
@@ -724,7 +724,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               <span className="modern-tag-pill" style={{ background: "rgba(245, 34, 56, 0.1)", color: "#f52238", borderColor: "rgba(245, 34, 56, 0.3)", display: "inline-block", margin: "0 auto 12px" }}>
                 {t.highlightPill}
               </span>
-              <h2 className="modern-section-title" style={{ fontSize: "clamp(26px, 4vw, 36px)", fontWeight: 900, color: "#00122e", margin: "0 0 10px" }}>
+              <h2 className="modern-section-title" style={{ fontSize: "clamp(26px, 4vw, 36px)", fontWeight: 700, color: "#00122e", margin: "0 0 10px" }}>
                 {t.highlightTitle}
               </h2>
               <p className="modern-section-subtitle" style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#475569", maxWidth: 700, margin: "0 auto" }}>
@@ -743,7 +743,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                         background: "#f52238",
                         color: "#fff",
                         fontSize: 11.5,
-                        fontWeight: 800,
+                        fontWeight: 700,
                         padding: "4px 10px",
                         borderRadius: 6,
                         textTransform: "uppercase",
@@ -757,7 +757,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: "clamp(24px, 3.5vw, 32px)", lineHeight: 1.15, color: "#00122e", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.02em" }}>
+                  <h3 style={{ fontSize: "clamp(24px, 3.5vw, 32px)", lineHeight: 1.15, color: "#00122e", fontWeight: 700, margin: "0 0 10px", letterSpacing: "-0.02em" }}>
                     {locale === "en" ? "Spinopelvic Balance & Compensations" : locale === "es" ? "Equilibrio Espinopélvico y Compensaciones" : "Equilíbrio Espinopélvico & Compensações"}
                   </h3>
 
@@ -784,7 +784,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                             padding: "8px 14px",
                             borderRadius: 10,
                             fontSize: 12.5,
-                            fontWeight: 750,
+                            fontWeight: 700,
                             border: isActive ? "1.5px solid #001f4d" : "1px solid #e2e8f0",
                             background: isActive ? "#001f4d" : "#f1f5f9",
                             color: isActive ? "#ffffff" : "#334155",
@@ -810,7 +810,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                       marginBottom: 24,
                     }}
                   >
-                    <h4 style={{ fontSize: 17, fontWeight: 800, color: "#001f4d", margin: "0 0 8px" }}>
+                    <h4 style={{ fontSize: 17, fontWeight: 700, color: "#001f4d", margin: "0 0 8px" }}>
                       {sagittalDetails[activeSagittalTab].title}
                     </h4>
                     <p style={{ fontSize: 14, lineHeight: 1.6, color: "#475569", margin: "0 0 16px" }}>
@@ -818,15 +818,15 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-200">
                       <div>
-                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 800, color: "#f52238", letterSpacing: "0.04em" }}>
+                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#f52238", letterSpacing: "0.04em" }}>
                           {t.formulaLabel}
                         </span>
-                        <div style={{ fontSize: 13, fontWeight: 750, color: "#0f172a", marginTop: 2 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#0f172a", marginTop: 2 }}>
                           {sagittalDetails[activeSagittalTab].formula}
                         </div>
                       </div>
                       <div>
-                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 800, color: "#0284c7", letterSpacing: "0.04em" }}>
+                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#0284c7", letterSpacing: "0.04em" }}>
                           {t.clinicalLabel}
                         </span>
                         <div style={{ fontSize: 13, color: "#334155", marginTop: 2 }}>
@@ -849,7 +849,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                       borderRadius: 10,
                       background: "#f52238",
                       color: "#fff",
-                      fontWeight: 750,
+                      fontWeight: 700,
                       fontSize: 14,
                       textDecoration: "none",
                       boxShadow: "0 4px 14px rgba(245, 34, 56, 0.3)",
@@ -870,7 +870,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                       background: "#fff",
                       color: "#001f4d",
                       border: "1px solid #cbd5e1",
-                      fontWeight: 750,
+                      fontWeight: 700,
                       fontSize: 14,
                       textDecoration: "none",
                     }}
@@ -910,7 +910,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     {t.debatePill}
                   </div>
 
-                  <h3 style={{ fontSize: 36, letterSpacing: "-0.03em", margin: "0 0 12px", fontWeight: 800 }}>
+                  <h3 style={{ fontSize: 36, letterSpacing: "-0.03em", margin: "0 0 12px", fontWeight: 700 }}>
                     {t.debateTitle}
                   </h3>
 
@@ -919,7 +919,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </p>
 
                   <div style={{ padding: 18, borderRadius: 14, background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.12)", marginBottom: 24 }}>
-                    <span style={{ fontSize: 12, color: "#ff6b7a", fontWeight: 800, textTransform: "uppercase" }}>
+                    <span style={{ fontSize: 12, color: "#ff6b7a", fontWeight: 700, textTransform: "uppercase" }}>
                       {t.debateFeatured}
                     </span>
                     <h4 style={{ fontSize: 17, margin: "4px 0 6px", color: "#fff" }}>
@@ -1043,7 +1043,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                               background: "#f52238",
                               color: "#fff",
                               fontSize: 11.5,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               textTransform: "uppercase",
                               letterSpacing: "0.05em",
                             }}
@@ -1062,7 +1062,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                           <h3
                             style={{
                               fontSize: 22,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               margin: "0 0 10px",
                               letterSpacing: "-0.02em",
                               color: "#fff",
@@ -1109,7 +1109,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                               href={authorUrl}
                               style={{
                                 fontSize: 12,
-                                fontWeight: 800,
+                                fontWeight: 700,
                                 color: "#fff",
                                 textDecoration: "none",
                                 display: "inline-flex",
@@ -1182,7 +1182,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   {t.buyPill}
                 </span>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-white mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4">
                   {t.buyTitle}
                 </h2>
 
@@ -1207,7 +1207,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-black text-base sm:text-lg shadow-xl shadow-red-600/40 hover:brightness-110 active:scale-[0.98] transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-base sm:text-lg shadow-xl shadow-red-600/40 hover:brightness-110 active:scale-[0.98] transition-all"
                 >
                   <span>{t.buyCta}</span>
                   <ShoppingCart className="w-5 h-5" />

@@ -81,7 +81,7 @@ export default function ModernHeader({
               background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
               color: "#ffffff",
               fontSize: 13,
-              fontWeight: 800,
+              fontWeight: 700,
               textDecoration: "none",
               boxShadow: "0 3px 12px rgba(245, 34, 56, 0.4)",
               transition: "all 0.2s ease",

@@ -150,7 +150,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 <h1
                   style={{
                     fontSize: "clamp(30px, 3.8vw, 46px)",
-                    fontWeight: 800,
+                    fontWeight: 700,
                     lineHeight: 1.15,
                     margin: "0 0 10px",
                     letterSpacing: "-0.03em",
@@ -287,14 +287,14 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                   }}
                 >
-                  <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px" }}>
+                  <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px" }}>
                     {locale === "en" ? "Academic & Surgical Career" : locale === "es" ? "Trayectoria Académica y Quirúrgica" : "Trajetória Acadêmica e Cirúrgica"}
                   </h2>
                   <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.75, margin: "0 0 28px" }}>
                     {author.bio_completa}
                   </p>
 
-                  <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: "0 0 14px" }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
                     {locale === "en" ? "Research Lines & Clinical Investigation" : locale === "es" ? "Líneas de Investigación Clínica" : "Linhas de Pesquisa e Investigação Clínica"}
                   </h3>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
@@ -320,7 +320,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     ))}
                   </div>
 
-                  <h3 style={{ fontSize: 18, fontWeight: 800, color: "#001a3d", margin: "0 0 14px" }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
                     {locale === "en" ? "Specialties & Areas of Expertise" : locale === "es" ? "Especialidades y Áreas de Dominio" : "Especialidades e Áreas de Domínio"}
                   </h3>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -360,7 +360,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                    <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: 0 }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: 0 }}>
                       {locale === "en"
                         ? `Authored / Coordinated Chapters (${author.capitulos_tratado.length})`
                         : locale === "es"
@@ -386,7 +386,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                       >
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                            <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 12.5, fontWeight: 800 }}>
+                            <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 12.5, fontWeight: 700 }}>
                               {locale === "en" ? `Chapter ${cap.num}` : locale === "es" ? `Capítulo ${cap.num}` : `Capítulo ${cap.num}`}
                             </span>
                             <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
@@ -412,7 +412,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                           </Link>
                         </div>
 
-                        <h3 style={{ fontSize: 19, fontWeight: 800, color: "#001a3d", margin: "0 0 10px" }}>
+                        <h3 style={{ fontSize: 19, fontWeight: 700, color: "#001a3d", margin: "0 0 10px" }}>
                           {cap.titulo}
                         </h3>
 
@@ -455,7 +455,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                     boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                   }}
                 >
-                  <h2 style={{ fontSize: 22, fontWeight: 800, color: "#001a3d", margin: "0 0 16px" }}>
+                  <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px" }}>
                     {locale === "en" ? "Benchmark Scientific Publications" : locale === "es" ? "Publicaciones Científicas de Referencia" : "Publicações Científicas de Referência"}
                   </h2>
 
@@ -471,7 +471,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                         }}
                       >
                         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                          <span style={{ fontSize: 12, fontWeight: 800, color: "#003382", background: "#e0f2fe", padding: "3px 10px", borderRadius: 6 }}>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: "#003382", background: "#e0f2fe", padding: "3px 10px", borderRadius: 6 }}>
                             {pub.ano}
                           </span>
                           <span style={{ fontSize: 13.5, fontWeight: 700, color: "#64748b" }}>
@@ -505,7 +505,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
@@ -527,7 +527,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Society Leadership & Appointments" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
                 </h3>
                 <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
@@ -549,7 +549,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Other Treatise Editors" : locale === "es" ? "Otros Editores del Tratado" : "Outros Editores do Tratado"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -586,7 +586,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                         />
                       </div>
                       <div>
-                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#001a3d" }}>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#001a3d" }}>
                           {other.nome}
                         </div>
                         <div style={{ fontSize: 11.5, color: "#64748b" }}>

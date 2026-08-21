@@ -251,7 +251,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
               <h1
                 style={{
                   fontSize: "clamp(36px, 4.2vw, 54px)",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   lineHeight: 1.15,
                   margin: "0 0 16px",
                   letterSpacing: "-0.03em",
@@ -375,7 +375,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
 
               {/* Specialty Chips */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-                <span style={{ fontSize: 12.5, fontWeight: 800, color: "#64748b", textTransform: "uppercase", marginRight: 4 }}>
+                <span style={{ fontSize: 12.5, fontWeight: 700, color: "#64748b", textTransform: "uppercase", marginRight: 4 }}>
                   {locale === "en" ? "Filter by Area:" : locale === "es" ? "Filtrar por Área:" : "Filtrar por Área:"}
                 </span>
                 <button
@@ -486,7 +486,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                           >
                             {author.role}
                           </span>
-                          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#001a3d", margin: "0 0 2px" }}>
+                          <h3 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: "0 0 2px" }}>
                             <Link href={`/${locale}/autor-new/${author.id}`} style={{ color: "inherit", textDecoration: "none" }}>
                               {author.name}
                             </Link>
@@ -545,7 +545,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                     {/* Footer / Authored Chapters Action */}
                     <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 16 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#001a3d", textTransform: "uppercase" }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: "#001a3d", textTransform: "uppercase" }}>
                           {locale === "en" ? "Treatise Chapters:" : locale === "es" ? "Capítulos en el Tratado:" : "Capítulos no Tratado:"}
                         </span>
                         <Link

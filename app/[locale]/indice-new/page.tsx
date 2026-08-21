@@ -155,7 +155,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
               </span>
             </div>
 
-            <h1 style={{ fontSize: 50, letterSpacing: "-0.035em", margin: "0 0 16px", fontWeight: 800, color: "#fff", lineHeight: 1.15 }}>
+            <h1 style={{ fontSize: 50, letterSpacing: "-0.035em", margin: "0 0 16px", fontWeight: 700, color: "#fff", lineHeight: 1.15 }}>
               {locale === "en"
                 ? "Interactive Master Index"
                 : locale === "es"
@@ -404,7 +404,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             <SectionIcon sectionId={secao.id} size={20} color="#fff" />
                           </span>
                           <div>
-                            <strong style={{ fontSize: 19, fontWeight: 800, display: "block", color: "#fff", letterSpacing: "-0.01em", lineHeight: 1.2 }}>
+                            <strong style={{ fontSize: 19, fontWeight: 700, display: "block", color: "#fff", letterSpacing: "-0.01em", lineHeight: 1.2 }}>
                               {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                             </strong>
                             <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 500, marginTop: 2, display: "block" }}>
@@ -467,7 +467,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                       borderRadius: 6,
                                       background: "rgba(245, 34, 56, 0.15)",
                                       color: "#ff6677",
-                                      fontWeight: 800,
+                                      fontWeight: 700,
                                       fontSize: 13,
                                       flexShrink: 0,
                                     }}
@@ -553,7 +553,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                               background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                               color: "#ffffff",
                               fontSize: 12,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               padding: "4px 11px",
                               borderRadius: 6,
                               boxShadow: "0 3px 10px rgba(245, 34, 56, 0.3)",
@@ -566,7 +566,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           </span>
                         </div>
 
-                        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#001a3d", margin: "0 0 10px", lineHeight: 1.35 }}>
+                        <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 10px", lineHeight: 1.35 }}>
                           {getChapterTitle(cap)}
                         </h3>
 
@@ -697,7 +697,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                                 background: "linear-gradient(135deg, #f52238 0%, #003382 100%)",
                                 color: "#ffffff",
                                 fontSize: 12,
-                                fontWeight: 800,
+                                fontWeight: 700,
                                 boxShadow: "0 2px 8px rgba(245, 34, 56, 0.3)",
                               }}
                             >
@@ -844,7 +844,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     background: "#f52238",
                     color: "#fff",
                     fontSize: 11,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     padding: "3px 8px",
                     borderRadius: 4,
                     textTransform: "uppercase",
@@ -866,11 +866,11 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   {locale === "en" ? "Titles in other languages:" : locale === "es" ? "Títulos en outros idiomas:" : "Títulos em outros idiomas:"}
                 </div>
                 <div style={{ fontSize: 13.5, color: "#e2effe", marginBottom: 6, display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ fontSize: 10, fontWeight: 900, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>EN</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>EN</span>
                   <span><strong>EN:</strong> {activeModalChapter.titulo_en || (locale === "en" ? "Available in printed edition" : "Disponível na edição impressa")}</span>
                 </div>
                 <div style={{ fontSize: 13.5, color: "#e2effe", display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ fontSize: 10, fontWeight: 900, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>ES</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>ES</span>
                   <span><strong>ES:</strong> {activeModalChapter.titulo_es || (locale === "es" ? "Disponible en la edición impresa" : "Disponível na edição impressa")}</span>
                 </div>
               </div>

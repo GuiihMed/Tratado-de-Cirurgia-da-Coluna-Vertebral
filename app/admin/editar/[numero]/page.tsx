@@ -221,9 +221,9 @@ export default function ChapterEditPage() {
     html = html.replace(/^&gt; (.*)$/gim, "<blockquote style='margin: 16px 0; padding: 12px 18px; border-left: 4px solid #64748b; background: rgba(255,255,255,0.03); color: #cbd5e1; font-style: italic;'>$1</blockquote>");
 
     // Headings
-    html = html.replace(/^### (.*$)/gim, "<h3 style='font-size: 17px; font-weight: 800; color: #38bdf8; margin: 24px 0 10px; letter-spacing: -0.01em;'>$1</h3>");
-    html = html.replace(/^## (.*$)/gim, "<h2 style='font-size: 20px; font-weight: 900; color: #f43f5e; margin: 28px 0 12px; letter-spacing: -0.02em; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px;'>$1</h2>");
-    html = html.replace(/^# (.*$)/gim, "<h1 style='font-size: 24px; font-weight: 900; color: #ffffff; margin: 32px 0 16px;'>$1</h1>");
+    html = html.replace(/^### (.*$)/gim, "<h3 style='font-size: 17px; font-weight: 700; color: #38bdf8; margin: 24px 0 10px; letter-spacing: -0.01em;'>$1</h3>");
+    html = html.replace(/^## (.*$)/gim, "<h2 style='font-size: 20px; font-weight: 700; color: #f43f5e; margin: 28px 0 12px; letter-spacing: -0.02em; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px;'>$1</h2>");
+    html = html.replace(/^# (.*$)/gim, "<h1 style='font-size: 24px; font-weight: 700; color: #ffffff; margin: 32px 0 16px;'>$1</h1>");
 
     // Bold, Italic, Marks
     html = html.replace(/\*\*\*(.*?)\*\*\*/g, "<strong><em>$1</em></strong>");
@@ -379,7 +379,7 @@ export default function ChapterEditPage() {
               border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #cbd5e1",
               color: textPrimary,
               fontSize: 12.5,
-              fontWeight: 800,
+              fontWeight: 700,
               cursor: "pointer",
             }}
           >
@@ -388,11 +388,11 @@ export default function ChapterEditPage() {
           </button>
 
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: textMuted }}>
-            <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
               Capítulo {numero}
             </span>
             <span>•</span>
-            <span style={{ color: textPrimary, fontWeight: 800, maxWidth: 350, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <span style={{ color: textPrimary, fontWeight: 700, maxWidth: 350, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {tituloPt || "Novo Capítulo"}
             </span>
           </div>
@@ -463,7 +463,7 @@ export default function ChapterEditPage() {
               border: "none",
               color: "#fff",
               fontSize: 13,
-              fontWeight: 800,
+              fontWeight: 700,
               cursor: "pointer",
               boxShadow: "0 4px 16px rgba(225, 29, 72, 0.4)",
             }}
@@ -498,7 +498,7 @@ export default function ChapterEditPage() {
             </div>
             <button
               onClick={() => setFeedback({ type: null, message: "" })}
-              style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", fontWeight: 900, fontSize: 16 }}
+              style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", fontWeight: 700, fontSize: 16 }}
             >
               ✕
             </button>
@@ -521,7 +521,7 @@ export default function ChapterEditPage() {
           >
             {/* Seção */}
             <div>
-              <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                 Seção Temática do Tratado *
               </label>
               <select
@@ -550,7 +550,7 @@ export default function ChapterEditPage() {
 
             {/* Número */}
             <div>
-              <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                 Número do Capítulo (1 a 109) *
               </label>
               <input
@@ -568,7 +568,7 @@ export default function ChapterEditPage() {
                   border: inputBorder,
                   color: textPrimary,
                   fontSize: 13.5,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   outline: "none",
                   boxSizing: "border-box",
                 }}
@@ -577,7 +577,7 @@ export default function ChapterEditPage() {
 
             {/* Status */}
             <div>
-              <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                 Status de Publicação
               </label>
               <select
@@ -603,7 +603,7 @@ export default function ChapterEditPage() {
 
             {/* Autores */}
             <div style={{ gridColumn: "1 / -1" }}>
-              <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+              <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                 Autores e Colaboradores do Capítulo
               </label>
               <input
@@ -629,7 +629,7 @@ export default function ChapterEditPage() {
             {/* Títulos Multilíngues */}
             <div style={{ gridColumn: "1 / -1", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Título em Português *
                 </label>
                 <input
@@ -646,7 +646,7 @@ export default function ChapterEditPage() {
                     border: inputBorder,
                     color: textPrimary,
                     fontSize: 14,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     outline: "none",
                     boxSizing: "border-box",
                   }}
@@ -654,7 +654,7 @@ export default function ChapterEditPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Título em Inglês (EN)
                 </label>
                 <input
@@ -677,7 +677,7 @@ export default function ChapterEditPage() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
+                <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 6 }}>
                   Título em Espanhol (ES)
                 </label>
                 <input
@@ -711,7 +711,7 @@ export default function ChapterEditPage() {
               boxShadow: isDark ? "0 10px 30px rgba(0,0,0,0.3)" : "0 6px 20px rgba(0,30,80,0.03)",
             }}
           >
-            <label style={{ display: "block", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 8 }}>
+            <label style={{ display: "block", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted, marginBottom: 8 }}>
               Resumo Estruturado / Abstract Clínico
             </label>
             <textarea
@@ -750,7 +750,7 @@ export default function ChapterEditPage() {
             {/* Editor Toolbar Header */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, borderBottom: cardBorder, paddingBottom: 14 }}>
               <div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, color: textPrimary, margin: 0, display: "flex", alignItems: "center", gap: 8 }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: textPrimary, margin: 0, display: "flex", alignItems: "center", gap: 8 }}>
                   <Edit3 size={18} color="#f43f5e" />
                   <span>Conteúdo Clínico &amp; Redação Cirúrgica</span>
                 </h3>
@@ -953,7 +953,7 @@ export default function ChapterEditPage() {
               {/* Left: Markdown Code Editor */}
               {(viewMode === "edit" || viewMode === "split") && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                     <span>Código Markdown</span>
                     <span>{conteudoPt.length} caracteres</span>
                   </div>
@@ -985,7 +985,7 @@ export default function ChapterEditPage() {
               {/* Right: Live Medical Preview */}
               {(viewMode === "preview" || viewMode === "split") && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                     <span>Prévia em Tempo Real (Tipografia Tratado SBC)</span>
                     <span style={{ color: "#10b981", display: "flex", alignItems: "center", gap: 4 }}>
                       <CheckCircle2 size={12} />
@@ -1024,7 +1024,7 @@ export default function ChapterEditPage() {
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <label style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+              <label style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
                 Referências Bibliográficas (Normas Vancouver / SBC)
               </label>
               <button
@@ -1113,7 +1113,7 @@ export default function ChapterEditPage() {
                   border: "none",
                   color: "#fff",
                   fontSize: 13,
-                  fontWeight: 900,
+                  fontWeight: 700,
                   cursor: "pointer",
                   boxShadow: "0 4px 16px rgba(225, 29, 72, 0.4)",
                   display: "inline-flex",

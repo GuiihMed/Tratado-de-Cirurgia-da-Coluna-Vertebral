@@ -368,7 +368,7 @@ export default function AdminLoginPage() {
                 backdropFilter: "blur(8px)",
                 borderRadius: 20,
                 fontSize: 12,
-                fontWeight: 750,
+                fontWeight: 700,
                 letterSpacing: 0.5,
                 textTransform: "uppercase",
                 color: "#ff8090",
@@ -381,7 +381,7 @@ export default function AdminLoginPage() {
             <h2
               style={{
                 fontSize: 32,
-                fontWeight: 850,
+                fontWeight: 700,
                 lineHeight: 1.15,
                 letterSpacing: "-0.02em",
                 margin: "0 0 12px 0",
@@ -535,7 +535,7 @@ export default function AdminLoginPage() {
             <h1
               style={{
                 fontSize: 25,
-                fontWeight: 850,
+                fontWeight: 700,
                 letterSpacing: "-0.02em",
                 margin: "0 0 6px 0",
                 color: "#0f172a",
@@ -885,7 +885,7 @@ export default function AdminLoginPage() {
                 color: "#ffffff",
                 border: "none",
                 fontSize: 15,
-                fontWeight: 750,
+                fontWeight: 700,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -933,7 +933,7 @@ export default function AdminLoginPage() {
                     background: "none",
                     border: "none",
                     color: "#003382",
-                    fontWeight: 750,
+                    fontWeight: 700,
                     cursor: "pointer",
                     padding: 0,
                     textDecoration: "underline",
@@ -956,7 +956,7 @@ export default function AdminLoginPage() {
                     background: "none",
                     border: "none",
                     color: "#003382",
-                    fontWeight: 750,
+                    fontWeight: 700,
                     cursor: "pointer",
                     padding: 0,
                     textDecoration: "underline",

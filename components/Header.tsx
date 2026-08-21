@@ -68,7 +68,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.15, color: "#e2e8f0", letterSpacing: "-0.01em" }}>
               {dict.brand.line1}
             </span>
-            <strong style={{ fontSize: 15.5, fontWeight: 900, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em" }}>
+            <strong style={{ fontSize: 15.5, fontWeight: 700, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em" }}>
               {dict.brand.line2}
             </strong>
           </div>
@@ -220,7 +220,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
                 background: "linear-gradient(135deg, #f52238 0%, #be123c 100%)",
                 color: "#ffffff",
                 fontSize: 14.5,
-                fontWeight: 750,
+                fontWeight: 700,
                 textDecoration: "none",
                 marginTop: 4,
                 boxShadow: "0 6px 20px rgba(245, 34, 56, 0.35)",
@@ -255,7 +255,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
                     border: locale === lang ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
                     color: "#ffffff",
                     fontSize: 13,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     textDecoration: "none",
                   }}
                 >

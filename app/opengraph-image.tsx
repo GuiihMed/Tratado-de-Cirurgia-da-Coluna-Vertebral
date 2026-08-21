@@ -70,7 +70,7 @@ export default function OpenGraphImage() {
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 26,
-                fontWeight: 900,
+                fontWeight: 700,
                 color: "#ffffff",
                 boxShadow: "0 8px 24px rgba(245, 34, 56, 0.4)",
               }}
@@ -81,7 +81,7 @@ export default function OpenGraphImage() {
               <span
                 style={{
                   fontSize: 13,
-                  fontWeight: 800,
+                  fontWeight: 700,
                   letterSpacing: "0.1em",
                   color: "#ff808f",
                   textTransform: "uppercase",
@@ -89,7 +89,7 @@ export default function OpenGraphImage() {
               >
                 Sociedade Brasileira de Coluna
               </span>
-              <span style={{ fontSize: 18, fontWeight: 800, color: "#ffffff" }}>
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#ffffff" }}>
                 Publicação Científica Oficial
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function OpenGraphImage() {
               border: "1px solid #f52238",
               color: "#ff99a8",
               fontSize: 14,
-              fontWeight: 800,
+              fontWeight: 700,
               letterSpacing: "0.05em",
               textTransform: "uppercase",
             }}
@@ -128,7 +128,7 @@ export default function OpenGraphImage() {
           <h1
             style={{
               fontSize: 54,
-              fontWeight: 900,
+              fontWeight: 700,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
               margin: 0,
