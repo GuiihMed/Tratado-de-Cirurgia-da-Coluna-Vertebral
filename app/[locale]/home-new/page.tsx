@@ -404,7 +404,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
   };
 
   return (
-    <div style={{ background: "#f8fbfe", color: "var(--ink)", minHeight: "100vh" }}>
+    <div style={{ background: "#000d20", color: "var(--ink)", minHeight: "100vh" }}>
       <ModernHeader locale={locale} currentPage="home-new" />
 
       <main>
@@ -718,184 +718,183 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         </section>
 
         {/* ================= DESTAQUE CIENTÍFICO (CAPÍTULO 8 - PLANO SAGITAL) ================= */}
-        <section id="destaque" style={{ padding: "80px 0" }}>
+        <section id="destaque" style={{ padding: "70px 0 80px", background: "#f8fbfe" }}>
           <div className="shell">
-            <div className="modern-section-header">
-              <span className="modern-tag-pill" style={{ background: "rgba(245, 34, 56, 0.1)", color: "#f52238", borderColor: "rgba(245, 34, 56, 0.3)" }}>
+            <div className="modern-section-header" style={{ marginBottom: 36, textAlign: "center" }}>
+              <span className="modern-tag-pill" style={{ background: "rgba(245, 34, 56, 0.1)", color: "#f52238", borderColor: "rgba(245, 34, 56, 0.3)", display: "inline-block", margin: "0 auto 12px" }}>
                 {t.highlightPill}
               </span>
-              <h2 className="modern-section-title">{t.highlightTitle}</h2>
-              <p className="modern-section-subtitle">
+              <h2 className="modern-section-title" style={{ fontSize: "clamp(26px, 4vw, 36px)", fontWeight: 900, color: "#00122e", margin: "0 0 10px" }}>
+                {t.highlightTitle}
+              </h2>
+              <p className="modern-section-subtitle" style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#475569", maxWidth: 700, margin: "0 auto" }}>
                 {t.highlightSubtitle}
               </p>
             </div>
 
-            <div className="modern-highlight-card">
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                  <span
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
+              
+              {/* Left Column: Info, Tabs & Parameters */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
+                    <span
+                      style={{
+                        background: "#f52238",
+                        color: "#fff",
+                        fontSize: 11.5,
+                        fontWeight: 800,
+                        padding: "4px 10px",
+                        borderRadius: 6,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {t.capBadge}
+                    </span>
+                    <span style={{ fontSize: 13.5, color: "#64748b", fontWeight: 700 }}>
+                      {t.capSection}
+                    </span>
+                  </div>
+
+                  <h3 style={{ fontSize: "clamp(24px, 3.5vw, 32px)", lineHeight: 1.15, color: "#00122e", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.02em" }}>
+                    {locale === "en" ? "Spinopelvic Balance & Compensations" : locale === "es" ? "Equilibrio Espinopélvico y Compensaciones" : "Equilíbrio Espinopélvico & Compensações"}
+                  </h3>
+
+                  <p style={{ fontSize: 14.5, color: "#093c78", fontWeight: 700, margin: "0 0 20px" }}>
+                    {t.capAuthors}
+                  </p>
+
+                  {/* Interactive Parameter Tabs (Responsive wrap without clipping) */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
+                    {[
+                      { id: "equilibrio", label: t.tabEquilibrio },
+                      { id: "incidencia", label: t.tabIncidencia },
+                      { id: "cone", label: t.tabCone },
+                      { id: "lordose", label: t.tabLordose },
+                      { id: "t1", label: t.tabT1 },
+                    ].map((tab) => {
+                      const isActive = activeSagittalTab === tab.id;
+                      return (
+                        <button
+                          key={tab.id}
+                          type="button"
+                          onClick={() => setActiveSagittalTab(tab.id as any)}
+                          style={{
+                            padding: "8px 14px",
+                            borderRadius: 10,
+                            fontSize: 12.5,
+                            fontWeight: 750,
+                            border: isActive ? "1.5px solid #001f4d" : "1px solid #e2e8f0",
+                            background: isActive ? "#001f4d" : "#f1f5f9",
+                            color: isActive ? "#ffffff" : "#334155",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                            boxShadow: isActive ? "0 4px 12px rgba(0, 31, 77, 0.2)" : "none",
+                          }}
+                          className="hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                          {tab.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Dynamic Parameter Details Box */}
+                  <div
                     style={{
-                      background: "#f52238",
-                      color: "#fff",
-                      fontSize: 12,
-                      fontWeight: 800,
-                      padding: "4px 10px",
-                      borderRadius: 6,
-                      textTransform: "uppercase",
+                      padding: "20px 22px",
+                      borderRadius: 16,
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      marginBottom: 24,
                     }}
                   >
-                    {t.capBadge}
-                  </span>
-                  <span style={{ fontSize: 14, color: "#506884", fontWeight: 600 }}>
-                    {t.capSection}
-                  </span>
-                </div>
-
-                <h3 style={{ fontSize: 32, lineHeight: 1.1, color: "var(--navy)", margin: "0 0 14px", letterSpacing: "-0.03em" }}>
-                  {locale === "en" ? "Spinopelvic Balance & Compensations" : locale === "es" ? "Equilibrio Espinopélvico y Compensaciones" : "Equilíbrio Espinopélvico & Compensações"}
-                </h3>
-
-                <p style={{ fontSize: 15, color: "#284668", fontWeight: 600, margin: "0 0 18px" }}>
-                  {t.capAuthors}
-                </p>
-
-                {/* Interactive Parameter Tabs */}
-                <div className="modern-pill-tabs">
-                  <button
-                    onClick={() => setActiveSagittalTab("equilibrio")}
-                    className={`modern-pill-tab ${activeSagittalTab === "equilibrio" ? "active" : ""}`}
-                  >
-                    {t.tabEquilibrio}
-                  </button>
-                  <button
-                    onClick={() => setActiveSagittalTab("incidencia")}
-                    className={`modern-pill-tab ${activeSagittalTab === "incidencia" ? "active" : ""}`}
-                  >
-                    {t.tabIncidencia}
-                  </button>
-                  <button
-                    onClick={() => setActiveSagittalTab("cone")}
-                    className={`modern-pill-tab ${activeSagittalTab === "cone" ? "active" : ""}`}
-                  >
-                    {t.tabCone}
-                  </button>
-                  <button
-                    onClick={() => setActiveSagittalTab("lordose")}
-                    className={`modern-pill-tab ${activeSagittalTab === "lordose" ? "active" : ""}`}
-                  >
-                    {t.tabLordose}
-                  </button>
-                  <button
-                    onClick={() => setActiveSagittalTab("t1")}
-                    className={`modern-pill-tab ${activeSagittalTab === "t1" ? "active" : ""}`}
-                  >
-                    {t.tabT1}
-                  </button>
-                </div>
-
-                {/* Dynamic Parameter Details Box */}
-                <div
-                  style={{
-                    padding: 24,
-                    borderRadius: 16,
-                    background: "#fff",
-                    border: "1px solid #d4e3f3",
-                    boxShadow: "0 8px 20px rgba(0, 30, 80, 0.04)",
-                    marginBottom: 24,
-                  }}
-                >
-                  <h4 style={{ fontSize: 18, color: "#063c79", margin: "0 0 8px" }}>
-                    {sagittalDetails[activeSagittalTab].title}
-                  </h4>
-                  <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#3a516d", margin: "0 0 14px" }}>
-                    {sagittalDetails[activeSagittalTab].desc}
-                  </p>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, paddingTop: 12, borderTop: "1px solid #edf4fb" }}>
-                    <div>
-                      <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#f52238" }}>
-                        {t.formulaLabel}
-                      </span>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: "#0e345f", marginTop: 2 }}>
-                        {sagittalDetails[activeSagittalTab].formula}
+                    <h4 style={{ fontSize: 17, fontWeight: 800, color: "#001f4d", margin: "0 0 8px" }}>
+                      {sagittalDetails[activeSagittalTab].title}
+                    </h4>
+                    <p style={{ fontSize: 14, lineHeight: 1.6, color: "#475569", margin: "0 0 16px" }}>
+                      {sagittalDetails[activeSagittalTab].desc}
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-200">
+                      <div>
+                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 800, color: "#f52238", letterSpacing: "0.04em" }}>
+                          {t.formulaLabel}
+                        </span>
+                        <div style={{ fontSize: 13, fontWeight: 750, color: "#0f172a", marginTop: 2 }}>
+                          {sagittalDetails[activeSagittalTab].formula}
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 700, color: "#0e65a2" }}>
-                        {t.clinicalLabel}
-                      </span>
-                      <div style={{ fontSize: 13, color: "#37506e", marginTop: 2 }}>
-                        {sagittalDetails[activeSagittalTab].clinical}
+                      <div>
+                        <span style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 800, color: "#0284c7", letterSpacing: "0.04em" }}>
+                          {t.clinicalLabel}
+                        </span>
+                        <div style={{ fontSize: 13, color: "#334155", marginTop: 2 }}>
+                          {sagittalDetails[activeSagittalTab].clinical}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: 14 }}>
-                  <Link href={`/${locale}/indice-new?secao=1`} className="modern-btn-glow" style={{ height: 48, fontSize: 14 }}>
+                {/* CTAs */}
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <Link
+                    href={`/${locale}/capitulo/8`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "11px 20px",
+                      borderRadius: 10,
+                      background: "#f52238",
+                      color: "#fff",
+                      fontWeight: 750,
+                      fontSize: 14,
+                      textDecoration: "none",
+                      boxShadow: "0 4px 14px rgba(245, 34, 56, 0.3)",
+                    }}
+                  >
                     <span>{t.viewIndexBtn}</span>
-                    <svg style={{ width: 16, height: 16 }}>
-                      <use href="#i-arrow"></use>
-                    </svg>
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <a href="#debate" className="modern-btn-glass" style={{ height: 48, fontSize: 14, color: "#073d77", borderColor: "#c2d8ed", background: "#fff" }}>
+
+                  <a
+                    href="#debate"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "11px 18px",
+                      borderRadius: 10,
+                      background: "#fff",
+                      color: "#001f4d",
+                      border: "1px solid #cbd5e1",
+                      fontWeight: 750,
+                      fontSize: 14,
+                      textDecoration: "none",
+                    }}
+                  >
+                    <Play className="w-4 h-4 text-red-600 fill-current" />
                     <span>{t.watchDebateBtn}</span>
-                    <svg style={{ width: 16, height: 16, color: "#f52238" }}>
-                      <use href="#i-play"></use>
-                    </svg>
                   </a>
                 </div>
               </div>
 
-              {/* Visual Radiograph illustration */}
-              <div
-                style={{
-                  borderRadius: 18,
-                  overflow: "hidden",
-                  background: "linear-gradient(135deg, #021a3a, #063c78)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  boxShadow: "0 14px 30px rgba(0, 20, 50, 0.2)",
-                  padding: "20px 18px 18px",
-                  alignSelf: "center",
-                  height: "100%",
-                  maxHeight: "480px",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1, width: "100%", overflow: "hidden" }}>
+              {/* Right Column: Visual Radiograph (Fit 100% inside container without cutoffs) */}
+              <div className="lg:col-span-5 w-full flex flex-col items-center justify-between rounded-2xl p-5 bg-gradient-to-b from-[#001026] via-[#021d42] to-[#001026] border border-white/15 text-white shadow-xl">
+                <div className="w-full flex items-center justify-center p-2 overflow-hidden min-h-[260px] sm:min-h-[320px]">
                   <img
                     src="/assets/chapter-spine.png"
                     alt="Radiografia e alinhamento sagital"
-                    style={{
-                      maxHeight: "360px",
-                      maxWidth: "100%",
-                      width: "auto",
-                      height: "auto",
-                      objectFit: "contain",
-                      opacity: 0.95,
-                      filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.4))",
-                    }}
+                    className="max-h-[280px] sm:max-h-[340px] max-w-full w-auto object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
                   />
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    marginTop: 12,
-                    padding: "8px 12px",
-                    borderRadius: 8,
-                    background: "rgba(0, 16, 40, 0.85)",
-                    backdropFilter: "blur(12px)",
-                    fontSize: 12,
-                    color: "#d0e4f7",
-                    textAlign: "center",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                  }}
-                >
+                <div className="w-full mt-4 py-2 px-3 rounded-lg bg-black/40 border border-white/10 backdrop-blur-md text-xs text-slate-300 text-center font-medium">
                   {t.radiographCaption}
                 </div>
               </div>
+
             </div>
           </div>
         </section>
