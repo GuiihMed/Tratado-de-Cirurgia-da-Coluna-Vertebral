@@ -147,90 +147,114 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
 
       {/* Mobile Drawer Dropdown */}
       {mobileMenuOpen && (
-        <div className="mobile-menu-drawer">
-          <nav className="mobile-drawer-nav">
-            <Link
-              href={`/${locale}/prefacio`}
-              className={pathname?.includes("/prefacio") ? "active" : ""}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.preface}
-            </Link>
-            <Link
-              href={`/${locale}/apresentacao`}
-              className={pathname?.includes("/apresentacao") ? "active" : ""}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.presentation}
-            </Link>
-            <Link
-              href={`/${locale}/indice`}
-              className={currentPage === "indice" ? "active" : ""}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.index}
-            </Link>
-            <Link
-              href={`/${locale}/indice#conteudo`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.chapters}
-            </Link>
-            <Link
-              href={`/${locale}/autores`}
-              className={pathname?.includes("/autores") ? "active" : ""}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.authors}
-            </Link>
-            <Link
-              href={`/${locale}#referencias`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.references}
-            </Link>
-            <Link
-              href={`/${locale}#debate`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {dict.nav.debate}
-            </Link>
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            background: "#001026",
+            borderBottom: "3px solid #f52238",
+            padding: "20px 16px 24px",
+            boxShadow: "0 25px 60px rgba(0, 0, 0, 0.9)",
+            zIndex: 9999,
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
+          <nav style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {[
+              { href: `/${locale}/prefacio`, label: dict.nav.preface, active: pathname?.includes("/prefacio") },
+              { href: `/${locale}/apresentacao`, label: dict.nav.presentation, active: pathname?.includes("/apresentacao") },
+              { href: `/${locale}/indice`, label: dict.nav.index, active: currentPage === "indice" },
+              { href: `/${locale}/indice#conteudo`, label: dict.nav.chapters, active: false },
+              { href: `/${locale}/autores`, label: dict.nav.authors, active: pathname?.includes("/autores") },
+              { href: `/${locale}#referencias`, label: dict.nav.references, active: false },
+              { href: `/${locale}#debate`, label: dict.nav.debate, active: false },
+            ].map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "12px 16px",
+                  borderRadius: 10,
+                  background: item.active ? "#f52238" : "rgba(255, 255, 255, 0.05)",
+                  border: item.active ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.08)",
+                  color: "#ffffff",
+                  fontSize: 14.5,
+                  fontWeight: 650,
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
+              >
+                <span>{item.label}</span>
+                <span style={{ fontSize: 13, opacity: 0.6 }}>›</span>
+              </Link>
+            ))}
+
+            {/* Buy Book CTA */}
             <a
               href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                padding: "14px 16px",
+                borderRadius: 10,
+                background: "linear-gradient(135deg, #f52238 0%, #be123c 100%)",
+                color: "#ffffff",
+                fontSize: 14.5,
+                fontWeight: 750,
+                textDecoration: "none",
+                marginTop: 4,
+                boxShadow: "0 6px 20px rgba(245, 34, 56, 0.35)",
+              }}
             >
-              {dict.nav.buy}
+              <span>{dict.nav.buy}</span>
+              <span style={{ fontSize: 16 }}>🛒</span>
             </a>
           </nav>
 
-          <div className="mobile-drawer-footer">
-            <div className="mobile-drawer-langs">
-              <span>Idioma:</span>
-              <div className="mobile-lang-row">
+          {/* Languages Row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingTop: 16,
+              borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 600 }}>Idioma:</span>
+            <div style={{ display: "flex", gap: 8 }}>
+              {["pt", "es", "en"].map((lang) => (
                 <Link
-                  href={getLocalePath("pt")}
-                  className={locale === "pt" ? "active" : ""}
+                  key={lang}
+                  href={getLocalePath(lang as Locale)}
                   onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: 8,
+                    background: locale === lang ? "#f52238" : "rgba(255, 255, 255, 0.08)",
+                    border: locale === lang ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
+                    color: "#ffffff",
+                    fontSize: 13,
+                    fontWeight: 800,
+                    textDecoration: "none",
+                  }}
                 >
-                  PT
+                  {lang.toUpperCase()}
                 </Link>
-                <Link
-                  href={getLocalePath("es")}
-                  className={locale === "es" ? "active" : ""}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  ES
-                </Link>
-                <Link
-                  href={getLocalePath("en")}
-                  className={locale === "en" ? "active" : ""}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  EN
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </div>
