@@ -196,45 +196,94 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
 
-        {/* DESTAQUE DE CAPÍTULO */}
-        <section id="capitulo" className="chapter-section section-light">
-          <div className="shell chapter-card">
-            <div className="chapter-number">
-              <span>{dict.chapterHighlight.badge}</span>
-              <strong>{dict.chapterHighlight.number}</strong>
-            </div>
-            <div className="chapter-copy">
-              <h2>{dict.chapterHighlight.title}</h2>
-              <p className="chapter-authors">
-                <i></i> {dict.chapterHighlight.authors[0]} <i></i>{" "}
-                {dict.chapterHighlight.authors[1]}
-              </p>
-              <p className="chapter-summary">{dict.chapterHighlight.summary}</p>
-              <div className="chips">
-                {dict.chapterHighlight.chips.map((chip, index) => (
-                  <span key={index}>{chip}</span>
-                ))}
-              </div>
-            </div>
-            <div className="chapter-visual">
+        {/* DESTAQUE DE CAPÍTULO (RÉPLICA EXATA DO DESIGN DESKTOP & MOBILE) */}
+        <section id="capitulo" className="py-12 sm:py-16 bg-slate-50 relative overflow-hidden">
+          <div className="shell">
+            <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl p-6 sm:p-8 lg:p-10 text-white"
+              style={{
+                background: "radial-gradient(circle at 8% 25%, rgba(220, 20, 50, 0.55), transparent 38%), linear-gradient(110deg, #38173f 0%, #08295b 45%, #003875 100%)",
+                boxShadow: "0 25px 60px rgba(0, 20, 55, 0.25)",
+              }}
+            >
+              {/* Spine Graphic Background Overlay */}
               <img
                 src="/assets/chapter-spine.png"
-                alt="Radiografia esquemática da coluna no plano sagital"
+                alt=""
+                className="absolute right-10 top-0 bottom-0 h-full w-auto max-w-[45%] object-contain pointer-events-none opacity-20 hidden md:block"
+                style={{ mixBlendMode: "screen" }}
               />
-            </div>
-            <div className="chapter-actions">
-              <Link className="btn btn-primary" href={`/${locale}/indice#secao-1`}>
-                {dict.chapterHighlight.btnSummary}{" "}
-                <svg>
-                  <use href="#i-arrow"></use>
-                </svg>
-              </Link>
-              <a className="btn btn-outline" href="#referencias">
-                {dict.chapterHighlight.btnRef}{" "}
-                <svg>
-                  <use href="#i-ref"></use>
-                </svg>
-              </a>
+
+              {/* Grid: 3 columns on Desktop / Clean stacked flow on Mobile */}
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                
+                {/* 1. Chapter Number Badge */}
+                <div className="lg:col-span-2 flex flex-row lg:flex-col items-center justify-start lg:justify-center gap-3 lg:gap-1 pb-4 lg:pb-0 border-b lg:border-b-0 lg:border-r border-white/20 lg:pr-6">
+                  <span className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-200">
+                    {dict.chapterHighlight.badge}
+                  </span>
+                  <strong className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none">
+                    {dict.chapterHighlight.number}
+                  </strong>
+                </div>
+
+                {/* 2. Chapter Content & Chips */}
+                <div className="lg:col-span-7 flex flex-col justify-center lg:px-2">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-white leading-tight tracking-tight mb-3">
+                    {dict.chapterHighlight.title}
+                  </h2>
+
+                  {/* Authors with red squares */}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm font-semibold text-slate-200 mb-3">
+                    <span className="inline-flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-[2px] bg-[#f52238] inline-block" />
+                      {dict.chapterHighlight.authors[0]}
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-[2px] bg-[#f52238] inline-block" />
+                      {dict.chapterHighlight.authors[1]}
+                    </span>
+                  </div>
+
+                  {/* Summary */}
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl mb-4 font-normal">
+                    {dict.chapterHighlight.summary}
+                  </p>
+
+                  {/* Keyword Chips */}
+                  <div className="flex flex-wrap gap-2">
+                    {dict.chapterHighlight.chips.map((chip, index) => (
+                      <span
+                        key={index}
+                        className="text-xs font-semibold px-3 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/25 text-white transition-colors"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. Action Buttons */}
+                <div className="lg:col-span-3 flex flex-col gap-3 justify-center w-full pt-2 lg:pt-0">
+                  <Link
+                    href={`/${locale}/capitulo/8`}
+                    className="w-full h-12 px-5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span>{dict.chapterHighlight.btnSummary}</span>
+                    <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                  </Link>
+
+                  <a
+                    href="#referencias"
+                    className="w-full h-12 px-5 rounded-xl bg-[#001f4d]/60 hover:bg-[#001f4d]/90 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span>{dict.chapterHighlight.btnRef}</span>
+                    <svg className="w-4 h-4 text-sky-400"><use href="#i-ref"></use></svg>
+                  </a>
+                </div>
+
+              </div>
             </div>
           </div>
         </section>

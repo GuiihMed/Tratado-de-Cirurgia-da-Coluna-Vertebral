@@ -667,20 +667,7 @@ svg {
   padding: 25px 0 50px;
 }
 
-.chapter-card {
-  height: 480px;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  display: grid;
-  grid-template-columns: 210px 680px 1fr 330px;
-  align-items: center;
-  padding: 0 44px 0 0;
-  color: #fff;
-  background: radial-gradient(circle at 10% 20%, rgba(238, 54, 80, 0.45), transparent 32%),
-    linear-gradient(110deg, #371b42 0%, #092d61 46%, #003a74 100%);
-  box-shadow: 0 16px 35px rgba(7, 41, 79, 0.14);
-}
+/* .chapter-card managed via responsive tailwind */
 
 .chapter-number {
   height: 390px;
@@ -1961,9 +1948,7 @@ svg {
   .area-card h3 {
     font-size: 18px;
   }
-  .chapter-card {
-    grid-template-columns: 170px 600px 1fr 290px;
-  }
+  /* .chapter-card managed via responsive tailwind */
   .chapter-copy h2 {
     font-size: 49px;
   }
@@ -2027,11 +2012,7 @@ svg {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  .chapter-card {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px;
-  }
+  /* .chapter-card managed via responsive tailwind */
   .chapter-actions {
     justify-content: flex-start;
   }
