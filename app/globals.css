@@ -396,8 +396,7 @@ svg {
   overflow: hidden;
   color: #fff;
   padding-bottom: 45px;
-  background: radial-gradient(circle at 8% 25%, rgba(255, 50, 62, 0.55), transparent 33%),
-    linear-gradient(105deg, #b30e27 0%, #322045 27%, #062c5d 60%, #0064a9 100%);
+  background: radial-gradient(circle at 14% 30%, rgba(220, 20, 45, 0.52), transparent 42%), linear-gradient(105deg, #a80f22 0%, #2f193e 26%, #052b5b 54%, #005a9c 100%);
 }
 
 .hero-index:after {
