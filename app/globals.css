@@ -2446,3 +2446,9 @@ svg {
     margin-bottom: 6px !important;
   }
 }
+
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 16px)) !important;
+  }
+}
