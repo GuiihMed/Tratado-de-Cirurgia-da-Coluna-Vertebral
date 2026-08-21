@@ -248,142 +248,146 @@ export default async function HomePage({ params }: HomePageProps) {
         <section id="autores" className="info-section section-light" style={{ padding: "20px 0 50px" }}>
           <div className="shell info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "2px solid #dce4ed", borderRadius: 16, overflow: "hidden", background: "#fbfcfe" }}>
             
-            {/* Card Autores */}
-            <article className="info-card authors-card" style={{ padding: "36px 40px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <h2 style={{ fontSize: 28, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: "0 0 14px" }}>
-                  <svg style={{ width: 30, height: 30, color: "#093c78" }}>
-                    <use href="#i-users"></use>
-                  </svg>
-                  <span>{dict.info.authorsTitle}</span>
-                </h2>
-                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#475569", margin: "0 0 20px" }}>
-                  {dict.info.authorsDesc}
-                </p>
+            {/* Card Autores - Layout compacto sem espaço vazio */}
+            <article className="info-card authors-card" style={{ padding: "32px 36px", display: "flex", flexDirection: "column", gap: 14, minHeight: "auto" }}>
+              <h2 style={{ fontSize: 26, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: 0 }}>
+                <svg style={{ width: 28, height: 28, color: "#093c78" }}>
+                  <use href="#i-users"></use>
+                </svg>
+                <span>{dict.info.authorsTitle}</span>
+              </h2>
+              
+              <p style={{ fontSize: 15, lineHeight: 1.55, color: "#475569", margin: 0 }}>
+                {dict.info.authorsDesc}
+              </p>
 
-                {/* 3 Real Editors with Direct Links */}
-                <div className="portraits" style={{ display: "flex", gap: 16, margin: "12px 0 24px", alignItems: "center" }}>
-                  <Link href={`/${locale}/autor/edson-pudles`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                    <img
-                      src="/assets/edson-pudles.png"
-                      alt="Dr. Edson Pudles"
-                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                    />
-                  </Link>
-                  <Link href={`/${locale}/autor/helton-defino`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                    <img
-                      src="/assets/helton-defino.png"
-                      alt="Dr. Helton Defino"
-                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                    />
-                  </Link>
-                  <Link href={`/${locale}/autor/marcelo-risso`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                    <img
-                      src="/assets/marcelo-risso.png"
-                      alt="Dr. Marcelo Risso"
-                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                    />
-                  </Link>
-                </div>
+              {/* 3 Real Editors with Direct Links */}
+              <div className="portraits" style={{ display: "flex", gap: 14, margin: "6px 0 10px", alignItems: "center" }}>
+                <Link href={`/${locale}/autor/edson-pudles`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <img
+                    src="/assets/edson-pudles.png"
+                    alt="Dr. Edson Pudles"
+                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                  />
+                </Link>
+                <Link href={`/${locale}/autor/helton-defino`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <img
+                    src="/assets/helton-defino.png"
+                    alt="Dr. Helton Defino"
+                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                  />
+                </Link>
+                <Link href={`/${locale}/autor/marcelo-risso`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                  <img
+                    src="/assets/marcelo-risso.png"
+                    alt="Dr. Marcelo Risso"
+                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                  />
+                </Link>
               </div>
 
               <div>
-                <Link className="btn btn-small" href={`/${locale}/autores`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, textDecoration: "none" }}>
+                <Link className="btn btn-small" href={`/${locale}/autores`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "9px 18px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
                   <span>{dict.info.authorsBtn}</span>
-                  <svg style={{ width: 16, height: 16 }}>
+                  <svg style={{ width: 15, height: 15 }}>
                     <use href="#i-arrow"></use>
                   </svg>
                 </Link>
               </div>
             </article>
 
-            {/* Card Trilíngue */}
-            <article id="referencias" className="info-card language-card" style={{ padding: "36px 40px", borderLeft: "1px solid #dce4ed", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <h2 style={{ fontSize: 28, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: "0 0 14px" }}>
-                  <svg style={{ width: 30, height: 30, color: "#093c78" }}>
-                    <use href="#i-globe"></use>
-                  </svg>
-                  <span>{dict.info.langTitle}</span>
-                </h2>
-                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#475569", margin: "0 0 20px" }}>
-                  {dict.info.langDesc}
-                </p>
+            {/* Card Trilíngue - Volta exatamente para #referencias */}
+            <article id="referencias" className="info-card language-card" style={{ padding: "32px 36px", borderLeft: "1px solid #dce4ed", display: "flex", flexDirection: "column", gap: 14, minHeight: "auto" }}>
+              <h2 style={{ fontSize: 26, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: 0 }}>
+                <svg style={{ width: 28, height: 28, color: "#093c78" }}>
+                  <use href="#i-globe"></use>
+                </svg>
+                <span>{dict.info.langTitle}</span>
+              </h2>
+              
+              <p style={{ fontSize: 15, lineHeight: 1.55, color: "#475569", margin: 0 }}>
+                {dict.info.langDesc}
+              </p>
 
-                {/* 3 Interactive Official Flags (Click to switch language directly) */}
-                <div style={{ display: "flex", gap: 24, margin: "16px 0 20px", alignItems: "center" }}>
-                  <Link
-                    href="/pt"
-                    title="Mudar para Português"
-                    style={{
-                      textDecoration: "none",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "8px 12px",
-                      borderRadius: 12,
-                      background: locale === "pt" ? "rgba(245, 34, 56, 0.08)" : "transparent",
-                      border: locale === "pt" ? "2px solid #f52238" : "2px solid transparent",
-                      transition: "all 0.2s ease",
-                    }}
-                  >
-                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
-                      <img src="/assets/flags/br.svg" alt="Brasil" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    </div>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "pt" ? "#f52238" : "#334155" }}>
-                      Português {locale === "pt" && "✓"}
-                    </span>
-                  </Link>
+              {/* 3 Interactive Official Flags (Click to reload directly in the same section #referencias) */}
+              <div style={{ display: "flex", gap: 16, margin: "6px 0 0", alignItems: "center" }}>
+                <Link
+                  href="/pt#referencias"
+                  title="Mudar para Português"
+                  scroll={true}
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 14px",
+                    borderRadius: 12,
+                    background: locale === "pt" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
+                    border: locale === "pt" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
+                    transition: "all 0.2s ease",
+                  }}
+                  className="hover:scale-105"
+                >
+                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                    <img src="/assets/flags/br.svg" alt="Brasil" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "pt" ? "#f52238" : "#334155" }}>
+                    Português {locale === "pt" && "✓"}
+                  </span>
+                </Link>
 
-                  <Link
-                    href="/es"
-                    title="Cambiar a Español"
-                    style={{
-                      textDecoration: "none",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "8px 12px",
-                      borderRadius: 12,
-                      background: locale === "es" ? "rgba(245, 34, 56, 0.08)" : "transparent",
-                      border: locale === "es" ? "2px solid #f52238" : "2px solid transparent",
-                      transition: "all 0.2s ease",
-                    }}
-                  >
-                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
-                      <img src="/assets/flags/es.svg" alt="España" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    </div>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "es" ? "#f52238" : "#334155" }}>
-                      Español {locale === "es" && "✓"}
-                    </span>
-                  </Link>
+                <Link
+                  href="/es#referencias"
+                  title="Cambiar a Español"
+                  scroll={true}
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 14px",
+                    borderRadius: 12,
+                    background: locale === "es" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
+                    border: locale === "es" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
+                    transition: "all 0.2s ease",
+                  }}
+                  className="hover:scale-105"
+                >
+                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                    <img src="/assets/flags/es.svg" alt="España" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "es" ? "#f52238" : "#334155" }}>
+                    Español {locale === "es" && "✓"}
+                  </span>
+                </Link>
 
-                  <Link
-                    href="/en"
-                    title="Switch to English"
-                    style={{
-                      textDecoration: "none",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "8px 12px",
-                      borderRadius: 12,
-                      background: locale === "en" ? "rgba(245, 34, 56, 0.08)" : "transparent",
-                      border: locale === "en" ? "2px solid #f52238" : "2px solid transparent",
-                      transition: "all 0.2s ease",
-                    }}
-                  >
-                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
-                      <img src="/assets/flags/us.svg" alt="English" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    </div>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "en" ? "#f52238" : "#334155" }}>
-                      English {locale === "en" && "✓"}
-                    </span>
-                  </Link>
-                </div>
+                <Link
+                  href="/en#referencias"
+                  title="Switch to English"
+                  scroll={true}
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 14px",
+                    borderRadius: 12,
+                    background: locale === "en" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
+                    border: locale === "en" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
+                    transition: "all 0.2s ease",
+                  }}
+                  className="hover:scale-105"
+                >
+                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
+                    <img src="/assets/flags/us.svg" alt="English" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "en" ? "#f52238" : "#334155" }}>
+                    English {locale === "en" && "✓"}
+                  </span>
+                </Link>
               </div>
             </article>
           </div>
