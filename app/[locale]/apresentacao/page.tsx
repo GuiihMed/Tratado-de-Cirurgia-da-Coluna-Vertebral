@@ -41,57 +41,36 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
       <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
         {/* ========================================================================= */}
         {/* HERO SECTION (Clássica - Apresentação) */}
-        {/* ========================================================================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
-            position: "relative",
-            background: "radial-gradient(ellipse at 70% 30%, #00224d 0%, #00122b 50%, #000917 100%)",
-            color: "#fff",
-            padding: "48px 0 40px",
-            overflow: "hidden",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            background:
+              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
           }}
         >
-          {/* Glowing spine illustration background */}
-          <div
-            style={{
-              position: "absolute",
-              right: "4%",
-              top: 0,
-              bottom: 0,
-              width: "48%",
-              backgroundImage: "url('/assets/hero-spine.png')",
-              backgroundPosition: "top right",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              opacity: 0.35,
-              pointerEvents: "none",
-            }}
+          {/* Subtle Anatomical Spine Background Overlay */}
+          <img
+            src="/assets/hero-spine.png"
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              padding: "0 24px",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
-            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.6)", marginBottom: 28, display: "flex", alignItems: "center", gap: 8 }}>
-              <Link href={`/${locale}/home-new`} style={{ color: "rgba(255, 255, 255, 0.7)", textDecoration: "none" }}>
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 Início
               </Link>
               <span>›</span>
-              <span style={{ color: "rgba(255, 255, 255, 0.7)" }}>O Tratado</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>O Tratado</span>
               <span>›</span>
               <span style={{ color: "#fff", fontWeight: 700 }}>Apresentação</span>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 48, alignItems: "center" }}>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
               {/* 3D Book Cover */}
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div className="md:col-span-5 flex justify-center md:justify-end">
                 <img
                   src="/assets/book-cover.png"
                   alt="Tratado de Cirurgia da Coluna Vertebral"
@@ -106,7 +85,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               </div>
 
               {/* Hero Info */}
-              <div>
+              <div className="md:col-span-7">
                 {/* Institutional Badge */}
                 <div
                   style={{

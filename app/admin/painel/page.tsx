@@ -1117,12 +1117,12 @@ export default function AdminPainelPage() {
         }}
       >
         {/* Brand Header */}
-        <div style={{ padding: "24px 20px 20px", borderBottom: sidebarBorder }}>
+        <div style={{ padding: "20px 18px 16px", borderBottom: sidebarBorder, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
               src={isDark ? "/assets/sbc-logo-white.png" : "/assets/sbc-logo.png"}
               alt="SBC"
-              style={{ height: 38, width: "auto", objectFit: "contain" }}
+              style={{ height: 36, width: "auto", objectFit: "contain" }}
             />
             <div>
               <div style={{ fontSize: 14.5, fontWeight: 700, color: textPrimary, lineHeight: 1.2, letterSpacing: "-0.01em" }}>
@@ -1134,6 +1134,16 @@ export default function AdminPainelPage() {
               </div>
             </div>
           </div>
+
+          {/* Close Sidebar button on mobile */}
+          <button
+            type="button"
+            onClick={() => setMobileSidebarOpen(false)}
+            className="lg:hidden flex items-center justify-center w-8 h-8 rounded-lg text-slate-400 hover:text-white bg-white/5 border border-white/10"
+            aria-label="Fechar menu"
+          >
+            <X size={18} />
+          </button>
         </div>
 
         {/* User Connected Card */}
@@ -1373,95 +1383,89 @@ export default function AdminPainelPage() {
           zIndex: 10,
         }}
       >
-        {/* ================= TOPBAR (FIX FOR IMAGE 3 & THEME TOGGLE) ================= */}
+        {/* ================= TOPBAR (RESPONSIVO COM HAMBURGER MENU) ================= */}
         <header
+          className="h-16 sticky top-0 z-40 flex items-center justify-between px-3 sm:px-6 lg:px-8 backdrop-blur-xl transition-all"
           style={{
-            height: 68,
             background: topbarBg,
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
             borderBottom: topbarBorder,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 32px",
-            position: "sticky",
-            top: 0,
-            zIndex: 40,
             boxShadow: isDark ? "0 4px 20px rgba(0, 0, 0, 0.2)" : "0 2px 10px rgba(0, 30, 80, 0.03)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: textMuted }}>
-              <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: textMuted }}>
+          {/* Left: Mobile Hamburger Toggle + Breadcrumbs */}
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {/* Hamburger Button for Mobile */}
+            <button
+              type="button"
+              onClick={() => setMobileSidebarOpen(true)}
+              className="lg:hidden inline-flex items-center justify-center w-9 h-9 rounded-xl border transition-all active:scale-95 flex-shrink-0"
+              style={{
+                background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+                borderColor: isDark ? "rgba(255, 255, 255, 0.15)" : "#cbd5e1",
+                color: textPrimary,
+              }}
+              aria-label="Abrir Menu Lateral"
+            >
+              <Layers size={18} />
+            </button>
+
+            {/* Breadcrumb Title */}
+            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-400 min-w-0">
+              <span className="hidden sm:inline font-bold uppercase tracking-wider text-[11px]">
                 SBC Admin
               </span>
-              <span>/</span>
-              <strong style={{ color: textPrimary, fontWeight: 700 }}>
+              <span className="hidden sm:inline">/</span>
+              <strong className="text-sm font-bold truncate max-w-[140px] sm:max-w-[240px] md:max-w-none" style={{ color: textPrimary }}>
                 {activeTab === "dashboard"
-                  ? "Dashboard Executivo & Métricas"
+                  ? "Dashboard Executivo"
                   : activeTab === "capitulos"
-                  ? "Catálogo de Capítulos (109)"
+                  ? "Capítulos (109)"
                   : activeTab === "autores"
-                  ? "Corpo Editorial & Autores"
-                  : "Governança de Usuários"}
+                  ? "Autores & Editores"
+                  : "Usuários & Acessos"}
               </strong>
             </div>
           </div>
 
-          {/* Topbar Actions: Theme Toggle + Public Link */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {/* Theme Toggle Button */}
+          {/* Right: Topbar Actions (Theme Toggle + Public Link) */}
+          <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+            {/* Theme Toggle */}
             <button
               type="button"
               onClick={toggleTheme}
               title={isDark ? "Alternar para Tema Claro" : "Alternar para Tema Escuro"}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all active:scale-95"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 7,
-                padding: "8px 14px",
-                borderRadius: 10,
                 background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
-                border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                borderColor: isDark ? "rgba(255, 255, 255, 0.15)" : "#cbd5e1",
                 color: textPrimary,
-                fontSize: 12.5,
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
               }}
             >
               {isDark ? <Sun size={15} color="#f59e0b" /> : <Moon size={15} color="#6366f1" />}
-              <span>{isDark ? "Tema Claro" : "Tema Escuro"}</span>
+              <span className="hidden md:inline">{isDark ? "Tema Claro" : "Tema Escuro"}</span>
             </button>
 
-            {/* Public Link Button (Image 3 fix) */}
+            {/* Public Link Button */}
             <Link
               href="/pt/indice-new"
               target="_blank"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all active:scale-95"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "8px 16px",
-                borderRadius: 10,
                 background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
-                border: isDark ? "1px solid rgba(255, 255, 255, 0.15)" : "1px solid #cbd5e1",
+                borderColor: isDark ? "rgba(255, 255, 255, 0.15)" : "#cbd5e1",
                 color: textPrimary,
-                fontSize: 12.5,
-                fontWeight: 700,
                 textDecoration: "none",
-                transition: "all 0.2s ease",
               }}
             >
-              <span>Ver Índice Público</span>
-              <ExternalLink size={13} color={textMuted} />
+              <Globe size={14} color={isDark ? "#38bdf8" : "#0284c7"} />
+              <span className="hidden sm:inline">Índice Público</span>
+              <ExternalLink size={12} color={textMuted} className="hidden sm:inline" />
             </Link>
           </div>
         </header>
 
         {/* ================= MAIN CONTENT CONTAINER ================= */}
-        <main style={{ padding: "32px", maxWidth: 1400, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+        <main className="p-3 sm:p-6 lg:p-8 pb-24 md:pb-12 max-w-[1440px] w-full mx-auto box-border">
           {/* Feedback Alert */}
           {feedback.message && (
             <div

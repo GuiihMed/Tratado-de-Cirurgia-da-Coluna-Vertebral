@@ -51,12 +51,12 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
             position: "relative",
             padding: "140px 24px 70px",
             background:
-              "radial-gradient(circle at 20% 30%, rgba(245, 34, 56, 0.22), transparent 45%), radial-gradient(circle at 80% 40%, rgba(14, 101, 162, 0.28), transparent 50%), linear-gradient(180deg, #001433 0%, #000c1e 100%)",
+              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
             overflow: "hidden",
           }}
         >
-          <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <img src="/assets/hero-spine.png" alt="" className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block" style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }} /><div style={{ maxWidth: 1240, margin: "0 auto", position: "relative", zIndex: 2 }}>
             {/* Breadcrumb */}
             <div
               style={{
