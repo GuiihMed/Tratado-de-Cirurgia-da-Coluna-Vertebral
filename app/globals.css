@@ -521,55 +521,70 @@ svg {
 
 /* ABOUT */
 .about {
-  height: 525px;
+  min-height: auto;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #eef2f7;
-  background: linear-gradient(90deg, #fff 0%, #fff 58%, #f2f8ff 100%);
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(90deg, #ffffff 0%, #fbfcfe 60%, #f1f7fc 100%);
+  padding: 56px 0 64px;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 36px 0 44px;
+  }
 }
 
 .about-inner {
-  padding-top: 60px;
+  padding-top: 0;
   position: relative;
   z-index: 2;
+  max-width: 860px;
 }
 
 .about h2,
 .center-title {
-  font-size: 48px;
-  line-height: 1.1;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.15;
   letter-spacing: -0.025em;
-  margin: 0 0 24px;
-  font-weight: 800;
+  margin: 0 0 16px;
+  font-weight: 900;
+  color: #001026;
 }
 
 .about p {
-  font-size: 22px;
-  line-height: 1.55;
-  color: #314861;
-  max-width: 870px;
-  margin: 0 0 18px;
+  font-size: clamp(15px, 2vw, 16.5px);
+  line-height: 1.65;
+  color: #475569;
+  max-width: 820px;
+  margin: 0 0 14px;
 }
 
 .accent-line {
-  margin-top: 24px;
-  border-left: 6px solid var(--red);
-  padding: 2px 0 2px 20px;
-  font-size: 20px;
-  line-height: 1.45;
-  font-weight: 750;
-  color: #163a67;
+  margin-top: 20px;
+  border-left: 4px solid #f52238;
+  padding: 2px 0 2px 16px;
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.5;
+  font-weight: 800;
+  color: #001f4d;
   white-space: pre-line;
 }
 
 .about-anatomy {
   position: absolute;
-  right: 170px;
-  top: -250px;
-  width: 540px;
-  opacity: 0.13;
-  filter: grayscale(0.6) brightness(1.8);
-  transform: rotate(4deg);
+  right: 5%;
+  top: -10%;
+  width: 440px;
+  opacity: 0.10;
+  filter: grayscale(0.5);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .about-anatomy {
+    display: none;
+  }
 }
 
 /* AREAS (HOME) */
