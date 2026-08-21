@@ -40,8 +40,8 @@ export default function ModernHeader({
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="modern-nav-pills desktop-only-nav">
+        {/* Desktop Navigation (Centralizada) */}
+        <nav className="modern-nav-pills desktop-only-nav" style={{ margin: "0 auto" }}>
           <Link
             href={`/${locale}/home-new`}
             className={`modern-nav-link ${currentPage === "home-new" ? "active" : ""}`}
@@ -63,18 +63,38 @@ export default function ModernHeader({
           >
             {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
           </Link>
+        </nav>
+
+        {/* Desktop Right Side: Botão Onde Comprar + Idiomas */}
+        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+          {/* Botão Onde Comprar */}
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="modern-nav-link"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "7.5px 16px",
+              borderRadius: 8,
+              background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
+              color: "#ffffff",
+              fontSize: 13,
+              fontWeight: 800,
+              textDecoration: "none",
+              boxShadow: "0 3px 12px rgba(245, 34, 56, 0.4)",
+              transition: "all 0.2s ease",
+            }}
+            className="hover:brightness-110 active:scale-[0.98]"
           >
-            {locale === "en" ? "Get Book" : locale === "es" ? "Comprar" : "Adquirir Obra"}
+            <span>{locale === "en" ? "Buy Book" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
           </a>
-        </nav>
 
-        {/* Desktop Language Switcher */}
-        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          {/* Divisor Vertical */}
+          <div style={{ width: 1, height: 22, background: "rgba(255, 255, 255, 0.2)" }} />
+
+          {/* Desktop Language Switcher */}
           <div className="modern-lang-pills">
             <Link
               href={getLocalePath("pt")}
