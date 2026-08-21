@@ -404,7 +404,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
   };
 
   return (
-    <div style={{ background: "#000d20", color: "var(--ink)", minHeight: "100vh" }}>
+    <div style={{ background: "#f8fbfe", color: "var(--ink)", minHeight: "100vh" }}>
       <ModernHeader locale={locale} currentPage="home-new" />
 
       <main>
@@ -561,7 +561,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         </section>
 
         {/* ================= SOBRE A OBRA (PILLARS) ================= */}
-        <section id="sobre" style={{ padding: "90px 0 70px" }}>
+        <section id="sobre" style={{ padding: "90px 0 70px", background: "#ffffff" }}>
           <div className="shell">
             <div className="modern-section-header">
               <span className="modern-tag-pill">{t.aboutPill}</span>
