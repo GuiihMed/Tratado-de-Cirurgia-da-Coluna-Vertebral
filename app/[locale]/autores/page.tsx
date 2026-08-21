@@ -39,85 +39,44 @@ export default function AutoresPage({ params }: AutoresPageProps) {
 
       <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
         {/* ========================================================================= */}
-        {/* HERO SECTION (Clássica - Autores) */}
+        {/* HERO SECTION (Clássica - Autores Responsivo com Fundo Oficial) */}
         {/* ========================================================================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
-            position: "relative",
-            background: "radial-gradient(ellipse at 70% 30%, #00224d 0%, #00122b 50%, #000917 100%)",
-            color: "#fff",
-            padding: "48px 0 32px",
-            overflow: "hidden",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            background:
+              "radial-gradient(circle at 14% 30%, rgba(220, 20, 45, 0.52), transparent 42%), linear-gradient(105deg, #a80f22 0%, #2f193e 26%, #052b5b 54%, #005a9c 100%)",
           }}
         >
-          {/* Glowing spine illustration background */}
-          <div
-            style={{
-              position: "absolute",
-              right: "4%",
-              top: 0,
-              bottom: 0,
-              width: "48%",
-              backgroundImage: "url('/assets/hero-spine.png')",
-              backgroundPosition: "top right",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              opacity: 0.35,
-              pointerEvents: "none",
-            }}
+          {/* Subtle Anatomical Spine Background Overlay */}
+          <img
+            src="/assets/hero-spine.png"
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              padding: "0 24px",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 48, alignItems: "center" }}>
-              {/* 3D Book Cover */}
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  src="/assets/book-cover.png"
-                  alt="Tratado de Cirurgia da Coluna Vertebral"
-                  style={{
-                    width: 260,
-                    height: "auto",
-                    borderRadius: "6px 14px 14px 6px",
-                    boxShadow: "0 24px 50px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4)",
-                    transform: "perspective(1000px) rotateY(-8deg)",
-                  }}
-                />
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+              
+              {/* Left Column: 3D Book Cover */}
+              <div className="md:col-span-5 flex justify-center md:justify-end">
+                <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
+                  <img
+                    src="/assets/book-cover.png"
+                    alt="Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+                  />
+                </div>
               </div>
 
-              {/* Hero Info */}
-              <div>
-                <h1
-                  style={{
-                    fontSize: "clamp(34px, 5vw, 48px)",
-                    fontWeight: 900,
-                    margin: "0 0 12px",
-                    color: "#fff",
-                    letterSpacing: "-0.02em",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
+              {/* Right Column: Hero Info */}
+              <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight mb-3">
+                  {locale === "en" ? "Authors & Editors" : locale === "es" ? "Autores y Editores" : "Autores e Editores"}
                 </h1>
 
-                <p
-                  style={{
-                    fontSize: 16.5,
-                    fontWeight: 700,
-                    color: "rgba(255, 255, 255, 0.95)",
-                    margin: "0 0 12px",
-                    lineHeight: 1.45,
-                    maxWidth: 700,
-                  }}
-                >
+                <p className="text-base sm:text-lg font-bold text-slate-100 leading-snug max-w-xl mb-3">
                   {locale === "en"
                     ? "Meet the editors, authors, and contributors of the Treatise on Spine Surgery."
                     : locale === "es"
@@ -125,15 +84,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     : "Conheça os editores, autores e colaboradores do Tratado de Cirurgia da Coluna Vertebral."}
                 </p>
 
-                <p
-                  style={{
-                    fontSize: 14.5,
-                    color: "rgba(255, 255, 255, 0.75)",
-                    margin: "0 0 20px",
-                    lineHeight: 1.5,
-                    maxWidth: 680,
-                  }}
-                >
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl mb-6">
                   {locale === "en"
                     ? "The complete masterwork is exclusively available in printed format. This portal organizes authors, chapters, summaries, and references for clinical study."
                     : locale === "es"
@@ -142,19 +93,11 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 </p>
 
                 {/* Print Notice Box */}
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 12,
-                    padding: "10px 18px",
-                    borderRadius: 8,
-                    background: "rgba(0, 24, 60, 0.65)",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                  }}
-                >
-                  <span style={{ fontSize: 18, color: "#f43f5e" }}>📖</span>
-                  <span style={{ fontSize: 13.5, color: "rgba(255, 255, 255, 0.9)" }}>
+                <div className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-[#001433]/70 border border-white/20 backdrop-blur-md text-xs sm:text-sm text-slate-200 text-left shadow-lg">
+                  <div className="w-7 h-7 rounded-lg bg-red-600/20 text-red-400 flex items-center justify-center flex-shrink-0 border border-red-500/30">
+                    <svg className="w-4 h-4 text-red-400"><use href="#i-book"></use></svg>
+                  </div>
+                  <span className="font-medium leading-snug">
                     {locale === "en"
                       ? "The complete treatise is exclusively available in printed format."
                       : locale === "es"
@@ -163,6 +106,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                   </span>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
@@ -311,7 +255,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
               padding: "36px 32px",
               border: "1px solid #e2e8f0",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
-              columnCount: 4,
+              /* responsive columns */
               columnGap: "32px",
             }}
           >
