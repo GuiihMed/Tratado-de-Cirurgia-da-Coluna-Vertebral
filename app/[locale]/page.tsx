@@ -208,111 +208,183 @@ export default async function HomePage({ params }: HomePageProps) {
         </section>
 
         {/* TRATADO EM DEBATE */}
-        <section id="debate" className="debate section-light">
-          <div className="shell debate-panel">
-            <div className="debate-thumb">
-              <div className="episode">
-                <small>{dict.debate.ep}</small>
-                <strong>{dict.debate.epNumber}</strong>
+        <section id="debate" className="debate section-light" style={{ padding: "40px 0 20px" }}>
+          <div className="shell debate-panel" style={{ minHeight: "auto", height: "auto", padding: "36px 40px", display: "grid", gridTemplateColumns: "minmax(280px, 420px) 1fr", gap: "36px", alignItems: "center", borderRadius: 16, border: "2px solid #dde5ef", background: "#f8fafc" }}>
+            <div className="debate-thumb" style={{ height: 230, borderRadius: 14, overflow: "hidden", position: "relative", background: "radial-gradient(circle at 15% 22%, rgba(240, 48, 61, 0.75), transparent 32%), linear-gradient(125deg, #1b0d22, #052e61 58%, #00457e)", boxShadow: "0 12px 28px rgba(6, 34, 72, 0.18)" }}>
+              <div className="episode" style={{ position: "absolute", left: 24, bottom: 20 }}>
+                <small style={{ display: "block", fontSize: 13, letterSpacing: "0.12em", fontWeight: 700, color: "#cbd5e1" }}>{dict.debate.ep}</small>
+                <strong style={{ display: "block", fontSize: 64, lineHeight: 0.9, fontWeight: 900, color: "#fff" }}>{dict.debate.epNumber}</strong>
               </div>
-              <svg className="play">
-                <use href="#i-play"></use>
-              </svg>
+              <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 56, height: 56, borderRadius: "50%", background: "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid rgba(255, 255, 255, 0.6)" }}>
+                <svg style={{ width: 26, height: 26, color: "#fff", marginLeft: 3 }}>
+                  <use href="#i-play"></use>
+                </svg>
+              </div>
               <img
                 src="/assets/tratado-em-debate-logo.png"
                 alt="Tratado em Debate"
+                style={{ position: "absolute", right: 18, bottom: 20, width: 210, opacity: 0.9 }}
               />
             </div>
-            <div className="debate-copy">
-              <h2>{dict.debate.title}</h2>
-              <p className="kicker">{dict.debate.kicker}</p>
-              <h3>{dict.debate.subtitle}</h3>
-              <p>{dict.debate.description}</p>
-              <a className="btn btn-small" href="#debate">
-                {dict.debate.cta}{" "}
-                <svg>
-                  <use href="#i-arrow"></use>
-                </svg>
-              </a>
+
+            <div className="debate-copy" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <h2 style={{ fontSize: 36, fontWeight: 900, color: "#001026", margin: 0, letterSpacing: "-0.02em" }}>{dict.debate.title}</h2>
+              <p className="kicker" style={{ fontSize: 15, fontWeight: 700, color: "#64748b", margin: 0 }}>{dict.debate.kicker}</p>
+              <h3 style={{ fontSize: 22, fontWeight: 800, color: "#093c78", margin: "4px 0", lineHeight: 1.25 }}>{dict.debate.subtitle}</h3>
+              <p style={{ fontSize: 15.5, lineHeight: 1.55, color: "#475569", margin: "0 0 12px" }}>{dict.debate.description}</p>
+              <div>
+                <Link className="btn btn-small" href={`/${locale}/video`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, textDecoration: "none" }}>
+                  <span>{dict.debate.cta}</span>
+                  <svg style={{ width: 16, height: 16 }}>
+                    <use href="#i-arrow"></use>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         {/* AUTORES E IDIOMAS */}
-        <section id="autores" className="info-section section-light">
-          <div className="shell info-grid">
-            <article className="info-card authors-card">
-              <h2>
-                <svg>
-                  <use href="#i-users"></use>
-                </svg>
-                {dict.info.authorsTitle}
-              </h2>
-              <p>{dict.info.authorsDesc}</p>
-              <div className="portraits">
-                <img src="/assets/edson-pudles.png" alt="Edson Pudles" />
-                <img src="/assets/helton-defino.png" alt="Helton Defino" />
-                <img src="/assets/marcelo-risso.png" alt="Marcelo Risso" />
-                <img src="/assets/avatar-1.png" alt="Autor" />
-                <img src="/assets/avatar-2.png" alt="Autor" />
+        <section id="autores" className="info-section section-light" style={{ padding: "20px 0 50px" }}>
+          <div className="shell info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "2px solid #dce4ed", borderRadius: 16, overflow: "hidden", background: "#fbfcfe" }}>
+            
+            {/* Card Autores */}
+            <article className="info-card authors-card" style={{ padding: "36px 40px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <h2 style={{ fontSize: 28, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: "0 0 14px" }}>
+                  <svg style={{ width: 30, height: 30, color: "#093c78" }}>
+                    <use href="#i-users"></use>
+                  </svg>
+                  <span>{dict.info.authorsTitle}</span>
+                </h2>
+                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#475569", margin: "0 0 20px" }}>
+                  {dict.info.authorsDesc}
+                </p>
+
+                {/* 3 Real Editors with Direct Links */}
+                <div className="portraits" style={{ display: "flex", gap: 16, margin: "12px 0 24px", alignItems: "center" }}>
+                  <Link href={`/${locale}/autor/1`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                    <img
+                      src="/assets/edson-pudles.png"
+                      alt="Dr. Edson Pudles"
+                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                    />
+                  </Link>
+                  <Link href={`/${locale}/autor/2`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                    <img
+                      src="/assets/helton-defino.png"
+                      alt="Dr. Helton Defino"
+                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                    />
+                  </Link>
+                  <Link href={`/${locale}/autor/3`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
+                    <img
+                      src="/assets/marcelo-risso.png"
+                      alt="Dr. Marcelo Risso"
+                      style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
+                    />
+                  </Link>
+                </div>
               </div>
-              <a className="btn btn-small" href="#autores">
-                {dict.info.authorsBtn}{" "}
-                <svg>
-                  <use href="#i-arrow"></use>
-                </svg>
-              </a>
+
+              <div>
+                <Link className="btn btn-small" href={`/${locale}/autores`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, textDecoration: "none" }}>
+                  <span>{dict.info.authorsBtn}</span>
+                  <svg style={{ width: 16, height: 16 }}>
+                    <use href="#i-arrow"></use>
+                  </svg>
+                </Link>
+              </div>
             </article>
 
-            <article id="referencias" className="info-card language-card">
-              <h2>
-                <svg>
-                  <use href="#i-globe"></use>
-                </svg>
-                {dict.info.langTitle}
-              </h2>
-              <p>{dict.info.langDesc}</p>
-              <div className="flags">
-                <Link
-                  href={`/pt${typeof window !== "undefined" ? window.location.hash : ""}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <span className="flag br">
-                    <i></i>
-                  </span>
-                  <b style={{ color: locale === "pt" ? "var(--red)" : "inherit" }}>
-                    Português {locale === "pt" && "✓"}
-                  </b>
-                </Link>
-                <Link
-                  href={`/es${typeof window !== "undefined" ? window.location.hash : ""}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <span className="flag es">
-                    <i></i>
-                  </span>
-                  <b style={{ color: locale === "es" ? "var(--red)" : "inherit" }}>
-                    Español {locale === "es" && "✓"}
-                  </b>
-                </Link>
-                <Link
-                  href={`/en${typeof window !== "undefined" ? window.location.hash : ""}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <span className="flag us">
-                    <i></i>
-                  </span>
-                  <b style={{ color: locale === "en" ? "var(--red)" : "inherit" }}>
-                    English {locale === "en" && "✓"}
-                  </b>
-                </Link>
+            {/* Card Trilíngue */}
+            <article id="referencias" className="info-card language-card" style={{ padding: "36px 40px", borderLeft: "1px solid #dce4ed", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <h2 style={{ fontSize: 28, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: "0 0 14px" }}>
+                  <svg style={{ width: 30, height: 30, color: "#093c78" }}>
+                    <use href="#i-globe"></use>
+                  </svg>
+                  <span>{dict.info.langTitle}</span>
+                </h2>
+                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "#475569", margin: "0 0 20px" }}>
+                  {dict.info.langDesc}
+                </p>
+
+                {/* 3 Interactive Official Flags (Click to switch language directly) */}
+                <div style={{ display: "flex", gap: 24, margin: "16px 0 20px", alignItems: "center" }}>
+                  <Link
+                    href="/pt"
+                    title="Mudar para Português"
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "8px 12px",
+                      borderRadius: 12,
+                      background: locale === "pt" ? "rgba(245, 34, 56, 0.08)" : "transparent",
+                      border: locale === "pt" ? "2px solid #f52238" : "2px solid transparent",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
+                      <img src="/assets/flags/br.svg" alt="Brasil" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "pt" ? "#f52238" : "#334155" }}>
+                      Português {locale === "pt" && "✓"}
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/es"
+                    title="Cambiar a Español"
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "8px 12px",
+                      borderRadius: 12,
+                      background: locale === "es" ? "rgba(245, 34, 56, 0.08)" : "transparent",
+                      border: locale === "es" ? "2px solid #f52238" : "2px solid transparent",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
+                      <img src="/assets/flags/es.svg" alt="España" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "es" ? "#f52238" : "#334155" }}>
+                      Español {locale === "es" && "✓"}
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/en"
+                    title="Switch to English"
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "8px 12px",
+                      borderRadius: 12,
+                      background: locale === "en" ? "rgba(245, 34, 56, 0.08)" : "transparent",
+                      border: locale === "en" ? "2px solid #f52238" : "2px solid transparent",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    <div style={{ width: 54, height: 36, borderRadius: 6, overflow: "hidden", boxShadow: "0 4px 10px rgba(0,0,0,0.15)", border: "1px solid rgba(0,0,0,0.1)" }}>
+                      <img src="/assets/flags/us.svg" alt="English" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: locale === "en" ? "#f52238" : "#334155" }}>
+                      English {locale === "en" && "✓"}
+                    </span>
+                  </Link>
+                </div>
               </div>
-              <Link className="btn btn-small" href={`/${locale}/indice`}>
-                {dict.info.langBtn}{" "}
-                <svg>
-                  <use href="#i-globe"></use>
-                </svg>
-              </Link>
             </article>
           </div>
         </section>
