@@ -25,70 +25,114 @@ export default async function HomePage({ params }: HomePageProps) {
       <Header locale={locale} currentPage="home" />
 
       <main>
-        {/* HERO SECTION */}
-        <section className="hero">
-          <img
-            className="hero-anatomy"
-            src="/assets/hero-spine.png"
-            alt="Ilustração anatômica da coluna vertebral"
-          />
-          <div className="hero-glow"></div>
-          <div className="shell hero-content">
-            <div className="book-wrap">
+        {/* HERO SECTION (MOBILE-FIRST TAILWIND) */}
+        <section className="relative w-full pt-6 pb-12 sm:pt-10 sm:pb-16 overflow-hidden bg-gradient-to-b from-[#001026] via-[#021d42] to-[#001026]">
+          {/* Ambient Background */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-red-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10 flex flex-col items-center">
+            {/* Top Badge */}
+            <div className="text-xs py-1.5 px-3 mb-4 rounded-full font-medium inline-flex items-center gap-2 bg-red-500/15 text-red-300 border border-red-500/30 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span>SBC • Edição Oficial</span>
+            </div>
+
+            {/* Main Title */}
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold leading-tight text-center text-white mb-4 tracking-tight">
+              {dict.heroHome.titleLine1} <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-red-400 via-rose-300 to-sky-300 bg-clip-text text-transparent">
+                {dict.heroHome.titleLine2}
+              </span>
+            </h1>
+
+            {/* Subtitle / Lead */}
+            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-xl mx-auto text-center mb-6">
+              {dict.heroHome.lead}
+            </p>
+
+            {/* Book Cover Image */}
+            <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-md mx-auto my-6 h-auto drop-shadow-2xl flex justify-center">
               <img
-                className="book-cover"
                 src="/assets/book-cover.png"
-                alt="Capa impressa do Tratado de Cirurgia da Coluna Vertebral"
+                alt="Capa do Tratado de Cirurgia da Coluna Vertebral"
+                className="w-full h-auto rounded-xl shadow-2xl transition-transform hover:scale-105 duration-300"
               />
             </div>
-            <div className="hero-copy">
-              <h1>
-                {dict.heroHome.titleLine1}
-                <br />
-                {dict.heroHome.titleLine2}
-              </h1>
-              <p className="hero-lead">{dict.heroHome.lead}</p>
-              <div className="print-notice">
-                <svg>
-                  <use href="#i-book"></use>
+
+            {/* Action CTAs (Vertical on mobile, horizontal on sm+) */}
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto mb-6">
+              <Link
+                href={`/${locale}/indice`}
+                className="w-full h-12 py-3 px-5 text-sm sm:text-base font-semibold rounded-xl flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-600/30 hover:brightness-110 active:scale-[0.98] transition-all"
+              >
+                <span>{dict.heroHome.exploreIndex}</span>
+                <svg className="w-5 h-5">
+                  <use href="#i-arrow"></use>
                 </svg>
-                <span>{dict.heroHome.printNotice}</span>
+              </Link>
+
+              <a
+                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-12 py-3 px-5 text-sm sm:text-base font-semibold rounded-xl flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md active:scale-[0.98] transition-all"
+              >
+                <span>{dict.heroHome.whereToBuy}</span>
+                <span className="text-red-400 font-bold">🛒</span>
+              </a>
+            </div>
+
+            {/* Format Notice */}
+            <div className="inline-flex items-center gap-2.5 py-2 px-4 rounded-xl bg-white/5 border border-white/10 text-xs sm:text-sm text-sky-200 backdrop-blur-sm mb-8 text-center">
+              <svg className="w-4 h-4 text-red-400 flex-shrink-0">
+                <use href="#i-book"></use>
+              </svg>
+              <span>{dict.heroHome.printNotice}</span>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl mx-auto">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 flex items-center gap-3 backdrop-blur-md">
+                <div className="w-9 h-9 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5"><use href="#i-book"></use></svg>
+                </div>
+                <div>
+                  <strong className="block text-lg sm:text-xl font-bold text-white leading-tight">109</strong>
+                  <span className="text-xs text-neutral-400 font-medium">Capítulos</span>
+                </div>
               </div>
-              <div className="hero-actions">
-                <Link className="btn btn-primary" href={`/${locale}/indice`}>
-                  {dict.heroHome.exploreIndex}{" "}
-                  <svg>
-                    <use href="#i-arrow"></use>
-                  </svg>
-                </Link>
-                <Link
-                  className="btn btn-outline"
-                  href={`/${locale}/indice#conteudo`}
-                >
-                  {dict.heroHome.seeChapters}{" "}
-                  <svg>
-                    <use href="#i-arrow"></use>
-                  </svg>
-                </Link>
-                <a
-                  className="btn btn-outline"
-                  href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {dict.heroHome.whereToBuy} <span className="cart">⌑</span>
-                </a>
+
+              <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 flex items-center gap-3 backdrop-blur-md">
+                <div className="w-9 h-9 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5"><use href="#i-grid"></use></svg>
+                </div>
+                <div>
+                  <strong className="block text-lg sm:text-xl font-bold text-white leading-tight">10</strong>
+                  <span className="text-xs text-neutral-400 font-medium">Seções</span>
+                </div>
               </div>
-              <p className="online-note">
-                <svg>
-                  <use href="#i-globe"></use>
-                </svg>
-                {dict.heroHome.onlineNote}
-              </p>
+
+              <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 flex items-center gap-3 backdrop-blur-md">
+                <div className="w-9 h-9 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5"><use href="#i-users"></use></svg>
+                </div>
+                <div>
+                  <strong className="block text-lg sm:text-xl font-bold text-white leading-tight">200+</strong>
+                  <span className="text-xs text-neutral-400 font-medium">Autores</span>
+                </div>
+              </div>
+
+              <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 flex items-center gap-3 backdrop-blur-md">
+                <div className="w-9 h-9 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5"><use href="#i-globe"></use></svg>
+                </div>
+                <div>
+                  <strong className="block text-lg sm:text-xl font-bold text-white leading-tight">3</strong>
+                  <span className="text-xs text-neutral-400 font-medium">Idiomas</span>
+                </div>
+              </div>
             </div>
           </div>
-
-          <StatsBar locale={locale} variant="home" />
         </section>
 
         {/* SOBRE O TRATADO */}
