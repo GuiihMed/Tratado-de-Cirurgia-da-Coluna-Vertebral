@@ -947,7 +947,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
                 <div style={{ position: "relative" }}>
                   <img
-                    src="/assets/tratado-em-debate-logo.png"
+                    src="/assets/debate-artwork.png"
                     alt="Tratado em Debate Logo"
                     style={{ width: "100%", borderRadius: 16, boxShadow: "0 16px 40px rgba(0, 0, 0, 0.4)" }}
                   />

@@ -292,75 +292,77 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
 
-        {/* TRATADO EM DEBATE (RESPONSIVO COM ARTE EM PRIMEIRO LUGAR) */}
+        {/* TRATADO EM DEBATE (COM IMAGEM DE ARTE OFICIAL, EPISÓDIO 01 E PLAYER POR CIMA) */}
         <section id="debate" className="py-10 sm:py-16 bg-slate-50 relative">
           <div className="shell">
             <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
-                {/* 1. Imagem / Arte do Debate em Primeiro (Antes do Episódio) */}
-                <div className="lg:col-span-5 order-1 flex justify-center">
-                  <div className="relative w-full max-w-md lg:max-w-full rounded-2xl overflow-hidden shadow-xl aspect-[16/10] sm:aspect-[16/9] flex items-center justify-center border border-slate-300 group"
-                    style={{
-                      background: "radial-gradient(circle at 15% 22%, rgba(240, 48, 61, 0.8), transparent 45%), linear-gradient(125deg, #1b0d22, #052e61 58%, #00457e)",
-                      boxShadow: "0 16px 36px rgba(6, 34, 72, 0.22)",
-                    }}
+                {/* 1. Imagem / Thumbnail com Arte Oficial + Player Central + Episódio 01 por cima */}
+                <div className="lg:col-span-6 order-1 flex justify-center">
+                  <Link
+                    href={`/${locale}/video`}
+                    className="relative w-full max-w-lg lg:max-w-full rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] flex items-center justify-center border border-slate-300 group transition-transform duration-300 hover:scale-[1.02]"
+                    style={{ textDecoration: "none" }}
                   >
-                    {/* Episode Number in bottom-left */}
-                    <div className="absolute left-5 bottom-4 z-10">
-                      <small className="block text-xs font-extrabold uppercase tracking-widest text-slate-300">
-                        {dict.debate.ep}
+                    {/* Official Artwork Background Image */}
+                    <img
+                      src="/assets/debate-artwork.png"
+                      alt="Tratado em Debate - Episódio 01"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    {/* Gradient Overlay for high-contrast visibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/30 pointer-events-none" />
+
+                    {/* Episode 01 Badge in bottom-left */}
+                    <div className="absolute left-5 bottom-4 z-10 text-left">
+                      <small className="block text-[11px] font-extrabold uppercase tracking-widest text-slate-300 drop-shadow">
+                        {dict.debate.ep || "EPISÓDIO"}
                       </small>
-                      <strong className="block text-4xl sm:text-5xl font-black text-white leading-none">
-                        {dict.debate.epNumber}
+                      <strong className="block text-4xl sm:text-5xl font-black text-white leading-none drop-shadow-md">
+                        {dict.debate.epNumber || "01"}
                       </strong>
                     </div>
 
-                    {/* Central Play Icon */}
-                    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                      <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border-2 border-white shadow-xl group-hover:scale-110 transition-transform">
-                        <svg className="w-7 h-7 text-white ml-1">
-                          <use href="#i-play"></use>
+                    {/* Central Play Button */}
+                    <div className="relative z-10 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border-2 border-white shadow-2xl group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
+                        <svg className="w-8 h-8 text-white ml-1 fill-current" viewBox="0 0 24 24">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
                         </svg>
                       </div>
                     </div>
-
-                    {/* Logo Overlay */}
-                    <img
-                      src="/assets/tratado-em-debate-logo.png"
-                      alt="Tratado em Debate"
-                      className="absolute right-4 bottom-4 w-36 sm:w-44 opacity-95 pointer-events-none drop-shadow-md"
-                    />
-                  </div>
+                  </Link>
                 </div>
 
                 {/* 2. Textos e Informações do Episódio */}
-                <div className="lg:col-span-7 order-2 flex flex-col justify-center">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#093c78] text-xs font-bold uppercase tracking-wider mb-3 w-max">
+                <div className="lg:col-span-6 order-2 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#093c78] text-xs font-bold uppercase tracking-wider mb-3.5 w-max">
                     <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
-                    <span>{dict.debate.title}</span>
+                    <span>{dict.debate.title || "TRATADO EM DEBATE"}</span>
                   </div>
 
-                  <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-1">
-                    {dict.debate.kicker}
+                  <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-1.5">
+                    {dict.debate.kicker || "VIDEOCAST OFICIAL DERIVADO DOS CAPÍTULOS DO TRATADO."}
                   </p>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#001026] leading-tight tracking-tight mb-3">
-                    {dict.debate.subtitle}
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#001026] leading-tight tracking-tight mb-3.5">
+                    {dict.debate.subtitle || "Episódio 1 – Capítulo 8 Coluna Vertebral no Plano Sagital"}
                   </h3>
 
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mb-6">
-                    {dict.debate.description}
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
+                    {dict.debate.description || "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos."}
                   </p>
 
                   <div>
                     <Link
                       href={`/${locale}/video`}
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#06366d] hover:bg-[#001f4d] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all active:scale-[0.98]"
+                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
                       style={{ textDecoration: "none" }}
                     >
-                      <span>{dict.debate.cta}</span>
-                      <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                      <span>{dict.debate.cta || "Assistir episódio"}</span>
+                      <span className="text-base font-bold">→</span>
                     </Link>
                   </div>
                 </div>
