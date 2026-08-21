@@ -74,73 +74,54 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </div>
         </Link>
 
-        {/* Desktop Navigation (Centralizada) */}
-        <nav className="nav-links desktop-only-nav" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 22, margin: "0 auto" }}>
-          <Link
-            href={`/${locale}/prefacio`}
-            className={currentPage === "prefacio" ? "active" : ""}
-          >
-            {dict.nav.preface}
-          </Link>
-          <Link
-            href={`/${locale}/apresentacao`}
-            className={currentPage === "apresentacao" ? "active" : ""}
-          >
-            {dict.nav.presentation}
-          </Link>
-          <Link
-            href={`/${locale}/indice`}
-            className={currentPage === "indice" ? "active" : ""}
-          >
-            {dict.nav.index}
-          </Link>
-          <Link
-            href={`/${locale}/indice#conteudo`}
-            className=""
-          >
-            {dict.nav.chapters}
-          </Link>
-          <Link
-            href={`/${locale}/autores`}
-            className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
-          >
-            {dict.nav.authors}
-          </Link>
-          <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
-          <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
-        </nav>
+        {/* Desktop Navigation (Fiel ao design original de media_1787332563273.png) */}
+        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <nav className="nav-links" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", gap: 22 }}>
+            <Link
+              href={`/${locale}/prefacio`}
+              className={currentPage === "prefacio" ? "active" : ""}
+            >
+              {dict.nav.preface}
+            </Link>
+            <Link
+              href={`/${locale}/apresentacao`}
+              className={currentPage === "apresentacao" ? "active" : ""}
+            >
+              {dict.nav.presentation}
+            </Link>
+            <Link
+              href={`/${locale}/indice`}
+              className={currentPage === "indice" ? "active" : ""}
+            >
+              {dict.nav.index}
+            </Link>
+            <Link
+              href={`/${locale}/indice#conteudo`}
+              className=""
+            >
+              {dict.nav.chapters}
+            </Link>
+            <Link
+              href={`/${locale}/autores`}
+              className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
+            >
+              {dict.nav.authors}
+            </Link>
+            <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
+            <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
+            <a
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {dict.nav.buy}
+            </a>
+          </nav>
 
-        {/* Desktop Right Side: Botão Onde Comprar + Idiomas */}
-        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
-          {/* Botão Onde Comprar */}
-          <a
-            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 7,
-              padding: "7.5px 16px",
-              borderRadius: 8,
-              background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
-              color: "#ffffff",
-              fontSize: 13,
-              fontWeight: 800,
-              textDecoration: "none",
-              boxShadow: "0 3px 12px rgba(245, 34, 56, 0.4)",
-              transition: "all 0.2s ease",
-              letterSpacing: "-0.01em",
-            }}
-            className="hover:brightness-110 active:scale-[0.98]"
-          >
-            <span>{dict.nav.buy}</span>
-          </a>
+          {/* Languages Divider */}
+          <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", height: 20, margin: "0 2px" }} />
 
-          {/* Divisor Vertical */}
-          <div style={{ width: 1, height: 22, background: "rgba(255, 255, 255, 0.2)" }} />
-
-          {/* Idiomas */}
+          {/* Languages */}
           <div className="languages">
             {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
             {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
