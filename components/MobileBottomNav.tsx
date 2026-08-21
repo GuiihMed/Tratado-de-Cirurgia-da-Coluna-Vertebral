@@ -158,7 +158,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
 
         {/* 4. Debate */}
         <Link
-          href={`/${locale}/video`}
+          href={`/${locale}#debate`}
           className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 ${
             isDebate ? "text-[#f52238] font-bold" : "text-slate-300 hover:text-white"
           }`}
