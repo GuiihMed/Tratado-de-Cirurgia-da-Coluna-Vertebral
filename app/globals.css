@@ -2102,6 +2102,10 @@ svg {
   .admin-mobile-menu-toggle {
     display: inline-flex !important;
   }
+  .admin-main-content-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
   aside.admin-sidebar-mobile-closed {
     position: fixed !important;
     left: 0;

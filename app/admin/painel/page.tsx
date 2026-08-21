@@ -1091,8 +1091,9 @@ export default function AdminPainelPage() {
         />
       )}
 
-      {/* ================= LEFT SIDEBAR ================= */}
+      {/* ================= LEFT SIDEBAR (FIXED POSITION) ================= */}
       <aside
+        className={mobileSidebarOpen ? "admin-sidebar-mobile-open" : "admin-sidebar-mobile-closed"}
         style={{
           width: 280,
           background: sidebarBg,
@@ -1101,14 +1102,17 @@ export default function AdminPainelPage() {
           display: "flex",
           flexDirection: "column",
           flexShrink: 0,
-          position: "sticky",
+          position: "fixed",
+          left: 0,
           top: 0,
+          bottom: 0,
           height: "100vh",
           zIndex: 100,
-          overflowY: "auto",
+          overflow: "hidden",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           boxShadow: isDark ? "none" : "4px 0 20px rgba(0, 30, 80, 0.03)",
+          transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         {/* Brand Header */}
@@ -1195,7 +1199,7 @@ export default function AdminPainelPage() {
         </div>
 
         {/* Navigation Categories */}
-        <div style={{ padding: "20px 14px", flex: 1, display: "flex", flexDirection: "column", gap: 22 }}>
+        <div style={{ padding: "20px 14px", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 22 }}>
           {/* Category 1: VISÃO GERAL */}
           <div>
             <div style={{ fontSize: 10.5, fontWeight: 800, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
@@ -1430,8 +1434,20 @@ export default function AdminPainelPage() {
         </div>
       </aside>
 
-      {/* ================= RIGHT MAIN WRAPPER ================= */}
-      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
+      {/* ================= RIGHT MAIN WRAPPER (INDEPENDENT SCROLL) ================= */}
+      <div
+        className="admin-main-content-wrapper"
+        style={{
+          marginLeft: 280,
+          width: "calc(100% - 280px)",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
         {/* ================= TOPBAR (FIX FOR IMAGE 3 & THEME TOGGLE) ================= */}
         <header
           style={{
