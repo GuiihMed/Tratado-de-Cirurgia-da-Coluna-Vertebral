@@ -58,67 +58,73 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   return (
     <header className="topbar">
       <div className="shell nav-shell">
-        <Link href={`/${locale}`} className="brand" aria-label="Página inicial" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <Link href={`/${locale}`} className="brand" aria-label="Página inicial" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff", flexShrink: 0 }}>
           <img
             src="/assets/sbc-logo-white.svg"
             alt="Logo Sociedade Brasileira de Coluna"
-            style={{ height: 40, width: "auto", objectFit: "contain" }}
+            style={{ height: 36, width: "auto", objectFit: "contain" }}
           />
-          <div>
-            <span>{dict.brand.line1}</span>
-            <strong>{dict.brand.line2}</strong>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.15, color: "#e2e8f0", letterSpacing: "-0.01em" }}>
+              {dict.brand.line1}
+            </span>
+            <strong style={{ fontSize: 15.5, fontWeight: 900, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em" }}>
+              {dict.brand.line2}
+            </strong>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="nav-links desktop-only-nav" aria-label="Navegação principal">
-          <Link
-            href={`/${locale}/prefacio`}
-            className={currentPage === "prefacio" ? "active" : ""}
-          >
-            {dict.nav.preface}
-          </Link>
-          <Link
-            href={`/${locale}/apresentacao`}
-            className={currentPage === "apresentacao" ? "active" : ""}
-          >
-            {dict.nav.presentation}
-          </Link>
-          <Link
-            href={`/${locale}/indice`}
-            className={currentPage === "indice" ? "active" : ""}
-          >
-            {dict.nav.index}
-          </Link>
-          <Link
-            href={`/${locale}/indice#conteudo`}
-            className=""
-          >
-            {dict.nav.chapters}
-          </Link>
-          <Link
-            href={`/${locale}/autores`}
-            className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
-          >
-            {dict.nav.authors}
-          </Link>
-          <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
-          <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
-          <a
-            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {dict.nav.buy}
-          </a>
-        </nav>
+        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
+          <nav className="nav-links" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <Link
+              href={`/${locale}/prefacio`}
+              className={currentPage === "prefacio" ? "active" : ""}
+            >
+              {dict.nav.preface}
+            </Link>
+            <Link
+              href={`/${locale}/apresentacao`}
+              className={currentPage === "apresentacao" ? "active" : ""}
+            >
+              {dict.nav.presentation}
+            </Link>
+            <Link
+              href={`/${locale}/indice`}
+              className={currentPage === "indice" ? "active" : ""}
+            >
+              {dict.nav.index}
+            </Link>
+            <Link
+              href={`/${locale}/indice#conteudo`}
+              className=""
+            >
+              {dict.nav.chapters}
+            </Link>
+            <Link
+              href={`/${locale}/autores`}
+              className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
+            >
+              {dict.nav.authors}
+            </Link>
+            <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
+            <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
+            <a
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {dict.nav.buy}
+            </a>
+          </nav>
 
-        {/* Desktop Languages & Account */}
-        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div className="languages">
-            {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
-            {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
-            {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+          {/* Desktop Languages with clean left margin & divider */}
+          <div style={{ display: "flex", alignItems: "center", marginLeft: 28, paddingLeft: 20, borderLeft: "1px solid rgba(255, 255, 255, 0.2)" }}>
+            <div className="languages">
+              {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
+              {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
+              {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+            </div>
           </div>
         </div>
 
