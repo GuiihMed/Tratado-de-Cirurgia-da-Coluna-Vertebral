@@ -49,32 +49,21 @@ export default async function AutorPage({ params }: AutorPageProps) {
       <main style={{ minHeight: "100vh", background: "#f4f7fb", paddingBottom: "90px" }}>
         {/* ================= HERO PERFIL AUTOR CLÁSSICO ================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-10 pb-14 sm:pt-14 sm:pb-20 border-b border-white/10"
           style={{
-            background: "radial-gradient(circle at 10% 20%, rgba(245, 34, 56, 0.45) 0%, rgba(0, 34, 77, 0.95) 55%, #00122e 100%)",
-            color: "#ffffff",
-            padding: "50px 0 60px",
-            position: "relative",
-            overflow: "hidden",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
+            background:
+              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
           }}
         >
-          {/* Fundo Anatômico da Coluna */}
-          <div
-            style={{
-              position: "absolute",
-              right: "-5%",
-              top: "-15%",
-              width: "500px",
-              height: "600px",
-              backgroundImage: "url('/assets/hero-spine.png')",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              opacity: 0.22,
-              pointerEvents: "none",
-            }}
+          {/* Subtle Anatomical Spine Background Overlay */}
+          <img
+            src="/assets/hero-spine.png"
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell" style={{ position: "relative", zIndex: 2 }}>
+          <div className="shell relative z-10">
             {/* Breadcrumbs */}
             <nav
               aria-label="Breadcrumb"

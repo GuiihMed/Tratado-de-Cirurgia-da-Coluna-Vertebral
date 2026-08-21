@@ -45,7 +45,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
           className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
             background:
-              "radial-gradient(circle at 14% 30%, rgba(220, 20, 45, 0.52), transparent 42%), linear-gradient(105deg, #a80f22 0%, #2f193e 26%, #052b5b 54%, #005a9c 100%)",
+              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
           }}
         >
           {/* Subtle Anatomical Spine Background Overlay */}
