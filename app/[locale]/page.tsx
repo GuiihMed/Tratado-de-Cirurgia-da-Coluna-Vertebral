@@ -288,189 +288,177 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
 
-        {/* TRATADO EM DEBATE */}
-        <section id="debate" className="debate section-light" style={{ padding: "40px 0 20px" }}>
-          <div className="shell debate-panel" style={{ minHeight: "auto", height: "auto", padding: "36px 40px", display: "grid", gridTemplateColumns: "minmax(280px, 420px) 1fr", gap: "36px", alignItems: "center", borderRadius: 16, border: "2px solid #dde5ef", background: "#f8fafc" }}>
-            <div className="debate-thumb" style={{ height: 230, borderRadius: 14, overflow: "hidden", position: "relative", background: "radial-gradient(circle at 15% 22%, rgba(240, 48, 61, 0.75), transparent 32%), linear-gradient(125deg, #1b0d22, #052e61 58%, #00457e)", boxShadow: "0 12px 28px rgba(6, 34, 72, 0.18)" }}>
-              <div className="episode" style={{ position: "absolute", left: 24, bottom: 20 }}>
-                <small style={{ display: "block", fontSize: 13, letterSpacing: "0.12em", fontWeight: 700, color: "#cbd5e1" }}>{dict.debate.ep}</small>
-                <strong style={{ display: "block", fontSize: 64, lineHeight: 0.9, fontWeight: 900, color: "#fff" }}>{dict.debate.epNumber}</strong>
-              </div>
-              <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 56, height: 56, borderRadius: "50%", background: "rgba(255, 255, 255, 0.2)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid rgba(255, 255, 255, 0.6)" }}>
-                <svg style={{ width: 26, height: 26, color: "#fff", marginLeft: 3 }}>
-                  <use href="#i-play"></use>
-                </svg>
-              </div>
-              <img
-                src="/assets/tratado-em-debate-logo.png"
-                alt="Tratado em Debate"
-                style={{ position: "absolute", right: 18, bottom: 20, width: 210, opacity: 0.9 }}
-              />
-            </div>
+        {/* TRATADO EM DEBATE (RESPONSIVO COM ARTE EM PRIMEIRO LUGAR) */}
+        <section id="debate" className="py-10 sm:py-16 bg-slate-50 relative">
+          <div className="shell">
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                
+                {/* 1. Imagem / Arte do Debate em Primeiro (Antes do Episódio) */}
+                <div className="lg:col-span-5 order-1 flex justify-center">
+                  <div className="relative w-full max-w-md lg:max-w-full rounded-2xl overflow-hidden shadow-xl aspect-[16/10] sm:aspect-[16/9] flex items-center justify-center border border-slate-300 group"
+                    style={{
+                      background: "radial-gradient(circle at 15% 22%, rgba(240, 48, 61, 0.8), transparent 45%), linear-gradient(125deg, #1b0d22, #052e61 58%, #00457e)",
+                      boxShadow: "0 16px 36px rgba(6, 34, 72, 0.22)",
+                    }}
+                  >
+                    {/* Episode Number in bottom-left */}
+                    <div className="absolute left-5 bottom-4 z-10">
+                      <small className="block text-xs font-extrabold uppercase tracking-widest text-slate-300">
+                        {dict.debate.ep}
+                      </small>
+                      <strong className="block text-4xl sm:text-5xl font-black text-white leading-none">
+                        {dict.debate.epNumber}
+                      </strong>
+                    </div>
 
-            <div className="debate-copy" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <h2 style={{ fontSize: 36, fontWeight: 900, color: "#001026", margin: 0, letterSpacing: "-0.02em" }}>{dict.debate.title}</h2>
-              <p className="kicker" style={{ fontSize: 15, fontWeight: 700, color: "#64748b", margin: 0 }}>{dict.debate.kicker}</p>
-              <h3 style={{ fontSize: 22, fontWeight: 800, color: "#093c78", margin: "4px 0", lineHeight: 1.25 }}>{dict.debate.subtitle}</h3>
-              <p style={{ fontSize: 15.5, lineHeight: 1.55, color: "#475569", margin: "0 0 12px" }}>{dict.debate.description}</p>
-              <div>
-                <Link className="btn btn-small" href={`/${locale}/video`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, textDecoration: "none" }}>
-                  <span>{dict.debate.cta}</span>
-                  <svg style={{ width: 16, height: 16 }}>
-                    <use href="#i-arrow"></use>
-                  </svg>
-                </Link>
+                    {/* Central Play Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                      <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border-2 border-white shadow-xl group-hover:scale-110 transition-transform">
+                        <svg className="w-7 h-7 text-white ml-1">
+                          <use href="#i-play"></use>
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Logo Overlay */}
+                    <img
+                      src="/assets/tratado-em-debate-logo.png"
+                      alt="Tratado em Debate"
+                      className="absolute right-4 bottom-4 w-36 sm:w-44 opacity-95 pointer-events-none drop-shadow-md"
+                    />
+                  </div>
+                </div>
+
+                {/* 2. Textos e Informações do Episódio */}
+                <div className="lg:col-span-7 order-2 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#093c78] text-xs font-bold uppercase tracking-wider mb-3 w-max">
+                    <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
+                    <span>{dict.debate.title}</span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-1">
+                    {dict.debate.kicker}
+                  </p>
+
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#001026] leading-tight tracking-tight mb-3">
+                    {dict.debate.subtitle}
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mb-6">
+                    {dict.debate.description}
+                  </p>
+
+                  <div>
+                    <Link
+                      href={`/${locale}/video`}
+                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#06366d] hover:bg-[#001f4d] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all active:scale-[0.98]"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <span>{dict.debate.cta}</span>
+                      <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </section>
 
-        {/* AUTORES E IDIOMAS */}
-        <section id="autores" className="info-section section-light" style={{ padding: "20px 0 50px" }}>
-          <div className="shell info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", border: "2px solid #dce4ed", borderRadius: 16, overflow: "hidden", background: "#fbfcfe" }}>
-            
-            {/* Card Autores - Layout compacto sem espaço vazio */}
-            <article className="info-card authors-card" style={{ padding: "32px 36px", display: "flex", flexDirection: "column", gap: 14, minHeight: "auto" }}>
-              <h2 style={{ fontSize: 26, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: 0 }}>
-                <svg style={{ width: 28, height: 28, color: "#093c78" }}>
-                  <use href="#i-users"></use>
-                </svg>
-                <span>{dict.info.authorsTitle}</span>
-              </h2>
+        {/* AUTORES E IDIOMAS (RESPONSIVO) */}
+        <section id="autores" className="py-10 sm:py-16 bg-white">
+          <div className="shell">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-2 border-slate-200 rounded-3xl overflow-hidden bg-[#fbfcfe] shadow-lg">
               
-              <p style={{ fontSize: 15, lineHeight: 1.55, color: "#475569", margin: 0 }}>
-                {dict.info.authorsDesc}
-              </p>
+              {/* Card Autores */}
+              <article className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-[#001026] flex items-center gap-3 mb-3">
+                    <svg className="w-7 h-7 text-[#093c78]">
+                      <use href="#i-users"></use>
+                    </svg>
+                    <span>{dict.info.authorsTitle}</span>
+                  </h2>
+                  
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                    {dict.info.authorsDesc}
+                  </p>
 
-              {/* 3 Real Editors with Direct Links */}
-              <div className="portraits" style={{ display: "flex", gap: 14, margin: "6px 0 10px", alignItems: "center" }}>
-                <Link href={`/${locale}/autor/edson-pudles`} title="Dr. Edson Pudles - Editor-Chefe" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                  <img
-                    src="/assets/edson-pudles.png"
-                    alt="Dr. Edson Pudles"
-                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                  />
-                </Link>
-                <Link href={`/${locale}/autor/helton-defino`} title="Dr. Helton L. A. Defino - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                  <img
-                    src="/assets/helton-defino.png"
-                    alt="Dr. Helton Defino"
-                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                  />
-                </Link>
-                <Link href={`/${locale}/autor/marcelo-risso`} title="Dr. Marcelo Risso - Coeditor" style={{ textDecoration: "none", transition: "transform 0.2s ease" }} className="hover:scale-105">
-                  <img
-                    src="/assets/marcelo-risso.png"
-                    alt="Dr. Marcelo Risso"
-                    style={{ width: 68, height: 68, borderRadius: "50%", objectFit: "cover", border: "3px solid #fff", boxShadow: "0 4px 12px rgba(9, 60, 120, 0.2)" }}
-                  />
-                </Link>
-              </div>
-
-              <div>
-                <Link className="btn btn-small" href={`/${locale}/autores`} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "9px 18px", background: "#06366d", color: "#fff", borderRadius: 8, fontWeight: 700, fontSize: 14, textDecoration: "none" }}>
-                  <span>{dict.info.authorsBtn}</span>
-                  <svg style={{ width: 15, height: 15 }}>
-                    <use href="#i-arrow"></use>
-                  </svg>
-                </Link>
-              </div>
-            </article>
-
-            {/* Card Trilíngue - Volta exatamente para #referencias */}
-            <article id="referencias" className="info-card language-card" style={{ padding: "32px 36px", borderLeft: "1px solid #dce4ed", display: "flex", flexDirection: "column", gap: 14, minHeight: "auto" }}>
-              <h2 style={{ fontSize: 26, fontWeight: 900, color: "#001026", display: "flex", alignItems: "center", gap: 12, margin: 0 }}>
-                <svg style={{ width: 28, height: 28, color: "#093c78" }}>
-                  <use href="#i-globe"></use>
-                </svg>
-                <span>{dict.info.langTitle}</span>
-              </h2>
-              
-              <p style={{ fontSize: 15, lineHeight: 1.55, color: "#475569", margin: 0 }}>
-                {dict.info.langDesc}
-              </p>
-
-              {/* 3 Interactive Official Flags (Click to reload directly in the same section #referencias) */}
-              <div style={{ display: "flex", gap: 16, margin: "6px 0 0", alignItems: "center" }}>
-                <Link
-                  href="/pt#referencias"
-                  title="Mudar para Português"
-                  scroll={true}
-                  style={{
-                    textDecoration: "none",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 14px",
-                    borderRadius: 12,
-                    background: locale === "pt" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
-                    border: locale === "pt" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
-                    transition: "all 0.2s ease",
-                  }}
-                  className="hover:scale-105"
-                >
-                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
-                    <img src="/assets/flags/br.svg" alt="Brasil" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  {/* 3 Real Editors with Direct Links */}
+                  <div className="flex gap-3.5 mb-6 items-center flex-wrap">
+                    <Link href={`/${locale}/autor/edson-pudles`} title="Dr. Edson Pudles - Editor-Chefe" className="hover:scale-105 transition-transform">
+                      <img
+                        src="/assets/edson-pudles.png"
+                        alt="Dr. Edson Pudles"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-[#093c78]/30 shadow-md"
+                      />
+                    </Link>
+                    <Link href={`/${locale}/autor/helton-defino`} title="Dr. Helton Defino - Editor" className="hover:scale-105 transition-transform">
+                      <img
+                        src="/assets/helton-defino.png"
+                        alt="Dr. Helton Defino"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-[#093c78]/30 shadow-md"
+                      />
+                    </Link>
+                    <Link href={`/${locale}/autor/marcelo-risso`} title="Dr. Marcelo Risso - Editor" className="hover:scale-105 transition-transform">
+                      <img
+                        src="/assets/marcelo-risso.png"
+                        alt="Dr. Marcelo Risso"
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-[#093c78]/30 shadow-md"
+                      />
+                    </Link>
                   </div>
-                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "pt" ? "#f52238" : "#334155" }}>
-                    Português {locale === "pt" && "✓"}
-                  </span>
-                </Link>
+                </div>
 
-                <Link
-                  href="/es#referencias"
-                  title="Cambiar a Español"
-                  scroll={true}
-                  style={{
-                    textDecoration: "none",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 14px",
-                    borderRadius: 12,
-                    background: locale === "es" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
-                    border: locale === "es" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
-                    transition: "all 0.2s ease",
-                  }}
-                  className="hover:scale-105"
-                >
-                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
-                    <img src="/assets/flags/es.svg" alt="España" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  </div>
-                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "es" ? "#f52238" : "#334155" }}>
-                    Español {locale === "es" && "✓"}
-                  </span>
-                </Link>
+                <div>
+                  <Link
+                    href={`/${locale}/autores`}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#001f4d] hover:bg-[#003073] text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span>{dict.info.authorsBtn}</span>
+                    <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                  </Link>
+                </div>
+              </article>
 
-                <Link
-                  href="/en#referencias"
-                  title="Switch to English"
-                  scroll={true}
-                  style={{
-                    textDecoration: "none",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "8px 14px",
-                    borderRadius: 12,
-                    background: locale === "en" ? "rgba(245, 34, 56, 0.08)" : "#f8fafc",
-                    border: locale === "en" ? "2px solid #f52238" : "1.5px solid #e2e8f0",
-                    transition: "all 0.2s ease",
-                  }}
-                  className="hover:scale-105"
-                >
-                  <div style={{ width: 48, height: 32, borderRadius: 5, overflow: "hidden", boxShadow: "0 3px 8px rgba(0,0,0,0.12)", border: "1px solid rgba(0,0,0,0.08)" }}>
-                    <img src="/assets/flags/us.svg" alt="English" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              {/* Card Idiomas */}
+              <article id="referencias" className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#001433] to-[#042452] text-white flex flex-col justify-between">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-3 mb-3">
+                    <svg className="w-7 h-7 text-sky-400">
+                      <use href="#i-globe"></use>
+                    </svg>
+                    <span>{dict.info.langTitle}</span>
+                  </h2>
+                  
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-6">
+                    {dict.info.langDesc}
+                  </p>
+
+                  <div className="flex flex-col gap-3 mb-6">
+                    <Link href="/pt#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                      <img src="https://flagcdn.com/w40/br.png" alt="Brasil" className="w-6 h-auto rounded shadow" />
+                      <span>Português (Brasil)</span>
+                    </Link>
+                    <Link href="/en#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                      <img src="https://flagcdn.com/w40/us.png" alt="USA" className="w-6 h-auto rounded shadow" />
+                      <span>English (Abstracts)</span>
+                    </Link>
+                    <Link href="/es#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                      <img src="https://flagcdn.com/w40/es.png" alt="Spain" className="w-6 h-auto rounded shadow" />
+                      <span>Español (Resúmenes)</span>
+                    </Link>
                   </div>
-                  <span style={{ fontSize: 12.5, fontWeight: 800, color: locale === "en" ? "#f52238" : "#334155" }}>
-                    English {locale === "en" && "✓"}
-                  </span>
-                </Link>
-              </div>
-            </article>
+                </div>
+
+                <p className="text-xs text-slate-300 italic">
+                  * Navegue pela estrutura e referências nos três idiomas oficiais.
+                </p>
+              </article>
+
+            </div>
           </div>
         </section>
 
