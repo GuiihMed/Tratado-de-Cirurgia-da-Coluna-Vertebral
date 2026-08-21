@@ -1157,68 +1157,63 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         </section>
 
         {/* ================= COMPRA E ESPECIFICAÇÕES DA OBRA ================= */}
-        <section id="comprar" style={{ padding: "80px 0", background: "linear-gradient(135deg, #021b3b 0%, #063773 100%)", color: "#fff" }}>
-          <div className="shell">
-            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 60, alignItems: "center" }}>
-              <div>
-                <span className="modern-tag-pill" style={{ background: "rgba(255, 255, 255, 0.1)", color: "#fff", borderColor: "rgba(255, 255, 255, 0.2)" }}>
+        <section id="comprar" style={{ padding: "80px 0 90px", background: "linear-gradient(135deg, #001026 0%, #052b5b 50%, #001026 100%)", color: "#fff", position: "relative", overflow: "hidden" }}>
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-red-600/10 blur-[130px] rounded-full pointer-events-none" />
+
+          <div className="shell relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              
+              {/* 1. Imagem do Livro em Grande Evidência (Destaque Principal) */}
+              <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+                <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] transition-transform duration-300 hover:scale-105">
+                  <div className="absolute inset-0 bg-red-600/20 blur-[50px] rounded-full" />
+                  <img
+                    src="/assets/book-cover.png"
+                    alt="Tratado de Cirurgia da Coluna Vertebral Livro"
+                    className="relative z-10 w-full h-auto rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/20"
+                  />
+                </div>
+              </div>
+
+              {/* 2. Textos e Botão de Compra */}
+              <div className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <span className="modern-tag-pill mb-4" style={{ background: "rgba(255, 255, 255, 0.12)", color: "#fff", borderColor: "rgba(255, 255, 255, 0.25)", display: "inline-block" }}>
                   {t.buyPill}
                 </span>
-                <h2 style={{ fontSize: 44, lineHeight: 1.1, margin: "14px 0 20px", fontWeight: 800 }}>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-white mb-4">
                   {t.buyTitle}
                 </h2>
-                <p style={{ fontSize: 18, lineHeight: 1.6, color: "#bfdbfe", margin: "0 0 32px" }}>
+
+                <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mb-8">
                   {t.buyDesc}
                 </p>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 36 }}>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                    <svg style={{ width: 28, height: 28, color: "#f52238" }}>
-                      <use href="#i-check"></use>
-                    </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem1}</span>
-                  </div>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                    <svg style={{ width: 28, height: 28, color: "#f52238" }}>
-                      <use href="#i-check"></use>
-                    </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem2}</span>
-                  </div>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                    <svg style={{ width: 28, height: 28, color: "#f52238" }}>
-                      <use href="#i-check"></use>
-                    </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem3}</span>
-                  </div>
-                  <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                    <svg style={{ width: 28, height: 28, color: "#f52238" }}>
-                      <use href="#i-check"></use>
-                    </svg>
-                    <span style={{ fontSize: 15, color: "#e2effe" }}>{t.buyItem4}</span>
-                  </div>
+                {/* Especificações da Obra */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full max-w-lg mb-8 text-left">
+                  {[t.buyItem1, t.buyItem2, t.buyItem3, t.buyItem4].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+                      <div className="w-6 h-6 rounded-full bg-red-600/30 text-red-400 flex items-center justify-center flex-shrink-0 border border-red-500/40">
+                        <Check className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-sm font-semibold text-slate-100">{item}</span>
+                    </div>
+                  ))}
                 </div>
 
+                {/* Botão de Compra DiLivros */}
                 <a
                   href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="modern-btn-glow"
-                  style={{ height: 60, padding: "0 40px", fontSize: 17 }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-black text-base sm:text-lg shadow-xl shadow-red-600/40 hover:brightness-110 active:scale-[0.98] transition-all"
                 >
                   <span>{t.buyCta}</span>
-                  <svg style={{ width: 20, height: 20 }}>
-                    <use href="#i-cart"></use>
-                  </svg>
+                  <ShoppingCart className="w-5 h-5" />
                 </a>
               </div>
 
-              <div style={{ textAlign: "center" }}>
-                <img
-                  src="/assets/book-cover.png"
-                  alt="Tratado de Cirurgia da Coluna Vertebral Livro"
-                  style={{ maxWidth: 380, width: "100%", borderRadius: 10, filter: "drop-shadow(0 30px 50px rgba(0, 0, 0, 0.6))" }}
-                />
-              </div>
             </div>
           </div>
         </section>
