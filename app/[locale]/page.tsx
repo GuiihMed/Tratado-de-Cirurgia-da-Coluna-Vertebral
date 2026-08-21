@@ -82,32 +82,36 @@ export default async function HomePage({ params }: HomePageProps) {
                   </span>
                 </div>
 
-                {/* Action Buttons Row (3 Buttons) */}
-                <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg mb-5">
+                {/* Action Buttons Row (3 Buttons matching media_1787333724340.png) */}
+                <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-xl mb-5">
                   <Link
                     href={`/${locale}/indice`}
-                    className="w-full sm:w-auto h-12 px-6 rounded-lg bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    className="w-full sm:w-auto h-11 px-5 rounded-md bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-[14px] flex items-center justify-center gap-2.5 shadow-sm transition-all active:scale-[0.98]"
                   >
                     <span>{dict.heroHome.exploreIndex}</span>
-                    <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                    <span className="text-[15px] leading-none font-bold">→</span>
                   </Link>
 
                   <Link
                     href={`/${locale}/indice#conteudo`}
-                    className="w-full sm:w-auto h-12 px-5 rounded-lg bg-[#001f4d]/50 hover:bg-[#001f4d]/80 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    className="w-full sm:w-auto h-11 px-5 rounded-md bg-[#001738]/60 hover:bg-[#001738]/90 text-white font-bold text-[14px] flex items-center justify-center gap-2.5 border border-white/35 backdrop-blur-sm transition-all active:scale-[0.98]"
                   >
                     <span>{dict.heroHome.seeChapters}</span>
-                    <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
+                    <span className="text-[15px] leading-none font-bold">→</span>
                   </Link>
 
                   <a
                     href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto h-12 px-5 rounded-lg bg-[#001f4d]/50 hover:bg-[#001f4d]/80 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    className="w-full sm:w-auto h-11 px-5 rounded-md bg-[#001738]/60 hover:bg-[#001738]/90 text-white font-bold text-[14px] flex items-center justify-center gap-2 border border-white/35 backdrop-blur-sm transition-all active:scale-[0.98]"
                   >
                     <span>{dict.heroHome.whereToBuy}</span>
-                    <span className="text-sm">🛒</span>
+                    <svg className="w-3.5 h-3.5 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
                   </a>
                 </div>
 
