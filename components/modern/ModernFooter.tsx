@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Lock } from "lucide-react";
+import { Lock, ArrowUp } from "lucide-react";
 import { Locale } from "@/lib/types";
 
 interface ModernFooterProps {
@@ -40,7 +40,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
         "The leading scientific and surgical spine reference in Latin America. Bringing together top SBC specialists in a comprehensive work of 10 sections and 109 chapters.",
       navTitle: "Navigation",
       overview: "Overview",
-      preface: "Editors' Preface",
+      preface: "Editors Preface",
       presentation: "Institutional Presentation",
       index: "Interactive Index (109 Chapters)",
       authors: "Authors & Collaborators",
@@ -94,173 +94,146 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
   };
 
   return (
-    <footer
-      style={{
-        background: "linear-gradient(180deg, #04142b 0%, #010a17 100%)",
-        color: "#fff",
-        paddingTop: "70px",
-        paddingBottom: "40px",
-        borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-        position: "relative",
-      }}
-    >
+    <footer className="w-full bg-gradient-to-b from-[#001026] to-[#000814] text-white pt-14 pb-10 border-t border-white/10 relative z-20">
       <div className="shell">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.5fr 1fr 1fr 1.2fr",
-            gap: "50px",
-            marginBottom: "50px",
-          }}
-        >
-          {/* Brand & Mission */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 18 }}>
-              <span
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  background: "#f52238",
-                  display: "grid",
-                  placeItems: "center",
-                  boxShadow: "0 4px 12px rgba(245, 34, 56, 0.4)",
-                }}
-              >
-                <svg style={{ width: 20, height: 20 }}>
+        {/* Mobile: Vertical Stack (1. Tratado, 2. Navegação, 3. Idiomas) | Desktop: 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 lg:gap-12 mb-12">
+          
+          {/* 1. O Tratado com o texto dele & Logos oficiais */}
+          <div className="md:col-span-5 flex flex-col items-start">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-9 h-9 rounded-xl bg-[#f52238] flex items-center justify-center shadow-lg shadow-red-600/40 flex-shrink-0">
+                <svg className="w-5 h-5 text-white">
                   <use href="#i-spine"></use>
                 </svg>
               </span>
-              <strong style={{ fontSize: 20, letterSpacing: "-0.02em" }}>
+              <strong className="text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
                 {t.brand}
               </strong>
             </div>
-            <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#9db8d7", maxWidth: 420 }}>
+
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-md mb-6">
               {t.mission}
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: 28, marginTop: 24 }}>
+
+            {/* Institutional Logos */}
+            <div className="flex items-center gap-6 pt-2">
               <img
                 src="/assets/sbc-logo-white.svg"
                 alt="Sociedade Brasileira de Coluna"
-                style={{ height: 48, width: "auto", objectFit: "contain" }}
+                className="h-10 sm:h-12 w-auto object-contain"
               />
-              <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.15)", height: 36 }} />
-              <div style={{ fontSize: 22, fontWeight: 700, color: "#e2edfa" }}>Di Livros</div>
+              <div className="border-l border-white/20 h-9" />
+              <div className="text-xl font-extrabold text-slate-100 tracking-tight">
+                Di Livros
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              {t.navTitle}
+          {/* 2. Navegação (Embaixo no mobile) */}
+          <div className="md:col-span-3 flex flex-col">
+            <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span>{t.navTitle}</span>
             </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link href={`/${locale}/home-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+            
+            <nav className="flex flex-col gap-2.5" aria-label="Navegação do rodapé">
+              <Link href={`/${locale}/home-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.overview}
               </Link>
-              <Link href={`/${locale}/prefacio-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+              <Link href={`/${locale}/prefacio-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.preface}
               </Link>
-              <Link href={`/${locale}/apresentacao-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+              <Link href={`/${locale}/apresentacao-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.presentation}
               </Link>
-              <Link href={`/${locale}/indice-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+              <Link href={`/${locale}/indice-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.index}
               </Link>
-              <Link href={`/${locale}/autores-new`} style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14 }}>
+              <Link href={`/${locale}/autores-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.authors}
               </Link>
+            </nav>
+          </div>
+
+          {/* 3. Edições e Idiomas & Painel Autores (Depois no mobile) */}
+          <div className="md:col-span-4 flex flex-col gap-5">
+            <div>
+              <h4 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <span>{t.editionsTitle}</span>
+              </h4>
+
+              <div className="flex flex-col gap-2.5">
+                <Link
+                  href="/pt/home-new"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
+                >
+                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                    PT
+                  </span>
+                  <span>Português (Brasil)</span>
+                </Link>
+
+                <Link
+                  href="/en/home-new"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
+                >
+                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                    EN
+                  </span>
+                  <span>English (Abstracts)</span>
+                </Link>
+
+                <Link
+                  href="/es/home-new"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
+                >
+                  <span className="text-[11px] font-black px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
+                    ES
+                  </span>
+                  <span>Español (Resúmenes)</span>
+                </Link>
+
+                <Link
+                  href="/admin/login"
+                  className="inline-flex items-center gap-2 text-sm text-rose-400 hover:text-rose-300 font-bold transition-colors mt-1"
+                >
+                  <Lock size={14} className="text-rose-400" />
+                  <span>{locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Certified Edition Box & Back to Top Button */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-2">
+                <svg className="w-4 h-4 text-red-500"><use href="#i-award"></use></svg>
+                <strong className="text-xs sm:text-sm font-bold text-slate-100">{t.certifiedTitle}</strong>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+                {t.certifiedDesc}
+              </p>
+              <button
+                onClick={scrollToTop}
+                className="w-full py-2 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/15 flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+              >
+                <span>{t.backToTop}</span>
+              </button>
             </div>
           </div>
 
-          {/* Languages & Resources */}
-          <div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              {t.editionsTitle}
-            </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link href="/pt/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>PT</span>
-                <span>Português (Brasil)</span>
-              </Link>
-              <Link href="/en/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>EN</span>
-                <span>English (Abstracts)</span>
-              </Link>
-              <Link href="/es/home-new" style={{ color: "#a5c2e2", textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 6px", borderRadius: 4, background: "rgba(255,255,255,0.1)", color: "#7dd3fc" }}>ES</span>
-                <span>Español (Resúmenes)</span>
-              </Link>
-              <Link href="/admin/login" style={{ color: "#ff7380", textDecoration: "none", fontSize: 14, fontWeight: 600, display: "flex", alignItems: "center", gap: 8 }}>
-                <Lock size={14} className="text-rose-400" />
-                <span>{locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Certified Edition Box */}
-          <div
-            style={{
-              padding: 24,
-              borderRadius: 16,
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(12px)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-              <span style={{ color: "#f52238" }}>
-                <svg style={{ width: 22, height: 22 }}>
-                  <use href="#i-award"></use>
-                </svg>
-              </span>
-              <strong style={{ fontSize: 15 }}>{t.certifiedTitle}</strong>
-            </div>
-            <p style={{ fontSize: 13, lineHeight: 1.5, color: "#8faecf", margin: "0 0 16px" }}>
-              {t.certifiedDesc}
-            </p>
-            <button
-              onClick={scrollToTop}
-              style={{
-                width: "100%",
-                padding: "9px 14px",
-                borderRadius: 8,
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                background: "rgba(255, 255, 255, 0.08)",
-                color: "#fff",
-                fontSize: 13,
-                fontWeight: 600,
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 8,
-              }}
-            >
-              {t.backToTop}
-            </button>
-          </div>
         </div>
 
-        {/* Bottom bar */}
-        <div
-          style={{
-            paddingTop: 24,
-            borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            fontSize: 13,
-            color: "#7e9bbd",
-            flexWrap: "wrap",
-            gap: 16,
-          }}
-        >
+        {/* Bottom Bar: Copyright & Links */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 text-center sm:text-left">
           <span>{t.copyright}</span>
-          <div style={{ display: "flex", gap: 20 }}>
-            <span>{t.terms}</span>
-            <span>{t.privacy}</span>
-            <span>{t.support}</span>
+          <div className="flex items-center gap-4">
+            <span className="hover:text-slate-200 cursor-pointer">{t.terms}</span>
+            <span>•</span>
+            <span className="hover:text-slate-200 cursor-pointer">{t.privacy}</span>
+            <span>•</span>
+            <span className="hover:text-slate-200 cursor-pointer">{t.support}</span>
           </div>
         </div>
       </div>
