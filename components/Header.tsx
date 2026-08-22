@@ -74,58 +74,65 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </div>
         </Link>
 
-        {/* Desktop Navigation (Fiel ao design original de media_1787332563273.png) */}
-        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <nav className="nav-links" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", gap: 22 }}>
-            <Link
-              href={`/${locale}/prefacio`}
-              className={currentPage === "prefacio" ? "active" : ""}
-            >
-              {dict.nav.preface}
-            </Link>
-            <Link
-              href={`/${locale}/apresentacao`}
-              className={currentPage === "apresentacao" ? "active" : ""}
-            >
-              {dict.nav.presentation}
-            </Link>
-            <Link
-              href={`/${locale}/indice`}
-              className={currentPage === "indice" ? "active" : ""}
-            >
-              {dict.nav.index}
-            </Link>
-            <Link
-              href={`/${locale}/indice#conteudo`}
-              className=""
-            >
-              {dict.nav.chapters}
-            </Link>
-            <Link
-              href={`/${locale}/autores`}
-              className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
-            >
-              {dict.nav.authors}
-            </Link>
-            <Link href={`/${locale}#referencias`}>{dict.nav.references}</Link>
-            <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
-            <a
-              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {dict.nav.buy}
-            </a>
-          </nav>
+        {/* Desktop Navigation (Totalmente Centralizada) */}
+        <nav className="nav-links desktop-only-nav" aria-label="Navegação principal">
+          <Link
+            href={`/${locale}/prefacio`}
+            className={currentPage === "prefacio" || pathname?.includes("/prefacio") ? "active" : ""}
+          >
+            <span>{dict.nav.preface}</span>
+          </Link>
+          <Link
+            href={`/${locale}/apresentacao`}
+            className={currentPage === "apresentacao" || pathname?.includes("/apresentacao") ? "active" : ""}
+          >
+            <span>{dict.nav.presentation}</span>
+          </Link>
+          <Link
+            href={`/${locale}/indice`}
+            className={currentPage === "indice" && !pathname?.includes("#conteudo") ? "active" : ""}
+          >
+            <span>{dict.nav.index}</span>
+          </Link>
+          <Link
+            href={`/${locale}/indice#conteudo`}
+            className=""
+          >
+            <span>{dict.nav.chapters}</span>
+          </Link>
+          <Link
+            href={`/${locale}/autores`}
+            className={currentPage === "autores" || pathname?.includes("/autores") ? "active" : ""}
+          >
+            <span>{dict.nav.authors}</span>
+          </Link>
+          <Link href={`/${locale}#referencias`}>
+            <span>{dict.nav.references}</span>
+          </Link>
+          <Link href={`/${locale}#debate`}>
+            <span>{dict.nav.debate}</span>
+          </Link>
+        </nav>
+
+        {/* Right Side: Onde Comprar + Idiomas */}
+        <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 18, flexShrink: 0 }}>
+          <a
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-buy-link"
+          >
+            {dict.nav.buy}
+          </a>
 
           {/* Languages Divider */}
           <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", height: 20, margin: "0 2px" }} />
 
           {/* Languages */}
           <div className="languages">
-            {locale === "pt" ? <b>PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
-            {locale === "es" ? <b>ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
-            {locale === "en" ? <b>EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+            {locale === "pt" ? <b className="active-lang">PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
+            {locale === "es" ? <b className="active-lang">ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
+            {locale === "en" ? <b className="active-lang">EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
           </div>
         </div>
 
