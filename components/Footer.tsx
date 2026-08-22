@@ -22,9 +22,22 @@ export default function Footer({ locale }: FooterProps) {
             <img
               src="/assets/sbc-logo-white.svg"
               alt="Sociedade Brasileira de Coluna"
-              style={{ height: 44, width: "auto", objectFit: "contain" }}
+              style={{ height: 40, width: "auto", objectFit: "contain" }}
             />
-            <span className="dilivros">{dict.footer.dilivros}</span>
+            <div style={{ width: 1, height: 32, background: "rgba(255, 255, 255, 0.25)" }} />
+            <a
+              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="DiLivros Editora"
+              style={{ display: "inline-flex", alignItems: "center" }}
+            >
+              <img
+                src="/assets/dilivros-logo.png"
+                alt="DiLivros Editora"
+                style={{ height: 36, width: "auto", objectFit: "contain", maxWidth: "160px" }}
+              />
+            </a>
           </div>
           <small>{dict.footer.copyright}</small>
         </div>

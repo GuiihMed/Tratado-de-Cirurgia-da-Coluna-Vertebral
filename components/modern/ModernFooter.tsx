@@ -124,9 +124,19 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 className="h-10 sm:h-12 w-auto object-contain"
               />
               <div className="border-l border-white/20 h-9" />
-              <div className="text-xl font-bold text-slate-100 tracking-tight">
-                Di Livros
-              </div>
+              <a
+                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="DiLivros Editora"
+                className="inline-flex items-center hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src="/assets/dilivros-logo.png"
+                  alt="DiLivros Editora"
+                  className="h-9 sm:h-10 w-auto object-contain"
+                />
+              </a>
             </div>
           </div>
 
