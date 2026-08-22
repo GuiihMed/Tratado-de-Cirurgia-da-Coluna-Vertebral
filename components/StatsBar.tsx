@@ -10,7 +10,7 @@ export default function StatsBar({ locale, variant = "home" }: StatsBarProps) {
   const dict = getDictionary(locale);
 
   return (
-    <div className="shell stats-bar">
+    <div className="stats-bar w-full">
       <div className="stat">
         <svg>
           <use href="#i-book"></use>

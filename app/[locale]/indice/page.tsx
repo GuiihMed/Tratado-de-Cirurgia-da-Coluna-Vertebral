@@ -31,12 +31,12 @@ export default async function IndicePage({ params }: IndicePageProps) {
       <Header locale={locale} currentPage="indice" />
 
       <main>
-        {/* HERO INDEX (RESPONSIVO COM FUNDO OFICIAL E STATS REFINADOS) */}
+        {/* HERO INDEX (LAYOUT ORIGINAL IDÊNTICO AO DESIGN DA REFERÊNCIA) */}
         <section
-          className="hero-index relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
+          className="hero-index relative w-full overflow-hidden text-white pt-10 pb-16 border-b border-white/10"
           style={{
             background:
-              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
           {/* Anatomical background spine overlay */}
@@ -47,31 +47,33 @@ export default async function IndicePage({ params }: IndicePageProps) {
             style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell hero-main relative z-10 text-center max-w-4xl mx-auto px-4">
-            <div className="hero-copy">
-              <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-3">
+          <div className="shell relative z-10">
+            <div className="hero-copy max-w-2xl text-left">
+              <h1 className="text-3xl sm:text-4xl md:text-[50px] font-bold text-white leading-[1.08] tracking-tight mb-4">
                 {dict.heroIndice.title}
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto mb-5">
+              <p className="text-sm sm:text-base md:text-[17px] text-slate-100 leading-relaxed mb-6 whitespace-pre-line">
                 {dict.heroIndice.lead}
               </p>
               
               {/* Notice Box */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-6 text-xs sm:text-sm font-medium"
+              <div
+                className="inline-flex items-center gap-3.5 px-5 py-3 rounded-xl border border-white/40 mb-8 max-w-xl text-xs sm:text-sm font-semibold"
                 style={{
-                  background: "rgba(0, 16, 40, 0.6)",
-                  borderColor: "rgba(255, 255, 255, 0.2)",
-                  color: "#ffebee",
+                  background: "rgba(0, 20, 50, 0.4)",
+                  color: "#ffffff",
                 }}
               >
-                <svg className="w-4 h-4 text-rose-400 flex-shrink-0"><use href="#i-book"></use></svg>
+                <svg className="w-5 h-5 text-[#f52238] flex-shrink-0">
+                  <use href="#i-book"></use>
+                </svg>
                 <span>{dict.heroIndice.printNotice}</span>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto mb-8">
+              <div className="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center mb-8">
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm sm:text-base shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
                   href="#estrutura"
                   style={{ textDecoration: "none" }}
                 >
@@ -79,7 +81,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
                   <span>↓</span>
                 </a>
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 backdrop-blur-md transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
                   href="#conteudo"
                   style={{ textDecoration: "none" }}
                 >
@@ -87,7 +89,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
                   <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
                 </a>
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 backdrop-blur-md transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
                   href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -98,9 +100,10 @@ export default async function IndicePage({ params }: IndicePageProps) {
                 </a>
               </div>
             </div>
-          </div>
 
-          <StatsBar locale={locale} variant="indice" />
+            {/* Stats Bar */}
+            <StatsBar locale={locale} variant="indice" />
+          </div>
         </section>
 
         {/* ESTRUTURA DA OBRA (10 SEÇÕES) */}

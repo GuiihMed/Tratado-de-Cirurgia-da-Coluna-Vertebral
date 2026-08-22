@@ -521,11 +521,10 @@ svg {
 }
 
 .hero-index .stats-bar {
-  height: auto;
-  min-height: auto;
+  min-height: 180px;
   border-radius: 18px;
-  padding: 14px;
-  margin-top: 14px;
+  padding: 20px 0;
+  margin-top: 36px;
 }
 
 .stat {
