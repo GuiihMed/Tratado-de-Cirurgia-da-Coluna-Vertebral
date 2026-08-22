@@ -2021,70 +2021,107 @@ svg {
 
 /* TABLET RESPONSIVENESS (1024px and below) */
 @media (max-width: 1024px) {
-  .section-cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-  .section-card {
-    height: auto;
-    min-height: 230px;
-    padding: 20px 14px;
-  }
-  .shell {
-    max-width: calc(100% - 40px);
-    padding: 0 20px;
-  }
-  .hero {
-    min-height: auto;
-    height: auto;
-    padding: 40px 0 60px;
-  }
-  .hero-main {
-    flex-direction: column-reverse;
-    gap: 36px;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-copy {
-    max-width: 100%;
-  }
-  .hero-copy h1 {
-    font-size: 46px;
-    line-height: 1.15;
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-  .hero-book {
-    margin: 0 auto;
-    max-width: 320px;
-  }
-  .book-mockup, .book-cover {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-  }
-  .stats-bar {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 30px;
-    padding: 20px;
-  }
-  .area-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  /* .chapter-card managed via responsive tailwind */
-  .chapter-actions {
-    justify-content: flex-start;
-  }
   .outline-row {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+    height: auto !important;
+    margin-bottom: 14px !important;
+    border-radius: 16px !important;
+    grid-template-columns: 1fr !important;
+  }
+  .section-eight {
+    min-height: auto !important;
+  }
+  .section-eight .row-title {
+    min-height: auto !important;
+  }
+  .row-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 16px 18px !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    border: none !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .row-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    border-right: none !important;
+    flex: 1 !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .row-icon {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0 !important;
+  }
+  .row-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .row-title b {
+    font-size: 13px !important;
+    margin-bottom: 2px !important;
+  }
+  .row-title strong {
+    font-size: 16px !important;
+    line-height: 1.25 !important;
+    max-width: none !important;
+  }
+  .row-title small {
+    font-size: 12px !important;
+    margin-top: 3px !important;
+  }
+  .toggle-icon {
+    position: static !important;
+    margin: 0 0 0 12px !important;
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+    align-self: center !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
   .chapters {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px 18px 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    max-height: 4000px !important;
+    opacity: 1 !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .chapters li {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    padding: 6px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  }
+  .chapters li:last-child {
+    border-bottom: none !important;
+  }
+  .outline-row:not(.is-open) .chapters {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    border-top: none !important;
+  }
+  .outline-row:not(.is-open) .toggle-icon {
+    transform: rotate(-90deg) !important;
+    margin: 0 0 0 12px !important;
   }
   .about-content {
     grid-template-columns: 1fr;

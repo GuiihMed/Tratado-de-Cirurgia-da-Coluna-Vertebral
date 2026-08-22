@@ -71,7 +71,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto mb-8">
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-base shadow-xl shadow-red-600/35 transition-all active:scale-[0.98]"
                   href="#estrutura"
                   style={{ textDecoration: "none" }}
                 >
@@ -79,7 +79,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
                   <span>↓</span>
                 </a>
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 backdrop-blur-md transition-all active:scale-[0.98]"
                   href="#conteudo"
                   style={{ textDecoration: "none" }}
                 >
