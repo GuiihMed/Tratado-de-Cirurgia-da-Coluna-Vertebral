@@ -87,7 +87,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
                   <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
                 </a>
                 <a
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/25 backdrop-blur-md transition-all active:scale-[0.98]"
                   href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                   target="_blank"
                   rel="noopener noreferrer"
