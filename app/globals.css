@@ -2021,6 +2021,15 @@ svg {
 
 /* TABLET RESPONSIVENESS (1024px and below) */
 @media (max-width: 1024px) {
+  .section-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .section-card {
+    height: auto;
+    min-height: 230px;
+    padding: 20px 14px;
+  }
   .shell {
     max-width: calc(100% - 40px);
     padding: 0 20px;
@@ -2088,6 +2097,79 @@ svg {
 
 /* SMARTPHONE RESPONSIVENESS (640px and below) */
 @media (max-width: 640px) {
+  /* ESTRUTURA DA OBRA - SECTION CARDS MOBILE UNIFORME */
+  .structure {
+    padding: 36px 0 !important;
+  }
+  .structure h2 {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+  .structure p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 24px !important;
+  }
+  .section-cards {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .section-card {
+    height: auto !important;
+    min-height: 200px !important;
+    padding: 16px 10px !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #e2e8f0 !important;
+    box-shadow: 0 4px 14px rgba(9, 43, 82, 0.04) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: center !important;
+  }
+  .section-icon {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 8px !important;
+    background: #073d79 !important;
+  }
+  .section-icon svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .section-card b {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #f52238 !important;
+    margin-bottom: 3px !important;
+    display: block !important;
+  }
+  .section-card h3 {
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    min-height: 38px !important;
+    margin: 0 0 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #001026 !important;
+    text-align: center !important;
+  }
+  .section-card small {
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    color: #0369a1 !important;
+    background: #f0f9ff !important;
+    border: 1px solid #bae6fd !important;
+    padding: 3px 10px !important;
+    border-radius: 999px !important;
+    display: inline-block !important;
+  }
   .shell {
     max-width: 100%;
     padding: 0 16px;
