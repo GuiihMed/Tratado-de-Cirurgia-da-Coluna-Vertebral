@@ -178,91 +178,65 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
       <main style={{ paddingBottom: "80px" }}>
         {/* ================= HERO SECTION FIDEDIGNA ================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
-            background: "radial-gradient(ellipse at 75% 40%, #032b69 0%, #001738 50%, #000c1e 100%)",
-            color: "#fff",
-            padding: "40px 0 50px",
-            position: "relative",
-            overflow: "hidden",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            background:
+              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
           }}
         >
           {/* Anatomical background graphic silhouette */}
-          <div
-            style={{
-              position: "absolute",
-              right: "4%",
-              top: "-10%",
-              width: "450px",
-              height: "120%",
-              backgroundImage: "url('/assets/hero-spine.png')",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "top right",
-              opacity: 0.35,
-              pointerEvents: "none",
-            }}
+          <img
+            src="/assets/hero-spine.png"
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell">
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
             <nav
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                fontSize: 13,
-                color: "#94b8db",
-                marginBottom: 28,
-              }}
+              aria-label="Breadcrumb"
+              className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mb-6 sm:mb-8"
             >
-              <Link href={`/${locale}`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+              <Link href={`/${locale}`} className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <Link href={`/${locale}/indice`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+              <Link href={`/${locale}/indice`} className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>
                 {locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}
               </Link>
               <span>›</span>
-              <span style={{ color: "#fff", fontWeight: 600 }}>
+              <span className="text-white font-bold">
                 {locale === "en" ? `Chapter ${num}` : locale === "es" ? `Capítulo ${num}` : `Capítulo ${num}`}
               </span>
             </nav>
 
-            {/* Hero Main Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "310px 1fr", gap: 48, alignItems: "center" }}>
+            {/* Hero Main Responsive Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
               {/* 3D Book Cover */}
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <img
-                  src="/assets/book-cover.png"
-                  alt="Tratado de Cirurgia da Coluna Vertebral"
-                  style={{
-                    width: "100%",
-                    maxWidth: "280px",
-                    height: "auto",
-                    borderRadius: "8px",
-                    boxShadow: "0 20px 50px rgba(0, 0, 0, 0.6), -10px 10px 30px rgba(0, 0, 0, 0.4)",
-                    transform: "perspective(1000px) rotateY(-8deg)",
-                  }}
-                />
+              <div className="md:col-span-5 flex justify-center md:justify-end">
+                <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[280px] transition-transform duration-300 hover:scale-[1.03]">
+                  <img
+                    src="/assets/book-cover.png"
+                    alt="Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+                    style={{
+                      transform: "perspective(1000px) rotateY(-6deg)",
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Chapter Information */}
-              <div>
+              <div className="md:col-span-7 flex flex-col items-start text-left">
                 {/* Section Tag Pill */}
-                <div style={{ marginBottom: 14 }}>
+                <div className="mb-3.5">
                   <span
+                    className="inline-block px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border"
                     style={{
-                      display: "inline-block",
-                      padding: "5px 14px",
-                      borderRadius: 20,
                       background: "rgba(245, 34, 56, 0.2)",
-                      border: "1px solid #f52238",
-                      color: "#ff808f",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.06em",
+                      borderColor: "rgba(245, 34, 56, 0.5)",
+                      color: "#ff94a2",
                     }}
                   >
                     {locale === "en" ? "SECTION" : locale === "es" ? "SECCIÓN" : "SEÇÃO"} {cap.secao_id} • {sectionTitle}
@@ -270,59 +244,44 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 </div>
 
                 {/* Chapter Number & Title */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 14 }}>
-                  <div style={{ textAlign: "center" }}>
-                    <span style={{ display: "block", fontSize: 12, color: "#94b8db", textTransform: "uppercase", fontWeight: 700 }}>
+                <div className="flex items-start gap-4 mb-3.5">
+                  <div className="text-center flex-shrink-0">
+                    <span className="block text-[11px] uppercase font-bold tracking-widest text-slate-300">
                       {locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"}
                     </span>
-                    <span style={{ fontSize: 56, fontWeight: 700, lineHeight: 1, color: "#fff", letterSpacing: "-0.03em" }}>
+                    <span className="text-4xl sm:text-5xl font-bold leading-none text-white">
                       {num}
                     </span>
                   </div>
 
-                  <h1
-                    style={{
-                      fontSize: 38,
-                      fontWeight: 700,
-                      lineHeight: 1.15,
-                      margin: 0,
-                      color: "#fff",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white tracking-tight m-0">
                     {title}
                   </h1>
                 </div>
 
                 {/* Authors */}
-                <div style={{ fontSize: 15, fontWeight: 600, color: "#cbd5e1", marginBottom: 12 }}>
+                <div className="text-sm sm:text-base font-semibold text-slate-200 mb-3">
                   {authorsText}
                 </div>
 
                 {/* Lead Subtitle */}
-                <p style={{ fontSize: 16, lineHeight: 1.5, color: "#9ec5f0", margin: "0 0 20px", maxWidth: "680px" }}>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl mb-5">
                   {leadText}
                 </p>
 
-                {/* Notice Box */}
+                {/* Print Notice Box */}
                 <div
+                  className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border mb-6 max-w-2xl w-full"
                   style={{
-                    background: "rgba(245, 34, 56, 0.15)",
-                    border: "1px solid rgba(245, 34, 56, 0.4)",
-                    borderRadius: 10,
-                    padding: "12px 18px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                    marginBottom: 24,
-                    maxWidth: "680px",
+                    background: "rgba(0, 16, 40, 0.6)",
+                    borderColor: "rgba(255, 255, 255, 0.15)",
                   }}
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f52238" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f52238" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                   </svg>
-                  <span style={{ fontSize: 13.5, color: "#ffebee", fontWeight: 500 }}>
+                  <span className="text-xs sm:text-sm text-slate-200 font-medium leading-snug">
                     {locale === "en"
                       ? "Full reading of this chapter is available exclusively in the printed edition of the Treatise."
                       : locale === "es"
@@ -332,25 +291,13 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 </div>
 
                 {/* Action Buttons */}
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-stretch sm:items-center">
                   <a
                     href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "12px 24px",
-                      borderRadius: 8,
-                      background: "#f52238",
-                      color: "#fff",
-                      textDecoration: "none",
-                      fontSize: 14.5,
-                      fontWeight: 700,
-                      boxShadow: "0 6px 18px rgba(245, 34, 56, 0.4)",
-                      transition: "all 0.2s ease",
-                    }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                     <span>🛒</span>
@@ -358,19 +305,8 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                   <a
                     href="#referencias"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "12px 20px",
-                      borderRadius: 8,
-                      background: "rgba(255, 255, 255, 0.08)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      color: "#fff",
-                      textDecoration: "none",
-                      fontSize: 14,
-                      fontWeight: 600,
-                    }}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "View references" : locale === "es" ? "Ver referencias" : "Ver referências"}</span>
                     <span>📖</span>
@@ -378,19 +314,8 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                   <a
                     href="#debate"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "12px 20px",
-                      borderRadius: 8,
-                      background: "rgba(255, 255, 255, 0.08)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      color: "#fff",
-                      textDecoration: "none",
-                      fontSize: 14,
-                      fontWeight: 600,
-                    }}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "View related episode" : locale === "es" ? "Ver episodio relacionado" : "Ver episódio relacionado"}</span>
                     <span>▶</span>
@@ -401,102 +326,43 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
           </div>
         </section>
 
-        {/* ================= 5 CARDS QUICK ANCHOR STRIP ================= */}
-        <section
-          style={{
-            background: "#00132b",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-            padding: "18px 0",
-          }}
-        >
-          <div className="shell">
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(5, 1fr)",
-                gap: 12,
-              }}
-            >
+        {/* ================= 5 CARDS QUICK ANCHOR STRIP (RESPONSIVO) ================= */}
+        <section className="bg-[#00132b] border-b border-white/10 py-5 sm:py-6">
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {/* Card 1 */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: 10,
-                  padding: "12px 14px",
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <div style={{ fontSize: 18, marginBottom: 4 }}>🔖</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>{sectionTitle}</div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
+                <div className="text-xl mb-1">🔖</div>
+                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}</div>
+                <div className="text-[11px] sm:text-xs text-sky-300 truncate mt-0.5">{sectionTitle}</div>
               </div>
 
               {/* Card 2 */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: 10,
-                  padding: "12px 14px",
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <div style={{ fontSize: 18, marginBottom: 4 }}>📖</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"} {num}</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {title}
-                </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
+                <div className="text-xl mb-1">📖</div>
+                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"} {num}</div>
+                <div className="text-[11px] sm:text-xs text-sky-300 truncate mt-0.5">{title}</div>
               </div>
 
               {/* Card 3 */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: 10,
-                  padding: "12px 14px",
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <div style={{ fontSize: 18, marginBottom: 4 }}>🌐</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Summary in" : locale === "es" ? "Resumen en" : "Resumo em"}</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>PT | ES | EN</div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
+                <div className="text-xl mb-1">🌐</div>
+                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Summary in" : locale === "es" ? "Resumen en" : "Resumo em"}</div>
+                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">PT | ES | EN</div>
               </div>
 
               {/* Card 4 */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: 10,
-                  padding: "12px 14px",
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <div style={{ fontSize: 18, marginBottom: 4 }}>📄</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>{locale === "en" ? "indexed" : locale === "es" ? "bibliográficas" : "bibliográficas"}</div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
+                <div className="text-xl mb-1">📄</div>
+                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}</div>
+                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">{locale === "en" ? "indexed" : locale === "es" ? "bibliográficas" : "bibliográficas"}</div>
               </div>
 
               {/* Card 5 */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: 10,
-                  padding: "12px 14px",
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <div style={{ fontSize: 18, marginBottom: 4 }}>📚</div>
-                <div style={{ fontSize: 13, fontWeight: 700 }}>{locale === "en" ? "Masterwork" : locale === "es" ? "Obra" : "Obra"}</div>
-                <div style={{ fontSize: 11.5, color: "#94b8db" }}>{locale === "en" ? "printed" : locale === "es" ? "impresa" : "impressa"}</div>
+              <div className="col-span-2 sm:col-span-1 bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
+                <div className="text-xl mb-1">📚</div>
+                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Masterwork" : locale === "es" ? "Obra" : "Obra"}</div>
+                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">{locale === "en" ? "printed" : locale === "es" ? "impresa" : "impressa"}</div>
               </div>
             </div>
           </div>
@@ -504,9 +370,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
         {/* ================= 2-COLUMN MAIN CONTENT ================= */}
         <section style={{ padding: "40px 0 60px" }}>
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "2.3fr 1fr", gap: 36, alignItems: "start" }}>
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* LEFT COLUMN: MAIN SCIENTIFIC CONTENT */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div className="lg:col-span-8 flex flex-col gap-6">
               {/* CARD 1: RESUMO DO CAPÍTULO */}
               <article
                 style={{
@@ -673,7 +539,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   </h3>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {/* Destaque 1 */}
                   <div
                     style={{
@@ -867,7 +733,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               </article>
 
               {/* BOTTOM ROW: TRATADO EM DEBATE & CAPÍTULOS RELACIONADOS */}
-              <div id="debate" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <div id="debate" className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {/* Tratado em Debate Banner */}
                 <div
                   style={{
@@ -980,7 +846,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
             </div>
 
             {/* RIGHT COLUMN: SIDEBAR */}
-            <aside style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <aside className="lg:col-span-4 flex flex-col gap-6">
               {/* CARD 1: AUTORES */}
               <div
                 style={{
