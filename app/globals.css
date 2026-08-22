@@ -522,10 +522,10 @@ svg {
 
 .hero-index .stats-bar {
   height: auto;
-  min-height: 180px;
-  border-radius: 15px;
-  padding: 16px 0;
-  margin-top: 6px;
+  min-height: auto;
+  border-radius: 18px;
+  padding: 14px;
+  margin-top: 14px;
 }
 
 .stat {
@@ -2285,46 +2285,74 @@ svg {
     border-radius: 12px !important;
   }
 
-  /* 4. Cards e Métricas (Grid) */
+  /* 4. Cards e Métricas (Grid Mobile Refinado) */
   .modern-stats-banner,
   .stats-bar {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 16px !important;
-    border-radius: 16px !important;
+    gap: 10px !important;
+    padding: 14px !important;
+    border-radius: 20px !important;
+    background: rgba(0, 16, 42, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35) !important;
     margin-top: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  .modern-stat-box,
   .stat {
+    height: auto !important;
+    min-height: 85px !important;
+    padding: 12px 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
-    gap: 12px !important;
-    padding: 8px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important;
   }
 
-  .modern-stat-info strong,
-  .stat strong {
-    font-size: 22px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    color: #ffffff !important;
+  /* 5th stat spans across both columns as a cohesive banner */
+  .stat:nth-child(5) {
+    grid-column: span 2 !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    min-height: 46px !important;
+    padding: 8px 16px !important;
   }
 
-  .modern-stat-info span,
-  .stat span {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    color: #9db8d7 !important;
-    margin-top: 4px !important;
+  .stat:nth-child(5) svg {
+    margin-bottom: 0 !important;
   }
 
-  .modern-stat-icon,
   .stat svg {
     width: 24px !important;
     height: 24px !important;
+    margin-bottom: 2px !important;
+    color: #38bdf8 !important;
     flex-shrink: 0 !important;
+  }
+
+  .stat strong {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    margin-bottom: 2px !important;
+  }
+
+  .stat span,
+  .stat .stat-text {
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    color: #94b8db !important;
+    white-space: normal !important;
   }
 
   /* Cards de Conteúdo (Pillars / Destaques) empilhados em coluna única */
