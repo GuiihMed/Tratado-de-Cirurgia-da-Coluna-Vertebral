@@ -864,7 +864,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               </article>
 
               {/* BOTTOM: TRATADO EM DEBATE & NAVEGAÇÃO */}
-              <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
+              <div className="modern-chapter-bottom-grid">
                 {/* Tratado em Debate Video Card */}
                 <div
                   style={{

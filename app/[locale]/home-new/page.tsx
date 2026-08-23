@@ -904,7 +904,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
         <section id="debate" style={{ padding: "40px 0 90px" }}>
           <div className="shell">
             <div className="modern-player-card">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 50, alignItems: "center" }}>
+              <div className="modern-debate-grid">
                 <div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 12px", borderRadius: 20, background: "rgba(245, 34, 56, 0.25)", border: "1px solid rgba(245, 34, 56, 0.4)", color: "#ff8290", fontSize: 12, fontWeight: 700, textTransform: "uppercase", marginBottom: 16 }}>
                     <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />
