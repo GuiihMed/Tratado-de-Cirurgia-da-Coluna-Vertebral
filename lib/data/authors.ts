@@ -1,12141 +1,6257 @@
-export interface ChapterContribution {
+export interface AuthorArticle {
+  titulo: string;
+  revista: string;
+  ano: number;
+  doi?: string;
+  link?: string;
+}
+
+export interface AuthorChapter {
   num: number;
   titulo: string;
   secao_id: number;
   secao_nome: string;
-  resumo_breve: string;
-  decs_mesh: string[];
-}
-
-export interface PublicationItem {
-  ano: string;
-  titulo: string;
-  periodico: string;
-  doi?: string;
 }
 
 export interface AuthorProfile {
   id: string;
   slug: string;
   nome: string;
-  crm: string;
   cargo: string;
   instituicao: string;
-  cidade_estado: string;
   destaque: string;
   foto_url: string;
+  orcid: string;
+  orcid_url: string;
   bio_completa: string;
   titulacao_academica: string[];
-  cargos_sociedades: string[];
-  linhas_pesquisa: string[];
   especialidades: string[];
-  capitulos_tratado: ChapterContribution[];
-  publicacoes_destaque: PublicationItem[];
-  lattes_url?: string;
-  orcid?: string;
+  capitulos_tratado: AuthorChapter[];
+  artigos_relevantes: AuthorArticle[];
 }
 
 export const AUTHORS_DIRECTORY: AuthorProfile[] = [
   {
     "id": "1",
     "slug": "adriano-m-lino-filho",
-    "nome": "Dr. Adriano M. Lino Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Adriano M. Lino Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Adriano M. Lino Filho",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Federal de Goiás (UFG)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-8952-9662",
+    "orcid_url": "https://orcid.org/0009-0007-8952-9662",
+    "bio_completa": "Residente do Serviço de Neurocirurgia do Hospital das Clínicas da Universidade Federal de Goiás (HC-UFG).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Residente do Serviço de Neurocirurgia do Hospital das Clínicas da Universidade Federal de Goiás (HC-UFG)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 3,
         "titulo": "Neuroanatomia Funcional da Medula Espinhal",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neuroanatomia funcional da medula espinhal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 43,
         "titulo": "Hérnia de Disco Cervical",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 3: Neuroanatomia Funcional da Medula Espinhal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap3"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 43: Hérnia de Disco Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap43"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
     "id": "2",
-    "slug": "alberto-ofenhejm-gotfryd",
-    "nome": "Dr. Alberto Ofenhejm Gotfryd",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 84 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alberto Ofenhejm Gotfryd é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 84,
-        "titulo": "Infiltrações e Bloqueios da Coluna",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infiltrações e bloqueios da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 84: Infiltrações e Bloqueios da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap84"
-      }
-    ]
-  },
-  {
-    "id": "3",
-    "slug": "alderico-girao-campos-de-barros",
-    "nome": "Dr. Alderico Girão Campos de Barros",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 4 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Alderico Girão Campos de Barros é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 37,
-        "titulo": "Escoliose Idiopática de Alto Valor Angular",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática de alto valor angular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 41,
-        "titulo": "Deformidades da Coluna Cervical",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 53,
-        "titulo": "Tumores Benignos e Lesões Pseudotumorais da Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores benignos e lesões pseudotumorais da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 101,
-        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de junção craniovertebral: anormalidades congênitas, adquiridas e trauma pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 37: Escoliose Idiopática de Alto Valor Angular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap37"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 41: Deformidades da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap41"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 53: Tumores Benignos e Lesões Pseudotumorais da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap53"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 101: Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap101"
-      }
-    ]
-  },
-  {
-    "id": "4",
-    "slug": "alessandro-gasbarrini",
-    "nome": "Dr. Alessandro Gasbarrini",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alessandro Gasbarrini é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 88,
-        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
-  },
-  {
-    "id": "5",
-    "slug": "alessandro-maria-bianconi",
-    "nome": "Dr. Alessandro Maria Bianconi",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 101 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Alessandro Maria Bianconi é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 101,
-        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de junção craniovertebral: anormalidades congênitas, adquiridas e trauma pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 101: Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap101"
-      }
-    ]
-  },
-  {
-    "id": "6",
-    "slug": "alexander-junqueira-rossato",
-    "nome": "Dr. Alexander Junqueira Rossato",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 3 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alexander Junqueira Rossato é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 31,
-        "titulo": "Deformidades nos Disrafismos Espinhais",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades nos disrafismos espinhais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 82,
-        "titulo": "Aplicação do Halo e Tração Craniana",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de aplicação do halo e tração craniana pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 86,
-        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnica de fixação bipolar da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 31: Deformidades nos Disrafismos Espinhais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap31"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 82: Aplicação do Halo e Tração Craniana",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap82"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 86: Técnica de Fixação Bipolar da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap86"
-      }
-    ]
-  },
-  {
-    "id": "7",
-    "slug": "alexandre-fogaca-cristante",
-    "nome": "Dr. Alexandre Fogaça Cristante",
-    "crm": "Membro Titular SBC",
-    "cargo": "Professor Titular IOT-FMUSP / SBC",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 3 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Alexandre Fogaça Cristante é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 24,
-        "titulo": "Lesões Traumáticas da Coluna na Infância",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna na infância pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 28,
-        "titulo": "Escoliose de Início Precoce",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 35,
-        "titulo": "Escoliose do Adulto",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose do adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 24: Lesões Traumáticas da Coluna na Infância",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap24"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 28: Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap28"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 35: Escoliose do Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap35"
-      }
-    ]
-  },
-  {
-    "id": "8",
-    "slug": "alexandre-medeiros-sampaio-januario",
-    "nome": "Dr. Alexandre Medeiros Sampaio Januario",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 99 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alexandre Medeiros Sampaio Januario é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 99,
-        "titulo": "Lesão Neurológica Perioperatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesão neurológica perioperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 99: Lesão Neurológica Perioperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap99"
-      }
-    ]
-  },
-  {
-    "id": "9",
-    "slug": "alexandre-philippe-boss-jaccard",
-    "nome": "Dr. Alexandre Philippe Boss Jaccard",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 22 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Alexandre Philippe Boss Jaccard é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 22,
-        "titulo": "Lesões Traumáticas da Coluna Torácica e Lombar",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna torácica e lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 22: Lesões Traumáticas da Coluna Torácica e Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap22"
-      }
-    ]
-  },
-  {
-    "id": "10",
-    "slug": "alisson-roberto-teles",
-    "nome": "Dr. Alisson Roberto Teles",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 72 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alisson Roberto Teles é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 72,
-        "titulo": "Artrodese Lombar Anterior",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 72: Artrodese Lombar Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap72"
-      }
-    ]
-  },
-  {
-    "id": "11",
-    "slug": "aluizio-augusto-arantes-junior",
-    "nome": "Dr. Aluízio Augusto Arantes Junior",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Aluízio Augusto Arantes Junior é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 3,
-        "titulo": "Neuroanatomia Funcional da Medula Espinhal",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neuroanatomia funcional da medula espinhal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 43,
-        "titulo": "Hérnia de Disco Cervical",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 3: Neuroanatomia Funcional da Medula Espinhal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap3"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 43: Hérnia de Disco Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap43"
-      }
-    ]
-  },
-  {
-    "id": "12",
-    "slug": "alvaro-diego-heredia-suarez",
-    "nome": "Dr. Alvaro Diego Heredia Suarez",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Alvaro Diego Heredia Suarez é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 20,
-        "titulo": "Lesões Traumáticas da Coluna Cervical Alta",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna cervical alta pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 68,
-        "titulo": "Artrodese Intersomática Lombar Posterior",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese intersomática lombar posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 20: Lesões Traumáticas da Coluna Cervical Alta",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap20"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 68: Artrodese Intersomática Lombar Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap68"
-      }
-    ]
-  },
-  {
-    "id": "13",
-    "slug": "anderson-clayton-cardeal",
-    "nome": "Dr. Anderson Clayton Cardeal",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 26 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Anderson Clayton Cardeal é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 26,
-        "titulo": "Deformidades Pós-Traumáticas",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades pós-traumáticas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 26: Deformidades Pós-Traumáticas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap26"
-      }
-    ]
-  },
-  {
-    "id": "14",
-    "slug": "andrei-fernandes-joaquim",
-    "nome": "Dr. Andrei Fernandes Joaquim",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 109 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Andrei Fernandes Joaquim é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 109,
-        "titulo": "Avaliação dos Resultados em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de avaliação dos resultados em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 109: Avaliação dos Resultados em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap109"
-      }
-    ]
-  },
-  {
-    "id": "15",
-    "slug": "andre-flavio-freire-pereira",
-    "nome": "Dr. André Flávio Freire Pereira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 29 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. André Flávio Freire Pereira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 29,
-        "titulo": "Tratamento Não Cirúrgico das Escolioses",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento não cirúrgico das escolioses pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 29: Tratamento Não Cirúrgico das Escolioses",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap29"
-      }
-    ]
-  },
-  {
-    "id": "16",
-    "slug": "andre-frazao-rosa",
-    "nome": "Dr. André Frazao Rosa",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 55 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. André Frazao Rosa é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 55,
-        "titulo": "Tumores Metastáticos na Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores metastáticos na coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 55: Tumores Metastáticos na Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap55"
-      }
-    ]
-  },
-  {
-    "id": "17",
-    "slug": "andre-luis-fernandes-andujar",
-    "nome": "Dr. André Luis Fernandes Andujar",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. André Luis Fernandes Andujar é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 38,
-        "titulo": "Espondilolistese na Criança",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese na criança pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 83,
-        "titulo": "Colete Gessado para Escoliose de Início Precoce",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de colete gessado para escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 38: Espondilolistese na Criança",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap38"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 83: Colete Gessado para Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap83"
-      }
-    ]
-  },
-  {
-    "id": "18",
-    "slug": "andre-luis-sebben",
-    "nome": "Dr. André Luís Sebben",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 25 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. André Luís Sebben é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 25,
-        "titulo": "Fraturas Vertebrais por Insuficiência",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fraturas vertebrais por insuficiência pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 25: Fraturas Vertebrais por Insuficiência",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap25"
-      }
-    ]
-  },
-  {
-    "id": "19",
-    "slug": "andre-rafael-hubner",
-    "nome": "Dr. André Rafael Hübner",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 20 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. André Rafael Hübner é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 20,
-        "titulo": "Lesões Traumáticas da Coluna Cervical Alta",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna cervical alta pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 20: Lesões Traumáticas da Coluna Cervical Alta",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap20"
-      }
-    ]
-  },
-  {
-    "id": "20",
-    "slug": "antonio-gutemberg-de-s-martins",
-    "nome": "Dr. Antonio Gutemberg de S. Martins",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 72 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Antonio Gutemberg de S. Martins é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 72,
-        "titulo": "Artrodese Lombar Anterior",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 72: Artrodese Lombar Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap72"
-      }
-    ]
-  },
-  {
-    "id": "21",
-    "slug": "arthur-sampaio-facanha",
-    "nome": "Dr. Arthur Sampaio Façanha",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Arthur Sampaio Façanha é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 80,
-        "titulo": "Técnicas de Fixação na Coluna Osteoporótica",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de fixação na coluna osteoporótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 90,
-        "titulo": "Cirurgia Complexa dos Tumores Cervicais",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cirurgia complexa dos tumores cervicais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 80: Técnicas de Fixação na Coluna Osteoporótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap80"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 90: Cirurgia Complexa dos Tumores Cervicais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap90"
-      }
-    ]
-  },
-  {
-    "id": "22",
-    "slug": "asdrubal-falavigna",
-    "nome": "Dr. Asdrubal Falavigna",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 42 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Asdrubal Falavigna é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 42,
-        "titulo": "Fisiopatologia da Degeneração Discal",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fisiopatologia da degeneração discal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 42: Fisiopatologia da Degeneração Discal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap42"
-      }
-    ]
-  },
-  {
-    "id": "23",
     "slug": "aecio-rubens-dias-pereira-filho",
-    "nome": "Dr. Aécio Rubens Dias Pereira Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Aécio Rubens Dias Pereira Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Aécio Rubens Dias Pereira Filho",
+    "cargo": "Diretor e Fundador do Instituto de Acessos a Coluna Aécio Dias",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7418-7574",
+    "orcid_url": "https://orcid.org/0000-0001-7418-7574",
+    "bio_completa": "Diretor e Fundador do Instituto de Acessos a Coluna Aécio Dias. Cirurgião de Acesso no Hospital Israelita Albert Einstein (HIAE), na Associação de Assistência à Criança Deficiente (AACD), no Hospital Sírio-Libanês (HSL), no Hospital Alemão Oswaldo Cruz e no Hospital Santa Catarina–Paulista. Médico Graduado pela Universidade de Taubaté (UNITAU). Residência de Cirurgia e Geral e Cirurgia Vascular pela Universidade Federal de São Paulo (Unifesp). Titular da Sociedade Brasileira de Angiologia e Cirurgia Vascular (SBACV).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Diretor e Fundador do Instituto de Acessos a Coluna Aécio Dias. Cirurgião de Acesso no Hospital Israelita Albert Einstein (HIAE), na Associação de Assistência à Criança Deficiente (AACD), no Hospital Sírio-Libanês (HSL), no Hospital Alemão Oswaldo Cruz e no Hospital Santa Catarina–Paulista. Médico Graduado pela Universidade de Taubaté (UNITAU). Residência de Cirurgia e Geral e Cirurgia Vascular pela Universidade Federal de São Paulo (Unifesp). Titular da Sociedade Brasileira de Angiologia e Cirurgia Vascular (SBACV)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 6,
         "titulo": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e abordagens da junção toracolombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 98,
         "titulo": "Complicações da Abordagem Anterior da Coluna",
         "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de complicações da abordagem anterior da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 6: Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap6"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 98: Complicações da Abordagem Anterior da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap98"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "24",
-    "slug": "bernardo-drummond-braga",
-    "nome": "Dr. Bernardo Drummond Braga",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 3 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Bernardo Drummond Braga é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "3",
+    "slug": "alberto-ofenhejm-gotfryd",
+    "nome": "Alberto Ofenhejm Gotfryd",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3143-2845",
+    "orcid_url": "https://orcid.org/0000-0003-3143-2845",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Mestre, Doutor e Pós-Doutor em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Professor da Faculdade de Ciências Médicas da Santa Casa de São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Mestre, Doutor e Pós-Doutor em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Professor da Faculdade de Ciências Médicas da Santa Casa de São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 3,
-        "titulo": "Neuroanatomia Funcional da Medula Espinhal",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neuroanatomia funcional da medula espinhal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 84,
+        "titulo": "Infiltrações e Bloqueios da Coluna",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "4",
+    "slug": "alderico-girao-campos-de-barros",
+    "nome": "Alderico Girão Campos de Barros",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 4 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8337-7676",
+    "orcid_url": "https://orcid.org/0000-0002-8337-7676",
+    "bio_completa": "Chefe Substituto do Grupo de Cirurgia de Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO). Mestre e Doutor pela Universidade de São Paulo (USP). Membro da Scoliosis Research Society e da Sociedade Brasileira de Coluna.",
+    "titulacao_academica": [
+      "Chefe Substituto do Grupo de Cirurgia de Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO). Mestre e Doutor pela Universidade de São Paulo (USP). Membro da Scoliosis Research Society e da Sociedade Brasileira de Coluna."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 37,
+        "titulo": "Escoliose Idiopática de Alto Valor Angular",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
-        "num": 43,
-        "titulo": "Hérnia de Disco Cervical",
+        "num": 41,
+        "titulo": "Deformidades da Coluna Cervical",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       },
       {
-        "num": 67,
-        "titulo": "Endoscopia Unilateral Biportal",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia unilateral biportal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 3: Neuroanatomia Funcional da Medula Espinhal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap3"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 43: Hérnia de Disco Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap43"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 67: Endoscopia Unilateral Biportal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap67"
-      }
-    ]
-  },
-  {
-    "id": "25",
-    "slug": "brian-guilherme-monteiro-marta-coimbra",
-    "nome": "Dr. Brian Guilherme Monteiro Marta Coimbra",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 54 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Brian Guilherme Monteiro Marta Coimbra é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 54,
-        "titulo": "Tumores Ósseos Primários Malignos",
+        "num": 53,
+        "titulo": "Tumores Benignos e Lesões Pseudotumorais da Coluna",
         "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores ósseos primários malignos pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      },
+      {
+        "num": 101,
+        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 54: Tumores Ósseos Primários Malignos",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap54"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "26",
-    "slug": "bruno-da-costa-ancheschi",
-    "nome": "Dr. Bruno da Costa Ancheschi",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Bruno da Costa Ancheschi é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "5",
+    "slug": "alessandro-gasbarrini",
+    "nome": "Alessandro Gasbarrini",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Istituto Ortopedico Rizzoli (Itália)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9575-4061",
+    "orcid_url": "https://orcid.org/0000-0002-9575-4061",
+    "bio_completa": "Diretor do Departamento de Cirurgia da Coluna, IRCCS, Instituto Ortopédico Rizzoli, Bolonha, Itália. Professor Titular do Departamento de Ciências Biomédicas e Neuromotoras, Universidade de Bolonha, Bolonha, Itália.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Diretor do Departamento de Cirurgia da Coluna, IRCCS, Instituto Ortopédico Rizzoli, Bolonha, Itália. Professor Titular do Departamento de Ciências Biomédicas e Neuromotoras, Universidade de Bolonha, Bolonha, Itália."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 4,
-        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 93,
-        "titulo": "Infecções Pós-Operatórias",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infecções pós-operatórias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 4: Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap4"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 93: Infecções Pós-Operatórias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap93"
-      }
-    ]
-  },
-  {
-    "id": "27",
-    "slug": "bruno-pinto-coelho-fontes",
-    "nome": "Dr. Bruno Pinto Coelho Fontes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 85 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Bruno Pinto Coelho Fontes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 85,
-        "titulo": "Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
+        "num": 88,
+        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de sistemas de crescimento guiado para deformidades da coluna: hastes de crescimento tradicionais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 85: Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap85"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "28",
-    "slug": "caio-cesar-nogueira-de-figueiredo",
-    "nome": "Dr. Caio César Nogueira de Figueiredo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Caio César Nogueira de Figueiredo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "6",
+    "slug": "alessandro-maria-bianconi",
+    "nome": "Alessandro Maria Bianconi",
+    "cargo": "Residência Médica em Ortopedia no Instituto Galeazzi, Milão",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0004-1606-2078",
+    "orcid_url": "https://orcid.org/0009-0004-1606-2078",
+    "bio_completa": "Residência Médica em Ortopedia no Instituto Galeazzi, Milão. Pós-Graduando em Cirurgia da Coluna Vertebral pelo Instituto Nacional de Traumatologia e Ortopedia (INTO).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Residência Médica em Ortopedia no Instituto Galeazzi, Milão. Pós-Graduando em Cirurgia da Coluna Vertebral pelo Instituto Nacional de Traumatologia e Ortopedia (INTO)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 101,
+        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "7",
+    "slug": "alexander-junqueira-rossato",
+    "nome": "Alexander Junqueira Rossato",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 3 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2266-0504",
+    "orcid_url": "https://orcid.org/0000-0003-2266-0504",
+    "bio_completa": "Médico Ortopedista do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico Ortopedista do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 31,
+        "titulo": "Deformidades nos Disrafismos Espinhais",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 82,
+        "titulo": "Aplicação do Halo e Tração Craniana",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 86,
+        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "8",
+    "slug": "alexandre-fogaca-cristante",
+    "nome": "Alexandre Fogaça Cristante",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 3 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7797-5274",
+    "orcid_url": "https://orcid.org/0000-0002-7797-5274",
+    "bio_completa": "Professor Titular do Departamento de Ortopedia e Traumatologia da Faculdade de Medicina da Universidade de São Paulo (FMUSP). Chefe do Grupo de Cirurgia da Coluna Vertebral do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP). Membro do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Presidente da Sociedade Brasileira de Coluna no biênio 2025-2026.",
+    "titulacao_academica": [
+      "Professor Titular do Departamento de Ortopedia e Traumatologia da Faculdade de Medicina da Universidade de São Paulo (FMUSP). Chefe do Grupo de Cirurgia da Coluna Vertebral do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP). Membro do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Presidente da Sociedade Brasileira de Coluna no biênio 2025-2026."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 24,
         "titulo": "Lesões Traumáticas da Coluna na Infância",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna na infância pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       },
       {
         "num": 28,
         "titulo": "Escoliose de Início Precoce",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 24: Lesões Traumáticas da Coluna na Infância",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap24"
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 28: Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap28"
+        "num": 35,
+        "titulo": "Escoliose do Adulto",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
-    ]
+    ],
+    "artigos_relevantes": []
   },
   {
-    "id": "29",
-    "slug": "carlos-abreu-de-aguiar",
-    "nome": "Dr. Carlos Abreu de Aguiar",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "9",
+    "slug": "alexandre-medeiros-sampaio-januario",
+    "nome": "Alexandre Medeiros Sampaio Januario",
+    "cargo": "Neurologista e Neurofisiologista Clínico",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Carlos Abreu de Aguiar é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0003-9773-2741",
+    "orcid_url": "https://orcid.org/0009-0003-9773-2741",
+    "bio_completa": "Neurologista e Neurofisiologista Clínico. Membro Titular da Academia Brasileira de Neurologia (ABN) e da Sociedade Brasileira de Neurofisiologia Clínica (SBNC). Coordenador do Departamento de Monitorização Neurofisiológica e Potenciais evocados da SBNC.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Neurologista e Neurofisiologista Clínico. Membro Titular da Academia Brasileira de Neurologia (ABN) e da Sociedade Brasileira de Neurofisiologia Clínica (SBNC). Coordenador do Departamento de Monitorização Neurofisiológica e Potenciais evocados da SBNC."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 30,
-        "titulo": "Escoliose Neuromuscular",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose neuromuscular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 33,
-        "titulo": "Deformidades Congênitas da Coluna Vertebral",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades congênitas da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 99,
+        "titulo": "Lesão Neurológica Perioperatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 30: Escoliose Neuromuscular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap30"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 33: Deformidades Congênitas da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap33"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "30",
-    "slug": "carlos-andres-amelunge-rodriguez",
-    "nome": "Dr. Carlos Andres Amelunge Rodriguez",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 22 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Carlos Andres Amelunge Rodriguez é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "10",
+    "slug": "alexandre-philippe-boss-jaccard",
+    "nome": "Alexandre Philippe Boss Jaccard",
+    "cargo": "Médico pela Universidade do Oeste Paulista (Unoeste)",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6198-3539",
+    "orcid_url": "https://orcid.org/0000-0001-6198-3539",
+    "bio_completa": "Médico pela Universidade do Oeste Paulista (Unoeste). Ortopedista e Traumatologista pela Universidade Estadual de Campinas (Unicamp). Fellowship em Cirurgia da Coluna Vertebral pela Unicamp. AO Spine Fellowship na Suíça. Mestrado em Ciências da Reabilitação pela Universidade Estadual de Londrina (UEL)/Universidade Norte do Paraná (UNOPAR). Ex-Professor da Pontifícia Universidade Católica do Paraná (PUC-PR – Campus Londrina). Membro do Board Nacional da AO Spine (Brazil Council Education Ortho). Faculty da AO Spine Brasil.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pela Universidade do Oeste Paulista (Unoeste). Ortopedista e Traumatologista pela Universidade Estadual de Campinas (Unicamp). Fellowship em Cirurgia da Coluna Vertebral pela Unicamp. AO Spine Fellowship na Suíça. Mestrado em Ciências da Reabilitação pela Universidade Estadual de Londrina (UEL)/Universidade Norte do Paraná (UNOPAR). Ex-Professor da Pontifícia Universidade Católica do Paraná (PUC-PR – Campus Londrina). Membro do Board Nacional da AO Spine (Brazil Council Education Ortho). Faculty da AO Spine Brasil."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 22,
         "titulo": "Lesões Traumáticas da Coluna Torácica e Lombar",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna torácica e lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 22: Lesões Traumáticas da Coluna Torácica e Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap22"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "31",
-    "slug": "carlos-eduardo-garcez-teixeira",
-    "nome": "Dr. Carlos Eduardo Garcez Teixeira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 59 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Carlos Eduardo Garcez Teixeira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "11",
+    "slug": "alisson-roberto-teles",
+    "nome": "Alisson Roberto Teles",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Santa Casa de São Paulo",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2169-8156",
+    "orcid_url": "https://orcid.org/0000-0003-2169-8156",
+    "bio_completa": "Médico Neurocirurgião. Fellowship em Escoliose e Cirurgia da Coluna pela McGill University. Fellowship em Cirurgia Complexa da Coluna pela University of Calgary. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Membro do Corpo Clínico do Núcleo de Neurocirurgia da Coluna do Hospital São José – Santa Casa de Porto Alegre.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Fellowship em Escoliose e Cirurgia da Coluna pela McGill University. Fellowship em Cirurgia Complexa da Coluna pela University of Calgary. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Membro do Corpo Clínico do Núcleo de Neurocirurgia da Coluna do Hospital São José – Santa Casa de Porto Alegre."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 72,
+        "titulo": "Artrodese Lombar Anterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "12",
+    "slug": "aluizio-augusto-arantes-junior",
+    "nome": "Aluízio Augusto Arantes Junior",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Federal de Minas Gerais (UFMG)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9475-7420",
+    "orcid_url": "https://orcid.org/0000-0002-9475-7420",
+    "bio_completa": "Professor Associado de Neurocirurgia da Faculdade de Medicina da Universidade Federal de Minas Gerais (UFMG).",
+    "titulacao_academica": [
+      "Professor Associado de Neurocirurgia da Faculdade de Medicina da Universidade Federal de Minas Gerais (UFMG)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 3,
+        "titulo": "Neuroanatomia Funcional da Medula Espinhal",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 43,
+        "titulo": "Hérnia de Disco Cervical",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "13",
+    "slug": "alvaro-diego-heredia-suarez",
+    "nome": "Alvaro Diego Heredia Suarez",
+    "cargo": "Médico Ortopedista e Traumatologia",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6561-9654",
+    "orcid_url": "https://orcid.org/0000-0001-6561-9654",
+    "bio_completa": "Médico Ortopedista e Traumatologia. Especialista em Cirurgia da Coluna Vertebral. Membro da Sociedade Brasileira de Coluna Vertebral (SBC). Pós-Graduado em Cirurgia Endoscópica da Coluna (USP-RP). Instrutor da Residência Médica do Hospital São Vicente de Paulo (HSVP) e da Universidade Federal da Fronteira Sul (UFFS) – Passo Fundo/RS.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologia. Especialista em Cirurgia da Coluna Vertebral. Membro da Sociedade Brasileira de Coluna Vertebral (SBC). Pós-Graduado em Cirurgia Endoscópica da Coluna (USP-RP). Instrutor da Residência Médica do Hospital São Vicente de Paulo (HSVP) e da Universidade Federal da Fronteira Sul (UFFS) – Passo Fundo/RS."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 20,
+        "titulo": "Lesões Traumáticas da Coluna Cervical Alta",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      },
+      {
+        "num": 68,
+        "titulo": "Artrodese Intersomática Lombar Posterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "14",
+    "slug": "alynson-larocca-kulcheski",
+    "nome": "Álynson Larocca Kulcheski",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0132-6083",
+    "orcid_url": "https://orcid.org/0000-0002-0132-6083",
+    "bio_completa": "Médico Ortopedista. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Mestre e Doutor em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Professor Assistente da Disciplina de Ortopedia e Trauma-tologia da Universidade Federal do Paraná (UFPR). Especialista em Ensino Médico pela UFPR. Preceptor da Especialização em Cirurgia de Coluna Vertebral do Hospital do Trabalhador (HT), Curitiba. Membro da Comissão de Ensino e Treinamento da SBOT-PR. Consultor em Cirurgias Minimamente Invasivas da Coluna Vertebral.",
+    "titulacao_academica": [
+      "Médico Ortopedista. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Mestre e Doutor em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Professor Assistente da Disciplina de Ortopedia e Trauma-tologia da Universidade Federal do Paraná (UFPR). Especialista em Ensino Médico pela UFPR. Preceptor da Especialização em Cirurgia de Coluna Vertebral do Hospital do Trabalhador (HT), Curitiba. Membro da Comissão de Ensino e Treinamento da SBOT-PR. Consultor em Cirurgias Minimamente Invasivas da Coluna Vertebral."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 25,
+        "titulo": "Fraturas Vertebrais por Insuficiência",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "15",
+    "slug": "anderson-clayton-cardeal",
+    "nome": "Anderson Clayton Cardeal",
+    "cargo": "R5 do Hospital do Servidor Estadual de São Paulo (HSPE-SP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2032-6222",
+    "orcid_url": "https://orcid.org/0000-0002-2032-6222",
+    "bio_completa": "R5 do Hospital do Servidor Estadual de São Paulo (HSPE-SP). Residência em Ortopedia e Traumatologia pela Faculdade de Medicina da Universidade de São Paulo (USP). Faculdade de Medicina pela Universidade Federal do Triangulo Mineiro (UFTM).",
+    "titulacao_academica": [
+      "R5 do Hospital do Servidor Estadual de São Paulo (HSPE-SP). Residência em Ortopedia e Traumatologia pela Faculdade de Medicina da Universidade de São Paulo (USP). Faculdade de Medicina pela Universidade Federal do Triangulo Mineiro (UFTM)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 26,
+        "titulo": "Deformidades Pós-Traumáticas",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "16",
+    "slug": "andre-flavio-freire-pereira",
+    "nome": "André Flávio Freire Pereira",
+    "cargo": "Médico pela Universidade Federal de Pernambuco (UFPE)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7108-9442",
+    "orcid_url": "https://orcid.org/0000-0001-7108-9442",
+    "bio_completa": "Médico pela Universidade Federal de Pernambuco (UFPE). Residência em Ortopedia e Traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico pela Universidade Federal de Pernambuco (UFPE). Residência em Ortopedia e Traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 29,
+        "titulo": "Tratamento Não Cirúrgico das Escolioses",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "17",
+    "slug": "andre-frazao-rosa",
+    "nome": "André Frazao Rosa",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6765-5552",
+    "orcid_url": "https://orcid.org/0000-0001-6765-5552",
+    "bio_completa": "Médico Assistente do Grupo de Coluna do Departamento de Ortopedia, Reumatologia e Traumatologia da Universi-dade Estadual de Campinas (Unicamp). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Efetivo da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico Assistente do Grupo de Coluna do Departamento de Ortopedia, Reumatologia e Traumatologia da Universi-dade Estadual de Campinas (Unicamp). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Efetivo da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 55,
+        "titulo": "Tumores Metastáticos na Coluna",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "18",
+    "slug": "andre-luis-fernandes-andujar",
+    "nome": "André Luis Fernandes Andujar",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5669-9445",
+    "orcid_url": "https://orcid.org/0000-0001-5669-9445",
+    "bio_completa": "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Infantil Joana de Gusmão e do Hospital de Caridade de Florianópolis.",
+    "titulacao_academica": [
+      "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Infantil Joana de Gusmão e do Hospital de Caridade de Florianópolis."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 38,
+        "titulo": "Espondilolistese na Criança",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 83,
+        "titulo": "Colete Gessado para Escoliose de Início Precoce",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "19",
+    "slug": "andre-luis-sebben",
+    "nome": "André Luís Sebben",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6303-3545",
+    "orcid_url": "https://orcid.org/0000-0001-6303-3545",
+    "bio_completa": "Médico Ortopedista. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Preceptor da Especialização em Cirurgia de Coluna Vertebral do Hospital do Trabalhador (HT), Curitiba. Consultor em Cirurgias Endoscópicas da Coluna Vertebral.",
+    "titulacao_academica": [
+      "Médico Ortopedista. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Preceptor da Especialização em Cirurgia de Coluna Vertebral do Hospital do Trabalhador (HT), Curitiba. Consultor em Cirurgias Endoscópicas da Coluna Vertebral."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 25,
+        "titulo": "Fraturas Vertebrais por Insuficiência",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "20",
+    "slug": "andre-rafael-hubner",
+    "nome": "André Rafael Hübner",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3374-5864",
+    "orcid_url": "https://orcid.org/0000-0002-3374-5864",
+    "bio_completa": "Médico Ortopedista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna Vertebral (SBC). Especialização em Cirurgia da Coluna Vertebral Centre Hospitalier Universitaire CHU-Pellegrin – Prof. Jean M.Vital – Bordeaux-Fr e Centre Aquitaine du Dos Pesac – Fr Prof. Jaques Sènegas. Instrutor da Residência Médica do Hospital São Vicente Paulo (HSVP) e da Universidade Federal da Fronteira Sul (UFFS) – Passo Fundo/RS.",
+    "titulacao_academica": [
+      "Médico Ortopedista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna Vertebral (SBC). Especialização em Cirurgia da Coluna Vertebral Centre Hospitalier Universitaire CHU-Pellegrin – Prof. Jean M.Vital – Bordeaux-Fr e Centre Aquitaine du Dos Pesac – Fr Prof. Jaques Sènegas. Instrutor da Residência Médica do Hospital São Vicente Paulo (HSVP) e da Universidade Federal da Fronteira Sul (UFFS) – Passo Fundo/RS."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 20,
+        "titulo": "Lesões Traumáticas da Coluna Cervical Alta",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "21",
+    "slug": "andrei-fernandes-joaquim",
+    "nome": "Andrei Fernandes Joaquim",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2645-0483",
+    "orcid_url": "https://orcid.org/0000-0003-2645-0483",
+    "bio_completa": "Professor Associado da Disciplina de Neurocirurgia da Universidade Estadual de Campinas (Unicamp).",
+    "titulacao_academica": [
+      "Professor Associado da Disciplina de Neurocirurgia da Universidade Estadual de Campinas (Unicamp)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 109,
+        "titulo": "Capítulo 109",
+        "secao_id": 1,
+        "secao_nome": "Tratado de Cirurgia da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "22",
+    "slug": "antonio-gutemberg-de-s-martins",
+    "nome": "Antonio Gutemberg de S. Martins",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Santa Casa de São Paulo",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0003-6595-792X",
+    "orcid_url": "https://orcid.org/0009-0003-6595-792X",
+    "bio_completa": "Médico Neurocirurgião. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Fellowship em Cirurgia de Coluna pelo Hospital São José – Santa Casa de Porto Alegre.",
+    "titulacao_academica": [
+      "Médico Neurocirurgião. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Fellowship em Cirurgia de Coluna pelo Hospital São José – Santa Casa de Porto Alegre."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 72,
+        "titulo": "Artrodese Lombar Anterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "23",
+    "slug": "aquila-matos-soares",
+    "nome": "Áquila Matos Soares",
+    "cargo": "Médico Graduado pela Universidade Federal da Paraíba (UFPB)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0008-9339-1931",
+    "orcid_url": "https://orcid.org/0009-0008-9339-1931",
+    "bio_completa": "Médico Graduado pela Universidade Federal da Paraíba (UFPB). Residência Médica em Neurocirurgia pelo Hospital Geral de Fortaleza. Título de Especialista em Neurocirurgia pela Sociedade Brasileira de Neurocirurgia (SBN) e pela Associação Médica Brasileira (AMB). Fellowship em Cirurgia da Coluna Vertebral pelo HC da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP).",
+    "titulacao_academica": [
+      "Médico Graduado pela Universidade Federal da Paraíba (UFPB). Residência Médica em Neurocirurgia pelo Hospital Geral de Fortaleza. Título de Especialista em Neurocirurgia pela Sociedade Brasileira de Neurocirurgia (SBN) e pela Associação Médica Brasileira (AMB). Fellowship em Cirurgia da Coluna Vertebral pelo HC da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 77,
+        "titulo": "Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "24",
+    "slug": "arthur-sampaio-facanha",
+    "nome": "Arthur Sampaio Façanha",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7489-0745",
+    "orcid_url": "https://orcid.org/0000-0001-7489-0745",
+    "bio_completa": "Fellow em Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP).",
+    "titulacao_academica": [
+      "Fellow em Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 80,
+        "titulo": "Técnicas de Fixação na Coluna Osteoporótica",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 90,
+        "titulo": "Cirurgia Complexa dos Tumores Cervicais",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "25",
+    "slug": "asdrubal-falavigna",
+    "nome": "Asdrubal Falavigna",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0016-3198",
+    "orcid_url": "https://orcid.org/0000-0002-0016-3198",
+    "bio_completa": "Médico Neurocirurgião. Mestre e Doutor pela Universidade Federal de São Paulo (USP). Vice-Reitor da Universidade de Caxias do Sul. Membro do Conselho da Fundação AO (Associação AOSpine Latin America).",
+    "titulacao_academica": [
+      "Médico Neurocirurgião. Mestre e Doutor pela Universidade Federal de São Paulo (USP). Vice-Reitor da Universidade de Caxias do Sul. Membro do Conselho da Fundação AO (Associação AOSpine Latin America)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 42,
+        "titulo": "Fisiopatologia da Degeneração Discal",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "26",
+    "slug": "bernardo-drummond-braga",
+    "nome": "Bernardo Drummond Braga",
+    "cargo": "Médico Neurocirurgião do Instituto de Neurologia de Goiânia",
+    "instituicao": "Universidade Federal de Minas Gerais (UFMG)",
+    "destaque": "Autor de 3 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8027-0929",
+    "orcid_url": "https://orcid.org/0000-0002-8027-0929",
+    "bio_completa": "Médico Neurocirurgião do Instituto de Neurologia de Goiânia. Professor da Neurocirurgia da Universidade Federal de Goiás (UFG). Mestre em Cirurgia pela Universidade Federal de Minas Gerais (UFMG). Doutor em Ciências da Saúde pela UFG.",
+    "titulacao_academica": [
+      "Médico Neurocirurgião do Instituto de Neurologia de Goiânia. Professor da Neurocirurgia da Universidade Federal de Goiás (UFG). Mestre em Cirurgia pela Universidade Federal de Minas Gerais (UFMG). Doutor em Ciências da Saúde pela UFG."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 3,
+        "titulo": "Neuroanatomia Funcional da Medula Espinhal",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 43,
+        "titulo": "Hérnia de Disco Cervical",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      },
+      {
+        "num": 67,
+        "titulo": "Endoscopia Unilateral Biportal",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "27",
+    "slug": "brian-guilherme-monteiro-marta-coimbra",
+    "nome": "Brian Guilherme Monteiro Marta Coimbra",
+    "cargo": "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5461-3644",
+    "orcid_url": "https://orcid.org/0000-0001-5461-3644",
+    "bio_completa": "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP).",
+    "titulacao_academica": [
+      "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 54,
+        "titulo": "Tumores Ósseos Primários Malignos",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "28",
+    "slug": "bruno-da-costa-ancheschi",
+    "nome": "Bruno da Costa Ancheschi",
+    "cargo": "Médico pela Universidade Estadual Paulista (UNESP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0890-4456",
+    "orcid_url": "https://orcid.org/0000-0002-0890-4456",
+    "bio_completa": "Médico pela Universidade Estadual Paulista (UNESP). Ortopedista e Traumatologista pela UNESP. Título pela Sociedade Brasileira de Ortopedia (SBOT). Fellow em Cirurgia da Coluna Vertebral pela Universidade de São Paulo (USP-Ribeirão Preto). Mestre em Ciências da Saúde Aplicadas ao Aparelho Loco-motor (USP-Ribeirão Preto). Título pela Sociedade Brasileira de Coluna (SBC). Médico Assistente do Departamento de Ortopedia da Faculdade de Medicina de Botucatu (UNESP)",
+    "titulacao_academica": [
+      "Médico pela Universidade Estadual Paulista (UNESP). Ortopedista e Traumatologista pela UNESP. Título pela Sociedade Brasileira de Ortopedia (SBOT). Fellow em Cirurgia da Coluna Vertebral pela Universidade de São Paulo (USP-Ribeirão Preto). Mestre em Ciências da Saúde Aplicadas ao Aparelho Loco-motor (USP-Ribeirão Preto). Título pela Sociedade Brasileira de Coluna (SBC). Médico Assistente do Departamento de Ortopedia da Faculdade de Medicina de Botucatu (UNESP)"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 4,
+        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 93,
+        "titulo": "Infecções Pós-Operatórias",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "29",
+    "slug": "bruno-pinto-coelho-fontes",
+    "nome": "Bruno Pinto Coelho Fontes",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7381-7298",
+    "orcid_url": "https://orcid.org/0000-0001-7381-7298",
+    "bio_completa": "Médico Ortopedista Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e Sociedade Brasileira de Coluna (SBC). Chefe do Serviço de Cirurgia de Coluna do Hospital da Baleia (Belo Horizonte/MG).",
+    "titulacao_academica": [
+      "Médico Ortopedista Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e Sociedade Brasileira de Coluna (SBC). Chefe do Serviço de Cirurgia de Coluna do Hospital da Baleia (Belo Horizonte/MG)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 85,
+        "titulo": "Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "30",
+    "slug": "caio-cesar-nogueira-de-figueiredo",
+    "nome": "Caio César Nogueira de Figueiredo",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-1170-3595",
+    "orcid_url": "https://orcid.org/0009-0007-1170-3595",
+    "bio_completa": "Departamento de Ortopedia e Traumatologia do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HCFM-USP).",
+    "titulacao_academica": [
+      "Departamento de Ortopedia e Traumatologia do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HCFM-USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 24,
+        "titulo": "Lesões Traumáticas da Coluna na Infância",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      },
+      {
+        "num": 28,
+        "titulo": "Escoliose de Início Precoce",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "31",
+    "slug": "carlos-abreu-de-aguiar",
+    "nome": "Carlos Abreu de Aguiar",
+    "cargo": "Médico Ortopedista e Traumatologista pelo Hospital Universitário Cajuru",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-4310-6537",
+    "orcid_url": "https://orcid.org/0000-0003-4310-6537",
+    "bio_completa": "Médico Ortopedista e Traumatologista pelo Hospital Universitário Cajuru. Especialização em Ortopedia Pediátrica pelo Hospital Pequeno Príncipe. Fellow em Deformidades da Coluna Pediátrica pela University of Iowa Hospitals and Clinics. Membro da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Ortopedia Pediátrica (SBOP), da Sociedade Brasileira de Coluna (SBC), AOSpine e da Sociedade Brasileira da Coluna (SBC). Médico do Hospital Pequeno Príncipe.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista pelo Hospital Universitário Cajuru. Especialização em Ortopedia Pediátrica pelo Hospital Pequeno Príncipe. Fellow em Deformidades da Coluna Pediátrica pela University of Iowa Hospitals and Clinics. Membro da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Ortopedia Pediátrica (SBOP), da Sociedade Brasileira de Coluna (SBC), AOSpine e da Sociedade Brasileira da Coluna (SBC). Médico do Hospital Pequeno Príncipe."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 30,
+        "titulo": "Escoliose Neuromuscular",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 33,
+        "titulo": "Deformidades Congênitas da Coluna Vertebral",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "32",
+    "slug": "carlos-andres-amelunge-rodriguez",
+    "nome": "Carlos Andres Amelunge Rodriguez",
+    "cargo": "Médico pela Universidad Autónoma Gabriel René Moreno (Santa Cruz de la Sierra – Bolívia)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0877-9624",
+    "orcid_url": "https://orcid.org/0000-0002-0877-9624",
+    "bio_completa": "Médico pela Universidad Autónoma Gabriel René Moreno (Santa Cruz de la Sierra – Bolívia). Ortopedista e Traumatologista pela Fundação Centro Médico de Campinas (FCMC). Fellowship em Cirurgia da Coluna Vertebral pela FCMC e pela Pontifícia Universidade Católica de Campinas (PUC-Campinas).",
+    "titulacao_academica": [
+      "Médico pela Universidad Autónoma Gabriel René Moreno (Santa Cruz de la Sierra – Bolívia). Ortopedista e Traumatologista pela Fundação Centro Médico de Campinas (FCMC). Fellowship em Cirurgia da Coluna Vertebral pela FCMC e pela Pontifícia Universidade Católica de Campinas (PUC-Campinas)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 22,
+        "titulo": "Lesões Traumáticas da Coluna Torácica e Lombar",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "33",
+    "slug": "carlos-eduardo-garcez-teixeira",
+    "nome": "Carlos Eduardo Garcez Teixeira",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5340-6894",
+    "orcid_url": "https://orcid.org/0000-0002-5340-6894",
+    "bio_completa": "Médico Reumatologista pelo Hospital de Clínicas da Universidade Estadual de Campinas (HC-Unicamp). Doutorando pelo Programa de Pós-Graduação em Clínica Médica da Faculdade de Ciências Médicas (FCM-Unicamp). Reumatologista Assistente no Centro de Dispensação de Medicamentos de Alto Custo (CEDMAC-Unicamp).",
+    "titulacao_academica": [
+      "Médico Reumatologista pelo Hospital de Clínicas da Universidade Estadual de Campinas (HC-Unicamp). Doutorando pelo Programa de Pós-Graduação em Clínica Médica da Faculdade de Ciências Médicas (FCM-Unicamp). Reumatologista Assistente no Centro de Dispensação de Medicamentos de Alto Custo (CEDMAC-Unicamp)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 59,
         "titulo": "Doenças Reumáticas da Coluna Vertebral",
         "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doenças reumáticas da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Tumores e Infecções da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 59: Doenças Reumáticas da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap59"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "32",
+    "id": "34",
     "slug": "carlos-eduardo-goncales-barsotti",
-    "nome": "Dr. Carlos Eduardo Gonçales Barsotti",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 26 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Carlos Eduardo Gonçales Barsotti é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Carlos Eduardo Gonçales Barsotti",
+    "cargo": "Faculdade de Medicina pela Universidade de São Paulo (USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-2322-7047",
+    "orcid_url": "https://orcid.org/0009-0007-2322-7047",
+    "bio_completa": "Faculdade de Medicina pela Universidade de São Paulo (USP). Coordenador do Fellowship de Coluna Vertebral do Hospital do Servidor Estadual de São Paulo (HSPE-SP). Mestre em Ortopedia pelo HSPE-SP. Residência em Ortopedia e Traumatologia na Faculdade de Medicina da USP.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Faculdade de Medicina pela Universidade de São Paulo (USP). Coordenador do Fellowship de Coluna Vertebral do Hospital do Servidor Estadual de São Paulo (HSPE-SP). Mestre em Ortopedia pelo HSPE-SP. Residência em Ortopedia e Traumatologia na Faculdade de Medicina da USP."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 26,
         "titulo": "Deformidades Pós-Traumáticas",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades pós-traumáticas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 26: Deformidades Pós-Traumáticas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap26"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "33",
+    "id": "35",
     "slug": "charbel-jacob-junior",
-    "nome": "Dr. Charbel Jacob Junior",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Charbel Jacob Junior",
+    "cargo": "Médico Ortopedista Especialista em Coluna",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Charbel Jacob Junior é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-1301-5805",
+    "orcid_url": "https://orcid.org/0000-0002-1301-5805",
+    "bio_completa": "Médico Ortopedista Especialista em Coluna.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista Especialista em Coluna."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 18,
         "titulo": "Avaliação da Coluna do Paciente Politraumatizado",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de avaliação da coluna do paciente politraumatizado pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       },
       {
         "num": 96,
         "titulo": "Doença do Nível Adjacente",
         "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doença do nível adjacente pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 18: Avaliação da Coluna do Paciente Politraumatizado",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap18"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 96: Doença do Nível Adjacente",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap96"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "34",
+    "id": "36",
     "slug": "charles-andre-carazzo",
-    "nome": "Dr. Charles André Carazzo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 17 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Charles André Carazzo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Charles André Carazzo",
+    "cargo": "Médico Graduado pela Universidade de Passo Fundo (UPF)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6339-2214",
+    "orcid_url": "https://orcid.org/0000-0001-6339-2214",
+    "bio_completa": "Médico Graduado pela Universidade de Passo Fundo (UPF). Residência em Neurocirurgia pelo Hospital São Vicente de Paulo (HSVP) e pelo Instituto de Neurologia e Neurocirurgia (INN) de Passo Fundo, RS. Fellow em Cirurgia da Coluna Vertebral no Hospital das Clínicas da Universidade de São Paulo (HC-USP). Fellow em Cirurgia da Coluna Vertebral na Universidade de Ulm, Alemanha. Título de Especialista em Dor pela Associação Médica Brasileira (AMB). Mestrado e Doutorado pela Universidade de Caxias do Sul (UCS). Médico Neurocirurgião do HSVP e INN de Passo Fundo, RS. Coordenador do Fellow de Coluna do INN-HSVP/Sociedade Brasileira de Coluna (SBC). Professor de Neurocirurgia da Escola de Medicina da Universidade de Passo Fundo (UPF).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado pela Universidade de Passo Fundo (UPF). Residência em Neurocirurgia pelo Hospital São Vicente de Paulo (HSVP) e pelo Instituto de Neurologia e Neurocirurgia (INN) de Passo Fundo, RS. Fellow em Cirurgia da Coluna Vertebral no Hospital das Clínicas da Universidade de São Paulo (HC-USP). Fellow em Cirurgia da Coluna Vertebral na Universidade de Ulm, Alemanha. Título de Especialista em Dor pela Associação Médica Brasileira (AMB). Mestrado e Doutorado pela Universidade de Caxias do Sul (UCS). Médico Neurocirurgião do HSVP e INN de Passo Fundo, RS. Coordenador do Fellow de Coluna do INN-HSVP/Sociedade Brasileira de Coluna (SBC). Professor de Neurocirurgia da Escola de Medicina da Universidade de Passo Fundo (UPF)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 17,
         "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico diferencial: doenças da coluna e doenças neurológicas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 17: Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap17"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "35",
+    "id": "37",
     "slug": "cheila-mara-freu",
-    "nome": "Dr. Cheila Mara Freu",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Cheila Mara Freu",
+    "cargo": "Enfermeira Mestra em Gestão do Cuidado em Enfermagem",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 83 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Cheila Mara Freu é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2722-6478",
+    "orcid_url": "https://orcid.org/0000-0002-2722-6478",
+    "bio_completa": "Enfermeira Mestra em Gestão do Cuidado em Enfermagem.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Enfermeira Mestra em Gestão do Cuidado em Enfermagem."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 83,
         "titulo": "Colete Gessado para Escoliose de Início Precoce",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de colete gessado para escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 83: Colete Gessado para Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap83"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "36",
+    "id": "38",
     "slug": "chiara-cini",
-    "nome": "Dr. Chiara Cini",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Chiara Cini é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Chiara Cini",
+    "cargo": "Departamento de Cirurgia da Coluna, IRCCS Instituto Ortopédico Rizzoli, Bolonha, Itália",
+    "instituicao": "Istituto Ortopedico Rizzoli (Itália)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "",
+    "orcid_url": "",
+    "bio_completa": "Departamento de Cirurgia da Coluna, IRCCS Instituto Ortopédico Rizzoli, Bolonha, Itália.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Departamento de Cirurgia da Coluna, IRCCS Instituto Ortopédico Rizzoli, Bolonha, Itália."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 88,
         "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "37",
+    "id": "39",
     "slug": "christiano-esteves-simoes",
-    "nome": "Dr. Christiano Esteves Simões",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Christiano Esteves Simões é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Christiano Esteves Simões",
+    "cargo": "Médico Ortopedista do Departamento de Ortopedia e Traumatologia do Hospital Felício Rocho",
+    "instituicao": "Santa Casa de São Paulo",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-1278-9829",
+    "orcid_url": "https://orcid.org/0009-0007-1278-9829",
+    "bio_completa": "Médico Ortopedista do Departamento de Ortopedia e Traumatologia do Hospital Felício Rocho. Especialização em Cirurgia da Coluna Vertebral pela Pontifícia Universidade Católica do Paraná e pelo Departamento de Cirurgia Vertebral Oncológica e Degenerativa do Instituto Ortopédico Rizzoli, Bologna, Itália. Mestre em Medicina pelo Instituto de Ensino e Pesquisa da Santa Casa de Misericórdia de Belo Horizonte.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista do Departamento de Ortopedia e Traumatologia do Hospital Felício Rocho. Especialização em Cirurgia da Coluna Vertebral pela Pontifícia Universidade Católica do Paraná e pelo Departamento de Cirurgia Vertebral Oncológica e Degenerativa do Instituto Ortopédico Rizzoli, Bologna, Itália. Mestre em Medicina pelo Instituto de Ensino e Pesquisa da Santa Casa de Misericórdia de Belo Horizonte."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 88,
         "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       },
       {
         "num": 89,
         "titulo": "Sacrectomia",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de sacrectomia pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 89: Sacrectomia",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap89"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "38",
+    "id": "40",
     "slug": "christopher-cralcev",
-    "nome": "Dr. Christopher Cralcev",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Christopher Cralcev",
+    "cargo": "Médico Hematologista",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 105 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Christopher Cralcev é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0005-0266-610X",
+    "orcid_url": "https://orcid.org/0009-0005-0266-610X",
+    "bio_completa": "Médico Hematologista.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Hematologista."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 105,
         "titulo": "Controle do Sangramento Intraoperatório",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de controle do sangramento intraoperatório pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 105: Controle do Sangramento Intraoperatório",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap105"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "39",
+    "id": "41",
     "slug": "claudio-e-tatsui",
-    "nome": "Dr. Claudio E. Tatsui",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Claudio E. Tatsui",
+    "cargo": "Professor Department of Neurosurgery University of Texas MD Anderson Cancer Center",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 91 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Claudio E. Tatsui é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3615-0268",
+    "orcid_url": "https://orcid.org/0000-0002-3615-0268",
+    "bio_completa": "Professor Department of Neurosurgery University of Texas MD Anderson Cancer Center.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Department of Neurosurgery University of Texas MD Anderson Cancer Center."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 91,
         "titulo": "Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas minimamente invasivas para tratamento e adjuvância nos tumores da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 91: Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap91"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "40",
+    "id": "42",
     "slug": "clineu-de-mello-almada-filho",
-    "nome": "Dr. Clineu de Mello Almada Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 108 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Clineu de Mello Almada Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Clineu de Mello Almada Filho",
+    "cargo": "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0647-0439",
+    "orcid_url": "https://orcid.org/0000-0002-0647-0439",
+    "bio_completa": "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos. Residência em Clínica Médica. Mestrado e Doutorado pela Universidade Federal de São Paulo. Especialista em Clínica Médica e em Geriatria pela Asso-ciação Médica Brasileira. Coordenador da Unidade Hospitalar Geriátrica da Disciplina de Geriatria e Gerontologia da Escola Paulista de Medicina (UNIFESP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos. Residência em Clínica Médica. Mestrado e Doutorado pela Universidade Federal de São Paulo. Especialista em Clínica Médica e em Geriatria pela Asso-ciação Médica Brasileira. Coordenador da Unidade Hospitalar Geriátrica da Disciplina de Geriatria e Gerontologia da Escola Paulista de Medicina (UNIFESP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 108,
         "titulo": "Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de manejo do paciente frágil com sarcopenia em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 108: Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap108"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "41",
+    "id": "43",
     "slug": "cristiano-magalhaes-menezes",
-    "nome": "Dr. Cristiano Magalhães Menezes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Ex-Presidente SBC / Especialista em Coluna",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Cristiano Magalhães Menezes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Cristiano Magalhães Menezes",
+    "cargo": "Doutor pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6670-5159",
+    "orcid_url": "https://orcid.org/0000-0001-6670-5159",
+    "bio_completa": "Doutor pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Professor Convidado do Departamento do Aparelho Loco-motor da Universidade Federal de Minas Gerais (UFMG). Presidente da Sociedade Brasileira da Coluna (SBC) 2021-22. Chefe do Serviço Instituto Columna, Belo Horizonte, MG.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Doutor pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Professor Convidado do Departamento do Aparelho Loco-motor da Universidade Federal de Minas Gerais (UFMG). Presidente da Sociedade Brasileira da Coluna (SBC) 2021-22. Chefe do Serviço Instituto Columna, Belo Horizonte, MG."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 7,
         "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Lombar e Lombossacra",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna lombar e lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 69,
         "titulo": "Artrodese Lombar em Single-Position Lateral",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar em single-position lateral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 7: Anatomia Cirúrgica e Vias de Acesso da Coluna Lombar e Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap7"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 69: Artrodese Lombar em Single-Position Lateral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap69"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "42",
+    "id": "44",
     "slug": "daiane-gallina",
-    "nome": "Dr. Daiane Gallina",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 106 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Daiane Gallina é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Daiane Gallina",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Santa Casa de São Paulo",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6928-7789",
+    "orcid_url": "https://orcid.org/0000-0002-6928-7789",
+    "bio_completa": "Médico Ortopedista e Traumatologista pelo Hospital Universitário de Santa Maria da Universidade Federal de Santa Maria (HUSM/UFSM-RS). Cirurgia da Coluna Vertebral pela Santa Casa de POA-RS.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista pelo Hospital Universitário de Santa Maria da Universidade Federal de Santa Maria (HUSM/UFSM-RS). Cirurgia da Coluna Vertebral pela Santa Casa de POA-RS."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 106,
         "titulo": "Uso de Órteses na Coluna Vertebral",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de uso de órteses na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 106: Uso de Órteses na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap106"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "43",
+    "id": "45",
     "slug": "daniel-duarte-perini",
-    "nome": "Dr. Daniel Duarte Perini",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Daniel Duarte Perini é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Daniel Duarte Perini",
+    "cargo": "Médico pela Faculdade de Medicina da Universidade de São Paulo (USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0005-1225-0028",
+    "orcid_url": "https://orcid.org/0009-0005-1225-0028",
+    "bio_completa": "Médico pela Faculdade de Medicina da Universidade de São Paulo (USP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pela Faculdade de Medicina da Universidade de São Paulo (USP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 35,
         "titulo": "Escoliose do Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose do adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 54,
         "titulo": "Tumores Ósseos Primários Malignos",
         "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores ósseos primários malignos pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 35: Escoliose do Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap35"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 54: Tumores Ósseos Primários Malignos",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap54"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "44",
+    "id": "46",
     "slug": "david-del-curto",
-    "nome": "Dr. David Del Curto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 65 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. David Del Curto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "David Del Curto",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6273-3723",
+    "orcid_url": "https://orcid.org/0000-0002-6273-3723",
+    "bio_completa": "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Especialista em Ortopedia e Traumatologia pela EPM. Especialista em Patologias da Coluna Vertebral pela EPM.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Especialista em Ortopedia e Traumatologia pela EPM. Especialista em Patologias da Coluna Vertebral pela EPM."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 65,
         "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 65: Endoscopia na Coluna Cervical pela Via Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap65"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "45",
-    "slug": "delio-eulalio-martins",
-    "nome": "Dr. Delio Eulálio Martins",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 10 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Delio Eulálio Martins é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "47",
+    "slug": "debora-yumi-yoshimura-orlandin-alves",
+    "nome": "Débora Yumi Yoshimura Orlandin Alves",
+    "cargo": "Médica Graduada pela Faculdade de Medicina da Universi-dade de São Paulo (FMUSP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0668-9473",
+    "orcid_url": "https://orcid.org/0000-0002-0668-9473",
+    "bio_completa": "Médica Graduada pela Faculdade de Medicina da Universi-dade de São Paulo (FMUSP). Residência em Ortopedia eTraumatologia pelo Hospital das Clinicas da Faculdade de Medicina da USP (IOT-HCFMUSP). Título de Ortopedista pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialização em Cirurgia de Coluna Vertebral pelo Hospital das Clinicas da Faculdade de Medicina da (USP-HCFMUSP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médica Graduada pela Faculdade de Medicina da Universi-dade de São Paulo (FMUSP). Residência em Ortopedia eTraumatologia pelo Hospital das Clinicas da Faculdade de Medicina da USP (IOT-HCFMUSP). Título de Ortopedista pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialização em Cirurgia de Coluna Vertebral pelo Hospital das Clinicas da Faculdade de Medicina da (USP-HCFMUSP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 36,
+        "titulo": "Escoliose nas Síndromes Genéticas",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 79,
+        "titulo": "Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "48",
+    "slug": "delio-eulalio-martins",
+    "nome": "Delio Eulálio Martins",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5510-3507",
+    "orcid_url": "https://orcid.org/0000-0001-5510-3507",
+    "bio_completa": "Doutorado em Ciências e Pós-Doutorado em Ciências Biológicas pela Universidade Federal de São Paulo (USP).",
+    "titulacao_academica": [
+      "Doutorado em Ciências e Pós-Doutorado em Ciências Biológicas pela Universidade Federal de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 10,
         "titulo": "Biomecânica dos Implantes nas Fixações Vertebrais",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de biomecânica dos implantes nas fixações vertebrais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 10: Biomecânica dos Implantes nas Fixações Vertebrais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap10"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "46",
+    "id": "49",
     "slug": "denis-seguchi-sakai",
-    "nome": "Dr. Denis Seguchi Sakai",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 87 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Denis Seguchi Sakai é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Denis Seguchi Sakai",
+    "cargo": "Médico pela Universidade Estadual de Campinas (Unicamp)",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3201-7718",
+    "orcid_url": "https://orcid.org/0000-0002-3201-7718",
+    "bio_completa": "Médico pela Universidade Estadual de Campinas (Unicamp). Ortopedia e Traumatologia (FCM Santa Casa SP). Fellow em Cirurgia da Coluna Vertebral pela FCM Santa Casa SP. Research Fellowship pelo The Children’s Hospital of Philadelphia. Mestre em Ciências da Cirurgia pela Unicamp.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pela Universidade Estadual de Campinas (Unicamp). Ortopedia e Traumatologia (FCM Santa Casa SP). Fellow em Cirurgia da Coluna Vertebral pela FCM Santa Casa SP. Research Fellowship pelo The Children’s Hospital of Philadelphia. Mestre em Ciências da Cirurgia pela Unicamp."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 87,
         "titulo": "Técnicas de Correção Cirúrgica das Deformidades da Coluna Vertebral",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de correção cirúrgica das deformidades da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 87: Técnicas de Correção Cirúrgica das Deformidades da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap87"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "47",
+    "id": "50",
     "slug": "deoclides-lima-bezerra-junior",
-    "nome": "Dr. Deoclides Lima Bezerra Júnior",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Deoclides Lima Bezerra Júnior",
+    "cargo": "Médico Neurocirurgião",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 74 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Deoclides Lima Bezerra Júnior é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6493-350X",
+    "orcid_url": "https://orcid.org/0000-0002-6493-350X",
+    "bio_completa": "Médico Neurocirurgião. Membro Efetivo da Sociedade Brasileira de Neurocirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC). Preceptor do Serviço de Neurocirurgia do Hospital da Restauração – Recife (PE). Fellowship no National Hospital for Neurology and Neuro-surgery (UCL).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Membro Efetivo da Sociedade Brasileira de Neurocirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC). Preceptor do Serviço de Neurocirurgia do Hospital da Restauração – Recife (PE). Fellowship no National Hospital for Neurology and Neuro-surgery (UCL)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 74,
         "titulo": "Técnicas Cirúrgicas para a Fixação da Coluna Cervical Alta",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas cirúrgicas para a fixação da coluna cervical alta pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 74: Técnicas Cirúrgicas para a Fixação da Coluna Cervical Alta",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap74"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "48",
+    "id": "51",
     "slug": "diogo-nogueira-ribeiro",
-    "nome": "Dr. Diogo Nogueira Ribeiro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Diogo Nogueira Ribeiro",
+    "cargo": "Médico Ortopedista pelo Hospital Madre Teresa",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Diogo Nogueira Ribeiro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0004-3499-0089",
+    "orcid_url": "https://orcid.org/0009-0004-3499-0089",
+    "bio_completa": "Médico Ortopedista pelo Hospital Madre Teresa. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especializando em Cirurgia da Coluna pelo Hospital Madre Teresa.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista pelo Hospital Madre Teresa. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especializando em Cirurgia da Coluna pelo Hospital Madre Teresa."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 3,
         "titulo": "Neuroanatomia Funcional da Medula Espinhal",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neuroanatomia funcional da medula espinhal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 43,
         "titulo": "Hérnia de Disco Cervical",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 3: Neuroanatomia Funcional da Medula Espinhal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap3"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 43: Hérnia de Disco Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap43"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "49",
+    "id": "52",
     "slug": "douglas-kenji-narazaki",
-    "nome": "Dr. Douglas Kenji Narazaki",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 90 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Douglas Kenji Narazaki é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Douglas Kenji Narazaki",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7895-4830",
+    "orcid_url": "https://orcid.org/0000-0001-7895-4830",
+    "bio_completa": "Chefe do Grupo da Coluna Vertebral do Instituto do Câncer do Estado de São Paulo - Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (USP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Chefe do Grupo da Coluna Vertebral do Instituto do Câncer do Estado de São Paulo - Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (USP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 90,
         "titulo": "Cirurgia Complexa dos Tumores Cervicais",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cirurgia complexa dos tumores cervicais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 90: Cirurgia Complexa dos Tumores Cervicais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap90"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "50",
-    "slug": "debora-yumi-yoshimura-orlandin-alves",
-    "nome": "Dr. Débora Yumi Yoshimura Orlandin Alves",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Débora Yumi Yoshimura Orlandin Alves é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 36,
-        "titulo": "Escoliose nas Síndromes Genéticas",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose nas síndromes genéticas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 79,
-        "titulo": "Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação do ilíaco – técnica s2 alar ilíaco pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 36: Escoliose nas Síndromes Genéticas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap36"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 79: Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap79"
-      }
-    ]
-  },
-  {
-    "id": "51",
+    "id": "53",
     "slug": "edelvan-gabana",
-    "nome": "Dr. Edelvan Gabana",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 64 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Edelvan Gabana é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Edelvan Gabana",
+    "cargo": "Ortopedista Assistente do Grupo de Coluna do IOT- -HCFMUSP",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3054-8731",
+    "orcid_url": "https://orcid.org/0000-0003-3054-8731",
+    "bio_completa": "Ortopedista Assistente do Grupo de Coluna do IOT- -HCFMUSP.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Ortopedista Assistente do Grupo de Coluna do IOT- -HCFMUSP."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 64,
         "titulo": "Cirurgia Endoscópica Uniportal no Segmento Torácico",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cirurgia endoscópica uniportal no segmento torácico pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 64: Cirurgia Endoscópica Uniportal no Segmento Torácico",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap64"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "52",
+    "id": "54",
     "slug": "edilson-silva-machado",
-    "nome": "Dr. Edilson Silva Machado",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Edilson Silva Machado",
+    "cargo": "Médico Ortopedista com Área de Atuação em Dor",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 50 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Edilson Silva Machado é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0332-572X",
+    "orcid_url": "https://orcid.org/0000-0002-0332-572X",
+    "bio_completa": "Médico Ortopedista com Área de Atuação em Dor. Mestre em Diagnóstico Genético e Molecular. Doutor em Medicina. Presidente da Sociedade Gaúcha para o Estudo da Dor (2017-2021). Sócio Fundador da Academia Brasileira de Medicina Regenerativa, da Sociedade Brasileira de Regeneração Tecidual e da Associação Brasileira de Dor. Membro Efetivo da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Coluna (SBC), da Sociedade Brasileira para o Estudo da Dor (SBED) e da Sociedade Brasileira de Médicos Intervencionistas em Dor (SOBRAMID). Membro da Comissão de Ortopedia Regenerativa e Terapia Celular da SBOT (2018- 2024).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista com Área de Atuação em Dor. Mestre em Diagnóstico Genético e Molecular. Doutor em Medicina. Presidente da Sociedade Gaúcha para o Estudo da Dor (2017-2021). Sócio Fundador da Academia Brasileira de Medicina Regenerativa, da Sociedade Brasileira de Regeneração Tecidual e da Associação Brasileira de Dor. Membro Efetivo da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Coluna (SBC), da Sociedade Brasileira para o Estudo da Dor (SBED) e da Sociedade Brasileira de Médicos Intervencionistas em Dor (SOBRAMID). Membro da Comissão de Ortopedia Regenerativa e Terapia Celular da SBOT (2018- 2024)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 50,
         "titulo": "Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de medicina regenerativa no manejo da doença degenerativa da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 50: Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap50"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "53",
+    "id": "55",
     "slug": "edson-pudles",
-    "nome": "Dr. Edson Pudles",
-    "crm": "Membro Titular SBC",
-    "cargo": "Editor-Chefe / SBC",
+    "nome": "Edson Pudles",
+    "cargo": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 4 capítulo(s) no Tratado Oficial da SBC",
+    "destaque": "Autor de 4 Capítulos no Tratado SBC",
     "foto_url": "/assets/edson-pudles.png",
-    "bio_completa": "Presidente de Honra da Sociedade Brasileira de Coluna (SBC) e uma das maiores autoridades da América Latina no tratamento cirúrgico de deformidades complexas da coluna vertebral e planejamento cirúrgico tridimensional. Liderou a concepção, padronização científica e coordenação dos mais de 200 especialistas que colaboraram na redação dos 109 capítulos deste Tratado Oficial da SBC.",
+    "orcid": "0000-0001-9816-2945",
+    "orcid_url": "https://orcid.org/0000-0001-9816-2945",
+    "bio_completa": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Hospital Universitário Evangélico Mackenzie em Curitiba-PR. Hospital São Vicente de Curitiba-PR.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Hospital Universitário Evangélico Mackenzie em Curitiba-PR. Hospital São Vicente de Curitiba-PR."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 21,
         "titulo": "Lesões Traumáticas da Coluna Cervical Subaxial",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna cervical subaxial pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       },
       {
         "num": 27,
         "titulo": "Introdução às Deformidades da Coluna Vertebral",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de introdução às deformidades da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 47,
         "titulo": "Instabilidade Vertebral",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de instabilidade vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       },
       {
         "num": 58,
         "titulo": "Infecção Primária da Coluna Vertebral",
         "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infecção primária da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Tumores e Infecções da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 21: Lesões Traumáticas da Coluna Cervical Subaxial",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap21"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 27: Introdução às Deformidades da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap27"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 47: Instabilidade Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap47"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 58: Infecção Primária da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap58"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "54",
+    "id": "56",
     "slug": "egon-ewaldo-lindorfer-neto",
-    "nome": "Dr. Egon Ewaldo Lindorfer Neto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Egon Ewaldo Lindorfer Neto",
+    "cargo": "Médico Neurocirurgião",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 75 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Egon Ewaldo Lindorfer Neto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0002-1863-6130",
+    "orcid_url": "https://orcid.org/0009-0002-1863-6130",
+    "bio_completa": "Médico Neurocirurgião. Fellowship em Cirurgia de Coluna Vertebral no Instituto de Neurologia de Curitiba. Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Fellowship em Cirurgia de Coluna Vertebral no Instituto de Neurologia de Curitiba. Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 75,
         "titulo": "Técnicas de Fixação Cervical Anterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de fixação cervical anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 75: Técnicas de Fixação Cervical Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap75"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "55",
+    "id": "57",
     "slug": "emiliano-neves-vialle",
-    "nome": "Dr. Emiliano Neves Vialle",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 19 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Emiliano Neves Vialle é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Emiliano Neves Vialle",
+    "cargo": "Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR)",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1157-4889",
+    "orcid_url": "https://orcid.org/0000-0003-1157-4889",
+    "bio_completa": "Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Doutor em Ciências da Saúde pela Pontifícia Universidade Católica do Paraná (PUC-PR). Chefe do Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru, PUC-PR. Chefe do Grupo de Coluna do Hospital Universitário Cajuru, PUC-PR.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Doutor em Ciências da Saúde pela Pontifícia Universidade Católica do Paraná (PUC-PR). Chefe do Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru, PUC-PR. Chefe do Grupo de Coluna do Hospital Universitário Cajuru, PUC-PR."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 19,
         "titulo": "Trauma Raquimedular",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de trauma raquimedular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 19: Trauma Raquimedular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap19"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "56",
+    "id": "58",
     "slug": "enzo-pasetto-righesso",
-    "nome": "Dr. Enzo Pasetto Righesso",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Enzo Pasetto Righesso",
+    "cargo": "Acadêmico de Medicina do 1º ano da Universidade de Caxias do Sul (UCS)",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 42 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Enzo Pasetto Righesso é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0002-3217-4868",
+    "orcid_url": "https://orcid.org/0009-0002-3217-4868",
+    "bio_completa": "Acadêmico de Medicina do 1º ano da Universidade de Caxias do Sul (UCS).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Acadêmico de Medicina do 1º ano da Universidade de Caxias do Sul (UCS)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 42,
         "titulo": "Fisiopatologia da Degeneração Discal",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fisiopatologia da degeneração discal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 42: Fisiopatologia da Degeneração Discal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap42"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "57",
+    "id": "59",
     "slug": "erasmo-de-abreu-zardo",
-    "nome": "Dr. Erasmo de Abreu Zardo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 1 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Erasmo de Abreu Zardo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Erasmo de Abreu Zardo",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4922-6962",
+    "orcid_url": "https://orcid.org/0000-0002-4922-6962",
+    "bio_completa": "Mestre e Doutor em Ortopedia e Traumatologia pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Chefe do Serviço de Cirurgia da Coluna do Hospital São Lucas da Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Mestre e Doutor em Ortopedia e Traumatologia pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Chefe do Serviço de Cirurgia da Coluna do Hospital São Lucas da Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 1,
         "titulo": "Embriologia da Coluna Vertebral",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de embriologia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 1: Embriologia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap1"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "58",
+    "id": "60",
     "slug": "erich-vinicius-de-paula",
-    "nome": "Dr. Erich Vinicius de Paula",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 105 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Erich Vinicius de Paula é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Erich Vinicius de Paula",
+    "cargo": "Médico Hematologista",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1539-7912",
+    "orcid_url": "https://orcid.org/0000-0003-1539-7912",
+    "bio_completa": "Médico Hematologista. Doutorado em Fisiopatologia Médica pela Faculdade de Ciências Médicas da Unicamp (FCM-Unicamp). Professor Associado do Departamento de Clínica Médica da FCM-Unicamp.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Hematologista. Doutorado em Fisiopatologia Médica pela Faculdade de Ciências Médicas da Unicamp (FCM-Unicamp). Professor Associado do Departamento de Clínica Médica da FCM-Unicamp."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 105,
         "titulo": "Controle do Sangramento Intraoperatório",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de controle do sangramento intraoperatório pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 105: Controle do Sangramento Intraoperatório",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap105"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "59",
+    "id": "61",
     "slug": "felipe-neves-simoes-monteiro",
-    "nome": "Dr. Felipe Neves Simões Monteiro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 97 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Felipe Neves Simões Monteiro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Felipe Neves Simões Monteiro",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Hospital Israelita Albert Einstein",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0009-6902-7598",
+    "orcid_url": "https://orcid.org/0009-0009-6902-7598",
+    "bio_completa": "Médico Ortopedista e Cirurgião de Coluna Hospital Israelita Albert Einstein - Instituto Cohen Ortopedia.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Cirurgião de Coluna Hospital Israelita Albert Einstein - Instituto Cohen Ortopedia."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 97,
         "titulo": "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
         "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de pseudoartrose e falha mecânica da instrumentação na cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 97: Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap97"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "60",
+    "id": "62",
     "slug": "fernando-antonio-mendes-facanha-filho",
-    "nome": "Dr. Fernando Antônio Mendes Façanha Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Fernando Antônio Mendes Façanha Filho",
+    "cargo": "Preceptor do Grupo de Coluna do Instituto Dr",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 80 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Fernando Antônio Mendes Façanha Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3774-2342",
+    "orcid_url": "https://orcid.org/0000-0003-3774-2342",
+    "bio_completa": "Preceptor do Grupo de Coluna do Instituto Dr. José Frota - Fortaleza – Ceará.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Preceptor do Grupo de Coluna do Instituto Dr. José Frota - Fortaleza – Ceará."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 80,
         "titulo": "Técnicas de Fixação na Coluna Osteoporótica",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de fixação na coluna osteoporótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 80: Técnicas de Fixação na Coluna Osteoporótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap80"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "61",
+    "id": "63",
     "slug": "fernando-augusto-dannenbrock",
-    "nome": "Dr. Fernando Augusto Dannenbrock",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 1 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Fernando Augusto Dannenbrock é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Fernando Augusto Dannenbrock",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7640-8956",
+    "orcid_url": "https://orcid.org/0000-0002-7640-8956",
+    "bio_completa": "Mestre em Ortopedia e Traumatologia pela Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS). Preceptor do Serviço de Ortopedia e Traumatologia do Hospital São Lucas da PUC-RS. Instrutor do Curso de Cirurgia da Coluna do Instituto Gaúcho de Cirurgia da Coluna do Hospital São Lucas da PUC-RS.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Mestre em Ortopedia e Traumatologia pela Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS). Preceptor do Serviço de Ortopedia e Traumatologia do Hospital São Lucas da PUC-RS. Instrutor do Curso de Cirurgia da Coluna do Instituto Gaúcho de Cirurgia da Coluna do Hospital São Lucas da PUC-RS."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 1,
         "titulo": "Embriologia da Coluna Vertebral",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de embriologia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 1: Embriologia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap1"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "62",
+    "id": "64",
     "slug": "fernando-balsimelli",
-    "nome": "Dr. Fernando Balsimelli",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Fernando Balsimelli",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 44 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Fernando Balsimelli é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1236-7646",
+    "orcid_url": "https://orcid.org/0000-0003-1236-7646",
+    "bio_completa": "Preceptor do Serviço de Treinamento Avançado em Cirurgia da Coluna Vertebral do Centro de Reabilitação e Readaptação Dr. Henrique Santillo (CRER) e do Serviço de Ortopedia do Hospital Estadual de Urgências de Goiás Dr. Valdemiro Cruz (HUGO).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Preceptor do Serviço de Treinamento Avançado em Cirurgia da Coluna Vertebral do Centro de Reabilitação e Readaptação Dr. Henrique Santillo (CRER) e do Serviço de Ortopedia do Hospital Estadual de Urgências de Goiás Dr. Valdemiro Cruz (HUGO)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 44,
         "titulo": "Hérnia de Disco Torácica",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco torácica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 44: Hérnia de Disco Torácica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap44"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "63",
+    "id": "65",
     "slug": "fernando-herrero",
-    "nome": "Dr. Fernando Herrero",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 81 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Fernando Herrero é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Fernando Herrero",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3387-4797",
+    "orcid_url": "https://orcid.org/0000-0002-3387-4797",
+    "bio_completa": "Professor Associado do Departamento de Ortopedia e Anestesiologia do Hospital das Clínicas de Ribeirão Preto da Faculdade de Medicina de Ribeirão Preto (FMUSP). Cirurgião de Coluna do Grupo de Ortopedia do Hospital Sírio Libanês - Unidade Brasília. Coordenador do Programa de Pós Graduação Ciências da Saúde Aplicadas ao Aparelho Locomotor da FMUSP. Membro Fundador do Projeto Mude a Curva. Graduação em Medicina pela FMUSP. Residência em Ortopedia e Traumatologia pelo Departamento de Ortopedia e Anestesiologia do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto – USP. Doutorado pela Faculdade de Medicina de Ribeirão Preto – USP.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Associado do Departamento de Ortopedia e Anestesiologia do Hospital das Clínicas de Ribeirão Preto da Faculdade de Medicina de Ribeirão Preto (FMUSP). Cirurgião de Coluna do Grupo de Ortopedia do Hospital Sírio Libanês - Unidade Brasília. Coordenador do Programa de Pós Graduação Ciências da Saúde Aplicadas ao Aparelho Locomotor da FMUSP. Membro Fundador do Projeto Mude a Curva. Graduação em Medicina pela FMUSP. Residência em Ortopedia e Traumatologia pelo Departamento de Ortopedia e Anestesiologia do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto – USP. Doutorado pela Faculdade de Medicina de Ribeirão Preto – USP."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 81,
         "titulo": "Ostetomias da Coluna Vertebral",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de ostetomias da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 81: Ostetomias da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap81"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "64",
+    "id": "66",
     "slug": "fernando-luiz-rolemberg-dantas",
-    "nome": "Dr. Fernando Luiz Rolemberg Dantas",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Fernando Luiz Rolemberg Dantas",
+    "cargo": "Neurocirurgião do Biocor Instituto, Rede D’Or, Belo Hori-zonte, MG",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 48 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Fernando Luiz Rolemberg Dantas é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8294-072X",
+    "orcid_url": "https://orcid.org/0000-0002-8294-072X",
+    "bio_completa": "Neurocirurgião do Biocor Instituto, Rede D’Or, Belo Hori-zonte, MG. Pós-Graduação pela Faculdade de Ciências Médicas de Minas Gerais (FCM-MG), Belo Horizonte, MG. Mestre, Doutor e Pós-Doutor em Ciências da Saúde.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Neurocirurgião do Biocor Instituto, Rede D’Or, Belo Hori-zonte, MG. Pós-Graduação pela Faculdade de Ciências Médicas de Minas Gerais (FCM-MG), Belo Horizonte, MG. Mestre, Doutor e Pós-Doutor em Ciências da Saúde."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 48,
         "titulo": "Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de estenose cervical, mielopatia cervical degenerativa e ossificação do ligamento longitudinal posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 48: Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap48"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "65",
+    "id": "67",
     "slug": "fernando-toni-marcelino-da-silva",
-    "nome": "Dr. Fernando Toni Marcelino da Silva",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 39 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Fernando Toni Marcelino da Silva é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Fernando Toni Marcelino da Silva",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7851-0444",
+    "orcid_url": "https://orcid.org/0000-0002-7851-0444",
+    "bio_completa": "Médico graduado pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Residência Médica em Ortopedia e Traumatologia pelo Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP), com título de especialista pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Complementação Especializada em Cirurgia da Coluna pelo Instituto de Patologia da Coluna (IPC), centro formador reconhecido pela Sociedade Brasileira de Coluna (SBC). Médico assistente e Coordenador da Complementação Especializada em Cirurgia da Coluna do Instituto de Patologia da Coluna (IPC). Doutorando no Programa de Pós-Graduação em Ciências da Saúde Aplicadas ao Aparelho Locomotor da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico graduado pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Residência Médica em Ortopedia e Traumatologia pelo Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP), com título de especialista pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Complementação Especializada em Cirurgia da Coluna pelo Instituto de Patologia da Coluna (IPC), centro formador reconhecido pela Sociedade Brasileira de Coluna (SBC). Médico assistente e Coordenador da Complementação Especializada em Cirurgia da Coluna do Instituto de Patologia da Coluna (IPC). Doutorando no Programa de Pós-Graduação em Ciências da Saúde Aplicadas ao Aparelho Locomotor da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 39,
         "titulo": "Espondilolistese no Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "66",
+    "id": "68",
     "slug": "francisco-jose-albuquerque-de-paula",
-    "nome": "Dr. Francisco José Albuquerque de Paula",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 60 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Francisco José Albuquerque de Paula é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Francisco José Albuquerque de Paula",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1262-3486",
+    "orcid_url": "https://orcid.org/0000-0003-1262-3486",
+    "bio_completa": "Professor Associado do Departamento de Clínica Médica da Faculdade de Medicina de Ribeirão Preto da Universi-dade de São Paulo (FMRP-USP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Associado do Departamento de Clínica Médica da Faculdade de Medicina de Ribeirão Preto da Universi-dade de São Paulo (FMRP-USP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 60,
         "titulo": "Doenças Metabólicas que Afetam a Coluna",
         "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doenças metabólicas que afetam a coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Tumores e Infecções da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 60: Doenças Metabólicas que Afetam a Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap60"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "67",
+    "id": "69",
     "slug": "francois-dantas",
-    "nome": "Dr. François Dantas",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "François Dantas",
+    "cargo": "Neurocirurgião do Biocor Instituto/Rede D’Or, Belo Hori-zonte, MG",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 48 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. François Dantas é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3899-7494",
+    "orcid_url": "https://orcid.org/0000-0003-3899-7494",
+    "bio_completa": "Neurocirurgião do Biocor Instituto/Rede D’Or, Belo Hori-zonte, MG. Doutor em Ciências da Saúde. Fellowship em Cirurgia de Coluna no Toronto Western Hospital, Toronto, Ontario, Canadá.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Neurocirurgião do Biocor Instituto/Rede D’Or, Belo Hori-zonte, MG. Doutor em Ciências da Saúde. Fellowship em Cirurgia de Coluna no Toronto Western Hospital, Toronto, Ontario, Canadá."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 48,
         "titulo": "Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de estenose cervical, mielopatia cervical degenerativa e ossificação do ligamento longitudinal posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 48: Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap48"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "68",
+    "id": "70",
     "slug": "gabriel-farias-alves",
-    "nome": "Dr. Gabriel Farias Alves",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 53 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Gabriel Farias Alves é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Gabriel Farias Alves",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-4076-549X",
+    "orcid_url": "https://orcid.org/0000-0003-4076-549X",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 53,
         "titulo": "Tumores Benignos e Lesões Pseudotumorais da Coluna",
         "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores benignos e lesões pseudotumorais da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 53: Tumores Benignos e Lesões Pseudotumorais da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap53"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "69",
+    "id": "71",
     "slug": "gabriel-pokorny",
-    "nome": "Dr. Gabriel Pokorny",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Gabriel Pokorny é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Gabriel Pokorny",
+    "cargo": "Biomédico (Bacharelado em Biomedicina – Biologia Molecular e Informática em Saúde) (2012-2015)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7907-8032",
+    "orcid_url": "https://orcid.org/0000-0002-7907-8032",
+    "bio_completa": "Biomédico (Bacharelado em Biomedicina – Biologia Molecular e Informática em Saúde) (2012-2015). Formação/atualização em Pesquisa Clínica (Invitare Pesquisa Clínica, 2016) e Assuntos Regulatórios (IPOG, 2017-2019). Doutorando em Medicina (PPG – Locomotor) pela Faculdade de Medicina de Ribeirão Preto (FMRP-USP) (2022-2026). Coordenador do Departamento Científico e Gestor de base de dados no Instituto de Patologia da Coluna (IPC) (desde agosto/2018).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Biomédico (Bacharelado em Biomedicina – Biologia Molecular e Informática em Saúde) (2012-2015). Formação/atualização em Pesquisa Clínica (Invitare Pesquisa Clínica, 2016) e Assuntos Regulatórios (IPOG, 2017-2019). Doutorando em Medicina (PPG – Locomotor) pela Faculdade de Medicina de Ribeirão Preto (FMRP-USP) (2022-2026). Coordenador do Departamento Científico e Gestor de base de dados no Instituto de Patologia da Coluna (IPC) (desde agosto/2018)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 39,
         "titulo": "Espondilolistese no Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 70,
         "titulo": "Artrodese Lombar Prone Transpsoas",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar prone transpsoas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 70: Artrodese Lombar Prone Transpsoas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap70"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "70",
+    "id": "72",
     "slug": "gabriela-neves-vaz",
-    "nome": "Dr. Gabriela Neves Vaz",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Gabriela Neves Vaz é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Gabriela Neves Vaz",
+    "cargo": "Graduado Medicina pela Universidade Federal de Minas Gerais (UFMG)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7001-4032",
+    "orcid_url": "https://orcid.org/0000-0002-7001-4032",
+    "bio_completa": "Graduado Medicina pela Universidade Federal de Minas Gerais (UFMG). Especialista em Ortopedia e Traumatologia pelo Hospital Madre Tereza, MG. Especialista em Patologias da Coluna Vertebral ela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Graduado Medicina pela Universidade Federal de Minas Gerais (UFMG). Especialista em Ortopedia e Traumatologia pelo Hospital Madre Tereza, MG. Especialista em Patologias da Coluna Vertebral ela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 45,
         "titulo": "Hérnia de Disco Lombar",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       },
       {
         "num": 65,
         "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 45: Hérnia de Disco Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap45"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 65: Endoscopia na Coluna Cervical pela Via Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap65"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "71",
+    "id": "73",
     "slug": "geraldo-de-sa-carneiro-filho",
-    "nome": "Dr. Geraldo de Sá Carneiro-Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Geraldo de Sá Carneiro-Filho",
+    "cargo": "Neurocirurgião",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 74 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Geraldo de Sá Carneiro-Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5518-317X",
+    "orcid_url": "https://orcid.org/0000-0002-5518-317X",
+    "bio_completa": "Neurocirurgião. Médico Membro Efetivo da Sociedade Brasileira de Neuro-cirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC). Chefe do Departamento de Coluna do Hospital da Restauração – Recife (PE). Mestre em Neurociências. Ex-Vice-Presidente da SBC e atual vice-presidente da SBN.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Neurocirurgião. Médico Membro Efetivo da Sociedade Brasileira de Neuro-cirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC). Chefe do Departamento de Coluna do Hospital da Restauração – Recife (PE). Mestre em Neurociências. Ex-Vice-Presidente da SBC e atual vice-presidente da SBN."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 74,
         "titulo": "Técnicas Cirúrgicas para a Fixação da Coluna Cervical Alta",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas cirúrgicas para a fixação da coluna cervical alta pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 74: Técnicas Cirúrgicas para a Fixação da Coluna Cervical Alta",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap74"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "72",
+    "id": "74",
     "slug": "giancarlo-jorio-almeida",
-    "nome": "Dr. Giancarlo Jorio Almeida",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Giancarlo Jorio Almeida é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Giancarlo Jorio Almeida",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-0838-4304",
+    "orcid_url": "https://orcid.org/0000-0003-0838-4304",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 37,
         "titulo": "Escoliose Idiopática de Alto Valor Angular",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática de alto valor angular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 76,
         "titulo": "Fixação Posterior da Coluna Cervical",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação posterior da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 37: Escoliose Idiopática de Alto Valor Angular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap37"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 76: Fixação Posterior da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap76"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "73",
+    "id": "75",
     "slug": "guilherme-a-ludwig",
-    "nome": "Dr. Guilherme A. Ludwig",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 72 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Guilherme A. Ludwig é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Guilherme A. Ludwig",
+    "cargo": "Residente de Neurocirurgia do Hospital São José – Santa Casa de Porto Alegre",
+    "instituicao": "Santa Casa de São Paulo",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-5044-6771",
+    "orcid_url": "https://orcid.org/0009-0007-5044-6771",
+    "bio_completa": "Residente de Neurocirurgia do Hospital São José – Santa Casa de Porto Alegre.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Residente de Neurocirurgia do Hospital São José – Santa Casa de Porto Alegre."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 72,
         "titulo": "Artrodese Lombar Anterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 72: Artrodese Lombar Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap72"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "74",
+    "id": "76",
     "slug": "guilherme-naves-de-lima-alves",
-    "nome": "Dr. Guilherme Naves de Lima Alves",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 15 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Guilherme Naves de Lima Alves é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Guilherme Naves de Lima Alves",
+    "cargo": "Médico e Mestre em Ciências da Saúde pela Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5121-3749",
+    "orcid_url": "https://orcid.org/0000-0002-5121-3749",
+    "bio_completa": "Médico e Mestre em Ciências da Saúde pela Pontifícia Universidade Católica do Paraná (PUC-PR). Residencia Médica em Radiologia e Diagnóstico por Imagem e Fellow em Radiologia Musculoesquelética pela USP-RP. Doutorado em andamento pela USP-RP",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico e Mestre em Ciências da Saúde pela Pontifícia Universidade Católica do Paraná (PUC-PR). Residencia Médica em Radiologia e Diagnóstico por Imagem e Fellow em Radiologia Musculoesquelética pela USP-RP. Doutorado em andamento pela USP-RP"
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 15,
         "titulo": "Diagnóstico por Imagem da Coluna Vertebral",
         "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico por imagem da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 15: Diagnóstico por Imagem da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap15"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "75",
+    "id": "77",
     "slug": "guilherme-pagioro-miranda",
-    "nome": "Dr. Guilherme Pagioro Miranda",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Guilherme Pagioro Miranda",
+    "cargo": "Médico pelo Centro Universitário das Faculdades Asso-ciadas de Ensino (UNIFAE)",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 4 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Guilherme Pagioro Miranda é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0006-1121-7012",
+    "orcid_url": "https://orcid.org/0009-0006-1121-7012",
+    "bio_completa": "Médico pelo Centro Universitário das Faculdades Asso-ciadas de Ensino (UNIFAE). Ortopedista e Traumatologista pela Faculdade de Medi-cina de Catanduva (FAMECA). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow de Cirurgia da Coluna Vertebral na Universidade Estadual Paulista (UNESP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pelo Centro Universitário das Faculdades Asso-ciadas de Ensino (UNIFAE). Ortopedista e Traumatologista pela Faculdade de Medi-cina de Catanduva (FAMECA). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow de Cirurgia da Coluna Vertebral na Universidade Estadual Paulista (UNESP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 4,
         "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 4: Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap4"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "76",
+    "id": "78",
     "slug": "guilherme-pianowski-pajanoti",
-    "nome": "Dr. Guilherme Pianowski Pajanoti",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 95 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Guilherme Pianowski Pajanoti é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Guilherme Pianowski Pajanoti",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7266-3415",
+    "orcid_url": "https://orcid.org/0000-0002-7266-3415",
+    "bio_completa": "Médico pela Faculdade de Medicina de Ribeirão Preto (FMRP-USP) e Ortopedista pela Santa Casa de São Paulo. Especialista em Cirurgia de Coluna pelo Einstein Hospital Israelita. Associate Fellowship de Coluna Vertebral América Latina - AO Spine.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pela Faculdade de Medicina de Ribeirão Preto (FMRP-USP) e Ortopedista pela Santa Casa de São Paulo. Especialista em Cirurgia de Coluna pelo Einstein Hospital Israelita. Associate Fellowship de Coluna Vertebral América Latina - AO Spine."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 95,
         "titulo": "Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
         "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de queda das respostas na monitoração neurofisiológica intraoperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 95: Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap95"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "77",
+    "id": "79",
     "slug": "guilherme-rebechi-zuiani",
-    "nome": "Dr. Guilherme Rebechi Zuiani",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Guilherme Rebechi Zuiani",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Guilherme Rebechi Zuiani é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4240-9096",
+    "orcid_url": "https://orcid.org/0000-0002-4240-9096",
+    "bio_completa": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Médico do Grupo de Cirurgia da Coluna do Hospital Alemão Oswaldo Cruz.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Médico do Grupo de Cirurgia da Coluna do Hospital Alemão Oswaldo Cruz."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 51,
         "titulo": "Princípios no Manejo das Neoplasias da Coluna Vertebral",
         "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de princípios no manejo das neoplasias da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
       },
       {
         "num": 107,
         "titulo": "Segurança em Cirurgia de Coluna",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de segurança em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 51: Princípios no Manejo das Neoplasias da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap51"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 107: Segurança em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap107"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "78",
+    "id": "80",
     "slug": "gustavo-alves-brito-isaias",
-    "nome": "Dr. Gustavo Alves Brito Isaias",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 105 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Gustavo Alves Brito Isaias é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Gustavo Alves Brito Isaias",
+    "cargo": "Médico Graduado pela Universidade Estadual de Campinas (Unicamp)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0001-4983-4079",
+    "orcid_url": "https://orcid.org/0009-0001-4983-4079",
+    "bio_completa": "Médico Graduado pela Universidade Estadual de Campinas (Unicamp). Residência em Clínica Médica pelo Hospital São Paulo (Unifesp/EPM). Residência em Hematologia e Hemoterapia pela Faculdade de Ciências Médicas da Unicamp (FCM/Unicamp). Médico Preceptor do Hemocentro da Unicamp.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado pela Universidade Estadual de Campinas (Unicamp). Residência em Clínica Médica pelo Hospital São Paulo (Unifesp/EPM). Residência em Hematologia e Hemoterapia pela Faculdade de Ciências Médicas da Unicamp (FCM/Unicamp). Médico Preceptor do Hemocentro da Unicamp."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 105,
         "titulo": "Controle do Sangramento Intraoperatório",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de controle do sangramento intraoperatório pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 105: Controle do Sangramento Intraoperatório",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap105"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "79",
+    "id": "81",
     "slug": "gustavo-borges-laurindo-de-azevedo",
-    "nome": "Dr. Gustavo Borges Laurindo de Azevedo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Gustavo Borges Laurindo de Azevedo",
+    "cargo": "Instituto Nacional de Traumatologia e Ortopedia, Brasil",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Gustavo Borges Laurindo de Azevedo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-4832-3813",
+    "orcid_url": "https://orcid.org/0000-0003-4832-3813",
+    "bio_completa": "Instituto Nacional de Traumatologia e Ortopedia, Brasil.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Instituto Nacional de Traumatologia e Ortopedia, Brasil."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 88,
         "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "80",
+    "id": "82",
     "slug": "helton-luiz-aparecido-defino",
-    "nome": "Dr. Helton Luiz Aparecido Defino",
-    "crm": "Membro Titular SBC",
-    "cargo": "Editor Científico / FMRP-USP",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 5 capítulo(s) no Tratado Oficial da SBC",
+    "nome": "Helton Luiz Aparecido Defino",
+    "cargo": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 5 Capítulos no Tratado SBC",
     "foto_url": "/assets/helton-defino.png",
-    "bio_completa": "Professor Titular da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Referência mundial em biomecânica da coluna, fixação pedicular vertebral, deformidades espinhais e reabilitação de lesões raquimedulares. Editor Científico do Tratado de Cirurgia da Coluna Vertebral.",
+    "orcid": "0000-0003-4274-0130",
+    "orcid_url": "https://orcid.org/0000-0003-4274-0130",
+    "bio_completa": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Professor Titular do Departamento de Ortopedia e Anestesiologia da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Professor Titular do Departamento de Ortopedia e Anestesiologia da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 12,
         "titulo": "Anamnese e Exame Físico da Coluna Vertebral",
         "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anamnese e exame físico da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       },
       {
         "num": 27,
         "titulo": "Introdução às Deformidades da Coluna Vertebral",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de introdução às deformidades da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 34,
         "titulo": "Escoliose Idiopática",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 40,
         "titulo": "Cifose",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cifose pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 92,
         "titulo": "Navegação e Robótica",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de navegação e robótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 12: Anamnese e Exame Físico da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap12"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 27: Introdução às Deformidades da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap27"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 34: Escoliose Idiopática",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap34"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 40: Cifose",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap40"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 92: Navegação e Robótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap92"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "81",
+    "id": "83",
     "slug": "henrique-dagostin-de-arjona",
-    "nome": "Dr. Henrique Dagostin de Arjona",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Henrique Dagostin de Arjona",
+    "cargo": "Cirurgião de Coluna do Hospital de Caridade de Florianópolis",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 38 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Henrique Dagostin de Arjona é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3769-7967",
+    "orcid_url": "https://orcid.org/0000-0003-3769-7967",
+    "bio_completa": "Cirurgião de Coluna do Hospital de Caridade de Florianópolis.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Cirurgião de Coluna do Hospital de Caridade de Florianópolis."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 38,
         "titulo": "Espondilolistese na Criança",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese na criança pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 38: Espondilolistese na Criança",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap38"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "82",
+    "id": "84",
     "slug": "henrique-griese-luciano-dos-santos",
-    "nome": "Dr. Henrique Griese Luciano dos Santos",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Henrique Griese Luciano dos Santos é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Henrique Griese Luciano dos Santos",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0000-3347-274X",
+    "orcid_url": "https://orcid.org/0009-0000-3347-274X",
+    "bio_completa": "Fellow do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Fellow do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 9,
         "titulo": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de princípios da artrodese, biologia do enxerto e substitutos ósseos na coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 61,
         "titulo": "Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento cirúrgico das doenças reumáticas da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 9: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap9"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 61: Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap61"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "83",
+    "id": "85",
     "slug": "igor-barreira-magro",
-    "nome": "Dr. Igor Barreira Magro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Igor Barreira Magro",
+    "cargo": "Médico Neurocirurgião",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 39 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Igor Barreira Magro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4826-0325",
+    "orcid_url": "https://orcid.org/0000-0002-4826-0325",
+    "bio_completa": "Médico Neurocirurgião. Membro titular da Sociedade Brasileira de Neurocirurgia (SBN) e Sociedade Brasileira de Coluna (SBC). Doutorando pela Faculdade de Medicina da UNESP. Fellowship em Cirurgia da Coluna Vertebral pelo Instituto de Patologia da Coluna Pós graduação em dor pelo Hospital Sírio Libanês.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Membro titular da Sociedade Brasileira de Neurocirurgia (SBN) e Sociedade Brasileira de Coluna (SBC). Doutorando pela Faculdade de Medicina da UNESP. Fellowship em Cirurgia da Coluna Vertebral pelo Instituto de Patologia da Coluna Pós graduação em dor pelo Hospital Sírio Libanês."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 39,
         "titulo": "Espondilolistese no Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "84",
+    "id": "86",
     "slug": "igor-de-barcellos-zanon",
-    "nome": "Dr. Igor de Barcellos Zanon",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 18 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Igor de Barcellos Zanon é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Igor de Barcellos Zanon",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6878-3377",
+    "orcid_url": "https://orcid.org/0000-0002-6878-3377",
+    "bio_completa": "Médico Graduado pela Escola Superior de Ciências da Santa Casa de Misericórdia de Vitória (EMESCAM). Residência Médica em Ortopedia e Traumatologia no Departamento de Ortopedia e Traumatologia “Pavilhão Fernandinho Simonsen” da Santa Casa de Misericórdia de São Paulo. Título de Especialista de Ortopedia e Traumatologia pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Fellowship em Cirurgia da Coluna Vertebral no Departa-mento de Ortopedia e Traumatologia “Pavilhão Fernan-dinho Simonsen” da Santa Casa de Misericórdia de São Paulo. Fellowship em Cirurgia Endoscópica da Coluna na Schön Klinik Munchen Harlaching Mestre em Pesquisa em Cirurgia pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Doutor em Ciências da Saúde pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Médico Assistente - Cirurgião de Coluna da Santa Casa de Vitória. Professor Colaborador da Escola Superior de Ciências da Santa Casa de Misericórdia de Vitória (EMESCAM).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado pela Escola Superior de Ciências da Santa Casa de Misericórdia de Vitória (EMESCAM). Residência Médica em Ortopedia e Traumatologia no Departamento de Ortopedia e Traumatologia “Pavilhão Fernandinho Simonsen” da Santa Casa de Misericórdia de São Paulo. Título de Especialista de Ortopedia e Traumatologia pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Fellowship em Cirurgia da Coluna Vertebral no Departa-mento de Ortopedia e Traumatologia “Pavilhão Fernan-dinho Simonsen” da Santa Casa de Misericórdia de São Paulo. Fellowship em Cirurgia Endoscópica da Coluna na Schön Klinik Munchen Harlaching Mestre em Pesquisa em Cirurgia pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Doutor em Ciências da Saúde pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Médico Assistente - Cirurgião de Coluna da Santa Casa de Vitória. Professor Colaborador da Escola Superior de Ciências da Santa Casa de Misericórdia de Vitória (EMESCAM)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 18,
         "titulo": "Avaliação da Coluna do Paciente Politraumatizado",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de avaliação da coluna do paciente politraumatizado pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 18: Avaliação da Coluna do Paciente Politraumatizado",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap18"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "85",
+    "id": "87",
     "slug": "igor-ebert-cechin",
-    "nome": "Dr. Igor Ebert Cechin",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Igor Ebert Cechin",
+    "cargo": "Médico Ortopedista e Traumatologista",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Igor Ebert Cechin é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9164-1342",
+    "orcid_url": "https://orcid.org/0000-0002-9164-1342",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Cirurgião de Coluna. Membro do Serviço de Cirurgia da Coluna do Instituto de Ortopedia e Traumatologia de Passo Fundo-RS.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Cirurgião de Coluna. Membro do Serviço de Cirurgia da Coluna do Instituto de Ortopedia e Traumatologia de Passo Fundo-RS."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 20,
         "titulo": "Lesões Traumáticas da Coluna Cervical Alta",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna cervical alta pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       },
       {
         "num": 68,
         "titulo": "Artrodese Intersomática Lombar Posterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese intersomática lombar posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 20: Lesões Traumáticas da Coluna Cervical Alta",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap20"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 68: Artrodese Intersomática Lombar Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap68"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "86",
+    "id": "88",
     "slug": "igor-machado-cardoso",
-    "nome": "Dr. Igor Machado Cardoso",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Igor Machado Cardoso",
+    "cargo": "Médico Ortopedista Especialista em Coluna",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 96 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Igor Machado Cardoso é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5580-8857",
+    "orcid_url": "https://orcid.org/0000-0001-5580-8857",
+    "bio_completa": "Médico Ortopedista Especialista em Coluna.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista Especialista em Coluna."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 96,
         "titulo": "Doença do Nível Adjacente",
         "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doença do nível adjacente pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Manejo da Dor e Reabilitação"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 96: Doença do Nível Adjacente",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap96"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "87",
+    "id": "89",
     "slug": "italo-gerardo-rotondo",
-    "nome": "Dr. Italo Gerardo Rotondo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 79 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Italo Gerardo Rotondo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Italo Gerardo Rotondo",
+    "cargo": "Médico Graduado pela Faculdade de Medicina da Universidade de São Paulo (USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5075-7827",
+    "orcid_url": "https://orcid.org/0000-0001-5075-7827",
+    "bio_completa": "Médico Graduado pela Faculdade de Medicina da Universidade de São Paulo (USP). Residência em Ortopedia e Traumatologia pela Faculdade de Medicina da USP. Especialização em Cirurgia da Coluna Vertebral pela Faculdade de Medicina da USP Médico Assistente Voluntário do Grupo de Coluna do Instituto do Câncer do Estado de São Paulo (ICESP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado pela Faculdade de Medicina da Universidade de São Paulo (USP). Residência em Ortopedia e Traumatologia pela Faculdade de Medicina da USP. Especialização em Cirurgia da Coluna Vertebral pela Faculdade de Medicina da USP Médico Assistente Voluntário do Grupo de Coluna do Instituto do Câncer do Estado de São Paulo (ICESP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 79,
         "titulo": "Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação do ilíaco – técnica s2 alar ilíaco pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 79: Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap79"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "88",
+    "id": "90",
     "slug": "ivan-dias-da-rocha",
-    "nome": "Dr. Ivan Dias da Rocha",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 64 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Ivan Dias da Rocha é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Ivan Dias da Rocha",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1005-1808",
+    "orcid_url": "https://orcid.org/0000-0003-1005-1808",
+    "bio_completa": "Chefe do Grupo de Coluna do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Assistente do Grupo de Deformidades da Associação de Assistência à Criança Deficiente (AACD).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Chefe do Grupo de Coluna do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Assistente do Grupo de Deformidades da Associação de Assistência à Criança Deficiente (AACD)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 64,
         "titulo": "Cirurgia Endoscópica Uniportal no Segmento Torácico",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cirurgia endoscópica uniportal no segmento torácico pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 64: Cirurgia Endoscópica Uniportal no Segmento Torácico",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap64"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "89",
+    "id": "91",
     "slug": "jean-marcel-dambros",
-    "nome": "Dr. Jean Marcel Dambrós",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "Jean Marcel Dambrós",
+    "cargo": "Médico Ortopedista e Traumatologista",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 68 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Jean Marcel Dambrós é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2871-5660",
+    "orcid_url": "https://orcid.org/0000-0002-2871-5660",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Cirurgião de Coluna. Fellowship em Cirurgia da Coluna no Centre Hospita-lier Universitaire – Hopital Tripode Pellegrin – Bordeaux – França. Chefe do Serviço de Cirurgia da Coluna do Instituto de Ortopedia e Traumatologia de Passo Fundo – RS.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Cirurgião de Coluna. Fellowship em Cirurgia da Coluna no Centre Hospita-lier Universitaire – Hopital Tripode Pellegrin – Bordeaux – França. Chefe do Serviço de Cirurgia da Coluna do Instituto de Ortopedia e Traumatologia de Passo Fundo – RS."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 68,
         "titulo": "Artrodese Intersomática Lombar Posterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese intersomática lombar posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 68: Artrodese Intersomática Lombar Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap68"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "90",
+    "id": "92",
     "slug": "jefferson-soares-leal",
-    "nome": "Dr. Jefferson Soares Leal",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Jefferson Soares Leal é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Jefferson Soares Leal",
+    "cargo": "Professor Adjunto da Universidade Federal de Minas Gerais (UFMG)",
+    "instituicao": "Universidade Federal de Minas Gerais (UFMG)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1058-3804",
+    "orcid_url": "https://orcid.org/0000-0003-1058-3804",
+    "bio_completa": "Professor Adjunto da Universidade Federal de Minas Gerais (UFMG). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) e da Sociedade Brasileira da Coluna (SBC).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Adjunto da Universidade Federal de Minas Gerais (UFMG). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) e da Sociedade Brasileira da Coluna (SBC)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 7,
         "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Lombar e Lombossacra",
         "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna lombar e lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Ciências Básicas e Fundamentos"
       },
       {
         "num": 69,
         "titulo": "Artrodese Lombar em Single-Position Lateral",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar em single-position lateral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 7: Anatomia Cirúrgica e Vias de Acesso da Coluna Lombar e Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap7"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 69: Artrodese Lombar em Single-Position Lateral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap69"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "91",
+    "id": "93",
     "slug": "jeronimo-buzetti-milano",
-    "nome": "Dr. Jeronimo Buzetti Milano",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 75 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Jeronimo Buzetti Milano é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "Jeronimo Buzetti Milano",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7758-9058",
+    "orcid_url": "https://orcid.org/0000-0002-7758-9058",
+    "bio_completa": "Médico Neurocirurgião. Coordenador da Divisão de Cirurgia de Coluna do Departamento de Neurocirurgia do Instituto de Neurologia de Curitiba. Doutor em Ciências pela Faculdade de Medicina da Universidade de São Paulo (FMUSP). Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN) e Membro efetivo da Sociedade Brasileira de Coluna (SBC).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Coordenador da Divisão de Cirurgia de Coluna do Departamento de Neurocirurgia do Instituto de Neurologia de Curitiba. Doutor em Ciências pela Faculdade de Medicina da Universidade de São Paulo (FMUSP). Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN) e Membro efetivo da Sociedade Brasileira de Coluna (SBC)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 75,
         "titulo": "Técnicas de Fixação Cervical Anterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de fixação cervical anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 75: Técnicas de Fixação Cervical Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap75"
-      }
-    ]
-  },
-  {
-    "id": "92",
-    "slug": "joel-abramczuk",
-    "nome": "Dr. Joel Abramczuk",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 1 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Joel Abramczuk é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 1,
-        "titulo": "Embriologia da Coluna Vertebral",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de embriologia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 1: Embriologia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap1"
-      }
-    ]
-  },
-  {
-    "id": "93",
-    "slug": "jorge-rafael-durigan",
-    "nome": "Dr. Jorge Rafael Durigan",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 16 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Jorge Rafael Durigan é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 16,
-        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico diferencial: doenças da coluna e condições ortopédicas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 16: Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap16"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
     "id": "94",
-    "slug": "jose-augusto-malheiros",
-    "nome": "Dr. José Augusto Malheiros",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 71 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. José Augusto Malheiros é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 71,
-        "titulo": "Artrodese Lombar Oblíqua",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar oblíqua pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 71: Artrodese Lombar Oblíqua",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap71"
-      }
-    ]
-  },
-  {
-    "id": "95",
     "slug": "joao-abrao",
-    "nome": "Dr. João Abrão",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 103 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. João Abrão é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "João Abrão",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1810-5575",
+    "orcid_url": "https://orcid.org/0000-0003-1810-5575",
+    "bio_completa": "Professor Associado da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMUSP). Professor do Departamento de Ortopedia e Anestesiologia. Corresponsável pelo CET do HCFMRP-USP.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Associado da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMUSP). Professor do Departamento de Ortopedia e Anestesiologia. Corresponsável pelo CET do HCFMRP-USP."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 103,
         "titulo": "Abordagens para o Tratamento da Dor Pós-Operatória em Cirurgia de Coluna",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de abordagens para o tratamento da dor pós-operatória em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 103: Abordagens para o Tratamento da Dor Pós-Operatória em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap103"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "96",
+    "id": "95",
     "slug": "joao-paulo-machado-bergamaschi",
-    "nome": "Dr. João Paulo Machado Bergamaschi",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. João Paulo Machado Bergamaschi é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "João Paulo Machado Bergamaschi",
+    "cargo": "Diretor e Responsável Técnico da Clínica Atualli Spine Care",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6992-9876",
+    "orcid_url": "https://orcid.org/0000-0002-6992-9876",
+    "bio_completa": "Diretor e Responsável Técnico da Clínica Atualli Spine Care. Coordenador e professor do Curso de Especialização em Cirurgia Endoscópica de Coluna Vertebral da USP - Ribeirão Preto. Presidente da Sociedade Interamericana de Cirurgia Minimamente Invasiva (SICCMI). Membro Titular da Sociedade Brasileira de Coluna (SBC) e da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Residência Médica em Ortopedia e Traumatologia e Aper-feiçoamento em Cirurgia de Coluna Vertebral na Santa Casa de São Paulo. Graduação em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Diretor e Responsável Técnico da Clínica Atualli Spine Care. Coordenador e professor do Curso de Especialização em Cirurgia Endoscópica de Coluna Vertebral da USP - Ribeirão Preto. Presidente da Sociedade Interamericana de Cirurgia Minimamente Invasiva (SICCMI). Membro Titular da Sociedade Brasileira de Coluna (SBC) e da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Residência Médica em Ortopedia e Traumatologia e Aper-feiçoamento em Cirurgia de Coluna Vertebral na Santa Casa de São Paulo. Graduação em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 62,
         "titulo": "Endoscopia Transforaminal na Coluna Lombossacra",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia transforaminal na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       },
       {
         "num": 66,
         "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 62: Endoscopia Transforaminal na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap62"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 66: Endoscopia na Coluna Cervical pela Via Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap66"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "97",
+    "id": "96",
     "slug": "joao-tomas-fernandes-castilho-garcia",
-    "nome": "Dr. João Tomás Fernandes Castilho Garcia",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 84 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. João Tomás Fernandes Castilho Garcia é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "nome": "João Tomás Fernandes Castilho Garcia",
+    "cargo": "Médico Graduado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (FCMSCSP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-8282-7295",
+    "orcid_url": "https://orcid.org/0000-0001-8282-7295",
+    "bio_completa": "Médico Graduado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (FCMSCSP). Residência Médica em Ortopedia e Traumatologia e Espe-cialização em Cirurgia da Coluna Vertebral pela Irmandade Santa Casa de Misericórdia de São Paulo - Pavilhão Fernan-dinho Simonsen. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Preceptor da Graduação e da Residência Médica da Disciplina de Ortopedia e Traumatologia da Faculdade de Ciências Médicas da Santa Casa de São Paulo (FCMSCSP). Médico Assistente do Grupo de Cirurgia da Coluna Vertebral da Irmandade Santa Casa de Misericórdia de São Paulo - Pavilhão Fernandinho Simonsen. Mestrando no Programa de Pesquisa em Cirurgia pela Faculdade de Ciências Médicas da Santa Casa de São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (FCMSCSP). Residência Médica em Ortopedia e Traumatologia e Espe-cialização em Cirurgia da Coluna Vertebral pela Irmandade Santa Casa de Misericórdia de São Paulo - Pavilhão Fernan-dinho Simonsen. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Preceptor da Graduação e da Residência Médica da Disciplina de Ortopedia e Traumatologia da Faculdade de Ciências Médicas da Santa Casa de São Paulo (FCMSCSP). Médico Assistente do Grupo de Cirurgia da Coluna Vertebral da Irmandade Santa Casa de Misericórdia de São Paulo - Pavilhão Fernandinho Simonsen. Mestrando no Programa de Pesquisa em Cirurgia pela Faculdade de Ciências Médicas da Santa Casa de São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 84,
         "titulo": "Infiltrações e Bloqueios da Coluna",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infiltrações e bloqueios da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 84: Infiltrações e Bloqueios da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap84"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "98",
+    "id": "97",
     "slug": "joao-vitor-liboni-guimaraes-rios",
-    "nome": "Dr. João Vitor Liboni Guimarães Rios",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "nome": "João Vitor Liboni Guimarães Rios",
+    "cargo": "Fellow de Cirurgia da Coluna do Hospital da Baleia",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 85 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. João Vitor Liboni Guimarães Rios é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9841-0328",
+    "orcid_url": "https://orcid.org/0000-0002-9841-0328",
+    "bio_completa": "Fellow de Cirurgia da Coluna do Hospital da Baleia. Ortopedista pelo Hospital Maria Amélia Lins – Fundação Hospitalar de Minas Gerais (FHEMIG).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Fellow de Cirurgia da Coluna do Hospital da Baleia. Ortopedista pelo Hospital Maria Amélia Lins – Fundação Hospitalar de Minas Gerais (FHEMIG)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 85,
         "titulo": "Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de sistemas de crescimento guiado para deformidades da coluna: hastes de crescimento tradicionais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
+    "artigos_relevantes": []
+  },
+  {
+    "id": "98",
+    "slug": "joel-abramczuk",
+    "nome": "Joel Abramczuk",
+    "cargo": "Médico Especialista em Cirurgia da Coluna pela Sociedade Brasileira de Cirurgia da Coluna",
+    "instituicao": "Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4122-804X",
+    "orcid_url": "https://orcid.org/0000-0002-4122-804X",
+    "bio_completa": "Médico Especialista em Cirurgia da Coluna pela Sociedade Brasileira de Cirurgia da Coluna. Preceptor do Serviço de Ortopedia e Traumatologia do Hospital São Lucas da Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS). Instrutor do Curso de Cirurgia da Coluna do Instituto Gaúcho de Cirurgia da Coluna do Hospital São Lucas da PUC-RS.",
+    "titulacao_academica": [
+      "Médico Especialista em Cirurgia da Coluna pela Sociedade Brasileira de Cirurgia da Coluna. Preceptor do Serviço de Ortopedia e Traumatologia do Hospital São Lucas da Pontifícia Universidade Católica do Rio Grande do Sul (PUC-RS). Instrutor do Curso de Cirurgia da Coluna do Instituto Gaúcho de Cirurgia da Coluna do Hospital São Lucas da PUC-RS."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
       {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 85: Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap85"
+        "num": 1,
+        "titulo": "Embriologia da Coluna Vertebral",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
-    ]
+    ],
+    "artigos_relevantes": []
   },
   {
     "id": "99",
-    "slug": "jullyene-pokorny",
-    "nome": "Dr. Jullyene Pokorny",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Jullyene Pokorny é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "slug": "jorge-rafael-durigan",
+    "nome": "Jorge Rafael Durigan",
+    "cargo": "Graduação em Medicina pela Faculdade de Medicina de Marília",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2805-2948",
+    "orcid_url": "https://orcid.org/0000-0003-2805-2948",
+    "bio_completa": "Graduação em Medicina pela Faculdade de Medicina de Marília. Residência em Ortopedia e Traumatologia na Santa Casa de São Paulo. Especialização em Trauma Ortopédico. Especialização em Cirurgia da Coluna Vertebral. Pós-Graduação em Cirurgia Endoscópica de Coluna – Albert Einstein. Mestrado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Doutorando em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro da Preceptoria da Residência Médica em Ortopedia e Traumatologia da Santa Casa de São Paulo. Chefe de Plantão do Pronto-Socorro Ortopédico da Santa Casa de São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Graduação em Medicina pela Faculdade de Medicina de Marília. Residência em Ortopedia e Traumatologia na Santa Casa de São Paulo. Especialização em Trauma Ortopédico. Especialização em Cirurgia da Coluna Vertebral. Pós-Graduação em Cirurgia Endoscópica de Coluna – Albert Einstein. Mestrado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Doutorando em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro da Preceptoria da Residência Médica em Ortopedia e Traumatologia da Santa Casa de São Paulo. Chefe de Plantão do Pronto-Socorro Ortopédico da Santa Casa de São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 39,
-        "titulo": "Espondilolistese no Adulto",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 70,
-        "titulo": "Artrodese Lombar Prone Transpsoas",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar prone transpsoas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 16,
+        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 70: Artrodese Lombar Prone Transpsoas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap70"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
     "id": "100",
-    "slug": "karen-santos-braghiroli",
-    "nome": "Dr. Karen Santos Braghiroli",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 102 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Karen Santos Braghiroli é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "slug": "jose-augusto-malheiros",
+    "nome": "José Augusto Malheiros",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade Federal de Minas Gerais (UFMG)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-4349-682X",
+    "orcid_url": "https://orcid.org/0000-0003-4349-682X",
+    "bio_completa": "Médico Neurocirurgião. Mestre e Doutor pela Universidade Federal de Minas Gerais (UFMG). Coordenador do serviço de Neurocirurgia e Cirurgia da Coluna do Hospital Orizonti. Serviço de Cirurgia da Coluna dos Hospitais Mater Dei e Felício Rocho. Membro da Sociedade Brasileira de Neurocirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Mestre e Doutor pela Universidade Federal de Minas Gerais (UFMG). Coordenador do serviço de Neurocirurgia e Cirurgia da Coluna do Hospital Orizonti. Serviço de Cirurgia da Coluna dos Hospitais Mater Dei e Felício Rocho. Membro da Sociedade Brasileira de Neurocirurgia (SBN) e da Sociedade Brasileira de Coluna (SBC)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 102,
-        "titulo": "Manejo da Dor Aguda e Crônica na Coluna Vertebral",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de manejo da dor aguda e crônica na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 102: Manejo da Dor Aguda e Crônica na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap102"
-      }
-    ]
-  },
-  {
-    "id": "101",
-    "slug": "kelsen-de-oliveira-teixeira",
-    "nome": "Dr. Kelsen de Oliveira Teixeira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 66 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Kelsen de Oliveira Teixeira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 66,
-        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 66: Endoscopia na Coluna Cervical pela Via Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap66"
-      }
-    ]
-  },
-  {
-    "id": "102",
-    "slug": "leon-cleres-penido-pinheiro",
-    "nome": "Dr. Leon Cleres Penido Pinheiro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 56 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Leon Cleres Penido Pinheiro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 56,
-        "titulo": "Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores intramedulares e extramedulares: classificação, diagnóstico e manejo pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 56: Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap56"
-      }
-    ]
-  },
-  {
-    "id": "103",
-    "slug": "leonardo-yukio-jorge-asano",
-    "nome": "Dr. Leonardo Yukio Jorge Asano",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 99 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Leonardo Yukio Jorge Asano é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 99,
-        "titulo": "Lesão Neurológica Perioperatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesão neurológica perioperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 99: Lesão Neurológica Perioperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap99"
-      }
-    ]
-  },
-  {
-    "id": "104",
-    "slug": "luca-erdmann-bini-cordeiro",
-    "nome": "Dr. Luca Erdmann Bini Cordeiro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 30 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Luca Erdmann Bini Cordeiro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 30,
-        "titulo": "Escoliose Neuromuscular",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose neuromuscular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 30: Escoliose Neuromuscular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap30"
-      }
-    ]
-  },
-  {
-    "id": "105",
-    "slug": "lucas-gomes-pupp",
-    "nome": "Dr. Lucas Gomes Pupp",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 41 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Lucas Gomes Pupp é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 41,
-        "titulo": "Deformidades da Coluna Cervical",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 41: Deformidades da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap41"
-      }
-    ]
-  },
-  {
-    "id": "106",
-    "slug": "lucas-silveira-rabello-de-oliveira",
-    "nome": "Dr. Lucas Silveira Rabello de Oliveira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 95 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Lucas Silveira Rabello de Oliveira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 95,
-        "titulo": "Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de queda das respostas na monitoração neurofisiológica intraoperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 95: Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap95"
-      }
-    ]
-  },
-  {
-    "id": "107",
-    "slug": "luciano-miller-reis-rodrigues",
-    "nome": "Dr. Luciano Miller Reis Rodrigues",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 95 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Luciano Miller Reis Rodrigues é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 95,
-        "titulo": "Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de queda das respostas na monitoração neurofisiológica intraoperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 95: Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap95"
-      }
-    ]
-  },
-  {
-    "id": "108",
-    "slug": "luis-antonio-medeiros-moliterno",
-    "nome": "Dr. Luis Antonio Medeiros Moliterno",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 76 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Luis Antonio Medeiros Moliterno é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 76,
-        "titulo": "Fixação Posterior da Coluna Cervical",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação posterior da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 76: Fixação Posterior da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap76"
-      }
-    ]
-  },
-  {
-    "id": "109",
-    "slug": "luis-eduardo-carelli",
-    "nome": "Dr. Luis Eduardo Carelli",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 4 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Luis Eduardo Carelli é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 37,
-        "titulo": "Escoliose Idiopática de Alto Valor Angular",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática de alto valor angular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 41,
-        "titulo": "Deformidades da Coluna Cervical",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 53,
-        "titulo": "Tumores Benignos e Lesões Pseudotumorais da Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores benignos e lesões pseudotumorais da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 101,
-        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de junção craniovertebral: anormalidades congênitas, adquiridas e trauma pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 37: Escoliose Idiopática de Alto Valor Angular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap37"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 41: Deformidades da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap41"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 53: Tumores Benignos e Lesões Pseudotumorais da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap53"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 101: Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap101"
-      }
-    ]
-  },
-  {
-    "id": "110",
-    "slug": "luiz-gustavo-daloglio-da-rocha",
-    "nome": "Dr. Luiz Gustavo Dal’Oglio da Rocha",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Luiz Gustavo Dal’Oglio da Rocha é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 21,
-        "titulo": "Lesões Traumáticas da Coluna Cervical Subaxial",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna cervical subaxial pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 23,
-        "titulo": "Lesões Traumáticas do Sacro",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas do sacro pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 21: Lesões Traumáticas da Coluna Cervical Subaxial",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap21"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 23: Lesões Traumáticas do Sacro",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap23"
-      }
-    ]
-  },
-  {
-    "id": "111",
-    "slug": "luiz-muller-avila",
-    "nome": "Dr. Luiz Müller Avila",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 33 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Luiz Müller Avila é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 33,
-        "titulo": "Deformidades Congênitas da Coluna Vertebral",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades congênitas da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 33: Deformidades Congênitas da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap33"
-      }
-    ]
-  },
-  {
-    "id": "112",
-    "slug": "luiz-pimenta",
-    "nome": "Dr. Luiz Pimenta",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Luiz Pimenta é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 39,
-        "titulo": "Espondilolistese no Adulto",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 70,
-        "titulo": "Artrodese Lombar Prone Transpsoas",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar prone transpsoas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 70: Artrodese Lombar Prone Transpsoas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap70"
-      }
-    ]
-  },
-  {
-    "id": "113",
-    "slug": "luiz-roberto-gomes-vialle",
-    "nome": "Dr. Luiz Roberto Gomes Vialle",
-    "crm": "Membro Titular SBC",
-    "cargo": "Ex-Presidente SBC / Professor Titular PUCPR",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 52 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Luiz Roberto Gomes Vialle é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 52,
-        "titulo": "Instabilidade Vertebral em Neoplasia de Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de instabilidade vertebral em neoplasia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 52: Instabilidade Vertebral em Neoplasia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap52"
-      }
-    ]
-  },
-  {
-    "id": "114",
-    "slug": "luna-jeannie-alves-mangueira",
-    "nome": "Dr. Luna Jeannie Alves Mangueira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 44 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Luna Jeannie Alves Mangueira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 44,
-        "titulo": "Hérnia de Disco Torácica",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco torácica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 44: Hérnia de Disco Torácica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap44"
-      }
-    ]
-  },
-  {
-    "id": "115",
-    "slug": "luis-eduardo-munhoz-da-rocha",
-    "nome": "Dr. Luís Eduardo Munhoz Da Rocha",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 32 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Luís Eduardo Munhoz Da Rocha é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 32,
-        "titulo": "Escoliose na Neurofibromatose",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose na neurofibromatose pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 32: Escoliose na Neurofibromatose",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap32"
-      }
-    ]
-  },
-  {
-    "id": "116",
-    "slug": "marcello-henrique-nogueira-barbosa",
-    "nome": "Dr. Marcello Henrique Nogueira-Barbosa",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 15 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcello Henrique Nogueira-Barbosa é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 15,
-        "titulo": "Diagnóstico por Imagem da Coluna Vertebral",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico por imagem da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 15: Diagnóstico por Imagem da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap15"
-      }
-    ]
-  },
-  {
-    "id": "117",
-    "slug": "marcelo-abreu",
-    "nome": "Dr. Marcelo Abreu",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 100 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Marcelo Abreu é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 100,
-        "titulo": "Síndrome da Falha da Cirurgia da Coluna Vertebral",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de síndrome da falha da cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 100: Síndrome da Falha da Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap100"
-      }
-    ]
-  },
-  {
-    "id": "118",
-    "slug": "marcelo-botelho-soares-de-brito",
-    "nome": "Dr. Marcelo Botelho Soares de Brito",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 62 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcelo Botelho Soares de Brito é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 62,
-        "titulo": "Endoscopia Transforaminal na Coluna Lombossacra",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia transforaminal na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 62: Endoscopia Transforaminal na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap62"
-      }
-    ]
-  },
-  {
-    "id": "119",
-    "slug": "marcelo-italo-risso-neto",
-    "nome": "Dr. Marcelo Italo Risso Neto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Editor Associado / UNICAMP",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 7 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/marcelo-risso.png",
-    "bio_completa": "Cirurgião de Coluna Vertebral, Mestre e Doutor em Ciências da Cirurgia pela FCM-UNICAMP. Coordenador da Residência e Grupo de Cirurgia da Coluna Vertebral da Universidade Estadual de Campinas (UNICAMP) e Editor Associado da SBC.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 8,
-        "titulo": "Coluna Vertebral no Plano Sagital",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de coluna vertebral no plano sagital pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 49,
-        "titulo": "Infiltrações e Radiofrequência na Coluna Vertebral",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infiltrações e radiofrequência na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 51,
-        "titulo": "Princípios no Manejo das Neoplasias da Coluna Vertebral",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de princípios no manejo das neoplasias da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 55,
-        "titulo": "Tumores Metastáticos na Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores metastáticos na coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 78,
-        "titulo": "Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de parafusos pediculares na coluna torácica, lombar e lombossacra – técnica free-hand pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 82,
-        "titulo": "Aplicação do Halo e Tração Craniana",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de aplicação do halo e tração craniana pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 107,
-        "titulo": "Segurança em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de segurança em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 8: Coluna Vertebral no Plano Sagital",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap8"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 49: Infiltrações e Radiofrequência na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap49"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 51: Princípios no Manejo das Neoplasias da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap51"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 55: Tumores Metastáticos na Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap55"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 78: Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap78"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 82: Aplicação do Halo e Tração Craniana",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap82"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 107: Segurança em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap107"
-      }
-    ]
-  },
-  {
-    "id": "120",
-    "slug": "marcelo-luis-mudo",
-    "nome": "Dr. Marcelo Luis Mudo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 91 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcelo Luis Mudo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 91,
-        "titulo": "Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas minimamente invasivas para tratamento e adjuvância nos tumores da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 91: Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap91"
-      }
-    ]
-  },
-  {
-    "id": "121",
-    "slug": "marcelo-paulo-melo-de-souza",
-    "nome": "Dr. Marcelo Paulo Melo de Souza",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 29 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Marcelo Paulo Melo de Souza é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 29,
-        "titulo": "Tratamento Não Cirúrgico das Escolioses",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento não cirúrgico das escolioses pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 29: Tratamento Não Cirúrgico das Escolioses",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap29"
-      }
-    ]
-  },
-  {
-    "id": "122",
-    "slug": "marcio-oliveira-penna-de-carvalho",
-    "nome": "Dr. Marcio Oliveira Penna de Carvalho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 63 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcio Oliveira Penna de Carvalho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 63,
-        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia interlaminar na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 63: Endoscopia Interlaminar na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap63"
-      }
-    ]
-  },
-  {
-    "id": "123",
-    "slug": "marco-aurelio-moscatelli",
-    "nome": "Dr. Marco Aurelio Moscatelli",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 63 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Marco Aurelio Moscatelli é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 63,
-        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia interlaminar na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 63: Endoscopia Interlaminar na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap63"
-      }
-    ]
-  },
-  {
-    "id": "124",
-    "slug": "marcos-antonio-ferreira-junior",
-    "nome": "Dr. Marcos Antonio Ferreira Junior",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 71 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcos Antonio Ferreira Junior é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 71,
         "titulo": "Artrodese Lombar Oblíqua",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar oblíqua pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 71: Artrodese Lombar Oblíqua",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap71"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "125",
-    "slug": "marcos-antonio-tebet",
-    "nome": "Dr. Marcos Antônio Tebet",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 2 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Marcos Antônio Tebet é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "101",
+    "slug": "jullyene-pokorny",
+    "nome": "Jullyene Pokorny",
+    "cargo": "Biomédica",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0009-6044-9516",
+    "orcid_url": "https://orcid.org/0009-0009-6044-9516",
+    "bio_completa": "Biomédica. Bacharelado em Biomedicina – Biologia Molecular e Genética pelo Centro Universitário São Camilo (2012-2015). Pós-Graduação em Gestão da Qualidade em Saúde pelo Hospital Israelita Albert Einstein (2018-2019). MBA em Gestão de Projetos pela USP/Esalq (2020-2022). Coordenadora de Pesquisa Clínica no Instituto de Patologia da Coluna (IPC) (desde setembro/2022), com atuação em pesquisa clínica, gestão de base de dados, qualidade e projetos.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Biomédica. Bacharelado em Biomedicina – Biologia Molecular e Genética pelo Centro Universitário São Camilo (2012-2015). Pós-Graduação em Gestão da Qualidade em Saúde pelo Hospital Israelita Albert Einstein (2018-2019). MBA em Gestão de Projetos pela USP/Esalq (2020-2022). Coordenadora de Pesquisa Clínica no Instituto de Patologia da Coluna (IPC) (desde setembro/2022), com atuação em pesquisa clínica, gestão de base de dados, qualidade e projetos."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 2,
-        "titulo": "Biomecânica da Coluna Vertebral",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de biomecânica da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 2: Biomecânica da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap2"
-      }
-    ]
-  },
-  {
-    "id": "126",
-    "slug": "marcos-gregory-cintra-parreira",
-    "nome": "Dr. Marcos Gregory Cintra Parreira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 10 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Marcos Gregory Cintra Parreira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 10,
-        "titulo": "Biomecânica dos Implantes nas Fixações Vertebrais",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de biomecânica dos implantes nas fixações vertebrais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 10: Biomecânica dos Implantes nas Fixações Vertebrais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap10"
-      }
-    ]
-  },
-  {
-    "id": "127",
-    "slug": "marcus-andre-costa-ferreira",
-    "nome": "Dr. Marcus André Costa Ferreira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 99 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Marcus André Costa Ferreira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 99,
-        "titulo": "Lesão Neurológica Perioperatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesão neurológica perioperatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 99: Lesão Neurológica Perioperatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap99"
-      }
-    ]
-  },
-  {
-    "id": "128",
-    "slug": "maria-eduarda-lima-viapiana",
-    "nome": "Dr. Maria Eduarda Lima Viapiana",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 42 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Maria Eduarda Lima Viapiana é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 42,
-        "titulo": "Fisiopatologia da Degeneração Discal",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fisiopatologia da degeneração discal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 42: Fisiopatologia da Degeneração Discal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap42"
-      }
-    ]
-  },
-  {
-    "id": "129",
-    "slug": "maria-fernanda-silber-caffaro",
-    "nome": "Dr. Maria Fernanda Silber Caffaro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 16 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Maria Fernanda Silber Caffaro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 16,
-        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico diferencial: doenças da coluna e condições ortopédicas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 16: Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap16"
-      }
-    ]
-  },
-  {
-    "id": "130",
-    "slug": "mateus-neves-faria-fernandes",
-    "nome": "Dr. Mateus Neves Faria Fernandes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 67 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Mateus Neves Faria Fernandes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 67,
-        "titulo": "Endoscopia Unilateral Biportal",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia unilateral biportal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 67: Endoscopia Unilateral Biportal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap67"
-      }
-    ]
-  },
-  {
-    "id": "131",
-    "slug": "matheus-augusto-maciel-santiago",
-    "nome": "Dr. Matheus Augusto Maciel Santiago",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Matheus Augusto Maciel Santiago é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 9,
-        "titulo": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de princípios da artrodese, biologia do enxerto e substitutos ósseos na coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 61,
-        "titulo": "Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento cirúrgico das doenças reumáticas da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 9: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap9"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 61: Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap61"
-      }
-    ]
-  },
-  {
-    "id": "132",
-    "slug": "matheus-boss-vieira",
-    "nome": "Dr. Matheus Boss Vieira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 22 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Matheus Boss Vieira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 22,
-        "titulo": "Lesões Traumáticas da Coluna Torácica e Lombar",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna torácica e lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 22: Lesões Traumáticas da Coluna Torácica e Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap22"
-      }
-    ]
-  },
-  {
-    "id": "133",
-    "slug": "matheus-pippa-defino",
-    "nome": "Dr. Matheus Pippa Defino",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 4 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Matheus Pippa Defino é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 12,
-        "titulo": "Anamnese e Exame Físico da Coluna Vertebral",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anamnese e exame físico da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 34,
-        "titulo": "Escoliose Idiopática",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 40,
-        "titulo": "Cifose",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cifose pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 92,
-        "titulo": "Navegação e Robótica",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de navegação e robótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 12: Anamnese e Exame Físico da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap12"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 34: Escoliose Idiopática",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap34"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 40: Cifose",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap40"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 92: Navegação e Robótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap92"
-      }
-    ]
-  },
-  {
-    "id": "134",
-    "slug": "matheus-trindade-bruxelas-de-freitas",
-    "nome": "Dr. Matheus Trindade Bruxelas de Freitas",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 24 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Matheus Trindade Bruxelas de Freitas é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 24,
-        "titulo": "Lesões Traumáticas da Coluna na Infância",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas da coluna na infância pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 24: Lesões Traumáticas da Coluna na Infância",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap24"
-      }
-    ]
-  },
-  {
-    "id": "135",
-    "slug": "mauricio-coelho-lima",
-    "nome": "Dr. Mauricio Coelho Lima",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 3 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Mauricio Coelho Lima é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 31,
-        "titulo": "Deformidades nos Disrafismos Espinhais",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades nos disrafismos espinhais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 82,
-        "titulo": "Aplicação do Halo e Tração Craniana",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de aplicação do halo e tração craniana pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 86,
-        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnica de fixação bipolar da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 31: Deformidades nos Disrafismos Espinhais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap31"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 82: Aplicação do Halo e Tração Craniana",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap82"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 86: Técnica de Fixação Bipolar da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap86"
-      }
-    ]
-  },
-  {
-    "id": "136",
-    "slug": "mauricio-luiz-malito",
-    "nome": "Dr. Mauricio Luiz Malito",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 104 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Mauricio Luiz Malito é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 104,
-        "titulo": "Anestesia para Cirurgia da Coluna Vertebral",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anestesia para cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 104: Anestesia para Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap104"
-      }
-    ]
-  },
-  {
-    "id": "137",
-    "slug": "mauricio-zanon",
-    "nome": "Dr. Mauricio Zanon",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 19 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Mauricio Zanon é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 19,
-        "titulo": "Trauma Raquimedular",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de trauma raquimedular pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 19: Trauma Raquimedular",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap19"
-      }
-    ]
-  },
-  {
-    "id": "138",
-    "slug": "mauro-dos-santos-volpi",
-    "nome": "Dr. Mauro dos Santos Volpi",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Mauro dos Santos Volpi é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 4,
-        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 93,
-        "titulo": "Infecções Pós-Operatórias",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infecções pós-operatórias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 4: Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap4"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 93: Infecções Pós-Operatórias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap93"
-      }
-    ]
-  },
-  {
-    "id": "139",
-    "slug": "mayra-macena-gomes",
-    "nome": "Dr. Mayra Macena Gomes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 60 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Mayra Macena Gomes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 60,
-        "titulo": "Doenças Metabólicas que Afetam a Coluna",
-        "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doenças metabólicas que afetam a coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 60: Doenças Metabólicas que Afetam a Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap60"
-      }
-    ]
-  },
-  {
-    "id": "140",
-    "slug": "michel-alexandre-yazbek",
-    "nome": "Dr. Michel Alexandre Yazbek",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 59 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Michel Alexandre Yazbek é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 59,
-        "titulo": "Doenças Reumáticas da Coluna Vertebral",
-        "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doenças reumáticas da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 59: Doenças Reumáticas da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap59"
-      }
-    ]
-  },
-  {
-    "id": "141",
-    "slug": "morgana-vieira",
-    "nome": "Dr. Morgana Vieira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 5 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Morgana Vieira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 5,
-        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna torácica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 5: Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap5"
-      }
-    ]
-  },
-  {
-    "id": "142",
-    "slug": "murilo-tavares-daher",
-    "nome": "Dr. Murilo Tavares Daher",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 44 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Murilo Tavares Daher é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 44,
-        "titulo": "Hérnia de Disco Torácica",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco torácica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 44: Hérnia de Disco Torácica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap44"
-      }
-    ]
-  },
-  {
-    "id": "143",
-    "slug": "marcio-vinhal-de-carvalho",
-    "nome": "Dr. Márcio Vinhal de Carvalho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 11 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Márcio Vinhal de Carvalho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 11,
-        "titulo": "Disrafismo Espinhal – Defeitos do Tubo Neural",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de disrafismo espinhal – defeitos do tubo neural pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 11: Disrafismo Espinhal – Defeitos do Tubo Neural",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap11"
-      }
-    ]
-  },
-  {
-    "id": "144",
-    "slug": "naira-dos-santos-gutierrez",
-    "nome": "Dr. Naira dos Santos Gutierrez",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 57 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Naira dos Santos Gutierrez é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 57,
-        "titulo": "Radioterapia nos Tumores de Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de radioterapia nos tumores de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 57: Radioterapia nos Tumores de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap57"
-      }
-    ]
-  },
-  {
-    "id": "145",
-    "slug": "nelson-astur-neto",
-    "nome": "Dr. Nelson Astur Neto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 97 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Nelson Astur Neto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 97,
-        "titulo": "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de pseudoartrose e falha mecânica da instrumentação na cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 97: Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap97"
-      }
-    ]
-  },
-  {
-    "id": "146",
-    "slug": "olavo-biraghi-letaif",
-    "nome": "Dr. Olavo Biraghi Letaif",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Olavo Biraghi Letaif é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 36,
-        "titulo": "Escoliose nas Síndromes Genéticas",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose nas síndromes genéticas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 79,
-        "titulo": "Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação do ilíaco – técnica s2 alar ilíaco pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 36: Escoliose nas Síndromes Genéticas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap36"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 79: Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap79"
-      }
-    ]
-  },
-  {
-    "id": "147",
-    "slug": "orlando-righesso-neto",
-    "nome": "Dr. Orlando Righesso Neto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 42 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Orlando Righesso Neto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 42,
-        "titulo": "Fisiopatologia da Degeneração Discal",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fisiopatologia da degeneração discal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 42: Fisiopatologia da Degeneração Discal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap42"
-      }
-    ]
-  },
-  {
-    "id": "148",
-    "slug": "osmar-jose-santos-de-moraes",
-    "nome": "Dr. Osmar José Santos de Moraes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 56 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Osmar José Santos de Moraes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 56,
-        "titulo": "Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores intramedulares e extramedulares: classificação, diagnóstico e manejo pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 56: Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap56"
-      }
-    ]
-  },
-  {
-    "id": "149",
-    "slug": "otavio-vitorio-alvarenga-pereira",
-    "nome": "Dr. Otávio Vitório Alvarenga Pereira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 4 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Otávio Vitório Alvarenga Pereira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 23,
-        "titulo": "Lesões Traumáticas do Sacro",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesões traumáticas do sacro pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 52,
-        "titulo": "Instabilidade Vertebral em Neoplasia de Coluna",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de instabilidade vertebral em neoplasia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 88,
-        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 89,
-        "titulo": "Sacrectomia",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de sacrectomia pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 23: Lesões Traumáticas do Sacro",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap23"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 52: Instabilidade Vertebral em Neoplasia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap52"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 89: Sacrectomia",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap89"
-      }
-    ]
-  },
-  {
-    "id": "150",
-    "slug": "patricia-toscano-barreto-nogueira",
-    "nome": "Dr. Patrícia Toscano Barreto Nogueira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Patrícia Toscano Barreto Nogueira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 13,
-        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neurofisiologia no diagnóstico das patologias da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 14,
-        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de monitorização neurofisiológica intraoperatória em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 13: Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap13"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 14: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap14"
-      }
-    ]
-  },
-  {
-    "id": "151",
-    "slug": "paulo-henrique-carvalho-vasconcelos",
-    "nome": "Dr. Paulo Henrique Carvalho Vasconcelos",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 80 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Paulo Henrique Carvalho Vasconcelos é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 80,
-        "titulo": "Técnicas de Fixação na Coluna Osteoporótica",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnicas de fixação na coluna osteoporótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 80: Técnicas de Fixação na Coluna Osteoporótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap80"
-      }
-    ]
-  },
-  {
-    "id": "152",
-    "slug": "paulo-jose-silva-ramos",
-    "nome": "Dr. Paulo José Silva Ramos",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Paulo José Silva Ramos é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 88,
-        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
-  },
-  {
-    "id": "153",
-    "slug": "paulo-tadeu-maia-cavali",
-    "nome": "Dr. Paulo Tadeu Maia Cavali",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 6 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Paulo Tadeu Maia Cavali é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 6,
-        "titulo": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e abordagens da junção toracolombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 8,
-        "titulo": "Coluna Vertebral no Plano Sagital",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de coluna vertebral no plano sagital pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 31,
-        "titulo": "Deformidades nos Disrafismos Espinhais",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de deformidades nos disrafismos espinhais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 78,
-        "titulo": "Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de parafusos pediculares na coluna torácica, lombar e lombossacra – técnica free-hand pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 82,
-        "titulo": "Aplicação do Halo e Tração Craniana",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de aplicação do halo e tração craniana pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 86,
-        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de técnica de fixação bipolar da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 6: Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap6"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 8: Coluna Vertebral no Plano Sagital",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap8"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 31: Deformidades nos Disrafismos Espinhais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap31"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 78: Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap78"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 82: Aplicação do Halo e Tração Craniana",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap82"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 86: Técnica de Fixação Bipolar da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap86"
-      }
-    ]
-  },
-  {
-    "id": "154",
-    "slug": "pedro-aleixo-nogueira",
-    "nome": "Dr. Pedro Aleixo Nogueira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 109 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Pedro Aleixo Nogueira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 109,
-        "titulo": "Avaliação dos Resultados em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de avaliação dos resultados em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 109: Avaliação dos Resultados em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap109"
-      }
-    ]
-  },
-  {
-    "id": "155",
-    "slug": "pedro-henrique-lacombe-antoneli",
-    "nome": "Dr. Pedro Henrique Lacombe Antoneli",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 106 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Pedro Henrique Lacombe Antoneli é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 106,
-        "titulo": "Uso de Órteses na Coluna Vertebral",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de uso de órteses na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 106: Uso de Órteses na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap106"
-      }
-    ]
-  },
-  {
-    "id": "156",
-    "slug": "rafael-barreto-silva",
-    "nome": "Dr. Rafael Barreto Silva",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 63 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rafael Barreto Silva é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 63,
-        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia interlaminar na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 63: Endoscopia Interlaminar na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap63"
-      }
-    ]
-  },
-  {
-    "id": "157",
-    "slug": "rafael-cardoso-prates",
-    "nome": "Dr. Rafael Cardoso Prates",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 97 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Rafael Cardoso Prates é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 97,
-        "titulo": "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de pseudoartrose e falha mecânica da instrumentação na cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 97: Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap97"
-      }
-    ]
-  },
-  {
-    "id": "158",
-    "slug": "rafael-moraes-trincado",
-    "nome": "Dr. Rafael Moraes Trincado",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 16 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rafael Moraes Trincado é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 16,
-        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico diferencial: doenças da coluna e condições ortopédicas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 16: Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap16"
-      }
-    ]
-  },
-  {
-    "id": "159",
-    "slug": "rafael-moriguchi",
-    "nome": "Dr. Rafael Moriguchi",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 39 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Rafael Moriguchi é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 39,
         "titulo": "Espondilolistese no Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
       {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      }
-    ]
-  },
-  {
-    "id": "160",
-    "slug": "rangel-roberto-de-assis",
-    "nome": "Dr. Rangel Roberto de Assis",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 66 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rangel Roberto de Assis é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 66,
-        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
+        "num": 70,
+        "titulo": "Artrodese Lombar Prone Transpsoas",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 66: Endoscopia na Coluna Cervical pela Via Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap66"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "161",
-    "slug": "raphael-martus-marcon",
-    "nome": "Dr. Raphael Martus Marcon",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "102",
+    "slug": "karen-santos-braghiroli",
+    "nome": "Karen Santos Braghiroli",
+    "cargo": "Médica e Anestesiologista pela Faculdade de Medicina de Botucatu (UNESP)",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Raphael Martus Marcon é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0005-5064-0975",
+    "orcid_url": "https://orcid.org/0009-0005-5064-0975",
+    "bio_completa": "Médica e Anestesiologista pela Faculdade de Medicina de Botucatu (UNESP). Título de Atuação em Dor pela Associação Médica Brasileira (AMB). Mestrado e Doutorado pela UNESP. Títulos Internacionais FIPP e CIPS pela World Institute of Pain (WIP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médica e Anestesiologista pela Faculdade de Medicina de Botucatu (UNESP). Título de Atuação em Dor pela Associação Médica Brasileira (AMB). Mestrado e Doutorado pela UNESP. Títulos Internacionais FIPP e CIPS pela World Institute of Pain (WIP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 9,
-        "titulo": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de princípios da artrodese, biologia do enxerto e substitutos ósseos na coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 61,
-        "titulo": "Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento cirúrgico das doenças reumáticas da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 9: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap9"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 61: Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap61"
-      }
-    ]
-  },
-  {
-    "id": "162",
-    "slug": "renato-de-oliveira",
-    "nome": "Dr. Renato de Oliveira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 6 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Renato de Oliveira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 6,
-        "titulo": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e abordagens da junção toracolombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 6: Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap6"
-      }
-    ]
-  },
-  {
-    "id": "163",
-    "slug": "renato-henriques-tavares",
-    "nome": "Dr. Renato Henriques Tavares",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 76 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Renato Henriques Tavares é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 76,
-        "titulo": "Fixação Posterior da Coluna Cervical",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fixação posterior da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 76: Fixação Posterior da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap76"
-      }
-    ]
-  },
-  {
-    "id": "164",
-    "slug": "renato-hiroshi-salvioni-ueta",
-    "nome": "Dr. Renato Hiroshi Salvioni Ueta",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 45 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Renato Hiroshi Salvioni Ueta é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 45,
-        "titulo": "Hérnia de Disco Lombar",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 45: Hérnia de Disco Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap45"
-      }
-    ]
-  },
-  {
-    "id": "165",
-    "slug": "rene-kusabara",
-    "nome": "Dr. René Kusabara",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 108 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. René Kusabara é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 108,
-        "titulo": "Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de manejo do paciente frágil com sarcopenia em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 108: Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap108"
-      }
-    ]
-  },
-  {
-    "id": "166",
-    "slug": "rian-souza-vieira",
-    "nome": "Dr. Rian Souza Vieira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 3 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rian Souza Vieira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 12,
-        "titulo": "Anamnese e Exame Físico da Coluna Vertebral",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anamnese e exame físico da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 34,
-        "titulo": "Escoliose Idiopática",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose idiopática pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 40,
-        "titulo": "Cifose",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cifose pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 12: Anamnese e Exame Físico da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap12"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 34: Escoliose Idiopática",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap34"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 40: Cifose",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap40"
-      }
-    ]
-  },
-  {
-    "id": "167",
-    "slug": "ricardo-acacio-dos-santos",
-    "nome": "Dr. Ricardo Acacio Dos Santos",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 81 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Ricardo Acacio Dos Santos é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 81,
-        "titulo": "Ostetomias da Coluna Vertebral",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de ostetomias da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 81: Ostetomias da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap81"
-      }
-    ]
-  },
-  {
-    "id": "168",
-    "slug": "ricardo-de-souza-portes-meirelles",
-    "nome": "Dr. Ricardo de Souza Portes Meirelles",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Ricardo de Souza Portes Meirelles é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 88,
-        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
-  },
-  {
-    "id": "169",
-    "slug": "ricardo-jose-rodriguez-ferreira",
-    "nome": "Dr. Ricardo José Rodriguez Ferreira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Ricardo José Rodriguez Ferreira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 13,
-        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neurofisiologia no diagnóstico das patologias da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 14,
-        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de monitorização neurofisiológica intraoperatória em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 13: Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap13"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 14: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap14"
-      }
-    ]
-  },
-  {
-    "id": "170",
-    "slug": "robert-meves",
-    "nome": "Dr. Robert Meves",
-    "crm": "Membro Titular SBC",
-    "cargo": "Editor Associado / Santa Casa SP",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Robert Meves é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 46,
-        "titulo": "Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de estenose lombar: diagnóstico e manejo contemporâneo pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 50,
-        "titulo": "Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de medicina regenerativa no manejo da doença degenerativa da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 46: Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap46"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 50: Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap50"
-      }
-    ]
-  },
-  {
-    "id": "171",
-    "slug": "roberta-cristina-risso",
-    "nome": "Dr. Roberta Cristina Risso",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 102 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Roberta Cristina Risso é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 102,
         "titulo": "Manejo da Dor Aguda e Crônica na Coluna Vertebral",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de manejo da dor aguda e crônica na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 102: Manejo da Dor Aguda e Crônica na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap102"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "172",
-    "slug": "roberto-waldesmand-farias-pontes",
-    "nome": "Dr. Roberto Waldesmand Farias Pontes",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Roberto Waldesmand Farias Pontes é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "103",
+    "slug": "kelsen-de-oliveira-teixeira",
+    "nome": "Kelsen de Oliveira Teixeira",
+    "cargo": "Médico Graduado em Medicina pela Universidade de Brasília",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-4385-405X",
+    "orcid_url": "https://orcid.org/0000-0003-4385-405X",
+    "bio_completa": "Médico Graduado em Medicina pela Universidade de Brasília. Residência Médica em Ortopedia e Traumatologia pelo Hospital de Base do Distrito Federal (HBDF). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Complementação Especializada em Cirurgia da Coluna pelo Hospital das Clínicas da USP de Ribeirão Preto (HC-FMRP-USP). Mestre em Ciências pela Universidade de São Paulo (USP) - Faculdade de Medicina de Ribeirão Preto (FMRP-USP). Professor Assistente da Pós-Gradução em Cirurgia Endoscópica da Coluna da USP de Ribeirão Preto. MBA em Administração: Gestão em Saúde pela Fundação Getulio Vargas (FGV).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Graduado em Medicina pela Universidade de Brasília. Residência Médica em Ortopedia e Traumatologia pelo Hospital de Base do Distrito Federal (HBDF). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Complementação Especializada em Cirurgia da Coluna pelo Hospital das Clínicas da USP de Ribeirão Preto (HC-FMRP-USP). Mestre em Ciências pela Universidade de São Paulo (USP) - Faculdade de Medicina de Ribeirão Preto (FMRP-USP). Professor Assistente da Pós-Gradução em Cirurgia Endoscópica da Coluna da USP de Ribeirão Preto. MBA em Administração: Gestão em Saúde pela Fundação Getulio Vargas (FGV)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 13,
-        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de neurofisiologia no diagnóstico das patologias da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 14,
-        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de monitorização neurofisiológica intraoperatória em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 66,
+        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 13: Neurofisiologia no Diagnóstico das Patologias da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap13"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 14: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap14"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "173",
-    "slug": "rodrigo-amaral",
-    "nome": "Dr. Rodrigo Amaral",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Rodrigo Amaral é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "104",
+    "slug": "leon-cleres-penido-pinheiro",
+    "nome": "Leon Cleres Penido Pinheiro",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2726-536X",
+    "orcid_url": "https://orcid.org/0000-0003-2726-536X",
+    "bio_completa": "Médico Neurocirurgião. Mestre em Patologia Unesp FMB. Fellow em Microcirurgia pela Weil Cornell School of Medicine. Fellow em Cirurgia da Coluna Neurocirurgia pela Universi-dade de São Paulo (USP). Médico do Grupo de Coluna Neurocirurgia da USP. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Membro da Sociedade Brasileira para o Estudo da Dor (SBED).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Mestre em Patologia Unesp FMB. Fellow em Microcirurgia pela Weil Cornell School of Medicine. Fellow em Cirurgia da Coluna Neurocirurgia pela Universi-dade de São Paulo (USP). Médico do Grupo de Coluna Neurocirurgia da USP. Membro da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Membro da Sociedade Brasileira para o Estudo da Dor (SBED)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 56,
+        "titulo": "Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "105",
+    "slug": "leonardo-yukio-jorge-asano",
+    "nome": "Leonardo Yukio Jorge Asano",
+    "cargo": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8489-5256",
+    "orcid_url": "https://orcid.org/0000-0002-8489-5256",
+    "bio_completa": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 99,
+        "titulo": "Lesão Neurológica Perioperatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "106",
+    "slug": "luca-erdmann-bini-cordeiro",
+    "nome": "Luca Erdmann Bini Cordeiro",
+    "cargo": "Médico Graduado pelo Centro Universitário da Serra dos Órgãos (Unifeso)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0008-5369-4479",
+    "orcid_url": "https://orcid.org/0009-0008-5369-4479",
+    "bio_completa": "Médico Graduado pelo Centro Universitário da Serra dos Órgãos (Unifeso). Residência Médica em Ortopedia e Traumatologia pelo Hospital Pequeno Príncipe. Fellowship em Cirurgia de Coluna pelo Hospital Pequeno Príncipe, Hospital Universi-tário Evangélico Mackenzie e Instituto Columna. Fellowship em Cirurgia de Coluna pelo Melbourne Ortho-paedic Group. Honorary Fellow no Royal Childrens Hospital Melbourne. Cirurgião de Coluna Pediátrica no Hospital Pequeno Príncipe.",
+    "titulacao_academica": [
+      "Médico Graduado pelo Centro Universitário da Serra dos Órgãos (Unifeso). Residência Médica em Ortopedia e Traumatologia pelo Hospital Pequeno Príncipe. Fellowship em Cirurgia de Coluna pelo Hospital Pequeno Príncipe, Hospital Universi-tário Evangélico Mackenzie e Instituto Columna. Fellowship em Cirurgia de Coluna pelo Melbourne Ortho-paedic Group. Honorary Fellow no Royal Childrens Hospital Melbourne. Cirurgião de Coluna Pediátrica no Hospital Pequeno Príncipe."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 30,
+        "titulo": "Escoliose Neuromuscular",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "107",
+    "slug": "lucas-gomes-pupp",
+    "nome": "Lucas Gomes Pupp",
+    "cargo": "Médico Ortopedista pelo Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0003-3110-8188",
+    "orcid_url": "https://orcid.org/0009-0003-3110-8188",
+    "bio_completa": "Médico Ortopedista pelo Instituto Nacional de Traumatologia e Ortopedia (INTO). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow em Cirurgia da Coluna Vertebral (INTO).",
+    "titulacao_academica": [
+      "Médico Ortopedista pelo Instituto Nacional de Traumatologia e Ortopedia (INTO). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow em Cirurgia da Coluna Vertebral (INTO)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 41,
+        "titulo": "Deformidades da Coluna Cervical",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "108",
+    "slug": "lucas-silveira-rabello-de-oliveira",
+    "nome": "Lucas Silveira Rabello de Oliveira",
+    "cargo": "Médico Ortopedista pelo Hospital Israelita Albert Einstein",
+    "instituicao": "Hospital Israelita Albert Einstein",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0815-7999",
+    "orcid_url": "https://orcid.org/0000-0002-0815-7999",
+    "bio_completa": "Médico Ortopedista pelo Hospital Israelita Albert Einstein. Especialista em Cirurgia da Coluna Vertebral pela Faculdade de Medicina do ABC (FMABC).",
+    "titulacao_academica": [
+      "Médico Ortopedista pelo Hospital Israelita Albert Einstein. Especialista em Cirurgia da Coluna Vertebral pela Faculdade de Medicina do ABC (FMABC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 95,
+        "titulo": "Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "109",
+    "slug": "luciano-miller-reis-rodrigues",
+    "nome": "Luciano Miller Reis Rodrigues",
+    "cargo": "Professor Convidado da Faculdade de Medicina Einstein Hospital Israelita",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6891-5395",
+    "orcid_url": "https://orcid.org/0000-0001-6891-5395",
+    "bio_completa": "Professor Convidado da Faculdade de Medicina Einstein Hospital Israelita. Professor Livre-Docente pela Universidade Federal de São Paulo (UNIFESP). Pós-Doutorado pela UNIFESP. Doutorado e Mestrado em Ciências Médicas da Faculdade de Medicina do ABC (FMABC). Chefe do Grupo de Coluna da FMABC. Research Fellow na Thomas Jefferson University – Philadelphia.",
+    "titulacao_academica": [
+      "Professor Convidado da Faculdade de Medicina Einstein Hospital Israelita. Professor Livre-Docente pela Universidade Federal de São Paulo (UNIFESP). Pós-Doutorado pela UNIFESP. Doutorado e Mestrado em Ciências Médicas da Faculdade de Medicina do ABC (FMABC). Chefe do Grupo de Coluna da FMABC. Research Fellow na Thomas Jefferson University – Philadelphia."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 95,
+        "titulo": "Queda das Respostas na Monitoração Neurofisiológica Intraoperatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "110",
+    "slug": "luis-antonio-medeiros-moliterno",
+    "nome": "Luis Antonio Medeiros Moliterno",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9709-7862",
+    "orcid_url": "https://orcid.org/0000-0001-9709-7862",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Coluna (SBC). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS). Doutor em Ciências do Aparelho Locomotor pela Universi-dade de São Paulo (USP). Mestre em Ciências do Sistema Musculoesquelético do Instituto Nacional de Traumatologia e Ortopedia (INTO/ MS). Professor da Faculdade de Medicina do Instituto de Educação Médica (IDOMED).",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Coluna (SBC). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS). Doutor em Ciências do Aparelho Locomotor pela Universi-dade de São Paulo (USP). Mestre em Ciências do Sistema Musculoesquelético do Instituto Nacional de Traumatologia e Ortopedia (INTO/ MS). Professor da Faculdade de Medicina do Instituto de Educação Médica (IDOMED)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 76,
+        "titulo": "Fixação Posterior da Coluna Cervical",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "111",
+    "slug": "luis-eduardo-carelli",
+    "nome": "Luis Eduardo Carelli",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 4 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9263-4216",
+    "orcid_url": "https://orcid.org/0000-0002-9263-4216",
+    "bio_completa": "Professor Coordenador da Pós-graduação em Cirurgia da Coluna Vertebral do Instituto Nacional de Traumatologia e Ortopedia (INTO). Chefe do Grupo de Cirurgia de Coluna do INTO. Mestre em Ortopedia pela Universidade Federal do Rio de Janeiro (UFRJ). Doutor em Neurologia pela Universidade Federal do Estado do Rio de Janeiro (UNIRIO). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), Sociedade Brasileira de Coluna (SBC), Scoliosis Research Society (SRS), Cervical Spine Research Society – European Section (CSRS-EU), Cranio-vertebral Junction and Spine Society (CVJSS).",
+    "titulacao_academica": [
+      "Professor Coordenador da Pós-graduação em Cirurgia da Coluna Vertebral do Instituto Nacional de Traumatologia e Ortopedia (INTO). Chefe do Grupo de Cirurgia de Coluna do INTO. Mestre em Ortopedia pela Universidade Federal do Rio de Janeiro (UFRJ). Doutor em Neurologia pela Universidade Federal do Estado do Rio de Janeiro (UNIRIO). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), Sociedade Brasileira de Coluna (SBC), Scoliosis Research Society (SRS), Cervical Spine Research Society – European Section (CSRS-EU), Cranio-vertebral Junction and Spine Society (CVJSS)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 37,
+        "titulo": "Escoliose Idiopática de Alto Valor Angular",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 41,
+        "titulo": "Deformidades da Coluna Cervical",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      },
+      {
+        "num": 53,
+        "titulo": "Tumores Benignos e Lesões Pseudotumorais da Coluna",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      },
+      {
+        "num": 101,
+        "titulo": "Junção Craniovertebral: Anormalidades Congênitas, Adquiridas e Trauma",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "112",
+    "slug": "luis-eduardo-munhoz-da-rocha",
+    "nome": "Luís Eduardo Munhoz Da Rocha",
+    "cargo": "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Pequeno Príncipe, Curitiba-PR",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-1042-2886",
+    "orcid_url": "https://orcid.org/0000-0002-1042-2886",
+    "bio_completa": "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Pequeno Príncipe, Curitiba-PR.",
+    "titulacao_academica": [
+      "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Pequeno Príncipe, Curitiba-PR."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 32,
+        "titulo": "Escoliose na Neurofibromatose",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "113",
+    "slug": "luiz-gustavo-daloglio-da-rocha",
+    "nome": "Luiz Gustavo Dal’Oglio da Rocha",
+    "cargo": "Médico Especialista em Ortopedia e Traumatologia",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7599-7816",
+    "orcid_url": "https://orcid.org/0000-0002-7599-7816",
+    "bio_completa": "Médico Especialista em Ortopedia e Traumatologia. Membro Efetivo da Sociedade Brasileira de Coluna (SBC). Grupo de Coluna do Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru – Pontifícia Universidade Católica - PUC-PR. Mestre em Ciências da Saúde.",
+    "titulacao_academica": [
+      "Médico Especialista em Ortopedia e Traumatologia. Membro Efetivo da Sociedade Brasileira de Coluna (SBC). Grupo de Coluna do Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru – Pontifícia Universidade Católica - PUC-PR. Mestre em Ciências da Saúde."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 21,
+        "titulo": "Lesões Traumáticas da Coluna Cervical Subaxial",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      },
+      {
+        "num": 23,
+        "titulo": "Lesões Traumáticas do Sacro",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "114",
+    "slug": "luiz-muller-avila",
+    "nome": "Luiz Müller Avila",
+    "cargo": "Médico Ortopedista e Traumatologista pelo Hospital de Clínicas de Porto Alegre",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6244-8703",
+    "orcid_url": "https://orcid.org/0000-0002-6244-8703",
+    "bio_completa": "Médico Ortopedista e Traumatologista pelo Hospital de Clínicas de Porto Alegre. Especialização em Cirurgia da Coluna pelo Hospital Univer-sitário Cajuru/AO Spine. Fellow em Deformidades da Coluna Pediátrica pelo Hospital Pequeno Príncipe e Nicklaus Children’s Hospital. Membro da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), Sociedade Brasileira da Coluna (SBC), AOSpine e Scoliosis Research Society (SRS). Médico do Hospital Pequeno Príncipe.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista pelo Hospital de Clínicas de Porto Alegre. Especialização em Cirurgia da Coluna pelo Hospital Univer-sitário Cajuru/AO Spine. Fellow em Deformidades da Coluna Pediátrica pelo Hospital Pequeno Príncipe e Nicklaus Children’s Hospital. Membro da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), Sociedade Brasileira da Coluna (SBC), AOSpine e Scoliosis Research Society (SRS). Médico do Hospital Pequeno Príncipe."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 33,
+        "titulo": "Deformidades Congênitas da Coluna Vertebral",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "115",
+    "slug": "luiz-pimenta",
+    "nome": "Luiz Pimenta",
+    "cargo": "Médico Graduado pela Universidade de São Paulo (USP) – Ribeirão Preto",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5702-5431",
+    "orcid_url": "https://orcid.org/0000-0002-5702-5431",
+    "bio_completa": "Médico Graduado pela Universidade de São Paulo (USP) – Ribeirão Preto. Residência em Neurocirurgia pela Universidade Federal de São Paulo (UNIFESP). PhD em Neurocirurgia pela Universidade Federal de São Paulo (UNIFESP). Treinamento/Fellowship em Endoscopia de Coluna: Gaines-ville (EUA, 1997) e com Daniel Rosenthal MD, Frankfurt. Associated Professor, Duke University (EUA) e University of California San Diego (UCSD) (EUA). Diretor Honorário do Instituto de Patologia da Coluna (IPC), São Paulo. Ex-Presidente da Society of Lateral Access Surgery (SOLAS), da International Society for the Advancement of Spine Surgery (ISASS; 2013-2014) e da World Spine Column Society (WScS; 2010).",
+    "titulacao_academica": [
+      "Médico Graduado pela Universidade de São Paulo (USP) – Ribeirão Preto. Residência em Neurocirurgia pela Universidade Federal de São Paulo (UNIFESP). PhD em Neurocirurgia pela Universidade Federal de São Paulo (UNIFESP). Treinamento/Fellowship em Endoscopia de Coluna: Gaines-ville (EUA, 1997) e com Daniel Rosenthal MD, Frankfurt. Associated Professor, Duke University (EUA) e University of California San Diego (UCSD) (EUA). Diretor Honorário do Instituto de Patologia da Coluna (IPC), São Paulo. Ex-Presidente da Society of Lateral Access Surgery (SOLAS), da International Society for the Advancement of Spine Surgery (ISASS; 2013-2014) e da World Spine Column Society (WScS; 2010)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 39,
         "titulo": "Espondilolistese no Adulto",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese no adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       },
       {
         "num": 70,
         "titulo": "Artrodese Lombar Prone Transpsoas",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artrodese lombar prone transpsoas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 39: Espondilolistese no Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap39"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 70: Artrodese Lombar Prone Transpsoas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap70"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "174",
-    "slug": "rodrigo-de-morais-hanriot",
-    "nome": "Dr. Rodrigo de Morais Hanriot",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 57 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rodrigo de Morais Hanriot é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "116",
+    "slug": "luiz-roberto-gomes-vialle",
+    "nome": "Luiz Roberto Gomes Vialle",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-0638-4311",
+    "orcid_url": "https://orcid.org/0000-0002-0638-4311",
+    "bio_completa": "Grupo de Coluna, Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru da Pontifícia Universidade Católica do Paraná (PUC-PR).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Grupo de Coluna, Serviço de Ortopedia e Traumatologia do Hospital Universitário Cajuru da Pontifícia Universidade Católica do Paraná (PUC-PR)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 57,
-        "titulo": "Radioterapia nos Tumores de Coluna",
+        "num": 52,
+        "titulo": "Instabilidade Vertebral em Neoplasia de Coluna",
         "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de radioterapia nos tumores de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 57: Radioterapia nos Tumores de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap57"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "175",
-    "slug": "rodrigo-dos-santos-grandini",
-    "nome": "Dr. Rodrigo dos Santos Grandini",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "117",
+    "slug": "luna-jeannie-alves-mangueira",
+    "nome": "Luna Jeannie Alves Mangueira",
+    "cargo": "Preceptora do Serviço de Treinamento Avançado em Cirurgia da Coluna Vertebral do CRER",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Rodrigo dos Santos Grandini é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6991-6725",
+    "orcid_url": "https://orcid.org/0000-0002-6991-6725",
+    "bio_completa": "Preceptora do Serviço de Treinamento Avançado em Cirurgia da Coluna Vertebral do CRER. Responsável Técnica pela Cirurgia da Coluna e Preceptora do Serviço de Ortopedia do Hospital Estadual de Urgên-cias de Goiás Dr. Valdemiro Cruz (HUGO).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Preceptora do Serviço de Treinamento Avançado em Cirurgia da Coluna Vertebral do CRER. Responsável Técnica pela Cirurgia da Coluna e Preceptora do Serviço de Ortopedia do Hospital Estadual de Urgên-cias de Goiás Dr. Valdemiro Cruz (HUGO)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 38,
-        "titulo": "Espondilolistese na Criança",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de espondilolistese na criança pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 83,
-        "titulo": "Colete Gessado para Escoliose de Início Precoce",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de colete gessado para escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 38: Espondilolistese na Criança",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap38"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 83: Colete Gessado para Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap83"
-      }
-    ]
-  },
-  {
-    "id": "176",
-    "slug": "rodrigo-goes-medea-de-mendonca",
-    "nome": "Dr. Rodrigo Góes Medéa de Mendonça",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 46 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Rodrigo Góes Medéa de Mendonça é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 46,
-        "titulo": "Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
+        "num": 44,
+        "titulo": "Hérnia de Disco Torácica",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de estenose lombar: diagnóstico e manejo contemporâneo pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 46: Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap46"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "177",
-    "slug": "roger-schmidt-brock",
-    "nome": "Dr. Roger Schmidt Brock",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 77 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Roger Schmidt Brock é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "118",
+    "slug": "marcello-henrique-nogueira-barbosa",
+    "nome": "Marcello Henrique Nogueira-Barbosa",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7436-5315",
+    "orcid_url": "https://orcid.org/0000-0002-7436-5315",
+    "bio_completa": "Professor Associado da Radiologia do Departamento de Imagens Médicas, Hematologia e Oncologia Clínica da Faculdade de Medicina de Ribeirão Preto Universidade de São Paulo (USP). Coordenador da Radiologia Musculoesquelética – HCRP.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Associado da Radiologia do Departamento de Imagens Médicas, Hematologia e Oncologia Clínica da Faculdade de Medicina de Ribeirão Preto Universidade de São Paulo (USP). Coordenador da Radiologia Musculoesquelética – HCRP."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 77,
-        "titulo": "Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de laminoplastia cervical: princípios, técnicas e evidências atuais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 15,
+        "titulo": "Diagnóstico por Imagem da Coluna Vertebral",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 77: Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap77"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "178",
-    "slug": "santiago-alexis-naranjo-tipan",
-    "nome": "Dr. Santiago Alexis Naranjo Tipan",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "119",
+    "slug": "marcelo-abreu",
+    "nome": "Marcelo Abreu",
+    "cargo": "Médico Radiologista",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Santiago Alexis Naranjo Tipan é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-0386-0295",
+    "orcid_url": "https://orcid.org/0000-0003-0386-0295",
+    "bio_completa": "Médico Radiologista. Membro da Sociedade Brasileira de Radiologia (SBR). Membro do Serviço de Radiologia do Hospital Mãe de Deus.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Radiologista. Membro da Sociedade Brasileira de Radiologia (SBR). Membro do Serviço de Radiologia do Hospital Mãe de Deus."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 28,
-        "titulo": "Escoliose de Início Precoce",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose de início precoce pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 90,
-        "titulo": "Cirurgia Complexa dos Tumores Cervicais",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de cirurgia complexa dos tumores cervicais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 28: Escoliose de Início Precoce",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap28"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 90: Cirurgia Complexa dos Tumores Cervicais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap90"
-      }
-    ]
-  },
-  {
-    "id": "179",
-    "slug": "sara-reis-de-paula",
-    "nome": "Dr. Sara Reis de Paula",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Sara Reis de Paula é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 4,
-        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna cervical pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 93,
-        "titulo": "Infecções Pós-Operatórias",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infecções pós-operatórias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 4: Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap4"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 93: Infecções Pós-Operatórias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap93"
-      }
-    ]
-  },
-  {
-    "id": "180",
-    "slug": "sergio-afonso-hennemann",
-    "nome": "Dr. Sergio Afonso Hennemann",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 100 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Sergio Afonso Hennemann é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 100,
         "titulo": "Síndrome da Falha da Cirurgia da Coluna Vertebral",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de síndrome da falha da cirurgia da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 100: Síndrome da Falha da Cirurgia da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap100"
-      }
-    ]
-  },
-  {
-    "id": "181",
-    "slug": "sergio-zylbersztejn",
-    "nome": "Dr. Sergio Zylbersztejn",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 106 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Sergio Zylbersztejn é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 106,
-        "titulo": "Uso de Órteses na Coluna Vertebral",
         "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de uso de órteses na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 106: Uso de Órteses na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap106"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "182",
-    "slug": "sonja-ellen-lobo",
-    "nome": "Dr. Sonja Ellen Lobo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Sonja Ellen Lobo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "120",
+    "slug": "marcelo-botelho-soares-de-brito",
+    "nome": "Marcelo Botelho Soares de Brito",
+    "cargo": "Chefe do Serviço de Cirurgia de Coluna Articulare – Sociedade Brasileira de Coluna (SBC)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-1783-594X",
+    "orcid_url": "https://orcid.org/0000-0002-1783-594X",
+    "bio_completa": "Chefe do Serviço de Cirurgia de Coluna Articulare – Sociedade Brasileira de Coluna (SBC). Médico Ortopedista e Cirurgião de Coluna pela Santa Casa de São Paulo. Presidente da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) – Regional Pará 2023. Membro diretor da Sociedade Interamericana de Cirurgia de Coluna Minimamente Invasiva (SICCMI). Professor da Universidade de São Paulo (USP – Ribeirão Preto) no Curso de Especialização em Cirurgia Endoscó-pica de Coluna. Preceptor da Residência Médica em Ortopedia e Trauma-tologia da Universidade do Estado do Pará (UEPA)/Hospital Porto Dias.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Chefe do Serviço de Cirurgia de Coluna Articulare – Sociedade Brasileira de Coluna (SBC). Médico Ortopedista e Cirurgião de Coluna pela Santa Casa de São Paulo. Presidente da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) – Regional Pará 2023. Membro diretor da Sociedade Interamericana de Cirurgia de Coluna Minimamente Invasiva (SICCMI). Professor da Universidade de São Paulo (USP – Ribeirão Preto) no Curso de Especialização em Cirurgia Endoscó-pica de Coluna. Preceptor da Residência Médica em Ortopedia e Trauma-tologia da Universidade do Estado do Pará (UEPA)/Hospital Porto Dias."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 62,
         "titulo": "Endoscopia Transforaminal na Coluna Lombossacra",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia transforaminal na coluna lombossacra pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 66,
-        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via anterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 62: Endoscopia Transforaminal na Coluna Lombossacra",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap62"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 66: Endoscopia na Coluna Cervical pela Via Anterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap66"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "183",
-    "slug": "sylvio-mistro-neto",
-    "nome": "Dr. Sylvio Mistro Neto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "121",
+    "slug": "marcelo-italo-risso-neto",
+    "nome": "Marcelo Italo Risso Neto",
+    "cargo": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 49 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Sylvio Mistro Neto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 7 Capítulos no Tratado SBC",
+    "foto_url": "/assets/marcelo-risso.png",
+    "orcid": "0000-0003-0990-6901",
+    "orcid_url": "https://orcid.org/0000-0003-0990-6901",
+    "bio_completa": "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Professor Doutor e Coordenador da Área de Cirurgia de Coluna do Departamento de Ortopedia, Reumatologia e Traumatologia da Universidade Estadual de Campinas (UNICAMP). Coordenador do Grupo de Coluna do Hospital Alemão Oswaldo Cruz.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "MÉDICO ORTOPEDISTA E TRAUMATOLOGISTA. Professor Doutor e Coordenador da Área de Cirurgia de Coluna do Departamento de Ortopedia, Reumatologia e Traumatologia da Universidade Estadual de Campinas (UNICAMP). Coordenador do Grupo de Coluna do Hospital Alemão Oswaldo Cruz."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
+      {
+        "num": 8,
+        "titulo": "Coluna Vertebral no Plano Sagital",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
       {
         "num": 49,
         "titulo": "Infiltrações e Radiofrequência na Coluna Vertebral",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de infiltrações e radiofrequência na coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 49: Infiltrações e Radiofrequência na Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap49"
-      }
-    ]
-  },
-  {
-    "id": "184",
-    "slug": "sergio-augusto-barbosa-de-farias",
-    "nome": "Dr. Sérgio Augusto Barbosa de Farias",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 109 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Sérgio Augusto Barbosa de Farias é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 109,
-        "titulo": "Avaliação dos Resultados em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de avaliação dos resultados em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 109: Avaliação dos Resultados em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap109"
-      }
-    ]
-  },
-  {
-    "id": "185",
-    "slug": "sergio-mariano-zuazo",
-    "nome": "Dr. Sérgio Mariano Zuazo",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 103 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Sérgio Mariano Zuazo é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 103,
-        "titulo": "Abordagens para o Tratamento da Dor Pós-Operatória em Cirurgia de Coluna",
-        "secao_id": 10,
-        "secao_nome": "Temas Complementares",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de abordagens para o tratamento da dor pós-operatória em cirurgia de coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 103: Abordagens para o Tratamento da Dor Pós-Operatória em Cirurgia de Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap103"
-      }
-    ]
-  },
-  {
-    "id": "186",
-    "slug": "thiago-coutinho",
-    "nome": "Dr. Thiago Coutinho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 5 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Thiago Coutinho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 5,
-        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
-        "secao_id": 1,
-        "secao_nome": "Conceitos Básicos",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de anatomia cirúrgica e vias de acesso da coluna torácica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 5: Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap5"
-      }
-    ]
-  },
-  {
-    "id": "187",
-    "slug": "tiago-ferreira-jorge",
-    "nome": "Dr. Tiago Ferreira Jorge",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Tiago Ferreira Jorge é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 45,
-        "titulo": "Hérnia de Disco Lombar",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       },
       {
-        "num": 65,
-        "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
+        "num": 51,
+        "titulo": "Princípios no Manejo das Neoplasias da Coluna Vertebral",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      },
+      {
+        "num": 55,
+        "titulo": "Tumores Metastáticos na Coluna",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      },
+      {
+        "num": 78,
+        "titulo": "Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 45: Hérnia de Disco Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap45"
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       },
       {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 65: Endoscopia na Coluna Cervical pela Via Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap65"
+        "num": 82,
+        "titulo": "Aplicação do Halo e Tração Craniana",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 107,
+        "titulo": "Segurança em Cirurgia de Coluna",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
       }
-    ]
+    ],
+    "artigos_relevantes": []
   },
   {
-    "id": "188",
-    "slug": "tulio-albuquerque-de-moura-rangel",
-    "nome": "Dr. Túlio Albuquerque de Moura Rangel",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 29 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Túlio Albuquerque de Moura Rangel é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "122",
+    "slug": "marcelo-luis-mudo",
+    "nome": "Marcelo Luis Mudo",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8367-3299",
+    "orcid_url": "https://orcid.org/0000-0002-8367-3299",
+    "bio_completa": "Mestre em neurocirurgia pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM/UNIFESP). Doutor em Engenharia de Materiais: UFCG-CeRTbIO.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Mestre em neurocirurgia pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM/UNIFESP). Doutor em Engenharia de Materiais: UFCG-CeRTbIO."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 91,
+        "titulo": "Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "123",
+    "slug": "marcelo-paulo-melo-de-souza",
+    "nome": "Marcelo Paulo Melo de Souza",
+    "cargo": "Médico pela Universidade Federal de Campina Grande (UFCG)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1171-8387",
+    "orcid_url": "https://orcid.org/0000-0003-1171-8387",
+    "bio_completa": "Médico pela Universidade Federal de Campina Grande (UFCG). Residência em Ortopedia e traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico pela Universidade Federal de Campina Grande (UFCG). Residência em Ortopedia e traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 29,
         "titulo": "Tratamento Não Cirúrgico das Escolioses",
         "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tratamento não cirúrgico das escolioses pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Deformidades da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 29: Tratamento Não Cirúrgico das Escolioses",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap29"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "189",
-    "slug": "victor-cavalcante-schussel",
-    "nome": "Dr. Victor Cavalcante Schussel",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Victor Cavalcante Schussel é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "124",
+    "slug": "marcio-oliveira-penna-de-carvalho",
+    "nome": "Marcio Oliveira Penna de Carvalho",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7243-7418",
+    "orcid_url": "https://orcid.org/0000-0002-7243-7418",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Graduado em Medicina pela Universidade do Estado do Pará (UEPA). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências Médicas pela Faculdade de Ciências Médicas da Universidade do Estado de São Paulo (FCM-USP). Instrutor Internacional RIWOspine de Cirurgia Endoscó-pica da Coluna. Membro da Sociedade Latino-Americana de Cirurgia Endoscópica da Coluna (LESSS).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Ortopedista e Traumatologista. Graduado em Medicina pela Universidade do Estado do Pará (UEPA). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências Médicas pela Faculdade de Ciências Médicas da Universidade do Estado de São Paulo (FCM-USP). Instrutor Internacional RIWOspine de Cirurgia Endoscó-pica da Coluna. Membro da Sociedade Latino-Americana de Cirurgia Endoscópica da Coluna (LESSS)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 45,
-        "titulo": "Hérnia de Disco Lombar",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de hérnia de disco lombar pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 65,
-        "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
+        "num": 63,
+        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia na coluna cervical pela via posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 45: Hérnia de Disco Lombar",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap45"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 65: Endoscopia na Coluna Cervical pela Via Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap65"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "190",
-    "slug": "victor-kelles-tupy-da-fonseca",
-    "nome": "Dr. Victor Kelles Tupy da Fonseca",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "125",
+    "slug": "marcio-vinhal-de-carvalho",
+    "nome": "Márcio Vinhal de Carvalho",
+    "cargo": "Titular Sociedade Brasileira Neurocirurgia (SBN)",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 48 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Victor Kelles Tupy da Fonseca é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-6935-9993",
+    "orcid_url": "https://orcid.org/0009-0007-6935-9993",
+    "bio_completa": "Titular Sociedade Brasileira Neurocirurgia (SBN). Titular da Sociedade Brasileira Coluna (SBC). Coordenador Grupo Coluna Rede D’Or Brasília. Chairmain Instituto Vértebra",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Titular Sociedade Brasileira Neurocirurgia (SBN). Titular da Sociedade Brasileira Coluna (SBC). Coordenador Grupo Coluna Rede D’Or Brasília. Chairmain Instituto Vértebra"
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 48,
-        "titulo": "Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
-        "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de estenose cervical, mielopatia cervical degenerativa e ossificação do ligamento longitudinal posterior pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 11,
+        "titulo": "Disrafismo Espinhal – Defeitos do Tubo Neural",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 48: Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap48"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "191",
-    "slug": "vincenzo-fin-falavigna",
-    "nome": "Dr. Vincenzo Fin Falavigna",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "126",
+    "slug": "marco-aurelio-moscatelli",
+    "nome": "Marco Aurelio Moscatelli",
+    "cargo": "Médico Neurocirurgião",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 42 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Vincenzo Fin Falavigna é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0002-8966-2571",
+    "orcid_url": "https://orcid.org/0009-0002-8966-2571",
+    "bio_completa": "Médico Neurocirurgião. Especialista em Neurocirurgia pelo Hospital Fundação Centro Médico de Campinas. Especialização em Cirurgia Videoendoscópica da Coluna com Dr. Prof. Sebastian Ruetten pelo Hospital Sant’Anna – Herne – Alemanha. Diretor Técnico e Sócio da Clínica Neurolife Natal. Instrutor Internacional RIWOspine de Cirurgia Endoscó-pica da Coluna. Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Fundador da Sociedade Latino-Americana de Cirurgia Endoscópica da Coluna (LESSS).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Neurocirurgião. Especialista em Neurocirurgia pelo Hospital Fundação Centro Médico de Campinas. Especialização em Cirurgia Videoendoscópica da Coluna com Dr. Prof. Sebastian Ruetten pelo Hospital Sant’Anna – Herne – Alemanha. Diretor Técnico e Sócio da Clínica Neurolife Natal. Instrutor Internacional RIWOspine de Cirurgia Endoscó-pica da Coluna. Membro Titular da Sociedade Brasileira de Neurocirurgia (SBN). Membro da Sociedade Brasileira de Coluna (SBC). Fundador da Sociedade Latino-Americana de Cirurgia Endoscópica da Coluna (LESSS)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 63,
+        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "127",
+    "slug": "marcos-antonio-ferreira-junior",
+    "nome": "Marcos Antonio Ferreira Junior",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Universidade Federal de Minas Gerais (UFMG)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0001-4052-7603",
+    "orcid_url": "https://orcid.org/0009-0001-4052-7603",
+    "bio_completa": "Médico Ortopedista. Mestrando pela Universidade Federal de Minas Gerais (UFMG). Preceptor da Residência de Neurocirurgia da Fundação Hospitalar do Estado de Minas Gerais (FHEMIG). Serviço de Cirurgia da Coluna dos Hospitais Orizonti e Mater Dei. Membro Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Coluna (SBC), da North American Spine Society (NASS) e Ao Spine.",
+    "titulacao_academica": [
+      "Médico Ortopedista. Mestrando pela Universidade Federal de Minas Gerais (UFMG). Preceptor da Residência de Neurocirurgia da Fundação Hospitalar do Estado de Minas Gerais (FHEMIG). Serviço de Cirurgia da Coluna dos Hospitais Orizonti e Mater Dei. Membro Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Coluna (SBC), da North American Spine Society (NASS) e Ao Spine."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 71,
+        "titulo": "Artrodese Lombar Oblíqua",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "128",
+    "slug": "marcos-antonio-tebet",
+    "nome": "Marcos Antônio Tebet",
+    "cargo": "Doutor em Ciências Médicas pela Faculdade de Medicina da Universidade de São Paulo (FMUSP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-0446-3523",
+    "orcid_url": "https://orcid.org/0000-0003-0446-3523",
+    "bio_completa": "Doutor em Ciências Médicas pela Faculdade de Medicina da Universidade de São Paulo (FMUSP). Membro do Grupo de Coluna da Universidade Estadual de Campinas (UNICAMP).",
+    "titulacao_academica": [
+      "Doutor em Ciências Médicas pela Faculdade de Medicina da Universidade de São Paulo (FMUSP). Membro do Grupo de Coluna da Universidade Estadual de Campinas (UNICAMP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 2,
+        "titulo": "Biomecânica da Coluna Vertebral",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "129",
+    "slug": "marcos-gregory-cintra-parreira",
+    "nome": "Marcos Gregory Cintra Parreira",
+    "cargo": "Médico Ortopedista e Fellow em Cirurgia de Coluna pelo Instituto Cohen de Ortopedia",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9061-8063",
+    "orcid_url": "https://orcid.org/0000-0001-9061-8063",
+    "bio_completa": "Médico Ortopedista e Fellow em Cirurgia de Coluna pelo Instituto Cohen de Ortopedia.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Fellow em Cirurgia de Coluna pelo Instituto Cohen de Ortopedia."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 10,
+        "titulo": "Biomecânica dos Implantes nas Fixações Vertebrais",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "130",
+    "slug": "marcus-andre-costa-ferreira",
+    "nome": "Marcus André Costa Ferreira",
+    "cargo": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0000-9063-9286",
+    "orcid_url": "https://orcid.org/0009-0000-9063-9286",
+    "bio_completa": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Chefe da Preceptoria do Departamento de Cirurgia da Coluna Vertebral do Hospital Getúlio Vargas, Recife-PE. Chefe da Cirurgia da Coluna Vertebral do Instituto de Traumatologia e Ortopedia Romeu Krause (ITORK), Recife-PE. Membro da American Academy of Regenerativa Medi-cine (AARM)",
+    "titulacao_academica": [
+      "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Chefe da Preceptoria do Departamento de Cirurgia da Coluna Vertebral do Hospital Getúlio Vargas, Recife-PE. Chefe da Cirurgia da Coluna Vertebral do Instituto de Traumatologia e Ortopedia Romeu Krause (ITORK), Recife-PE. Membro da American Academy of Regenerativa Medi-cine (AARM)"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 99,
+        "titulo": "Lesão Neurológica Perioperatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "131",
+    "slug": "maria-eduarda-lima-viapiana",
+    "nome": "Maria Eduarda Lima Viapiana",
+    "cargo": "Acadêmica de Medicina do 4º ano da Universidade de Caxias do Sul (UCS)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9464-1527",
+    "orcid_url": "https://orcid.org/0000-0001-9464-1527",
+    "bio_completa": "Acadêmica de Medicina do 4º ano da Universidade de Caxias do Sul (UCS).",
+    "titulacao_academica": [
+      "Acadêmica de Medicina do 4º ano da Universidade de Caxias do Sul (UCS)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 42,
         "titulo": "Fisiopatologia da Degeneração Discal",
         "secao_id": 5,
-        "secao_nome": "Doenças Degenerativas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fisiopatologia da degeneração discal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Doenças Degenerativas da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 42: Fisiopatologia da Degeneração Discal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap42"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "192",
-    "slug": "vinicius-de-meldau-benites",
-    "nome": "Dr. Vinicius de Meldau Benites",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 73 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Vinicius de Meldau Benites é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "132",
+    "slug": "maria-fernanda-silber-caffaro",
+    "nome": "Maria Fernanda Silber Caffaro",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2823-8534",
+    "orcid_url": "https://orcid.org/0000-0002-2823-8534",
+    "bio_completa": "Diretora do Departamento de Ortopedia e Traumatologia da Santa Casa de São Paulo – “Pavilhão Fernandinho Simonsen” e Professora da Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro Titular da Sociedade Brasileira de Coluna (SBC) e da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Diretora do Departamento de Ortopedia e Traumatologia da Santa Casa de São Paulo – “Pavilhão Fernandinho Simonsen” e Professora da Faculdade de Ciências Médicas da Santa Casa de São Paulo. Membro Titular da Sociedade Brasileira de Coluna (SBC) e da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 73,
-        "titulo": "Artroplastia da Coluna",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de artroplastia da coluna pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 16,
+        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 73: Artroplastia da Coluna",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap73"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "193",
-    "slug": "vinicius-marques-carneiro",
-    "nome": "Dr. Vinicius Marques Carneiro",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "133",
+    "slug": "mateus-neves-faria-fernandes",
+    "nome": "Mateus Neves Faria Fernandes",
+    "cargo": "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 92 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Vinicius Marques Carneiro é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4342-5506",
+    "orcid_url": "https://orcid.org/0000-0002-4342-5506",
+    "bio_completa": "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás. Residente de Neurocirurgia do Hospital Estadual Dr. Alberto Rassi – HGG.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás. Residente de Neurocirurgia do Hospital Estadual Dr. Alberto Rassi – HGG."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 92,
-        "titulo": "Navegação e Robótica",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de navegação e robótica pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 92: Navegação e Robótica",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap92"
-      }
-    ]
-  },
-  {
-    "id": "194",
-    "slug": "vinicius-tapie-guerra-e-silva",
-    "nome": "Dr. Vinicius Tapie Guerra e Silva",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 88 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Vinicius Tapie Guerra e Silva é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 88,
-        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de vertebrectomia torácica e lombar nas neoplasias pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 88: Vertebrectomia Torácica e Lombar nas Neoplasias",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap88"
-      }
-    ]
-  },
-  {
-    "id": "195",
-    "slug": "vinicius-antonio-santos-aragao",
-    "nome": "Dr. Vinícius Antônio Santos Aragão",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor de 2 capítulo(s) no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Vinícius Antônio Santos Aragão é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 35,
-        "titulo": "Escoliose do Adulto",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose do adulto pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      },
-      {
-        "num": 36,
-        "titulo": "Escoliose nas Síndromes Genéticas",
-        "secao_id": 4,
-        "secao_nome": "Deformidades da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de escoliose nas síndromes genéticas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 35: Escoliose do Adulto",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap35"
-      },
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 36: Escoliose nas Síndromes Genéticas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap36"
-      }
-    ]
-  },
-  {
-    "id": "196",
-    "slug": "walison-jose-de-morais",
-    "nome": "Dr. Walison José de Morais",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 67 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Walison José de Morais é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 67,
         "titulo": "Endoscopia Unilateral Biportal",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de endoscopia unilateral biportal pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 67: Endoscopia Unilateral Biportal",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap67"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "197",
-    "slug": "walterney-amancio-filho",
-    "nome": "Dr. Walterney Amancio Filho",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 94 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Walterney Amancio Filho é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "134",
+    "slug": "matheus-augusto-maciel-santiago",
+    "nome": "Matheus Augusto Maciel Santiago",
+    "cargo": "Preceptor da Residência Médica em Ortopedia e Traumatologia",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0004-9735-1487",
+    "orcid_url": "https://orcid.org/0009-0004-9735-1487",
+    "bio_completa": "Preceptor da Residência Médica em Ortopedia e Traumatologia. Fellow do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Preceptor da Residência Médica em Ortopedia e Traumatologia. Fellow do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 94,
-        "titulo": "Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesão dural, aracnoidite e fibrose pós-operatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 9,
+        "titulo": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 61,
+        "titulo": "Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 94: Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap94"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "198",
-    "slug": "werner-petry-silva",
-    "nome": "Dr. Werner Petry Silva",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
+    "id": "135",
+    "slug": "matheus-boss-vieira",
+    "nome": "Matheus Boss Vieira",
+    "cargo": "Médico pela Faculdade Evangélica Mackenzie do Paraná",
     "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 17 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Werner Petry Silva é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0003-0729-7222",
+    "orcid_url": "https://orcid.org/0009-0003-0729-7222",
+    "bio_completa": "Médico pela Faculdade Evangélica Mackenzie do Paraná. Residente em Ortopedia e Traumatologia pelo Hospital Universitário Evangélico Mackenzie.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico pela Faculdade Evangélica Mackenzie do Paraná. Residente em Ortopedia e Traumatologia pelo Hospital Universitário Evangélico Mackenzie."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 17,
-        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
-        "secao_id": 2,
-        "secao_nome": "Diagnóstico",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de diagnóstico diferencial: doenças da coluna e doenças neurológicas pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 17: Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap17"
-      }
-    ]
-  },
-  {
-    "id": "199",
-    "slug": "william-gemio-jacobsen-teixeira",
-    "nome": "Dr. William Gemio Jacobsen Teixeira",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 54 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. William Gemio Jacobsen Teixeira é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 54,
-        "titulo": "Tumores Ósseos Primários Malignos",
-        "secao_id": 6,
-        "secao_nome": "Tumores na Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de tumores ósseos primários malignos pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 54: Tumores Ósseos Primários Malignos",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap54"
-      }
-    ]
-  },
-  {
-    "id": "200",
-    "slug": "wuilker-knoner-campos",
-    "nome": "Dr. Wuilker Knoner Campos",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 94 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Wuilker Knoner Campos é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 94,
-        "titulo": "Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
-        "secao_id": 9,
-        "secao_nome": "Complicações",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de lesão dural, aracnoidite e fibrose pós-operatória pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
-      }
-    ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 94: Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap94"
-      }
-    ]
-  },
-  {
-    "id": "201",
-    "slug": "xavier-soler-graells",
-    "nome": "Dr. Xavier Soler Graells",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 25 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Xavier Soler Graells é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
-    "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
-    ],
-    "especialidades": [
-      "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
-    ],
-    "capitulos_tratado": [
-      {
-        "num": 25,
-        "titulo": "Fraturas Vertebrais por Insuficiência",
+        "num": 22,
+        "titulo": "Lesões Traumáticas da Coluna Torácica e Lombar",
         "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fraturas vertebrais por insuficiência pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Traumatismo da Coluna Vertebral"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 25: Fraturas Vertebrais por Insuficiência",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap25"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "202",
-    "slug": "zoraida-sachetto",
-    "nome": "Dr. Zoraida Sachetto",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 59 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Zoraida Sachetto é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "136",
+    "slug": "matheus-pippa-defino",
+    "nome": "Matheus Pippa Defino",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 4 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5457-8527",
+    "orcid_url": "https://orcid.org/0000-0001-5457-8527",
+    "bio_completa": "Médico Assistente do Setor de Cirurgia da Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Médico Assistente do Setor de Cirurgia da Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 12,
+        "titulo": "Anamnese e Exame Físico da Coluna Vertebral",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      },
+      {
+        "num": 34,
+        "titulo": "Escoliose Idiopática",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 40,
+        "titulo": "Cifose",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 92,
+        "titulo": "Navegação e Robótica",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "137",
+    "slug": "matheus-trindade-bruxelas-de-freitas",
+    "nome": "Matheus Trindade Bruxelas de Freitas",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0001-2535-3529",
+    "orcid_url": "https://orcid.org/0009-0001-2535-3529",
+    "bio_completa": "Departamento de Ortopedia e Traumatologia do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HCFM-USP).",
+    "titulacao_academica": [
+      "Departamento de Ortopedia e Traumatologia do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HCFM-USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 24,
+        "titulo": "Lesões Traumáticas da Coluna na Infância",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "138",
+    "slug": "mauricio-coelho-lima",
+    "nome": "Mauricio Coelho Lima",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 3 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9395-2147",
+    "orcid_url": "https://orcid.org/0000-0001-9395-2147",
+    "bio_completa": "Médico Ortopedista do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Médico do Grupo de Cirurgia da Coluna do Departamento de Ortopedia e Reumatologia e Traumatologia da Faculdade de Ciências Médicas da Universidade de Campinas (FCM-UNICAMP). Médico do Grupo de Coluna do Hospital Alemão Oswaldo Cruz. Mestrado em Ciências da Cirurgia pela FCM-UNICAMP. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Cirurgia da Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico Ortopedista do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD). Médico do Grupo de Cirurgia da Coluna do Departamento de Ortopedia e Reumatologia e Traumatologia da Faculdade de Ciências Médicas da Universidade de Campinas (FCM-UNICAMP). Médico do Grupo de Coluna do Hospital Alemão Oswaldo Cruz. Mestrado em Ciências da Cirurgia pela FCM-UNICAMP. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Cirurgia da Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 31,
+        "titulo": "Deformidades nos Disrafismos Espinhais",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 82,
+        "titulo": "Aplicação do Halo e Tração Craniana",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 86,
+        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "139",
+    "slug": "mauricio-luiz-malito",
+    "nome": "Mauricio Luiz Malito",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2838-2963",
+    "orcid_url": "https://orcid.org/0000-0003-2838-2963",
+    "bio_completa": "Professor e Mestre em Anestesiologia pela Faculdade de Ciências Médicas da Santa Casa de Misericórdia de São Paulo. Fundador do Centro de Treinamento em Vias Aéreas (CTVA). Diretor da Sociedade de Anestesiologia de São Paulo (SAESP 2024-2026). Membro do Board of Directors da Society Airway Manage-ment (SAM).",
+    "titulacao_academica": [
+      "Professor e Mestre em Anestesiologia pela Faculdade de Ciências Médicas da Santa Casa de Misericórdia de São Paulo. Fundador do Centro de Treinamento em Vias Aéreas (CTVA). Diretor da Sociedade de Anestesiologia de São Paulo (SAESP 2024-2026). Membro do Board of Directors da Society Airway Manage-ment (SAM)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 104,
+        "titulo": "Anestesia para Cirurgia da Coluna Vertebral",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "140",
+    "slug": "mauricio-zanon",
+    "nome": "Mauricio Zanon",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2109-8874",
+    "orcid_url": "https://orcid.org/0000-0002-2109-8874",
+    "bio_completa": "Médico Ortopedista e Traumatologista pelo Hospital Universitário Cajuru da Pontifícia Universidade Católica do Paraná (PUC-PR).",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista pelo Hospital Universitário Cajuru da Pontifícia Universidade Católica do Paraná (PUC-PR)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 19,
+        "titulo": "Trauma Raquimedular",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "141",
+    "slug": "mauro-dos-santos-volpi",
+    "nome": "Mauro dos Santos Volpi",
+    "cargo": "Médico pela Universidade Estadual Paulista (UNESP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4955-5053",
+    "orcid_url": "https://orcid.org/0000-0002-4955-5053",
+    "bio_completa": "Médico pela Universidade Estadual Paulista (UNESP). Ortopedista e Traumatologista pela UNESP. Título pela da Sociedade Brasileira de Ortopedia (SBOT). Fellow em Cirurgia da Coluna no Departamento de Ortopedia da Faculdade de Ciências Médicas da Santa Casa de São Paulo. Título pela Sociedade Brasileira de Coluna (SBC). Doutor em Cirurgia pela UNESP. Presidente da Sociedade Brasileira de Coluna 2015-2016. Membro do Conselho Consultivo da SBC",
+    "titulacao_academica": [
+      "Médico pela Universidade Estadual Paulista (UNESP). Ortopedista e Traumatologista pela UNESP. Título pela da Sociedade Brasileira de Ortopedia (SBOT). Fellow em Cirurgia da Coluna no Departamento de Ortopedia da Faculdade de Ciências Médicas da Santa Casa de São Paulo. Título pela Sociedade Brasileira de Coluna (SBC). Doutor em Cirurgia pela UNESP. Presidente da Sociedade Brasileira de Coluna 2015-2016. Membro do Conselho Consultivo da SBC"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 4,
+        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 93,
+        "titulo": "Infecções Pós-Operatórias",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "142",
+    "slug": "mayra-macena-gomes",
+    "nome": "Mayra Macena Gomes",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4006-8160",
+    "orcid_url": "https://orcid.org/0000-0002-4006-8160",
+    "bio_completa": "Médica Assistente do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC FMRP USP).",
+    "titulacao_academica": [
+      "Médica Assistente do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC FMRP USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 60,
+        "titulo": "Doenças Metabólicas que Afetam a Coluna",
+        "secao_id": 7,
+        "secao_nome": "Tumores e Infecções da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "143",
+    "slug": "michel-alexandre-yazbek",
+    "nome": "Michel Alexandre Yazbek",
+    "cargo": "Médico Reumatologista Assistente",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3233-9506",
+    "orcid_url": "https://orcid.org/0000-0002-3233-9506",
+    "bio_completa": "Médico Reumatologista Assistente. Doutor da Disciplina de Reumatologia da Universidade Estadual de Campinas (Unicamp). Coordenador do CEDMAC e do Ambulatório de Espondiloartrites do Hospital das Clínicas da Unicamp. Membro do Grupo de Pesquisa e Avaliação de Psoríase e Artrite Psoriásica (GRAPPA) e das Comissões de Biotecnologia e Artrite Psoriásica da Sociedade Brasileira de Reumatologia (SBR).",
+    "titulacao_academica": [
+      "Médico Reumatologista Assistente. Doutor da Disciplina de Reumatologia da Universidade Estadual de Campinas (Unicamp). Coordenador do CEDMAC e do Ambulatório de Espondiloartrites do Hospital das Clínicas da Unicamp. Membro do Grupo de Pesquisa e Avaliação de Psoríase e Artrite Psoriásica (GRAPPA) e das Comissões de Biotecnologia e Artrite Psoriásica da Sociedade Brasileira de Reumatologia (SBR)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 59,
         "titulo": "Doenças Reumáticas da Coluna Vertebral",
         "secao_id": 7,
-        "secao_nome": "Outras Doenças da Coluna",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de doenças reumáticas da coluna vertebral pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Tumores e Infecções da Coluna"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 59: Doenças Reumáticas da Coluna Vertebral",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap59"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "203",
-    "slug": "alynson-larocca-kulcheski",
-    "nome": "Dr. Álynson Larocca Kulcheski",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 25 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-2.png",
-    "bio_completa": "Dr. Álynson Larocca Kulcheski é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "144",
+    "slug": "morgana-vieira",
+    "nome": "Morgana Vieira",
+    "cargo": "Ortopedista Especialista em Coluna Vertebral no VITA Ortopedia – São Paulo",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3619-2847",
+    "orcid_url": "https://orcid.org/0000-0002-3619-2847",
+    "bio_completa": "Ortopedista Especialista em Coluna Vertebral no VITA Ortopedia – São Paulo.",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Ortopedista Especialista em Coluna Vertebral no VITA Ortopedia – São Paulo."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
-        "num": 25,
-        "titulo": "Fraturas Vertebrais por Insuficiência",
-        "secao_id": 3,
-        "secao_nome": "Lesões Traumáticas da Coluna Vertebral",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de fraturas vertebrais por insuficiência pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "num": 5,
+        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 25: Fraturas Vertebrais por Insuficiência",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap25"
-      }
-    ]
+    "artigos_relevantes": []
   },
   {
-    "id": "204",
-    "slug": "aquila-matos-soares",
-    "nome": "Dr. Áquila Matos Soares",
-    "crm": "Membro Titular SBC",
-    "cargo": "Autor / Coautor do Tratado de Cirurgia da Coluna Vertebral",
-    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
-    "cidade_estado": "Brasil",
-    "destaque": "Autor do Capítulo 77 no Tratado Oficial da SBC",
-    "foto_url": "/assets/avatar-1.png",
-    "bio_completa": "Dr. Áquila Matos Soares é especialista em Cirurgia da Coluna Vertebral e membro atuante da Sociedade Brasileira de Coluna (SBC). Contribuiu como autor/coautor nos capítulos de referência do Tratado Oficial de Cirurgia da Coluna Vertebral da SBC, consolidando as diretrizes diagnósticas, terapêuticas e cirúrgicas contemporâneas da especialidade.",
+    "id": "145",
+    "slug": "murilo-tavares-daher",
+    "nome": "Murilo Tavares Daher",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9589-5596",
+    "orcid_url": "https://orcid.org/0000-0001-9589-5596",
+    "bio_completa": "Professor Adjunto do Departamento de Ortopedia e Traumatologia da Faculdade de Medicina da Universidade Federal de Goiás (UFG). Chefe do Grupo de Cirurgia da Coluna do Hospital de Urgências Governador Otávio Lage (HUGOL) e do Centro de Reabilitação e Readaptação Dr. Henrique Santillo (CRER). Mestre (USP) e Doutor (UFG).",
     "titulacao_academica": [
-      "Membro Titular da Sociedade Brasileira de Coluna (SBC)",
-      "Especialista em Cirurgia da Coluna Vertebral",
-      "Autor Colaborador do Tratado de Cirurgia da Coluna Vertebral"
-    ],
-    "cargos_sociedades": [
-      "Sociedade Brasileira de Coluna (SBC)",
-      "Sociedade Brasileira de Ortopedia e Traumatologia / Neurocirurgia"
-    ],
-    "linhas_pesquisa": [
-      "Técnicas Cirúrgicas Contemporâneas em Coluna Vertebral",
-      "Padronização e Diretrizes Clínicas SBC"
+      "Professor Adjunto do Departamento de Ortopedia e Traumatologia da Faculdade de Medicina da Universidade Federal de Goiás (UFG). Chefe do Grupo de Cirurgia da Coluna do Hospital de Urgências Governador Otávio Lage (HUGOL) e do Centro de Reabilitação e Readaptação Dr. Henrique Santillo (CRER). Mestre (USP) e Doutor (UFG)."
     ],
     "especialidades": [
       "Cirurgia da Coluna Vertebral",
-      "Tratamento de Patologias Espinhais",
-      "Diretrizes Oficiais SBC"
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 44,
+        "titulo": "Hérnia de Disco Torácica",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "146",
+    "slug": "naira-dos-santos-gutierrez",
+    "nome": "Naira dos Santos Gutierrez",
+    "cargo": "Médico Especialista em Radioterapia pela residência médica pelo Hospital AC Camargo",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0009-8412-656X",
+    "orcid_url": "https://orcid.org/0009-0009-8412-656X",
+    "bio_completa": "Médico Especialista em Radioterapia pela residência médica pelo Hospital AC Camargo.",
+    "titulacao_academica": [
+      "Médico Especialista em Radioterapia pela residência médica pelo Hospital AC Camargo."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 57,
+        "titulo": "Radioterapia nos Tumores de Coluna",
+        "secao_id": 7,
+        "secao_nome": "Tumores e Infecções da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "147",
+    "slug": "nelson-astur-neto",
+    "nome": "Nelson Astur Neto",
+    "cargo": "Médico Ortopedista e Cirurgião de Coluna",
+    "instituicao": "Hospital Israelita Albert Einstein",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2608-2118",
+    "orcid_url": "https://orcid.org/0000-0002-2608-2118",
+    "bio_completa": "Médico Ortopedista e Cirurgião de Coluna. Coordenador do Grupo de Cirurgia da Coluna do Hospital Israelita Albert Einstein. Past Research Officer AOSpine LatAm.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Cirurgião de Coluna. Coordenador do Grupo de Cirurgia da Coluna do Hospital Israelita Albert Einstein. Past Research Officer AOSpine LatAm."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 97,
+        "titulo": "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "148",
+    "slug": "olavo-biraghi-letaif",
+    "nome": "Olavo Biraghi Letaif",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2614-1771",
+    "orcid_url": "https://orcid.org/0000-0002-2614-1771",
+    "bio_completa": "Graduação na Faculdade de Medicina da USP – Residência Médica em Ortopedia e Traumatologia no Instituto de Ortopedia e Traumatologia do HCFMUSP (IOT-HCFMUSP) Especialização em Cirurgia de Coluna no IOT-HCFMUSP Mestre pela USP Doutor pela USP Fellowship no Departamento de Ortopedia do Hospital Johns Hopkins (Baltimore - Estados Unidos) Médico do Grupo de Coluna do IOT-HCFMUSP Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) Membro da Sociedade Brasileira de Coluna (SBC) Membro das sociedades científicas: SRS, SOSORT, AO Spine",
+    "titulacao_academica": [
+      "Graduação na Faculdade de Medicina da USP – Residência Médica em Ortopedia e Traumatologia no Instituto de Ortopedia e Traumatologia do HCFMUSP (IOT-HCFMUSP) Especialização em Cirurgia de Coluna no IOT-HCFMUSP Mestre pela USP Doutor pela USP Fellowship no Departamento de Ortopedia do Hospital Johns Hopkins (Baltimore - Estados Unidos) Médico do Grupo de Coluna do IOT-HCFMUSP Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT) Membro da Sociedade Brasileira de Coluna (SBC) Membro das sociedades científicas: SRS, SOSORT, AO Spine"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 36,
+        "titulo": "Escoliose nas Síndromes Genéticas",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 79,
+        "titulo": "Fixação do Ilíaco – Técnica S2 Alar Ilíaco",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "149",
+    "slug": "orlando-righesso-neto",
+    "nome": "Orlando Righesso Neto",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9193-9165",
+    "orcid_url": "https://orcid.org/0000-0002-9193-9165",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Mestre e Doutor pela Faculdade de Ciências Médicas da Santa Casa de São Paulo.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Mestre e Doutor pela Faculdade de Ciências Médicas da Santa Casa de São Paulo."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 42,
+        "titulo": "Fisiopatologia da Degeneração Discal",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "150",
+    "slug": "osmar-jose-santos-de-moraes",
+    "nome": "Osmar José Santos de Moraes",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2240-3500",
+    "orcid_url": "https://orcid.org/0000-0002-2240-3500",
+    "bio_completa": "Médico Neurocirurgião. Grupo de coluna do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP).",
+    "titulacao_academica": [
+      "Médico Neurocirurgião. Grupo de coluna do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 56,
+        "titulo": "Tumores Intramedulares e Extramedulares: Classificação, Diagnóstico e Manejo",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "151",
+    "slug": "otavio-vitorio-alvarenga-pereira",
+    "nome": "Otávio Vitório Alvarenga Pereira",
+    "cargo": "Médico graduado pela Universidade Federal de Minas Gerais",
+    "instituicao": "Pontifícia Universidade Católica do Paraná (PUC-PR)",
+    "destaque": "Autor de 4 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-0339-1310",
+    "orcid_url": "https://orcid.org/0000-0003-0339-1310",
+    "bio_completa": "Médico graduado pela Universidade Federal de Minas Gerais. Residência em Ortopedia e Traumatologia pelo Hospital Felicio Rocho. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Cirurgião de Coluna pelo Hospital Universitário Cajuru / Ao Spine. Médico Assistente da Clínica de Ortopedia e Traumatologia do Hospital Felício Rocho.",
+    "titulacao_academica": [
+      "Médico graduado pela Universidade Federal de Minas Gerais. Residência em Ortopedia e Traumatologia pelo Hospital Felicio Rocho. Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Cirurgião de Coluna pelo Hospital Universitário Cajuru / Ao Spine. Médico Assistente da Clínica de Ortopedia e Traumatologia do Hospital Felício Rocho."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 23,
+        "titulo": "Lesões Traumáticas do Sacro",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      },
+      {
+        "num": 52,
+        "titulo": "Instabilidade Vertebral em Neoplasia de Coluna",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      },
+      {
+        "num": 88,
+        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 89,
+        "titulo": "Sacrectomia",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "152",
+    "slug": "patricia-toscano-barreto-nogueira",
+    "nome": "Patrícia Toscano Barreto Nogueira",
+    "cargo": "Médica Neurologista e Neurofisiologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3832-2131",
+    "orcid_url": "https://orcid.org/0000-0002-3832-2131",
+    "bio_completa": "Médica Neurologista e Neurofisiologista. Mestre em Neurologia pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Membro Titular da Academia Brasileira de Neurologia (ABN) e Sociedade Brasileira de Neurofisiologia Clínica (SBNC). Médica Assistente e Preceptora da residência de Neurofisiologia Clínica do Hospital das Clínicas da FMRP-USP. Neurofisiologista Associado da Equipe da Clínica Ricardo Ferreira.",
+    "titulacao_academica": [
+      "Médica Neurologista e Neurofisiologista. Mestre em Neurologia pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Membro Titular da Academia Brasileira de Neurologia (ABN) e Sociedade Brasileira de Neurofisiologia Clínica (SBNC). Médica Assistente e Preceptora da residência de Neurofisiologia Clínica do Hospital das Clínicas da FMRP-USP. Neurofisiologista Associado da Equipe da Clínica Ricardo Ferreira."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 13,
+        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      },
+      {
+        "num": 14,
+        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "153",
+    "slug": "paulo-henrique-carvalho-vasconcelos",
+    "nome": "Paulo Henrique Carvalho Vasconcelos",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0007-4262-7708",
+    "orcid_url": "https://orcid.org/0009-0007-4262-7708",
+    "bio_completa": "Fellow do Serviço de Cirurgia de Coluna Vertebral Articu-lare do Hospital Porto Dias - Belém – PA.",
+    "titulacao_academica": [
+      "Fellow do Serviço de Cirurgia de Coluna Vertebral Articu-lare do Hospital Porto Dias - Belém – PA."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 80,
+        "titulo": "Técnicas de Fixação na Coluna Osteoporótica",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "154",
+    "slug": "paulo-jose-silva-ramos",
+    "nome": "Paulo José Silva Ramos",
+    "cargo": "Clivert, Brasil",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "",
+    "orcid_url": "",
+    "bio_completa": "Clivert, Brasil",
+    "titulacao_academica": [
+      "Clivert, Brasil"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 88,
+        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "155",
+    "slug": "paulo-tadeu-maia-cavali",
+    "nome": "Paulo Tadeu Maia Cavali",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 6 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5226-505X",
+    "orcid_url": "https://orcid.org/0000-0001-5226-505X",
+    "bio_completa": "Médico do Centro de Referência em Escoliose do Hospital da Associação de Assistência à Criança Deficiente (AACD). Coordenador do Núcleo de Escoliose do Hospital Sírio-Libanês. Médico Graduado pela Faculdade de Ciências Médicas da Universidade Estadual de Campinas (FCM-Unicamp). Residência Médica em Ortopedia e Traumatologia na FCM-Unicamp. Título de Especialista em Ortopedia e Traumatologia pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Título de Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Título de Mestre e de Doutor em Cirurgia pela FCM-Unicamp.",
+    "titulacao_academica": [
+      "Médico do Centro de Referência em Escoliose do Hospital da Associação de Assistência à Criança Deficiente (AACD). Coordenador do Núcleo de Escoliose do Hospital Sírio-Libanês. Médico Graduado pela Faculdade de Ciências Médicas da Universidade Estadual de Campinas (FCM-Unicamp). Residência Médica em Ortopedia e Traumatologia na FCM-Unicamp. Título de Especialista em Ortopedia e Traumatologia pela Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Título de Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Título de Mestre e de Doutor em Cirurgia pela FCM-Unicamp."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 6,
+        "titulo": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 8,
+        "titulo": "Coluna Vertebral no Plano Sagital",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 31,
+        "titulo": "Deformidades nos Disrafismos Espinhais",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 78,
+        "titulo": "Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra – Técnica Free-Hand",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 82,
+        "titulo": "Aplicação do Halo e Tração Craniana",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 86,
+        "titulo": "Técnica de Fixação Bipolar da Coluna Vertebral",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "156",
+    "slug": "pedro-aleixo-nogueira",
+    "nome": "Pedro Aleixo Nogueira",
+    "cargo": "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp)",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0009-8222-9311",
+    "orcid_url": "https://orcid.org/0009-0009-8222-9311",
+    "bio_completa": "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp).",
+    "titulacao_academica": [
+      "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 109,
+        "titulo": "Capítulo 109",
+        "secao_id": 1,
+        "secao_nome": "Tratado de Cirurgia da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "157",
+    "slug": "pedro-henrique-lacombe-antoneli",
+    "nome": "Pedro Henrique Lacombe Antoneli",
+    "cargo": "Médico Ortopedia e Traumatologia",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0006-8384-0380",
+    "orcid_url": "https://orcid.org/0009-0006-8384-0380",
+    "bio_completa": "Médico Ortopedia e Traumatologia. Hospital Moinhos de Vento / POA-RS. Hospital da Criança Santo Antônio / POA-RS.",
+    "titulacao_academica": [
+      "Médico Ortopedia e Traumatologia. Hospital Moinhos de Vento / POA-RS. Hospital da Criança Santo Antônio / POA-RS."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 106,
+        "titulo": "Uso de Órteses na Coluna Vertebral",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "158",
+    "slug": "rafael-barreto-silva",
+    "nome": "Rafael Barreto Silva",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7382-9966",
+    "orcid_url": "https://orcid.org/0000-0002-7382-9966",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Graduado em Medicina pela Universidade Federal do Rio Grande (2003). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Coordenador da Pós-Graduação em Cirurgia Endoscópica da Coluna do Hospital Israelita Albert Einstein. Coordenador do Fellow de Coluna do Hospital Centro Médico de Campinas. Doutorando na Universíade de São Paulo, Ribeirão Preto (USP-RP).",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Graduado em Medicina pela Universidade Federal do Rio Grande (2003). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Membro Titular da Sociedade Brasileira de Coluna (SBC). Coordenador da Pós-Graduação em Cirurgia Endoscópica da Coluna do Hospital Israelita Albert Einstein. Coordenador do Fellow de Coluna do Hospital Centro Médico de Campinas. Doutorando na Universíade de São Paulo, Ribeirão Preto (USP-RP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 63,
+        "titulo": "Endoscopia Interlaminar na Coluna Lombossacra",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "159",
+    "slug": "rafael-cardoso-prates",
+    "nome": "Rafael Cardoso Prates",
+    "cargo": "Médico Ortopedista e Fellow de Cirurgia de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0001-1656-7744",
+    "orcid_url": "https://orcid.org/0009-0001-1656-7744",
+    "bio_completa": "Médico Ortopedista e Fellow de Cirurgia de Coluna.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Fellow de Cirurgia de Coluna."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 97,
+        "titulo": "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "160",
+    "slug": "rafael-moraes-trincado",
+    "nome": "Rafael Moraes Trincado",
+    "cargo": "Graduação em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (2018)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-8132-6923",
+    "orcid_url": "https://orcid.org/0000-0001-8132-6923",
+    "bio_completa": "Graduação em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (2018). Ortopedista Formado pela Santa Casa de Misericórdia de São Paulo (2021). Especialista em Cirurgia de Coluna na Santa Casa de São Paulo (2023). Membro Titular da Sociedade Brasileira de Coluna e Sociedade Brasileira de Ortopedia e Traumatologia.",
+    "titulacao_academica": [
+      "Graduação em Medicina pela Faculdade de Ciências Médicas da Santa Casa de São Paulo (2018). Ortopedista Formado pela Santa Casa de Misericórdia de São Paulo (2021). Especialista em Cirurgia de Coluna na Santa Casa de São Paulo (2023). Membro Titular da Sociedade Brasileira de Coluna e Sociedade Brasileira de Ortopedia e Traumatologia."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 16,
+        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Condições Ortopédicas",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "161",
+    "slug": "rafael-moriguchi",
+    "nome": "Rafael Moriguchi",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "",
+    "orcid_url": "",
+    "bio_completa": "Médico Ortopedista",
+    "titulacao_academica": [
+      "Médico Ortopedista"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 39,
+        "titulo": "Espondilolistese no Adulto",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "162",
+    "slug": "rangel-roberto-de-assis",
+    "nome": "Rangel Roberto de Assis",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-4299-108X",
+    "orcid_url": "https://orcid.org/0000-0002-4299-108X",
+    "bio_completa": "Graduação em Medicina pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Residência Médica em Ortopedia e Traumatologia pelo Hospital das Clínicas de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Complementação Especializada em Cirurgia de Coluna pelo Hospital das Clínicas de Ribeirão Preto da Universi-dade de São Paulo (HC-FMRP-USP). Membro Efetivo da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP). Professor Assistente da Pós-Graduação em Cirurgia Endoscópica da Coluna da USP de Ribeirão Preto.",
+    "titulacao_academica": [
+      "Graduação em Medicina pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP). Residência Médica em Ortopedia e Traumatologia pelo Hospital das Clínicas de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP). Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Complementação Especializada em Cirurgia de Coluna pelo Hospital das Clínicas de Ribeirão Preto da Universi-dade de São Paulo (HC-FMRP-USP). Membro Efetivo da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP). Professor Assistente da Pós-Graduação em Cirurgia Endoscópica da Coluna da USP de Ribeirão Preto."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 66,
+        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "163",
+    "slug": "raphael-martus-marcon",
+    "nome": "Raphael Martus Marcon",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-5958-5646",
+    "orcid_url": "https://orcid.org/0000-0001-5958-5646",
+    "bio_completa": "Chefe do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP). Professor Associado da Faculdade de Medicina da Universidade de São Paulo (FMUSP).",
+    "titulacao_academica": [
+      "Chefe do Grupo de Coluna do Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP). Professor Associado da Faculdade de Medicina da Universidade de São Paulo (FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 9,
+        "titulo": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 61,
+        "titulo": "Tratamento Cirúrgico das Doenças Reumáticas da Coluna",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "164",
+    "slug": "renato-de-oliveira",
+    "nome": "Renato de Oliveira",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-8219-6198",
+    "orcid_url": "https://orcid.org/0000-0001-8219-6198",
+    "bio_completa": "Cirurgião Torácico do Instituto de Oncologia Pediátrica – Grupo de Apoio ao Adolescente e à Criança com Câncer (IOP GRAACC). Cirurgião Torácico da Associação de Assistência à Criança Deficiente (AACD), do Hospital Abreu Sodré – Associação de Assistência à Criança Deficiente. Médico Assistente da Cirurgia Torácica Pediátrica do Hospital Infantil Sabará. Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Residência em Cirurgia Geral no Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Residência em Cirurgia Torácica na Hospital São Paulo da Universidade Federal de São Paulo (HSP-Unifesp). Médico Assistente da EPM-Unifesp na Disciplina de Cirurgia Torácica.",
+    "titulacao_academica": [
+      "Cirurgião Torácico do Instituto de Oncologia Pediátrica – Grupo de Apoio ao Adolescente e à Criança com Câncer (IOP GRAACC). Cirurgião Torácico da Associação de Assistência à Criança Deficiente (AACD), do Hospital Abreu Sodré – Associação de Assistência à Criança Deficiente. Médico Assistente da Cirurgia Torácica Pediátrica do Hospital Infantil Sabará. Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Residência em Cirurgia Geral no Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Residência em Cirurgia Torácica na Hospital São Paulo da Universidade Federal de São Paulo (HSP-Unifesp). Médico Assistente da EPM-Unifesp na Disciplina de Cirurgia Torácica."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 6,
+        "titulo": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "165",
+    "slug": "renato-henriques-tavares",
+    "nome": "Renato Henriques Tavares",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2567-0994",
+    "orcid_url": "https://orcid.org/0000-0003-2567-0994",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Cirurgião de Coluna Vertebral. Membro da Sociedade Brasileira de Coluna (SBC). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS). Coordenador da Cirurgia de Coluna Vertebral do Hospital Santa Teresa – Petrópolis. Mestrando em Ciências Aplicadas ao Sistema Musculoes-quelético (INTO/MS).",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Cirurgião de Coluna Vertebral. Membro da Sociedade Brasileira de Coluna (SBC). Médico do Centro de Doenças da Coluna do Instituto Nacional de Traumatologia e Ortopedia (INTO/MS). Coordenador da Cirurgia de Coluna Vertebral do Hospital Santa Teresa – Petrópolis. Mestrando em Ciências Aplicadas ao Sistema Musculoes-quelético (INTO/MS)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 76,
+        "titulo": "Fixação Posterior da Coluna Cervical",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "166",
+    "slug": "renato-hiroshi-salvioni-ueta",
+    "nome": "Renato Hiroshi Salvioni Ueta",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3458-0184",
+    "orcid_url": "https://orcid.org/0000-0002-3458-0184",
+    "bio_completa": "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Especialista em Ortopedia e Traumatologia pela Unifesp. Especialista em Patologias da Coluna Vertebral pela Unifesp. Mestre em Ortopedia e Traumatologia pela Unifesp.",
+    "titulacao_academica": [
+      "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Especialista em Ortopedia e Traumatologia pela Unifesp. Especialista em Patologias da Coluna Vertebral pela Unifesp. Mestre em Ortopedia e Traumatologia pela Unifesp."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 45,
+        "titulo": "Hérnia de Disco Lombar",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "167",
+    "slug": "rene-kusabara",
+    "nome": "René Kusabara",
+    "cargo": "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos em 1988 (Lusíada)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2673-7193",
+    "orcid_url": "https://orcid.org/0000-0003-2673-7193",
+    "bio_completa": "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos em 1988 (Lusíada). Membro Associado da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) desde 1994, Membro Titular da Sociedade Brasileira de Coluna (SBC) desde 1994, Chefe do Grupo de Aperfeiçoamento em Cirurgia de Coluna do Hospital Alvorada e Servidor Municipal de São Paulo",
+    "titulacao_academica": [
+      "Graduação em Medicina pela Faculdade de Ciências Médicas de Santos em 1988 (Lusíada). Membro Associado da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) desde 1994, Membro Titular da Sociedade Brasileira de Coluna (SBC) desde 1994, Chefe do Grupo de Aperfeiçoamento em Cirurgia de Coluna do Hospital Alvorada e Servidor Municipal de São Paulo"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 108,
+        "titulo": "Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "168",
+    "slug": "rian-souza-vieira",
+    "nome": "Rian Souza Vieira",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 3 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2374-8989",
+    "orcid_url": "https://orcid.org/0000-0003-2374-8989",
+    "bio_completa": "Médico Assistente do Setor de Cirurgia da Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP).",
+    "titulacao_academica": [
+      "Médico Assistente do Setor de Cirurgia da Coluna Vertebral do Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 12,
+        "titulo": "Anamnese e Exame Físico da Coluna Vertebral",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      },
+      {
+        "num": 34,
+        "titulo": "Escoliose Idiopática",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 40,
+        "titulo": "Cifose",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "169",
+    "slug": "ricardo-acacio-dos-santos",
+    "nome": "Ricardo Acacio Dos Santos",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2901-5583",
+    "orcid_url": "https://orcid.org/0000-0003-2901-5583",
+    "bio_completa": "Graduação em medicina Universidade Estadual do Oete do Paraná - UNIOESTE Residência em ortopedia e traumatologia Iot Joinville/Sc Fellowship em deformidades da Coluna San Diego Center for Spinal disorders Fellowship em coluna pediátrica Rady Children’s Hospital San Diego Mestrado em ciências do aparelho locomotor Usp-Ribeirao Preto Membro efetivo SBOT, SBC e SRS",
+    "titulacao_academica": [
+      "Graduação em medicina Universidade Estadual do Oete do Paraná - UNIOESTE Residência em ortopedia e traumatologia Iot Joinville/Sc Fellowship em deformidades da Coluna San Diego Center for Spinal disorders Fellowship em coluna pediátrica Rady Children’s Hospital San Diego Mestrado em ciências do aparelho locomotor Usp-Ribeirao Preto Membro efetivo SBOT, SBC e SRS"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 81,
+        "titulo": "Ostetomias da Coluna Vertebral",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "170",
+    "slug": "ricardo-de-souza-portes-meirelles",
+    "nome": "Ricardo de Souza Portes Meirelles",
+    "cargo": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-3657-3260",
+    "orcid_url": "https://orcid.org/0000-0002-3657-3260",
+    "bio_completa": "Instituto Nacional de Traumatologia e Ortopedia (INTO).",
+    "titulacao_academica": [
+      "Instituto Nacional de Traumatologia e Ortopedia (INTO)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 88,
+        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "171",
+    "slug": "ricardo-jose-rodriguez-ferreira",
+    "nome": "Ricardo José Rodriguez Ferreira",
+    "cargo": "Médico Fisiatra e Neurofisiologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1415-6324",
+    "orcid_url": "https://orcid.org/0000-0003-1415-6324",
+    "bio_completa": "Médico Fisiatra e Neurofisiologista. Membro Titular da Sociedade Brasileira de Neurofisiologia Clínica (SBNC) e Associação Brasileira de Medicina Física e Reabilitação (ABMFR) e Membro da Sociedade Brasileira de Coluna (SBC). Médico Assistente e Coordenador da Neurofisiologia Intraoperatória do Instituto de Ortopedia e Traumatologia da Universidade de São Paulo (USP). Diretor Técnico da equipe da Clínica Ricardo Ferreira.",
+    "titulacao_academica": [
+      "Médico Fisiatra e Neurofisiologista. Membro Titular da Sociedade Brasileira de Neurofisiologia Clínica (SBNC) e Associação Brasileira de Medicina Física e Reabilitação (ABMFR) e Membro da Sociedade Brasileira de Coluna (SBC). Médico Assistente e Coordenador da Neurofisiologia Intraoperatória do Instituto de Ortopedia e Traumatologia da Universidade de São Paulo (USP). Diretor Técnico da equipe da Clínica Ricardo Ferreira."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 13,
+        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      },
+      {
+        "num": 14,
+        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "172",
+    "slug": "robert-meves",
+    "nome": "Robert Meves",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8695-3982",
+    "orcid_url": "https://orcid.org/0000-0002-8695-3982",
+    "bio_completa": "Professor Adjunto e Chefe do Grupo de Coluna do Departamento de Ortopedia e Traumatologia da Faculdade de Ciências Médicas da Santa Casa de São Paulo (DOT/ FCMSCSP). Mestrado e Doutorado em Ciências da Saúde pelo DOT/ FCMSCSP. Embaixador da Fundação AOSpine Internacional. Presidente do Conselho Consultivo da Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Professor Adjunto e Chefe do Grupo de Coluna do Departamento de Ortopedia e Traumatologia da Faculdade de Ciências Médicas da Santa Casa de São Paulo (DOT/ FCMSCSP). Mestrado e Doutorado em Ciências da Saúde pelo DOT/ FCMSCSP. Embaixador da Fundação AOSpine Internacional. Presidente do Conselho Consultivo da Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 46,
+        "titulo": "Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      },
+      {
+        "num": 50,
+        "titulo": "Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "173",
+    "slug": "roberta-cristina-risso",
+    "nome": "Roberta Cristina Risso",
+    "cargo": "Médica pela Faculdade de Medicina de Marília (FAMEMA)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6686-5195",
+    "orcid_url": "https://orcid.org/0000-0001-6686-5195",
+    "bio_completa": "Médica pela Faculdade de Medicina de Marília (FAMEMA). Anestesiologia pelo Hospital Sírio-Libanês. Título de Atuação em Dor pela Associação Médica Brasileira (AMB). Mestre pela Universidade Federal de São Paulo (UNIFESP). Especialização em Acupuntura, Especialização em Cuidados Paliativos. MBA em Liderança de Equipes pela FAAP. Coordenadora da Equipe de Tratamento de Dor do SMA no Hospital Alemão Oswaldo Cruz. Membro do Comitê de Ética Médica do Hospital Alemão Oswaldo Cruz.",
+    "titulacao_academica": [
+      "Médica pela Faculdade de Medicina de Marília (FAMEMA). Anestesiologia pelo Hospital Sírio-Libanês. Título de Atuação em Dor pela Associação Médica Brasileira (AMB). Mestre pela Universidade Federal de São Paulo (UNIFESP). Especialização em Acupuntura, Especialização em Cuidados Paliativos. MBA em Liderança de Equipes pela FAAP. Coordenadora da Equipe de Tratamento de Dor do SMA no Hospital Alemão Oswaldo Cruz. Membro do Comitê de Ética Médica do Hospital Alemão Oswaldo Cruz."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 102,
+        "titulo": "Manejo da Dor Aguda e Crônica na Coluna Vertebral",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "174",
+    "slug": "roberto-waldesmand-farias-pontes",
+    "nome": "Roberto Waldesmand Farias Pontes",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2084-5225",
+    "orcid_url": "https://orcid.org/0000-0002-2084-5225",
+    "bio_completa": "Neurologista, Neurofisiologista e Mestre em Neurofisiologia Clínica pelo Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP). Neurofisiologista Associado da Equipe da Clínica Ricardo Ferreira. Neurofisiologista Assistente do Instituto do Câncer do Estado de São Paulo (ICESP) do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Membro Titular da Academia Brasileira de Neurologia (ABN) e da Sociedade Brasileira de Neurofisiologia Clínica (SBNC).",
+    "titulacao_academica": [
+      "Neurologista, Neurofisiologista e Mestre em Neurofisiologia Clínica pelo Hospital das Clínicas da Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (HC-FMRP-USP). Neurofisiologista Associado da Equipe da Clínica Ricardo Ferreira. Neurofisiologista Assistente do Instituto do Câncer do Estado de São Paulo (ICESP) do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Membro Titular da Academia Brasileira de Neurologia (ABN) e da Sociedade Brasileira de Neurofisiologia Clínica (SBNC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 13,
+        "titulo": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      },
+      {
+        "num": 14,
+        "titulo": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+        "secao_id": 2,
+        "secao_nome": "Avaliação Diagnóstica e Propedêutica"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "175",
+    "slug": "rodrigo-amaral",
+    "nome": "Rodrigo Amaral",
+    "cargo": "Médico graduado pela Faculdade de Medicina de Jundiaí, Jundiaí, São Paulo, Brasil",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3007-0571",
+    "orcid_url": "https://orcid.org/0000-0003-3007-0571",
+    "bio_completa": "Médico graduado pela Faculdade de Medicina de Jundiaí, Jundiaí, São Paulo, Brasil. Residência em Ortopedia e Traumatologia pelo Hospital do Servidor Público Municipal de São Paulo, São Paulo, Brasil. Formação complementar em Cirurgia da Coluna pela Irmandade Santa Casa de Misericórdia de São Paulo e pelo Instituto de Patologia da Coluna (IPC), São Paulo, Brasil. Doutorado em Aparelho Locomotor – Coluna Vertebral pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP), Ribeirão Preto, São Paulo, Brasil, de 2020 a 2022. Fellowship em Deformidades Adulto e Pediátrica da Coluna Vertebral no San Diego Center for Spinal Disorders (SDCSD), San Diego, Califórnia, Estados Unidos. Diretor do Instituto de Patologia da Coluna (IPC), São Paulo, Brasil. Membro fundador e coordenador da Seção de Estudo Científico do Brazilian Spine Study Group (BSSG). Membro de sociedades nacionais e internacionais dedi-cadas à cirurgia da coluna, incluindo SBOT, Sociedade Brasileira de Coluna, AO Spine, SMISS, SRS, ISASS e SOLAS.",
+    "titulacao_academica": [
+      "Médico graduado pela Faculdade de Medicina de Jundiaí, Jundiaí, São Paulo, Brasil. Residência em Ortopedia e Traumatologia pelo Hospital do Servidor Público Municipal de São Paulo, São Paulo, Brasil. Formação complementar em Cirurgia da Coluna pela Irmandade Santa Casa de Misericórdia de São Paulo e pelo Instituto de Patologia da Coluna (IPC), São Paulo, Brasil. Doutorado em Aparelho Locomotor – Coluna Vertebral pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (FMRP-USP), Ribeirão Preto, São Paulo, Brasil, de 2020 a 2022. Fellowship em Deformidades Adulto e Pediátrica da Coluna Vertebral no San Diego Center for Spinal Disorders (SDCSD), San Diego, Califórnia, Estados Unidos. Diretor do Instituto de Patologia da Coluna (IPC), São Paulo, Brasil. Membro fundador e coordenador da Seção de Estudo Científico do Brazilian Spine Study Group (BSSG). Membro de sociedades nacionais e internacionais dedi-cadas à cirurgia da coluna, incluindo SBOT, Sociedade Brasileira de Coluna, AO Spine, SMISS, SRS, ISASS e SOLAS."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 39,
+        "titulo": "Espondilolistese no Adulto",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 70,
+        "titulo": "Artrodese Lombar Prone Transpsoas",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "176",
+    "slug": "rodrigo-de-morais-hanriot",
+    "nome": "Rodrigo de Morais Hanriot",
+    "cargo": "Especialista em Radioterapia",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2189-8353",
+    "orcid_url": "https://orcid.org/0000-0002-2189-8353",
+    "bio_completa": "Especialista em Radioterapia. Membro Internacional das Sociedade Americana (ASTRO) e Sociedade Europeia de Radioterapia e Oncologia (ESTRO).",
+    "titulacao_academica": [
+      "Especialista em Radioterapia. Membro Internacional das Sociedade Americana (ASTRO) e Sociedade Europeia de Radioterapia e Oncologia (ESTRO)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 57,
+        "titulo": "Radioterapia nos Tumores de Coluna",
+        "secao_id": 7,
+        "secao_nome": "Tumores e Infecções da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "177",
+    "slug": "rodrigo-dos-santos-grandini",
+    "nome": "Rodrigo dos Santos Grandini",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-2151-9341",
+    "orcid_url": "https://orcid.org/0000-0002-2151-9341",
+    "bio_completa": "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Infantil Joana de Gusmão e do Hospital de Caridade de Florianópolis.",
+    "titulacao_academica": [
+      "Médico Ortopedista Pediátrico e Cirurgião de Coluna do Hospital Infantil Joana de Gusmão e do Hospital de Caridade de Florianópolis."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 38,
+        "titulo": "Espondilolistese na Criança",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 83,
+        "titulo": "Colete Gessado para Escoliose de Início Precoce",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "178",
+    "slug": "rodrigo-goes-medea-de-mendonca",
+    "nome": "Rodrigo Góes Medéa de Mendonça",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6118-9826",
+    "orcid_url": "https://orcid.org/0000-0002-6118-9826",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Cirurgia da Coluna Vertebral. Médico Formado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Especialista em Ortopedia e Traumatologia e Cirurgia da Coluna Vertebral – Pavilhão Fernandinho Simonsen / Santa Casa de São Paulo. Membro Efetivo da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Cirurgia da Coluna (SBC), da Sociedade Brasileira de Ortopedia Pediátrica (SBOP) e da North American Spine Society (NASS). Fellow – Campbell Clinic / University of Tennessee Health Science Center. Médico Assistente – Grupo de Afecções e Cirurgia da Coluna da Santa Casa de São Paulo. Médico Coordenador – Pós-graduação em Cirurgia Endoscópica da Coluna, Hospital Israelita Albert Einstein.",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Cirurgia da Coluna Vertebral. Médico Formado pela Faculdade de Ciências Médicas da Santa Casa de São Paulo. Especialista em Ortopedia e Traumatologia e Cirurgia da Coluna Vertebral – Pavilhão Fernandinho Simonsen / Santa Casa de São Paulo. Membro Efetivo da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT), da Sociedade Brasileira de Cirurgia da Coluna (SBC), da Sociedade Brasileira de Ortopedia Pediátrica (SBOP) e da North American Spine Society (NASS). Fellow – Campbell Clinic / University of Tennessee Health Science Center. Médico Assistente – Grupo de Afecções e Cirurgia da Coluna da Santa Casa de São Paulo. Médico Coordenador – Pós-graduação em Cirurgia Endoscópica da Coluna, Hospital Israelita Albert Einstein."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 46,
+        "titulo": "Estenose Lombar: Diagnóstico e Manejo Contemporâneo",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "179",
+    "slug": "roger-schmidt-brock",
+    "nome": "Roger Schmidt Brock",
+    "cargo": "Graduado pela Faculdade de Medicina da USP",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6186-3200",
+    "orcid_url": "https://orcid.org/0000-0002-6186-3200",
+    "bio_completa": "Graduado pela Faculdade de Medicina da USP. Residência em Neurocirurgia pela Faculdade de Medicina da USP. Doutor em Ciências pela Faculdade de Medicina da USP.Supervisor da Divisão de Clínica Neurocirúrgica do HC-FMUSP. Coordenador do Núcleo de Coluna do Hospital Sírio Libanês. Membro titular da Sociedade Brasileira de Neurocirurgia, Congress of Neurological Surgeons, American Associa-tion of Neurological Surgeons. Membro do Board Brasil da AOSpine.",
+    "titulacao_academica": [
+      "Graduado pela Faculdade de Medicina da USP. Residência em Neurocirurgia pela Faculdade de Medicina da USP. Doutor em Ciências pela Faculdade de Medicina da USP.Supervisor da Divisão de Clínica Neurocirúrgica do HC-FMUSP. Coordenador do Núcleo de Coluna do Hospital Sírio Libanês. Membro titular da Sociedade Brasileira de Neurocirurgia, Congress of Neurological Surgeons, American Associa-tion of Neurological Surgeons. Membro do Board Brasil da AOSpine."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
     ],
     "capitulos_tratado": [
       {
         "num": 77,
         "titulo": "Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
         "secao_id": 8,
-        "secao_nome": "Técnicas Cirúrgicas",
-        "resumo_breve": "Diretrizes diagnósticas e terapêuticas para o manejo de laminoplastia cervical: princípios, técnicas e evidências atuais pela Sociedade Brasileira de Coluna.",
-        "decs_mesh": [
-          "Coluna Vertebral",
-          "Cirurgia da Coluna",
-          "SBC"
-        ]
+        "secao_nome": "Complicações e Cirurgia de Revisão"
       }
     ],
-    "publicacoes_destaque": [
-      {
-        "ano": "2026",
-        "titulo": "Tratado de Cirurgia da Coluna Vertebral - Capítulo 77: Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
-        "periodico": "Editora DiLivros / Sociedade Brasileira de Coluna (SBC)",
-        "doi": "10.5935/sbc-tratado.2026.cap77"
-      }
-    ]
+    "artigos_relevantes": []
   },
+  {
+    "id": "180",
+    "slug": "santiago-alexis-naranjo-tipan",
+    "nome": "Santiago Alexis Naranjo Tipan",
+    "cargo": "Médico Ortopedista e Traumatologista",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0001-7432-8258",
+    "orcid_url": "https://orcid.org/0009-0001-7432-8258",
+    "bio_completa": "Médico Ortopedista e Traumatologista. Traumatologista. Fellow em Cirurgia da Coluna Vertebral pelo Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP).",
+    "titulacao_academica": [
+      "Médico Ortopedista e Traumatologista. Traumatologista. Fellow em Cirurgia da Coluna Vertebral pelo Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da FMUSP (IOT-HC-FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 28,
+        "titulo": "Escoliose de Início Precoce",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 90,
+        "titulo": "Cirurgia Complexa dos Tumores Cervicais",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "181",
+    "slug": "sara-reis-de-paula",
+    "nome": "Sara Reis de Paula",
+    "cargo": "Médica pela Universidade Federal de Alfenas – MG",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-8549-1050",
+    "orcid_url": "https://orcid.org/0000-0002-8549-1050",
+    "bio_completa": "Médica pela Universidade Federal de Alfenas – MG. Ortopedista e Traumatologista pela Universidade Estadual Paulista (UNESP). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow de Cirurgia da Coluna Vertebral na Universidade Estadual Paulista (UNESP).",
+    "titulacao_academica": [
+      "Médica pela Universidade Federal de Alfenas – MG. Ortopedista e Traumatologista pela Universidade Estadual Paulista (UNESP). Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Fellow de Cirurgia da Coluna Vertebral na Universidade Estadual Paulista (UNESP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 4,
+        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      },
+      {
+        "num": 93,
+        "titulo": "Infecções Pós-Operatórias",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "182",
+    "slug": "sergio-afonso-hennemann",
+    "nome": "Sergio Afonso Hennemann",
+    "cargo": "Médico Ortopedista",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3948-3057",
+    "orcid_url": "https://orcid.org/0000-0003-3948-3057",
+    "bio_completa": "Médico Ortopedista. Membro da Sociedade Brasileira de Ortopedia e da Sociedade Brasileira da Coluna. Membro do Serviço de Ortopedia do Hospital Mãe de Deus.",
+    "titulacao_academica": [
+      "Médico Ortopedista. Membro da Sociedade Brasileira de Ortopedia e da Sociedade Brasileira da Coluna. Membro do Serviço de Ortopedia do Hospital Mãe de Deus."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 100,
+        "titulo": "Síndrome da Falha da Cirurgia da Coluna Vertebral",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "183",
+    "slug": "sergio-augusto-barbosa-de-farias",
+    "nome": "Sérgio Augusto Barbosa de Farias",
+    "cargo": "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp)",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7452-8153",
+    "orcid_url": "https://orcid.org/0000-0002-7452-8153",
+    "bio_completa": "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp).",
+    "titulacao_academica": [
+      "Residente de Neurocirurgia pela Universidade Estadual de Campinas (Unicamp)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 109,
+        "titulo": "Capítulo 109",
+        "secao_id": 1,
+        "secao_nome": "Tratado de Cirurgia da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "184",
+    "slug": "sergio-mariano-zuazo",
+    "nome": "Sérgio Mariano Zuazo",
+    "cargo": "MD, MSc, PhD, TSA/SBA",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0006-6658-5744",
+    "orcid_url": "https://orcid.org/0009-0006-6658-5744",
+    "bio_completa": "MD, MSc, PhD, TSA/SBA. Médico Assistente do Hospital das Clínicas de Ribeirão Preto. Responsável pelo CET do Hospital das Clínicas de Ribeirão Preto da Faculdade de Medicina da Universidade de São Paulo (HCRP-FMUSP).",
+    "titulacao_academica": [
+      "MD, MSc, PhD, TSA/SBA. Médico Assistente do Hospital das Clínicas de Ribeirão Preto. Responsável pelo CET do Hospital das Clínicas de Ribeirão Preto da Faculdade de Medicina da Universidade de São Paulo (HCRP-FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 103,
+        "titulo": "Abordagens para o Tratamento da Dor Pós-Operatória em Cirurgia de Coluna",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "185",
+    "slug": "sergio-zylbersztejn",
+    "nome": "Sergio Zylbersztejn",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-6560-6500",
+    "orcid_url": "https://orcid.org/0000-0002-6560-6500",
+    "bio_completa": "Professor Assistente Aposentado do Curso de Medicina da Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA). Mestrado em Ortopedia e Traumatologia da Faculdade de Medicina da Universidade de São Paulo (FMUSP).",
+    "titulacao_academica": [
+      "Professor Assistente Aposentado do Curso de Medicina da Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA). Mestrado em Ortopedia e Traumatologia da Faculdade de Medicina da Universidade de São Paulo (FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 106,
+        "titulo": "Uso de Órteses na Coluna Vertebral",
+        "secao_id": 10,
+        "secao_nome": "Inovações Tecnológicas e Perspectivas Futuras"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "186",
+    "slug": "sonja-ellen-lobo",
+    "nome": "Sonja Ellen Lobo",
+    "cargo": "Cirurgiã-Dentista graduada pela Universidade de Marilia",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5697-9858",
+    "orcid_url": "https://orcid.org/0000-0002-5697-9858",
+    "bio_completa": "Cirurgiã-Dentista graduada pela Universidade de Marilia. Especialista em Cirurgia e Traumatologia Buco-Maxilo- -Facial pela Universidade de São Paulo, Campus de Bauru (USP-Bauru). Subespecialista em Cirurgia Ortognática pelo Centro Medico Nacional 20 de Noviembre – ISSSTE, cidade do México. Mestre em Biologia Celular pela Universidade Federal de Minas Gerais (UFMG). Doutora em Ciências pela Universidade Federal de São Paulo (UNIFESP), em programa conjunto com o Departa-mento de Biomateriais da New Jersey Institute of Tech-nology (NJIT) e com o Departamento de Biomateriais e Biomiméticos da New York University (NYU), Estados Unidos. Pós-doutora no Departamento de Pesquisas Ortopédicas da University of California – UCLA, Estados Unidos.",
+    "titulacao_academica": [
+      "Cirurgiã-Dentista graduada pela Universidade de Marilia. Especialista em Cirurgia e Traumatologia Buco-Maxilo- -Facial pela Universidade de São Paulo, Campus de Bauru (USP-Bauru). Subespecialista em Cirurgia Ortognática pelo Centro Medico Nacional 20 de Noviembre – ISSSTE, cidade do México. Mestre em Biologia Celular pela Universidade Federal de Minas Gerais (UFMG). Doutora em Ciências pela Universidade Federal de São Paulo (UNIFESP), em programa conjunto com o Departa-mento de Biomateriais da New Jersey Institute of Tech-nology (NJIT) e com o Departamento de Biomateriais e Biomiméticos da New York University (NYU), Estados Unidos. Pós-doutora no Departamento de Pesquisas Ortopédicas da University of California – UCLA, Estados Unidos."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 62,
+        "titulo": "Endoscopia Transforaminal na Coluna Lombossacra",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      },
+      {
+        "num": 66,
+        "titulo": "Endoscopia na Coluna Cervical pela Via Anterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "187",
+    "slug": "sylvio-mistro-neto",
+    "nome": "Sylvio Mistro Neto",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-6744-2397",
+    "orcid_url": "https://orcid.org/0000-0001-6744-2397",
+    "bio_completa": "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências da Cirurgia pela Universidade Estadual de Campinas (Unicamp). Médico do Grupo de Cirurgia da Coluna do Hospital Alemão Oswaldo Cruz.",
+    "titulacao_academica": [
+      "Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e da Sociedade Brasileira de Coluna (SBC). Mestre em Ciências da Cirurgia pela Universidade Estadual de Campinas (Unicamp). Médico do Grupo de Cirurgia da Coluna do Hospital Alemão Oswaldo Cruz."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 49,
+        "titulo": "Infiltrações e Radiofrequência na Coluna Vertebral",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "188",
+    "slug": "thiago-coutinho",
+    "nome": "Thiago Coutinho",
+    "cargo": "Médico Ortopedista especialista em Coluna Vertebral no VITA Ortopedia – São Paulo",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7045-015X",
+    "orcid_url": "https://orcid.org/0000-0002-7045-015X",
+    "bio_completa": "Médico Ortopedista especialista em Coluna Vertebral no VITA Ortopedia – São Paulo. Mestre em Ciências do Sistema Musculoesquelético pela Universidade de São Paulo (USP).",
+    "titulacao_academica": [
+      "Médico Ortopedista especialista em Coluna Vertebral no VITA Ortopedia – São Paulo. Mestre em Ciências do Sistema Musculoesquelético pela Universidade de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 5,
+        "titulo": "Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
+        "secao_id": 1,
+        "secao_nome": "Ciências Básicas e Fundamentos"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "189",
+    "slug": "tiago-ferreira-jorge",
+    "nome": "Tiago Ferreira Jorge",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-8893-5131",
+    "orcid_url": "https://orcid.org/0000-0001-8893-5131",
+    "bio_completa": "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Especialista em Ortopedia e Traumatologia pela EPM. Especialista em Patologias da Coluna Vertebral pela EPM-Unifesp.",
+    "titulacao_academica": [
+      "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (EPM-Unifesp). Especialista em Ortopedia e Traumatologia pela EPM. Especialista em Patologias da Coluna Vertebral pela EPM-Unifesp."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 45,
+        "titulo": "Hérnia de Disco Lombar",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      },
+      {
+        "num": 65,
+        "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "190",
+    "slug": "tulio-albuquerque-de-moura-rangel",
+    "nome": "Túlio Albuquerque de Moura Rangel",
+    "cargo": "Médico pela Faculdade de Ciências Médicas da Universi-dade de Pernambuco (UPE)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-5324-7440",
+    "orcid_url": "https://orcid.org/0000-0002-5324-7440",
+    "bio_completa": "Médico pela Faculdade de Ciências Médicas da Universi-dade de Pernambuco (UPE). Residência em Ortopedia e Traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Membro ativo da Scoliosis Research Society (SRS).",
+    "titulacao_academica": [
+      "Médico pela Faculdade de Ciências Médicas da Universi-dade de Pernambuco (UPE). Residência em Ortopedia e Traumatologia pelo Hospital Getúlio Vargas Recife/PE. Membro da Sociedade Brasileira de Ortopedia e Trauma-tologia (SBOT). Membro da Sociedade Brasileira de Coluna (SBC). Membro ativo da Scoliosis Research Society (SRS)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 29,
+        "titulo": "Tratamento Não Cirúrgico das Escolioses",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "191",
+    "slug": "victor-cavalcante-schussel",
+    "nome": "Victor Cavalcante Schussel",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7996-1685",
+    "orcid_url": "https://orcid.org/0000-0002-7996-1685",
+    "bio_completa": "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Especialista em Ortopedia e Traumatologia pela Unifesp. Especialista em Patologias da Coluna Vertebral pela Unifesp.",
+    "titulacao_academica": [
+      "Graduado em Medicina pela Escola Paulista de Medicina da Universidade Federal de São Paulo (Unifesp). Especialista em Ortopedia e Traumatologia pela Unifesp. Especialista em Patologias da Coluna Vertebral pela Unifesp."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 45,
+        "titulo": "Hérnia de Disco Lombar",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      },
+      {
+        "num": 65,
+        "titulo": "Endoscopia na Coluna Cervical pela Via Posterior",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "192",
+    "slug": "victor-kelles-tupy-da-fonseca",
+    "nome": "Victor Kelles Tupy da Fonseca",
+    "cargo": "Pós-Graduação pela Faculdade de Ciências Médicas de Minas Gerais (FCM-MG)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3829-8941",
+    "orcid_url": "https://orcid.org/0000-0003-3829-8941",
+    "bio_completa": "Pós-Graduação pela Faculdade de Ciências Médicas de Minas Gerais (FCM-MG).",
+    "titulacao_academica": [
+      "Pós-Graduação pela Faculdade de Ciências Médicas de Minas Gerais (FCM-MG)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 48,
+        "titulo": "Estenose Cervical, Mielopatia Cervical Degenerativa e Ossificação do Ligamento Longitudinal Posterior",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "193",
+    "slug": "vincenzo-fin-falavigna",
+    "nome": "Vincenzo Fin Falavigna",
+    "cargo": "Acadêmico de Medicina do 4º ano da Universidade de Caxias do Sul (UCS)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-3599-0887",
+    "orcid_url": "https://orcid.org/0000-0003-3599-0887",
+    "bio_completa": "Acadêmico de Medicina do 4º ano da Universidade de Caxias do Sul (UCS).",
+    "titulacao_academica": [
+      "Acadêmico de Medicina do 4º ano da Universidade de Caxias do Sul (UCS)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 42,
+        "titulo": "Fisiopatologia da Degeneração Discal",
+        "secao_id": 5,
+        "secao_nome": "Doenças Degenerativas da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "194",
+    "slug": "vinicius-antonio-santos-aragao",
+    "nome": "Vinícius Antônio Santos Aragão",
+    "cargo": "Médico pela Universidade Federal de Sergipe – UFS",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 2 Capítulos no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-2821-1873",
+    "orcid_url": "https://orcid.org/0000-0003-2821-1873",
+    "bio_completa": "Médico pela Universidade Federal de Sergipe – UFS. Ortopedista pelo Instituto de Ortopedia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Fellow em Cirurgia da Coluna Vertebral do Instituto de Ortopedia do Hospital das Clínicas da Faculdade de Medi-cina da Universidade de São Paulo (HC-FMUSP).",
+    "titulacao_academica": [
+      "Médico pela Universidade Federal de Sergipe – UFS. Ortopedista pelo Instituto de Ortopedia do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (HC-FMUSP). Fellow em Cirurgia da Coluna Vertebral do Instituto de Ortopedia do Hospital das Clínicas da Faculdade de Medi-cina da Universidade de São Paulo (HC-FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 35,
+        "titulo": "Escoliose do Adulto",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      },
+      {
+        "num": 36,
+        "titulo": "Escoliose nas Síndromes Genéticas",
+        "secao_id": 4,
+        "secao_nome": "Deformidades da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "195",
+    "slug": "vinicius-de-meldau-benites",
+    "nome": "Vinicius de Meldau Benites",
+    "cargo": "Médico Neurocirurgião",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1693-9357",
+    "orcid_url": "https://orcid.org/0000-0003-1693-9357",
+    "bio_completa": "Médico Neurocirurgião. Membro do Grupo de Coluna da Escola Paulista de Medi-cina da Universidade Federal de São Paulo (EPM-Unifesp). Mestre e Doutor pela EPM-Unifesp.",
+    "titulacao_academica": [
+      "Médico Neurocirurgião. Membro do Grupo de Coluna da Escola Paulista de Medi-cina da Universidade Federal de São Paulo (EPM-Unifesp). Mestre e Doutor pela EPM-Unifesp."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 73,
+        "titulo": "Artroplastia da Coluna",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "196",
+    "slug": "vinicius-marques-carneiro",
+    "nome": "Vinicius Marques Carneiro",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1897-9598",
+    "orcid_url": "https://orcid.org/0000-0003-1897-9598",
+    "bio_completa": "Médico Assistente da Divisão de Neurocirurgia do Departamento de Cirurgia e Anatomia da Faculdade de Medi-cina de Ribeirão Preto da Universidade de São Paulo (USP).",
+    "titulacao_academica": [
+      "Médico Assistente da Divisão de Neurocirurgia do Departamento de Cirurgia e Anatomia da Faculdade de Medi-cina de Ribeirão Preto da Universidade de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 92,
+        "titulo": "Navegação e Robótica",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "197",
+    "slug": "vinicius-tapie-guerra-e-silva",
+    "nome": "Vinicius Tapie Guerra e Silva",
+    "cargo": "Médico graduado pelo Centro Universitário do Espírito Santo - UNESC",
+    "instituicao": "Instituto Nacional de Traumatologia e Ortopedia (INTO)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-8788-4395",
+    "orcid_url": "https://orcid.org/0000-0001-8788-4395",
+    "bio_completa": "Médico graduado pelo Centro Universitário do Espírito Santo - UNESC. Residência em Ortopedia e Traumatologia pelo Instituto Nacional de Traumatologia e Ortopedia (INTO). Residência em Cirurgia de Coluna pelo Instituto Nacional de Traumatologia e Ortopedia (INTO) com Título de espe-cialista pela Sociedade Brasileira de Coluna (SBC).",
+    "titulacao_academica": [
+      "Médico graduado pelo Centro Universitário do Espírito Santo - UNESC. Residência em Ortopedia e Traumatologia pelo Instituto Nacional de Traumatologia e Ortopedia (INTO). Residência em Cirurgia de Coluna pelo Instituto Nacional de Traumatologia e Ortopedia (INTO) com Título de espe-cialista pela Sociedade Brasileira de Coluna (SBC)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 88,
+        "titulo": "Vertebrectomia Torácica e Lombar nas Neoplasias",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "198",
+    "slug": "walison-jose-de-morais",
+    "nome": "Walison José de Morais",
+    "cargo": "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás (UFG)",
+    "instituicao": "Universidade Federal de Goiás (UFG)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7881-4683",
+    "orcid_url": "https://orcid.org/0000-0002-7881-4683",
+    "bio_completa": "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás (UFG). Residência em Neurocirurgia pelo Hospital das Clínicas da Universidade Federal de Goiás (HC-UFG).",
+    "titulacao_academica": [
+      "Médico graduado pela Faculdade de Medicina da Universidade Federal de Goiás (UFG). Residência em Neurocirurgia pelo Hospital das Clínicas da Universidade Federal de Goiás (HC-UFG)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 67,
+        "titulo": "Endoscopia Unilateral Biportal",
+        "secao_id": 8,
+        "secao_nome": "Complicações e Cirurgia de Revisão"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "199",
+    "slug": "walterney-amancio-filho",
+    "nome": "Walterney Amancio Filho",
+    "cargo": "Médico Neurocirurgião pelo Hospital Regional de Presi-dente Prudente – SP",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-7570-362X",
+    "orcid_url": "https://orcid.org/0000-0002-7570-362X",
+    "bio_completa": "Médico Neurocirurgião pelo Hospital Regional de Presi-dente Prudente – SP. Fellowship em Cirurgia da Coluna Vertebral pelo Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP).",
+    "titulacao_academica": [
+      "Médico Neurocirurgião pelo Hospital Regional de Presi-dente Prudente – SP. Fellowship em Cirurgia da Coluna Vertebral pelo Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 94,
+        "titulo": "Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "200",
+    "slug": "werner-petry-silva",
+    "nome": "Werner Petry Silva",
+    "cargo": "Graduado em Medicina pela Universidade de Santa Cruz do Sul",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0009-0009-9572-4987",
+    "orcid_url": "https://orcid.org/0009-0009-9572-4987",
+    "bio_completa": "Graduado em Medicina pela Universidade de Santa Cruz do Sul. Residência em Neurocirurgia pelo Hospital Pompeia em Caxias do Sul. Fellow em Cirurgia da Coluna Vertebral pelo Hospital São Vicente de Paulo (HSVP) em Passo Fundo. Fellow em Cirurgia da Coluna Vertebral no Hospital Univer-sitário de Heidelberg na Alemanha. Pós-Graduação Lato Sensu em Cirurgia da Coluna - Universidade de Caxias do Sul e AO Spine.",
+    "titulacao_academica": [
+      "Graduado em Medicina pela Universidade de Santa Cruz do Sul. Residência em Neurocirurgia pelo Hospital Pompeia em Caxias do Sul. Fellow em Cirurgia da Coluna Vertebral pelo Hospital São Vicente de Paulo (HSVP) em Passo Fundo. Fellow em Cirurgia da Coluna Vertebral no Hospital Univer-sitário de Heidelberg na Alemanha. Pós-Graduação Lato Sensu em Cirurgia da Coluna - Universidade de Caxias do Sul e AO Spine."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 17,
+        "titulo": "Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "201",
+    "slug": "william-gemio-jacobsen-teixeira",
+    "nome": "William Gemio Jacobsen Teixeira",
+    "cargo": "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP)",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-9036-629X",
+    "orcid_url": "https://orcid.org/0000-0001-9036-629X",
+    "bio_completa": "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP).",
+    "titulacao_academica": [
+      "Doutor pela Faculdade de Medicina da Universidade de São Paulo (USP)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 54,
+        "titulo": "Tumores Ósseos Primários Malignos",
+        "secao_id": 6,
+        "secao_nome": "Técnicas Minimamente Invasivas e Endoscopia"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "202",
+    "slug": "wuilker-knoner-campos",
+    "nome": "Wuilker Knoner Campos",
+    "cargo": "Neurocirurgia pelo Hospital Geral de Bonsucesso – RJ",
+    "instituicao": "Universidade de São Paulo (USP)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0001-7931-1255",
+    "orcid_url": "https://orcid.org/0000-0001-7931-1255",
+    "bio_completa": "Neurocirurgia pelo Hospital Geral de Bonsucesso – RJ. Fellow em Cirurgia da Coluna no Instituto Rizzoli - Bolonha/ ITA. Fellow em Neurocirurgia Funcional pelo Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP). Especialista em Medicina da Dor pela Associação Médica Brasileira (AMB). Doutorado em Neurociências pela Universidade Federal de Santa Catarina UFSC.",
+    "titulacao_academica": [
+      "Neurocirurgia pelo Hospital Geral de Bonsucesso – RJ. Fellow em Cirurgia da Coluna no Instituto Rizzoli - Bolonha/ ITA. Fellow em Neurocirurgia Funcional pelo Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo (FMUSP). Especialista em Medicina da Dor pela Associação Médica Brasileira (AMB). Doutorado em Neurociências pela Universidade Federal de Santa Catarina UFSC."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 94,
+        "titulo": "Lesão Dural, Aracnoidite e Fibrose Pós-Operatória",
+        "secao_id": 9,
+        "secao_nome": "Manejo da Dor e Reabilitação"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "203",
+    "slug": "xavier-soler-graells",
+    "nome": "Xavier Soler Graells",
+    "cargo": "Médico Ortopedista Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)",
+    "instituicao": "Sociedade Brasileira de Coluna (SBC)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0002-9636-9165",
+    "orcid_url": "https://orcid.org/0000-0002-9636-9165",
+    "bio_completa": "Médico Ortopedista Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Chefe do Grupo de Coluna do Hospital do Trabalhador (HT), Curitiba. Chefe do Serviço de Ortopedia e Traumatologia do HT. Aperfeiçoamento em Ensino Médico pela UFPR.",
+    "titulacao_academica": [
+      "Médico Ortopedista Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT). Especialista em Cirurgia de Coluna pela Sociedade Brasileira de Coluna (SBC). Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná (UFPR). Chefe do Grupo de Coluna do Hospital do Trabalhador (HT), Curitiba. Chefe do Serviço de Ortopedia e Traumatologia do HT. Aperfeiçoamento em Ensino Médico pela UFPR."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 25,
+        "titulo": "Fraturas Vertebrais por Insuficiência",
+        "secao_id": 3,
+        "secao_nome": "Traumatismo da Coluna Vertebral"
+      }
+    ],
+    "artigos_relevantes": []
+  },
+  {
+    "id": "204",
+    "slug": "zoraida-sachetto",
+    "nome": "Zoraida Sachetto",
+    "cargo": "Membro Especialista da Sociedade Brasileira de Coluna",
+    "instituicao": "Universidade Estadual de Campinas (Unicamp)",
+    "destaque": "Autor de 1 Capítulo no Tratado SBC",
+    "foto_url": "/assets/avatar-placeholder.png",
+    "orcid": "0000-0003-1216-9690",
+    "orcid_url": "https://orcid.org/0000-0003-1216-9690",
+    "bio_completa": "Professora Doutora da Disciplina de Reumatologia do Departamento de Ortopedia, Reumatologia e Traumatologia da Faculdade de Ciências Médicas da Universidade Estadual de Campinas (FCM-Unicamp).",
+    "titulacao_academica": [
+      "Professora Doutora da Disciplina de Reumatologia do Departamento de Ortopedia, Reumatologia e Traumatologia da Faculdade de Ciências Médicas da Universidade Estadual de Campinas (FCM-Unicamp)."
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [
+      {
+        "num": 59,
+        "titulo": "Doenças Reumáticas da Coluna Vertebral",
+        "secao_id": 7,
+        "secao_nome": "Tumores e Infecções da Coluna"
+      }
+    ],
+    "artigos_relevantes": []
+  }
 ];
 
-export function getAuthorByIdOrSlug(identifier: string): AuthorProfile | undefined {
-  if (!identifier) return undefined;
-  const cleanId = decodeURIComponent(identifier).trim().toLowerCase();
-  return AUTHORS_DIRECTORY.find(
-    (a) => a.id === cleanId || a.slug === cleanId || a.slug === cleanId.replace(/^dr-|^dra-/, "")
+export function getAuthorByIdOrSlug(idOrSlug: string): AuthorProfile | undefined {
+  const normalized = idOrSlug.toLowerCase().trim();
+  return (
+    AUTHORS_DIRECTORY.find((a) => a.id === normalized) ||
+    AUTHORS_DIRECTORY.find((a) => a.slug === normalized) ||
+    AUTHORS_DIRECTORY.find((a) => a.nome.toLowerCase().replace(/^(dr\.|dra\.|prof\.|profa\.)\s*/i, "").trim() === normalized)
   );
 }
 
 export function getAuthorByName(name: string): AuthorProfile | undefined {
-  if (!name) return undefined;
-  const clean = name.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim().toLowerCase();
-  return AUTHORS_DIRECTORY.find(
-    (a) => a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim().toLowerCase() === clean
-  );
+  const clean = name.toLowerCase().replace(/^(dr\.|dra\.|prof\.|profa\.)\s*/i, "").trim();
+  return AUTHORS_DIRECTORY.find((a) => {
+    const aClean = a.nome.toLowerCase().replace(/^(dr\.|dra\.|prof\.|profa\.)\s*/i, "").trim();
+    return aClean === clean || aClean.includes(clean) || clean.includes(aClean);
+  });
 }
 
 export function getAuthorsByChapter(chapterNum: number): AuthorProfile[] {

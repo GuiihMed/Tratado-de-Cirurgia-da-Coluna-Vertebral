@@ -7,7 +7,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { AUTHORS_DIRECTORY, getAuthorByIdOrSlug } from "@/lib/data/authors";
-import { BookOpen, Layers, FlaskConical, Search, Tag, ArrowRight, Award, Building2 } from "lucide-react";
+import { BookOpen, Layers, Search, Tag, ArrowRight, Award, Building2 } from "lucide-react";
 
 interface AutorNewPageProps {
   params: Promise<{ locale: string; id: string }>;
@@ -31,13 +31,10 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
     redirect(`/${locale}/autor-new/${author.slug}`);
   }
 
-  const [activeTab, setActiveTab] = useState<"bio" | "capitulos" | "publicacoes">("bio");
-
-  const otherAuthors = AUTHORS_DIRECTORY.filter((a) => a.id !== author.id);
+  const [activeTab, setActiveTab] = useState<"bio" | "capitulos">("bio");
 
   return (
     <div style={{ background: "#001026", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
-      {/* ================= MODERN HEADER ================= */}
       <ModernHeader locale={locale} currentPage="other" />
 
       <main>
@@ -53,7 +50,6 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
             overflow: "hidden",
           }}
         >
-          {/* Subtle Spinal Anatomy Glow Overlay */}
           <div
             style={{
               position: "absolute",
@@ -71,7 +67,6 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
           />
 
           <div className="shell" style={{ position: "relative", zIndex: 2 }}>
-            {/* Breadcrumb Navigation */}
             <nav
               aria-label="Breadcrumb"
               style={{
@@ -95,7 +90,6 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
             </nav>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
-              {/* Foto com Zoom e Glow */}
               <div
                 style={{
                   width: 200,
@@ -110,13 +104,12 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 }}
               >
                 <img
-                  src={author.foto_url}
+                  src={author.foto_url || "/assets/avatar-placeholder.png"}
                   alt={author.nome}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
                 />
               </div>
 
-              {/* Informações Principais */}
               <div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
                   <span
@@ -132,24 +125,11 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   >
                     {author.cargo}
                   </span>
-                  <span
-                    style={{
-                      background: "rgba(255, 255, 255, 0.1)",
-                      border: "1px solid rgba(255, 255, 255, 0.15)",
-                      padding: "4px 12px",
-                      borderRadius: 20,
-                      fontSize: 12.5,
-                      fontWeight: 600,
-                      color: "#cbd5e1",
-                    }}
-                  >
-                    📋 {author.crm}
-                  </span>
                 </div>
 
                 <h1
                   style={{
-                    fontSize: "clamp(30px, 3.8vw, 46px)",
+                    fontSize: "clamp(28px, 3.8vw, 44px)",
                     fontWeight: 700,
                     lineHeight: 1.15,
                     margin: "0 0 10px",
@@ -159,23 +139,55 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   {author.nome}
                 </h1>
 
-                <p style={{ fontSize: 16, color: "#cbd5e1", margin: "0 0 16px", fontWeight: 500 }}>
-                  🏛️ {author.instituicao} • <span style={{ color: "#94a3b8" }}>{author.cidade_estado}</span>
+                <p style={{ fontSize: 16, color: "#cbd5e1", margin: "0 0 14px", fontWeight: 500 }}>
+                  🏛️ {author.instituicao}
                 </p>
 
-                <div
-                  style={{
-                    display: "inline-block",
-                    background: "linear-gradient(135deg, rgba(245, 34, 56, 0.15) 0%, rgba(0, 51, 130, 0.2) 100%)",
-                    borderLeft: "3px solid #f52238",
-                    padding: "8px 16px",
-                    borderRadius: "0 8px 8px 0",
-                    fontSize: 13.5,
-                    fontWeight: 700,
-                    color: "#ff808f",
-                  }}
-                >
-                  ⭐ {author.destaque}
+                {author.orcid && (
+                  <div style={{ margin: "0 0 16px", display: "inline-block" }}>
+                    <a
+                      href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        background: "rgba(166, 206, 57, 0.18)",
+                        border: "1px solid rgba(166, 206, 57, 0.45)",
+                        color: "#a6ce39",
+                        padding: "6px 14px",
+                        borderRadius: 10,
+                        fontSize: 13.5,
+                        fontWeight: 600,
+                        textDecoration: "none",
+                      }}
+                    >
+                      <svg width="17" height="17" viewBox="0 0 256 256" fill="#a6ce39">
+                        <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                        <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                      </svg>
+                      <span>ORCID: {author.orcid}</span>
+                      <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
+                    </a>
+                  </div>
+                )}
+
+                <div>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      background: "linear-gradient(135deg, rgba(245, 34, 56, 0.15) 0%, rgba(0, 51, 130, 0.2) 100%)",
+                      borderLeft: "3px solid #f52238",
+                      padding: "8px 16px",
+                      borderRadius: "0 8px 8px 0",
+                      fontSize: 13.5,
+                      fontWeight: 700,
+                      color: "#ff808f",
+                    }}
+                  >
+                    ⭐ {author.destaque}
+                  </div>
                 </div>
               </div>
             </div>
@@ -251,29 +263,6 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                       : `Capítulos no Tratado (${author.capitulos_tratado.length})`}
                   </span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("publicacoes")}
-                  style={{
-                    flex: 1,
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 8,
-                    padding: "10px 16px",
-                    borderRadius: 10,
-                    border: "none",
-                    background: activeTab === "publicacoes" ? "#001a3d" : "transparent",
-                    color: activeTab === "publicacoes" ? "#ffffff" : "#475569",
-                    fontWeight: 700,
-                    fontSize: 14,
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                  }}
-                >
-                  <FlaskConical size={15} />
-                  <span>{locale === "en" ? "Scientific Output" : locale === "es" ? "Producción Científica" : "Produção Científica"}</span>
-                </button>
               </div>
 
               {/* TAB 1: BIOGRAFIA COMPLETA */}
@@ -293,32 +282,6 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                   <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.75, margin: "0 0 28px" }}>
                     {author.bio_completa}
                   </p>
-
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
-                    {locale === "en" ? "Research Lines & Clinical Investigation" : locale === "es" ? "Líneas de Investigación Clínica" : "Linhas de Pesquisa e Investigação Clínica"}
-                  </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
-                    {author.linhas_pesquisa.map((linha, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 12,
-                          background: "#f8fafc",
-                          padding: "12px 18px",
-                          borderRadius: 10,
-                          border: "1px solid #e2e8f0",
-                          fontSize: 14.5,
-                          fontWeight: 600,
-                          color: "#1e293b",
-                        }}
-                      >
-                        <Search size={14} className="text-blue-700" />
-                        <span>{linha}</span>
-                      </div>
-                    ))}
-                  </div>
 
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
                     {locale === "en" ? "Specialties & Areas of Expertise" : locale === "es" ? "Especialidades y Áreas de Dominio" : "Especialidades e Áreas de Domínio"}
@@ -348,261 +311,160 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 </article>
               )}
 
-              {/* TAB 2: CAPÍTULOS NO TRATADO */}
+              {/* TAB 2: CAPÍTULOS AUTORADOS */}
               {activeTab === "capitulos" && (
-                <article
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: 20,
-                    padding: "36px",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                  }}
-                >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-                    <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                      {locale === "en"
-                        ? `Authored / Coordinated Chapters (${author.capitulos_tratado.length})`
-                        : locale === "es"
-                        ? `Capítulos Escritos / Coordinados (${author.capitulos_tratado.length})`
-                        : `Capítulos Escritos / Coordenados (${author.capitulos_tratado.length})`}
-                    </h2>
-                    <span style={{ fontSize: 12.5, fontWeight: 700, color: "#f52238", background: "#fef2f2", padding: "4px 12px", borderRadius: 20, border: "1px solid #fecaca" }}>
-                      {locale === "en" ? "Official SBC Treatise" : locale === "es" ? "Tratado Oficial SBC" : "Tratado Oficial SBC"}
-                    </span>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                    {author.capitulos_tratado.map((cap) => (
-                      <div
-                        key={cap.num}
-                        style={{
-                          borderRadius: 14,
-                          padding: "22px",
-                          background: "#f8fafc",
-                          border: "1px solid #e2e8f0",
-                          transition: "all 0.2s ease",
-                        }}
-                      >
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                            <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 12.5, fontWeight: 700 }}>
-                              {locale === "en" ? `Chapter ${cap.num}` : locale === "es" ? `Capítulo ${cap.num}` : `Capítulo ${cap.num}`}
-                            </span>
-                            <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
-                              {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}: {cap.secao_nome}
-                            </span>
-                          </div>
-                          <Link
-                            href={`/${locale}/capitulo-new/${cap.num}`}
-                            className="modern-btn-glow"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 6,
-                              padding: "6px 14px",
-                              borderRadius: 8,
-                              fontSize: 12.5,
-                              fontWeight: 700,
-                              textDecoration: "none",
-                            }}
-                          >
-                            <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
-                            <ArrowRight size={13} />
-                          </Link>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  {author.capitulos_tratado.map((cap) => (
+                    <article
+                      key={cap.num}
+                      style={{
+                        background: "#ffffff",
+                        borderRadius: 16,
+                        padding: "24px 28px",
+                        border: "1px solid #e2e8f0",
+                        boxShadow: "0 4px 20px rgba(0, 20, 60, 0.04)",
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <span style={{ background: "#001a3d", color: "#ffffff", padding: "4px 10px", borderRadius: 6, fontSize: 13, fontWeight: 700 }}>
+                            {locale === "en" ? "Ch." : locale === "es" ? "Cap." : "Cap."} {cap.num}
+                          </span>
+                          <span style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>
+                            {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}: {cap.secao_nome}
+                          </span>
                         </div>
+                        <Link
+                          href={`/${locale}/capitulo-new/${cap.num}`}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 6,
+                            fontSize: 13.5,
+                            fontWeight: 700,
+                            color: "#ffffff",
+                            background: "linear-gradient(135deg, #002b66 0%, #001a3d 100%)",
+                            padding: "8px 16px",
+                            borderRadius: 8,
+                            textDecoration: "none",
+                          }}
+                        >
+                          <span>{locale === "en" ? "Read in Interactive Viewer" : locale === "es" ? "Leer en Visor Interactivo" : "Ler no Leitor Interativo"}</span>
+                          <ArrowRight size={14} />
+                        </Link>
+                      </div>
 
-                        <h3 style={{ fontSize: 19, fontWeight: 700, color: "#001a3d", margin: "0 0 10px" }}>
+                      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
+                        <Link href={`/${locale}/capitulo-new/${cap.num}`} style={{ color: "inherit", textDecoration: "none" }}>
                           {cap.titulo}
-                        </h3>
-
-                        <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.55, margin: "0 0 14px" }}>
-                          {cap.resumo_breve}
-                        </p>
-
-                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                          {cap.decs_mesh.map((tag, i) => (
-                            <span
-                              key={i}
-                              style={{
-                                background: "#ffffff",
-                                color: "#003382",
-                                fontSize: 12,
-                                fontWeight: 600,
-                                padding: "3px 10px",
-                                borderRadius: 6,
-                                border: "1px solid #cbd5e1",
-                              }}
-                            >
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-              )}
-
-              {/* TAB 3: PRODUÇÃO CIENTÍFICA */}
-              {activeTab === "publicacoes" && (
-                <article
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: 20,
-                    padding: "36px",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                  }}
-                >
-                  <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px" }}>
-                    {locale === "en" ? "Benchmark Scientific Publications" : locale === "es" ? "Publicaciones Científicas de Referencia" : "Publicações Científicas de Referência"}
-                  </h2>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                    {author.publicacoes_destaque.map((pub, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          padding: "16px 20px",
-                          borderRadius: 12,
-                          background: "#f8fafc",
-                          border: "1px solid #e2e8f0",
-                        }}
-                      >
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                          <span style={{ fontSize: 12, fontWeight: 700, color: "#003382", background: "#e0f2fe", padding: "3px 10px", borderRadius: 6 }}>
-                            {pub.ano}
-                          </span>
-                          <span style={{ fontSize: 13.5, fontWeight: 700, color: "#64748b" }}>
-                            {pub.periodico}
-                          </span>
-                        </div>
-                        <p style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                          {pub.titulo}
-                        </p>
-                        {pub.doi && (
-                          <span style={{ fontSize: 13, color: "#0284c7", fontWeight: 600 }}>
-                            DOI: {pub.doi}
-                          </span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </article>
+                        </Link>
+                      </h3>
+                    </article>
+                  ))}
+                </div>
               )}
             </div>
 
-            {/* BARRA LATERAL (SIDEBAR) */}
+            {/* BARRA LATERAL */}
             <aside style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              {/* CARD: TITULAÇÃO */}
+              {author.orcid && (
+                <div
+                  style={{
+                    background: "#ffffff",
+                    borderRadius: 18,
+                    padding: "24px",
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 6px 25px rgba(0, 20, 60, 0.04)",
+                  }}
+                >
+                  <h3 style={{ fontSize: 15, fontWeight: 700, color: "#001a3d", margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                    {locale === "en" ? "Scientific Identifier" : locale === "es" ? "Identificador Científico" : "Identificador Científico"}
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#f8fafc", padding: "12px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
+                    <svg width="24" height="24" viewBox="0 0 256 256" fill="#a6ce39">
+                      <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                      <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                    </svg>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b" }}>ORCID iD</div>
+                      <a
+                        href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 13.5, fontWeight: 700, color: "#003382", textDecoration: "none", wordBreak: "break-all" }}
+                      >
+                        {author.orcid} ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div
                 style={{
                   background: "#ffffff",
-                  borderRadius: 20,
-                  padding: "26px",
+                  borderRadius: 18,
+                  padding: "24px",
                   border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                  boxShadow: "0 6px 25px rgba(0, 20, 60, 0.04)",
                 }}
               >
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 15, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
                 </h3>
-                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
+                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
                   {author.titulacao_academica.map((tit, i) => (
-                    <li key={i} style={{ marginBottom: 6 }}>
+                    <li key={i} style={{ marginBottom: 8 }}>
                       {tit}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* CARD: CARGOS EM SOCIEDADES */}
               <div
                 style={{
-                  background: "#ffffff",
-                  borderRadius: 20,
+                  background: "linear-gradient(135deg, #001a3d 0%, #002b66 100%)",
+                  borderRadius: 18,
                   padding: "26px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                  color: "#ffffff",
+                  textAlign: "center",
                 }}
               >
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  {locale === "en" ? "Society Leadership & Appointments" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
-                </h3>
-                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 13.5, lineHeight: 1.6 }}>
-                  {author.cargos_sociedades.map((cargo, i) => (
-                    <li key={i} style={{ marginBottom: 6 }}>
-                      {cargo}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CARD: DEMAIS EDITORES */}
-              <div
-                style={{
-                  background: "#ffffff",
-                  borderRadius: 20,
-                  padding: "26px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                }}
-              >
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  {locale === "en" ? "Other Treatise Editors" : locale === "es" ? "Otros Editores del Tratado" : "Outros Editores do Tratado"}
-                </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {otherAuthors.map((other) => (
-                    <Link
-                      key={other.id}
-                      href={`/${locale}/autor-new/${other.id}`}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        padding: "8px 12px",
-                        borderRadius: 10,
-                        background: "#f8fafc",
-                        textDecoration: "none",
-                        border: "1px solid #e2e8f0",
-                        transition: "all 0.2s ease",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: 8,
-                          overflow: "hidden",
-                          background: "#001738",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <img
-                          src={other.foto_url}
-                          alt={other.nome}
-                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                        />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#001a3d" }}>
-                          {other.nome}
-                        </div>
-                        <div style={{ fontSize: 11.5, color: "#64748b" }}>
-                          {other.cargo}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                <Award size={28} className="text-red-400 mx-auto mb-3" />
+                <h4 style={{ fontSize: 18, fontWeight: 700, margin: "0 0 10px" }}>
+                  {locale === "en" ? "Editorial Board & Authors" : locale === "es" ? "Cuerpo Editorial y Autores" : "Corpo Editorial e Autores"}
+                </h4>
+                <p style={{ fontSize: 13.5, color: "#cbd5e1", margin: "0 0 18px", lineHeight: 1.5 }}>
+                  {locale === "en"
+                    ? "Explore the full list of 204 experts responsible for the SBC Treatise."
+                    : locale === "es"
+                    ? "Explore la lista completa de 204 especialistas del Tratado SBC."
+                    : "Explore a lista completa dos 204 especialistas que compõem o Tratado SBC."}
+                </p>
+                <Link
+                  href={`/${locale}/autores-new`}
+                  style={{
+                    display: "inline-block",
+                    width: "100%",
+                    padding: "10px 0",
+                    borderRadius: 10,
+                    background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                    color: "#ffffff",
+                    textDecoration: "none",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    boxSizing: "border-box",
+                  }}
+                >
+                  {locale === "en" ? "View Authors Directory →" : locale === "es" ? "Ver Directorio de Autores →" : "Ver Diretório de Autores →"}
+                </Link>
               </div>
             </aside>
           </div>
         </section>
       </main>
 
-      {/* ================= MODERN FOOTER ================= */}
       <ModernFooter locale={locale} />
     </div>
   );

@@ -37,7 +37,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
     notFound();
   }
 
-  // Redirect numerical ID to clean author name URL (e.g. /autor/3 -> /autor/marcelo-risso)
+  // Redirect numerical ID to clean author slug URL (e.g. /autor/3 -> /autor/alberto-ofenhejm-gotfryd)
   if (id !== author.slug && author.slug) {
     redirect(`/${locale}/autor/${author.slug}`);
   }
@@ -47,7 +47,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
       <Header locale={locale} currentPage="other" />
 
       <main style={{ minHeight: "100vh", background: "#f4f7fb", paddingBottom: "90px" }}>
-        {/* ================= HERO PERFIL AUTOR CLÁSSICO ================= */}
+        {/* ================= HERO PERFIL AUTOR ================= */}
         <section
           className="relative w-full overflow-hidden text-white pt-10 pb-14 sm:pt-14 sm:pb-20 border-b border-white/10"
           style={{
@@ -55,7 +55,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
               "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
           }}
         >
-          {/* Subtle Anatomical Spine Background Overlay */}
+          {/* Anatomical Spine Background Overlay */}
           <img
             src="/assets/hero-spine.png"
             alt=""
@@ -99,10 +99,11 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   border: "3px solid rgba(255, 255, 255, 0.3)",
                   boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
                   margin: "0 auto",
+                  position: "relative",
                 }}
               >
                 <img
-                  src={author.foto_url}
+                  src={author.foto_url || "/assets/avatar-placeholder.png"}
                   alt={author.nome}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
                 />
@@ -128,31 +129,60 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   <span>{author.cargo}</span>
                 </div>
 
-                <h1 style={{ fontSize: "clamp(32px, 3.5vw, 46px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
+                <h1 style={{ fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
                   {author.nome}
                 </h1>
 
-                <p style={{ fontSize: 16, color: "#e2e8f0", margin: "0 0 6px", fontWeight: 600 }}>
-                  🏛️ {author.instituicao} • <span style={{ color: "#94a3b8" }}>{author.cidade_estado}</span>
+                <p style={{ fontSize: 16, color: "#e2e8f0", margin: "0 0 10px", fontWeight: 600 }}>
+                  🏛️ {author.instituicao}
                 </p>
 
-                <p style={{ fontSize: 14, color: "#94a3b8", margin: "0 0 18px" }}>
-                  📋 {author.crm}
-                </p>
+                {/* ORCID badge if present */}
+                {author.orcid && (
+                  <div style={{ margin: "0 0 14px", display: "inline-block" }}>
+                    <a
+                      href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        background: "rgba(166, 206, 57, 0.15)",
+                        border: "1px solid rgba(166, 206, 57, 0.4)",
+                        color: "#a6ce39",
+                        padding: "5px 12px",
+                        borderRadius: 8,
+                        fontSize: 13,
+                        fontWeight: 600,
+                        textDecoration: "none",
+                      }}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 256 256" fill="#a6ce39">
+                        <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                        <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                      </svg>
+                      <span>ORCID: {author.orcid}</span>
+                      <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
+                    </a>
+                  </div>
+                )}
 
-                <div
-                  style={{
-                    display: "inline-block",
-                    background: "rgba(0, 0, 0, 0.3)",
-                    borderLeft: "3px solid #ff3047",
-                    padding: "8px 16px",
-                    borderRadius: "0 8px 8px 0",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: "#ff808f",
-                  }}
-                >
-                  ⭐ {author.destaque}
+                <div>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      background: "rgba(0, 0, 0, 0.3)",
+                      borderLeft: "3px solid #ff3047",
+                      padding: "8px 16px",
+                      borderRadius: "0 8px 8px 0",
+                      fontSize: 14,
+                      fontWeight: 700,
+                      color: "#ff808f",
+                    }}
+                  >
+                    ⭐ {author.destaque}
+                  </div>
                 </div>
               </div>
             </div>
@@ -177,7 +207,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
                   <span style={{ color: "#003382" }}>📖</span> {locale === "en" ? "Biography and Professional Trajectory" : locale === "es" ? "Biografía y Trayectoria Profesional" : "Biografia e Trajetória Profissional"}
                 </h2>
-                <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.75, margin: 0 }}>
                   {author.bio_completa}
                 </p>
               </article>
@@ -192,7 +222,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
                   <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: 0, display: "flex", alignItems: "center", gap: 10 }}>
                     <span style={{ color: "#e11d48" }}>📚</span> {locale === "en" ? `Chapters in Treatise (${author.capitulos_tratado.length})` : locale === "es" ? `Capítulos en el Tratado (${author.capitulos_tratado.length})` : `Capítulos no Tratado de Coluna (${author.capitulos_tratado.length})`}
                   </h2>
@@ -210,9 +240,10 @@ export default async function AutorPage({ params }: AutorPageProps) {
                         borderRadius: 12,
                         padding: "20px",
                         background: "#f8fafc",
+                        transition: "all 0.2s ease",
                       }}
                     >
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 8 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 10, flexWrap: "wrap" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <span style={{ background: "#001a3d", color: "#fff", padding: "4px 10px", borderRadius: 6, fontSize: 13, fontWeight: 700 }}>
                             {locale === "en" ? "Ch." : locale === "es" ? "Cap." : "Cap."} {cap.num}
@@ -226,89 +257,26 @@ export default async function AutorPage({ params }: AutorPageProps) {
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
-                            gap: 4,
-                            fontSize: 13,
+                            gap: 6,
+                            fontSize: 13.5,
                             fontWeight: 700,
-                            color: "#e11d48",
+                            color: "#ffffff",
+                            background: "linear-gradient(135deg, #002b66 0%, #001a3d 100%)",
+                            padding: "6px 14px",
+                            borderRadius: 8,
                             textDecoration: "none",
                           }}
                         >
-                          <span>{locale === "en" ? "Access Chapter" : locale === "es" ? "Acceder al Capítulo" : "Acessar Capítulo"}</span>
+                          <span>{locale === "en" ? "Read Chapter" : locale === "es" ? "Leer Capítulo" : "Ler Capítulo"}</span>
                           <span>→</span>
                         </Link>
                       </div>
 
-                      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                        {cap.titulo}
+                      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0" }}>
+                        <Link href={`/${locale}/capitulo/${cap.num}`} style={{ color: "inherit", textDecoration: "none" }}>
+                          {cap.titulo}
+                        </Link>
                       </h3>
-
-                      <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.5, margin: "0 0 12px" }}>
-                        {cap.resumo_breve}
-                      </p>
-
-                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                        {cap.decs_mesh.map((tag, i) => (
-                          <span
-                            key={i}
-                            style={{
-                              background: "#e2e8f0",
-                              color: "#334155",
-                              fontSize: 11.5,
-                              fontWeight: 600,
-                              padding: "2px 8px",
-                              borderRadius: 4,
-                            }}
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </article>
-
-              {/* CARD 3: PUBLICAÇÕES DE DESTAQUE & LATTES */}
-              <article
-                style={{
-                  background: "#ffffff",
-                  borderRadius: 16,
-                  padding: "36px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                }}
-              >
-                <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ color: "#003382" }}>🔬</span> {locale === "en" ? "Featured Scientific Publications" : locale === "es" ? "Publicaciones Científicas Destacadas" : "Publicações Científicas de Referência"}
-                </h2>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {author.publicacoes_destaque.map((pub, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        padding: "14px 18px",
-                        borderRadius: 10,
-                        background: "#f8fafc",
-                        border: "1px solid #e2e8f0",
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: "#003382", background: "#e0f2fe", padding: "2px 8px", borderRadius: 4 }}>
-                          {pub.ano}
-                        </span>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: "#64748b" }}>
-                          {pub.periodico}
-                        </span>
-                      </div>
-                      <p style={{ fontSize: 15, fontWeight: 700, color: "#001a3d", margin: "0 0 6px" }}>
-                        {pub.titulo}
-                      </p>
-                      {pub.doi && (
-                        <span style={{ fontSize: 12.5, color: "#0284c7", fontWeight: 600 }}>
-                          DOI: {pub.doi}
-                        </span>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -317,61 +285,51 @@ export default async function AutorPage({ params }: AutorPageProps) {
 
             {/* BARRA LATERAL (SIDEBAR) */}
             <aside style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-              {/* CARD: TITULAÇÃO E AFILIAÇÕES */}
-              <div
-                style={{
-                  background: "#ffffff",
-                  borderRadius: 16,
-                  padding: "28px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                }}
-              >
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  {locale === "en" ? "Academic Credentials" : locale === "es" ? "Titulación Académica" : "Titulação Acadêmica"}
-                </h3>
-                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
-                  {author.titulacao_academica.map((tit, i) => (
-                    <li key={i} style={{ marginBottom: 8 }}>
-                      {tit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {/* CARD: ORCID & IDENTIFICAÇÃO CIENTÍFICA */}
+              {author.orcid && (
+                <div
+                  style={{
+                    background: "#ffffff",
+                    borderRadius: 16,
+                    padding: "24px",
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
+                  }}
+                >
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                    {locale === "en" ? "Scientific Identifier" : locale === "es" ? "Identificador Científico" : "Identificador Científico"}
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#f8fafc", padding: "12px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
+                    <svg width="24" height="24" viewBox="0 0 256 256" fill="#a6ce39">
+                      <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                      <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                    </svg>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b" }}>ORCID iD</div>
+                      <a
+                        href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 13.5, fontWeight: 700, color: "#003382", textDecoration: "none", wordBreak: "break-all" }}
+                      >
+                        {author.orcid} ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
 
-              {/* CARD: CARGOS EM SOCIEDADES */}
+              {/* CARD: ESPECIALIDADES */}
               <div
                 style={{
                   background: "#ffffff",
                   borderRadius: 16,
-                  padding: "28px",
+                  padding: "24px",
                   border: "1px solid #e2e8f0",
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
               >
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                  {locale === "en" ? "Positions in Medical Societies" : locale === "es" ? "Cargos en Sociedades" : "Cargos em Sociedades"}
-                </h3>
-                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
-                  {author.cargos_sociedades.map((cargo, i) => (
-                    <li key={i} style={{ marginBottom: 8 }}>
-                      {cargo}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CARD: ESPECIALIDADES CIRÚRGICAS */}
-              <div
-                style={{
-                  background: "#ffffff",
-                  borderRadius: 16,
-                  padding: "28px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                }}
-              >
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {locale === "en" ? "Practice Areas" : locale === "es" ? "Áreas de Práctica" : "Áreas de Atuação"}
                 </h3>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -409,10 +367,10 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 </h4>
                 <p style={{ fontSize: 13.5, color: "#cbd5e1", margin: "0 0 18px", lineHeight: 1.5 }}>
                   {locale === "en"
-                    ? "Meet the editors and authors responsible for all 109 chapters of the masterwork."
+                    ? "Meet all 204 contributing authors across the 109 chapters."
                     : locale === "es"
-                    ? "Conozca a los editores y autores responsables de los 109 capítulos de la obra."
-                    : "Conheça os demais editores e autores responsáveis pelos 109 capítulos da obra."}
+                    ? "Conozca a los 204 autores colaboradores de los 109 capítulos."
+                    : "Conheça os 204 autores colaboradores presentes nos 109 capítulos da obra."}
                 </p>
                 <Link
                   href={`/${locale}/autores`}
