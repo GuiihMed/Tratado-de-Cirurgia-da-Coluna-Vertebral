@@ -918,25 +918,79 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 {/* Tratado em Debate Video Card */}
                 <div
                   style={{
-                    background: "linear-gradient(135deg, #001026 0%, #032b69 100%)",
+                    background: "#ffffff",
                     borderRadius: 20,
-                    padding: "28px",
-                    color: "#fff",
+                    padding: "24px",
+                    border: "1px solid #e2e8f0",
                     position: "relative",
                     overflow: "hidden",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#ff808f", letterSpacing: "0.08em", marginBottom: 6 }}>
-                      {locale === "en" ? "Treatise in Debate • Official Videocast" : locale === "es" ? "Tratado en Debate • Videocast Oficial" : "Tratado em Debate • Podcast Oficial"}
+                    {/* Thumbnail Artwork */}
+                    <Link
+                      href={`/${locale}/home-new#debate`}
+                      style={{
+                        position: "relative",
+                        display: "block",
+                        width: "100%",
+                        borderRadius: 12,
+                        overflow: "hidden",
+                        aspectRatio: "16/9",
+                        marginBottom: 14,
+                        background: "#00132b",
+                        textDecoration: "none",
+                      }}
+                      className="group"
+                    >
+                      <img
+                        src="/assets/debate-artwork.png"
+                        alt="Tratado em Debate - Episódio 01"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.3s ease",
+                        }}
+                        className="group-hover:scale-105"
+                      />
+                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)" }} />
+
+                      {/* Badge Episódio 01 */}
+                      <div style={{ position: "absolute", left: 12, bottom: 10, zIndex: 2 }}>
+                        <small style={{ display: "block", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#cbd5e1" }}>
+                          {locale === "en" ? "EPISODE" : locale === "es" ? "EPISODIO" : "EPISÓDIO"}
+                        </small>
+                        <strong style={{ display: "block", fontSize: 24, fontWeight: 800, color: "#fff", lineHeight: 1 }}>
+                          01
+                        </strong>
+                      </div>
+
+                      {/* Central Play Icon */}
+                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
+                        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #fff" }} className="group-hover:scale-110 transition-transform">
+                          <Play size={18} className="fill-current text-white ml-0.5" />
+                        </div>
+                      </div>
+                    </Link>
+
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />
+                      <span>{locale === "en" ? "Treatise in Debate • Videocast" : locale === "es" ? "Tratado en Debate • Videocast" : "Tratado em Debate • Videocast"}</span>
                     </div>
-                    <h4 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "0 0 10px" }}>
-                      {locale === "en" ? `Episode ${isCap8 ? "1" : num} – Chapter ${num}: ${title}` : locale === "es" ? `Episodio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}` : `Episódio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}`}
+
+                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.3 }}>
+                      {locale === "en"
+                        ? "Episode 1 – Chapter 8: Sagittal Plane Spinal Alignment"
+                        : locale === "es"
+                        ? "Episodio 1 – Capítulo 8: Columna Vertebral en el Plano Sagital"
+                        : "Episódio 1 – Capítulo 8: Coluna Vertebral no Plano Sagital"}
                     </h4>
-                    <p style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5, margin: "0 0 20px" }}>
+                    <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.45, margin: "0 0 16px" }}>
                       {locale === "en"
                         ? "Deepen your understanding through clinical debates with the chapter authors discussing complex case studies and surgical workflows."
                         : locale === "es"
@@ -946,24 +1000,25 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   </div>
 
                   <Link
-                    href={`/${locale}/home-new#podcast`}
+                    href={`/${locale}/home-new#debate`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
                       gap: 8,
-                      padding: "11px 20px",
+                      padding: "10px 18px",
                       borderRadius: 10,
-                      background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                      background: "#001a3d",
                       color: "#fff",
                       textDecoration: "none",
-                      fontSize: 13.5,
+                      fontSize: 13,
                       fontWeight: 700,
-                      boxShadow: "0 6px 18px rgba(245, 34, 56, 0.4)",
+                      transition: "background 0.2s ease",
                     }}
+                    className="hover:bg-[#002b66]"
                   >
-                    <span>{locale === "en" ? "Watch Full Episode" : locale === "es" ? "Ver Episodio Completo" : "Assistir Episódio Completo"}</span>
-                    <Play size={14} className="fill-current" />
+                    <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
+                    <Play size={13} className="fill-current" />
                   </Link>
                 </div>
 

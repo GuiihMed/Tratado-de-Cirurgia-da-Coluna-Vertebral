@@ -336,7 +336,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
                   >
-                    <span>{locale === "en" ? "View related episode" : locale === "es" ? "Ver episodio relacionado" : "Ver episódio relacionado"}</span>
+                    <span>{locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}</span>
                     <span>▶</span>
                   </a>
                 </div>
@@ -753,39 +753,105 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
               {/* BOTTOM ROW: TRATADO EM DEBATE & CAPÍTULOS RELACIONADOS */}
               <div id="debate" className="grid grid-cols-1 md:grid-cols-2 gap-5 min-w-0 w-full">
-                {/* Tratado em Debate Banner */}
+                {/* Tratado em Debate Banner (Episódio 1 - Cap. 8 Oficial) */}
                 <div
                   style={{
-                    background: "linear-gradient(135deg, #00132b 0%, #1e1b4b 100%)",
+                    background: "#ffffff",
                     borderRadius: 14,
-                    padding: "24px",
-                    color: "#fff",
+                    border: "1px solid #e2e8f0",
+                    padding: "20px",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
                     minWidth: 0,
                     width: "100%",
                     boxSizing: "border-box",
+                    boxShadow: "0 4px 16px rgba(0, 30, 80, 0.04)",
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", color: "#f52238", letterSpacing: "0.05em", marginBottom: 6 }}>
-                      {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
+                    {/* Thumbnail com arte oficial e botão play */}
+                    <Link
+                      href={`/${locale}#debate`}
+                      style={{
+                        position: "relative",
+                        display: "block",
+                        width: "100%",
+                        borderRadius: 10,
+                        overflow: "hidden",
+                        aspectRatio: "16/9",
+                        marginBottom: 14,
+                        background: "#00132b",
+                        textDecoration: "none",
+                      }}
+                      className="group"
+                    >
+                      <img
+                        src="/assets/debate-artwork.png"
+                        alt="Tratado em Debate - Episódio 01"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.3s ease",
+                        }}
+                        className="group-hover:scale-105"
+                      />
+                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)" }} />
+
+                      {/* Badge Episódio 01 */}
+                      <div style={{ position: "absolute", left: 12, bottom: 10, zIndex: 2 }}>
+                        <small style={{ display: "block", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#cbd5e1" }}>
+                          {locale === "en" ? "EPISODE" : locale === "es" ? "EPISODIO" : "EPISÓDIO"}
+                        </small>
+                        <strong style={{ display: "block", fontSize: 24, fontWeight: 800, color: "#fff", lineHeight: 1 }}>
+                          01
+                        </strong>
+                      </div>
+
+                      {/* Central Play Icon */}
+                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
+                        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #fff" }} className="group-hover:scale-110 transition-transform">
+                          <svg style={{ width: 18, height: 18, fill: "#fff", marginLeft: 2 }} viewBox="0 0 24 24">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                          </svg>
+                        </div>
+                      </div>
+                    </Link>
+
+                    {/* Badge & Textos */}
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>
+                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />
+                      <span>{locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}</span>
                     </div>
-                    <h4 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 8px", color: "#fff" }}>
-                      {locale === "en" ? `Episode ${isCap8 ? "1" : num} – Chapter ${num}: ${title}` : locale === "es" ? `Episodio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}` : `Episódio ${isCap8 ? "1" : num} – Capítulo ${num}: ${title}`}
-                    </h4>
-                    <p style={{ fontSize: 12.5, color: "#cbd5e1", lineHeight: 1.45, margin: "0 0 16px" }}>
+
+                    <p style={{ fontSize: 10.5, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.04em", margin: "0 0 6px" }}>
                       {locale === "en"
-                        ? "Clinical discussion with the authors analyzing case studies and practical applications."
+                        ? "Official videocast derived from the treatise chapters."
                         : locale === "es"
-                        ? "Discusión con los autores sobre puntos clave del capítulo, casos clínicos y aplicación práctica."
-                        : "Discussão com os autores sobre os principais pontos do capítulo, casos clínicos e aplicação prática dos conceitos."}
+                        ? "Videocast oficial derivado de los capítulos del tratado."
+                        : "Videocast oficial derivado dos capítulos do tratado."}
+                    </p>
+
+                    <h4 style={{ fontSize: 15, fontWeight: 700, margin: "0 0 8px", color: "#001a3d", lineHeight: 1.3 }}>
+                      {locale === "en"
+                        ? "Episode 1 – Chapter 8: Sagittal Plane Spinal Alignment"
+                        : locale === "es"
+                        ? "Episodio 1 – Capítulo 8: Columna Vertebral en el Plano Sagital"
+                        : "Episódio 1 – Capítulo 8: Coluna Vertebral no Plano Sagital"}
+                    </h4>
+
+                    <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.45, margin: "0 0 16px" }}>
+                      {locale === "en"
+                        ? "Discussion with the authors on fundamental concepts of sagittal alignment, radiographic parameters, and clinical significance."
+                        : locale === "es"
+                        ? "Discusión con los autores sobre los conceptos fundamentales del equilibrio sagital, parámetros radiográficos y su importancia clínica."
+                        : "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos."}
                     </p>
                   </div>
 
                   <Link
-                    href={`/${locale}#podcast`}
+                    href={`/${locale}#debate`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -793,15 +859,17 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       gap: 8,
                       padding: "10px 18px",
                       borderRadius: 8,
-                      background: "#f52238",
+                      background: "#001a3d",
                       color: "#fff",
                       fontSize: 13,
                       fontWeight: 700,
                       textDecoration: "none",
+                      transition: "background 0.2s ease",
                     }}
+                    className="hover:bg-[#002b66]"
                   >
                     <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
-                    <span>▶</span>
+                    <span>→</span>
                   </Link>
                 </div>
 
