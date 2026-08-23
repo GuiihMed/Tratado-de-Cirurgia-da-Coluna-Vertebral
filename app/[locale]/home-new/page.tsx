@@ -1004,6 +1004,49 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </p>
                   </div>
 
+                  {/* Action Buttons */}
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginBottom: 20 }}>
+                    <Link
+                      href={`/${locale}/debate-new`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        padding: "11px 20px",
+                        borderRadius: 10,
+                        background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
+                        color: "#fff",
+                        fontSize: 13.5,
+                        fontWeight: 700,
+                        textDecoration: "none",
+                        boxShadow: "0 4px 15px rgba(245, 34, 56, 0.4)",
+                      }}
+                    >
+                      <span>{locale === "en" ? "See all episodes" : locale === "es" ? "Ver otros episodios" : "Ver outros episódios"}</span>
+                      <span>→</span>
+                    </Link>
+
+                    <Link
+                      href={`/${locale}/capitulo-new/8`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        padding: "11px 18px",
+                        borderRadius: 10,
+                        background: "rgba(255, 255, 255, 0.08)",
+                        border: "1px solid rgba(255, 255, 255, 0.2)",
+                        color: "#fff",
+                        fontSize: 13.5,
+                        fontWeight: 700,
+                        textDecoration: "none",
+                      }}
+                    >
+                      <span>{locale === "en" ? "Chapter 8" : locale === "es" ? "Capítulo 8" : "Capítulo 8"}</span>
+                      <span>→</span>
+                    </Link>
+                  </div>
+
                   {/* Simulated Waveform */}
                   <div className="modern-waveform">
                     {Array.from({ length: 36 }).map((_, i) => (

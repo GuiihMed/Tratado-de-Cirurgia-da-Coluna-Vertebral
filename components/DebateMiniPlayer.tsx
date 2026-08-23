@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
-import { X, Maximize2, Minimize2, ExternalLink, Play, ChevronDown } from "lucide-react";
+import { X, Maximize2, Minimize2, ExternalLink, Play, ChevronDown, Tv } from "lucide-react";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface DebateMiniPlayerProps {
@@ -54,12 +54,15 @@ export default function DebateMiniPlayer({
       ? "Con el Dr. Marcelo Risso y el Dr. Paulo Cavali"
       : "Com Dr. Marcelo Risso e Dr. Paulo Cavali",
     viewChapter: locale === "en" ? "Study Chapter 8" : locale === "es" ? "Ver Capítulo 8" : "Acessar Capítulo 8",
+    allEpisodes: locale === "en" ? "Other Episodes" : locale === "es" ? "Otros Episodios" : "Outros Episódios",
+    seeOtherEpisodes: locale === "en" ? "See other episodes" : locale === "es" ? "Ver otros episodios" : "Ver outros episódios",
     minimize: locale === "en" ? "Minimize" : locale === "es" ? "Minimizar" : "Minimizar",
     maximize: locale === "en" ? "Maximize" : locale === "es" ? "Maximizar" : "Maximizar",
     close: locale === "en" ? "Close" : locale === "es" ? "Cerrar" : "Fechar",
   };
 
   const chapterUrl = isModern ? `/${locale}/capitulo-new/8` : `/${locale}/capitulo/8`;
+  const debateUrl = isModern ? `/${locale}/debate-new` : `/${locale}/debate`;
 
   // 1. Minimized Mode (Small bar in bottom-right)
   if (viewMode === "minimized") {
@@ -242,26 +245,50 @@ export default function DebateMiniPlayer({
                 {t.guests}
               </p>
             </div>
-            <Link
-              href={chapterUrl}
-              onClick={onClose}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 18px",
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
-                color: "#fff",
-                fontSize: 13,
-                fontWeight: 700,
-                textDecoration: "none",
-                boxShadow: "0 4px 14px rgba(245, 34, 56, 0.4)",
-              }}
-            >
-              <span>{t.viewChapter}</span>
-              <ExternalLink size={14} />
-            </Link>
+            <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <Link
+                href={debateUrl}
+                onClick={onClose}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "10px 18px",
+                  borderRadius: 10,
+                  background: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "#fff",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease",
+                }}
+                className="hover:bg-white/15"
+              >
+                <Tv size={14} />
+                <span>{t.seeOtherEpisodes}</span>
+              </Link>
+              <Link
+                href={chapterUrl}
+                onClick={onClose}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "10px 18px",
+                  borderRadius: 10,
+                  background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
+                  color: "#fff",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: "0 4px 14px rgba(245, 34, 56, 0.4)",
+                }}
+              >
+                <span>{t.viewChapter}</span>
+                <ExternalLink size={14} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -394,27 +421,53 @@ export default function DebateMiniPlayer({
           </div>
         </div>
 
-        <Link
-          href={chapterUrl}
-          onClick={onClose}
-          style={{
-            fontSize: 11.5,
-            fontWeight: 700,
-            color: "#fff",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 4,
-            padding: "5px 10px",
-            borderRadius: 7,
-            background: "#f52238",
-            flexShrink: 0,
-            boxShadow: "0 2px 8px rgba(245, 34, 56, 0.4)",
-          }}
-        >
-          <span>Cap. 8</span>
-          <span>→</span>
-        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+          <Link
+            href={debateUrl}
+            onClick={onClose}
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              color: "#e2effe",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              padding: "5px 9px",
+              borderRadius: 7,
+              background: "rgba(255, 255, 255, 0.08)",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
+              transition: "background 0.2s ease",
+            }}
+            className="hover:bg-white/15"
+            title={t.seeOtherEpisodes}
+          >
+            <Tv size={12} />
+            <span>{t.allEpisodes}</span>
+          </Link>
+
+          <Link
+            href={chapterUrl}
+            onClick={onClose}
+            style={{
+              fontSize: 11.5,
+              fontWeight: 700,
+              color: "#fff",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 4,
+              padding: "5px 10px",
+              borderRadius: 7,
+              background: "#f52238",
+              flexShrink: 0,
+              boxShadow: "0 2px 8px rgba(245, 34, 56, 0.4)",
+            }}
+          >
+            <span>Cap. 8</span>
+            <span>→</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

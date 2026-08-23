@@ -964,27 +964,51 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     </p>
                   </div>
 
-                  <Link
-                    href={`/${locale}/home-new#debate`}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: 8,
-                      padding: "10px 18px",
-                      borderRadius: 10,
-                      background: "#001a3d",
-                      color: "#fff",
-                      textDecoration: "none",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      transition: "background 0.2s ease",
-                    }}
-                    className="hover:bg-[#002b66]"
-                  >
-                    <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
-                    <Play size={13} className="fill-current" />
-                  </Link>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <Link
+                      href={`/${locale}/debate-new`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 6,
+                        padding: "9px 16px",
+                        borderRadius: 10,
+                        background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
+                        color: "#fff",
+                        textDecoration: "none",
+                        fontSize: 12.5,
+                        fontWeight: 700,
+                        boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
+                      }}
+                    >
+                      <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
+                      <Play size={12} className="fill-current" />
+                    </Link>
+
+                    <Link
+                      href={`/${locale}/debate-new`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 6,
+                        padding: "9px 14px",
+                        borderRadius: 10,
+                        background: "#001a3d",
+                        border: "1px solid #e2e8f0",
+                        color: "#fff",
+                        textDecoration: "none",
+                        fontSize: 12.5,
+                        fontWeight: 700,
+                        transition: "background 0.2s ease",
+                      }}
+                      className="hover:bg-[#002b66]"
+                    >
+                      <span>{locale === "en" ? "Other episodes" : locale === "es" ? "Otros episodios" : "Outros episódios"}</span>
+                      <span>→</span>
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Navegação Entre Capítulos */}

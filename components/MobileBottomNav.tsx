@@ -15,12 +15,12 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/` || pathname === `/${locale}/home-new`;
   const isCapitulos = pathname?.includes("/indice") || pathname?.includes("/capitulo");
   const isAutores = pathname?.includes("/autor") || pathname?.includes("/autores");
-  const isDebate = pathname?.includes("#debate");
+  const isDebate = pathname?.includes("/debate") || pathname?.includes("#debate");
 
   const homeHref = isNew ? `/${locale}/home-new` : `/${locale}`;
   const capitulosHref = isNew ? `/${locale}/indice-new` : `/${locale}/indice`;
   const autoresHref = isNew ? `/${locale}/autores-new` : `/${locale}/autores`;
-  const debateHref = isNew ? `/${locale}/home-new#debate` : `/${locale}#debate`;
+  const debateHref = isNew ? `/${locale}/debate-new` : `/${locale}/debate`;
 
   const labels = {
     pt: {

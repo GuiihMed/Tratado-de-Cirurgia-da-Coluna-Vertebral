@@ -8,7 +8,7 @@ import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface ModernHeaderProps {
   locale: Locale;
-  currentPage?: "home-new" | "indice-new" | "prefacio-new" | "apresentacao-new" | "autores-new" | "referencias-new" | "other";
+  currentPage?: "home-new" | "indice-new" | "prefacio-new" | "apresentacao-new" | "autores-new" | "referencias-new" | "debate-new" | "debate" | "other" | string;
 }
 
 export default function ModernHeader({
@@ -159,6 +159,25 @@ export default function ModernHeader({
                     }}
                   >
                     {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
+                  </Link>
+                  <Link
+                    href={`/${locale}/debate-new`}
+                    className="dropdown-item"
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      color: pathname?.includes("/debate") ? "#f52238" : "#ffffff",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      transition: "background 0.2s ease",
+                    }}
+                  >
+                    <span style={{ color: "#f52238", fontSize: 11 }}>▶</span>
+                    <span>{locale === "en" ? "Debate Videocast" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}</span>
                   </Link>
                 </div>
               </div>
