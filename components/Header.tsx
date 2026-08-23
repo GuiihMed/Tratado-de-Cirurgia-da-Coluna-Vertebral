@@ -9,7 +9,7 @@ import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 
 interface HeaderProps {
   locale: Locale;
-  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "other";
+  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "other";
 }
 
 export default function Header({ locale, currentPage = "home" }: HeaderProps) {
@@ -108,7 +108,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </Link>
           <Link
             href={`/${locale}/referencias`}
-            className={currentPage === "other" && pathname?.includes("/referencias") ? "active" : ""}
+            className={currentPage === "referencias" || pathname?.includes("/referencias") ? "active" : ""}
           >
             <span>{dict.nav.references}</span>
           </Link>

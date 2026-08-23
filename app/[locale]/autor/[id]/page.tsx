@@ -44,15 +44,15 @@ export default async function AutorPage({ params }: AutorPageProps) {
 
   return (
     <>
-      <Header locale={locale} currentPage="other" />
+      <Header locale={locale} currentPage="autores" />
 
       <main style={{ minHeight: "100vh", background: "#f4f7fb", paddingBottom: "90px" }}>
-        {/* ================= HERO PERFIL AUTOR ================= */}
+        {/* ================= HERO PERFIL AUTOR (PADRÃO HOME) ================= */}
         <section
-          className="relative w-full overflow-hidden text-white pt-10 pb-14 sm:pt-14 sm:pb-20 border-b border-white/10"
+          className="relative w-full overflow-hidden text-white pt-8 pb-14 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
             background:
-              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
           {/* Anatomical Spine Background Overlay */}
@@ -65,27 +65,17 @@ export default async function AutorPage({ params }: AutorPageProps) {
 
           <div className="shell relative z-10">
             {/* Breadcrumbs */}
-            <nav
-              aria-label="Breadcrumb"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                fontSize: 13,
-                color: "#94a3b8",
-                marginBottom: 26,
-              }}
-            >
-              <Link href={`/${locale}`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
-              <span>/</span>
-              <Link href={`/${locale}/autores`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+              <span>›</span>
+              <Link href={`/${locale}/autores`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
               </Link>
-              <span>/</span>
+              <span>›</span>
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
-            </nav>
+            </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
               {/* Foto do Autor */}

@@ -61,69 +61,63 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
   return (
     <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* Header */}
-      <Header locale={locale} currentPage="other" />
+      <Header locale={locale} currentPage="referencias" />
 
       <main style={{ paddingBottom: 80 }}>
-        {/* ================= HERO SECTION ================= */}
+        {/* ================= HERO SECTION (PADRÃO HOME) ================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-8 pb-16 border-b border-white/10"
           style={{
-            position: "relative",
-            width: "100%",
-            overflow: "hidden",
-            color: "#ffffff",
-            padding: "40px 0 50px",
             background:
-              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.55) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
-          {/* Anatomical background graphic silhouette */}
+          {/* Subtle Anatomical Spine Background Overlay */}
           <img
             src="/assets/hero-spine.png"
             alt=""
-            style={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              height: "100%",
-              width: "auto",
-              maxWidth: "55%",
-              objectFit: "contain",
-              pointerEvents: "none",
-              opacity: 0.2,
-              mixBlendMode: "screen",
-              filter: "contrast(1.2) brightness(1.1)",
-            }}
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell" style={{ position: "relative", zIndex: 2 }}>
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
-            <nav
-              aria-label="Breadcrumb"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                fontSize: 13,
-                color: "#cbd5e1",
-                marginBottom: 20,
-              }}
-            >
-              <Link href={`/${locale}`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "#ffffff", fontWeight: 700 }}>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <span style={{ color: "#fff", fontWeight: 700 }}>
                 {locale === "en"
                   ? "Bibliographic References"
                   : locale === "es"
                   ? "Referencias Bibliográficas"
                   : "Referências Bibliográficas"}
               </span>
-            </nav>
+            </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 32, alignItems: "center" }}>
-              <div style={{ maxWidth: 840 }}>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+              
+              {/* Left Column: 3D Book Cover */}
+              <div className="md:col-span-5 flex justify-center md:justify-end">
+                <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
+                  <img
+                    src="/assets/book-cover.png"
+                    alt="Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+                    style={{
+                      transform: "perspective(1000px) rotateY(-6deg)",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Hero Info */}
+              <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
                 {/* Badge */}
                 <div
                   style={{
@@ -151,117 +145,113 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                   </span>
                 </div>
 
-                <h1
-                  style={{
-                    fontSize: "clamp(30px, 3.8vw, 48px)",
-                    fontWeight: 800,
-                    lineHeight: 1.15,
-                    margin: "0 0 14px",
-                    letterSpacing: "-0.03em",
-                  }}
-                >
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-3">
                   {locale === "en"
-                    ? "Treatise Bibliographic References"
+                    ? "Bibliographic References"
                     : locale === "es"
-                    ? "Referencias Bibliográficas del Tratado"
-                    : "Referências Bibliográficas do Tratado"}
+                    ? "Referencias Bibliográficas"
+                    : "Referências Bibliográficas"}
                 </h1>
 
-                <p
-                  style={{
-                    fontSize: "clamp(15px, 1.4vw, 18px)",
-                    lineHeight: 1.55,
-                    color: "#dbeafe",
-                    margin: "0 0 24px",
-                    maxWidth: 760,
-                  }}
-                >
+                <p className="text-base sm:text-lg font-bold text-slate-100 leading-snug max-w-xl mb-3">
                   {locale === "en"
-                    ? "Explore the comprehensive bibliographic citations, scientific journals, and clinical evidence mapped across the 10 Sections and 109 Chapters of the Brazilian Spine Society Treatise."
+                    ? "Explore scientific citations, journals, and evidence mapped across all 109 Chapters."
                     : locale === "es"
-                    ? "Explore las citas bibliográficas, revistas científicas y evidencias clínicas organizadas a lo largo de las 10 Secciones y 109 Capítulos del Tratado de la Sociedad Brasileña de Columna."
-                    : "Consulte as referências científicas completas, artigos indexados e diretrizes clínicas organizadas por Seção, Capítulo e Autores dos 109 capítulos do Tratado de Cirurgia da Coluna Vertebral (SBC)."}
+                    ? "Explore citas científicas, revistas y evidencias a lo largo de los 109 Capítulos."
+                    : "Consulte as referências científicas completas, artigos indexados e diretrizes clínicas dos 109 capítulos da obra."}
                 </p>
 
-                {/* Quick metrics pills */}
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <div
-                    style={{
-                      background: "rgba(255, 255, 255, 0.12)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      borderRadius: 10,
-                      padding: "8px 16px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      backdropFilter: "blur(6px)",
-                    }}
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl mb-6">
+                  {locale === "en"
+                    ? "The complete masterwork is exclusively available in printed format. This portal organizes authors, chapters, summaries, and references for clinical study."
+                    : locale === "es"
+                    ? "La obra completa existe exclusivamente en formato impreso. Este portal organiza autores, capítulos, resúmenes y referencias para estudio y consulta."
+                    : "A obra completa existe exclusivamente em formato impresso. Este site organiza autores, capítulos, resumos e referências para estudo e consulta."}
+                </p>
+
+                {/* Print Notice Box */}
+                <div
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-white/40 mb-6 max-w-xl text-xs sm:text-sm font-semibold"
+                  style={{
+                    background: "rgba(0, 20, 50, 0.4)",
+                    color: "#ffffff",
+                  }}
+                >
+                  <svg className="w-5 h-5 text-[#f52238] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  <span>
+                    {locale === "en"
+                      ? "The complete treatise is exclusively available in printed format."
+                      : locale === "es"
+                      ? "La obra completa existe exclusivamente en formato impreso."
+                      : "A obra completa existe exclusivamente em formato impresso."}
+                  </span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3.5 items-center">
+                  <a
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm sm:text-base shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
                   >
-                    <strong style={{ color: "#ffffff", fontWeight: 800 }}>109</strong>{" "}
-                    <span>{locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}</span>
-                  </div>
-                  <div
-                    style={{
-                      background: "rgba(255, 255, 255, 0.12)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      borderRadius: 10,
-                      padding: "8px 16px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      backdropFilter: "blur(6px)",
-                    }}
+                    <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
+                    <span>🛒</span>
+                  </a>
+                  <a
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    href="#tabela-referencias"
+                    style={{ textDecoration: "none" }}
                   >
-                    <strong style={{ color: "#ffffff", fontWeight: 800 }}>10</strong>{" "}
-                    <span>{locale === "en" ? "Sections" : locale === "es" ? "Seções" : "Seções"}</span>
-                  </div>
-                  <div
-                    style={{
-                      background: "rgba(255, 255, 255, 0.12)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      borderRadius: 10,
-                      padding: "8px 16px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      backdropFilter: "blur(6px)",
-                    }}
+                    <span>{locale === "en" ? "Explore References" : locale === "es" ? "Explorar Referencias" : "Explorar Referências"}</span>
+                    <span>↓</span>
+                  </a>
+                  <Link
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    href={`/${locale}/indice`}
+                    style={{ textDecoration: "none" }}
                   >
-                    <strong style={{ color: "#ffffff", fontWeight: 800 }}>204</strong>{" "}
-                    <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
-                  </div>
-                  <div
-                    style={{
-                      background: "rgba(255, 255, 255, 0.12)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      borderRadius: 10,
-                      padding: "8px 16px",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      backdropFilter: "blur(6px)",
-                    }}
-                  >
-                    <strong style={{ color: "#ffffff", fontWeight: 800 }}>340+</strong>{" "}
-                    <span>{locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}</span>
-                  </div>
+                    <span>{locale === "en" ? "Chapter Index" : locale === "es" ? "Índice de Capítulos" : "Índice de Capítulos"}</span>
+                    <span>→</span>
+                  </Link>
                 </div>
               </div>
 
-              {/* Book cover visual */}
-              <div style={{ display: "none" }} className="md:flex justify-end">
-                <img
-                  src="/assets/book-cover.png"
-                  alt="Tratado SBC"
-                  style={{
-                    width: 170,
-                    height: "auto",
-                    borderRadius: 8,
-                    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
-                  }}
-                />
-              </div>
             </div>
           </div>
         </section>
 
-        {/* ================= CONTROLS & FILTER BAR ================= */}
+        {/* ================= FLOATING 5-COLUMN STATS BAR ================= */}
+        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-20 -mt-8 mb-4">
+          <div className="stats-bar w-full">
+            <div className="stat">
+              <svg><use href="#i-book"></use></svg>
+              <strong>109</strong>
+              <span>{locale === "en" ? "chapters" : locale === "es" ? "capítulos" : "capítulos"}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-grid"></use></svg>
+              <strong>10</strong>
+              <span>{locale === "en" ? "thematic sections" : locale === "es" ? "secciones temáticas" : "seções temáticas"}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-users"></use></svg>
+              <span className="stat-text">204<br/>{locale === "en" ? "specialist authors" : locale === "es" ? "autores especialistas" : "autores especialistas"}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-globe"></use></svg>
+              <span className="stat-text">DOI &amp;<br/>PubMed<br/>Index</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-ref"></use></svg>
+              <span className="stat-text">340+<br/>{locale === "en" ? "citations" : locale === "es" ? "citas" : "referências"}</span>
+            </div>
+          </div>
+        </div>
         <section style={{ maxWidth: 1440, margin: "0 auto", padding: "30px 20px 0" }}>
           <div
             style={{

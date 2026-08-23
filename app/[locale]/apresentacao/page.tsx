@@ -40,12 +40,12 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
 
       <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
         {/* ========================================================================= */}
-        {/* HERO SECTION (Clássica - Apresentação) */}
+        {/* HERO SECTION (PADRÃO HOME - Apresentação) */}
         <section
           className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
             background:
-              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
           {/* Subtle Anatomical Spine Background Overlay */}

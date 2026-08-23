@@ -177,11 +177,14 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
       <main style={{ paddingBottom: "80px" }}>
         {/* ================= HERO SECTION FIDEDIGNA ================= */}
+        {/* ========================================================================= */}
+        {/* HERO SECTION (PADRÃO HOME) */}
+        {/* ========================================================================= */}
         <section
-          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
+          className="relative w-full overflow-hidden text-white pt-8 pb-16 border-b border-white/10"
           style={{
             background:
-              "radial-gradient(circle at 12% 35%, rgba(220, 20, 45, 0.6) 0%, transparent 45%), linear-gradient(105deg, #a80f22 0%, #2f193e 24%, #052b5b 54%, #005a9c 100%)",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
           {/* Anatomical background graphic silhouette */}
@@ -290,17 +293,17 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                 {/* Print Notice Box */}
                 <div
-                  className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border mb-6 max-w-2xl w-full"
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-white/40 mb-6 max-w-2xl w-full text-xs sm:text-sm font-semibold"
                   style={{
-                    background: "rgba(0, 16, 40, 0.6)",
-                    borderColor: "rgba(255, 255, 255, 0.15)",
+                    background: "rgba(0, 20, 50, 0.4)",
+                    color: "#ffffff",
                   }}
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f52238" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                  <svg className="w-5 h-5 text-[#f52238] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                   </svg>
-                  <span className="text-xs sm:text-sm text-slate-200 font-medium leading-snug">
+                  <span>
                     {locale === "en"
                       ? "Full reading of this chapter is available exclusively in the printed edition of the Treatise."
                       : locale === "es"
@@ -310,12 +313,12 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-stretch sm:items-center">
+                <div className="flex flex-wrap gap-3 w-full sm:w-auto items-center">
                   <a
                     href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
@@ -324,7 +327,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                   <a
                     href="#referencias"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "View references" : locale === "es" ? "Ver referencias" : "Ver referências"}</span>
@@ -333,7 +336,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                   <a
                     href="#debate"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}</span>
@@ -345,47 +348,33 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
           </div>
         </section>
 
-        {/* ================= 5 CARDS QUICK ANCHOR STRIP (RESPONSIVO) ================= */}
-        <section className="bg-[#00132b] border-b border-white/10 py-5 sm:py-6">
-          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-              {/* Card 1 */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
-                <div className="text-xl mb-1">🔖</div>
-                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}</div>
-                <div className="text-[11px] sm:text-xs text-sky-300 truncate mt-0.5">{sectionTitle}</div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
-                <div className="text-xl mb-1">📖</div>
-                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"} {num}</div>
-                <div className="text-[11px] sm:text-xs text-sky-300 truncate mt-0.5">{title}</div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
-                <div className="text-xl mb-1">🌐</div>
-                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Summary in" : locale === "es" ? "Resumen en" : "Resumo em"}</div>
-                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">PT | ES | EN</div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
-                <div className="text-xl mb-1">📄</div>
-                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}</div>
-                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">{locale === "en" ? "indexed" : locale === "es" ? "bibliográficas" : "bibliográficas"}</div>
-              </div>
-
-              {/* Card 5 */}
-              <div className="col-span-2 sm:col-span-1 bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4 text-center text-white">
-                <div className="text-xl mb-1">📚</div>
-                <div className="text-xs sm:text-sm font-bold">{locale === "en" ? "Masterwork" : locale === "es" ? "Obra" : "Obra"}</div>
-                <div className="text-[11px] sm:text-xs text-sky-300 mt-0.5">{locale === "en" ? "printed" : locale === "es" ? "impresa" : "impressa"}</div>
-              </div>
+        {/* ================= FLOATING 5-COLUMN STATS BAR ================= */}
+        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-20 -mt-8 mb-4">
+          <div className="stats-bar w-full">
+            <div className="stat">
+              <svg><use href="#i-grid"></use></svg>
+              <strong>{locale === "en" ? `Sec. ${cap.secao_id}` : locale === "es" ? `Sec. ${cap.secao_id}` : `Seção ${cap.secao_id}`}</strong>
+              <span className="truncate max-w-[130px]">{sectionTitle}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-book"></use></svg>
+              <strong>{locale === "en" ? `Cap. ${num}` : locale === "es" ? `Cap. ${num}` : `Cap. ${num}`}</strong>
+              <span>{locale === "en" ? "Clinical Chapter" : locale === "es" ? "Capítulo Clínico" : "Capítulo Clínico"}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-users"></use></svg>
+              <span className="stat-text">{chapterAuthors.length} {locale === "en" ? "Authors &\nContributors" : locale === "es" ? "Autores y\nColaboradores" : "Autores e\nColaboradores"}</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-globe"></use></svg>
+              <span className="stat-text">Português<br/>Español<br/>English</span>
+            </div>
+            <div className="stat">
+              <svg><use href="#i-ref"></use></svg>
+              <span className="stat-text">{locale === "en" ? "Scientific\nReferences" : locale === "es" ? "Referencias\nCientíficas" : "Referências\nCientíficas"}</span>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* ================= 2-COLUMN MAIN CONTENT ================= */}
         <section style={{ padding: "40px 0 60px" }}>
