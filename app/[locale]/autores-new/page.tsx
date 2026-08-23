@@ -7,6 +7,7 @@ import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { Users, Award, ArrowDown, ArrowRight, Search, BookOpen, ExternalLink } from "lucide-react";
+import { AUTHORS_DIRECTORY } from "@/lib/data/authors";
 
 interface AutoresNewProps {
   params: Promise<{ locale: string }>;
@@ -31,91 +32,19 @@ interface AuthorItem {
   capitulos: ChapterContrib[];
 }
 
-const DEFAULT_AUTHORS: AuthorItem[] = [
-  {
-    id: "1",
-    num: "01",
-    name: "Dr. Edson Pudles",
-    role: "Editor-Chefe / SBC",
-    institution: "Sociedade Brasileira de Coluna (SBC)",
-    highlight: "Coordenação Editorial de 109 Capítulos",
-    photo: "/assets/edson-pudles.png",
-    bio: "Presidente de Honra e Referência Nacional em Cirurgia e Deformidades da Coluna Vertebral. Liderança na concepção e coordenação científica das diretrizes editoriais do Tratado de Cirurgia da Coluna Vertebral pela Sociedade Brasileira de Coluna.",
-    titulacao: "Membro Emérito da Sociedade Brasileira de Coluna (SBC) e Sociedade Brasileira de Ortopedia e Traumatologia (SBOT).",
-    specialties: ["Deformidades Complexas", "Liderança Científica", "Diretrizes SBC"],
-    capitulos: [
-      { num: 1, titulo: "Histórico da Cirurgia da Coluna Vertebral no Brasil" },
-      { num: 2, titulo: "Princípios Éticos e Médico-Legais na Prática Espinhal" },
-      { num: 25, titulo: "Planejamento Cirúrgico em Deformidades Complexas" },
-    ],
-  },
-  {
-    id: "2",
-    num: "02",
-    name: "Dr. Helton Defino",
-    role: "Editor / FMRP-USP",
-    institution: "Faculdade de Medicina de Ribeirão Preto - USP",
-    highlight: "Pioneiro da Fixação Pedicular no Brasil",
-    photo: "/assets/helton-defino.png",
-    bio: "Professor Titular do Departamento de Ortopedia e Anestesiologia da Faculdade de Medicina de Ribeirão Preto (USP). Reconhecido internacionalmente pelo pioneirismo e desenvolvimento de pesquisas biomecânicas em fixação pedicular e traumatologia espinhal.",
-    titulacao: "Professor Titular da USP. Ex-Presidente da SBC e Membro Internacional do Scoliosis Research Society (SRS).",
-    specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
-    capitulos: [
-      { num: 3, titulo: "Biomecânica da Coluna Vertebral e Fixação Pedicular" },
-      { num: 14, titulo: "Fraturas Toracolombares: Classificação e Tratamento Cirúrgico" },
-      { num: 42, titulo: "Artrodese e Biologia da Fusão Óssea na Coluna" },
-    ],
-  },
-  {
-    id: "3",
-    num: "03",
-    name: "Dr. Marcelo Risso",
-    role: "Editor / SBC",
-    institution: "Comitê de Educação e Publicações SBC",
-    highlight: "Coordenador do Capítulo 8 (Plano Sagital)",
-    photo: "/assets/marcelo-risso.png",
-    bio: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral. Ampla atuação no Comitê Científico da SBC e formação de novos cirurgiões.",
-    titulacao: "Mestre e Doutor em Ciências Médicas. Coordenador da Comissão de Publicações e Ensino da Sociedade Brasileira de Coluna.",
-    specialties: ["Equilíbrio Sagital", "Osteotomias 3D", "Minimamente Invasiva"],
-    capitulos: [
-      { num: 8, titulo: "Avaliação Radiográfica do Equilíbrio Sagital da Coluna Vertebral" },
-      { num: 33, titulo: "Osteotomias da Coluna: PSO, Smith-Petersen e VCR" },
-      { num: 76, titulo: "Tratamento Cirúrgico da Deformidade do Adulto" },
-    ],
-  },
-  {
-    id: "4",
-    num: "04",
-    name: "Dr. Cristiano Menezes",
-    role: "Editor Associado / MIS",
-    institution: "Hospital Ortopédico de Belo Horizonte",
-    highlight: "Referência em Cirurgia Endoscópica e TLIF/LLIF",
-    photo: "/assets/avatar-1.png",
-    bio: "Pioneiro na introdução e desenvolvimento de técnicas cirúrgicas minimamente invasivas (MIS), artrodese intersomática lateral (LLIF) e descompressão endoscópica da coluna no cenário brasileiro e latino-americano.",
-    titulacao: "Membro Titular da SBC e North American Spine Society (NASS).",
-    specialties: ["Cirurgia Endoscópica", "MIS", "Artrodese Lateral (LLIF)"],
-    capitulos: [
-      { num: 55, titulo: "Técnicas Minimamente Invasivas: TLIF e LLIF na Coluna Lombar" },
-      { num: 62, titulo: "Cirurgia Endoscópica da Coluna: Indicações e Curva de Aprendizado" },
-    ],
-  },
-  {
-    id: "5",
-    num: "05",
-    name: "Dr. Robert Meves",
-    role: "Editor Associado / Santa Casa SP",
-    institution: "Faculdade de Ciências Médicas da Santa Casa de São Paulo",
-    highlight: "Especialista em Deformidades da Infância e Trauma",
-    photo: "/assets/avatar-2.png",
-    bio: "Professor Adjunto e Chefe do Grupo de Coluna da Santa Casa de São Paulo. Ampla produção científica em traumatologia da coluna, lesões cervicais e deformidades pediátricas.",
-    titulacao: "Livre-Docente em Ortopedia. Membro Ativo do Scoliosis Research Society (SRS) e SBC.",
-    specialties: ["Escoliose Idiopática", "Trauma Cervical", "Cirurgia Pediátrica"],
-    capitulos: [
-      { num: 19, titulo: "Traumatismo Cranioencefálico e Lesões Cervicais Altas (C1-C2)" },
-      { num: 48, titulo: "Escoliose Idiopática do Adolescente: Princípios de Correção" },
-    ],
-  },
-];
+const DEFAULT_AUTHORS: AuthorItem[] = AUTHORS_DIRECTORY.map((a, idx) => ({
+  id: a.slug,
+  num: (idx + 1) < 10 ? `0${idx + 1}` : `${idx + 1}`,
+  name: a.nome,
+  role: a.cargo,
+  institution: a.instituicao,
+  highlight: a.destaque,
+  photo: a.foto_url,
+  bio: a.bio_completa,
+  titulacao: a.titulacao_academica[0] || "Membro Especialista da Sociedade Brasileira de Coluna (SBC)",
+  specialties: a.especialidades,
+  capitulos: a.capitulos_tratado.map(c => ({ num: c.num, titulo: c.titulo }))
+}));
 
 export default function AutoresNewPage({ params }: AutoresNewProps) {
   const resolvedParams = use(params);

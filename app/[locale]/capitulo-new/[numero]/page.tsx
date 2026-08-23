@@ -4,6 +4,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import { getAuthorsByChapter } from "@/lib/data/authors";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import {
   BookOpen,
@@ -92,10 +93,8 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
     : `Seção ${cap.secao_id}`;
 
   const isCap8 = num === 8;
-
-  const authorsText = isCap8
-    ? "Dr. Marcelo Ítalo Risso Neto • Dr. Paulo Tadeu Maia Cavali"
-    : cap.autores || "Corpo Editorial Oficial SBC";
+  const chapterAuthors = getAuthorsByChapter(num);
+  const authorsText = cap.autores || (chapterAuthors.length > 0 ? chapterAuthors.map(a => a.nome).join(" • ") : "Corpo Editorial Oficial SBC");
 
   const leadText = isCap8
     ? "Fundamentos anátomo-biomecânicos do equilíbrio sagital global, parâmetros espinopélvicos radiográficos e tomada de decisão clínica na cirurgia reconstrutiva da coluna."
@@ -316,9 +315,27 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 {title}
               </h1>
 
-              {/* Authors */}
-              <div style={{ fontSize: 15.5, fontWeight: 700, color: "#ff808f", marginBottom: 14 }}>
-                {authorsText}
+              {/* Authors with clickable links */}
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px 10px", fontSize: 15.5, fontWeight: 700, color: "#ff808f", marginBottom: 14 }}>
+                <span style={{ color: "#94a3b8", fontWeight: 500 }}>
+                  {locale === "en" ? "Authors:" : locale === "es" ? "Autores:" : "Autores:"}
+                </span>
+                {chapterAuthors.length > 0 ? (
+                  chapterAuthors.map((author, i) => (
+                    <span key={author.slug} style={{ display: "inline-flex", alignItems: "center" }}>
+                      <Link
+                        href={`/${locale}/autor-new/${author.slug}`}
+                        style={{ color: "#ffffff", textDecoration: "none" }}
+                        className="hover:underline hover:text-red-300 transition-colors"
+                      >
+                        {author.nome}
+                      </Link>
+                      {i < chapterAuthors.length - 1 && <span style={{ color: "#64748b", marginLeft: 8 }}>•</span>}
+                    </span>
+                  ))
+                ) : (
+                  <span>{authorsText}</span>
+                )}
               </div>
 
               {/* Lead */}
@@ -1056,50 +1073,71 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   </h3>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                    <img
-                      src="/assets/marcelo-risso.png"
-                      alt="Dr. Marcelo Ítalo Risso Neto"
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  {chapterAuthors.map((author) => (
+                    <div
+                      key={author.slug}
                       style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "3px solid #f52238",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        padding: "10px 14px",
+                        borderRadius: 12,
+                        background: "#f8fafc",
+                        border: "1px solid #e2e8f0",
                       }}
-                    />
-                    <div>
-                      <div style={{ fontSize: 14.5, fontWeight: 700, color: "#001a3d" }}>
-                        Dr. Marcelo Ítalo Risso
-                      </div>
-                      <div style={{ fontSize: 12, color: "#f52238", fontWeight: 700 }}>
-                        {locale === "en" ? "Coordinator & SBC Editor" : locale === "es" ? "Coordinador y Editor SBC" : "Coordenador & Editor SBC"}
+                    >
+                      <img
+                        src={author.foto_url}
+                        alt={author.nome}
+                        style={{
+                          width: 48,
+                          height: 48,
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "2px solid #001a3d",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <Link
+                          href={`/${locale}/autor-new/${author.slug}`}
+                          style={{
+                            fontSize: 14.5,
+                            fontWeight: 700,
+                            color: "#001a3d",
+                            textDecoration: "none",
+                            display: "block",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                          className="hover:underline hover:text-blue-700"
+                        >
+                          {author.nome}
+                        </Link>
+                        <div style={{ fontSize: 12, color: "#64748b", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {author.cargo}
+                        </div>
+                        <Link
+                          href={`/${locale}/autor-new/${author.slug}`}
+                          style={{
+                            fontSize: 11.5,
+                            fontWeight: 700,
+                            color: "#e11d48",
+                            textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 3,
+                            marginTop: 4,
+                          }}
+                        >
+                          <span>{locale === "en" ? "View profile & bio" : locale === "es" ? "Ver perfil y currículo" : "Ver perfil & currículo"}</span>
+                          <span>→</span>
+                        </Link>
                       </div>
                     </div>
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                    <img
-                      src="/assets/edson-pudles.png"
-                      alt="Dr. Paulo Tadeu Maia Cavali"
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "3px solid #001a3d",
-                      }}
-                    />
-                    <div>
-                      <div style={{ fontSize: 14.5, fontWeight: 700, color: "#001a3d" }}>
-                        Dr. Paulo Tadeu Maia Cavali
-                      </div>
-                      <div style={{ fontSize: 12, color: "#64748b", fontWeight: 600 }}>
-                        {locale === "en" ? "Specialist & Contributing Author" : locale === "es" ? "Especialista y Autor Invitado" : "Especialista & Autor Convidado"}
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 

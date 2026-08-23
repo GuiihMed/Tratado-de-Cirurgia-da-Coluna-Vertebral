@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale, Capitulo } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import { getAuthorsByChapter } from "@/lib/data/authors";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 
 interface CapituloPageProps {
@@ -74,10 +75,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
   // Structured Chapter 8 (or intelligent fallback for other chapters)
   const isCap8 = num === 8;
+  const chapterAuthors = getAuthorsByChapter(num);
 
-  const authorsText = isCap8
-    ? "Marcelo Ítalo Risso Neto • Paulo Tadeu Maia Cavali"
-    : cap.autores || "Corpo Editorial SBC";
+  const authorsText = cap.autores || (chapterAuthors.length > 0 ? chapterAuthors.map(a => a.nome).join(" • ") : "Corpo Editorial SBC");
 
   const leadText = isCap8
     ? "Fundamentos do equilíbrio sagital, parâmetros radiográficos e aplicação clínica no planejamento cirúrgico."
@@ -259,9 +259,28 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   </h1>
                 </div>
 
-                {/* Authors */}
-                <div className="text-sm sm:text-base font-semibold text-slate-200 mb-3">
-                  {authorsText}
+                {/* Authors (com links para os perfis dos autores) */}
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base font-semibold text-slate-200 mb-3">
+                  <span className="text-slate-300 font-normal">
+                    {locale === "en" ? "Authors:" : locale === "es" ? "Autores:" : "Autores:"}
+                  </span>
+                  {chapterAuthors.length > 0 ? (
+                    chapterAuthors.map((author, i) => (
+                      <span key={author.slug} className="inline-flex items-center">
+                        <Link
+                          href={`/${locale}/autor/${author.slug}`}
+                          className="text-white hover:text-red-300 font-bold underline-offset-2 hover:underline transition-colors"
+                          style={{ color: "#ffffff", textDecoration: "none" }}
+                          title={`Ver perfil e currículo de ${author.nome}`}
+                        >
+                          {author.nome}
+                        </Link>
+                        {i < chapterAuthors.length - 1 && <span className="text-slate-400 ml-1.5">•</span>}
+                      </span>
+                    ))
+                  ) : (
+                    <span>{authorsText}</span>
+                  )}
                 </div>
 
                 {/* Lead Subtitle */}
@@ -857,57 +876,83 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   boxShadow: "0 4px 16px rgba(0, 30, 80, 0.04)",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18, borderBottom: "1px solid #f1f5f9", paddingBottom: 12 }}>
-                  <span style={{ fontSize: 18 }}>👥</span>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
-                  </h3>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18, borderBottom: "1px solid #f1f5f9", paddingBottom: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 18 }}>👥</span>
+                    <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0 }}>
+                      {locale === "en" ? "Chapter Authors" : locale === "es" ? "Autores del Capítulo" : "Autores do Capítulo"}
+                    </h3>
+                  </div>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: "#64748b", background: "#f1f5f9", padding: "2px 8px", borderRadius: 12 }}>
+                    {chapterAuthors.length}
+                  </span>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <img
-                      src="/assets/marcelo-risso.png"
-                      alt="Dr. Marcelo Ítalo Risso Neto"
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {chapterAuthors.map((author) => (
+                    <div
+                      key={author.slug}
                       style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "2px solid #001a3d",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        padding: "10px 12px",
+                        borderRadius: 10,
+                        background: "#f8fafc",
+                        border: "1px solid #e2e8f0",
                       }}
-                    />
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d" }}>
-                        Marcelo Ítalo Risso Neto
-                      </div>
-                      <div style={{ fontSize: 12, color: "#64748b" }}>
-                        {locale === "en" ? "Coordinator & Author" : locale === "es" ? "Coordinador y Autor" : "Coordenador & Autor"}
+                    >
+                      <img
+                        src={author.foto_url}
+                        alt={author.nome}
+                        style={{
+                          width: 44,
+                          height: 44,
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "2px solid #001a3d",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <Link
+                          href={`/${locale}/autor/${author.slug}`}
+                          style={{
+                            fontSize: 14,
+                            fontWeight: 700,
+                            color: "#001a3d",
+                            textDecoration: "none",
+                            display: "block",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                          }}
+                          className="hover:underline hover:text-blue-700"
+                        >
+                          {author.nome}
+                        </Link>
+                        <div style={{ fontSize: 11.5, color: "#64748b", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {author.cargo}
+                        </div>
+                        <Link
+                          href={`/${locale}/autor/${author.slug}`}
+                          style={{
+                            fontSize: 11.5,
+                            fontWeight: 700,
+                            color: "#e11d48",
+                            textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 3,
+                            marginTop: 4,
+                          }}
+                        >
+                          <span>{locale === "en" ? "View profile & bio" : locale === "es" ? "Ver perfil y currículo" : "Ver perfil & currículo"}</span>
+                          <span>→</span>
+                        </Link>
                       </div>
                     </div>
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <img
-                      src="/assets/edson-pudles.png"
-                      alt="Paulo Tadeu Maia Cavali"
-                      style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "2px solid #001a3d",
-                      }}
-                    />
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: "#001a3d" }}>
-                        Paulo Tadeu Maia Cavali
-                      </div>
-                      <div style={{ fontSize: 12, color: "#64748b" }}>
-                        {locale === "en" ? "Guest Author" : locale === "es" ? "Autor Invitado" : "Autor Convidado"}
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 

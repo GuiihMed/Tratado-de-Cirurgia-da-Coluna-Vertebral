@@ -31,7 +31,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
     ? (rawLocale as Locale)
     : "pt";
 
-  const author = getAuthorByIdOrSlug(id) || AUTHORS_DIRECTORY[0];
+  const author = getAuthorByIdOrSlug(id);
 
   if (!author) {
     notFound();

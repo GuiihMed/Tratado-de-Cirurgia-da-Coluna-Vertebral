@@ -5,7 +5,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
-import { EDITORES_TRATADO, TODOS_AUTORES_AZ } from "@/lib/data/institutional-data";
+import { EDITORES_TRATADO } from "@/lib/data/institutional-data";
+import { AUTHORS_DIRECTORY, AuthorProfile } from "@/lib/data/authors";
 
 interface AutoresPageProps {
   params: Promise<{ locale: string }>;
@@ -18,20 +19,63 @@ export default function AutoresPage({ params }: AutoresPageProps) {
     ? (rawLocale as Locale)
     : "pt";
 
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeLetter, setActiveLetter] = useState<string>("TODOS");
 
+  // Available letters from actual authors
   const letters = useMemo(() => {
-    return ["TODOS", ...Object.keys(TODOS_AUTORES_AZ).sort()];
+    const letterSet = new Set<string>();
+    for (const a of AUTHORS_DIRECTORY) {
+      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+      const firstChar = cleanName.charAt(0).toUpperCase();
+      if (firstChar >= "A" && firstChar <= "Z") {
+        letterSet.add(firstChar);
+      }
+    }
+    return ["TODOS", ...Array.from(letterSet).sort()];
   }, []);
 
-  const filteredAuthorsAZ = useMemo(() => {
-    if (activeLetter === "TODOS") {
-      return TODOS_AUTORES_AZ;
+  // Filter authors by search and letter
+  const filteredAuthors = useMemo(() => {
+    return AUTHORS_DIRECTORY.filter((a) => {
+      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+      const firstChar = cleanName.charAt(0).toUpperCase();
+
+      if (activeLetter !== "TODOS" && firstChar !== activeLetter) {
+        return false;
+      }
+
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        const matchesName = a.nome.toLowerCase().includes(query);
+        const matchesCargo = a.cargo.toLowerCase().includes(query);
+        const matchesInst = a.instituicao.toLowerCase().includes(query);
+        const matchesChapters = a.capitulos_tratado.some(
+          (c) =>
+            c.titulo.toLowerCase().includes(query) ||
+            c.num.toString() === query ||
+            c.secao_nome.toLowerCase().includes(query)
+        );
+        return matchesName || matchesCargo || matchesInst || matchesChapters;
+      }
+
+      return true;
+    });
+  }, [activeLetter, searchQuery]);
+
+  // Group filtered authors by first letter
+  const groupedAuthors = useMemo(() => {
+    const groups: Record<string, AuthorProfile[]> = {};
+    for (const a of filteredAuthors) {
+      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+      const firstChar = cleanName.charAt(0).toUpperCase();
+      if (!groups[firstChar]) {
+        groups[firstChar] = [];
+      }
+      groups[firstChar].push(a);
     }
-    return {
-      [activeLetter]: TODOS_AUTORES_AZ[activeLetter] || [],
-    };
-  }, [activeLetter]);
+    return groups;
+  }, [filteredAuthors]);
 
   return (
     <>
@@ -165,7 +209,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 <div>
                   <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 700, color: "#001a3d" }}>
                     <Link
-                      href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-defino" : "marcelo-risso"}`}
+                      href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-luiz-aparecido-defino" : "marcelo-italo-risso-neto"}`}
                       style={{ color: "inherit", textDecoration: "none" }}
                       className="hover:underline hover:text-blue-700"
                     >
@@ -175,23 +219,21 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                   <p style={{ margin: "0 0 10px", fontSize: 13, color: "#64748b", lineHeight: 1.4 }}>
                     {editor.cargo}
                   </p>
-                  <div
+                  <Link
+                    href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-luiz-aparecido-defino" : "marcelo-italo-risso-neto"}`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
-                      gap: 6,
-                      padding: "3px 8px",
-                      borderRadius: 4,
-                      background: "#f1f5f9",
-                      border: "1px solid #e2e8f0",
-                      fontSize: 11.5,
+                      gap: 4,
+                      fontSize: 12.5,
                       fontWeight: 700,
-                      color: "#475569",
+                      color: "#e11d48",
+                      textDecoration: "none",
                     }}
                   >
-                    <span>ORCID:</span>
-                    <span>{editor.orcid}</span>
-                  </div>
+                    <span>Ver perfil & capítulos</span>
+                    <span>→</span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -199,16 +241,65 @@ export default function AutoresPage({ params }: AutoresPageProps) {
         </section>
 
         {/* ========================================================================= */}
-        {/* SEÇÃO 2: AUTORES E COLABORADORES (ORDEM ALFABÉTICA) */}
+        {/* SEÇÃO 2: AUTORES E COLABORADORES (BUSCA & ORDEM ALFABÉTICA) */}
         {/* ========================================================================= */}
         <section style={{ maxWidth: 1200, margin: "0 auto 64px", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
             <h2 style={{ fontSize: 24, fontWeight: 700, color: "#001a3d", margin: "0 0 6px" }}>
-              {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e colaboradores"}
+              {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e Colaboradores"}
             </h2>
-            <p style={{ fontSize: 14, color: "#64748b", margin: 0 }}>
-              {locale === "en" ? "Alphabetical Order" : locale === "es" ? "Orden Alfabético" : "Ordem alfabética"}
+            <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 20px" }}>
+              {locale === "en"
+                ? "204 Specialists contributing across 109 Chapters"
+                : locale === "es"
+                ? "204 Especialistas contribuyendo en 109 Capítulos"
+                : "204 Especialistas distribuídos nos 109 Capítulos"}
             </p>
+
+            {/* Instant Search Bar */}
+            <div style={{ maxWidth: 520, margin: "0 auto 24px", position: "relative" }}>
+              <input
+                type="text"
+                placeholder={
+                  locale === "en"
+                    ? "Search author by name, chapter or subject..."
+                    : locale === "es"
+                    ? "Buscar autor por nombre, capítulo o tema..."
+                    : "Buscar autor por nome, capítulo ou assunto..."
+                }
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 18px 12px 42px",
+                  borderRadius: 12,
+                  border: "1.5px solid #cbd5e1",
+                  fontSize: 14,
+                  outline: "none",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                }}
+              />
+              <span style={{ position: "absolute", left: 14, top: 12, fontSize: 16, color: "#94a3b8" }}>
+                🔍
+              </span>
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  style={{
+                    position: "absolute",
+                    right: 12,
+                    top: 10,
+                    background: "none",
+                    border: "none",
+                    fontSize: 14,
+                    color: "#94a3b8",
+                    cursor: "pointer",
+                  }}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Alphabet Filter Pills */}
@@ -227,7 +318,10 @@ export default function AutoresPage({ params }: AutoresPageProps) {
               return (
                 <button
                   key={letra}
-                  onClick={() => setActiveLetter(letra)}
+                  onClick={() => {
+                    setActiveLetter(letra);
+                    setSearchQuery("");
+                  }}
                   style={{
                     padding: letra === "TODOS" ? "6px 14px" : "6px 10px",
                     borderRadius: 20,
@@ -247,63 +341,136 @@ export default function AutoresPage({ params }: AutoresPageProps) {
             })}
           </div>
 
-          {/* Authors A-Z Grid */}
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: 16,
-              padding: "36px 32px",
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
-              /* responsive columns */
-              columnGap: "32px",
-            }}
-          >
-            {Object.entries(filteredAuthorsAZ).map(([letra, lista]) => (
-              <div
-                key={letra}
-                style={{
-                  breakInside: "avoid",
-                  marginBottom: 28,
-                }}
-              >
-                {/* Letter Header */}
-                <div
-                  style={{
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "#e11d48",
-                    borderBottom: "1.5px solid #ffe4e6",
-                    paddingBottom: 4,
-                    marginBottom: 12,
-                  }}
-                >
-                  {letra}
-                </div>
+          {/* Authors List Grid */}
+          {Object.keys(groupedAuthors).length === 0 ? (
+            <div style={{ textAlign: "center", padding: "48px 20px", background: "#fff", borderRadius: 16, border: "1px solid #e2e8f0" }}>
+              <p style={{ fontSize: 16, color: "#64748b", margin: 0 }}>
+                Nenhum autor encontrado para a busca \"{searchQuery}\".
+              </p>
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+              {Object.entries(groupedAuthors).map(([letra, lista]) => (
+                <div key={letra} style={{ background: "#fff", borderRadius: 16, padding: "28px", border: "1px solid #e2e8f0", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)" }}>
+                  {/* Letter Header */}
+                  <div
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      color: "#e11d48",
+                      borderBottom: "2px solid #ffe4e6",
+                      paddingBottom: 6,
+                      marginBottom: 20,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <span>{letra}</span>
+                    <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 600 }}>
+                      {lista.length} {lista.length === 1 ? "autor" : "autores"}
+                    </span>
+                  </div>
 
-                {/* Author Items */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {lista.map((autorNome, aIdx) => (
-                    <div
-                      key={aIdx}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 8,
-                        fontSize: 12.5,
-                        color: "#1e293b",
-                        fontWeight: 600,
-                        lineHeight: 1.35,
-                      }}
-                    >
-                      <span style={{ color: "#0284c7", fontSize: 13, flexShrink: 0 }}>👤</span>
-                      <span>{autorNome}</span>
-                    </div>
-                  ))}
+                  {/* Authors Grid */}
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 18 }}>
+                    {lista.map((autor) => (
+                      <div
+                        key={autor.slug}
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 14,
+                          padding: "14px",
+                          borderRadius: 12,
+                          background: "#f8fafc",
+                          border: "1px solid #e2e8f0",
+                          transition: "transform 0.15s ease, border-color 0.15s ease",
+                        }}
+                      >
+                        <img
+                          src={autor.foto_url}
+                          alt={autor.nome}
+                          style={{
+                            width: 48,
+                            height: 48,
+                            borderRadius: "50%",
+                            objectFit: "cover",
+                            border: "2px solid #001a3d",
+                            flexShrink: 0,
+                          }}
+                        />
+
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <Link
+                            href={`/${locale}/autor/${autor.slug}`}
+                            style={{
+                              fontSize: 15,
+                              fontWeight: 700,
+                              color: "#001a3d",
+                              textDecoration: "none",
+                              display: "block",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                            }}
+                            className="hover:underline hover:text-blue-700"
+                          >
+                            {autor.nome}
+                          </Link>
+
+                          <div style={{ fontSize: 11.5, color: "#64748b", margin: "2px 0 8px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            {autor.cargo}
+                          </div>
+
+                          {/* Chapters Contributed Badges */}
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 8 }}>
+                            {autor.capitulos_tratado.map((c) => (
+                              <Link
+                                key={c.num}
+                                href={`/${locale}/capitulo/${c.num}`}
+                                style={{
+                                  fontSize: 11,
+                                  fontWeight: 700,
+                                  color: "#0284c7",
+                                  background: "#e0f2fe",
+                                  padding: "2px 6px",
+                                  borderRadius: 4,
+                                  textDecoration: "none",
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 2,
+                                }}
+                                title={`Capítulo ${c.num}: ${c.titulo}`}
+                              >
+                                <span>📖 Cap. {c.num}</span>
+                              </Link>
+                            ))}
+                          </div>
+
+                          <Link
+                            href={`/${locale}/autor/${autor.slug}`}
+                            style={{
+                              fontSize: 11.5,
+                              fontWeight: 700,
+                              color: "#e11d48",
+                              textDecoration: "none",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 3,
+                            }}
+                          >
+                            <span>Ver currículo completo</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* ========================================================================= */}
