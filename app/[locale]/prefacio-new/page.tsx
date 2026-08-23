@@ -72,12 +72,16 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                 href={`/${locale}/home-new`}
                 style={{ color: "#94a3b8", textDecoration: "none" }}
               >
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "#cbd5e1" }}>O Tratado</span>
+              <span style={{ color: "#cbd5e1" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
               <span>›</span>
-              <span style={{ color: "#f52238", fontWeight: 700 }}>Prefácio</span>
+              <span style={{ color: "#f52238", fontWeight: 700 }}>
+                {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
+              </span>
             </div>
 
             {/* Hero Grid */}
@@ -217,7 +221,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       boxShadow: "0 8px 24px rgba(245, 34, 56, 0.35)",
                     }}
                   >
-                    <span>Adquirir Livro Impresso</span>
+                    <span>{locale === "en" ? "Purchase Printed Book" : locale === "es" ? "Comprar Libro Impreso" : "Adquirir Livro Impresso"}</span>
                     <ShoppingCart size={16} />
                   </a>
 
@@ -237,7 +241,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       textDecoration: "none",
                     }}
                   >
-                    <span>Ver Apresentação</span>
+                    <span>{locale === "en" ? "View Presentation" : locale === "es" ? "Ver Presentación" : "Ver Apresentação"}</span>
                     <FileText size={16} />
                   </Link>
 
@@ -257,7 +261,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       textDecoration: "none",
                     }}
                   >
-                    <span>Explorar Índice</span>
+                    <span>{locale === "en" ? "Explore Index" : locale === "es" ? "Explorar Índice" : "Explorar Índice"}</span>
                     <Layers size={16} />
                   </Link>
                 </div>
@@ -315,7 +319,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       <FileText size={20} />
                     </div>
                     <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: "#fff" }}>
-                      Texto Oficial do Prefácio
+                      {locale === "en" ? "Official Preface Text" : locale === "es" ? "Texto Oficial del Prefacio" : "Texto Oficial do Prefácio"}
                     </h2>
                   </div>
 
@@ -388,7 +392,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                   }}
                 >
                   <div style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: "#ff8290", letterSpacing: "0.05em" }}>
-                    Mensagem Central
+                    {locale === "en" ? "Core Message" : locale === "es" ? "Mensaje Central" : "Mensagem Central"}
                   </div>
                   <div style={{ fontSize: 18, fontStyle: "italic", lineHeight: 1.6, color: "#f8fafc" }}>
                     "{PREFACIO_DATA.mensagemCentral}"
@@ -433,7 +437,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
               {/* Editorial Board Cards Grid */}
               <div>
                 <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 18 }}>
-                  Editores do Tratado SBC
+                  {locale === "en" ? "Editors of the Treatise" : locale === "es" ? "Editores del Tratado" : "Editores do Tratado SBC"}
                 </h3>
                 <div
                   style={{
@@ -498,23 +502,23 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
-                  Dados da Publicação
+                  {locale === "en" ? "Publication Details" : locale === "es" ? "Datos de Publicación" : "Dados da Publicação"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Capítulos</span>
-                    <strong style={{ color: "#fff" }}>109 Capítulos</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "109 Chapters" : locale === "es" ? "109 Capítulos" : "109 Capítulos"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Seções Temáticas</span>
-                    <strong style={{ color: "#fff" }}>10 Seções</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Thematic Sections" : locale === "es" ? "Secciones Temáticas" : "Seções Temáticas"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "10 Sections" : locale === "es" ? "10 Secciones" : "10 Seções"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Autores e Colaboradores</span>
-                    <strong style={{ color: "#fff" }}>204 Especialistas</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Authors & Specialists" : locale === "es" ? "Autores y Especialistas" : "Autores e Colaboradores"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "204 Specialists" : locale === "es" ? "204 Especialistas" : "204 Especialistas"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Chancela Oficial</span>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Official Seal" : locale === "es" ? "Sello Oficial" : "Chancela Oficial"}</span>
                     <strong style={{ color: "#f52238" }}>SBC & DiLivros</strong>
                   </div>
                 </div>
@@ -539,7 +543,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                     textDecoration: "none",
                   }}
                 >
-                  <span>Adquirir no site da DiLivros</span>
+                  <span>{locale === "en" ? "Purchase at DiLivros" : locale === "es" ? "Comprar en DiLivros" : "Adquirir no site da DiLivros"}</span>
                   <ExternalLink size={14} />
                 </a>
               </div>
@@ -554,7 +558,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
-                  Navegação Rápida
+                  {locale === "en" ? "Quick Navigation" : locale === "es" ? "Navegación Rápida" : "Navegação Rápida"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <Link
@@ -572,7 +576,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Apresentação Oficial</span>
+                    <span>{locale === "en" ? "Official Presentation" : locale === "es" ? "Presentación Oficial" : "Apresentação Oficial"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                   <Link
@@ -590,7 +594,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Índice Completo de Capítulos</span>
+                    <span>{locale === "en" ? "Full Chapter Index" : locale === "es" ? "Índice Completo de Capítulos" : "Índice Completo de Capítulos"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                   <Link
@@ -608,7 +612,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Corpo Editorial e Autores</span>
+                    <span>{locale === "en" ? "Editorial Board & Authors" : locale === "es" ? "Cuerpo Editorial y Autores" : "Corpo Editorial e Autores"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                 </div>

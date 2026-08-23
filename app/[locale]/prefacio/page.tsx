@@ -61,12 +61,16 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
             {/* Breadcrumb */}
             <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
               <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>O Tratado</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
               <span>›</span>
-              <span style={{ color: "#fff", fontWeight: 700 }}>Prefácio</span>
+              <span style={{ color: "#fff", fontWeight: 700 }}>
+                {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
+              </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
@@ -107,7 +111,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
 
                 <h1
                   style={{
-                    fontSize: " clamp(32px, 4.5vw, 44px)",
+                    fontSize: "clamp(32px, 4.5vw, 44px)",
                     fontWeight: 700,
                     margin: "0 0 12px",
                     color: "#fff",
@@ -182,7 +186,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                       transition: "all 0.2s",
                     }}
                   >
-                    <span>Onde Comprar</span>
+                    <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                     <ShoppingCart size={15} />
                   </a>
 
@@ -203,7 +207,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                       transition: "all 0.2s",
                     }}
                   >
-                    <span>Ver apresentação</span>
+                    <span>{locale === "en" ? "View Presentation" : locale === "es" ? "Ver Presentación" : "Ver Apresentação"}</span>
                     <FileText size={15} />
                   </Link>
 
@@ -224,7 +228,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                       transition: "all 0.2s",
                     }}
                   >
-                    <span>Ver índice</span>
+                    <span>{locale === "en" ? "View Index" : locale === "es" ? "Ver Índice" : "Ver Índice"}</span>
                     <Layers size={15} />
                   </Link>
                 </div>
@@ -246,11 +250,11 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
               }}
             >
               {[
-                { icon: <Building2 size={18} className="text-blue-400" />, title: "Texto institucional" },
-                { icon: <BookOpen size={18} className="text-rose-400" />, title: "Prefácio" },
-                { icon: <Users size={18} className="text-purple-400" />, title: "Editores da obra", href: `/${locale}/autores` },
-                { icon: <Layers size={18} className="text-emerald-400" />, title: "Obra impressa" },
-                { icon: <Globe size={18} className="text-cyan-400" />, title: "Navegação do site" },
+                { icon: <Building2 size={18} className="text-blue-400" />, title: locale === "en" ? "Institutional text" : locale === "es" ? "Texto institucional" : "Texto institucional" },
+                { icon: <BookOpen size={18} className="text-rose-400" />, title: locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio" },
+                { icon: <Users size={18} className="text-purple-400" />, title: locale === "en" ? "Treatise Editors" : locale === "es" ? "Editores de la obra" : "Editores da obra", href: `/${locale}/autores` },
+                { icon: <Layers size={18} className="text-emerald-400" />, title: locale === "en" ? "Printed work" : locale === "es" ? "Obra impresa" : "Obra impressa" },
+                { icon: <Globe size={18} className="text-cyan-400" />, title: locale === "en" ? "Site navigation" : locale === "es" ? "Navegación del sitio" : "Navegação do site" },
               ].map((item, idx) => (
                 <div
                   key={idx}
@@ -295,7 +299,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <FileText size={22} className="text-blue-700" />
                   <h2 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Texto do prefácio
+                    {locale === "en" ? "Preface Text" : locale === "es" ? "Texto del Prefacio" : "Texto do prefácio"}
                   </h2>
                 </div>
 
@@ -321,7 +325,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Quote size={20} className="text-rose-600" />
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Mensagem central
+                    {locale === "en" ? "Core Message" : locale === "es" ? "Mensaje Central" : "Mensagem central"}
                   </h3>
                 </div>
 
@@ -356,7 +360,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <Award size={22} className="text-amber-500" />
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Destaques do prefácio
+                    {locale === "en" ? "Preface Highlights" : locale === "es" ? "Aspectos Destacados" : "Destaques do prefácio"}
                   </h3>
                 </div>
 
@@ -425,7 +429,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                   <BookOpen size={20} className="text-blue-700" />
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Sobre a obra
+                    {locale === "en" ? "About the Work" : locale === "es" ? "Sobre la Obra" : "Sobre a obra"}
                   </h3>
                 </div>
                 <p style={{ margin: 0, fontSize: 14.5, color: "#475569", lineHeight: 1.65 }}>
@@ -449,7 +453,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Users size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 16.5, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Autores do prefácio
+                    {locale === "en" ? "Preface Authors & Editors" : locale === "es" ? "Autores del Prefacio" : "Autores do prefácio"}
                   </h3>
                 </div>
 
@@ -504,22 +508,22 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                   <Layers size={18} className="text-blue-700" />
                   <h3 style={{ fontSize: 16.5, fontWeight: 700, color: "#001a3d", margin: 0 }}>
-                    Tipo de conteúdo
+                    {locale === "en" ? "Content Type" : locale === "es" ? "Tipo de Contenido" : "Tipo de conteúdo"}
                   </h3>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
                     <FileText size={15} className="text-blue-600" />
-                    <span>Texto institucional</span>
+                    <span>{locale === "en" ? "Institutional Text" : locale === "es" ? "Texto Institucional" : "Texto institucional"}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
                     <BookOpen size={15} className="text-rose-600" />
-                    <span>Prefácio</span>
+                    <span>{locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, color: "#334155", fontSize: 13.5, fontWeight: 700 }}>
                     <Layers size={15} className="text-emerald-600" />
-                    <span>Apoio à leitura</span>
+                    <span>{locale === "en" ? "Reading Companion" : locale === "es" ? "Apoyo a la Lectura" : "Apoio à leitura"}</span>
                   </div>
                 </div>
               </div>
@@ -539,16 +543,24 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12, color: "#ea580c" }}>
                   <ShieldCheck size={18} className="text-amber-600" />
                   <h3 style={{ fontSize: 15, fontWeight: 700, margin: 0, color: "#c2410c" }}>
-                    Aviso importante
+                    {locale === "en" ? "Important Notice" : locale === "es" ? "Aviso Importante" : "Aviso importante"}
                   </h3>
                 </div>
 
                 <p style={{ fontSize: 12.5, fontWeight: 700, color: "#475569", margin: "0 0 10px", lineHeight: 1.4 }}>
-                  Este site é uma plataforma de apoio à leitura.
+                  {locale === "en"
+                    ? "This website is a reading companion platform."
+                    : locale === "es"
+                    ? "Este sitio web es una plataforma de apoyo a la lectura."
+                    : "Este site é uma plataforma de apoio à leitura."}
                 </p>
 
                 <p style={{ fontSize: 12.5, color: "#64748b", margin: 0, lineHeight: 1.5 }}>
-                  O conteúdo integral do prefácio e de toda a obra está disponível exclusivamente na edição impressa do Tratado de Cirurgia da Coluna Vertebral.
+                  {locale === "en"
+                    ? "The full content of the preface and the entire treatise is published exclusively in the printed edition."
+                    : locale === "es"
+                    ? "El contenido íntegro del prefacio y de toda la obra está disponible exclusivamente en la edición impresa del Tratado."
+                    : "O conteúdo integral do prefácio e de toda a obra está disponível exclusivamente na edição impressa do Tratado de Cirurgia da Coluna Vertebral."}
                 </p>
               </div>
             </div>
@@ -588,7 +600,11 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
               />
               <div>
                 <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px", color: "#fff" }}>
-                  Uma obra para consulta, estudo e referência — exclusivamente em formato impresso.
+                  {locale === "en"
+                    ? "A masterwork for consultation, study, and clinical reference — exclusively in print."
+                    : locale === "es"
+                    ? "Una obra para consulta, estudio y referencia — exclusivamente en formato impreso."
+                    : "Uma obra para consulta, estudo e referência — exclusivamente em formato impresso."}
                 </h3>
                 <a
                   href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
@@ -607,7 +623,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                     textDecoration: "none",
                   }}
                 >
-                  <span>Onde Comprar</span>
+                  <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
                   <ShoppingCart size={15} />
                 </a>
               </div>

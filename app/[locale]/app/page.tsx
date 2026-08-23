@@ -812,7 +812,9 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             />
           )}
           <span style={{ fontSize: 20 }}>🏠</span>
-          <span style={{ fontSize: 11.5, fontWeight: activeTab === "home" ? 800 : 600 }}>Home</span>
+          <span style={{ fontSize: 11.5, fontWeight: activeTab === "home" ? 800 : 600 }}>
+            {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
+          </span>
         </button>
 
         {/* TAB 2: ÍNDICE */}
@@ -848,7 +850,9 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             />
           )}
           <span style={{ fontSize: 20 }}>📑</span>
-          <span style={{ fontSize: 11.5, fontWeight: activeTab === "indice" ? 800 : 600 }}>Índice</span>
+          <span style={{ fontSize: 11.5, fontWeight: activeTab === "indice" ? 800 : 600 }}>
+            {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
+          </span>
         </button>
 
         {/* TAB 3: SOBRE */}
@@ -884,7 +888,9 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             />
           )}
           <span style={{ fontSize: 20 }}>ℹ️</span>
-          <span style={{ fontSize: 11.5, fontWeight: activeTab === "sobre" ? 800 : 600 }}>Sobre</span>
+          <span style={{ fontSize: 11.5, fontWeight: activeTab === "sobre" ? 800 : 600 }}>
+            {locale === "en" ? "About" : locale === "es" ? "Acerca" : "Sobre"}
+          </span>
         </button>
 
         {/* TAB 4: COMPRAR */}
@@ -920,7 +926,9 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             />
           )}
           <span style={{ fontSize: 20 }}>🛒</span>
-          <span style={{ fontSize: 11.5, fontWeight: activeTab === "comprar" ? 800 : 600 }}>Comprar</span>
+          <span style={{ fontSize: 11.5, fontWeight: activeTab === "comprar" ? 800 : 600 }}>
+            {locale === "en" ? "Buy" : locale === "es" ? "Comprar" : "Comprar"}
+          </span>
         </button>
       </nav>
     </div>

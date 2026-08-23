@@ -131,21 +131,25 @@ export default async function HomePage({ params }: HomePageProps) {
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-book"></use></svg>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">109</strong>
-                  <span className="text-xs text-slate-300 font-semibold mt-0.5">capítulos</span>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">{dict.stats.stat1Label}</span>
                 </div>
 
                 {/* 2. Seções */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-grid"></use></svg>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
-                  <span className="text-xs text-slate-300 font-semibold mt-0.5">seções temáticas</span>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">{dict.stats.stat2Label.replace("\n", " ")}</span>
                 </div>
 
                 {/* 3. Autores */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-users"></use></svg>
-                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Autores</strong>
-                  <span className="text-xs text-slate-300 font-semibold">especialistas</span>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">
+                    {locale === "en" ? "Expert" : locale === "es" ? "Autores" : "Autores"}
+                  </strong>
+                  <span className="text-xs text-slate-300 font-semibold">
+                    {locale === "en" ? "authors" : locale === "es" ? "especialistas" : "especialistas"}
+                  </span>
                 </div>
 
                 {/* 4. Idiomas */}
@@ -161,8 +165,12 @@ export default async function HomePage({ params }: HomePageProps) {
                 {/* 5. Referências */}
                 <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
-                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Referências</strong>
-                  <span className="text-xs text-slate-300 font-semibold">por capítulo</span>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">
+                    {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
+                  </strong>
+                  <span className="text-xs text-slate-300 font-semibold">
+                    {locale === "en" ? "per chapter" : locale === "es" ? "por capítulo" : "por capítulo"}
+                  </span>
                 </div>
 
               </div>
@@ -460,7 +468,11 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
 
                 <p className="text-xs text-slate-300 italic">
-                  * Navegue pela estrutura e referências nos três idiomas oficiais.
+                  {locale === "en"
+                    ? "* Browse the structure and references in all three official languages."
+                    : locale === "es"
+                    ? "* Navegue por la estructura y referencias en los tres idiomas oficiales."
+                    : "* Navegue pela estrutura e referências nos três idiomas oficiais."}
                 </p>
               </article>
 

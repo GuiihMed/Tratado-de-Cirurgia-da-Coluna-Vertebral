@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Lock, ArrowUp } from "lucide-react";
 import { Locale } from "@/lib/types";
 
@@ -9,6 +10,20 @@ interface ModernFooterProps {
 }
 
 export default function ModernFooter({ locale }: ModernFooterProps) {
+  const pathname = usePathname();
+
+  const getLocalePath = (targetLocale: Locale) => {
+    if (!pathname) return `/${targetLocale}/home-new`;
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments.length === 0) return `/${targetLocale}/home-new`;
+    if (["pt", "en", "es"].includes(segments[0])) {
+      segments[0] = targetLocale;
+    } else {
+      segments.unshift(targetLocale);
+    }
+    return `/${segments.join("/")}`;
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -179,7 +194,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
 
               <div className="flex flex-col gap-2.5">
                 <Link
-                  href="/pt/home-new"
+                  href={getLocalePath("pt")}
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
                   <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
@@ -189,7 +204,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 </Link>
 
                 <Link
-                  href="/en/home-new"
+                  href={getLocalePath("en")}
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
                   <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">
@@ -199,7 +214,7 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 </Link>
 
                 <Link
-                  href="/es/home-new"
+                  href={getLocalePath("es")}
                   className="inline-flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors"
                 >
                   <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/10 text-sky-300 border border-white/10">

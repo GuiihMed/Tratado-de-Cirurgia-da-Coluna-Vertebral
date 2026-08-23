@@ -446,7 +446,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                       transition: "all 0.15s ease",
                     }}
                   >
-                    <span>{`Seção ${sec.id}`}</span>
+                    <span>{locale === "en" ? `Section ${sec.id}` : locale === "es" ? `Sección ${sec.id}` : `Seção ${sec.id}`}</span>
                   </button>
                 );
               })}
@@ -566,7 +566,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                               marginBottom: 6,
                             }}
                           >
-                            <span>{`Seção ${chap.secao_id}`}</span>
+                            <span>{locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}</span>
                           </div>
                           <div
                             style={{
@@ -583,7 +583,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                         {/* 2. CAPÍTULO */}
                         <div>
                           <div style={{ fontSize: 12, fontWeight: 700, color: "#dc2626", marginBottom: 3, textTransform: "uppercase" }}>
-                            {`Capítulo ${chap.numero}`}
+                            {locale === "en" ? `Chapter ${chap.numero}` : locale === "es" ? `Capítulo ${chap.numero}` : `Capítulo ${chap.numero}`}
                           </div>
                           <h2 style={{ fontSize: 15.5, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.35 }}>
                             <Link

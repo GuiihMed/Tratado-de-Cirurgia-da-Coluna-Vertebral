@@ -73,12 +73,16 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 href={`/${locale}/home-new`}
                 style={{ color: "#94a3b8", textDecoration: "none" }}
               >
-                Início
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "#cbd5e1" }}>O Tratado</span>
+              <span style={{ color: "#cbd5e1" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
               <span>›</span>
-              <span style={{ color: "#f52238", fontWeight: 700 }}>Apresentação</span>
+              <span style={{ color: "#f52238", fontWeight: 700 }}>
+                {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
+              </span>
             </div>
 
             {/* Hero Grid */}
@@ -234,7 +238,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       boxShadow: "0 8px 24px rgba(245, 34, 56, 0.35)",
                     }}
                   >
-                    <span>Adquirir Livro Impresso</span>
+                    <span>{locale === "en" ? "Purchase Printed Book" : locale === "es" ? "Comprar Libro Impreso" : "Adquirir Livro Impresso"}</span>
                     <ShoppingCart size={16} />
                   </a>
 
@@ -254,7 +258,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       textDecoration: "none",
                     }}
                   >
-                    <span>Ver Prefácio</span>
+                    <span>{locale === "en" ? "View Preface" : locale === "es" ? "Ver Prefacio" : "Ver Prefácio"}</span>
                     <FileText size={16} />
                   </Link>
 
@@ -274,7 +278,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       textDecoration: "none",
                     }}
                   >
-                    <span>Explorar Índice</span>
+                    <span>{locale === "en" ? "Explore Index" : locale === "es" ? "Explorar Índice" : "Explorar Índice"}</span>
                     <Layers size={16} />
                   </Link>
                 </div>
@@ -332,7 +336,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       <FileText size={20} />
                     </div>
                     <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: "#fff" }}>
-                      Texto Oficial da Apresentação
+                      {locale === "en" ? "Official Presentation Text" : locale === "es" ? "Texto Oficial de la Presentación" : "Texto Oficial da Apresentação"}
                     </h2>
                   </div>
 
@@ -405,7 +409,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                   }}
                 >
                   <div style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: "#ff8290", letterSpacing: "0.05em" }}>
-                    Mensagem Central
+                    {locale === "en" ? "Core Message" : locale === "es" ? "Mensaje Central" : "Mensagem Central"}
                   </div>
                   <div style={{ fontSize: 18, fontStyle: "italic", lineHeight: 1.6, color: "#f8fafc" }}>
                     "{APRESENTACAO_DATA.mensagemCentral}"
@@ -460,23 +464,23 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
-                  Dados da Publicação
+                  {locale === "en" ? "Publication Details" : locale === "es" ? "Datos de Publicación" : "Dados da Publicação"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Capítulos</span>
-                    <strong style={{ color: "#fff" }}>109 Capítulos</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "109 Chapters" : locale === "es" ? "109 Capítulos" : "109 Capítulos"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Seções Temáticas</span>
-                    <strong style={{ color: "#fff" }}>10 Seções</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Thematic Sections" : locale === "es" ? "Secciones Temáticas" : "Seções Temáticas"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "10 Sections" : locale === "es" ? "10 Secciones" : "10 Seções"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Autores e Colaboradores</span>
-                    <strong style={{ color: "#fff" }}>204 Especialistas</strong>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Authors & Specialists" : locale === "es" ? "Autores y Especialistas" : "Autores e Colaboradores"}</span>
+                    <strong style={{ color: "#fff" }}>{locale === "en" ? "204 Specialists" : locale === "es" ? "204 Especialistas" : "204 Especialistas"}</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
-                    <span style={{ color: "#94a3b8" }}>Chancela Oficial</span>
+                    <span style={{ color: "#94a3b8" }}>{locale === "en" ? "Official Seal" : locale === "es" ? "Sello Oficial" : "Chancela Oficial"}</span>
                     <strong style={{ color: "#f52238" }}>SBC & DiLivros</strong>
                   </div>
                 </div>
@@ -501,7 +505,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     textDecoration: "none",
                   }}
                 >
-                  <span>Adquirir no site da DiLivros</span>
+                  <span>{locale === "en" ? "Purchase at DiLivros" : locale === "es" ? "Comprar en DiLivros" : "Adquirir no site da DiLivros"}</span>
                   <ExternalLink size={14} />
                 </a>
               </div>
@@ -516,12 +520,10 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
-                  Autor da Apresentação
+                  {locale === "en" ? "Author of Presentation" : locale === "es" ? "Autor de la Presentación" : "Autor da Apresentação"}
                 </h3>
-                <Link
-                  href={`/${locale}/autor-new/luiz-roberto-gomes-vialle`}
+                <div
                   style={{ display: "flex", gap: 14, textDecoration: "none", color: "inherit", alignItems: "center" }}
-                  className="hover:opacity-85 transition-opacity"
                 >
                   <img
                     src={APRESENTACAO_DATA.autor.foto_url}
@@ -540,10 +542,10 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       {APRESENTACAO_DATA.autor.nome}
                     </h4>
                     <p style={{ margin: 0, fontSize: 12, color: "#94a3b8", lineHeight: 1.35 }}>
-                      Presidente da SBC • Ver Perfil do Autor →
+                      {locale === "en" ? "Former SBC President (1987–1988)" : locale === "es" ? "Ex-Presidente de la SBC (1987–1988)" : "Ex-Presidente da SBC (1987–1988)"}
                     </p>
                   </div>
-                </Link>
+                </div>
               </div>
 
               {/* Navigation Jump Card */}
@@ -556,7 +558,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 }}
               >
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
-                  Navegação Rápida
+                  {locale === "en" ? "Quick Navigation" : locale === "es" ? "Navegación Rápida" : "Navegação Rápida"}
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <Link
@@ -574,7 +576,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Prefácio dos Editores</span>
+                    <span>{locale === "en" ? "Editors' Preface" : locale === "es" ? "Prefacio de los Editores" : "Prefácio dos Editores"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                   <Link
@@ -592,7 +594,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Índice Completo de Capítulos</span>
+                    <span>{locale === "en" ? "Full Chapter Index" : locale === "es" ? "Índice Completo de Capítulos" : "Índice Completo de Capítulos"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                   <Link
@@ -610,7 +612,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       fontWeight: 600,
                     }}
                   >
-                    <span>Corpo Editorial e Autores</span>
+                    <span>{locale === "en" ? "Editorial Board & Authors" : locale === "es" ? "Cuerpo Editorial y Autores" : "Corpo Editorial e Autores"}</span>
                     <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                 </div>
