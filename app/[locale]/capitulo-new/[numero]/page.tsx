@@ -8,6 +8,7 @@ import { getAuthorsByChapter } from "@/lib/data/authors";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
+import { getFullChapterByNumber } from "@/lib/data/chapters-content";
 import {
   BookOpen,
   ShoppingCart,
@@ -95,44 +96,70 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
     : `Seção ${cap.secao_id}`;
 
   const isCap8 = num === 8;
+  const fullChapter = getFullChapterByNumber(num);
   const chapterAuthors = getAuthorsByChapter(num);
-  const authorsText = cap.autores || (chapterAuthors.length > 0 ? chapterAuthors.map(a => a.nome).join(" • ") : "Corpo Editorial Oficial SBC");
+  const authorsText =
+    (fullChapter?.autores && fullChapter.autores.length > 0
+      ? fullChapter.autores.join(" • ")
+      : cap.autores) ||
+    (chapterAuthors.length > 0
+      ? chapterAuthors.map((a) => a.nome).join(" • ")
+      : "Corpo Editorial Oficial SBC");
   const approachData = getChapterApproachObjective(num, cap.secao_id, locale);
 
-  const leadText = isCap8
-    ? "Fundamentos anátomo-biomecânicos do equilíbrio sagital global, parâmetros espinopélvicos radiográficos e tomada de decisão clínica na cirurgia reconstrutiva da coluna."
-    : cap.resumo_pt?.substring(0, 160) ||
-      "Diretrizes anátomo-cirúrgicas essenciais, critérios diagnósticos de precisão e avanços contemporâneos da Sociedade Brasileira de Coluna.";
+  const leadText =
+    fullChapter?.contexto ||
+    (isCap8
+      ? "Fundamentos anátomo-biomecânicos do equilíbrio sagital global, parâmetros espinopélvicos radiográficos e tomada de decisão clínica na cirurgia reconstrutiva da coluna."
+      : cap.resumo_pt?.substring(0, 160) ||
+        "Diretrizes anátomo-cirúrgicas essenciais, critérios diagnósticos de precisão e avanços contemporâneos da Sociedade Brasileira de Coluna.");
+
+  const objectiveText = fullChapter?.objetivo || approachData.objetivo;
+  const clinicalAppText = fullChapter?.aplicacao_clinica || approachData.focoClinico;
+  const subtopics = fullChapter?.conteudo_principal || [];
+  const cardsDestaque = fullChapter?.cards_destaque || [];
+  const centralMessageText = fullChapter?.mensagem_central || "";
+  const whyItMattersText = fullChapter?.por_que_importa || "";
 
   // DeCS / MeSH keywords
-  const keywords = isCap8
-    ? [
-        "Coluna Vertebral",
-        "Equilíbrio Postural",
-        "Incidência Pélvica (PI)",
-        "Lordose Lombar (LL)",
-        "Eixo Vertical Sagital (SVA)",
-        "Cone de Economia",
-        "Classificação de Roussouly",
-        "Modificadores SRS-Schwab",
-        "GAP Score",
-        "Osteotomias Tridimensionais",
-        "Doença do Nível Adjacente",
-        "Qualidade de Vida (SRS-22)",
-      ]
-    : [
-        "Coluna Vertebral",
-        "Técnicas Cirúrgicas",
-        "Diagnóstico por Imagem",
-        "Biomecânica Espinhal",
-        "Segurança Perioperatória",
-        "Qualidade de Vida",
-      ];
+  const keywords =
+    fullChapter?.decs && fullChapter.decs.length > 0
+      ? fullChapter.decs
+      : isCap8
+      ? [
+          "Coluna Vertebral",
+          "Equilíbrio Postural",
+          "Incidência Pélvica (PI)",
+          "Lordose Lombar (LL)",
+          "Eixo Vertical Sagital (SVA)",
+          "Cone de Economia",
+          "Classificação de Roussouly",
+          "Modificadores SRS-Schwab",
+          "GAP Score",
+          "Osteotomias Tridimensionais",
+        ]
+      : [
+          "Coluna Vertebral",
+          "Técnicas Cirúrgicas",
+          "Diagnóstico por Imagem",
+          "Biomecânica Espinhal",
+          "Segurança Perioperatória",
+          "Qualidade de Vida",
+        ];
 
   // References list from curated catalog
   const chapterRefData = ALL_CHAPTER_REFERENCES.find((r) => r.numero === num);
   const referencesList =
-    chapterRefData && chapterRefData.referencias.length > 0
+    fullChapter?.referencias && fullChapter.referencias.length > 0
+      ? fullChapter.referencias.map((r, i) => ({
+          num: i + 1,
+          text: r,
+          doi: `https://scholar.google.com/scholar?q=${encodeURIComponent(r.slice(0, 140))}`,
+          pmid: `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(
+            r.replace(/[^a-zA-Z0-9\s]/g, " ").slice(0, 120)
+          )}`,
+        }))
+      : chapterRefData && chapterRefData.referencias.length > 0
       ? chapterRefData.referencias.map((r, i) => ({
           num: r.num || i + 1,
           text: r.text,
@@ -496,7 +523,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
                 {/* Content Blocks */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {/* Block 1 */}
+                  {/* Contexto Clínico */}
                   <div
                     style={{
                       background: "#f8fafc",
@@ -510,17 +537,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       • {locale === "en" ? "Clinical Context" : locale === "es" ? "Contexto Clínico" : "Contexto Clínico"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {isCap8
-                        ? (locale === "en"
-                          ? "Sagittal spinal alignment is a cornerstone in clinical evaluation, surgical planning, and understanding functional outcomes for patients with degenerative diseases and spinal deformities. Upright human posture relies on harmonious integration among spine, pelvis, hips, and lower extremities to maintain center of mass over the support base with minimal energy expenditure."
-                          : locale === "es"
-                          ? "El equilibrio sagital de la columna vertebral se ha convertido en un concepto central en la evaluación clínica, planificación quirúrgica y comprensión de resultados funcionales. La postura erguida humana depende de la integración armónica entre columna, pelvis, caderas y extremidades inferiores con el menor gasto energético posible."
-                          : "O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível.")
-                        : (cap.resumo_pt || leadText)}
+                      {leadText}
                     </p>
                   </div>
 
-                  {/* Block 2: Objetivo da Abordagem */}
+                  {/* Objetivo do Capítulo */}
                   <div
                     style={{
                       background: "#f8fafc",
@@ -531,48 +552,53 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     }}
                   >
                     <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Objective of the Approach" : locale === "es" ? "Objetivo del Abordaje" : "Objetivo da Abordagem"}
+                      • {locale === "en" ? "Chapter Objective" : locale === "es" ? "Objetivo del Capítulo" : "Objetivo do Capítulo"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {approachData.objetivo}
+                      {objectiveText}
                     </p>
                   </div>
 
-                  {/* Block 3: Foco Clínico & Cirúrgico */}
-                  <div
-                    style={{
-                      background: "#f8fafc",
-                      border: "1px solid #e2e8f0",
-                      borderLeft: "4px solid #d97706",
-                      borderRadius: 12,
-                      padding: "18px 22px",
-                    }}
-                  >
-                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#d97706", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Clinical & Surgical Focus" : locale === "es" ? "Enfoque Clínico y Quirúrgico" : "Foco Clínico & Cirúrgico"}
+                  {/* Subtópicos do Conteúdo Principal */}
+                  {subtopics.map((st, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        background: "#f8fafc",
+                        border: "1px solid #e2e8f0",
+                        borderLeft: `4px solid ${idx % 2 === 0 ? "#6366f1" : "#0d9488"}`,
+                        borderRadius: 12,
+                        padding: "18px 22px",
+                      }}
+                    >
+                      <div style={{ fontSize: 13, fontWeight: 700, color: idx % 2 === 0 ? "#4338ca" : "#0f766e", marginBottom: 6 }}>
+                        {st.subtitulo}
+                      </div>
+                      <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                        {st.texto}
+                      </p>
                     </div>
-                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {approachData.focoClinico}
-                    </p>
-                  </div>
+                  ))}
 
-                  {/* Block 4: Principais Indicações */}
-                  <div
-                    style={{
-                      background: "#f8fafc",
-                      border: "1px solid #e2e8f0",
-                      borderLeft: "4px solid #16a34a",
-                      borderRadius: 12,
-                      padding: "18px 22px",
-                    }}
-                  >
-                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Core Indications & Clinical Guidance" : locale === "es" ? "Indicaciones Principales y Guía Clínica" : "Principais Indicações & Diretrizes Clínicas"}
+                  {/* Aplicação Clínica */}
+                  {clinicalAppText && (
+                    <div
+                      style={{
+                        background: "#f8fafc",
+                        border: "1px solid #e2e8f0",
+                        borderLeft: "4px solid #16a34a",
+                        borderRadius: 12,
+                        padding: "18px 22px",
+                      }}
+                    >
+                      <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
+                        • {locale === "en" ? "Clinical Application & Guidance" : locale === "es" ? "Aplicación Clínica y Directrices" : "Aplicação Clínica & Diretrizes"}
+                      </div>
+                      <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
+                        {clinicalAppText}
+                      </p>
                     </div>
-                    <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {approachData.indicacoes}
-                    </p>
-                  </div>
+                  )}
                 </div>
               </article>
 
@@ -615,157 +641,97 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               </article>
 
               {/* CARD 3: POR QUE ESTE CAPÍTULO IMPORTA (DEEP NAVY CARD) */}
-              <article
-                style={{
-                  background: "linear-gradient(135deg, #001533 0%, #00224d 100%)",
-                  borderRadius: 20,
-                  padding: "36px",
-                  color: "#fff",
-                  boxShadow: "0 12px 36px rgba(0, 20, 60, 0.15)",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                  <Award size={20} className="text-amber-400" />
-                  <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0 }}>
-                    {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
-                  </h3>
-                </div>
-
-                <p style={{ fontSize: 15, lineHeight: 1.65, color: "#cbd5e1", margin: "0 0 24px" }}>
-                  {locale === "en"
-                    ? "Sagittal alignment is now a cornerstone of modern spinal surgery. Alterations in spinopelvic parameters are directly associated with chronic pain, functional disability, and diminished quality of life. Early recognition of imbalance and understanding compensatory mechanisms enable safer, more effective surgical outcomes."
-                    : locale === "es"
-                    ? "La alineación sagital se ha convertido en un pilar de la cirugía moderna de columna. Las alteraciones espinopélvicas se asocian con dolor, incapacidad y menor calidad de vida. El reconocimiento temprano y el entendimiento biomecánico permiten intervenciones más seguras y duraderas."
-                    : "O alinhamento sagital tornou-se um dos pilares da cirurgia moderna da coluna. Alterações nos parâmetros espinopélvicos estão associadas à dor, incapacidade e pior qualidade de vida. O reconhecimento precoce do desequilíbrio e o entendimento dos mecanismos compensatórios permitem intervenções mais seguras e eficazes, com menores taxas de complicações e melhores desfechos clínicos a longo prazo."}
-                </p>
-
-                {/* Quote Box */}
-                <div
+              {(whyItMattersText || centralMessageText) && (
+                <article
                   style={{
-                    background: "rgba(245, 34, 56, 0.18)",
-                    border: "1.5px solid rgba(245, 34, 56, 0.5)",
-                    borderRadius: 14,
-                    padding: "20px 28px",
-                    textAlign: "center",
+                    background: "linear-gradient(135deg, #001533 0%, #00224d 100%)",
+                    borderRadius: 20,
+                    padding: "36px",
+                    color: "#fff",
+                    boxShadow: "0 12px 36px rgba(0, 20, 60, 0.15)",
                   }}
                 >
-                  <span style={{ fontSize: 16.5, fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.5 }}>
-                    {locale === "en"
-                      ? "“ Restoring sagittal balance is restoring function, alleviating pain, and elevating patient quality of life. ”"
-                      : locale === "es"
-                      ? "“ Restaurar el equilibrio sagital es restaurar función, reducir dolor y mejorar la calidad de vida. ”"
-                      : "“ Restaurar o equilíbrio sagital é restaurar função, reduzir dor e melhorar a qualidade de vida. ”"}
-                  </span>
-                </div>
-              </article>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <Award size={20} className="text-amber-400" />
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0 }}>
+                      {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
+                    </h3>
+                  </div>
+
+                  {whyItMattersText && (
+                    <p style={{ fontSize: 15, lineHeight: 1.65, color: "#cbd5e1", margin: "0 0 24px" }}>
+                      {whyItMattersText}
+                    </p>
+                  )}
+
+                  {/* Quote Box / Mensagem Central */}
+                  {centralMessageText && (
+                    <div
+                      style={{
+                        background: "rgba(245, 34, 56, 0.18)",
+                        border: "1.5px solid rgba(245, 34, 56, 0.5)",
+                        borderRadius: 14,
+                        padding: "20px 28px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <span style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.5 }}>
+                        “ {centralMessageText} ”
+                      </span>
+                    </div>
+                  )}
+                </article>
+              )}
 
               {/* CARD 4: TRÍADE DE DESTAQUES CIRÚRGICOS */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
-                <div
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: 18,
-                    padding: "24px",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 12,
-                      background: "#f3e8ff",
-                      color: "#6b21a8",
-                      display: "grid",
-                      placeItems: "center",
-                      marginBottom: 14,
-                    }}
-                  >
-                    <Globe size={22} />
-                  </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                    {locale === "en" ? "Conceptual Foundation" : locale === "es" ? "Base Conceptual" : "Base Conceitual"}
-                  </h4>
-                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
-                    {locale === "en"
-                      ? "Anatomical and biomechanical foundations underlying sagittal alignment and Dubousset's cone of economy."
-                      : locale === "es"
-                      ? "Fundamentos anatómicos y biomecánicos del equilibrio sagital y el cono de economía de Dubousset."
-                      : "Conceitos anatômicos e biomecânicos que sustentam o equilíbrio sagital e o \"cone de economia de Dubousset\"."}
-                  </p>
+              {cardsDestaque.length > 0 && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 18 }}>
+                  {cardsDestaque.map((card, cIdx) => {
+                    const isPurple = cIdx === 0;
+                    const isRed = cIdx === 1;
+                    const bgColor = isPurple ? "#f3e8ff" : isRed ? "#fee2e2" : "#e0f2fe";
+                    const iconColor = isPurple ? "#6b21a8" : isRed ? "#b91c1c" : "#0369a1";
+                    return (
+                      <div
+                        key={cIdx}
+                        style={{
+                          background: "#ffffff",
+                          borderRadius: 18,
+                          padding: "24px",
+                          border: "1px solid #e2e8f0",
+                          boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 44,
+                            height: 44,
+                            borderRadius: 12,
+                            background: bgColor,
+                            color: iconColor,
+                            display: "grid",
+                            placeItems: "center",
+                            marginBottom: 14,
+                          }}
+                        >
+                          {isPurple ? <Globe size={20} /> : isRed ? <Stethoscope size={20} /> : <Compass size={20} />}
+                        </div>
+                        <div style={{ fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", color: iconColor, letterSpacing: "0.05em", marginBottom: 4 }}>
+                          {card.tipo || (isPurple ? "Conceito essencial" : isRed ? "Decisão clínica" : "Pérola ou alerta")}
+                        </div>
+                        <h4 style={{ fontSize: 15.5, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
+                          {card.titulo}
+                        </h4>
+                        <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.55 }}>
+                          {card.texto}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
-
-                <div
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: 18,
-                    padding: "24px",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 12,
-                      background: "#fee2e2",
-                      color: "#b91c1c",
-                      display: "grid",
-                      placeItems: "center",
-                      marginBottom: 14,
-                    }}
-                  >
-                    <Stethoscope size={22} />
-                  </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                    {locale === "en" ? "Clinical Application" : locale === "es" ? "Aplicación Clínica" : "Aplicação Clínica"}
-                  </h4>
-                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
-                    {locale === "en"
-                      ? "Radiographic parameter interpretation and its direct relationship with symptoms and functional prognosis."
-                      : locale === "es"
-                      ? "Interpretación de parámetros radiográficos y su correlación directa con síntomas y pronóstico."
-                      : "Interpretação dos principais parâmetros radiográficos e sua relação direta com sintomas e prognóstico funcional."}
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    background: "#ffffff",
-                    borderRadius: 18,
-                    padding: "24px",
-                    border: "1px solid #e2e8f0",
-                    boxShadow: "0 6px 20px rgba(0, 20, 60, 0.04)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 12,
-                      background: "#e0f2fe",
-                      color: "#0369a1",
-                      display: "grid",
-                      placeItems: "center",
-                      marginBottom: 14,
-                    }}
-                  >
-                    <Compass size={22} />
-                  </div>
-                  <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                    {locale === "en" ? "3D Planning" : locale === "es" ? "Planificación 3D" : "Planejamento 3D"}
-                  </h4>
-                  <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.5 }}>
-                    {locale === "en"
-                      ? "Surgical restoration principles for spinopelvic harmony, minimizing adjacent-level mechanical stress."
-                      : locale === "es"
-                      ? "Principios para restaurar la armonía espinopélvica, previniendo fallas en el nivel adyacente."
-                      : "Princípios para restauração da harmonia espinopélvica, prevenindo sobrecargas no nível adjacente."}
-                  </p>
-                </div>
-              </div>
+              )}
 
               {/* CARD 5: REFERÊNCIAS BIBLIOGRÁFICAS INTERATIVAS */}
               <article
