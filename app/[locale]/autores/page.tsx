@@ -27,9 +27,16 @@ const COLUMN_MAPPING: string[][] = [
   ["P", "R", "S", "Z"],
 ];
 
+function normalizeString(str: string): string {
+  const clean = str.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+  return clean
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 function normalizeFirstLetter(name: string): string {
-  const cleanName = name.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-  const normalized = cleanName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const normalized = normalizeString(name);
   return normalized.charAt(0).toUpperCase();
 }
 
@@ -71,11 +78,11 @@ export default function AutoresPage({ params }: AutoresPageProps) {
       return true;
     });
 
-    // Sort alphabetically by clean name
+    // Sort alphabetically strictly by unaccented name
     const sorted = [...filtered].sort((a, b) => {
-      const nameA = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-      const nameB = b.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-      return nameA.localeCompare(nameB, "pt", { sensitivity: "base" });
+      const normA = normalizeString(a.nome);
+      const normB = normalizeString(b.nome);
+      return normA.localeCompare(normB, "pt", { sensitivity: "base" });
     });
 
     for (const a of sorted) {
