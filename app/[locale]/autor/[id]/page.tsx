@@ -14,11 +14,15 @@ interface AutorPageProps {
 export function generateStaticParams() {
   const locales = ["pt", "en", "es"];
   const params: { locale: string; id: string }[] = [];
+  const extraSlugs = ["helton-defino", "marcelo-risso", "elcio-landim", "luiz-roberto-gomes-vialle", "edson-pudles"];
 
   for (const locale of locales) {
     for (const author of AUTHORS_DIRECTORY) {
       params.push({ locale, id: author.id });
       params.push({ locale, id: author.slug });
+    }
+    for (const slug of extraSlugs) {
+      params.push({ locale, id: slug });
     }
   }
 

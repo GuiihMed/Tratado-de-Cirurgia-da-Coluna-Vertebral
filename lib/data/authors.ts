@@ -6234,14 +6234,49 @@ export const AUTHORS_DIRECTORY: AuthorProfile[] = [
       }
     ],
     "artigos_relevantes": []
+  },
+  {
+    "id": "205",
+    "slug": "elcio-landim",
+    "nome": "Prof. Dr. Elcio Landim",
+    "cargo": "Ex-Presidente da Sociedade Brasileira de Coluna (1987–1988)",
+    "instituicao": "Universidade Estadual de Campinas (UNICAMP) & Santa Casa de SP",
+    "destaque": "Autor da Apresentação Oficial do Tratado SBC",
+    "foto_url": "/assets/elcio-landim.jpg",
+    "orcid": "0000-0002-3908-5694",
+    "orcid_url": "https://orcid.org/0000-0002-3908-5694",
+    "bio_completa": "Professor Doutor e Livre-Docente. Ex-Presidente da Sociedade Brasileira de Coluna (1987–1988). Ex-Chefe do Grupo de Coluna da Disciplina de Ortopedia e Traumatologia da Faculdade de Ciências Médicas da Universidade Estadual de Campinas (FCM-Unicamp). Ex-Chefe do Grupo de Coluna do Departamento de Ortopedia e Traumatologia da Santa Casa de São Paulo. Ex-Chefe do Grupo de Escoliose da Associação de Assistência à Criança Deficiente (AACD).",
+    "titulacao_academica": [
+      "Ex-Presidente da Sociedade Brasileira de Coluna (1987–1988)",
+      "Ex-Chefe do Grupo de Coluna da FCM-Unicamp",
+      "Ex-Chefe do Grupo de Coluna da Ortopedia da Santa Casa de São Paulo",
+      "Ex-Chefe do Grupo de Escoliose da AACD"
+    ],
+    "especialidades": [
+      "Cirurgia da Coluna Vertebral",
+      "Deformidades da Coluna e Escoliose",
+      "Sociedade Brasileira de Coluna (SBC)"
+    ],
+    "capitulos_tratado": [],
+    "artigos_relevantes": []
   }
 ];
 
+export const AUTHOR_SLUG_ALIASES: Record<string, string> = {
+  "helton-defino": "helton-luiz-aparecido-defino",
+  "marcelo-risso": "marcelo-italo-risso-neto",
+  "elcio-landim": "elcio-landim",
+  "luiz-vialle": "luiz-roberto-gomes-vialle",
+};
+
 export function getAuthorByIdOrSlug(idOrSlug: string): AuthorProfile | undefined {
+  if (!idOrSlug) return undefined;
   const normalized = idOrSlug.toLowerCase().trim();
+  const aliased = AUTHOR_SLUG_ALIASES[normalized] || normalized;
+
   return (
-    AUTHORS_DIRECTORY.find((a) => a.id === normalized) ||
-    AUTHORS_DIRECTORY.find((a) => a.slug === normalized) ||
+    AUTHORS_DIRECTORY.find((a) => a.id === normalized || a.id === aliased) ||
+    AUTHORS_DIRECTORY.find((a) => a.slug === normalized || a.slug === aliased) ||
     AUTHORS_DIRECTORY.find((a) => a.nome.toLowerCase().replace(/^(dr\.|dra\.|prof\.|profa\.)\s*/i, "").trim() === normalized)
   );
 }

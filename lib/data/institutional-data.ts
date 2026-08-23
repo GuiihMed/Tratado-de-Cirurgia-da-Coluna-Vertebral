@@ -9,9 +9,11 @@ export interface EditorInfo {
 
 export interface InstitucionalAuthor {
   nome: string;
+  slug?: string;
   cargo?: string;
   instituicao?: string;
   foto_url?: string;
+  titulos?: string[];
 }
 
 export const EDITORES_TRATADO: EditorInfo[] = [
@@ -183,6 +185,7 @@ export interface ApresentacaoContentType {
   subtitulo: string;
   autor: {
     nome: string;
+    slug?: string;
     foto_url: string;
     titulos: string[];
   };
@@ -206,6 +209,7 @@ export const APRESENTACAO_BY_LOCALE: Record<string, ApresentacaoContentType> = {
     subtitulo: "Mensagem de abertura sobre a trajetória da Sociedade Brasileira de Coluna e o propósito formativo do Tratado de Cirurgia da Coluna Vertebral.",
     autor: {
       nome: "Prof. Dr. Elcio Landim",
+      slug: "elcio-landim",
       foto_url: "/assets/elcio-landim.jpg",
       titulos: [
         "Ex-Presidente da Sociedade Brasileira de Coluna (1987–1988)",
@@ -250,6 +254,7 @@ export const APRESENTACAO_BY_LOCALE: Record<string, ApresentacaoContentType> = {
     subtitulo: "Opening message on the history of the Brazilian Spine Society and the educational purpose of the Treatise on Spine Surgery.",
     autor: {
       nome: "Prof. Dr. Elcio Landim",
+      slug: "elcio-landim",
       foto_url: "/assets/elcio-landim.jpg",
       titulos: [
         "Former President of the Brazilian Spine Society (1987–1988)",
@@ -294,6 +299,7 @@ export const APRESENTACAO_BY_LOCALE: Record<string, ApresentacaoContentType> = {
     subtitulo: "Mensaje de apertura sobre la trayectoria de la Sociedad Brasileña de Columna y el propósito formativo del Tratado de Cirugía de la Columna Vertebral.",
     autor: {
       nome: "Prof. Dr. Elcio Landim",
+      slug: "elcio-landim",
       foto_url: "/assets/elcio-landim.jpg",
       titulos: [
         "Ex-Presidente de la Sociedad Brasileña de Columna (1987–1988)",

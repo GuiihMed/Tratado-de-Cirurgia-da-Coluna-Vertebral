@@ -21,7 +21,7 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
     ? (rawLocale as Locale)
     : "pt";
 
-  const author = getAuthorByIdOrSlug(id) || AUTHORS_DIRECTORY[0];
+  const author = getAuthorByIdOrSlug(id);
 
   if (!author) {
     notFound();

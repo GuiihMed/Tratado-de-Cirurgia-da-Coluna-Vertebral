@@ -135,9 +135,15 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
 
                 {/* Author Title & Details */}
                 <div style={{ marginBottom: 20 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", margin: "0 0 4px" }}>
-                    {APRESENTACAO_DATA.autor.nome}
-                  </h3>
+                  <Link
+                    href={`/${locale}/autor/${APRESENTACAO_DATA.autor.slug || "elcio-landim"}`}
+                    style={{ textDecoration: "none", color: "inherit", display: "inline-block" }}
+                    className="hover:underline"
+                  >
+                    <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", margin: "0 0 4px" }}>
+                      {APRESENTACAO_DATA.autor.nome} →
+                    </h3>
+                  </Link>
                   <p style={{ fontSize: 12.5, color: "rgba(255, 255, 255, 0.7)", margin: 0, lineHeight: 1.4, maxWidth: 680 }}>
                     {APRESENTACAO_DATA.autor.titulos.join(" • ")}
                   </p>
@@ -455,8 +461,10 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                   </h3>
                 </div>
 
-                <div
+                <Link
+                  href={`/${locale}/autor/${APRESENTACAO_DATA.autor.slug || "elcio-landim"}`}
                   style={{ display: "flex", flexDirection: "column", gap: 14, textDecoration: "none", color: "inherit" }}
+                  className="hover:opacity-85 transition-opacity"
                 >
                   <div
                     style={{
@@ -475,7 +483,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                   </div>
                   <div>
                     <h4 style={{ margin: "0 0 6px", fontSize: 16, fontWeight: 700, color: "#001a3d" }}>
-                      {APRESENTACAO_DATA.autor.nome}
+                      {APRESENTACAO_DATA.autor.nome} →
                     </h4>
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                       {APRESENTACAO_DATA.autor.titulos.map((t, idx) => (
@@ -485,7 +493,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                       ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Tipo de Conteúdo */}

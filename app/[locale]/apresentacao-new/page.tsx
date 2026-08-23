@@ -182,22 +182,33 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
 
                 {/* Author badge */}
                 {APRESENTACAO_DATA.autor && (
-                  <div
+                  <Link
+                    href={`/${locale}/autor-new/${APRESENTACAO_DATA.autor.slug || "elcio-landim"}`}
                     style={{
                       padding: "16px 20px",
                       borderRadius: 14,
                       background: "rgba(255, 255, 255, 0.05)",
                       border: "1px solid rgba(255, 255, 255, 0.12)",
                       backdropFilter: "blur(12px)",
+                      textDecoration: "none",
+                      color: "inherit",
+                      display: "block",
+                      transition: "all 0.2s ease",
                     }}
+                    className="hover:border-red-500/50 hover:bg-white/10"
                   >
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 4 }}>
-                      {APRESENTACAO_DATA.autor.nome}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                      <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>
+                        {APRESENTACAO_DATA.autor.nome}
+                      </span>
+                      <span style={{ fontSize: 12, color: "#ff8290", fontWeight: 600 }}>
+                        {locale === "en" ? "View Profile →" : locale === "es" ? "Ver Perfil →" : "Ver Perfil →"}
+                      </span>
                     </div>
                     <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5 }}>
                       {APRESENTACAO_DATA.autor.titulos.join(" • ")}
                     </div>
-                  </div>
+                  </Link>
                 )}
 
                 {/* Print Notice Box */}
@@ -522,8 +533,10 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                 <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
                   {locale === "en" ? "Author of Presentation" : locale === "es" ? "Autor de la Presentación" : "Autor da Apresentação"}
                 </h3>
-                <div
+                <Link
+                  href={`/${locale}/autor-new/${APRESENTACAO_DATA.autor.slug || "elcio-landim"}`}
                   style={{ display: "flex", gap: 14, textDecoration: "none", color: "inherit", alignItems: "center" }}
+                  className="hover:opacity-85 transition-opacity"
                 >
                   <img
                     src={APRESENTACAO_DATA.autor.foto_url}
@@ -542,10 +555,10 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       {APRESENTACAO_DATA.autor.nome}
                     </h4>
                     <p style={{ margin: 0, fontSize: 12, color: "#94a3b8", lineHeight: 1.35 }}>
-                      {locale === "en" ? "Former SBC President (1987–1988)" : locale === "es" ? "Ex-Presidente de la SBC (1987–1988)" : "Ex-Presidente da SBC (1987–1988)"}
+                      {locale === "en" ? "Former SBC President (1987–1988) • View Profile →" : locale === "es" ? "Ex-Presidente de la SBC (1987–1988) • Ver Perfil →" : "Ex-Presidente da SBC (1987–1988) • Ver Perfil do Autor →"}
                     </p>
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Navigation Jump Card */}
