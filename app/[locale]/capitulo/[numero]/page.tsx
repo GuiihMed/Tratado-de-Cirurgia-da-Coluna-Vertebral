@@ -197,22 +197,23 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
-            <nav
-              aria-label="Breadcrumb"
-              className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mb-6 sm:mb-8"
-            >
-              <Link href={`/${locale}`} className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <Link href={`/${locale}/indice`} className="hover:text-white transition-colors" style={{ textDecoration: "none", color: "inherit" }}>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <Link href={`/${locale}/indice`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}
               </Link>
               <span>›</span>
-              <span className="text-white font-bold">
+              <span style={{ color: "#fff", fontWeight: 700 }}>
                 {locale === "en" ? `Chapter ${num}` : locale === "es" ? `Capítulo ${num}` : `Capítulo ${num}`}
               </span>
-            </nav>
+            </div>
 
             {/* Hero Main Responsive Grid */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">

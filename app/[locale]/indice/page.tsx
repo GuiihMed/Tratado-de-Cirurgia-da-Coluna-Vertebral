@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import StatsBar from "@/components/StatsBar";
 import SectionCard from "@/components/SectionCard";
@@ -33,7 +34,7 @@ export default async function IndicePage({ params }: IndicePageProps) {
       <main>
         {/* HERO INDEX (LAYOUT ORIGINAL IDÊNTICO AO DESIGN DA REFERÊNCIA) */}
         <section
-          className="hero-index relative w-full overflow-hidden text-white pt-10 pb-16 border-b border-white/10"
+          className="hero-index relative w-full overflow-hidden text-white pt-8 pb-16 border-b border-white/10"
           style={{
             background:
               "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
@@ -48,6 +49,21 @@ export default async function IndicePage({ params }: IndicePageProps) {
           />
 
           <div className="shell relative z-10">
+            {/* Breadcrumb */}
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
+              </Link>
+              <span>›</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <span style={{ color: "#fff", fontWeight: 700 }}>
+                {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
+              </span>
+            </div>
+
             <div className="hero-copy max-w-2xl text-left">
               <h1 className="text-3xl sm:text-4xl md:text-[50px] font-bold text-white leading-[1.08] tracking-tight mb-4">
                 {dict.heroIndice.title}

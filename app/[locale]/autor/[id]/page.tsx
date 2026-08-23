@@ -70,6 +70,10 @@ export default async function AutorPage({ params }: AutorPageProps) {
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
               <Link href={`/${locale}/autores`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
               </Link>
