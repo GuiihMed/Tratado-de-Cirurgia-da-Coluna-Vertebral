@@ -7,7 +7,7 @@ import { Locale } from "@/lib/types";
 
 interface ModernHeaderProps {
   locale: Locale;
-  currentPage?: "home-new" | "indice-new" | "other";
+  currentPage?: "home-new" | "indice-new" | "prefacio-new" | "apresentacao-new" | "autores-new" | "referencias-new" | "other";
 }
 
 export default function ModernHeader({
@@ -16,6 +16,7 @@ export default function ModernHeader({
 }: ModernHeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [tratadoDropdownOpen, setTratadoDropdownOpen] = useState(false);
 
   const getLocalePath = (targetLocale: Locale) => {
     if (!pathname) return `/${targetLocale}/home-new`;
@@ -24,6 +25,13 @@ export default function ModernHeader({
     segments[0] = targetLocale;
     return `/${segments.join("/")}`;
   };
+
+  const isTratadoActive =
+    currentPage === "home-new" ||
+    currentPage === "prefacio-new" ||
+    currentPage === "apresentacao-new" ||
+    pathname?.includes("/prefacio-new") ||
+    pathname?.includes("/apresentacao-new");
 
   return (
     <div className="modern-nav-sticky">
@@ -41,27 +49,140 @@ export default function ModernHeader({
         </Link>
 
         {/* Desktop Navigation (Centralizada) */}
-        <nav className="modern-nav-pills desktop-only-nav" style={{ margin: "0 auto" }}>
-          <Link
-            href={`/${locale}/home-new`}
-            className={`modern-nav-link ${currentPage === "home-new" ? "active" : ""}`}
+        <nav className="modern-nav-pills desktop-only-nav" style={{ margin: "0 auto", display: "flex", alignItems: "center", gap: 6 }}>
+          {/* Dropdown O Tratado */}
+          <div
+            className="relative"
+            onMouseEnter={() => setTratadoDropdownOpen(true)}
+            onMouseLeave={() => setTratadoDropdownOpen(false)}
           >
-            {locale === "en" ? "Overview" : locale === "es" ? "Inicio" : "Visão Geral"}
-          </Link>
+            <button
+              type="button"
+              className={`modern-nav-link ${isTratadoActive ? "active" : ""}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 4,
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+              onClick={() => setTratadoDropdownOpen(!tratadoDropdownOpen)}
+            >
+              <span>{locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}</span>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                style={{
+                  transform: tratadoDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.2s ease",
+                }}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            {tratadoDropdownOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  paddingTop: 8,
+                  zIndex: 100,
+                  minWidth: 200,
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgba(0, 20, 50, 0.95)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderRadius: 12,
+                    backdropFilter: "blur(16px)",
+                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
+                    padding: 6,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                  }}
+                >
+                  <Link
+                    href={`/${locale}/home-new`}
+                    className="dropdown-item"
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      color: pathname?.endsWith("/home-new") ? "#f52238" : "#ffffff",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      display: "block",
+                      transition: "background 0.2s ease",
+                    }}
+                  >
+                    {locale === "en" ? "Overview" : locale === "es" ? "Visión General" : "Visão Geral"}
+                  </Link>
+                  <Link
+                    href={`/${locale}/prefacio-new`}
+                    className="dropdown-item"
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      color: pathname?.includes("/prefacio-new") ? "#f52238" : "#ffffff",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      display: "block",
+                      transition: "background 0.2s ease",
+                    }}
+                  >
+                    {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
+                  </Link>
+                  <Link
+                    href={`/${locale}/apresentacao-new`}
+                    className="dropdown-item"
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      color: pathname?.includes("/apresentacao-new") ? "#f52238" : "#ffffff",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      display: "block",
+                      transition: "background 0.2s ease",
+                    }}
+                  >
+                    {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
           <Link
             href={`/${locale}/indice-new`}
-            className={`modern-nav-link ${currentPage === "indice-new" ? "active" : ""}`}
+            className={`modern-nav-link ${currentPage === "indice-new" || pathname?.includes("/indice-new") ? "active" : ""}`}
           >
-            {locale === "en" ? "Interactive Index" : locale === "es" ? "Índice Interactivo" : "Índice Interativo"}
+            {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
           </Link>
           <Link href={`/${locale}/home-new#debate`} className="modern-nav-link">
-            {locale === "en" ? "Debate Cast" : "Videocast"}
+            {locale === "en" ? "Debate Cast" : "Tratado em Debate"}
           </Link>
           <Link
             href={`/${locale}/autores-new`}
-            className={`modern-nav-link ${pathname?.includes("/autores-new") ? "active" : ""}`}
+            className={`modern-nav-link ${currentPage === "autores-new" || pathname?.includes("/autores-new") || pathname?.includes("/autor-new") ? "active" : ""}`}
           >
             {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
+          </Link>
+          <Link
+            href={`/${locale}/referencias-new`}
+            className={`modern-nav-link ${currentPage === "referencias-new" || pathname?.includes("/referencias-new") ? "active" : ""}`}
+          >
+            {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
           </Link>
         </nav>
 
@@ -89,6 +210,7 @@ export default function ModernHeader({
             className="hover:brightness-110 active:scale-[0.98]"
           >
             <span>{locale === "en" ? "Buy Book" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
+            <span>🛒</span>
           </a>
 
           {/* Divisor Vertical */}
@@ -146,14 +268,28 @@ export default function ModernHeader({
           <nav className="modern-drawer-links">
             <Link
               href={`/${locale}/home-new`}
-              className={currentPage === "home-new" ? "active" : ""}
+              className={pathname?.endsWith("/home-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {locale === "en" ? "Overview" : locale === "es" ? "Inicio" : "Visão Geral"}
+              {locale === "en" ? "The Treatise - Overview" : locale === "es" ? "El Tratado - Visión General" : "O Tratado - Visão Geral"}
+            </Link>
+            <Link
+              href={`/${locale}/prefacio-new`}
+              className={pathname?.includes("/prefacio-new") ? "active" : ""}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
+            </Link>
+            <Link
+              href={`/${locale}/apresentacao-new`}
+              className={pathname?.includes("/apresentacao-new") ? "active" : ""}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
             </Link>
             <Link
               href={`/${locale}/indice-new`}
-              className={currentPage === "indice-new" ? "active" : ""}
+              className={pathname?.includes("/indice-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "en" ? "Interactive Index" : locale === "es" ? "Índice Interactivo" : "Índice Interativo"}
@@ -162,14 +298,21 @@ export default function ModernHeader({
               href={`/${locale}/home-new#debate`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {locale === "en" ? "Debate Cast" : "Videocast"}
+              {locale === "en" ? "Debate Cast" : "Tratado em Debate"}
             </Link>
             <Link
               href={`/${locale}/autores-new`}
               className={pathname?.includes("/autores-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
+              {locale === "en" ? "Authors & Editors" : locale === "es" ? "Autores y Editores" : "Autores e Editores"}
+            </Link>
+            <Link
+              href={`/${locale}/referencias-new`}
+              className={pathname?.includes("/referencias-new") ? "active" : ""}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
             </Link>
             <a
               href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
@@ -177,7 +320,7 @@ export default function ModernHeader({
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
             >
-              {locale === "en" ? "Get Book" : locale === "es" ? "Comprar" : "Adquirir Obra"}
+              {locale === "en" ? "Get Book 🛒" : locale === "es" ? "Comprar 🛒" : "Adquirir Obra 🛒"}
             </a>
           </nav>
 

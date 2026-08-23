@@ -840,7 +840,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 {/* CTAs */}
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                   <Link
-                    href={`/${locale}/capitulo/8`}
+                    href={`/${locale}/capitulo-new/8`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",

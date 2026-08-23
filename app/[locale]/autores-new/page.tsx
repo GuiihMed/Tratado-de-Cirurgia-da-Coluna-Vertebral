@@ -32,14 +32,27 @@ interface AuthorItem {
   capitulos: ChapterContrib[];
 }
 
-const DEFAULT_AUTHORS: AuthorItem[] = AUTHORS_DIRECTORY.map((a, idx) => ({
+const normalizeLetter = (char: string) => {
+  return char
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase();
+};
+
+const SORTED_AUTHORS = [...AUTHORS_DIRECTORY].sort((a, b) => {
+  const nameA = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s+/i, "").trim();
+  const nameB = b.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s+/i, "").trim();
+  return nameA.localeCompare(nameB, "pt-BR", { sensitivity: "base" });
+});
+
+const DEFAULT_AUTHORS: AuthorItem[] = SORTED_AUTHORS.map((a, idx) => ({
   id: a.slug,
   num: (idx + 1) < 10 ? `0${idx + 1}` : `${idx + 1}`,
   name: a.nome,
   role: a.cargo,
   institution: a.instituicao,
   highlight: a.destaque,
-  photo: a.foto_url,
+  photo: a.foto_url || "/assets/avatar-placeholder.png",
   bio: a.bio_completa,
   titulacao: a.titulacao_academica[0] || "Membro Especialista da Sociedade Brasileira de Coluna (SBC)",
   specialties: a.especialidades,
@@ -114,136 +127,210 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
   });
 
   return (
-    <div style={{ background: "#001026", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div style={{ background: "#000c1e", color: "#ffffff", minHeight: "100vh", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* ================= MODERN HEADER ================= */}
-      <ModernHeader locale={locale} currentPage="other" />
+      <ModernHeader locale={locale} currentPage="autores-new" />
 
       <main>
         {/* ================= MODERN HERO SECTION ================= */}
         <section
           style={{
             position: "relative",
-            background: "radial-gradient(ellipse at 80% 20%, rgba(245, 34, 56, 0.25) 0%, rgba(0, 26, 61, 0.95) 50%, #001026 100%)",
+            background:
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
             color: "#ffffff",
-            padding: "125px 0 65px",
-            marginTop: "-88px",
+            padding: "130px 24px 70px",
             borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             overflow: "hidden",
           }}
         >
           {/* Subtle Spinal Anatomy Glow Overlay */}
-          <div
-            style={{
-              position: "absolute",
-              right: "-5%",
-              top: "-10%",
-              width: "550px",
-              height: "650px",
-              backgroundImage: "url('/assets/hero-spine.png')",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              opacity: 0.15,
-              filter: "blur(2px)",
-              pointerEvents: "none",
-            }}
+          <img
+            src="/assets/hero-spine.png"
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell" style={{ position: "relative", zIndex: 2 }}>
-            <div style={{ maxWidth: 840 }}>
-              {/* Badge */}
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "rgba(245, 34, 56, 0.2)",
-                  border: "1px solid rgba(245, 34, 56, 0.4)",
-                  padding: "6px 16px",
-                  borderRadius: 20,
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: "#ff6b7d",
-                  marginBottom: 18,
-                  backdropFilter: "blur(8px)",
-                }}
+          <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 2 }}>
+            {/* Breadcrumb */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 13,
+                color: "rgba(255, 255, 255, 0.75)",
+                marginBottom: 28,
+              }}
+            >
+              <Link
+                href={`/${locale}/home-new`}
+                style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}
               >
-                <Users size={14} />
-                <span>
-                  {locale === "en"
-                    ? "SCIENTIFIC EDITORIAL BOARD"
-                    : locale === "es"
-                    ? "CUERPO EDITORIAL CIENTÍFICO"
-                    : "CORPO EDITORIAL CIENTÍFICO"}
-                </span>
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
+              </Link>
+              <span>›</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <span style={{ color: "#ffffff", fontWeight: 700 }}>
+                {locale === "en"
+                  ? "Authors & Editors"
+                  : locale === "es"
+                  ? "Autores y Editores"
+                  : "Autores e Editores"}
+              </span>
+            </div>
+
+            {/* Hero Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+              {/* Left: 3D Book Cover */}
+              <div className="md:col-span-5 flex justify-center md:justify-end">
+                <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
+                  <img
+                    src="/assets/book-cover.png"
+                    alt="Capa do Livro Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto object-contain rounded-2xl shadow-2xl border border-white/20"
+                    style={{
+                      boxShadow: "0 25px 60px rgba(0, 10, 30, 0.7), 0 0 40px rgba(245, 34, 56, 0.25)",
+                    }}
+                  />
+                </div>
               </div>
 
-              <h1
-                style={{
-                  fontSize: "clamp(36px, 4.2vw, 54px)",
-                  fontWeight: 700,
-                  lineHeight: 1.15,
-                  margin: "0 0 16px",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {locale === "en"
-                  ? "Distinguished Authors & Editors"
-                  : locale === "es"
-                  ? "Distintos Autores y Editores"
-                  : "Autores e Editores do Tratado"}
-              </h1>
+              {/* Right: Content */}
+              <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-4">
+                  <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+                    {locale === "en"
+                      ? "SCIENTIFIC EDITORIAL BOARD • 204 SPECIALISTS"
+                      : locale === "es"
+                      ? "CUERPO EDITORIAL CIENTÍFICO • 204 ESPECIALISTAS"
+                      : "CORPO EDITORIAL CIENTÍFICO • 204 ESPECIALISTAS"}
+                  </span>
+                </div>
 
-              <p
-                style={{
-                  fontSize: "clamp(17px, 1.6vw, 21px)",
-                  lineHeight: 1.5,
-                  color: "#cbd5e1",
-                  margin: "0 0 28px",
-                }}
-              >
-                {locale === "en"
-                  ? "Explore the academic credentials, surgical specialties, and authored chapters of the clinical leadership behind the Brazilian Spine Society Treatise."
-                  : locale === "es"
-                  ? "Explore las credenciales académicas, especialidades quirúrgicas y capítulos de la dirección clínica detrás del Tratado da Sociedade Brasileira de Coluna."
-                  : "Conheça os cirurgiões de coluna, professores titulares e pesquisadores que coordenaram a elaboração científica dos 109 capítulos que compõem esta obra de referência nacional."}
-              </p>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-3">
+                  {locale === "en"
+                    ? "Authors & Editors"
+                    : locale === "es"
+                    ? "Autores y Editores"
+                    : "Autores e Editores"}
+                </h1>
 
-              {/* Action Buttons */}
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                <a
-                  href="#busca-autores"
-                  className="modern-btn-glow"
+                <p className="text-base sm:text-lg font-bold text-slate-100 leading-snug max-w-xl mb-3">
+                  {locale === "en"
+                    ? "Meet the editors, authors, and clinical leaders of the Treatise on Spine Surgery."
+                    : locale === "es"
+                    ? "Conozca a los editores, autores y líderes clínicos del Tratado de Cirugía de Columna Vertebral."
+                    : "Conheça os editores, autores e especialistas responsáveis pelos 109 capítulos do Tratado de Cirurgia da Coluna Vertebral."}
+                </p>
+
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl mb-6">
+                  {locale === "en"
+                    ? "The complete masterwork is exclusively available in printed format. This portal organizes authors, chapters, summaries, and references for clinical study."
+                    : locale === "es"
+                    ? "La obra completa existe exclusivamente en formato impreso. Este portal organiza autores, capítulos, resúmenes y referencias para estudio y consulta."
+                    : "A obra completa existe exclusivamente em formato impresso. Este site organiza autores, capítulos, resumos e referências para estudo e consulta."}
+                </p>
+
+                {/* Print Notice Box */}
+                <div
+                  className="inline-flex items-center gap-3 px-5 py-3 rounded-xl border border-white/40 mb-6 max-w-xl text-xs sm:text-sm font-semibold"
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "12px 24px",
-                    borderRadius: 10,
-                    textDecoration: "none",
-                    fontWeight: 700,
-                    fontSize: 14.5,
+                    background: "rgba(0, 20, 50, 0.4)",
+                    color: "#ffffff",
                   }}
                 >
-                  <span>{locale === "en" ? "Explore Authors" : locale === "es" ? "Explorar Autores" : "Explorar Autores"}</span>
-                  <ArrowDown size={14} />
-                </a>
-                <Link
-                  href={`/${locale}/indice-new`}
-                  className="modern-btn-glass"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    padding: "12px 24px",
-                    borderRadius: 10,
-                    textDecoration: "none",
-                    fontWeight: 700,
-                    fontSize: 14.5,
-                  }}
-                >
-                  <span>{locale === "en" ? "109 Chapters Index" : locale === "es" ? "Índice de 109 Capítulos" : "Índice dos 109 Capítulos"}</span>
-                  <ArrowRight size={14} />
-                </Link>
+                  <svg className="w-5 h-5 text-[#f52238] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                  </svg>
+                  <span>
+                    {locale === "en"
+                      ? "The complete treatise is exclusively available in printed format."
+                      : locale === "es"
+                      ? "La obra completa existe exclusivamente en formato impreso."
+                      : "A obra completa existe exclusivamente em formato impresso."}
+                  </span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3.5 items-center">
+                  <a
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#f52238] hover:bg-[#d9142a] text-white font-bold text-sm sm:text-base shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                    href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
+                    <span>🛒</span>
+                  </a>
+                  <a
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
+                    href="#busca-autores"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span>{locale === "en" ? "Explore Directory" : locale === "es" ? "Explorar Directorio" : "Explorar Diretório"}</span>
+                    <span>↓</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom 5-Item Stats Bar */}
+            <div className="w-full rounded-2xl bg-[#001533]/85 border border-white/15 backdrop-blur-xl p-4 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.4)] mt-10 sm:mt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 md:divide-x md:divide-white/10 text-center">
+                {/* 1. Especialistas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-users"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">204</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "specialists" : locale === "es" ? "especialistas" : "especialistas"}
+                  </span>
+                </div>
+
+                {/* 2. Editores Chefes */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-book"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">3</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "chief editors" : locale === "es" ? "editores chefes" : "editores chefes"}
+                  </span>
+                </div>
+
+                {/* 3. Seções Temáticas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-grid"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "thematic sections" : locale === "es" ? "seções temáticas" : "seções temáticas"}
+                  </span>
+                </div>
+
+                {/* 4. Idiomas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-teal-400 mb-1.5"><use href="#i-globe"></use></svg>
+                  <div className="text-xs text-slate-200 font-bold leading-tight mt-0.5">
+                    <div>Português</div>
+                    <div>Español</div>
+                    <div>English</div>
+                  </div>
+                </div>
+
+                {/* 5. Diretório A-Z */}
+                <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Diretório A-Z</strong>
+                  <span className="text-xs text-slate-300 font-semibold">
+                    {locale === "en" ? "with ORCID" : locale === "es" ? "con ORCID" : "com ORCID"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

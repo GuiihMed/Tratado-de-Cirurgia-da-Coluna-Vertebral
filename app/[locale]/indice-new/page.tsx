@@ -129,6 +129,34 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           <div className="modern-hero-ambient" />
 
           <div className="shell" style={{ position: "relative", zIndex: 10, textAlign: "center" }}>
+            {/* Breadcrumb */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 13,
+                color: "rgba(255, 255, 255, 0.75)",
+                marginBottom: 20,
+              }}
+            >
+              <Link
+                href={`/${locale}/home-new`}
+                style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}
+              >
+                {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
+              </Link>
+              <span>›</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <span style={{ color: "#ffffff", fontWeight: 700 }}>
+                {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
+              </span>
+            </div>
+
+            {/* Badge */}
             <div
               style={{
                 display: "inline-flex",

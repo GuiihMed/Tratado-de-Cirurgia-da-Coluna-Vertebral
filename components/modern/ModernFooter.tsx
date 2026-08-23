@@ -163,6 +163,9 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
               <Link href={`/${locale}/autores-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
                 {t.authors}
               </Link>
+              <Link href={`/${locale}/referencias-new`} className="text-sm text-slate-300 hover:text-white transition-colors">
+                {locale === "en" ? "Bibliographic References" : locale === "es" ? "Referencias Bibliográficas" : "Referências Bibliográficas"}
+              </Link>
             </nav>
           </div>
 

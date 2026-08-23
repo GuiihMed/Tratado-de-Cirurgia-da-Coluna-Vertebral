@@ -237,36 +237,33 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
             {/* Left Chapter Headline */}
             <div>
               {/* Breadcrumb */}
-              <nav
+              <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   gap: 8,
                   fontSize: 13,
-                  color: "#94b8db",
-                  marginBottom: 18,
+                  color: "rgba(255, 255, 255, 0.75)",
+                  marginBottom: 20,
                   flexWrap: "wrap",
                 }}
               >
-                <Link href={`/${locale}/home-new`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
+                <Link href={`/${locale}/home-new`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                   {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
                 </Link>
                 <span>›</span>
-                <Link href={`/${locale}/indice-new`} style={{ color: "#cbd5e1", textDecoration: "none" }}>
-                  {locale === "en" ? "Master Index" : locale === "es" ? "Índice General" : "Índice Geral"}
-                </Link>
+                <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                  {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+                </span>
                 <span>›</span>
-                <Link
-                  href={`/${locale}/indice-new?secao=${cap.secao_id}`}
-                  style={{ color: "#67e8f9", textDecoration: "none" }}
-                >
-                  {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {cap.secao_id}: {sectionTitle}
+                <Link href={`/${locale}/indice-new`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
+                  {locale === "en" ? "Chapters" : locale === "es" ? "Capítulos" : "Capítulos"}
                 </Link>
                 <span>›</span>
                 <span style={{ color: "#fff", fontWeight: 700 }}>
                   {locale === "en" ? `Chapter ${cap.numero}` : locale === "es" ? `Capítulo ${cap.numero}` : `Capítulo ${cap.numero}`}
                 </span>
-              </nav>
+              </div>
 
               {/* Tag Pill */}
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>

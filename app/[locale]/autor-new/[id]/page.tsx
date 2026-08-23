@@ -74,18 +74,22 @@ export default function AutorNewPage({ params }: AutorNewPageProps) {
                 alignItems: "center",
                 gap: 8,
                 fontSize: 13,
-                color: "#94a3b8",
+                color: "rgba(255, 255, 255, 0.75)",
                 marginBottom: 24,
               }}
             >
-              <Link href={`/${locale}/home-new`} style={{ color: "#94a3b8", textDecoration: "none" }}>
+              <Link href={`/${locale}/home-new`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
-              <span>/</span>
-              <Link href={`/${locale}/autores-new`} style={{ color: "#94a3b8", textDecoration: "none" }}>
+              <span>›</span>
+              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+                {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
+              </span>
+              <span>›</span>
+              <Link href={`/${locale}/autores-new`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
               </Link>
-              <span>/</span>
+              <span>›</span>
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
             </nav>
 
