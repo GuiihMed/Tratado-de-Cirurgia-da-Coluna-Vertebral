@@ -106,7 +106,10 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           >
             <span>{dict.nav.authors}</span>
           </Link>
-          <Link href={`/${locale}#referencias`}>
+          <Link
+            href={`/${locale}/referencias`}
+            className={currentPage === "other" && pathname?.includes("/referencias") ? "active" : ""}
+          >
             <span>{dict.nav.references}</span>
           </Link>
           <Link href={`/${locale}#debate`}>
@@ -184,7 +187,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
               { href: `/${locale}/indice`, label: dict.nav.index, active: currentPage === "indice" },
               { href: `/${locale}/indice#conteudo`, label: dict.nav.chapters, active: false },
               { href: `/${locale}/autores`, label: dict.nav.authors, active: pathname?.includes("/autores") },
-              { href: `/${locale}#referencias`, label: dict.nav.references, active: false },
+              { href: `/${locale}/referencias`, label: dict.nav.references, active: pathname?.includes("/referencias") },
               { href: `/${locale}#debate`, label: dict.nav.debate, active: false },
             ].map((item, idx) => (
               <Link
