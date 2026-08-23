@@ -12,6 +12,27 @@ interface AutoresPageProps {
   params: Promise<{ locale: string }>;
 }
 
+const ALPHABET_LIST = [
+  "Todos",
+  "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+  "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Z"
+];
+
+// Layout columns distribution matching the official design
+const COLUMN_MAPPING: string[][] = [
+  ["A", "B", "C", "T"],
+  ["D", "E", "F", "G", "V"],
+  ["H", "I", "J", "K", "L", "W"],
+  ["M", "N", "O", "X"],
+  ["P", "R", "S", "Z"],
+];
+
+function normalizeFirstLetter(name: string): string {
+  const cleanName = name.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+  const normalized = cleanName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return normalized.charAt(0).toUpperCase();
+}
+
 export default function AutoresPage({ params }: AutoresPageProps) {
   const resolvedParams = use(params);
   const rawLocale = resolvedParams.locale;
@@ -20,28 +41,16 @@ export default function AutoresPage({ params }: AutoresPageProps) {
     : "pt";
 
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeLetter, setActiveLetter] = useState<string>("TODOS");
+  const [activeLetter, setActiveLetter] = useState<string>("Todos");
 
-  // Available letters from actual authors
-  const letters = useMemo(() => {
-    const letterSet = new Set<string>();
-    for (const a of AUTHORS_DIRECTORY) {
-      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-      const firstChar = cleanName.charAt(0).toUpperCase();
-      if (firstChar >= "A" && firstChar <= "Z") {
-        letterSet.add(firstChar);
-      }
-    }
-    return ["TODOS", ...Array.from(letterSet).sort()];
-  }, []);
+  // Filter and group authors by normalized first letter
+  const groupedAuthors = useMemo(() => {
+    const groups: Record<string, AuthorProfile[]> = {};
 
-  // Filter authors by search and letter
-  const filteredAuthors = useMemo(() => {
-    return AUTHORS_DIRECTORY.filter((a) => {
-      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-      const firstChar = cleanName.charAt(0).toUpperCase();
+    const filtered = AUTHORS_DIRECTORY.filter((a) => {
+      const firstChar = normalizeFirstLetter(a.nome);
 
-      if (activeLetter !== "TODOS" && firstChar !== activeLetter) {
+      if (activeLetter !== "Todos" && firstChar !== activeLetter) {
         return false;
       }
 
@@ -61,21 +70,24 @@ export default function AutoresPage({ params }: AutoresPageProps) {
 
       return true;
     });
-  }, [activeLetter, searchQuery]);
 
-  // Group filtered authors by first letter
-  const groupedAuthors = useMemo(() => {
-    const groups: Record<string, AuthorProfile[]> = {};
-    for (const a of filteredAuthors) {
-      const cleanName = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
-      const firstChar = cleanName.charAt(0).toUpperCase();
+    // Sort alphabetically by clean name
+    const sorted = [...filtered].sort((a, b) => {
+      const nameA = a.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+      const nameB = b.nome.replace(/^(Dr\.|Dra\.|Prof\.|Profa\.)\s*/i, "").trim();
+      return nameA.localeCompare(nameB, "pt", { sensitivity: "base" });
+    });
+
+    for (const a of sorted) {
+      const firstChar = normalizeFirstLetter(a.nome);
       if (!groups[firstChar]) {
         groups[firstChar] = [];
       }
       groups[firstChar].push(a);
     }
+
     return groups;
-  }, [filteredAuthors]);
+  }, [activeLetter, searchQuery]);
 
   return (
     <>
@@ -83,7 +95,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
 
       <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
         {/* ========================================================================= */}
-        {/* HERO SECTION (Clássica - Autores Responsivo com Fundo Oficial) */}
+        {/* HERO SECTION */}
         {/* ========================================================================= */}
         <section
           className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
@@ -139,7 +151,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                 {/* Print Notice Box */}
                 <div className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-[#001433]/70 border border-white/20 backdrop-blur-md text-xs sm:text-sm text-slate-200 text-left shadow-lg">
                   <div className="w-7 h-7 rounded-lg bg-red-600/20 text-red-400 flex items-center justify-center flex-shrink-0 border border-red-500/30">
-                    <svg className="w-4 h-4 text-red-400"><use href="#i-book"></use></svg>
+                    <svg className="w-4 h-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                   </div>
                   <span className="font-medium leading-snug">
                     {locale === "en"
@@ -158,162 +170,117 @@ export default function AutoresPage({ params }: AutoresPageProps) {
         {/* ========================================================================= */}
         {/* SEÇÃO 1: EDITORES */}
         {/* ========================================================================= */}
-        <section style={{ maxWidth: 1200, margin: "48px auto 40px", padding: "0 24px" }}>
-          <h2
-            style={{
-              textAlign: "center",
-              fontSize: 26,
-              fontWeight: 700,
-              color: "#001a3d",
-              margin: "0 0 32px",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {locale === "en" ? "Editors" : locale === "es" ? "Editores" : "Editores"}
-          </h2>
+        <section className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl pt-12 pb-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001a3d] tracking-tight">
+              {locale === "en" ? "Editors" : locale === "es" ? "Editores" : "Editores"}
+            </h2>
+            <div className="w-10 h-1 bg-[#dc2626] rounded-full mx-auto mt-2.5 mb-2" />
+          </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
-            {EDITORES_TRATADO.map((editor, idx) => (
-              <div
-                key={idx}
-                style={{
-                  background: "#fff",
-                  borderRadius: 14,
-                  padding: "24px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.05)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 20,
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <div
-                  style={{
-                    width: 90,
-                    height: 105,
-                    borderRadius: 10,
-                    overflow: "hidden",
-                    background: "#e2e8f0",
-                    border: "1px solid #cbd5e1",
-                    flexShrink: 0,
-                  }}
-                >
-                  <img
-                    src={editor.foto_url}
-                    alt={editor.nome}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </div>
-
-                <div>
-                  <h3 style={{ margin: "0 0 6px", fontSize: 17, fontWeight: 700, color: "#001a3d" }}>
-                    <Link
-                      href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-luiz-aparecido-defino" : "marcelo-italo-risso-neto"}`}
-                      style={{ color: "inherit", textDecoration: "none" }}
-                      className="hover:underline hover:text-blue-700"
-                    >
-                      {editor.nome}
-                    </Link>
-                  </h3>
-                  <p style={{ margin: "0 0 10px", fontSize: 13, color: "#64748b", lineHeight: 1.4 }}>
-                    {editor.cargo}
-                  </p>
-                  <Link
-                    href={`/${locale}/autor/${idx === 0 ? "edson-pudles" : idx === 1 ? "helton-luiz-aparecido-defino" : "marcelo-italo-risso-neto"}`}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
-                      fontSize: 12.5,
-                      fontWeight: 700,
-                      color: "#e11d48",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <span>Ver perfil & capítulos</span>
-                    <span>→</span>
-                  </Link>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Editor 1: Edson Pudles */}
+            <Link
+              href={`/${locale}/autor/edson-pudles`}
+              className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-row items-stretch transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
+              style={{ textDecoration: "none" }}
+            >
+              <div className="w-[125px] sm:w-[145px] flex-shrink-0 bg-slate-100 overflow-hidden relative">
+                <img
+                  src="/assets/edson-pudles.png"
+                  alt="Edson Pudles"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ minHeight: "180px" }}
+                />
               </div>
-            ))}
+              <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 min-w-0">
+                <h3 className="text-base sm:text-[17px] font-extrabold text-[#001a3d] leading-tight group-hover:text-blue-900 transition-colors">
+                  Edson Pudles
+                </h3>
+                <div className="w-7 h-0.5 bg-[#dc2626] rounded-full my-2.5" />
+                <p className="text-xs sm:text-[13px] font-semibold text-[#001a3d] leading-snug">
+                  Médico Ortopedista e Traumatologista
+                </p>
+                <p className="text-[11px] sm:text-xs font-semibold text-[#001a3d] mt-3">
+                  ORCID: 0000-0001-9816-2945
+                </p>
+              </div>
+            </Link>
+
+            {/* Editor 2: Helton Luiz Aparecido Defino */}
+            <Link
+              href={`/${locale}/autor/helton-luiz-aparecido-defino`}
+              className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-row items-stretch transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
+              style={{ textDecoration: "none" }}
+            >
+              <div className="w-[125px] sm:w-[145px] flex-shrink-0 bg-slate-100 overflow-hidden relative">
+                <img
+                  src="/assets/helton-defino.png"
+                  alt="Helton Luiz Aparecido Defino"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ minHeight: "180px" }}
+                />
+              </div>
+              <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 min-w-0">
+                <h3 className="text-base sm:text-[17px] font-extrabold text-[#001a3d] leading-tight group-hover:text-blue-900 transition-colors">
+                  Helton Luiz Aparecido Defino
+                </h3>
+                <div className="w-7 h-0.5 bg-[#dc2626] rounded-full my-2.5" />
+                <p className="text-xs sm:text-[13px] font-semibold text-[#001a3d] leading-snug">
+                  Médico Ortopedista e Traumatologista
+                </p>
+                <p className="text-[11px] sm:text-xs font-semibold text-[#001a3d] mt-3">
+                  ORCID: 0000-0003-4274-0130
+                </p>
+              </div>
+            </Link>
+
+            {/* Editor 3: Marcelo Italo Risso Neto */}
+            <Link
+              href={`/${locale}/autor/marcelo-italo-risso-neto`}
+              className="bg-white rounded-2xl border border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-row items-stretch transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
+              style={{ textDecoration: "none" }}
+            >
+              <div className="w-[125px] sm:w-[145px] flex-shrink-0 bg-slate-100 overflow-hidden relative">
+                <img
+                  src="/assets/marcelo-risso.png"
+                  alt="Marcelo Italo Risso Neto"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ minHeight: "180px" }}
+                />
+              </div>
+              <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 min-w-0">
+                <h3 className="text-base sm:text-[17px] font-extrabold text-[#001a3d] leading-tight group-hover:text-blue-900 transition-colors">
+                  Marcelo Italo Risso Neto
+                </h3>
+                <div className="w-7 h-0.5 bg-[#dc2626] rounded-full my-2.5" />
+                <p className="text-xs sm:text-[13px] font-semibold text-[#001a3d] leading-snug">
+                  Médico Ortopedista e Traumatologista
+                </p>
+                <p className="text-[11px] sm:text-xs font-semibold text-[#001a3d] mt-3">
+                  ORCID: 0000-0003-0990-6901
+                </p>
+              </div>
+            </Link>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* SEÇÃO 2: AUTORES E COLABORADORES (BUSCA & ORDEM ALFABÉTICA) */}
+        {/* SEÇÃO 2: AUTORES E COLABORADORES */}
         {/* ========================================================================= */}
-        <section style={{ maxWidth: 1200, margin: "0 auto 64px", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 28 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#001a3d", margin: "0 0 6px" }}>
-              {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e Colaboradores"}
+        <section className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl pb-16">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001a3d] tracking-tight">
+              {locale === "en" ? "Authors and Contributors" : locale === "es" ? "Autores y Colaboradores" : "Autores e colaboradores"}
             </h2>
-            <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 20px" }}>
-              {locale === "en"
-                ? "204 Specialists contributing across 109 Chapters"
-                : locale === "es"
-                ? "204 Especialistas contribuyendo en 109 Capítulos"
-                : "204 Especialistas distribuídos nos 109 Capítulos"}
+            <p className="text-xs sm:text-sm font-semibold text-[#001a3d]/80 mt-1">
+              {locale === "en" ? "Alphabetical order" : locale === "es" ? "Orden alfabético" : "Ordem alfabética"}
             </p>
-
-            {/* Instant Search Bar */}
-            <div style={{ maxWidth: 520, margin: "0 auto 24px", position: "relative" }}>
-              <input
-                type="text"
-                placeholder={
-                  locale === "en"
-                    ? "Search author by name, chapter or subject..."
-                    : locale === "es"
-                    ? "Buscar autor por nombre, capítulo o tema..."
-                    : "Buscar autor por nome, capítulo ou assunto..."
-                }
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "12px 18px 12px 42px",
-                  borderRadius: 12,
-                  border: "1.5px solid #cbd5e1",
-                  fontSize: 14,
-                  outline: "none",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                }}
-              />
-              <span style={{ position: "absolute", left: 14, top: 12, fontSize: 16, color: "#94a3b8" }}>
-                🔍
-              </span>
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  style={{
-                    position: "absolute",
-                    right: 12,
-                    top: 10,
-                    background: "none",
-                    border: "none",
-                    fontSize: 14,
-                    color: "#94a3b8",
-                    cursor: "pointer",
-                  }}
-                >
-                  ✕
-                </button>
-              )}
-            </div>
           </div>
 
           {/* Alphabet Filter Pills */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: 6,
-              marginBottom: 36,
-            }}
-          >
-            {letters.map((letra) => {
+          <div className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2 mb-6 max-w-4xl mx-auto">
+            {ALPHABET_LIST.map((letra) => {
               const isSelected = activeLetter === letra;
               return (
                 <button
@@ -322,229 +289,139 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                     setActiveLetter(letra);
                     setSearchQuery("");
                   }}
-                  style={{
-                    padding: letra === "TODOS" ? "6px 14px" : "6px 10px",
-                    borderRadius: 20,
-                    border: isSelected ? "none" : "1px solid #cbd5e1",
-                    background: isSelected ? "#002b66" : "#fff",
-                    color: isSelected ? "#fff" : "#475569",
-                    fontSize: 12.5,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    transition: "all 0.15s ease",
-                    boxShadow: isSelected ? "0 2px 8px rgba(0, 43, 102, 0.25)" : "none",
-                  }}
+                  className={`transition-all duration-150 font-bold text-xs sm:text-sm ${
+                    isSelected
+                      ? "bg-[#001a3d] text-white shadow-md border-transparent"
+                      : "bg-white text-[#001a3d] border border-[#cbd5e1] hover:border-[#001a3d] hover:bg-slate-50"
+                  } ${
+                    letra === "Todos"
+                      ? "px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full"
+                      : "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center"
+                  }`}
                 >
-                  {letra === "TODOS" ? (locale === "en" ? "All" : locale === "es" ? "Todos" : "Todos") : letra}
+                  {letra === "Todos" ? (locale === "en" ? "All" : locale === "es" ? "Todos" : "Todos") : letra}
                 </button>
               );
             })}
           </div>
 
-          {/* Authors List Grid */}
-          {Object.keys(groupedAuthors).length === 0 ? (
-            <div style={{ textAlign: "center", padding: "48px 20px", background: "#fff", borderRadius: 16, border: "1px solid #e2e8f0" }}>
-              <p style={{ fontSize: 16, color: "#64748b", margin: 0 }}>
-                Nenhum autor encontrado para a busca \"{searchQuery}\".
-              </p>
-            </div>
-          ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-              {Object.entries(groupedAuthors).map(([letra, lista]) => (
-                <div key={letra} style={{ background: "#fff", borderRadius: 16, padding: "28px", border: "1px solid #e2e8f0", boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)" }}>
-                  {/* Letter Header */}
-                  <div
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 700,
-                      color: "#e11d48",
-                      borderBottom: "2px solid #ffe4e6",
-                      paddingBottom: 6,
-                      marginBottom: 20,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <span>{letra}</span>
-                    <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 600 }}>
-                      {lista.length} {lista.length === 1 ? "autor" : "autores"}
-                    </span>
-                  </div>
+          {/* Discreet Search Input */}
+          <div className="max-w-md mx-auto mb-8 relative">
+            <input
+              type="text"
+              placeholder={
+                locale === "en"
+                  ? "Search author by name or chapter..."
+                  : locale === "es"
+                  ? "Buscar autor por nombre o capítulo..."
+                  : "Buscar autor por nome ou capítulo..."
+              }
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-full border border-slate-300 bg-white focus:outline-none focus:border-[#001a3d] shadow-sm"
+            />
+            <span className="absolute left-3 top-2.5 text-xs text-slate-400">🔍</span>
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-2 text-xs text-slate-400 hover:text-slate-600"
+              >
+                ✕
+              </button>
+            )}
+          </div>
 
-                  {/* Authors Grid */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 18 }}>
-                    {lista.map((autor) => (
-                      <div
-                        key={autor.slug}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 14,
-                          padding: "14px",
-                          borderRadius: 12,
-                          background: "#f8fafc",
-                          border: "1px solid #e2e8f0",
-                          transition: "transform 0.15s ease, border-color 0.15s ease",
-                        }}
-                      >
-                        <img
-                          src={autor.foto_url}
-                          alt={autor.nome}
-                          style={{
-                            width: 48,
-                            height: 48,
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                            border: "2px solid #001a3d",
-                            flexShrink: 0,
-                          }}
-                        />
+          {/* Directory Master Card */}
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-[0_8px_30px_rgba(0,30,80,0.04)] p-6 sm:p-8 md:p-10">
+            {Object.keys(groupedAuthors).length === 0 ? (
+              <div className="text-center py-12 text-slate-500">
+                <p className="text-sm">
+                  {locale === "en" ? "No authors found." : locale === "es" ? "No se encontraron autores." : "Nenhum autor encontrado para a busca."}
+                </p>
+              </div>
+            ) : activeLetter === "Todos" && !searchQuery.trim() ? (
+              /* Official 5-Column Grid Layout */
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 items-start">
+                {COLUMN_MAPPING.map((lettersInCol, colIdx) => (
+                  <div key={colIdx} className="flex flex-col gap-6">
+                    {lettersInCol.map((letter) => {
+                      const list = groupedAuthors[letter];
+                      if (!list || list.length === 0) return null;
 
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <Link
-                            href={`/${locale}/autor/${autor.slug}`}
-                            style={{
-                              fontSize: 15,
-                              fontWeight: 700,
-                              color: "#001a3d",
-                              textDecoration: "none",
-                              display: "block",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              whiteSpace: "nowrap",
-                            }}
-                            className="hover:underline hover:text-blue-700"
-                          >
-                            {autor.nome}
-                          </Link>
+                      return (
+                        <div key={letter} id={`letra-${letter}`} className="flex flex-col">
+                          {/* Letter Heading */}
+                          <h3 className="text-lg sm:text-xl font-extrabold text-[#dc2626] mb-2 leading-none">
+                            {letter}
+                          </h3>
 
-                          <div style={{ fontSize: 11.5, color: "#64748b", margin: "2px 0 8px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                            {autor.cargo}
-                          </div>
-
-                          {/* Chapters Contributed Badges */}
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 8 }}>
-                            {autor.capitulos_tratado.map((c) => (
+                          {/* Authors List */}
+                          <div className="flex flex-col gap-1.5">
+                            {list.map((autor) => (
                               <Link
-                                key={c.num}
-                                href={`/${locale}/capitulo/${c.num}`}
-                                style={{
-                                  fontSize: 11,
-                                  fontWeight: 700,
-                                  color: "#0284c7",
-                                  background: "#e0f2fe",
-                                  padding: "2px 6px",
-                                  borderRadius: 4,
-                                  textDecoration: "none",
-                                  display: "inline-flex",
-                                  alignItems: "center",
-                                  gap: 2,
-                                }}
-                                title={`Capítulo ${c.num}: ${c.titulo}`}
+                                key={autor.slug}
+                                href={`/${locale}/autor/${autor.slug}`}
+                                className="group inline-flex items-center gap-1.5 text-[12px] sm:text-[12.5px] font-semibold text-[#001a3d] hover:text-[#dc2626] hover:underline transition-colors leading-snug"
+                                style={{ textDecoration: "none" }}
                               >
-                                <span>📖 Cap. {c.num}</span>
+                                <svg
+                                  className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#dc2626] flex-shrink-0 transition-colors"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                  <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                <span>{autor.nome}</span>
                               </Link>
                             ))}
                           </div>
-
-                          <Link
-                            href={`/${locale}/autor/${autor.slug}`}
-                            style={{
-                              fontSize: 11.5,
-                              fontWeight: 700,
-                              color: "#e11d48",
-                              textDecoration: "none",
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 3,
-                            }}
-                          >
-                            <span>Ver currículo completo</span>
-                            <span>→</span>
-                          </Link>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* ========================================================================= */}
-        {/* BOTTOM CTA BANNER */}
-        {/* ========================================================================= */}
-        <section
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto 60px",
-            padding: "0 24px",
-          }}
-        >
-          <div
-            style={{
-              background: "linear-gradient(135deg, #001a3d 0%, #001026 100%)",
-              borderRadius: 16,
-              padding: "32px 40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              color: "#fff",
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.25)",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-              <img
-                src="/assets/book-cover.png"
-                alt="Livro"
-                style={{ width: 70, height: "auto", borderRadius: 4, boxShadow: "0 6px 16px rgba(0,0,0,0.4)" }}
-              />
-              <div>
-                <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px", color: "#fff" }}>
-                  {locale === "en"
-                    ? "A landmark masterwork for clinical practice, study, and reference — exclusively printed."
-                    : locale === "es"
-                    ? "Una obra de referencia para consulta y estudio — exclusivamente en formato impreso."
-                    : "Uma obra para consulta, estudo e referência — exclusivamente em formato impresso."}
-                </h3>
-                <div style={{ display: "flex", gap: 16, flexWrap: "wrap", fontSize: 12.5, color: "rgba(255, 255, 255, 0.8)", marginBottom: 16 }}>
-                  <span>✓ {locale === "en" ? "Full content available only in the printed edition" : locale === "es" ? "Contenido completo disponible solo en edición impresa" : "Conteúdo completo disponível apenas na edição impressa"}</span>
-                  <span>✓ {locale === "en" ? "Peer-reviewed and continuously updated" : locale === "es" ? "Revisado por especialistas reconocidos" : "Atualização contínua e revista por especialistas"}</span>
-                  <span>✓ {locale === "en" ? "Editorial excellence for hospitals and specialists" : locale === "es" ? "Calidad editorial para bibliotecas y profesionales" : "Qualidade editorial para bibliotecas e profissionais"}</span>
-                </div>
+                ))}
               </div>
-            </div>
-
-            <div style={{ textAlign: "right", flexShrink: 0 }}>
-              <p style={{ margin: "0 0 10px", fontSize: 13.5, fontWeight: 700, color: "rgba(255, 255, 255, 0.9)" }}>
-                {locale === "en" ? "Acquire your printed edition published by DiLivros and SBC." : locale === "es" ? "Adquiera su edición impresa con la calidad DiLivros y el sello SBC." : "Adquira sua edição impressa com a qualidade DiLivros e o selo da SBC."}
-              </p>
-              <a
-                href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 22px",
-                  borderRadius: 8,
-                  background: "#e11d48",
-                  color: "#fff",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  textDecoration: "none",
-                }}
-              >
-                <span>{locale === "en" ? "Where to Buy" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
-                <span>→</span>
-              </a>
-            </div>
+            ) : (
+              /* Filtered / Search Multi-Column Grid */
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 items-start">
+                {Object.entries(groupedAuthors).map(([letter, list]) => (
+                  <div key={letter} className="flex flex-col">
+                    <h3 className="text-lg sm:text-xl font-extrabold text-[#dc2626] mb-2 leading-none">
+                      {letter}
+                    </h3>
+                    <div className="flex flex-col gap-1.5">
+                      {list.map((autor) => (
+                        <Link
+                          key={autor.slug}
+                          href={`/${locale}/autor/${autor.slug}`}
+                          className="group inline-flex items-center gap-1.5 text-[12px] sm:text-[12.5px] font-semibold text-[#001a3d] hover:text-[#dc2626] hover:underline transition-colors leading-snug"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <svg
+                            className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#dc2626] flex-shrink-0 transition-colors"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                          <span>{autor.nome}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
