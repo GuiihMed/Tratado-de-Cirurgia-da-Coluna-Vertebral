@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
@@ -28,6 +29,96 @@ export async function generateStaticParams() {
   }
 
   return params;
+}
+
+export async function generateMetadata({
+  params,
+}: CapituloPageProps): Promise<Metadata> {
+  const { locale: rawLocale, numero } = await params;
+  const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
+    ? (rawLocale as Locale)
+    : "pt";
+  const num = parseInt(numero, 10);
+  const fullChapter = getFullChapterByNumber(num);
+  const { data: cap } = await getCapituloByNumero(num);
+
+  const titlePt = fullChapter?.titulo || cap?.titulo_pt || `Capítulo ${num}`;
+  const title =
+    locale === "en" && cap?.titulo_en
+      ? cap.titulo_en
+      : locale === "es" && cap?.titulo_es
+      ? cap.titulo_es
+      : titlePt;
+
+  const authors =
+    (fullChapter?.autores && fullChapter.autores.length > 0
+      ? fullChapter.autores.join(", ")
+      : cap?.autores) || "Sociedade Brasileira de Coluna (SBC)";
+
+  const rawDesc =
+    fullChapter?.seo?.meta_descricao ||
+    fullChapter?.contexto ||
+    fullChapter?.objetivo ||
+    cap?.resumo_pt ||
+    `Consulte o Capítulo ${num}: ${title}. Diretrizes clínicas, técnicas cirúrgicas e referências oficiais do Tratado SBC.`;
+  const description =
+    rawDesc.length > 200 ? `${rawDesc.slice(0, 197)}...` : rawDesc;
+
+  const pageUrl = `https://livro-sbc.vercel.app/${locale}/capitulo/${num}`;
+  const fullTitle = `Capítulo ${num}: ${title} | Tratado de Cirurgia da Coluna Vertebral`;
+
+  return {
+    title: fullTitle,
+    description,
+    keywords: [
+      `Capítulo ${num}`,
+      title,
+      "Tratado de Cirurgia da Coluna Vertebral",
+      "SBC",
+      "Sociedade Brasileira de Coluna",
+      ...(fullChapter?.decs || []),
+      ...(fullChapter?.mesh || []),
+    ],
+    authors: (fullChapter?.autores || []).map((name) => ({ name })),
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        pt: `https://livro-sbc.vercel.app/pt/capitulo/${num}`,
+        en: `https://livro-sbc.vercel.app/en/capitulo/${num}`,
+        es: `https://livro-sbc.vercel.app/es/capitulo/${num}`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      locale: locale === "en" ? "en_US" : locale === "es" ? "es_ES" : "pt_BR",
+      url: pageUrl,
+      siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
+      title: `Capítulo ${num}: ${title} — Tratado SBC`,
+      description,
+      images: [
+        {
+          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: `Capítulo ${num}: ${title} - Tratado de Cirurgia da Coluna Vertebral (SBC)`,
+        },
+        {
+          url: "https://livro-sbc.vercel.app/assets/book-cover.png",
+          width: 964,
+          height: 1244,
+          type: "image/png",
+          alt: "Capa do Livro Tratado de Cirurgia da Coluna Vertebral",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Capítulo ${num}: ${title} — Tratado SBC`,
+      description,
+      images: ["https://livro-sbc.vercel.app/assets/og-cover.png"],
+    },
+  };
 }
 
 export default async function CapituloClassicPage({ params }: CapituloPageProps) {

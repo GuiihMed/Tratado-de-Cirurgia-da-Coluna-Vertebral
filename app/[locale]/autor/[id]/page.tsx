@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import Header from "@/components/Header";
@@ -27,6 +28,89 @@ export function generateStaticParams() {
   }
 
   return params;
+}
+
+export async function generateMetadata({
+  params,
+}: AutorPageProps): Promise<Metadata> {
+  const { locale: rawLocale, id } = await params;
+  const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
+    ? (rawLocale as Locale)
+    : "pt";
+
+  const author = getAuthorByIdOrSlug(id);
+  if (!author) {
+    return {
+      title: "Autor | Tratado de Cirurgia da Coluna Vertebral",
+    };
+  }
+
+  const title = `${author.nome} | Autor do Tratado de Coluna SBC`;
+  const descRaw =
+    author.bio_completa ||
+    `Perfil e capítulos de autoria de ${author.nome} no Tratado de Cirurgia da Coluna Vertebral da Sociedade Brasileira de Coluna (SBC). Filiação: ${author.instituicao || "SBC"}.`;
+  const description =
+    descRaw.length > 200 ? `${descRaw.slice(0, 197)}...` : descRaw;
+
+  const pageUrl = `https://livro-sbc.vercel.app/${locale}/autor/${author.slug || author.id}`;
+  const authorPhoto =
+    author.foto_url && author.foto_url.startsWith("http")
+      ? author.foto_url
+      : author.foto_url && author.foto_url.startsWith("/")
+      ? `https://livro-sbc.vercel.app${author.foto_url}`
+      : "https://livro-sbc.vercel.app/assets/og-cover.png";
+
+  return {
+    title,
+    description,
+    keywords: [
+      author.nome,
+      author.instituicao || "SBC",
+      "Autor do Tratado de Coluna",
+      "Sociedade Brasileira de Coluna",
+      "Cirurgião de Coluna",
+      ...(author.titulacao_academica || []),
+    ],
+    authors: [{ name: author.nome }],
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        pt: `https://livro-sbc.vercel.app/pt/autor/${author.slug || author.id}`,
+        en: `https://livro-sbc.vercel.app/en/autor/${author.slug || author.id}`,
+        es: `https://livro-sbc.vercel.app/es/autor/${author.slug || author.id}`,
+      },
+    },
+    openGraph: {
+      type: "profile",
+      locale: locale === "en" ? "en_US" : locale === "es" ? "es_ES" : "pt_BR",
+      url: pageUrl,
+      siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
+      title: `${author.nome} — Autor Oficial SBC`,
+      description,
+      images: [
+        {
+          url: authorPhoto,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: `${author.nome} - Tratado de Cirurgia da Coluna Vertebral (SBC)`,
+        },
+        {
+          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: "Tratado de Cirurgia da Coluna Vertebral",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${author.nome} — Autor Oficial SBC`,
+      description,
+      images: [authorPhoto],
+    },
+  };
 }
 
 export default async function AutorPage({ params }: AutorPageProps) {

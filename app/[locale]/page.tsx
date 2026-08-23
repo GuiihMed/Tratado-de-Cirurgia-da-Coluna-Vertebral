@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import StatsBar from "@/components/StatsBar";
@@ -11,6 +12,85 @@ import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
+    ? (rawLocale as Locale)
+    : "pt";
+
+  const titles = {
+    pt: "Tratado de Cirurgia da Coluna Vertebral | Obra Oficial SBC",
+    en: "Treatise on Spine Surgery | Official SBC Publication",
+    es: "Tratado de Cirugía de la Columna Vertebral | Obra Oficial SBC",
+  };
+
+  const descriptions = {
+    pt: "Plataforma oficial da Sociedade Brasileira de Coluna (SBC). 109 capítulos especializados, 10 seções temáticas, diretrizes clínicas e produção científica dos maiores especialistas do Brasil.",
+    en: "Official platform of the Brazilian Spine Society (SBC). 109 specialized chapters, 10 thematic sections, clinical guidelines, and research by leading spine surgeons.",
+    es: "Plataforma oficial de la Sociedad Brasileña de Columna (SBC). 109 capítulos especializados, 10 secciones temáticas y directrices clínicas de los mayores especialistas.",
+  };
+
+  const currentTitle = titles[locale] || titles.pt;
+  const currentDesc = descriptions[locale] || descriptions.pt;
+  const pageUrl = `https://livro-sbc.vercel.app/${locale}`;
+
+  return {
+    title: currentTitle,
+    description: currentDesc,
+    keywords: [
+      "Tratado de Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna",
+      "SBC",
+      "Cirurgia de Coluna",
+      "Ortopedia Espinhal",
+      "Neurocirurgia",
+      "109 Capítulos",
+      "Edson Pudles",
+      "Helton Defino",
+    ],
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        pt: "https://livro-sbc.vercel.app/pt",
+        en: "https://livro-sbc.vercel.app/en",
+        es: "https://livro-sbc.vercel.app/es",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "en" ? "en_US" : locale === "es" ? "es_ES" : "pt_BR",
+      url: pageUrl,
+      siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
+      title: currentTitle,
+      description: currentDesc,
+      images: [
+        {
+          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
+        },
+        {
+          url: "https://livro-sbc.vercel.app/assets/book-cover.png",
+          width: 964,
+          height: 1244,
+          type: "image/png",
+          alt: "Capa Oficial do Tratado de Cirurgia da Coluna Vertebral",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: currentTitle,
+      description: currentDesc,
+      images: ["https://livro-sbc.vercel.app/assets/og-cover.png"],
+    },
+  };
 }
 
 export default async function HomePage({ params }: HomePageProps) {
