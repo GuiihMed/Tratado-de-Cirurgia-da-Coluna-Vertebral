@@ -283,7 +283,11 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
                       color: "#ff808f",
                     }}
                   >
-                    {author.cargo}
+                    {locale === "en"
+                      ? (author.cargo?.toLowerCase().includes("editor") ? "Chief Editor" : "Author")
+                      : locale === "es"
+                      ? (author.cargo?.toLowerCase().includes("editor") ? "Editor en Jefe" : "Autor")
+                      : author.cargo || "Autor"}
                   </span>
                 </div>
 

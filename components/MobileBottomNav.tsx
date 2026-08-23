@@ -11,10 +11,16 @@ interface MobileBottomNavProps {
 export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
   const pathname = usePathname();
 
-  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const isNew = pathname?.includes("-new");
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/` || pathname === `/${locale}/home-new`;
   const isCapitulos = pathname?.includes("/indice") || pathname?.includes("/capitulo");
   const isAutores = pathname?.includes("/autor") || pathname?.includes("/autores");
-  const isDebate = false;
+  const isDebate = pathname?.includes("#debate");
+
+  const homeHref = isNew ? `/${locale}/home-new` : `/${locale}`;
+  const capitulosHref = isNew ? `/${locale}/indice-new` : `/${locale}/indice`;
+  const autoresHref = isNew ? `/${locale}/autores-new` : `/${locale}/autores`;
+  const debateHref = isNew ? `/${locale}/home-new#debate` : `/${locale}#debate`;
 
   const labels = {
     pt: {
@@ -62,7 +68,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
       <div className="grid grid-cols-5 items-center justify-around px-1 py-1.5 max-w-lg mx-auto">
         {/* 1. Início */}
         <Link
-          href={`/${locale}`}
+          href={homeHref}
           className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 ${
             isHome ? "text-[#f52238] font-bold" : "text-slate-300 hover:text-white"
           }`}
@@ -93,7 +99,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
 
         {/* 2. Capítulos */}
         <Link
-          href={`/${locale}/indice`}
+          href={capitulosHref}
           className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 ${
             isCapitulos ? "text-[#f52238] font-bold" : "text-slate-300 hover:text-white"
           }`}
@@ -125,7 +131,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
 
         {/* 3. Autores */}
         <Link
-          href={`/${locale}/autores`}
+          href={autoresHref}
           className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 ${
             isAutores ? "text-[#f52238] font-bold" : "text-slate-300 hover:text-white"
           }`}
@@ -158,7 +164,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
 
         {/* 4. Debate */}
         <Link
-          href={`/${locale}#debate`}
+          href={debateHref}
           className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 ${
             isDebate ? "text-[#f52238] font-bold" : "text-slate-300 hover:text-white"
           }`}

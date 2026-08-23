@@ -6,7 +6,7 @@ import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
-import { SECOES } from "@/lib/data/sections-and-chapters";
+import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import {
   Search,
   Filter,
@@ -30,6 +30,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
+  const [selectedLetter, setSelectedLetter] = useState<string>("all");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Flattened reference rows with metadata
@@ -49,6 +50,14 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
     ALL_CHAPTER_REFERENCES.forEach((item) => {
       const autoresString = item.autores.map((a) => a.nome).join(", ");
+      const localChapter = INITIAL_CHAPTERS.find((c) => c.numero === item.numero);
+      const capituloTitulo =
+        locale === "en"
+          ? localChapter?.titulo_en || item.titulo_pt
+          : locale === "es"
+          ? localChapter?.titulo_es || item.titulo_pt
+          : item.titulo_pt;
+
       item.referencias.forEach((ref, idx) => {
         rows.push({
           id: `ref-${item.numero}-${idx}`,
@@ -60,7 +69,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               ? item.secao_nome_es
               : item.secao_nome,
           capituloNum: item.numero,
-          capituloTitulo: item.titulo_pt,
+          capituloTitulo,
           autores: autoresString,
           referencia: ref.text,
           refIndex: ref.num || idx + 1,

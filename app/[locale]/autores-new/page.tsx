@@ -300,7 +300,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-book"></use></svg>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">3</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
-                    {locale === "en" ? "chief editors" : locale === "es" ? "editores chefes" : "editores chefes"}
+                    {locale === "en" ? "chief editors" : locale === "es" ? "editores en jefe" : "editores-chefes"}
                   </span>
                 </div>
 
@@ -309,7 +309,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-grid"></use></svg>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
-                    {locale === "en" ? "thematic sections" : locale === "es" ? "seções temáticas" : "seções temáticas"}
+                    {locale === "en" ? "thematic sections" : locale === "es" ? "secciones temáticas" : "seções temáticas"}
                   </span>
                 </div>
 
@@ -326,7 +326,9 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                 {/* 5. Diretório A-Z */}
                 <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
-                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Diretório A-Z</strong>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">
+                    {locale === "en" ? "A-Z Directory" : locale === "es" ? "Directorio A-Z" : "Diretório A-Z"}
+                  </strong>
                   <span className="text-xs text-slate-300 font-semibold">
                     {locale === "en" ? "with ORCID" : locale === "es" ? "con ORCID" : "com ORCID"}
                   </span>

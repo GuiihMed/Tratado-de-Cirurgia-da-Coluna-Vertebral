@@ -15,41 +15,113 @@ interface HomeNewProps {
   params: Promise<{ locale: string }>;
 }
 
-const DEFAULT_AUTHORS = [
-  {
-    id: "1",
-    num: "01",
-    name: "Dr. Edson Pudles",
-    role: "Editor-Chefe / SBC",
-    institution: "Sociedade Brasileira de Coluna",
-    highlight: "Coordenação Editorial de 109 Capítulos",
-    photo: "/assets/edson-pudles.png",
-    bio: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.",
-    specialties: ["Deformidades Complexas", "Liderança Editorial", "Diretrizes SBC"],
-  },
-  {
-    id: "2",
-    num: "02",
-    name: "Dr. Helton Defino",
-    role: "Editor / FMRP-USP",
-    institution: "Faculdade de Medicina de Ribeirão Preto - USP",
-    highlight: "Pioneiro da Fixação Pedicular no Brasil",
-    photo: "/assets/helton-defino.png",
-    bio: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.",
-    specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
-  },
-  {
-    id: "3",
-    num: "03",
-    name: "Dr. Marcelo Risso",
-    role: "Editor / SBC",
-    institution: "Comitê de Educação e Publicações SBC",
-    highlight: "Coordenador do Capítulo 8 (Plano Sagital)",
-    photo: "/assets/marcelo-risso.png",
-    bio: "Especialista em Equilíbrio Sagital Global, Osteotomias Tridimensionais de Alta Complexidade e Cirurgia Minimamente Invasiva da Coluna Vertebral no Brasil.",
-    specialties: ["Equilíbrio Sagital", "Osteotomias 3D", "Minimamente Invasiva"],
-  },
-];
+const DEFAULT_AUTHORS_I18N = {
+  pt: [
+    {
+      id: "1",
+      num: "01",
+      name: "Dr. Edson Pudles",
+      role: "Editor-Chefe / SBC",
+      institution: "Sociedade Brasileira de Coluna",
+      highlight: "Coordenação Editorial de 109 Capítulos",
+      photo: "/assets/edson-pudles.png",
+      bio: "Presidente de Honra e Referência Nacional em Deformidades da Coluna Vertebral. Liderança editorial das diretrizes científicas e publicações acadêmicas da Sociedade Brasileira de Coluna.",
+      specialties: ["Deformidades Complexas", "Liderança Editorial", "Diretrizes SBC"],
+    },
+    {
+      id: "2",
+      num: "02",
+      name: "Dr. Helton Defino",
+      role: "Editor / FMRP-USP",
+      institution: "Faculdade de Medicina de Ribeirão Preto - USP",
+      highlight: "Pioneiro da Fixação Pedicular no Brasil",
+      photo: "/assets/helton-defino.png",
+      bio: "Professor Titular da USP Ribeirão Preto. Pioneiro na pesquisa biomecânica internacional, desenvolvimento de técnicas de instrumentação vertebral pedicular e traumatologia espinhal.",
+      specialties: ["Biomecânica Espinhal", "Fixação Pedicular", "Trauma Raquimedular"],
+    },
+    {
+      id: "3",
+      num: "03",
+      name: "Dr. Marcelo Risso",
+      role: "Editor / UNICAMP",
+      institution: "Universidade Estadual de Campinas - UNICAMP",
+      highlight: "Autoridade em Alinhamento Sagital e Cirurgia Complexa",
+      photo: "/assets/marcelo-risso.png",
+      bio: "Doutor em Ciências da Cirurgia pela UNICAMP. Autoridade de destaque em equilíbrio sagital, parametrização espinopélvica e cirurgias reconstrutivas da coluna no Brasil.",
+      specialties: ["Equilíbrio Sagital", "Deformidades do Adulto", "Reconstrução Vertebral"],
+    },
+  ],
+  en: [
+    {
+      id: "1",
+      num: "01",
+      name: "Dr. Edson Pudles",
+      role: "Editor-in-Chief / SBC",
+      institution: "Brazilian Spine Society",
+      highlight: "Editorial Leadership of 109 Chapters",
+      photo: "/assets/edson-pudles.png",
+      bio: "Honorary President and National Authority in Spinal Deformities. Leading editorial oversight of clinical guidelines and academic publications of the Brazilian Spine Society.",
+      specialties: ["Complex Deformities", "Editorial Leadership", "SBC Guidelines"],
+    },
+    {
+      id: "2",
+      num: "02",
+      name: "Dr. Helton Defino",
+      role: "Editor / FMRP-USP",
+      institution: "Ribeirão Preto Medical School - University of São Paulo",
+      highlight: "Pioneer of Pedicle Screw Fixation in Brazil",
+      photo: "/assets/helton-defino.png",
+      bio: "Full Professor at University of São Paulo. International pioneer in biomechanics research, development of pedicle screw spinal instrumentation, and spinal trauma management.",
+      specialties: ["Spinal Biomechanics", "Pedicle Screw Fixation", "Spine Trauma"],
+    },
+    {
+      id: "3",
+      num: "03",
+      name: "Dr. Marcelo Risso",
+      role: "Editor / UNICAMP",
+      institution: "State University of Campinas - UNICAMP",
+      highlight: "Leading Expert in Sagittal Balance and Complex Reconstruction",
+      photo: "/assets/marcelo-risso.png",
+      bio: "PhD in Surgical Sciences from UNICAMP. Foremost authority in spinopelvic parameters, global sagittal balance, and advanced reconstructive spinal surgery in Latin America.",
+      specialties: ["Sagittal Balance", "Adult Deformity", "Spine Reconstruction"],
+    },
+  ],
+  es: [
+    {
+      id: "1",
+      num: "01",
+      name: "Dr. Edson Pudles",
+      role: "Editor en Jefe / SBC",
+      institution: "Sociedad Brasileña de Columna",
+      highlight: "Coordinación Editorial de 109 Capítulos",
+      photo: "/assets/edson-pudles.png",
+      bio: "Presidente de Honor y Referente Nacional en Deformidades de Columna Vertebral. Liderazgo editorial de las directrices científicas y publicaciones académicas de la SBC.",
+      specialties: ["Deformidades Complejas", "Liderazgo Editorial", "Directrices SBC"],
+    },
+    {
+      id: "2",
+      num: "02",
+      name: "Dr. Helton Defino",
+      role: "Editor / FMRP-USP",
+      institution: "Facultad de Medicina de Ribeirão Preto - USP",
+      highlight: "Pionero de la Fijación Pedicular en Brasil",
+      photo: "/assets/helton-defino.png",
+      bio: "Profesor Titular de la Universidad de São Paulo. Pionero en biomecánica espinal, desarrollo de instrumentación vertebral pedicular y traumatología raquimedular.",
+      specialties: ["Biomecánica Espinal", "Fijación Pedicular", "Trauma Raquimedular"],
+    },
+    {
+      id: "3",
+      num: "03",
+      name: "Dr. Marcelo Risso",
+      role: "Editor / UNICAMP",
+      institution: "Universidad Estatal de Campinas - UNICAMP",
+      highlight: "Autoridad en Alineación Sagital y Cirugía Reconstructiva",
+      photo: "/assets/marcelo-risso.png",
+      bio: "Doctor en Ciencias de la Cirugía por la UNICAMP. Autoridad destacada en equilibrio sagital, parámetros espinopélvicos y cirugía reconstructiva compleja en América Latina.",
+      specialties: ["Equilibrio Sagital", "Deformidad del Adulto", "Reconstrucción Vertebral"],
+    },
+  ],
+};
 
 export default function HomeNewPage({ params }: HomeNewProps) {
   const resolvedParams = use(params);
@@ -67,7 +139,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
   const [hoveredAuthor, setHoveredAuthor] = useState<number | null>(null);
 
   // Dynamic Authors list
-  const [authorsList, setAuthorsList] = useState(DEFAULT_AUTHORS);
+  const defaultAuthors = DEFAULT_AUTHORS_I18N[locale] || DEFAULT_AUTHORS_I18N.pt;
+  const [authorsList, setAuthorsList] = useState(defaultAuthors);
 
   useEffect(() => {
     async function loadAuthors() {

@@ -200,13 +200,13 @@ export default function AuthorNewClientView({ author, locale }: AuthorNewClientV
                     marginBottom: 8,
                   }}
                 >
-                  Capítulo {cap.num}
+                  {locale === "en" ? `Chapter ${cap.num}` : `Capítulo ${cap.num}`}
                 </span>
                 <h4 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: "0 0 6px" }}>
                   {cap.titulo}
                 </h4>
                 <p style={{ fontSize: 13.5, color: "#64748b", margin: 0 }}>
-                  {cap.secao_nome || `Seção ${cap.secao_id}`}
+                  {cap.secao_nome || (locale === "en" ? `Section ${cap.secao_id}` : locale === "es" ? `Sección ${cap.secao_id}` : `Seção ${cap.secao_id}`)}
                 </p>
               </div>
 

@@ -468,6 +468,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             const isMatch =
                               searchQuery &&
                               (cap.numero.toString() === searchQuery.trim() ||
+                                getChapterTitle(cap).toLowerCase().includes(searchQuery.toLowerCase()) ||
                                 cap.titulo_pt.toLowerCase().includes(searchQuery.toLowerCase()));
 
                             return (

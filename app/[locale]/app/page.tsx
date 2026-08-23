@@ -9,12 +9,148 @@ interface MobileAppProps {
   params: Promise<{ locale: string }>;
 }
 
+const APP_I18N = {
+  pt: {
+    officialTreatise: "Tratado Oficial",
+    spineSurgery: "Cirurgia da Coluna",
+    officialEdition: "Edição Oficial • SBC",
+    titleLine1: "Tratado de Cirurgia",
+    titleLine2: "da Coluna Vertebral",
+    lead: "O compêndio definitivo de referência científica e prática cirúrgica da Sociedade Brasileira de Coluna.",
+    exploreIndexBtn: "Explorar Índice dos 109 Capítulos",
+    buyBookBtn: "Adquirir Livro Impresso 🛒",
+    statChapters: "Capítulos",
+    statSections: "Seções",
+    statAuthors: "Autores",
+    statLangs: "Idiomas",
+    scientificPillars: "Pilares Científicos da Obra",
+    pillar1Title: "Fundamentação Rigorosa",
+    pillar1Desc: "Desde embriologia, biomecânica e diagnóstico diferencial até neurofisiologia intraoperatória avançada. Análise sistemática de imagens radiográficas, TC e RM para assertividade clínica absoluta.",
+    pillar2Title: "Arsenal Cirúrgico Moderno",
+    pillar2Desc: "Cobertura passo a passo de técnicas minimamente invasivas (MIS), cirurgia endoscópica uni e biportal, fusões intersomáticas (ALIF, LLIF, OLIF), osteotomias tridimensionais (PSO, VCR) e cirurgia guiada por navegação e robótica.",
+    pillar3Title: "Segurança & Complicações",
+    pillar3Desc: "Prevenção, diagnóstico precoce e manejo sistemático de lesões durais, déficits neurológicos intraoperatórios, infecções do sítio cirúrgico, falhas mecânicas de implantes e doença do nível adjacente.",
+    pillar4Title: "Capítulo 8: Equilíbrio Sagital",
+    pillar4Desc: "Princípios de alinhamento espinopélvico (Incidência Pélvica, Lordose Lombar, Tilt Pélvico, SVA), Cone de Economia de Dubousset e classificação morfométrica de Roussouly.",
+    openCap8Btn: "Abrir Capítulo 8 Completo →",
+    indexTitle: "Índice Oficial da Obra",
+    indexSubtitle: "109 capítulos estruturados em 10 seções temáticas",
+    searchPlaceholder: "Buscar por número, título ou palavra-chave...",
+    capSuffix: "capítulos",
+    viewBtn: "Ver →",
+    aboutBadge: "Sociedade Brasileira de Coluna",
+    aboutTitle: "Histórico & Autoridade Científica",
+    aboutP1: "O Tratado de Cirurgia da Coluna Vertebral consolida a maior produção científica e cirúrgica da história da Sociedade Brasileira de Coluna (SBC).",
+    aboutP2: "Com 109 capítulos redigidos por mais de 200 professores titulares e cirurgiões líderes em traumatologia, deformidades, cirurgia minimamente invasiva e reconstrução espinhal.",
+    editorsLabel: "Editores do Tratado:",
+    editor1: "Dr. Edson Pudles — Editor-Chefe / SBC",
+    editor2: "Dr. Helton Defino — Editor / FMRP-USP",
+    editor3: "Dr. Marcelo Risso — Editor / SBC",
+    buyTitle: "Adquira a Obra Impressa",
+    buyDesc: "O Tratado de Cirurgia da Coluna Vertebral é uma obra física de padrão luxo internacional, encadernação dura e ilustrações anatômicas em alta definição.",
+    buyCta: "Adquirir Exemplar Impresso (DiLivros)",
+    tabHome: "Início",
+    tabIndex: "Índice",
+    tabAbout: "Sobre",
+    tabBuy: "Comprar",
+  },
+  en: {
+    officialTreatise: "Official Treatise",
+    spineSurgery: "Spine Surgery",
+    officialEdition: "Official Edition • SBC",
+    titleLine1: "Treatise on Spine",
+    titleLine2: "Surgery",
+    lead: "The definitive compendium of scientific reference and surgical practice from the Brazilian Spine Society.",
+    exploreIndexBtn: "Explore 109 Chapters Index",
+    buyBookBtn: "Acquire Printed Book 🛒",
+    statChapters: "Chapters",
+    statSections: "Sections",
+    statAuthors: "Authors",
+    statLangs: "Languages",
+    scientificPillars: "Scientific Pillars of the Masterwork",
+    pillar1Title: "Rigorous Foundations",
+    pillar1Desc: "From embryology, biomechanics, and differential diagnosis to advanced intraoperative neurophysiology. Systematic analysis of X-rays, CT, and MRI for supreme clinical accuracy.",
+    pillar2Title: "Modern Surgical Arsenal",
+    pillar2Desc: "Step-by-step guidance on minimally invasive surgery (MIS), uni/biportal endoscopy, interbody fusions (ALIF, LLIF, OLIF), 3D osteotomies (PSO, VCR), and navigated robotic surgery.",
+    pillar3Title: "Safety & Complications",
+    pillar3Desc: "Prevention, early diagnosis, and systematic management of dural tears, intraoperative neural signal changes, surgical site infections, and adjacent segment disease.",
+    pillar4Title: "Chapter 8: Sagittal Alignment",
+    pillar4Desc: "Spinopelvic balance parameters (Pelvic Incidence, Lumbar Lordosis, Pelvic Tilt, SVA), Dubousset's Cone of Economy, and Roussouly morphometric classifications.",
+    openCap8Btn: "Open Full Chapter 8 →",
+    indexTitle: "Official Master Index",
+    indexSubtitle: "109 chapters organized across 10 thematic sections",
+    searchPlaceholder: "Search by number, title, or keyword...",
+    capSuffix: "chapters",
+    viewBtn: "View →",
+    aboutBadge: "Brazilian Spine Society",
+    aboutTitle: "History & Scientific Authority",
+    aboutP1: "The Treatise on Spine Surgery represents the landmark surgical and academic production of the Brazilian Spine Society (SBC).",
+    aboutP2: "Featuring 109 chapters authored by over 200 professors and lead surgeons in spine trauma, deformities, endoscopy, and complex reconstruction.",
+    editorsLabel: "Treatise Editors:",
+    editor1: "Dr. Edson Pudles — Editor-in-Chief / SBC",
+    editor2: "Dr. Helton Defino — Editor / FMRP-USP",
+    editor3: "Dr. Marcelo Risso — Editor / SBC",
+    buyTitle: "Acquire the Printed Edition",
+    buyDesc: "The Treatise on Spine Surgery is published exclusively in premium hardcover print with full-color anatomical illustrations and surgical plates.",
+    buyCta: "Acquire Printed Copy (DiLivros)",
+    tabHome: "Home",
+    tabIndex: "Index",
+    tabAbout: "About",
+    tabBuy: "Buy",
+  },
+  es: {
+    officialTreatise: "Tratado Oficial",
+    spineSurgery: "Cirugía de Columna",
+    officialEdition: "Edición Oficial • SBC",
+    titleLine1: "Tratado de Cirugía",
+    titleLine2: "de la Coluna Vertebral",
+    lead: "El compendio definitivo de referencia científica y práctica quirúrgica de la Sociedad Brasileña de Columna.",
+    exploreIndexBtn: "Explorar Índice de los 109 Capítulos",
+    buyBookBtn: "Adquirir Libro Impreso 🛒",
+    statChapters: "Capítulos",
+    statSections: "Secciones",
+    statAuthors: "Autores",
+    statLangs: "Idiomas",
+    scientificPillars: "Pilares Científicos de la Obra",
+    pillar1Title: "Fundamentación Rigurosa",
+    pillar1Desc: "Desde embriología, biomecánica y diagnóstico diferencial hasta neurofisiología intraoperatoria avanzada y análisis radiológico sistemático.",
+    pillar2Title: "Arsenal Quirúrgico Moderno",
+    pillar2Desc: "Abordaje paso a paso de cirugía mínimamente invasiva (MIS), endoscopía uni y biportal, artrodesis intersomática (ALIF, LLIF, OLIF), osteotomías 3D y robótica.",
+    pillar3Title: "Seguridad & Complicaciones",
+    pillar3Desc: "Prevención, diagnóstico precoz y manejo sistemático de fístulas durales, alertas neuromonitorizadas, infecciones y falla de implantes.",
+    pillar4Title: "Capítulo 8: Equilibrio Sagital",
+    pillar4Desc: "Principios de alineación espinopélvica (Incidencia Pélvica, Lordosis Lumbar, Tilt Pélvico, SVA), Cono de Economía y clasificación de Roussouly.",
+    openCap8Btn: "Abrir Capítulo 8 Completo →",
+    indexTitle: "Índice Oficial de la Obra",
+    indexSubtitle: "109 capítulos organizados en 10 secciones temáticas",
+    searchPlaceholder: "Buscar por número, título o palabra clave...",
+    capSuffix: "capítulos",
+    viewBtn: "Ver →",
+    aboutBadge: "Sociedad Brasileña de Columna",
+    aboutTitle: "Historia y Autoridad Científica",
+    aboutP1: "El Tratado de Cirugía de la Columna Vertebral consolida la mayor producción científica y quirúrgica de la SBC.",
+    aboutP2: "Con 109 capítulos escritos por más de 200 profesores titulares y cirujanos referentes en trauma, deformidades y reconstrucción espinal.",
+    editorsLabel: "Editores del Tratado:",
+    editor1: "Dr. Edson Pudles — Editor en Jefe / SBC",
+    editor2: "Dr. Helton Defino — Editor / FMRP-USP",
+    editor3: "Dr. Marcelo Risso — Editor / SBC",
+    buyTitle: "Adquiera la Obra Impresa",
+    buyDesc: "El Tratado de Cirugía de la Columna Vertebral es una obra física de lujo internacional, tapa dura e ilustraciones anatómicas en alta definición.",
+    buyCta: "Adquirir Ejemplar Impreso (DiLivros)",
+    tabHome: "Inicio",
+    tabIndex: "Índice",
+    tabAbout: "Acerca",
+    tabBuy: "Comprar",
+  },
+};
+
 export default function MobileAppPage({ params }: MobileAppProps) {
   const resolvedParams = use(params);
   const rawLocale = resolvedParams.locale;
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
+  const t = APP_I18N[locale] || APP_I18N.pt;
 
   const [activeTab, setActiveTab] = useState<"home" | "indice" | "sobre" | "comprar">("home");
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({
@@ -93,10 +229,10 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "0.06em", color: "#ff808f", textTransform: "uppercase" }}>
-              Tratado Oficial
+              {t.officialTreatise}
             </span>
             <strong style={{ fontSize: 13.5, color: "#ffffff", fontWeight: 700, lineHeight: 1.1 }}>
-              Cirurgia da Coluna
+              {t.spineSurgery}
             </strong>
           </div>
         </Link>
@@ -173,7 +309,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 }}
               >
                 <span>⭐</span>
-                <span>Edição Oficial • SBC</span>
+                <span>{t.officialEdition}</span>
               </div>
 
               {/* 3D Book Cover */}
@@ -201,14 +337,14 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Tratado de Cirurgia <br />
+                {t.titleLine1} <br />
                 <span style={{ background: "linear-gradient(90deg, #ff4d61 0%, #60a5fa 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  da Coluna Vertebral
+                  {t.titleLine2}
                 </span>
               </h1>
 
               <p style={{ fontSize: 14.5, lineHeight: 1.5, color: "#cbd5e1", margin: "0 0 20px" }}>
-                O compêndio definitivo de referência científica e prática cirúrgica da Sociedade Brasileira de Coluna.
+                {t.lead}
               </p>
 
               {/* Action Buttons */}
@@ -232,7 +368,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     cursor: "pointer",
                   }}
                 >
-                  <span>Explorar Índice dos 109 Capítulos</span>
+                  <span>{t.exploreIndexBtn}</span>
                   <span>→</span>
                 </button>
 
@@ -254,7 +390,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                     cursor: "pointer",
                   }}
                 >
-                  <span>Adquirir Livro Impresso 🛒</span>
+                  <span>{t.buyBookBtn}</span>
                 </button>
               </div>
             </div>
@@ -272,7 +408,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 }}
               >
                 <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>109</div>
-                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Capítulos</div>
+                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>{t.statChapters}</div>
               </div>
 
               <div
@@ -286,7 +422,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 }}
               >
                 <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>10</div>
-                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Seções</div>
+                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>{t.statSections}</div>
               </div>
 
               <div
@@ -300,7 +436,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 }}
               >
                 <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>200+</div>
-                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Autores</div>
+                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>{t.statAuthors}</div>
               </div>
 
               <div
@@ -314,14 +450,14 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 }}
               >
                 <div style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", marginBottom: 2 }}>3</div>
-                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>Idiomas</div>
+                <div style={{ fontSize: 12.5, color: "#94a3b8", fontWeight: 600 }}>{t.statLangs}</div>
               </div>
             </div>
 
             {/* ================= EXPANDABLE CARDS (PILARES CLÍNICOS) ================= */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.06em", padding: "4px 2px" }}>
-                Pilares Científicos da Obra
+                {t.scientificPillars}
               </div>
 
               {/* CARD 1: FUNDAMENTAÇÃO */}
@@ -355,7 +491,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span>🧠</span>
-                    <span>Fundamentação Rigorosa</span>
+                    <span>{t.pillar1Title}</span>
                   </div>
                   <span style={{ fontSize: 14, color: "#94a3b8" }}>
                     {expandedCards.fundamentacao ? "▲" : "▼"}
@@ -363,7 +499,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 </button>
                 {expandedCards.fundamentacao && (
                   <div style={{ padding: "0 18px 18px", fontSize: 14, color: "#cbd5e1", lineHeight: 1.6, borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 12 }}>
-                    Desde embriologia, biomecânica e diagnóstico diferencial até neurofisiologia intraoperatória avançada. Análise sistemática de imagens radiográficas, TC e RM para assertividade clínica absoluta.
+                    {t.pillar1Desc}
                   </div>
                 )}
               </div>
@@ -399,7 +535,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span>🛠️</span>
-                    <span>Arsenal Cirúrgico Moderno</span>
+                    <span>{t.pillar2Title}</span>
                   </div>
                   <span style={{ fontSize: 14, color: "#94a3b8" }}>
                     {expandedCards.arsenal ? "▲" : "▼"}
@@ -407,7 +543,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 </button>
                 {expandedCards.arsenal && (
                   <div style={{ padding: "0 18px 18px", fontSize: 14, color: "#cbd5e1", lineHeight: 1.6, borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 12 }}>
-                    Cobertura passo a passo de técnicas minimamente invasivas (MIS), cirurgia endoscópica uni e biportal, fusões intersomáticas (ALIF, LLIF, OLIF), osteotomias tridimensionais (PSO, VCR) e cirurgia guiada por navegação e robótica.
+                    {t.pillar2Desc}
                   </div>
                 )}
               </div>
@@ -443,7 +579,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span>🛡️</span>
-                    <span>Segurança &amp; Complicações</span>
+                    <span>{t.pillar3Title}</span>
                   </div>
                   <span style={{ fontSize: 14, color: "#94a3b8" }}>
                     {expandedCards.seguranca ? "▲" : "▼"}
@@ -451,7 +587,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 </button>
                 {expandedCards.seguranca && (
                   <div style={{ padding: "0 18px 18px", fontSize: 14, color: "#cbd5e1", lineHeight: 1.6, borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 12 }}>
-                    Prevenção, diagnóstico precoce e manejo sistemático de lesões durais, déficits neurológicos intraoperatórios, infecções do sítio cirúrgico, falhas mecânicas de implantes e doença do nível adjacente.
+                    {t.pillar3Desc}
                   </div>
                 )}
               </div>
@@ -487,7 +623,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <span>📐</span>
-                    <span>Capítulo 8: Equilíbrio Sagital</span>
+                    <span>{t.pillar4Title}</span>
                   </div>
                   <span style={{ fontSize: 14, color: "#94a3b8" }}>
                     {expandedCards.sagital ? "▲" : "▼"}
@@ -495,7 +631,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 </button>
                 {expandedCards.sagital && (
                   <div style={{ padding: "0 18px 18px", fontSize: 14, color: "#cbd5e1", lineHeight: 1.6, borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 12 }}>
-                    Princípios de alinhamento espinopélvico (Incidência Pélvica, Lordose Lombar, Tilt Pélvico, SVA), Cone de Economia de Dubousset e classificação morfométrica de Roussouly.
+                    {t.pillar4Desc}
                     <div style={{ marginTop: 12 }}>
                       <Link
                         href={`/${locale}/capitulo-new/8`}
@@ -509,8 +645,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                           textDecoration: "none",
                         }}
                       >
-                        <span>Abrir Capítulo 8 Completo</span>
-                        <span>→</span>
+                        <span>{t.openCap8Btn}</span>
                       </Link>
                     </div>
                   </div>
@@ -525,10 +660,10 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ textAlign: "center", marginBottom: 6 }}>
               <h2 style={{ fontSize: 24, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>
-                Índice Oficial da Obra
+                {t.indexTitle}
               </h2>
               <p style={{ fontSize: 14, color: "#94a3b8", margin: 0 }}>
-                109 capítulos estruturados em 10 seções temáticas
+                {t.indexSubtitle}
               </p>
             </div>
 
@@ -538,7 +673,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Buscar por número, título ou palavra-chave..."
+                placeholder={t.searchPlaceholder}
                 style={{
                   width: "100%",
                   height: 52,
@@ -613,7 +748,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                             {locale === "en" ? secao.titulo_en : locale === "es" ? secao.titulo_es : secao.titulo_pt}
                           </strong>
                           <span style={{ fontSize: 12, color: "#94a3b8" }}>
-                            {secChapters.length} capítulos
+                            {secChapters.length} {t.capSuffix}
                           </span>
                         </div>
                       </div>
@@ -649,7 +784,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                               </span>
                             </div>
                             <span style={{ fontSize: 12, color: "#8da9cc", fontWeight: 600, flexShrink: 0, marginLeft: 8 }}>
-                              Ver →
+                              {t.viewBtn}
                             </span>
                           </Link>
                         ))}
@@ -686,26 +821,26 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   marginBottom: 12,
                 }}
               >
-                Sociedade Brasileira de Coluna
+                {t.aboutBadge}
               </span>
               <h2 style={{ fontSize: 24, fontWeight: 700, color: "#ffffff", margin: "0 0 14px" }}>
-                Histórico &amp; Autoridade Científica
+                {t.aboutTitle}
               </h2>
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#cbd5e1", margin: "0 0 16px" }}>
-                O <strong>Tratado de Cirurgia da Coluna Vertebral</strong> consolida a maior produção científica e cirúrgica da história da Sociedade Brasileira de Coluna (SBC).
+                {t.aboutP1}
               </p>
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "#cbd5e1", margin: "0 0 20px" }}>
-                Com 109 capítulos redigidos por mais de 200 professores titulares e cirurgiões líderes em traumatologia, deformidades, cirurgia minimamente invasiva e reconstrução espinhal.
+                {t.aboutP2}
               </p>
 
               <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: 16 }}>
                 <strong style={{ fontSize: 15, color: "#fff", display: "block", marginBottom: 10 }}>
-                  Editores do Tratado:
+                  {t.editorsLabel}
                 </strong>
                 <ul style={{ margin: 0, paddingLeft: 18, fontSize: 14, color: "#94a3b8", lineHeight: 1.7 }}>
-                  <li><strong style={{ color: "#fff" }}>Dr. Edson Pudles</strong> — Editor-Chefe / SBC</li>
-                  <li><strong style={{ color: "#fff" }}>Dr. Helton Defino</strong> — Editor / FMRP-USP</li>
-                  <li><strong style={{ color: "#fff" }}>Dr. Marcelo Risso</strong> — Editor / SBC</li>
+                  <li><strong style={{ color: "#fff" }}>{t.editor1}</strong></li>
+                  <li><strong style={{ color: "#fff" }}>{t.editor2}</strong></li>
+                  <li><strong style={{ color: "#fff" }}>{t.editor3}</strong></li>
                 </ul>
               </div>
             </div>
@@ -726,10 +861,10 @@ export default function MobileAppPage({ params }: MobileAppProps) {
             >
               <div style={{ fontSize: 36, marginBottom: 10 }}>📚</div>
               <h2 style={{ fontSize: 24, fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
-                Adquira a Obra Impressa
+                {t.buyTitle}
               </h2>
               <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 22px" }}>
-                O Tratado de Cirurgia da Coluna Vertebral é uma obra física de padrão luxo internacional, encadernação dura e ilustrações anatômicas em alta definição.
+                {t.buyDesc}
               </p>
 
               <a
@@ -751,7 +886,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
                   boxShadow: "0 8px 25px rgba(245, 34, 56, 0.45)",
                 }}
               >
-                <span>Adquirir Exemplar Impresso (DiLivros)</span>
+                <span>{t.buyCta}</span>
                 <span>🛒</span>
               </a>
             </div>
@@ -813,7 +948,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           )}
           <span style={{ fontSize: 20 }}>🏠</span>
           <span style={{ fontSize: 11.5, fontWeight: activeTab === "home" ? 800 : 600 }}>
-            {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
+            {t.tabHome}
           </span>
         </button>
 
@@ -851,7 +986,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           )}
           <span style={{ fontSize: 20 }}>📑</span>
           <span style={{ fontSize: 11.5, fontWeight: activeTab === "indice" ? 800 : 600 }}>
-            {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
+            {t.tabIndex}
           </span>
         </button>
 
@@ -889,7 +1024,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           )}
           <span style={{ fontSize: 20 }}>ℹ️</span>
           <span style={{ fontSize: 11.5, fontWeight: activeTab === "sobre" ? 800 : 600 }}>
-            {locale === "en" ? "About" : locale === "es" ? "Acerca" : "Sobre"}
+            {t.tabAbout}
           </span>
         </button>
 
@@ -927,7 +1062,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
           )}
           <span style={{ fontSize: 20 }}>🛒</span>
           <span style={{ fontSize: 11.5, fontWeight: activeTab === "comprar" ? 800 : 600 }}>
-            {locale === "en" ? "Buy" : locale === "es" ? "Comprar" : "Comprar"}
+            {t.tabBuy}
           </span>
         </button>
       </nav>
