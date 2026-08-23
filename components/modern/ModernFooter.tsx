@@ -257,28 +257,24 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 text-center sm:text-left">
           <span>{t.copyright}</span>
           <div className="flex items-center gap-4">
-            <a
-              href="https://coluna.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/${locale}/termos-de-uso-new`}
               className="hover:text-slate-200 transition-colors"
               style={{ color: "inherit", textDecoration: "none" }}
             >
               {t.terms}
-            </a>
+            </Link>
             <span>•</span>
-            <a
-              href="https://coluna.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/${locale}/politica-de-privacidade-new`}
               className="hover:text-slate-200 transition-colors"
               style={{ color: "inherit", textDecoration: "none" }}
             >
               {t.privacy}
-            </a>
+            </Link>
             <span>•</span>
             <a
-              href="https://dilivros.com.br/contato"
+              href="https://dilivros.com.br/fale-conosco"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-slate-200 transition-colors"

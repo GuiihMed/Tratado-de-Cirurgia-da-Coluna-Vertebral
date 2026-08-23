@@ -73,9 +73,33 @@ export default function Footer({ locale }: FooterProps) {
       </div>
 
       <div className="shell footer-bottom">
-        <span>
-          {dict.footer.privacy} &nbsp; | &nbsp; {dict.footer.terms} &nbsp; | &nbsp; {dict.footer.contact}
-        </span>
+        <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
+          <Link
+            href={`/${locale}/politica-de-privacidade`}
+            style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+            className="hover:text-white transition-colors"
+          >
+            {dict.footer.privacy}
+          </Link>
+          <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
+          <Link
+            href={`/${locale}/termos-de-uso`}
+            style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+            className="hover:text-white transition-colors"
+          >
+            {dict.footer.terms}
+          </Link>
+          <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
+          <a
+            href="https://dilivros.com.br/fale-conosco"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+            className="hover:text-white transition-colors"
+          >
+            {dict.footer.contact}
+          </a>
+        </div>
         <div className="social" style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <a
             href="https://coluna.com.br/"
