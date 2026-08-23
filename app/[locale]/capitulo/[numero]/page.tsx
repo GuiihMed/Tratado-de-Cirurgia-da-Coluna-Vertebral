@@ -346,36 +346,64 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 </div>
               </div>
             </div>
+
+            {/* Bottom 5-Item Stats Bar (Idêntico ao design da Home) */}
+            <div className="w-full rounded-2xl bg-[#001533]/85 border border-white/15 backdrop-blur-xl p-4 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.4)] mt-10 sm:mt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 md:divide-x md:divide-white/10 text-center">
+                
+                {/* 1. Seção */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-grid"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                    {locale === "en" ? `Sec. ${cap.secao_id}` : locale === "es" ? `Sec. ${cap.secao_id}` : `Seção ${cap.secao_id}`}
+                  </strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5 truncate max-w-[130px]">{sectionTitle}</span>
+                </div>
+
+                {/* 2. Capítulo */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-book"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                    {locale === "en" ? `Cap. ${num}` : locale === "es" ? `Cap. ${num}` : `Cap. ${num}`}
+                  </strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "Clinical Chapter" : locale === "es" ? "Capítulo Clínico" : "Capítulo Clínico"}
+                  </span>
+                </div>
+
+                {/* 3. Autores */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-users"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">{chapterAuthors.length}</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "authors" : locale === "es" ? "autores" : "autores"}
+                  </span>
+                </div>
+
+                {/* 4. Idiomas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-teal-400 mb-1.5"><use href="#i-globe"></use></svg>
+                  <div className="text-xs text-slate-200 font-bold leading-tight mt-0.5">
+                    <div>Português</div>
+                    <div>Español</div>
+                    <div>English</div>
+                  </div>
+                </div>
+
+                {/* 5. Referências */}
+                <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Referências</strong>
+                  <span className="text-xs text-slate-300 font-semibold">
+                    {locale === "en" ? "scientific citations" : locale === "es" ? "citas científicas" : "científicas"}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </section>
-
-        {/* ================= FLOATING 5-COLUMN STATS BAR ================= */}
-        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-20 -mt-8 mb-4">
-          <div className="stats-bar w-full">
-            <div className="stat">
-              <svg><use href="#i-grid"></use></svg>
-              <strong>{locale === "en" ? `Sec. ${cap.secao_id}` : locale === "es" ? `Sec. ${cap.secao_id}` : `Seção ${cap.secao_id}`}</strong>
-              <span className="truncate max-w-[130px]">{sectionTitle}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-book"></use></svg>
-              <strong>{locale === "en" ? `Cap. ${num}` : locale === "es" ? `Cap. ${num}` : `Cap. ${num}`}</strong>
-              <span>{locale === "en" ? "Clinical Chapter" : locale === "es" ? "Capítulo Clínico" : "Capítulo Clínico"}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-users"></use></svg>
-              <span className="stat-text">{chapterAuthors.length} {locale === "en" ? "Authors &\nContributors" : locale === "es" ? "Autores y\nColaboradores" : "Autores e\nColaboradores"}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-globe"></use></svg>
-              <span className="stat-text">Português<br/>Español<br/>English</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-ref"></use></svg>
-              <span className="stat-text">{locale === "en" ? "Scientific\nReferences" : locale === "es" ? "Referencias\nCientíficas" : "Referências\nCientíficas"}</span>
-            </div>
-          </div>
-        </div>
 
         {/* ================= 2-COLUMN MAIN CONTENT ================= */}
         <section style={{ padding: "40px 0 60px" }}>

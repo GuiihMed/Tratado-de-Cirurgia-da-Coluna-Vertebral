@@ -254,39 +254,63 @@ export default function AutoresPage({ params }: AutoresPageProps) {
                   </a>
                 </div>
               </div>
-
             </div>
+
+            {/* Bottom 5-Item Stats Bar (Idêntico ao design da Home) */}
+            <div className="w-full rounded-2xl bg-[#001533]/85 border border-white/15 backdrop-blur-xl p-4 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.4)] mt-10 sm:mt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 md:divide-x md:divide-white/10 text-center">
+                
+                {/* 1. Especialistas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-users"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">204</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "specialists" : locale === "es" ? "especialistas" : "especialistas"}
+                  </span>
+                </div>
+
+                {/* 2. Editores Chefes */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-book"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">3</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "chief editors" : locale === "es" ? "editores chefes" : "editores chefes"}
+                  </span>
+                </div>
+
+                {/* 3. Seções Temáticas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-grid"></use></svg>
+                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "thematic sections" : locale === "es" ? "seções temáticas" : "seções temáticas"}
+                  </span>
+                </div>
+
+                {/* 4. Idiomas */}
+                <div className="flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-teal-400 mb-1.5"><use href="#i-globe"></use></svg>
+                  <div className="text-xs text-slate-200 font-bold leading-tight mt-0.5">
+                    <div>Português</div>
+                    <div>Español</div>
+                    <div>English</div>
+                  </div>
+                </div>
+
+                {/* 5. Diretório A-Z */}
+                <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
+                  <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-1">Diretório A-Z</strong>
+                  <span className="text-xs text-slate-300 font-semibold">
+                    {locale === "en" ? "with ORCID" : locale === "es" ? "con ORCID" : "com ORCID"}
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </section>
-
-        {/* ================= FLOATING 5-COLUMN STATS BAR ================= */}
-        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-20 -mt-8 mb-4">
-          <div className="stats-bar w-full">
-            <div className="stat">
-              <svg><use href="#i-users"></use></svg>
-              <strong>204</strong>
-              <span>{locale === "en" ? "specialists" : locale === "es" ? "especialistas" : "especialistas"}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-book"></use></svg>
-              <strong>3</strong>
-              <span>{locale === "en" ? "chief editors" : locale === "es" ? "editores jefes" : "editores chefes"}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-grid"></use></svg>
-              <strong>10</strong>
-              <span>{locale === "en" ? "thematic sections" : locale === "es" ? "secciones temáticas" : "seções temáticas"}</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-globe"></use></svg>
-              <span className="stat-text">Português<br/>Español<br/>English</span>
-            </div>
-            <div className="stat">
-              <svg><use href="#i-ref"></use></svg>
-              <span className="stat-text">{locale === "en" ? "A-Z Directory\n& ORCID" : locale === "es" ? "Directorio A-Z\ny ORCID" : "Diretório A-Z\ne ORCID"}</span>
-            </div>
-          </div>
-        </div>
 
         {/* ========================================================================= */}
         {/* SEÇÃO 1: EDITORES */}
