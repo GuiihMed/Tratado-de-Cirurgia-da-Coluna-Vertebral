@@ -9,6 +9,7 @@ import { SECOES } from "@/lib/data/sections-and-chapters";
 import SectionIcon from "@/components/SectionIcon";
 import { ArrowRight, BookOpen, ShoppingCart, Award, Layers, Users, Globe, Brain, Wrench, Shield, Play, Check, ChevronRight } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface HomeNewProps {
   params: Promise<{ locale: string }>;
@@ -945,22 +946,8 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   </div>
                 </div>
 
-                <div style={{ position: "relative", width: "100%", borderRadius: 18, overflow: "hidden", boxShadow: "0 20px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(245, 34, 56, 0.2)", border: "1px solid rgba(255, 255, 255, 0.16)", background: "#000" }}>
-                  <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
-                    <iframe
-                      src="https://player.vimeo.com/video/1220279985?badge=0&autopause=0&player_id=0&app_id=58479"
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        border: "none",
-                      }}
-                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                      title="Tratado em Debate - Episódio 01"
-                    />
-                  </div>
+                <div>
+                  <CustomVimeoPlayer locale={locale} />
                 </div>
               </div>
             </div>

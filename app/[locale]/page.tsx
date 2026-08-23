@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { SECOES } from "@/lib/data/sections-and-chapters";
+import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -306,16 +307,9 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
-                {/* 1. Player do Vimeo Incorporado */}
+                {/* 1. Player do Vimeo Customizado */}
                 <div className="lg:col-span-6 order-1 flex justify-center w-full">
-                  <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] border border-slate-300 bg-black">
-                    <iframe
-                      src="https://player.vimeo.com/video/1220279985?badge=0&autopause=0&player_id=0&app_id=58479"
-                      className="absolute inset-0 w-full h-full border-0"
-                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                      title="Tratado em Debate - Episódio 01"
-                    />
-                  </div>
+                  <CustomVimeoPlayer locale={locale} />
                 </div>
 
                 {/* 2. Textos e Informações do Episódio */}

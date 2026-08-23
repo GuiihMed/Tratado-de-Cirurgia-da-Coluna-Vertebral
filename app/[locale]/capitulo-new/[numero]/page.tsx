@@ -7,6 +7,7 @@ import { SECOES, INITIAL_CHAPTERS, getChapterApproachObjective } from "@/lib/dat
 import { getAuthorsByChapter } from "@/lib/data/authors";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
+import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import {
   BookOpen,
   ShoppingCart,
@@ -880,52 +881,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <div>
-                    {/* Thumbnail Artwork */}
-                    <Link
-                      href={`/${locale}/home-new#debate`}
-                      style={{
-                        position: "relative",
-                        display: "block",
-                        width: "100%",
-                        borderRadius: 12,
-                        overflow: "hidden",
-                        aspectRatio: "16/9",
-                        marginBottom: 14,
-                        background: "#00132b",
-                        textDecoration: "none",
-                      }}
-                      className="group"
-                    >
-                      <img
-                        src="/assets/debate-artwork.png"
-                        alt="Tratado em Debate - Episódio 01"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          transition: "transform 0.3s ease",
-                        }}
-                        className="group-hover:scale-105"
-                      />
-                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)" }} />
-
-                      {/* Badge Episódio 01 */}
-                      <div style={{ position: "absolute", left: 12, bottom: 10, zIndex: 2 }}>
-                        <small style={{ display: "block", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#cbd5e1" }}>
-                          {locale === "en" ? "EPISODE" : locale === "es" ? "EPISODIO" : "EPISÓDIO"}
-                        </small>
-                        <strong style={{ display: "block", fontSize: 24, fontWeight: 800, color: "#fff", lineHeight: 1 }}>
-                          01
-                        </strong>
-                      </div>
-
-                      {/* Central Play Icon */}
-                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
-                        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #fff" }} className="group-hover:scale-110 transition-transform">
-                          <Play size={18} className="fill-current text-white ml-0.5" />
-                        </div>
-                      </div>
-                    </Link>
+                    {/* Custom Vimeo Player */}
+                    <div style={{ marginBottom: 14 }}>
+                      <CustomVimeoPlayer locale={locale} />
+                    </div>
 
                     <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>
                       <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
 import { X, Maximize2, Minimize2, ExternalLink, Play, ChevronDown } from "lucide-react";
+import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface DebateMiniPlayerProps {
   locale: Locale;
@@ -214,22 +215,12 @@ export default function DebateMiniPlayer({
             </div>
           </div>
 
-          {/* 16:9 Vimeo Player */}
-          <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#000" }}>
-            <iframe
-              src="https://player.vimeo.com/video/1220279985?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                border: "none",
-              }}
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              title="Tratado em Debate - Episódio 01"
-            />
-          </div>
+          {/* Custom Vimeo Player */}
+          <CustomVimeoPlayer
+            locale={locale}
+            autoplay={true}
+            showPopOutButton={false}
+          />
 
           {/* Footer Info */}
           <div
@@ -286,7 +277,7 @@ export default function DebateMiniPlayer({
         bottom: 24,
         right: 24,
         zIndex: 9999,
-        width: 380,
+        width: 400,
         maxWidth: "calc(100vw - 32px)",
         background: "rgba(2, 20, 48, 0.95)",
         backdropFilter: "blur(24px) saturate(180%)",
@@ -376,22 +367,12 @@ export default function DebateMiniPlayer({
         </div>
       </div>
 
-      {/* 16:9 Vimeo Player */}
-      <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#000" }}>
-        <iframe
-          src="https://player.vimeo.com/video/1220279985?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            border: "none",
-          }}
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          title="Tratado em Debate - Episódio 01"
-        />
-      </div>
+      {/* Custom Vimeo Player */}
+      <CustomVimeoPlayer
+        locale={locale}
+        autoplay={true}
+        showPopOutButton={false}
+      />
 
       {/* Mini Footer info with Chapter Link */}
       <div

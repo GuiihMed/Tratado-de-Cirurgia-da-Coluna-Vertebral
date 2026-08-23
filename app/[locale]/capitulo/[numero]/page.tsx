@@ -7,6 +7,7 @@ import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import { getAuthorsByChapter } from "@/lib/data/authors";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
+import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 
 interface CapituloPageProps {
   params: Promise<{
@@ -759,54 +760,10 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   }}
                 >
                   <div>
-                    {/* Thumbnail com arte oficial e botão play */}
-                    <Link
-                      href={`/${locale}#debate`}
-                      style={{
-                        position: "relative",
-                        display: "block",
-                        width: "100%",
-                        borderRadius: 10,
-                        overflow: "hidden",
-                        aspectRatio: "16/9",
-                        marginBottom: 14,
-                        background: "#00132b",
-                        textDecoration: "none",
-                      }}
-                      className="group"
-                    >
-                      <img
-                        src="/assets/debate-artwork.png"
-                        alt="Tratado em Debate - Episódio 01"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          transition: "transform 0.3s ease",
-                        }}
-                        className="group-hover:scale-105"
-                      />
-                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)" }} />
-
-                      {/* Badge Episódio 01 */}
-                      <div style={{ position: "absolute", left: 12, bottom: 10, zIndex: 2 }}>
-                        <small style={{ display: "block", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#cbd5e1" }}>
-                          {locale === "en" ? "EPISODE" : locale === "es" ? "EPISODIO" : "EPISÓDIO"}
-                        </small>
-                        <strong style={{ display: "block", fontSize: 24, fontWeight: 800, color: "#fff", lineHeight: 1 }}>
-                          01
-                        </strong>
-                      </div>
-
-                      {/* Central Play Icon */}
-                      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
-                        <div style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #fff" }} className="group-hover:scale-110 transition-transform">
-                          <svg style={{ width: 18, height: 18, fill: "#fff", marginLeft: 2 }} viewBox="0 0 24 24">
-                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                          </svg>
-                        </div>
-                      </div>
-                    </Link>
+                    {/* Custom Vimeo Player */}
+                    <div style={{ marginBottom: 14 }}>
+                      <CustomVimeoPlayer locale={locale} />
+                    </div>
 
                     {/* Badge & Textos */}
                     <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>
