@@ -5,7 +5,8 @@ import Link from "next/link";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale, Capitulo } from "@/lib/types";
-import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import { SECOES, INITIAL_CHAPTERS, getChapterApproachObjective } from "@/lib/data/sections-and-chapters";
+import { getAuthorsByChapter } from "@/lib/data/authors";
 import SectionIcon from "@/components/SectionIcon";
 import {
   LayoutGrid,
@@ -18,6 +19,10 @@ import {
   ArrowRight,
   ExternalLink,
   Search,
+  Users,
+  User,
+  Target,
+  Sparkles,
 } from "lucide-react";
 
 interface IndiceNewProps {
@@ -817,130 +822,279 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
           </div>
         </section>
 
-        {/* MODAL: RESUMO RÁPIDO DO CAPÍTULO */}
-        {activeModalChapter && (
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background: "rgba(0, 16, 38, 0.8)",
-              backdropFilter: "blur(8px)",
-              zIndex: 9999,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 20,
-            }}
-            onClick={() => setActiveModalChapter(null)}
-          >
+        {/* MODAL: RESUMO RÁPIDO DO CAPÍTULO (ESCRITORES E OBJETIVO DA ABORDAGEM) */}
+        {activeModalChapter && (() => {
+          const modalAuthors = getAuthorsByChapter(activeModalChapter.numero);
+          const modalApproach = getChapterApproachObjective(
+            activeModalChapter.numero,
+            activeModalChapter.secao_id,
+            locale
+          );
+
+          return (
             <div
               style={{
-                background: "linear-gradient(135deg, #001a3d 0%, #000c1e 100%)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                borderRadius: 20,
-                padding: "36px",
-                maxWidth: 620,
+                position: "fixed",
+                top: 0,
+                left: 0,
                 width: "100%",
-                boxShadow: "0 25px 60px rgba(0, 0, 0, 0.6)",
-                position: "relative",
+                height: "100%",
+                background: "rgba(0, 16, 38, 0.82)",
+                backdropFilter: "blur(12px)",
+                zIndex: 9999,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "20px 16px",
               }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={() => setActiveModalChapter(null)}
             >
-              <button
-                onClick={() => setActiveModalChapter(null)}
+              <div
                 style={{
-                  position: "absolute",
-                  top: 20,
-                  right: 20,
-                  background: "transparent",
-                  border: "none",
-                  color: "#94a3b8",
-                  fontSize: 20,
-                  cursor: "pointer",
-                  fontWeight: 700,
+                  background: "linear-gradient(145deg, #001a3d 0%, #000c1e 100%)",
+                  border: "1px solid rgba(255, 255, 255, 0.16)",
+                  borderRadius: 22,
+                  padding: "32px 30px",
+                  maxWidth: 680,
+                  width: "100%",
+                  maxHeight: "90vh",
+                  overflowY: "auto",
+                  boxShadow: "0 30px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 34, 56, 0.15)",
+                  position: "relative",
                 }}
+                onClick={(e) => e.stopPropagation()}
               >
-                ✕
-              </button>
-
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                <span
-                  style={{
-                    background: "#f52238",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: "3px 8px",
-                    borderRadius: 4,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {locale === "en" ? `Chapter ${activeModalChapter.numero}` : locale === "es" ? `Capítulo ${activeModalChapter.numero}` : `Capítulo ${activeModalChapter.numero}`}
-                </span>
-                <span style={{ fontSize: 13, color: "#8cb7e4", fontWeight: 700 }}>
-                  {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {activeModalChapter.secao_id}: {getSectionName(activeModalChapter.secao_id)}
-                </span>
-              </div>
-
-              <h2 style={{ fontSize: 24, color: "#fff", margin: "0 0 18px", lineHeight: 1.25 }}>
-                {getChapterTitle(activeModalChapter)}
-              </h2>
-
-              <div style={{ padding: 16, borderRadius: 12, background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)", marginBottom: 20 }}>
-                <div style={{ fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", color: "#8da9cc", marginBottom: 8 }}>
-                  {locale === "en" ? "Titles in other languages:" : locale === "es" ? "Títulos en outros idiomas:" : "Títulos em outros idiomas:"}
-                </div>
-                <div style={{ fontSize: 13.5, color: "#e2effe", marginBottom: 6, display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>EN</span>
-                  <span><strong>EN:</strong> {activeModalChapter.titulo_en || (locale === "en" ? "Available in printed edition" : "Disponível na edição impressa")}</span>
-                </div>
-                <div style={{ fontSize: 13.5, color: "#e2effe", display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, padding: "1px 5px", borderRadius: 3, background: "rgba(255,255,255,0.15)", color: "#7dd3fc" }}>ES</span>
-                  <span><strong>ES:</strong> {activeModalChapter.titulo_es || (locale === "es" ? "Disponible en la edición impresa" : "Disponível na edição impressa")}</span>
-                </div>
-              </div>
-
-              <p style={{ fontSize: 13.5, color: "#9db8d7", lineHeight: 1.55, margin: "0 0 24px" }}>
-                {locale === "en"
-                  ? "The complete content, step-by-step surgical techniques, algorithms, and references for this chapter are published exclusively in the official printed edition."
-                  : locale === "es"
-                  ? "El contenido completo, técnica quirúrgica paso a paso, algoritmos y referencias de este capítulo se encuentran exclusivamente en la obra impresa oficial del Tratado."
-                  : "O conteúdo completo, técnica cirúrgica passo a passo, algoritmos e referências deste capítulo constam com exclusividade na obra impressa oficial do Tratado."}
-              </p>
-
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <Link
-                  href={`/${locale}/capitulo-new/${activeModalChapter.numero}`}
-                  className="modern-btn-glow"
-                  style={{ height: 44, fontSize: 13, flex: "1 1 180px", textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8 }}
-                >
-                  <BookOpen size={16} />
-                  <span>{locale === "en" ? "Read Full Chapter" : locale === "es" ? "Leer Capítulo Completo" : "Ler Capítulo Completo"}</span>
-                </Link>
+                {/* Close Button */}
                 <button
-                  onClick={() => copyCitation(activeModalChapter)}
-                  className="modern-btn-glass"
-                  style={{ height: 44, fontSize: 13, padding: "0 16px", display: "inline-flex", alignItems: "center", gap: 6 }}
+                  onClick={() => setActiveModalChapter(null)}
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    right: 18,
+                    width: 32,
+                    height: 32,
+                    borderRadius: "50%",
+                    background: "rgba(255, 255, 255, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    color: "#94a3b8",
+                    display: "grid",
+                    placeItems: "center",
+                    cursor: "pointer",
+                    fontWeight: 700,
+                    fontSize: 16,
+                  }}
+                  title={locale === "en" ? "Close" : locale === "es" ? "Cerrar" : "Fechar"}
                 >
-                  {copiedChapter === activeModalChapter.numero ? (
-                    <>
-                      <Check size={14} className="text-emerald-400" />
-                      <span>{locale === "en" ? "Citation Copied!" : locale === "es" ? "¡Cita Copiada!" : "Citação Copiada!"}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={14} />
-                      <span>{locale === "en" ? "Copy Citation" : locale === "es" ? "Copiar Cita" : "Copiar Citação"}</span>
-                    </>
-                  )}
+                  ✕
                 </button>
+
+                {/* Section & Chapter Tag */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
+                  <span
+                    style={{
+                      background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                      color: "#fff",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      padding: "4px 10px",
+                      borderRadius: 6,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {locale === "en" ? `Chapter ${activeModalChapter.numero}` : locale === "es" ? `Capítulo ${activeModalChapter.numero}` : `Capítulo ${activeModalChapter.numero}`}
+                  </span>
+                  <span style={{ fontSize: 13, color: "#8cb7e4", fontWeight: 700 }}>
+                    {locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"} {activeModalChapter.secao_id}: {getSectionName(activeModalChapter.secao_id)}
+                  </span>
+                </div>
+
+                {/* Chapter Title */}
+                <h2 style={{ fontSize: "clamp(20px, 3vw, 24px)", color: "#fff", margin: "0 0 20px", lineHeight: 1.3, fontWeight: 700 }}>
+                  {getChapterTitle(activeModalChapter)}
+                </h2>
+
+                {/* ================= 1. ESCRITORES DO CAPÍTULO ================= */}
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <Users size={16} className="text-rose-400" />
+                    <h3 style={{ fontSize: 13.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#ff8290", margin: 0 }}>
+                      {locale === "en"
+                        ? "Chapter Authors & Writers"
+                        : locale === "es"
+                        ? "Escritores y Autores del Capítulo"
+                        : "Escritores do Capítulo"}
+                    </h3>
+                  </div>
+
+                  {modalAuthors.length > 0 ? (
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 250px), 1fr))", gap: 10 }}>
+                      {modalAuthors.map((author) => (
+                        <div
+                          key={author.id}
+                          style={{
+                            padding: "12px 14px",
+                            borderRadius: 12,
+                            background: "rgba(255, 255, 255, 0.04)",
+                            border: "1px solid rgba(255, 255, 255, 0.08)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 12,
+                          }}
+                        >
+                          <img
+                            src={author.foto_url || "/assets/avatar-placeholder.png"}
+                            alt={author.nome}
+                            style={{
+                              width: 42,
+                              height: 42,
+                              borderRadius: 10,
+                              objectFit: "cover",
+                              border: "1.5px solid rgba(245, 34, 56, 0.4)",
+                              flexShrink: 0,
+                            }}
+                          />
+                          <div style={{ minWidth: 0, flex: 1 }}>
+                            <div style={{ fontSize: 13.5, fontWeight: 700, color: "#ffffff", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                              {author.nome}
+                            </div>
+                            <div style={{ fontSize: 11.5, color: "#94a3b8", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", marginTop: 2 }}>
+                              {author.instituicao || author.cargo}
+                            </div>
+                            <Link
+                              href={`/${locale}/autor-new/${author.slug}`}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 4,
+                                fontSize: 11.5,
+                                color: "#38bdf8",
+                                fontWeight: 700,
+                                textDecoration: "none",
+                                marginTop: 4,
+                              }}
+                            >
+                              <span>{locale === "en" ? "View Profile" : locale === "es" ? "Ver Perfil" : "Ver Perfil"}</span>
+                              <span>→</span>
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        padding: "12px 16px",
+                        borderRadius: 10,
+                        background: "rgba(255, 255, 255, 0.04)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        fontSize: 13.5,
+                        color: "#e2e8f0",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                      }}
+                    >
+                      <User size={16} className="text-rose-400 flex-shrink-0" />
+                      <span>{activeModalChapter.autores || (locale === "en" ? "SBC Treatise Editorial Board" : locale === "es" ? "Cuerpo Editorial Tratado SBC" : "Corpo Editorial Oficial do Tratado SBC")}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* ================= 2. OBJETIVO DA ABORDAGEM ================= */}
+                <div style={{ marginBottom: 24 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <Target size={16} className="text-sky-400" />
+                    <h3 style={{ fontSize: 13.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#38bdf8", margin: 0 }}>
+                      {locale === "en"
+                        ? "Clinical & Surgical Approach Objective"
+                        : locale === "es"
+                        ? "Objetivo del Abordaje Clínico y Quirúrgico"
+                        : "Objetivo da Abordagem"}
+                    </h3>
+                  </div>
+
+                  <div
+                    style={{
+                      borderRadius: 14,
+                      background: "rgba(14, 101, 162, 0.12)",
+                      border: "1px solid rgba(14, 101, 162, 0.35)",
+                      borderLeft: "4px solid #0099ff",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 12,
+                    }}
+                  >
+                    <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#e2effe" }}>
+                      {modalApproach.objetivo}
+                    </p>
+
+                    {modalApproach.focoClinico && (
+                      <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 10 }}>
+                        <strong style={{ fontSize: 11.5, color: "#7dd3fc", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 3 }}>
+                          🔬 {locale === "en" ? "Clinical & Surgical Focus" : locale === "es" ? "Enfoque Clínico y Quirúrgico" : "Foco Clínico & Cirúrgico"}
+                        </strong>
+                        <span style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5 }}>
+                          {modalApproach.focoClinico}
+                        </span>
+                      </div>
+                    )}
+
+                    {modalApproach.indicacoes && (
+                      <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", paddingTop: 10 }}>
+                        <strong style={{ fontSize: 11.5, color: "#86efac", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 3 }}>
+                          📋 {locale === "en" ? "Core Indications" : locale === "es" ? "Indicaciones Principales" : "Principais Indicações"}
+                        </strong>
+                        <span style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5 }}>
+                          {modalApproach.indicacoes}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Print Treatise Exclusive Notice */}
+                <p style={{ fontSize: 12.5, color: "#94a3b8", lineHeight: 1.5, margin: "0 0 22px" }}>
+                  {locale === "en"
+                    ? "The complete content, surgical techniques, algorithms, high-resolution figures, and references are published exclusively in the official printed edition."
+                    : locale === "es"
+                    ? "El contenido completo, técnicas quirúrgicas paso a paso, algoritmos, figuras en alta resolución y referencias constan con exclusividad en la edición impresa oficial."
+                    : "O conteúdo completo, técnicas cirúrgicas passo a passo, algoritmos, figuras em alta definição e referências constam com exclusividade na obra impressa oficial."}
+                </p>
+
+                {/* Action Buttons */}
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <Link
+                    href={`/${locale}/capitulo-new/${activeModalChapter.numero}`}
+                    className="modern-btn-glow"
+                    style={{ height: 44, fontSize: 13, flex: "1 1 200px", textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8 }}
+                  >
+                    <BookOpen size={16} />
+                    <span>{locale === "en" ? "Read Full Chapter" : locale === "es" ? "Leer Capítulo Completo" : "Ler Capítulo Completo"}</span>
+                  </Link>
+                  <button
+                    onClick={() => copyCitation(activeModalChapter)}
+                    className="modern-btn-glass"
+                    style={{ height: 44, fontSize: 13, padding: "0 16px", display: "inline-flex", alignItems: "center", gap: 6 }}
+                  >
+                    {copiedChapter === activeModalChapter.numero ? (
+                      <>
+                        <Check size={14} className="text-emerald-400" />
+                        <span>{locale === "en" ? "Citation Copied!" : locale === "es" ? "¡Cita Copiada!" : "Citação Copiada!"}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={14} />
+                        <span>{locale === "en" ? "Copy Citation" : locale === "es" ? "Copiar Cita" : "Copiar Citação"}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
       </main>
 
       <ModernFooter locale={locale} />

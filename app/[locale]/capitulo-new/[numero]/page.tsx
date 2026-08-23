@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
 import { Locale } from "@/lib/types";
-import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
+import { SECOES, INITIAL_CHAPTERS, getChapterApproachObjective } from "@/lib/data/sections-and-chapters";
 import { getAuthorsByChapter } from "@/lib/data/authors";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
@@ -96,6 +96,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
   const isCap8 = num === 8;
   const chapterAuthors = getAuthorsByChapter(num);
   const authorsText = cap.autores || (chapterAuthors.length > 0 ? chapterAuthors.map(a => a.nome).join(" • ") : "Corpo Editorial Oficial SBC");
+  const approachData = getChapterApproachObjective(num, cap.secao_id, locale);
 
   const leadText = isCap8
     ? "Fundamentos anátomo-biomecânicos do equilíbrio sagital global, parâmetros espinopélvicos radiográficos e tomada de decisão clínica na cirurgia reconstrutiva da coluna."
@@ -508,15 +509,17 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       • {locale === "en" ? "Clinical Context" : locale === "es" ? "Contexto Clínico" : "Contexto Clínico"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {locale === "en"
-                        ? "Sagittal spinal alignment is a cornerstone in clinical evaluation, surgical planning, and understanding functional outcomes for patients with degenerative diseases and spinal deformities. Upright human posture relies on harmonious integration among spine, pelvis, hips, and lower extremities to maintain center of mass over the support base with minimal energy expenditure."
-                        : locale === "es"
-                        ? "El equilibrio sagital de la columna vertebral se ha convertido en un concepto central en la evaluación clínica, planificación quirúrgica y comprensión de resultados funcionales. La postura erguida humana depende de la integración armónica entre columna, pelvis, caderas y extremidades inferiores con el menor gasto energético posible."
-                        : "O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível."}
+                      {isCap8
+                        ? (locale === "en"
+                          ? "Sagittal spinal alignment is a cornerstone in clinical evaluation, surgical planning, and understanding functional outcomes for patients with degenerative diseases and spinal deformities. Upright human posture relies on harmonious integration among spine, pelvis, hips, and lower extremities to maintain center of mass over the support base with minimal energy expenditure."
+                          : locale === "es"
+                          ? "El equilibrio sagital de la columna vertebral se ha convertido en un concepto central en la evaluación clínica, planificación quirúrgica y comprensión de resultados funcionales. La postura erguida humana depende de la integración armónica entre columna, pelvis, caderas y extremidades inferiores con el menor gasto energético posible."
+                          : "O equilíbrio sagital da coluna vertebral tornou-se um conceito central na avaliação clínica, no planejamento cirúrgico e na compreensão dos resultados funcionais em pacientes com doenças degenerativas, deformidades e alterações biomecânicas de coluna. A postura ereta humana depende da integração entre coluna, pelve, quadril, membros inferiores e coluna cervical, com o objetivo de manter o centro de massa corporal sobre a base de suporte com o menor gasto energético possível.")
+                        : (cap.resumo_pt || leadText)}
                     </p>
                   </div>
 
-                  {/* Block 2 */}
+                  {/* Block 2: Objetivo da Abordagem */}
                   <div
                     style={{
                       background: "#f8fafc",
@@ -527,18 +530,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     }}
                   >
                     <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Objective of the Approach" : locale === "es" ? "Objetivo del Enfoque" : "Objetivo da Abordagem"}
+                      • {locale === "en" ? "Objective of the Approach" : locale === "es" ? "Objetivo del Abordaje" : "Objetivo da Abordagem"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {locale === "en"
-                        ? "Present anatomical, biomechanical, and radiographic principles of sagittal alignment, emphasizing its relevance for clinical assessment and precision spinal surgical planning."
-                        : locale === "es"
-                        ? "Presentar los fundamentos anatómicos, biomecánicos y radiográficos de la alineación sagital, destacando su relevancia para la evaluación clínica y la planificación quirúrgica."
-                        : "Apresentar os fundamentos anatômicos, biomecânicos e radiográficos do alinhamento sagital, destacando sua relevância para a avaliação clínica e para o planejamento de procedimentos cirúrgicos da coluna."}
+                      {approachData.objetivo}
                     </p>
                   </div>
 
-                  {/* Block 3 */}
+                  {/* Block 3: Foco Clínico & Cirúrgico */}
                   <div
                     style={{
                       background: "#f8fafc",
@@ -549,18 +548,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     }}
                   >
                     <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#d97706", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Main Content & Key Parameters" : locale === "es" ? "Contenido Principal y Parámetros Clave" : "Conteúdo Principal & Parâmetros Chave"}
+                      • {locale === "en" ? "Clinical & Surgical Focus" : locale === "es" ? "Enfoque Clínico y Quirúrgico" : "Foco Clínico & Cirúrgico"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {locale === "en"
-                        ? "The chapter reviews erect posture evolution, Dubousset's cone of economy, and pelvic/vertebral sagittal balance parameters including pelvic incidence (PI), pelvic tilt (PT), sacral slope (SS), sagittal vertical axis (SVA), lumbar lordosis (LL), thoracic kyphosis (TK), T1 slope, Roussouly classification, SRS-Schwab modifiers, and the Global Alignment and Proportion (GAP) Score."
-                        : locale === "es"
-                        ? "El capítulo aborda la evolución de la postura erecta, el cono de economía de Dubousset, los parámetros pélvicos y vertebrales de equilibrio sagital (PI, PT, SS, SVA, LL, TK, T1 slope), la clasificación de Roussouly, modificadores SRS-Schwab y el Global Alignment and Proportion (GAP) Score."
-                        : "O capítulo discute a evolução da postura ereta, o conceito do \"cone de economia\", os parâmetros pélvicos e vertebrais do equilíbrio sagital, incluindo incidência pélvica (PI), versão pélvica (PT), inclinação sacral (SS), eixo vertical sagital (SVA), lordose lombar (LL), cifose torácica (TK), T1 slope e parâmetros cervicais. Também são abordadas a distribuição regional da lordose lombar, a classificação de Roussouly, os modificadores sagitais da classificação SRS-Schwab, as ponderações da escola francesa em relação à escola americana, os mecanismos compensatórios e o conceito de Global Alignment and Proportion Score (GAP)."}
+                      {approachData.focoClinico}
                     </p>
                   </div>
 
-                  {/* Block 4 */}
+                  {/* Block 4: Principais Indicações */}
                   <div
                     style={{
                       background: "#f8fafc",
@@ -571,14 +566,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     }}
                   >
                     <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
-                      • {locale === "en" ? "Core Takeaway for Surgeons" : locale === "es" ? "Mensaje Central a los Cirujanos" : "Mensagem Central aos Cirurgiões"}
+                      • {locale === "en" ? "Core Indications & Clinical Guidance" : locale === "es" ? "Indicaciones Principales y Guía Clínica" : "Principais Indicações & Diretrizes Clínicas"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
-                      {locale === "en"
-                        ? "Sagittal alignment cannot be evaluated through rigid universal formulas. Analysis must be tailored individually to pelvic morphology, lordosis distribution, compensatory capacity, hips, lower limbs, and maintaining horizontal gaze."
-                        : locale === "es"
-                        ? "La alineación sagital no debe analizarse mediante fórmulas rígidas. La evaluación debe individualizarse considerando morfología pélvica, distribución de lordosis, capacidad compensatoria, caderas y necesidad de mantener la mirada horizontal."
-                        : "O alinhamento sagital não deve ser analisado por fórmulas rígidas ou valores universais. A avaliação deve ser individualizada, considerando morfologia pélvica, distribuição de lordose, capacidade compensatória, quadril, membros inferiores e necessidade de manter o olhar horizontal."}
+                      {approachData.indicacoes}
                     </p>
                   </div>
                 </div>

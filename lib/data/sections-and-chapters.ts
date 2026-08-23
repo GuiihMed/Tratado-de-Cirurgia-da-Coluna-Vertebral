@@ -236,3 +236,413 @@ export const INITIAL_CHAPTERS: Capitulo[] = [
   { secao_id: 10, numero: 108, titulo_pt: "Manejo do Paciente Frágil com Sarcopenia em Cirurgia de Coluna", autores: "Clineu de Mello Almada Filho, René Kusabara" },
   { secao_id: 10, numero: 109, titulo_pt: "Avaliação dos Resultados em Cirurgia de Coluna", autores: "Pedro Aleixo Nogueira, Sérgio Augusto Barbosa de Farias, Andrei Fernandes Joaquim" },
 ];
+
+export interface ChapterApproachObjective {
+  objetivo: string;
+  focoClinico: string;
+  indicacoes: string;
+}
+
+export function getChapterApproachObjective(
+  chapterNum: number,
+  secaoId: number,
+  locale: "pt" | "en" | "es" = "pt"
+): ChapterApproachObjective {
+  // 1. Specific Chapter Customizations
+  if (chapterNum === 8) {
+    if (locale === "en") {
+      return {
+        objetivo:
+          "Establish radiographic spinopelvic parameters (Pelvic Incidence, Pelvic Tilt, Sacral Slope, SVA, and Lumbar Lordosis) and Dubousset's cone of economy for restoring global functional balance and preventing mechanical failure.",
+        focoClinico:
+          "Analysis of regional lordosis distribution, Roussouly classification, SRS-Schwab modifiers, and GAP score in spinal reconstructive planning.",
+        indicacoes:
+          "Mandatory preoperative assessment for multi-level lumbar fusions, adult spinal deformity corrections, and revision procedures.",
+      };
+    }
+    if (locale === "es") {
+      return {
+        objetivo:
+          "Establecer los parámetros radiográficos espinopélvicos (Incidencia Pélvica, Versión Pélvica, Pendiente Sacra, SVA y Lordosis Lumbar) y el cono de economía de Dubousset para restaurar el equilibrio funcional y prevenir fallas mecánicas.",
+        focoClinico:
+          "Análisis de distribución de lordosis regional, clasificación de Roussouly, modificadores SRS-Schwab y puntuación GAP en planificación reconstructiva.",
+        indicacoes:
+          "Evaluación preoperatoria obligatoria en artrodesis lumbares múltiples, corrección de deformidades del adulto y cirugías de revisión.",
+      };
+    }
+    return {
+      objetivo:
+        "Estabelecer os parâmetros radiográficos espinopélvicos (Incidência Pélvica, Versão Pélvica, Inclinação Sacral, SVA e Lordose Lombar) e o cone de economia para restauração do equilíbrio funcional global e prevenção de falha mecânica.",
+      focoClinico:
+        "Análise da distribuição regional da lordose, classificação de Roussouly, modificadores SRS-Schwab e GAP Score no planejamento cirúrgico reconstrutivo.",
+      indicacoes:
+        "Avaliação pré-operatória mandatória em artrodeses lombares multiníveis, cirurgias de deformidade do adulto e revisões de instrumentação.",
+    };
+  }
+
+  if (chapterNum === 45) {
+    if (locale === "en") {
+      return {
+        objetivo:
+          "Establish precise diagnostic criteria and step-by-step surgical techniques for lumbar disc herniation, comparing tubular microdiscectomy, endoscopy, and standard laminotomy with nerve root decompression.",
+        focoClinico:
+          "Targeted nerve root mobilization, prevention of dural tears, preservation of facet joint integrity, and postoperative recovery pathways.",
+        indicacoes:
+          "Persistent radicular pain refractory to conservative therapy, progressive motor deficit, and cauda equina syndrome.",
+      };
+    }
+    if (locale === "es") {
+      return {
+        objetivo:
+          "Establecer criterios diagnósticos precisos y técnicas quirúrgicas paso a paso para la hernia discal lumbar, comparando microdiscectomía tubular, endoscopia y laminotomía con descompresión radicular.",
+        focoClinico:
+          "Movilización radicular controlada, prevención de fístula dural, preservación de la faceta articular y protocolo de recuperación precoz.",
+        indicacoes:
+          "Dolor radicular persistente refractario al tratamiento conservador, déficit motor progresivo y síndrome de cola de caballo.",
+      };
+    }
+    return {
+      objetivo:
+        "Estabelecer critérios diagnósticos de precisão e técnicas cirúrgicas passo a passo para a hérnia de disco lombar, comparando microdiscectomia tubular, endoscopia e laminotomia com descompressão radicular direta.",
+      focoClinico:
+        "Mobilização radicular atraumática, prevenção de lesão dural, preservação da articulação facetária e reabilitação pós-operatória acelerada.",
+      indicacoes:
+        "Dor radicular refratária ao tratamento conservador, déficit motor progressivo e síndrome da cauda equina.",
+    };
+  }
+
+  if (chapterNum === 62 || chapterNum === 63 || chapterNum === 67) {
+    if (locale === "en") {
+      return {
+        objetivo:
+          "Demonstrate step-by-step endoscopic access techniques (transforaminal, interlaminar, and unilateral biportal endoscopy), anatomical landmarks, instrument handling, and high-definition visualization for neural decompression.",
+        focoClinico:
+          "Minimally invasive targeted bone resection, ligamentum flavum flavectomy, and foraminal decompression with minimal muscle disruption.",
+        indicacoes:
+          "Foraminal, central, and lateral recess lumbar stenosis, recurrent herniations, and foraminal disc pathologies.",
+      };
+    }
+    if (locale === "es") {
+      return {
+        objetivo:
+          "Demostrar el paso a paso técnico de abordajes endoscópicos (transforaminal, interlaminar y biportal unilateral), referencias anatómicas y manejo de instrumental de alta definición para descompresión neural.",
+        focoClinico:
+          "Resección ósea selectiva mínimamente invasiva, flavectomía y descompresión foraminal con preservación de la masa muscular paravertebral.",
+        indicacoes:
+          "Estenosis foraminal y de receso lateral, hernias discales recidivantes y radiculopatías compresivas lumbares.",
+      };
+    }
+    return {
+      objetivo:
+        "Demonstrar o passo a passo técnico das abordagens endoscópicas (transforaminal, interlaminar e biportal unilateral), referências anatômicas, triangulação de instrumental e descompressão neural sob visualização em alta definição.",
+      focoClinico:
+        "Ressecção óssea seletiva minimamente invasiva, flavectomia e descompressão foraminal com mínima agressão aos tecidos moles paravertebrais.",
+      indicacoes:
+        "Estenose foraminal e de recesso lateral, hérnias discais recidivadas e patologias foraminais lumbossacras.",
+    };
+  }
+
+  // 2. Section Level Default Objectives
+  switch (secaoId) {
+    case 1:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Provide solid foundations in embryology, spine biomechanics, surgical anatomy, functional neuroanatomy, and biological principles of bone grafting and implant fixation.",
+          focoClinico:
+            "Three-dimensional anatomical understanding of surgical corridors, neural structures protection, and biomechanical stabilization rules.",
+          indicacoes:
+            "Essential foundational knowledge for diagnostic formulation, surgical access planning, and safe spinal instrumentation.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Proporcionar bases sólidas de embriología, biomecánica espinal, anatomía quirúrgica, neuroanatomía funcional y principios biológicos de injertos y fijación con implantes.",
+          focoClinico:
+            "Comprensión anatómica tridimensional de vías de abordaje, protección de estructuras neurales y reglas biomecánicas de estabilización.",
+          indicacoes:
+            "Conocimiento fundamental indispensable para el diagnóstico, planificación de abordajes y fijación espinal segura.",
+        };
+      }
+      return {
+        objetivo:
+          "Proporcionar bases sólidas em embriologia, biomecânica da coluna, anatomia cirúrgica, neuroanatomia funcional e princípios biológicos de enxertia e fixação com implantes.",
+        focoClinico:
+          "Compreensão anatômica tridimensional das vias de acesso, proteção de estruturas neurais e regras biomecânicas de estabilização segmentar.",
+        indicacoes:
+          "Conhecimento fundamental indispensável para o diagnóstico assertivo, planejamento de acessos e fixação espinhal segura.",
+      };
+
+    case 2:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Systematize physical examination, intraoperative neurophysiological monitoring, advanced magnetic resonance and CT protocols for accurate spinal differential diagnosis.",
+          focoClinico:
+            "High-precision semiological differentiation between spinal disorders, neurological conditions, and peripheral orthopedic pathologies.",
+          indicacoes:
+            "Comprehensive clinical investigation in patients presenting with back pain, radiculopathy, myelopathy, or suspected spinal lesions.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Sistematizar el examen físico, monitorización neurofisiológica intraoperatoria, resonancia magnética avanzada y tomografía computarizada para el diagnóstico diferencial.",
+          focoClinico:
+            "Diferenciación semiológica de alta precisión entre patologías de columna, afecciones neurológicas y condiciones ortopédicas periféricas.",
+          indicacoes:
+            "Investigación clínica exhaustiva en pacientes con dolor axial, radiculopatía, mielopatía o sospecha de lesiones raquídeas.",
+        };
+      }
+      return {
+        objetivo:
+          "Sistematizar o exame físico minucioso, monitorização neurofisiológica intraoperatória, ressonância magnética e tomografia para diagnóstico diferencial de alta acurácia.",
+        focoClinico:
+          "Diferenciação semiológica de precisão entre patologias espinhais, afecções neurológicas e condições ortopédicas periféricas.",
+        indicacoes:
+          "Investigação clínica completa em pacientes com dor axial, radiculopatia, mielopatia ou suspeita de lesões estruturais da coluna.",
+      };
+
+    case 3:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Standardize emergency management of spinal cord injury, polytrauma evaluation, AO Spine/TLICS classification, and surgical criteria for decompression and stabilization.",
+          focoClinico:
+            "Early spinal canal decompression, restoration of spinal alignment, rigid posterior or anterior fixation, and neurological preservation.",
+          indicacoes:
+            "Cervical, thoracic, lumbar, sacral, and pediatric fractures, post-traumatic deformities, and vertebral insufficiency fractures.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Estandarizar el manejo de urgencia en trauma raquimedular, evaluación en politraumatizados, clasificaciones AO Spine/TLICS y criterios quirúrgicos de estabilización.",
+          focoClinico:
+            "Descompresión temprana del canal medular, restauración de la alineación espinal, fijación estable y preservación neurológica.",
+          indicacoes:
+            "Fracturas cervicales, torácicas, lumbares, sacras e infantiles, deformidades postraumáticas y fracturas por insuficiencia.",
+        };
+      }
+      return {
+        objetivo:
+          "Padronizar o atendimento de urgência no trauma raquimedular, avaliação no paciente politraumatizado, classificações AO Spine/TLICS e critérios de estabilização cirúrgica.",
+        focoClinico:
+          "Descompressão precoce do canal vertebral, restauração dos eixos anatômicos, fixação estável e preservação neurológica.",
+        indicacoes:
+          "Fraturas cervicais, torácicas, lombares, sacrais e infantis, deformidades pós-traumáticas e fraturas vertebrais por insuficiência.",
+      };
+
+    case 4:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Detail three-dimensional deformity evaluation, conservative bracing protocols, guided-growth techniques, corrective osteotomies, and fusion levels selection.",
+          focoClinico:
+            "Multiplanar curve correction, balance restoration, avoidance of junctional kyphosis (PJK/DJK), and functional preservation.",
+          indicacoes:
+            "Early-onset scoliosis, adolescent idiopathic scoliosis (AIS), adult deformity, neuromuscular deformities, and spondylolisthesis.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Detallar la evaluación tridimensional de deformidades, protocolos de corsé ortopédico, técnicas de crecimiento guiado, osteotomías y selección de niveles de fusión.",
+          focoClinico:
+            "Corrección multiplanar de curvas, restauración del balance sagital/coronal, prevención de cifosis de unión (PJK) y preservación funcional.",
+          indicacoes:
+            "Escoliosis de inicio temprano, escoliosis idiopática del adolescente, deformidades del adulto, escoliosis neuromuscular y espondilolistesis.",
+        };
+      }
+      return {
+        objetivo:
+          "Detalhar a avaliação tridimensional das deformidades, protocolos de uso de coletes, sistemas de crescimento guiado, osteotomias corretivas e escolha dos níveis de artrodese.",
+        focoClinico:
+          "Correção multiplanar das curvas, restauração do alinhamento global, prevenção de cifose juncional proximal (PJK) e preservação funcional.",
+        indicacoes:
+          "Escoliose de início precoce, escoliose idiopática do adolescente (EIA), deformidades do adulto, escolioses neuromusculares e espondilolisteses.",
+      };
+
+    case 5:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Elucidate degenerative disc cascades, cervical and lumbar canal stenosis, spondylosis, and modern interventional and surgical decompressive solutions.",
+          focoClinico:
+            "Targeted neural decompression, preservation of segmental motion when feasible (arthroplasty), and indicated interbody stabilization.",
+          indicacoes:
+            "Cervical and lumbar disc herniations, degenerative spondylolisthesis, lumbar spinal stenosis, and degenerative cervical myelopathy.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Elucidar la cascada degenerativa discal, estenosis del canal cervical y lumbar, espondilosis y alternativas de tratamiento intervencionista y quirúrgico.",
+          focoClinico:
+            "Descompresión neural selectiva, preservación del movimiento segmentario cuando esté indicado (artroplastia) y estabilización intersomática.",
+          indicacoes:
+            "Hernias de disco cervicales y lumbares, espondilolistesis degenerativa, estenosis de canal y mielopatía cervical espondilótica.",
+        };
+      }
+      return {
+        objetivo:
+          "Elucidar a cascada degenerativa discal e facetária, estenose de canal cervical e lombar, espondilose e alternativas de manejo intervencionista e cirúrgico descompressivo.",
+        focoClinico:
+          "Descompressão neural seletiva, preservação do movimento segmentar quando indicado (artroplastia) e estabilização intersomática planejada.",
+        indicacoes:
+          "Hérnias de disco cervicais e lombares, espondilolistese degenerativa, estenose lombar e mielopatia cervical espondilótica.",
+      };
+
+    case 6:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Address oncological staging, spinal instability neoplastic score (SINS), stereotactic radiation therapy, en bloc resection, and vertebral reconstruction.",
+          focoClinico:
+            "Curative en bloc resection for primary lesions, palliative stabilization and targeted decompression for metastatic spinal disease.",
+          indicacoes:
+            "Primary benign and malignant bone tumors, metastatic cord compression, intramedullary lesions, and neoplastic spinal instability.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Abordar la estadificación oncológica, escala de inestabilidad neoplásica (SINS), radiocirugía estereotáctica, resección en bloque y reconstrucción vertebral.",
+          focoClinico:
+            "Resección en bloque curativa en tumores primarios, estabilización paliativa y descompresión selectiva en metástasis vertebrales.",
+          indicacoes:
+            "Tumores óseos primarios benignos y malignos, compresión medular metastásica, lesiones intramedulares e inestabilidad neoplásica.",
+        };
+      }
+      return {
+        objetivo:
+          "Abordar o estadiamento oncológico, escore de instabilidade neoplásica (SINS), radioterapia estereotáxica, ressecção em bloco (en bloc) e reconstrução vertebral.",
+        focoClinico:
+          "Ressecção curativa em bloco para tumores primários, estabilização paliativa e descompressão seletiva nas metástases vertebrais.",
+        indicacoes:
+          "Tumores ósseos primários benignos e malignos, compressão medular metastática, lesões intramedulares e instabilidade neoplásica.",
+      };
+
+    case 7:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Provide diagnostic algorithms and therapeutic strategies for primary spinal infections (spondylodiscitis), rheumatic disorders, osteoporosis, and metabolic bone disease.",
+          focoClinico:
+            "Etiological pathogen identification, targeted antibiotic regimens, surgical debridement, and rigid fixation in osteoporotic or infected bone.",
+          indicacoes:
+            "Pyogenic and tuberculosis spondylodiscitis, ankylosing spondylitis deformities, severe osteoporosis, and rheumatologic spine disease.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Proporcionar algoritmos diagnósticos y estrategias terapéuticas para infecciones primarias (espondilodiscitis), enfermedades reumáticas y osteoporosis.",
+          focoClinico:
+            "Identificación microbiológica precoz, antibioticoterapia guiada, desbridamiento quirúrgico y fijación en hueso osteoporótico o infectado.",
+          indicacoes:
+            "Espondilodiscitis piógena y tuberculosa, espondilitis anquilosante, osteoporosis severa y complicaciones reumáticas vertebrales.",
+        };
+      }
+      return {
+        objetivo:
+          "Prover algoritmos diagnósticos e estratégias terapêuticas para infecções primárias da coluna (espondilodiscites), doenças reumáticas, osteoporose e afecções metabólicas.",
+        focoClinico:
+          "Identificação microbiológica precoce, antibioticoterapia guiada, desbridamento cirúrgico e fixação estável em osso osteoporótico ou infectado.",
+        indicacoes:
+          "Espondilodiscite piogênica e tuberculosa, espondilite anquilosante, deformidades reumáticas e fraturas por fragilidade óssea.",
+      };
+
+    case 8:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Describe detailed step-by-step surgical techniques, including uniportal and biportal endoscopy, anterior/lateral fusions (ALIF, OLIF, LLIF), instrumentation, and robotics.",
+          focoClinico:
+            "Precision anatomical corridors, safe placement of pedicle screws and interbody cages, 3D spinal osteotomies, and navigation-guided surgery.",
+          indicacoes:
+            "Comprehensive technical execution of primary and revision spinal surgeries across cervical, thoracic, lumbar, and sacral levels.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Describir el paso a paso quirúrgico detallado de técnicas mínimamente invasivas, endoscopia uni y biportal, fusiones intersomáticas (ALIF, OLIF, LLIF), fijaciones y robótica.",
+          focoClinico:
+            "Corredores anatómicos de precisión, inserción segura de tornillos pediculares y cajas intersomáticas, osteotomías y cirugía navegada.",
+          indicacoes:
+            "Ejecución técnica exhaustiva de procedimientos quirúrgicos primarios y de revisión en columnas cervical, torácica, lumbar y sacra.",
+        };
+      }
+      return {
+        objetivo:
+          "Descrever detalhadamente o passo a passo técnico de cirurgias minimamente invasivas, endoscopia uni e biportal, fusões intersomáticas (ALIF, OLIF, LLIF), fixações e robótica.",
+        focoClinico:
+          "Corredores anatômicos de precisão, inserção segura de parafusos pediculares e cages intersomáticos, osteotomias tridimensionais e cirurgia guiada por navegação.",
+        indicacoes:
+          "Execução técnica completa de procedimentos primários e de revisão cirúrgica nos segmentos cervical, torácico, lombar e sacral.",
+      };
+
+    case 9:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Systematize protocols for prevention, intraoperative identification, and evidence-based management of surgical complications in spine procedures.",
+          focoClinico:
+            "Dural tears watertight repair, neuromonitoring alert management, revision of mechanical instrumentation failure, adjacent segment disease, and deep surgical infections.",
+          indicacoes:
+            "Managing perioperative neurological injury, pseudoarthrosis, hardware failure, cerebrospinal fluid leaks, and failed back surgery syndrome.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Sistematizar protocolos de prevención, identificación intraoperatoria y manejo basado en evidencia de complicaciones en cirugía de columna.",
+          focoClinico:
+            "Reparación hermética de fístula dural, respuesta a alertas neuromonitorizadas, revisión de fallas de implantes, enfermedad del nivel adyacente e infecciones.",
+          indicacoes:
+            "Manejo de lesión neurológica perioperatoria, pseudoartrosis, rotura de implantes, fuga de LCR y síndrome de cirugía fallida de columna.",
+        };
+      }
+      return {
+        objetivo:
+          "Sistematizar protocolos preventivos, identificação intraoperatória ágil e manejo baseado em evidências das complicações em cirurgia de coluna.",
+        focoClinico:
+          "Reparação hermética de fístulas liquóricas, resposta a alertas na monitorização neurofisiológica, revisão de falhas mecânicas, doença do nível adjacente e infecções profundas.",
+        indicacoes:
+          "Manejo de lesão neurológica perioperatória, pseudoartrose, soltura/quebra de implantes, fístula liquórica e síndrome pós-laminectomia (failed back surgery syndrome).",
+      };
+
+    case 10:
+    default:
+      if (locale === "en") {
+        return {
+          objetivo:
+            "Examine transversal clinical themes including craniovertebral junction disorders, multimodal pain protocols, specialized spinal anesthesia, blood preservation, and PROMs.",
+          focoClinico:
+            "Multidisciplinary perioperative care, surgical patient safety, tranexamic acid protocols, and clinical outcome metrics evaluation.",
+          indicacoes:
+            "Comprehensive perioperative optimization, anesthesia planning, post-surgical pain therapy, and healthcare quality assessment.",
+        };
+      }
+      if (locale === "es") {
+        return {
+          objetivo:
+            "Examinar temas clínicos transversales como la unión craneovertebral, manejo multimodal del dolor, anestesia especializada, preservación hemática y PROMs.",
+          focoClinico:
+            "Cuidado perioperatorio multidisciplinario, seguridad del paciente quirúrgico, protocolos de ácido tranexámico y evaluación de resultados clínicos.",
+          indicacoes:
+            "Optimización perioperatoria integral, planificación anestésica, analgesia postoperatoria y medición de calidad asistencial.",
+        };
+      }
+      return {
+        objetivo:
+          "Examinar temas clínicos transversais essenciais como anormalidades da transição craniocervical, manejo multimodal da dor aguda/crônica, anestesiologia especializada, controle de sangramento e PROMs.",
+        focoClinico:
+          "Cuidado perioperatório multidisciplinar, segurança do paciente cirúrgico, protocolos de preservação sanguínea e mensuração de desfechos em saúde.",
+        indicacoes:
+          "Otimização clínica pré e pós-operatória, planejamento anestésico, manejo de dor de difícil controle e auditoria de qualidade cirúrgica.",
+      };
+  }
+}
