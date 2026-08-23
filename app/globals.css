@@ -113,6 +113,14 @@ svg {
   font-weight: 700;
 }
 
+@media (max-width: 1240px) {
+  .brand-text,
+  .brand > div,
+  .modern-brand-text {
+    display: none !important;
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;

@@ -64,11 +64,11 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             alt="Logo Sociedade Brasileira de Coluna"
             style={{ height: 36, width: "auto", objectFit: "contain" }}
           />
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.15, color: "#e2e8f0", letterSpacing: "-0.01em" }}>
+          <div className="brand-text hidden min-[1240px]:flex" style={{ flexDirection: "column", justifyContent: "center" }}>
+            <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.15, color: "#e2e8f0", letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
               {dict.brand.line1}
             </span>
-            <strong style={{ fontSize: 15.5, fontWeight: 700, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em" }}>
+            <strong style={{ fontSize: 15.5, fontWeight: 700, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>
               {dict.brand.line2}
             </strong>
           </div>

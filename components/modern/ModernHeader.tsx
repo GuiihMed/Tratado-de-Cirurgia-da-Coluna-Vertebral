@@ -34,7 +34,7 @@ export default function ModernHeader({
             alt="Logo Sociedade Brasileira de Coluna (SBC)"
             style={{ height: 38, width: "auto", objectFit: "contain" }}
           />
-          <div className="modern-brand-text" style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 12 }}>
+          <div className="modern-brand-text hidden min-[1240px]:block" style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 12 }}>
             <span>Tratado Oficial</span>
             <strong>Cirurgia da Coluna Vertebral</strong>
           </div>
