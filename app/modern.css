@@ -1280,14 +1280,61 @@
   .author-accordion-container {
     flex-direction: column;
     min-height: auto;
-    gap: 14px;
+    gap: 28px;
   }
 
   .author-accordion-card {
-    min-height: 320px;
-    height: 320px;
+    position: relative !important;
     flex: none !important;
-    border-radius: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: auto !important;
+    height: auto !important;
+    border-radius: 22px !important;
+    background: linear-gradient(180deg, #021a3a 0%, #001229 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 12px 35px rgba(0, 15, 45, 0.25) !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  .author-accordion-card.active,
+  .author-accordion-card:hover {
+    flex: none !important;
+    transform: none !important;
+    box-shadow: 0 14px 40px rgba(0, 15, 45, 0.35) !important;
+  }
+
+  .author-accordion-bg {
+    position: relative !important;
+    width: 100% !important;
+    height: 320px !important;
+    max-height: 360px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+
+  .author-accordion-overlay {
+    position: absolute !important;
+    top: 200px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 120px !important;
+    background: linear-gradient(180deg, rgba(2, 26, 58, 0) 0%, rgba(2, 26, 58, 0.75) 50%, #021a3a 100%) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+  }
+
+  .author-accordion-content {
+    position: relative !important;
+    z-index: 10 !important;
+    padding: 0 20px 24px 20px !important;
+    margin-top: -12px !important;
+    background: transparent !important;
+    width: 100% !important;
   }
 
   .author-default-label {
@@ -1295,9 +1342,16 @@
   }
 
   .author-accordion-glass-box {
-    display: block !important;
-    background: rgba(0, 16, 38, 0.88) !important;
-    padding: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: rgba(0, 24, 60, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 18px !important;
+    padding: 22px 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+    animation: none !important;
   }
 
   .modern-video-card {
@@ -1522,6 +1576,18 @@
   .modern-filter-chip {
     padding: 9px 16px !important;
     font-size: 13.5px !important;
+  }
+
+  .author-accordion-bg {
+    height: 280px !important;
+  }
+
+  .author-accordion-content {
+    padding: 0 14px 18px 14px !important;
+  }
+
+  .author-accordion-glass-box {
+    padding: 18px 16px !important;
   }
 }
 
