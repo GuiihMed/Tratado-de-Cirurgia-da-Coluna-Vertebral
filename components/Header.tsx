@@ -10,7 +10,7 @@ import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface HeaderProps {
   locale: Locale;
-  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "other";
+  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "debate" | "other" | string;
 }
 
 export default function Header({ locale, currentPage = "home" }: HeaderProps) {
