@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
+import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface HeaderProps {
   locale: Locale;
@@ -16,6 +17,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   const dict = getDictionary(locale);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
   const [userAccount, setUserAccount] = useState<{ email: string; nome?: string; role?: string } | null>(null);
 
   useEffect(() => {
@@ -112,9 +114,32 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           >
             <span>{dict.nav.references}</span>
           </Link>
-          <Link href={`/${locale}#debate`}>
+          <button
+            type="button"
+            onClick={() => setMiniPlayerOpen(true)}
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              color: "#ffffff",
+              font: "inherit",
+              fontSize: 14,
+              fontWeight: 600,
+              padding: "6px 12px",
+              borderRadius: 8,
+              transition: "all 0.2s ease",
+            }}
+            className="hover:text-rose-400"
+            title="Assistir Videocast Oficial (Mini Player)"
+          >
+            <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#f52238", display: "grid", placeItems: "center", fontSize: 8.5, color: "#fff", flexShrink: 0 }}>
+              ▶
+            </span>
             <span>{dict.nav.debate}</span>
-          </Link>
+          </button>
         </nav>
 
         {/* Right Side: Onde Comprar + Idiomas */}
@@ -276,6 +301,14 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </div>
         </div>
       )}
+
+      {/* Floating / Modal Mini Player */}
+      <DebateMiniPlayer
+        locale={locale}
+        isOpen={miniPlayerOpen}
+        onClose={() => setMiniPlayerOpen(false)}
+        isModern={false}
+      />
     </header>
   );
 }

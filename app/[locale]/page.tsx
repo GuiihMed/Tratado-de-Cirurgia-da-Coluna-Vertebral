@@ -306,42 +306,16 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
-                {/* 1. Imagem / Thumbnail com Arte Oficial + Player Central + Episódio 01 por cima */}
-                <div className="lg:col-span-6 order-1 flex justify-center">
-                  <Link
-                    href={`/${locale}/capitulo/8`}
-                    className="relative w-full max-w-lg lg:max-w-full rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] flex items-center justify-center border border-slate-300 group transition-transform duration-300 hover:scale-[1.02]"
-                    style={{ textDecoration: "none" }}
-                  >
-                    {/* Official Artwork Background Image */}
-                    <img
-                      src="/assets/debate-artwork.png"
-                      alt="Tratado em Debate - Episódio 01"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                {/* 1. Player do Vimeo Incorporado */}
+                <div className="lg:col-span-6 order-1 flex justify-center w-full">
+                  <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] border border-slate-300 bg-black">
+                    <iframe
+                      src="https://player.vimeo.com/video/1220279985?badge=0&autopause=0&player_id=0&app_id=58479"
+                      className="absolute inset-0 w-full h-full border-0"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                      title="Tratado em Debate - Episódio 01"
                     />
-
-                    {/* Gradient Overlay for high-contrast visibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/30 pointer-events-none" />
-
-                    {/* Episode 01 Badge in bottom-left */}
-                    <div className="absolute left-5 bottom-4 z-10 text-left">
-                      <small className="block text-[11px] font-bold uppercase tracking-widest text-slate-300 drop-shadow">
-                        {dict.debate.ep || "EPISÓDIO"}
-                      </small>
-                      <strong className="block text-4xl sm:text-5xl font-bold text-white leading-none drop-shadow-md">
-                        {dict.debate.epNumber || "01"}
-                      </strong>
-                    </div>
-
-                    {/* Central Play Button */}
-                    <div className="relative z-10 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border-2 border-white shadow-2xl group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
-                        <svg className="w-8 h-8 text-white ml-1 fill-current" viewBox="0 0 24 24">
-                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                      </div>
-                    </div>
-                  </Link>
+                  </div>
                 </div>
 
                 {/* 2. Textos e Informações do Episódio */}

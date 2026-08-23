@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
+import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface ModernHeaderProps {
   locale: Locale;
@@ -17,6 +18,7 @@ export default function ModernHeader({
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [tratadoDropdownOpen, setTratadoDropdownOpen] = useState(false);
+  const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
 
   const getLocalePath = (targetLocale: Locale) => {
     if (!pathname) return `/${targetLocale}/home-new`;
@@ -169,9 +171,38 @@ export default function ModernHeader({
           >
             {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
           </Link>
-          <Link href={`/${locale}/home-new#debate`} className="modern-nav-link">
-            {locale === "en" ? "Debate Cast" : "Tratado em Debate"}
-          </Link>
+          <button
+            type="button"
+            onClick={() => setMiniPlayerOpen(true)}
+            className="modern-nav-link"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+            title={locale === "en" ? "Watch Official Videocast (Mini Player)" : locale === "es" ? "Ver Videocast Oficial (Mini Player)" : "Assistir Videocast Oficial (Mini Player)"}
+          >
+            <span
+              style={{
+                width: 17,
+                height: 17,
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, #f52238 0%, #b80f21 100%)",
+                display: "grid",
+                placeItems: "center",
+                fontSize: 8.5,
+                color: "#fff",
+                boxShadow: "0 0 8px rgba(245, 34, 56, 0.6)",
+                flexShrink: 0,
+              }}
+            >
+              ▶
+            </span>
+            <span>{locale === "en" ? "Debate Cast" : "Tratado em Debate"}</span>
+          </button>
           <Link
             href={`/${locale}/autores-new`}
             className={`modern-nav-link ${currentPage === "autores-new" || pathname?.includes("/autores-new") || pathname?.includes("/autor-new") ? "active" : ""}`}
@@ -294,12 +325,45 @@ export default function ModernHeader({
             >
               {locale === "en" ? "Interactive Index" : locale === "es" ? "Índice Interactivo" : "Índice Interativo"}
             </Link>
-            <Link
-              href={`/${locale}/home-new#debate`}
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setMiniPlayerOpen(true);
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "10px 14px",
+                borderRadius: 10,
+                background: "rgba(245, 34, 56, 0.15)",
+                border: "1px solid rgba(245, 34, 56, 0.35)",
+                color: "#ff8290",
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: "pointer",
+                textAlign: "left",
+                width: "100%",
+              }}
             >
-              {locale === "en" ? "Debate Cast" : "Tratado em Debate"}
-            </Link>
+              <span
+                style={{
+                  width: 22,
+                  height: 22,
+                  borderRadius: "50%",
+                  background: "#f52238",
+                  display: "grid",
+                  placeItems: "center",
+                  fontSize: 10,
+                  color: "#fff",
+                  flexShrink: 0,
+                }}
+              >
+                ▶
+              </span>
+              <span>{locale === "en" ? "Watch Debate Cast (Mini Player)" : locale === "es" ? "Ver Tratado en Debate (Mini Player)" : "Assistir Tratado em Debate (Mini Player)"}</span>
+            </button>
             <Link
               href={`/${locale}/autores-new`}
               className={pathname?.includes("/autores-new") ? "active" : ""}
@@ -354,6 +418,14 @@ export default function ModernHeader({
           </div>
         </div>
       )}
+
+      {/* Floating / Modal Mini Player */}
+      <DebateMiniPlayer
+        locale={locale}
+        isOpen={miniPlayerOpen}
+        onClose={() => setMiniPlayerOpen(false)}
+        isModern={true}
+      />
     </div>
   );
 }
