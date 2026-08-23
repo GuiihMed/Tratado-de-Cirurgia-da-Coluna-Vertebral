@@ -391,7 +391,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
         <section style={{ padding: "40px 0 60px" }}>
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* LEFT COLUMN: MAIN SCIENTIFIC CONTENT */}
-            <div className="lg:col-span-8 flex flex-col gap-6">
+            <div className="lg:col-span-8 flex flex-col gap-6 min-w-0 w-full">
               {/* CARD 1: RESUMO DO CAPÍTULO */}
               <article
                 style={{
@@ -752,7 +752,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
               </article>
 
               {/* BOTTOM ROW: TRATADO EM DEBATE & CAPÍTULOS RELACIONADOS */}
-              <div id="debate" className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div id="debate" className="grid grid-cols-1 md:grid-cols-2 gap-5 min-w-0 w-full">
                 {/* Tratado em Debate Banner */}
                 <div
                   style={{
@@ -763,6 +763,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    minWidth: 0,
+                    width: "100%",
+                    boxSizing: "border-box",
                   }}
                 >
                   <div>
@@ -812,34 +815,57 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    minWidth: 0,
+                    width: "100%",
+                    boxSizing: "border-box",
+                    overflow: "hidden",
                   }}
                 >
-                  <div>
+                  <div style={{ minWidth: 0, width: "100%" }}>
                     <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 14, display: "flex", alignItems: "center", gap: 6 }}>
                       <span>🔗</span>
                       <span>{locale === "en" ? "Related chapters" : locale === "es" ? "Capítulos relacionados" : "Capítulos relacionados"}</span>
                     </div>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10, marginBottom: 16, minWidth: 0, width: "100%" }}>
                       {relatedChapters.map((rc) => (
                         <Link
                           key={rc.numero}
                           href={`/${locale}/capitulo/${rc.numero}`}
                           style={{
-                            background: "rgba(255, 255, 255, 0.06)",
-                            border: "1px solid rgba(255, 255, 255, 0.12)",
+                            background: "rgba(255, 255, 255, 0.08)",
+                            border: "1px solid rgba(255, 255, 255, 0.15)",
                             borderRadius: 8,
-                            padding: "10px",
+                            padding: "10px 8px",
                             textAlign: "center",
                             textDecoration: "none",
                             color: "#fff",
                             display: "flex",
                             flexDirection: "column",
+                            alignItems: "center",
                             justifyContent: "center",
+                            minWidth: 0,
+                            width: "100%",
+                            boxSizing: "border-box",
+                            transition: "background 0.2s ease, border-color 0.2s ease",
                           }}
+                          className="hover:bg-white/15 hover:border-white/30"
                         >
-                          <div style={{ fontSize: 14, marginBottom: 2 }}>📖</div>
-                          <div style={{ fontSize: 11, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          <div style={{ fontSize: 14, marginBottom: 4 }}>📖</div>
+                          <div
+                            style={{
+                              fontSize: 11,
+                              fontWeight: 700,
+                              lineHeight: 1.25,
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
+                              wordBreak: "break-word",
+                              width: "100%",
+                              textAlign: "center",
+                            }}
+                          >
                             {locale === "en" ? (rc.titulo_en || rc.titulo_pt) : locale === "es" ? (rc.titulo_es || rc.titulo_pt) : rc.titulo_pt}
                           </div>
                         </Link>
@@ -856,7 +882,9 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       fontWeight: 700,
                       color: "#94b8db",
                       textDecoration: "none",
+                      paddingTop: "6px",
                     }}
+                    className="hover:text-white"
                   >
                     {locale === "en" ? "View all chapters ›" : locale === "es" ? "Ver todos los capítulos ›" : "Ver todos os capítulos ›"}
                   </Link>
