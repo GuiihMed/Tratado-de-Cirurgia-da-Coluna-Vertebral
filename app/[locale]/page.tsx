@@ -301,7 +301,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 {/* 1. Imagem / Thumbnail com Arte Oficial + Player Central + Episódio 01 por cima */}
                 <div className="lg:col-span-6 order-1 flex justify-center">
                   <Link
-                    href={`/${locale}/video`}
+                    href={`/${locale}/capitulo/8`}
                     className="relative w-full max-w-lg lg:max-w-full rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] flex items-center justify-center border border-slate-300 group transition-transform duration-300 hover:scale-[1.02]"
                     style={{ textDecoration: "none" }}
                   >
@@ -357,7 +357,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
                   <div>
                     <Link
-                      href={`/${locale}/video`}
+                      href={`/${locale}/capitulo/8`}
                       className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
                       style={{ textDecoration: "none" }}
                     >

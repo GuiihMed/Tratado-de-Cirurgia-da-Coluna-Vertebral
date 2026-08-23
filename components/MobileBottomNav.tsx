@@ -14,7 +14,7 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
   const isCapitulos = pathname?.includes("/indice") || pathname?.includes("/capitulo");
   const isAutores = pathname?.includes("/autor") || pathname?.includes("/autores");
-  const isDebate = pathname?.includes("/video");
+  const isDebate = false;
 
   const labels = {
     pt: {
