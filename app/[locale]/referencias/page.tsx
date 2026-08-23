@@ -256,18 +256,20 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                 {/* 4. Indexação */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-teal-400 mb-1.5"><use href="#i-globe"></use></svg>
-                  <div className="text-xs text-slate-200 font-bold leading-tight mt-0.5">
-                    <div>DOI &amp; PubMed</div>
-                    <div>Indexação</div>
-                  </div>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-0.5">DOI &amp; PubMed</strong>
+                  <span className="text-xs text-slate-300 font-semibold mt-0.5">
+                    {locale === "en" ? "scientific index" : locale === "es" ? "indexación" : "indexação científica"}
+                  </span>
                 </div>
 
-                {/* 5. Citações */}
+                {/* 5. Citações / Referências */}
                 <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
                   <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
-                  <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">340+</strong>
+                  <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-0.5">
+                    {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
+                  </strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
-                    {locale === "en" ? "citations" : locale === "es" ? "citas" : "referências"}
+                    {locale === "en" ? "by chapter" : locale === "es" ? "por capítulo" : "por capítulo"}
                   </span>
                 </div>
 
