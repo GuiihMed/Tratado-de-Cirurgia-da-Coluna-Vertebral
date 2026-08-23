@@ -404,7 +404,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
   };
 
   return (
-    <div style={{ background: "#f8fbfe", color: "var(--ink)", minHeight: "100vh" }}>
+    <div style={{ background: "#021226", color: "var(--ink)", minHeight: "100vh" }}>
       <ModernHeader locale={locale} currentPage="home-new" />
 
       <main>

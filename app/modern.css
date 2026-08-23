@@ -1241,8 +1241,8 @@
 
   .modern-hero {
     min-height: auto;
-    margin-top: -65px;
-    padding-top: 95px;
+    margin-top: -88px;
+    padding-top: 115px;
     padding-bottom: 50px;
   }
 
@@ -1369,8 +1369,8 @@
 /* SMARTPHONES (768px and below) */
 @media (max-width: 768px) {
   .modern-hero {
-    margin-top: -65px !important;
-    padding-top: 100px !important;
+    margin-top: -80px !important;
+    padding-top: 108px !important;
     padding-bottom: 50px !important;
   }
 
@@ -1543,6 +1543,11 @@
 
   .modern-brand-text span {
     font-size: 10.5px;
+  }
+
+  .modern-hero {
+    margin-top: -72px !important;
+    padding-top: 96px !important;
   }
 
   .modern-hero-copy h1,
