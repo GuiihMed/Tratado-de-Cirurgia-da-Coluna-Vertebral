@@ -13,7 +13,6 @@ import {
   Maximize,
   Minimize,
   Sparkles,
-  Layers,
   PictureInPicture,
 } from "lucide-react";
 import { Locale } from "@/lib/types";
@@ -28,14 +27,6 @@ interface CustomVimeoPlayerProps {
   className?: string;
   aspectRatio?: string;
 }
-
-const CHAPTER_MARKERS = [
-  { time: 0, label: "Abertura & Apresentação", pct: 0 },
-  { time: 480, label: "Parâmetros do Equilíbrio Sagital", pct: 17 },
-  { time: 1140, label: "Incidência Pélvica & Lordose Lombar", pct: 40 },
-  { time: 1820, label: "Indicações de Osteotomia", pct: 64 },
-  { time: 2450, label: "Discussão de Casos Complexos", pct: 86 },
-];
 
 export default function CustomVimeoPlayer({
   videoId = "1220279985",
@@ -62,7 +53,6 @@ export default function CustomVimeoPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
-  const [showChapterMenu, setShowChapterMenu] = useState(false);
   const [hoverTime, setHoverTime] = useState<{ time: number; pct: number } | null>(null);
   const [seeking, setSeeking] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -201,16 +191,6 @@ export default function CustomVimeoPlayer({
     }
   };
 
-  const handleSeekToMarker = async (time: number) => {
-    if (playerRef.current) {
-      try {
-        await playerRef.current.setCurrentTime(time);
-        await playerRef.current.play();
-        setShowChapterMenu(false);
-      } catch (e) {}
-    }
-  };
-
   const handleToggleFullscreen = () => {
     if (!containerRef.current) return;
     if (!document.fullscreenElement) {
@@ -236,7 +216,7 @@ export default function CustomVimeoPlayer({
     if (hideControlsTimer.current) clearTimeout(hideControlsTimer.current);
     if (isPlaying) {
       hideControlsTimer.current = setTimeout(() => {
-        if (!showSettings && !showChapterMenu) {
+        if (!showSettings) {
           setControlsVisible(false);
         }
       }, 3000);
@@ -244,7 +224,7 @@ export default function CustomVimeoPlayer({
   };
 
   const handleMouseLeave = () => {
-    if (isPlaying && !showSettings && !showChapterMenu) {
+    if (isPlaying && !showSettings) {
       setControlsVisible(false);
     }
   };
@@ -298,7 +278,6 @@ export default function CustomVimeoPlayer({
     clickToPlay: locale === "en" ? "Watch Videocast" : locale === "es" ? "Ver Videocast" : "Assistir Videocast",
     popOut: locale === "en" ? "Mini Player" : locale === "es" ? "Mini Player" : "Mini Player",
     speed: locale === "en" ? "Speed" : locale === "es" ? "Velocidad" : "Velocidade",
-    chapters: locale === "en" ? "Moments" : locale === "es" ? "Momentos" : "Momentos",
   };
 
   return (
@@ -382,7 +361,7 @@ export default function CustomVimeoPlayer({
             </span>
           </div>
 
-          {/* Bottom Episode Line (Hidden on tiny height to prevent cut-off, visible on large screens) */}
+          {/* Bottom Episode Line (Hidden on compact heights) */}
           <div className="hidden lg:flex items-end justify-between gap-4">
             <div className="min-w-0">
               <h3 className="text-sm sm:text-base font-extrabold text-white leading-tight drop-shadow-md truncate">
@@ -438,7 +417,7 @@ export default function CustomVimeoPlayer({
         </div>
       )}
 
-      {/* 5. Bottom Custom Controller Bar (Fully responsive) */}
+      {/* 5. Bottom Custom Controller Bar */}
       {hasStarted && (
         <div
           className={`absolute bottom-0 inset-x-0 z-30 px-2.5 sm:px-4 py-2 sm:py-3.5 bg-gradient-to-t from-black/95 via-black/80 to-transparent transition-opacity duration-300 ${
@@ -479,16 +458,6 @@ export default function CustomVimeoPlayer({
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-
-            {/* Chapter Markers on Timeline */}
-            {CHAPTER_MARKERS.map((mark, i) => (
-              <div
-                key={i}
-                className="absolute w-1 sm:w-1.5 h-2.5 sm:h-3 bg-white/60 hover:bg-white hover:scale-125 rounded-full z-10 transition-transform -translate-x-1/2"
-                style={{ left: `${mark.pct}%` }}
-                title={mark.label}
-              />
-            ))}
 
             {/* Scrubber Handle */}
             <div
@@ -579,57 +548,12 @@ export default function CustomVimeoPlayer({
               </div>
             </div>
 
-            {/* Right Controls: Moments, Speed, Fullscreen */}
+            {/* Right Controls: Speed, Fullscreen */}
             <div className="flex items-center gap-1 sm:gap-1.5 relative shrink-0">
-              {/* Chapters / Moments Button */}
-              <div className="relative">
-                <button
-                  onClick={() => {
-                    setShowChapterMenu(!showChapterMenu);
-                    setShowSettings(false);
-                  }}
-                  className={`px-1.5 sm:px-2 py-1 rounded text-[11px] font-semibold flex items-center gap-1 transition-colors ${
-                    showChapterMenu
-                      ? "bg-rose-600 text-white"
-                      : "bg-white/10 hover:bg-white/20 text-slate-200"
-                  }`}
-                  title="Momentos em Destaque"
-                >
-                  <Layers size={13} />
-                  <span className="hidden md:inline">{t.chapters}</span>
-                </button>
-
-                {/* Chapter Menu Dropdown */}
-                {showChapterMenu && (
-                  <div className="absolute bottom-9 right-0 w-60 sm:w-72 bg-slate-900/95 backdrop-blur-xl border border-white/15 rounded-xl p-1.5 shadow-2xl z-50 animate-in fade-in slide-in-from-bottom-2">
-                    <div className="text-[10.5px] font-bold text-slate-400 uppercase px-2.5 py-1 border-b border-white/10 mb-1">
-                      {t.chapters}
-                    </div>
-                    <div className="flex flex-col gap-0.5 max-h-48 overflow-y-auto">
-                      {CHAPTER_MARKERS.map((mark, i) => (
-                        <button
-                          key={i}
-                          onClick={() => handleSeekToMarker(mark.time)}
-                          className="flex items-center justify-between px-2.5 py-1.5 rounded text-left text-[11px] text-slate-200 hover:bg-white/10 transition-colors"
-                        >
-                          <span className="truncate pr-2">{mark.label}</span>
-                          <span className="font-mono text-[10px] text-rose-400 font-bold shrink-0">
-                            {formatTime(mark.time)}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
               {/* Speed Settings Button */}
               <div className="relative">
                 <button
-                  onClick={() => {
-                    setShowSettings(!showSettings);
-                    setShowChapterMenu(false);
-                  }}
+                  onClick={() => setShowSettings(!showSettings)}
                   className={`px-1.5 sm:px-2 py-1 rounded text-[11px] font-bold transition-colors ${
                     showSettings || playbackRate !== 1
                       ? "bg-rose-600 text-white"
