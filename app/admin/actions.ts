@@ -212,7 +212,7 @@ export async function salvarAutorAction(
       bio_en: bioEnRaw ? sanitizeTextarea(bioEnRaw) : null,
       bio_es: bioEsRaw ? sanitizeTextarea(bioEsRaw) : null,
       especialidades: sanitize(especialidadesRaw || ""),
-      foto_url: sanitize(fotoUrlRaw || "/assets/edson-pudles.png"),
+      foto_url: sanitize(fotoUrlRaw || "/assets/avatar-placeholder.png"),
       updated_at: new Date().toISOString(),
     };
 

@@ -85,7 +85,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               role: a.cargo,
               institution: a.instituicao,
               highlight: a.destaque || "",
-              photo: a.foto_url || "/assets/edson-pudles.png",
+              photo: a.foto_url || "/assets/avatar-placeholder.png",
               bio: a.bio_pt,
               specialties: a.especialidades
                 ? a.especialidades.split(",").map((s: string) => s.trim()).filter(Boolean)
@@ -107,7 +107,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
               role: a.cargo,
               institution: a.instituicao,
               highlight: a.destaque || "",
-              photo: a.foto_url || "/assets/edson-pudles.png",
+              photo: a.foto_url || "/assets/avatar-placeholder.png",
               bio: a.bio_pt,
               specialties: a.especialidades
                 ? a.especialidades.split(",").map((s: string) => s.trim()).filter(Boolean)

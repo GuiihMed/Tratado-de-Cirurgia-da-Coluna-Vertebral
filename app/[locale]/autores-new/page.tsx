@@ -75,7 +75,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
               role: a.cargo,
               institution: a.instituicao,
               highlight: a.destaque || "",
-              photo: a.foto_url || "/assets/edson-pudles.png",
+              photo: a.foto_url || "/assets/avatar-placeholder.png",
               bio: a.bio_pt,
               titulacao: a.instituicao || "Membro Titular SBC",
               specialties: a.especialidades

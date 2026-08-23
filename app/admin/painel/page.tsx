@@ -941,7 +941,7 @@ export default function AdminPainelPage() {
     setAuthorCargo(author.cargo || "");
     setAuthorInstituicao(author.instituicao || "");
     setAuthorDestaque(author.destaque || "");
-    setAuthorFotoUrl(author.foto_url || "/assets/edson-pudles.png");
+    setAuthorFotoUrl(author.foto_url || "/assets/avatar-placeholder.png");
     setAuthorBioPt(author.bio_pt || "");
     setAuthorEspecialidades(author.especialidades || "");
     window.scrollTo({ top: 220, behavior: "smooth" });
