@@ -318,6 +318,10 @@ export default function AdminPainelPage() {
   }, []);
 
   const switchTab = (tab: AdminTab) => {
+    if (tab === "usuarios" && currentUserRole !== "super_admin") {
+      setActiveTab("dashboard");
+      return;
+    }
     setActiveTab(tab);
     setMobileSidebarOpen(false);
     try {
@@ -1303,40 +1307,42 @@ export default function AdminPainelPage() {
             </div>
           </div>
 
-          {/* Category 3: CONTROLE DE ACESSO */}
-          <div>
-            <div style={{ fontSize: 10.5, fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
-              Controle &amp; Segurança
+          {/* Category 3: CONTROLE DE ACESSO - APENAS SUPER ADMIN */}
+          {currentUserRole === "super_admin" && (
+            <div>
+              <div style={{ fontSize: 10.5, fontWeight: 700, color: textMuted, textTransform: "uppercase", letterSpacing: "0.08em", padding: "0 10px", marginBottom: 8 }}>
+                Controle &amp; Segurança
+              </div>
+              <button
+                onClick={() => switchTab("usuarios")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "10px 14px",
+                  borderRadius: 12,
+                  border: activeTab === "usuarios" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                  background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
+                  color: activeTab === "usuarios" ? "#ffffff" : textMuted,
+                  fontSize: 13.5,
+                  fontWeight: activeTab === "usuarios" ? 800 : 600,
+                  cursor: "pointer",
+                  boxShadow: activeTab === "usuarios" ? "0 6px 20px rgba(124, 58, 237, 0.35)" : "none",
+                  textAlign: "left",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <ShieldCheck size={18} />
+                <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
+                {usuarios.filter((u) => u.status === "pendente").length > 0 && (
+                  <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
+                    {usuarios.filter((u) => u.status === "pendente").length}
+                  </span>
+                )}
+              </button>
             </div>
-            <button
-              onClick={() => switchTab("usuarios")}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                padding: "10px 14px",
-                borderRadius: 12,
-                border: activeTab === "usuarios" ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
-                background: activeTab === "usuarios" ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)" : "transparent",
-                color: activeTab === "usuarios" ? "#ffffff" : textMuted,
-                fontSize: 13.5,
-                fontWeight: activeTab === "usuarios" ? 800 : 600,
-                cursor: "pointer",
-                boxShadow: activeTab === "usuarios" ? "0 6px 20px rgba(124, 58, 237, 0.35)" : "none",
-                textAlign: "left",
-                transition: "all 0.2s ease",
-              }}
-            >
-              <ShieldCheck size={18} />
-              <span style={{ flex: 1 }}>Usuários &amp; Acessos</span>
-              {usuarios.filter((u) => u.status === "pendente").length > 0 && (
-                <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 999, background: "#f43f5e", color: "#fff" }}>
-                  {usuarios.filter((u) => u.status === "pendente").length}
-                </span>
-              )}
-            </button>
-          </div>
+          )}
 
 
         </div>
@@ -1511,6 +1517,7 @@ export default function AdminPainelPage() {
               chapters={chapters}
               authors={authors}
               usuarios={usuarios}
+              currentUserRole={currentUserRole}
               onNavigateToTab={(t) => switchTab(t)}
               onFilterSection={(sId) => {
                 setFilterSecao(sId);
@@ -2407,8 +2414,8 @@ export default function AdminPainelPage() {
             );
           })()}
 
-          {/* ================= ABA 3: USUÁRIOS E PERMISSÕES ================= */}
-          {activeTab === "usuarios" && (
+          {/* ================= ABA 3: USUÁRIOS E PERMISSÕES (EXCLUSIVO SUPER ADMIN) ================= */}
+          {activeTab === "usuarios" && currentUserRole === "super_admin" && (
             <UsersManagementTab
               usuarios={usuarios}
               loading={loadingUsuarios}

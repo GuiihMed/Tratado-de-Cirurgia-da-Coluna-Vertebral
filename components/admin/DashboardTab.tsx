@@ -33,6 +33,7 @@ interface DashboardTabProps {
   onOpenNewAuthor: () => void;
   isSupabaseOnline: boolean;
   theme?: "dark" | "light";
+  currentUserRole?: string;
 }
 
 const SECTION_COLORS: Record<string, { bgDark: string; borderDark: string; textDark: string; bgLight: string; borderLight: string; textLight: string; bar: string }> = {
@@ -57,6 +58,7 @@ export default function DashboardTab({
   onOpenNewChapter,
   onOpenNewAuthor,
   theme = "dark",
+  currentUserRole = "super_admin",
 }: DashboardTabProps) {
   const isDark = theme === "dark";
   const totalChapters = chapters.length;
@@ -199,42 +201,44 @@ export default function DashboardTab({
               <ArrowRight size={15} />
             </button>
 
-            <button
-              onClick={() => onNavigateToTab("usuarios")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 9,
-                padding: "11px 20px",
-                borderRadius: 12,
-                background: "rgba(255, 255, 255, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "#f1f5f9",
-                fontWeight: 700,
-                fontSize: 13.5,
-                cursor: "pointer",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-              }}
-            >
-              <Users size={16} color="#cbd5e1" />
-              <span>Usuários ({usuarios.length})</span>
-              {pendingUsers > 0 && (
-                <span
-                  style={{
-                    padding: "2px 8px",
-                    borderRadius: 999,
-                    background: "rgba(245, 158, 11, 0.3)",
-                    color: "#fcd34d",
-                    border: "1px solid rgba(245, 158, 11, 0.5)",
-                    fontSize: 11,
-                    fontWeight: 700,
-                  }}
-                >
-                  {pendingUsers} pendentes
-                </span>
-              )}
-            </button>
+            {currentUserRole === "super_admin" && (
+              <button
+                onClick={() => onNavigateToTab("usuarios")}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 9,
+                  padding: "11px 20px",
+                  borderRadius: 12,
+                  background: "rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "#f1f5f9",
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  cursor: "pointer",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                }}
+              >
+                <Users size={16} color="#cbd5e1" />
+                <span>Usuários ({usuarios.length})</span>
+                {pendingUsers > 0 && (
+                  <span
+                    style={{
+                      padding: "2px 8px",
+                      borderRadius: 999,
+                      background: "rgba(245, 158, 11, 0.3)",
+                      color: "#fcd34d",
+                      border: "1px solid rgba(245, 158, 11, 0.5)",
+                      fontSize: 11,
+                      fontWeight: 700,
+                    }}
+                  >
+                    {pendingUsers} pendentes
+                  </span>
+                )}
+              </button>
+            )}
 
             <Link
               href="/pt/home-new"
