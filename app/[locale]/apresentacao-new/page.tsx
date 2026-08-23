@@ -473,7 +473,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
                     <span style={{ color: "#94a3b8" }}>Autores e Colaboradores</span>
-                    <strong style={{ color: "#fff" }}>198 Especialistas</strong>
+                    <strong style={{ color: "#fff" }}>204 Especialistas</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
                     <span style={{ color: "#94a3b8" }}>Chancela Oficial</span>
@@ -504,6 +504,46 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                   <span>Adquirir no site da DiLivros</span>
                   <ExternalLink size={14} />
                 </a>
+              </div>
+
+              {/* Autor da Apresentação */}
+              <div
+                style={{
+                  padding: 28,
+                  borderRadius: 18,
+                  background: "rgba(255, 255, 255, 0.04)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <h3 style={{ fontSize: 17, fontWeight: 700, margin: "0 0 16px", color: "#fff" }}>
+                  Autor da Apresentação
+                </h3>
+                <Link
+                  href={`/${locale}/autor-new/luiz-roberto-gomes-vialle`}
+                  style={{ display: "flex", gap: 14, textDecoration: "none", color: "inherit", alignItems: "center" }}
+                  className="hover:opacity-85 transition-opacity"
+                >
+                  <img
+                    src={APRESENTACAO_DATA.autor.foto_url}
+                    alt={APRESENTACAO_DATA.autor.nome}
+                    style={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: 12,
+                      objectFit: "cover",
+                      border: "2px solid rgba(245, 34, 56, 0.4)",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <h4 style={{ margin: "0 0 4px", fontSize: 15, fontWeight: 700, color: "#fff" }}>
+                      {APRESENTACAO_DATA.autor.nome}
+                    </h4>
+                    <p style={{ margin: 0, fontSize: 12, color: "#94a3b8", lineHeight: 1.35 }}>
+                      Presidente da SBC • Ver Perfil do Autor →
+                    </p>
+                  </div>
+                </Link>
               </div>
 
               {/* Navigation Jump Card */}

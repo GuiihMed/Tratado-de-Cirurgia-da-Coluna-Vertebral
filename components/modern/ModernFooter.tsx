@@ -242,11 +242,35 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 text-center sm:text-left">
           <span>{t.copyright}</span>
           <div className="flex items-center gap-4">
-            <span className="hover:text-slate-200 cursor-pointer">{t.terms}</span>
+            <a
+              href="https://coluna.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-200 transition-colors"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              {t.terms}
+            </a>
             <span>•</span>
-            <span className="hover:text-slate-200 cursor-pointer">{t.privacy}</span>
+            <a
+              href="https://coluna.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-200 transition-colors"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              {t.privacy}
+            </a>
             <span>•</span>
-            <span className="hover:text-slate-200 cursor-pointer">{t.support}</span>
+            <a
+              href="https://dilivros.com.br/contato"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-200 transition-colors"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              {t.support}
+            </a>
           </div>
         </div>
       </div>

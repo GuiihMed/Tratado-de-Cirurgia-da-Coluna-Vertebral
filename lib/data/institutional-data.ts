@@ -1,4 +1,5 @@
 export interface EditorInfo {
+  slug: string;
   nome: string;
   cargo: string;
   orcid: string;
@@ -15,6 +16,7 @@ export interface InstitucionalAuthor {
 
 export const EDITORES_TRATADO: EditorInfo[] = [
   {
+    slug: "edson-pudles",
     nome: "Edson Pudles",
     cargo: "Médico Ortopedista e Traumatologista",
     orcid: "0000-0001-9616-2945",
@@ -22,6 +24,7 @@ export const EDITORES_TRATADO: EditorInfo[] = [
     role: "Editor",
   },
   {
+    slug: "helton-defino",
     nome: "Helton Luiz Aparecido Defino",
     cargo: "Médico Ortopedista e Traumatologista",
     orcid: "0000-0003-4274-0130",
@@ -29,6 +32,7 @@ export const EDITORES_TRATADO: EditorInfo[] = [
     role: "Editor",
   },
   {
+    slug: "marcelo-risso",
     nome: "Marcelo Italo Risso Neto",
     cargo: "Médico Ortopedista e Traumatologista",
     orcid: "0000-0003-0990-5901",

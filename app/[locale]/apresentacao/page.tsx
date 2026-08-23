@@ -451,7 +451,11 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                   </h3>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <Link
+                  href={`/${locale}/autor/luiz-roberto-gomes-vialle`}
+                  style={{ display: "flex", flexDirection: "column", gap: 14, textDecoration: "none", color: "inherit" }}
+                  className="hover:opacity-85 transition-opacity"
+                >
                   <div
                     style={{
                       width: "100%",
@@ -479,7 +483,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                       ))}
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Tipo de Conteúdo */}

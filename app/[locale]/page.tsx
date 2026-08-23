@@ -277,14 +277,14 @@ export default async function HomePage({ params }: HomePageProps) {
                     <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
                   </Link>
 
-                  <a
-                    href="#referencias"
+                  <Link
+                    href={`/${locale}/referencias`}
                     className="w-full h-12 px-5 rounded-xl bg-[#001f4d]/60 hover:bg-[#001f4d]/90 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
                   >
                     <span>{dict.chapterHighlight.btnRef}</span>
                     <svg className="w-4 h-4 text-sky-400"><use href="#i-ref"></use></svg>
-                  </a>
+                  </Link>
                 </div>
 
               </div>
@@ -430,7 +430,7 @@ export default async function HomePage({ params }: HomePageProps) {
               </article>
 
               {/* Card Idiomas */}
-              <article id="referencias" className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#001433] to-[#042452] text-white flex flex-col justify-between">
+              <article id="idiomas" className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#001433] to-[#042452] text-white flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3 mb-3">
                     <svg className="w-7 h-7 text-sky-400">
@@ -444,15 +444,15 @@ export default async function HomePage({ params }: HomePageProps) {
                   </p>
 
                   <div className="flex flex-col gap-3 mb-6">
-                    <Link href="/pt#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                    <Link href="/pt" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
                       <img src="https://flagcdn.com/w40/br.png" alt="Brasil" className="w-6 h-auto rounded shadow" />
                       <span>Português (Brasil)</span>
                     </Link>
-                    <Link href="/en#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                    <Link href="/en" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
                       <img src="https://flagcdn.com/w40/us.png" alt="USA" className="w-6 h-auto rounded shadow" />
                       <span>English (Abstracts)</span>
                     </Link>
-                    <Link href="/es#referencias" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
+                    <Link href="/es" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
                       <img src="https://flagcdn.com/w40/es.png" alt="Spain" className="w-6 h-auto rounded shadow" />
                       <span>Español (Resúmenes)</span>
                     </Link>

@@ -442,8 +442,8 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         </div>
 
                         <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 10 }}>
-                          <span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700 }}>
-                            isOpen ? <ChevronUp size={20} color="#94a3b8" /> : <ChevronDown size={20} color="#94a3b8" />
+                          <span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700, display: "flex", alignItems: "center" }}>
+                            {isOpen ? <ChevronUp size={20} color="#94a3b8" /> : <ChevronDown size={20} color="#94a3b8" />}
                           </span>
                         </div>
                       </button>

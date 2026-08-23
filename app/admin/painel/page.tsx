@@ -2393,7 +2393,7 @@ export default function AdminPainelPage() {
 
                   <div style={{ marginTop: 24, textAlign: "center", borderTop: isDark ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid #e2e8f0", paddingTop: 16 }}>
                     <Link
-                      href="/pt/home-new#autores"
+                      href="/pt/autores"
                       target="_blank"
                       style={{
                         display: "inline-flex",

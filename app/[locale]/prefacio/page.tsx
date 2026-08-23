@@ -455,7 +455,12 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                   {EDITORES_TRATADO.map((editor, idx) => (
-                    <div key={idx} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <Link
+                      key={idx}
+                      href={`/${locale}/autor/${editor.slug}`}
+                      style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "inherit" }}
+                      className="hover:opacity-80 transition-opacity"
+                    >
                       <div
                         style={{
                           width: 44,
@@ -481,7 +486,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                           {editor.role}
                         </span>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

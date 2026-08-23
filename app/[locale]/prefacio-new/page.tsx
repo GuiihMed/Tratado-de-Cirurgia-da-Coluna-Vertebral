@@ -443,8 +443,9 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                   }}
                 >
                   {EDITORES_TRATADO.map((ed, idx) => (
-                    <div
+                    <Link
                       key={idx}
+                      href={`/${locale}/autor-new/${ed.slug}`}
                       style={{
                         padding: 20,
                         borderRadius: 14,
@@ -453,7 +454,9 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                         display: "flex",
                         flexDirection: "column",
                         gap: 8,
+                        textDecoration: "none",
                       }}
+                      className="hover:border-red-500/50 hover:bg-white/10 transition-all"
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                         <img
@@ -477,7 +480,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -508,7 +511,7 @@ export default function PrefacioNewPage({ params }: PrefacioNewProps) {
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
                     <span style={{ color: "#94a3b8" }}>Autores e Colaboradores</span>
-                    <strong style={{ color: "#fff" }}>198 Especialistas</strong>
+                    <strong style={{ color: "#fff" }}>204 Especialistas</strong>
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14 }}>
                     <span style={{ color: "#94a3b8" }}>Chancela Oficial</span>

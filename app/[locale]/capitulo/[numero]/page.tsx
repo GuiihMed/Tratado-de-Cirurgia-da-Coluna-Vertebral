@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Locale, Capitulo } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
 import { getAuthorsByChapter } from "@/lib/data/authors";
+import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 
 interface CapituloPageProps {
@@ -110,60 +111,30 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
         "Reabilitação",
       ];
 
-  // References list
-  const referencesList = isCap8
-    ? [
-        {
-          num: 1,
-          text: "Schwab F, Patel A, Ungar B, Farcy JP, Lafage V. Adult spinal deformity—postoperative standing imbalance: how much can you tolerate? An overview of key parameters in assessing alignment and planning corrective surgery. Spine (Phila Pa 1976). 2010;35(22):2224–31.",
-          doi: "https://doi.org/10.1097/BRS.0b013e3181ee6bd4",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/20938397/",
-        },
-        {
-          num: 2,
-          text: "Roussouly P, Gollogly S, Berthonnaud E, Dimnet J. Classification of the normal variation in the sagittal alignment of the human lumbar spine and pelvis in the standing position. Spine (Phila Pa 1976). 2005;30(3):346–53.",
-          doi: "https://doi.org/10.1097/01.brs.0000152379.54450.ee",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/15682018/",
-        },
-        {
-          num: 3,
-          text: "Legaye J, Duval-Beaupère G, Hecquet J, Marty C. Pelvic incidence: a fundamental pelvic parameter for three-dimensional regulation of spinal sagittal curves. Eur Spine J. 1998;7:99–103.",
-          doi: "https://doi.org/10.1007/s005860050038",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/9629932/",
-        },
-        {
-          num: 4,
-          text: "Ferrero E, Lafage V, Challier V, Liabaud B, Diebo B, Vira S, et al. The pelvic joystick: lumbar lordosis mismatch and its sagittal alignment. Eur Spine J. 2012;21(Suppl 6):S734–9.",
-          doi: "https://doi.org/10.1007/s00586-012-2374-2",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/22648577/",
-        },
-        {
-          num: 5,
-          text: "Protopsaltis TS, Schwab F. The surgical management of adult spinal deformity. Eur Spine J. 2015;24(Suppl 3):S293–306.",
-          doi: "https://doi.org/10.1007/s00586-014-3670-3",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/25416246/",
-        },
-      ]
-    : [
-        {
-          num: 1,
-          text: "Sociedade Brasileira de Coluna (SBC). Diretrizes Oficiais do Tratado de Cirurgia da Coluna Vertebral. Editora DiLivros, 2026.",
-          doi: "https://doi.org/10.1016/j.spinee.2025.01.001",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/",
-        },
-        {
-          num: 2,
-          text: "Bridwell KH, DeWald RL. The Textbook of Spinal Surgery. 4th ed. Wolters Kluwer Health, 2020.",
-          doi: "https://doi.org/10.1097/BRS.0000000000002154",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/",
-        },
-        {
-          num: 3,
-          text: "European Spine Journal & Journal of Neurosurgery: Spine. Protocolos Clínicos e Evidências Contemporâneas.",
-          doi: "https://doi.org/10.1007/s00586-024-08200-x",
-          pmid: "https://pubmed.ncbi.nlm.nih.gov/",
-        },
-      ];
+  // References list from curated catalog
+  const chapterRefData = ALL_CHAPTER_REFERENCES.find((r) => r.numero === num);
+  const referencesList =
+    chapterRefData && chapterRefData.referencias.length > 0
+      ? chapterRefData.referencias.map((r, i) => ({
+          num: r.num || i + 1,
+          text: r.text,
+          doi:
+            r.doi ||
+            `https://scholar.google.com/scholar?q=${encodeURIComponent(r.text.slice(0, 140))}`,
+          pmid:
+            r.pmid ||
+            `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(
+              r.text.replace(/[^a-zA-Z0-9\s]/g, " ").slice(0, 120)
+            )}`,
+        }))
+      : [
+          {
+            num: 1,
+            text: "Sociedade Brasileira de Coluna (SBC). Diretrizes Oficiais do Tratado de Cirurgia da Coluna Vertebral. Editora DiLivros, 2026.",
+            doi: "https://doi.org/10.1016/j.spinee.2025.01.001",
+            pmid: "https://pubmed.ncbi.nlm.nih.gov/",
+          },
+        ];
 
   // Related chapters
   const relatedChapters = INITIAL_CHAPTERS.filter(
