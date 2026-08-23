@@ -127,19 +127,19 @@ export default async function HomePage({ params }: HomePageProps) {
             {/* Top 2-Column Content on Desktop / Clean Stack on Mobile */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center mb-12">
               
-              {/* Left Column: 3D Book Cover */}
-              <div className="md:col-span-5 flex justify-center md:justify-end">
-                <div className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[350px] transition-transform duration-300 hover:scale-[1.03]">
+              {/* Left Column: 3D Book Cover (Aumentado e com nova capa) */}
+              <div className="md:col-span-6 lg:col-span-5 flex justify-center md:justify-end">
+                <div className="w-full max-w-[300px] sm:max-w-[380px] md:max-w-[460px] lg:max-w-[520px] transition-transform duration-300 hover:scale-[1.03]">
                   <img
-                    src="/assets/book-cover.png"
-                    alt="Capa do Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto rounded-lg shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+                    src="/assets/book-cover-3d.png"
+                    alt="Capa Oficial do Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto drop-shadow-[0_28px_50px_rgba(0,0,0,0.7)]"
                   />
                 </div>
               </div>
 
               {/* Right Column: Copy & Actions */}
-              <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
+              <div className="md:col-span-6 lg:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
                 {/* Title */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-white leading-[1.08] tracking-tight mb-4 drop-shadow-md">
                   {dict.heroHome.titleLine1} <br />

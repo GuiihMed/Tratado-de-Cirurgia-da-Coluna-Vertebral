@@ -343,10 +343,17 @@
 
 .modern-book-3d {
   position: relative;
-  width: 400px;
+  width: 480px;
+  max-width: 92vw;
   transform: rotateY(-12deg) rotateX(6deg);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(-20px 30px 40px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(-20px 30px 45px rgba(0, 0, 0, 0.55));
+}
+
+@media (min-width: 1400px) {
+  .modern-book-3d {
+    width: 530px;
+  }
 }
 
 .modern-book-stage:hover .modern-book-3d {
