@@ -23,6 +23,14 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+
+  const toggleExpandCard = (chapNum: number) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [chapNum]: !prev[chapNum],
+    }));
+  };
 
   const copyToClipboard = (text: string, id: string) => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -35,12 +43,10 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
   // Filter references based on selected section and search query
   const filteredChapters = useMemo(() => {
     return ALL_CHAPTER_REFERENCES.filter((chap) => {
-      // Section filter
       if (selectedSecao !== "all" && chap.secao_id !== selectedSecao) {
         return false;
       }
 
-      // Search query filter
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
         const matchesNum =
@@ -63,7 +69,6 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
     });
   }, [selectedSecao, searchQuery]);
 
-  // Section title getter helper
   const getSecaoTitle = (secaoId: number) => {
     const s = SECOES.find((item) => item.id === secaoId);
     if (!s) return `Seção ${secaoId}`;
@@ -78,7 +83,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
       <Header locale={locale} currentPage="referencias" />
 
       <main style={{ paddingBottom: 80 }}>
-        {/* ================= HERO SECTION (PADRÃO HOME) ================= */}
+        {/* ================= HERO SECTION ================= */}
         <section
           className="relative w-full overflow-hidden text-white pt-8 pb-16 border-b border-white/10"
           style={{
@@ -115,7 +120,6 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-              
               {/* Left Column: 3D Book Cover */}
               <div className="md:col-span-5 flex justify-center md:justify-end">
                 <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
@@ -236,7 +240,6 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
             {/* Bottom 5-Item Stats Bar */}
             <div className="w-full rounded-2xl bg-[#001533]/85 border border-white/15 backdrop-blur-xl p-4 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.4)] mt-10 sm:mt-12">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 md:divide-x md:divide-white/10 text-center">
-                
                 {/* 1. Capítulos */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
                   <span className="text-2xl mb-1">📖</span>
@@ -283,10 +286,8 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                     {locale === "en" ? "by chapter" : locale === "es" ? "por capítulo" : "por capítulo"}
                   </span>
                 </div>
-
               </div>
             </div>
-
           </div>
         </section>
 
@@ -383,7 +384,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                 )}
               </div>
 
-              {/* View Mode Toggle: 3-Column Grid vs 3-Column Table */}
+              {/* View Mode Toggle: 3-Colunas Cards vs 3-Colunas Tabela */}
               <div
                 style={{
                   display: "inline-flex",
@@ -412,7 +413,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                     gap: 6,
                     transition: "all 0.15s ease",
                   }}
-                  title="Layout em 3 Colunas (Cards)"
+                  title="3 Capítulos por Linha (Grade de 3 Colunas)"
                 >
                   <span>🔲</span>
                   <span>{locale === "en" ? "3-Col Grid" : locale === "es" ? "Grid 3 Col" : "Grade 3 Colunas"}</span>
@@ -435,7 +436,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                     gap: 6,
                     transition: "all 0.15s ease",
                   }}
-                  title="Layout em 3 Colunas (Tabela)"
+                  title="Tabela Estruturada de 3 Colunas"
                 >
                   <span>📑</span>
                   <span>{locale === "en" ? "3-Col Table" : locale === "es" ? "Tabla 3 Col" : "Tabela 3 Colunas"}</span>
@@ -481,7 +482,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                 {locale === "en" ? "Filter Section:" : locale === "es" ? "Filtrar Sección:" : "Filtrar Seção:"}
               </span>
 
-              {/* All Sections button */}
+              {/* All Sections */}
               <button
                 type="button"
                 onClick={() => setSelectedSecao("all")}
@@ -567,16 +568,20 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
             </div>
           )}
 
-          {/* ================= VIEW 1: 3-COLUMN CARD GRID ================= */}
+          {/* ================= VIEW 1: 3-COLUMN CARD GRID (EXACTLY 3 CHAPTERS PER ROW) ================= */}
           {filteredChapters.length > 0 && viewMode === "grid" && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
               {filteredChapters.map((chap) => {
+                const isExpanded = !!expandedCards[chap.numero];
+                const displayedRefs = isExpanded ? chap.referencias : chap.referencias.slice(0, 3);
+                const hasMoreRefs = chap.referencias.length > 3;
+
                 return (
                   <div
                     key={chap.numero}
                     className="flex flex-col bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,30,80,0.05)] hover:shadow-[0_12px_32px_rgba(0,30,80,0.12)] transition-all duration-300 overflow-hidden h-full"
                   >
-                    {/* Card Header: Section Badge + Chapter Number */}
+                    {/* Card Header */}
                     <div className="p-5 border-b border-slate-100 bg-gradient-to-br from-slate-50 to-white">
                       <div className="flex items-center justify-between gap-2 mb-2.5">
                         <span
@@ -600,7 +605,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                       </p>
 
                       {/* Chapter Title */}
-                      <h2 className="text-base sm:text-[17px] font-bold text-slate-900 leading-snug hover:text-red-600 transition-colors">
+                      <h2 className="text-base font-bold text-slate-900 leading-snug hover:text-red-600 transition-colors min-h-[44px]">
                         <Link href={`/${locale}/capitulo/${chap.numero}`} className="hover:underline">
                           {chap.titulo_pt}
                         </Link>
@@ -608,8 +613,8 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                     </div>
 
                     {/* Authors Box */}
-                    <div className="px-5 py-3.5 bg-slate-50/60 border-b border-slate-100">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+                    <div className="px-5 py-3 bg-slate-50/60 border-b border-slate-100 min-h-[68px]">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
                         <span>👥</span>
                         <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
                       </div>
@@ -617,7 +622,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                         {chap.autores.map((autor, aIdx) => (
                           <span
                             key={aIdx}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white border border-slate-200/80 text-[11.5px] font-semibold text-slate-700 shadow-2xs"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                             <span>{autor.nome}</span>
@@ -626,7 +631,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                       </div>
                     </div>
 
-                    {/* References List in Card */}
+                    {/* References List */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between mb-3">
@@ -643,30 +648,29 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                         </div>
 
                         <div className="space-y-2.5">
-                          {chap.referencias.map((ref, rIdx) => {
+                          {displayedRefs.map((ref, rIdx) => {
                             const refId = `card-ref-${chap.numero}-${rIdx}`;
                             const isCopied = copiedId === refId;
                             return (
                               <div
                                 key={rIdx}
-                                className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-slate-300 transition-colors text-xs text-slate-700 leading-relaxed group"
+                                className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-slate-300 transition-colors text-xs text-slate-700 leading-relaxed"
                               >
                                 <div className="flex items-start justify-between gap-2">
-                                  <p className="flex-1 text-[12px] text-slate-800 font-medium">
+                                  <p className="flex-1 text-[11.5px] text-slate-800 font-medium">
                                     <strong className="text-red-600 font-bold mr-1">{rIdx + 1}.</strong>
                                     {ref.text}
                                   </p>
                                 </div>
 
-                                {/* Actions: DOI, PubMed, Copy */}
-                                <div className="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center justify-between flex-wrap gap-2">
+                                <div className="mt-2 pt-1.5 border-t border-slate-200/60 flex items-center justify-between flex-wrap gap-2">
                                   <div className="flex items-center gap-1.5">
                                     {ref.doi ? (
                                       <a
                                         href={`https://doi.org/${ref.doi}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-[10.5px] font-bold hover:bg-sky-200 transition-colors"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 text-[10px] font-bold hover:bg-sky-200 transition-colors"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -676,7 +680,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                                         href={`https://scholar.google.com/scholar?q=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-100/80 text-sky-800 text-[10.5px] font-bold hover:bg-sky-200 transition-colors"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-100/80 text-sky-800 text-[10px] font-bold hover:bg-sky-200 transition-colors"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -688,7 +692,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10.5px] font-bold hover:bg-emerald-200 transition-colors"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold hover:bg-emerald-200 transition-colors"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -698,7 +702,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100/80 text-emerald-800 text-[10.5px] font-bold hover:bg-emerald-200 transition-colors"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100/80 text-emerald-800 text-[10px] font-bold hover:bg-emerald-200 transition-colors"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -709,8 +713,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                                   <button
                                     type="button"
                                     onClick={() => copyToClipboard(ref.text, refId)}
-                                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
-                                    title="Copiar citação"
+                                    className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                                   >
                                     <span>{isCopied ? "✓ Copiado" : "Copiar"}</span>
                                   </button>
@@ -719,10 +722,26 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                             );
                           })}
                         </div>
+
+                        {hasMoreRefs && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpandCard(chap.numero)}
+                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                          >
+                            {isExpanded
+                              ? (locale === "en" ? "▲ Show less" : locale === "es" ? "▲ Mostrar menos" : "▲ Mostrar menos")
+                              : (locale === "en"
+                                  ? `▼ Show +${chap.referencias.length - 3} citations`
+                                  : locale === "es"
+                                  ? `▼ Ver +${chap.referencias.length - 3} citas`
+                                  : `▼ Ver +${chap.referencias.length - 3} referências`)}
+                          </button>
+                        )}
                       </div>
 
-                      {/* Card Bottom CTA */}
-                      <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                      {/* Card Bottom Link */}
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                         <Link
                           href={`/${locale}/capitulo/${chap.numero}`}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#003382] hover:text-red-600 transition-colors"
@@ -749,7 +768,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                 overflow: "hidden",
               }}
             >
-              {/* 3-Column Table Header (Desktop) */}
+              {/* 3-Column Table Header */}
               <div
                 style={{
                   display: "grid",

@@ -35,6 +35,14 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+
+  const toggleExpandCard = (chapNum: number) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [chapNum]: !prev[chapNum],
+    }));
+  };
 
   const copyToClipboard = (text: string, id: string) => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -361,7 +369,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 )}
               </div>
 
-              {/* View Mode Toggle: 3-Column Grid vs 3-Column Table */}
+              {/* View Mode Toggle: 3-Colunas Cards vs 3-Colunas Tabela */}
               <div
                 style={{
                   display: "inline-flex",
@@ -390,7 +398,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     gap: 6,
                     transition: "all 0.15s ease",
                   }}
-                  title="Layout em 3 Colunas (Cards)"
+                  title="3 Capítulos por Linha (Grade de 3 Colunas)"
                 >
                   <LayoutGrid size={15} />
                   <span>{locale === "en" ? "3-Col Grid" : locale === "es" ? "Grid 3 Col" : "Grade 3 Colunas"}</span>
@@ -413,7 +421,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     gap: 6,
                     transition: "all 0.15s ease",
                   }}
-                  title="Layout em 3 Colunas (Tabela)"
+                  title="Tabela Estruturada de 3 Colunas"
                 >
                   <List size={15} />
                   <span>{locale === "en" ? "3-Col Table" : locale === "es" ? "Tabla 3 Col" : "Tabela 3 Colunas"}</span>
@@ -555,16 +563,20 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
             </div>
           )}
 
-          {/* ================= VIEW 1: 3-COLUMN CARD GRID ================= */}
+          {/* ================= VIEW 1: 3-COLUMN CARD GRID (EXACTLY 3 CHAPTERS PER ROW) ================= */}
           {filteredChapters.length > 0 && viewMode === "grid" && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
               {filteredChapters.map((chap) => {
+                const isExpanded = !!expandedCards[chap.numero];
+                const displayedRefs = isExpanded ? chap.referencias : chap.referencias.slice(0, 3);
+                const hasMoreRefs = chap.referencias.length > 3;
+
                 return (
                   <div
                     key={chap.numero}
                     className="flex flex-col bg-[#001738]/90 rounded-2xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:border-red-500/50 transition-all duration-300 overflow-hidden h-full backdrop-blur-md"
                   >
-                    {/* Card Header: Section Badge + Chapter Number */}
+                    {/* Card Header */}
                     <div className="p-5 border-b border-white/10 bg-gradient-to-br from-white/5 to-transparent">
                       <div className="flex items-center justify-between gap-2 mb-2.5">
                         <span
@@ -588,7 +600,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       </p>
 
                       {/* Chapter Title */}
-                      <h2 className="text-base sm:text-[17px] font-bold text-white leading-snug hover:text-red-400 transition-colors">
+                      <h2 className="text-base font-bold text-white leading-snug hover:text-red-400 transition-colors min-h-[44px]">
                         <Link href={`/${locale}/capitulo-new/${chap.numero}`} className="hover:underline">
                           {chap.titulo_pt}
                         </Link>
@@ -596,8 +608,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     </div>
 
                     {/* Authors Box */}
-                    <div className="px-5 py-3.5 bg-black/20 border-b border-white/10">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+                    <div className="px-5 py-3 bg-black/20 border-b border-white/10 min-h-[68px]">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
                         <Users size={13} className="text-slate-400" />
                         <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
                       </div>
@@ -605,7 +617,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         {chap.autores.map((autor, aIdx) => (
                           <span
                             key={aIdx}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/10 border border-white/10 text-xs font-semibold text-slate-200"
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-[11.5px] font-semibold text-slate-200"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
                             <span>{autor.nome}</span>
@@ -614,7 +626,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       </div>
                     </div>
 
-                    {/* References List in Card */}
+                    {/* References List */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between mb-3">
@@ -631,30 +643,29 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         </div>
 
                         <div className="space-y-2.5">
-                          {chap.referencias.map((ref, rIdx) => {
+                          {displayedRefs.map((ref, rIdx) => {
                             const refId = `new-card-ref-${chap.numero}-${rIdx}`;
                             const isCopied = copiedId === refId;
                             return (
                               <div
                                 key={rIdx}
-                                className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors text-xs text-slate-300 leading-relaxed"
+                                className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors text-xs text-slate-300 leading-relaxed"
                               >
                                 <div className="flex items-start justify-between gap-2">
-                                  <p className="flex-1 text-[12px] text-slate-200 font-medium">
+                                  <p className="flex-1 text-[11.5px] text-slate-200 font-medium">
                                     <strong className="text-red-400 font-bold mr-1">{rIdx + 1}.</strong>
                                     {ref.text}
                                   </p>
                                 </div>
 
-                                {/* Actions: DOI, PubMed, Copy */}
-                                <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between flex-wrap gap-2">
+                                <div className="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between flex-wrap gap-2">
                                   <div className="flex items-center gap-1.5">
                                     {ref.doi ? (
                                       <a
                                         href={`https://doi.org/${ref.doi}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10.5px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -664,7 +675,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://scholar.google.com/scholar?q=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10.5px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -676,7 +687,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10.5px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -686,7 +697,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10.5px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -697,8 +708,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                   <button
                                     type="button"
                                     onClick={() => copyToClipboard(ref.text, refId)}
-                                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer"
-                                    title="Copiar citação"
+                                    className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer"
                                   >
                                     {isCopied ? (
                                       <>
@@ -717,10 +727,26 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                             );
                           })}
                         </div>
+
+                        {hasMoreRefs && (
+                          <button
+                            type="button"
+                            onClick={() => toggleExpandCard(chap.numero)}
+                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-bold transition-colors cursor-pointer border border-white/10"
+                          >
+                            {isExpanded
+                              ? (locale === "en" ? "▲ Show less" : locale === "es" ? "▲ Mostrar menos" : "▲ Mostrar menos")
+                              : (locale === "en"
+                                  ? `▼ Show +${chap.referencias.length - 3} citations`
+                                  : locale === "es"
+                                  ? `▼ Ver +${chap.referencias.length - 3} citas`
+                                  : `▼ Ver +${chap.referencias.length - 3} referências`)}
+                          </button>
+                        )}
                       </div>
 
                       {/* Card Bottom CTA */}
-                      <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
                         <Link
                           href={`/${locale}/capitulo-new/${chap.numero}`}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-red-400 transition-colors"
@@ -748,7 +774,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 backdropFilter: "blur(16px)",
               }}
             >
-              {/* 3-Column Table Header (Desktop) */}
+              {/* 3-Column Table Header */}
               <div
                 style={{
                   display: "grid",
