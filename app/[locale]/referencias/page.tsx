@@ -21,6 +21,16 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
+  const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, id: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    }
+  };
 
   // Filter references based on selected section and search query
   const filteredChapters = useMemo(() => {
@@ -33,7 +43,11 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
       // Search query filter
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
-        const matchesNum = chap.numero.toString() === query || `cap ${chap.numero}` === query || `capitulo ${chap.numero}` === query;
+        const matchesNum =
+          chap.numero.toString() === query ||
+          `cap ${chap.numero}` === query ||
+          `capitulo ${chap.numero}` === query ||
+          `chapter ${chap.numero}` === query;
         const matchesTitle = chap.titulo_pt.toLowerCase().includes(query);
         const matchesSecao =
           chap.secao_nome.toLowerCase().includes(query) ||
@@ -219,13 +233,13 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
               </div>
             </div>
 
-            {/* Bottom 5-Item Stats Bar (Idêntico ao design da Home) */}
+            {/* Bottom 5-Item Stats Bar */}
             <div className="w-full rounded-2xl bg-[#001533]/85 border border-white/15 backdrop-blur-xl p-4 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.4)] mt-10 sm:mt-12">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 md:divide-x md:divide-white/10 text-center">
                 
                 {/* 1. Capítulos */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
-                  <svg className="w-6 h-6 text-sky-400 mb-1.5"><use href="#i-book"></use></svg>
+                  <span className="text-2xl mb-1">📖</span>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">109</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
                     {locale === "en" ? "chapters" : locale === "es" ? "capítulos" : "capítulos"}
@@ -234,7 +248,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
                 {/* 2. Seções Temáticas */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
-                  <svg className="w-6 h-6 text-red-400 mb-1.5"><use href="#i-grid"></use></svg>
+                  <span className="text-2xl mb-1">🗂️</span>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">10</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
                     {locale === "en" ? "thematic sections" : locale === "es" ? "secciones temáticas" : "seções temáticas"}
@@ -243,7 +257,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
                 {/* 3. Autores */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
-                  <svg className="w-6 h-6 text-indigo-400 mb-1.5"><use href="#i-users"></use></svg>
+                  <span className="text-2xl mb-1">👥</span>
                   <strong className="text-2xl sm:text-3xl font-bold text-white leading-tight">204</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
                     {locale === "en" ? "specialist authors" : locale === "es" ? "autores especialistas" : "autores especialistas"}
@@ -252,7 +266,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
                 {/* 4. Indexação */}
                 <div className="flex flex-col items-center justify-center px-2 py-1">
-                  <svg className="w-6 h-6 text-teal-400 mb-1.5"><use href="#i-globe"></use></svg>
+                  <span className="text-2xl mb-1">🌐</span>
                   <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-0.5">DOI &amp; PubMed</strong>
                   <span className="text-xs text-slate-300 font-semibold mt-0.5">
                     {locale === "en" ? "scientific index" : locale === "es" ? "indexación" : "indexação científica"}
@@ -261,7 +275,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
                 {/* 5. Citações / Referências */}
                 <div className="col-span-2 sm:col-span-1 flex flex-col items-center justify-center px-2 py-1">
-                  <svg className="w-6 h-6 text-amber-400 mb-1.5"><use href="#i-ref"></use></svg>
+                  <span className="text-2xl mb-1">📑</span>
                   <strong className="text-base sm:text-lg font-bold text-white leading-snug mt-0.5">
                     {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
                   </strong>
@@ -275,7 +289,9 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
 
           </div>
         </section>
-        <section style={{ maxWidth: 1440, margin: "0 auto", padding: "30px 20px 0" }}>
+
+        {/* ================= CONTROLS & FILTER SECTION ================= */}
+        <section id="tabela-referencias" style={{ maxWidth: 1440, margin: "0 auto", padding: "32px 20px 0" }}>
           <div
             style={{
               background: "#ffffff",
@@ -286,15 +302,16 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
               marginBottom: 28,
             }}
           >
-            {/* Search and Summary */}
+            {/* Search, View Switcher and Summary */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr auto",
-                gap: 16,
+                gridTemplateColumns: "1fr auto auto",
+                gap: 14,
                 alignItems: "center",
                 marginBottom: 20,
               }}
+              className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto]"
             >
               {/* Search Bar Input */}
               <div style={{ position: "relative", width: "100%" }}>
@@ -366,6 +383,65 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                 )}
               </div>
 
+              {/* View Mode Toggle: 3-Column Grid vs 3-Column Table */}
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  background: "#f1f5f9",
+                  padding: "4px",
+                  borderRadius: 10,
+                  border: "1px solid #e2e8f0",
+                  gap: 4,
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setViewMode("grid")}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 7,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    border: "none",
+                    background: viewMode === "grid" ? "#001a3d" : "transparent",
+                    color: viewMode === "grid" ? "#ffffff" : "#64748b",
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    transition: "all 0.15s ease",
+                  }}
+                  title="Layout em 3 Colunas (Cards)"
+                >
+                  <span>🔲</span>
+                  <span>{locale === "en" ? "3-Col Grid" : locale === "es" ? "Grid 3 Col" : "Grade 3 Colunas"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setViewMode("table")}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 7,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    border: "none",
+                    background: viewMode === "table" ? "#001a3d" : "transparent",
+                    color: viewMode === "table" ? "#ffffff" : "#64748b",
+                    cursor: "pointer",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    transition: "all 0.15s ease",
+                  }}
+                  title="Layout em 3 Colunas (Tabela)"
+                >
+                  <span>📑</span>
+                  <span>{locale === "en" ? "3-Col Table" : locale === "es" ? "Tabla 3 Col" : "Tabela 3 Colunas"}</span>
+                </button>
+              </div>
+
               {/* Counter Result Badge */}
               <div
                 style={{
@@ -376,6 +452,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                   fontWeight: 600,
                   color: "#475569",
                   whiteSpace: "nowrap",
+                  textAlign: "center",
                 }}
               >
                 <strong style={{ color: "#001a3d", fontWeight: 800 }}>{filteredChapters.length}</strong>{" "}
@@ -450,78 +527,250 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
             </div>
           </div>
 
-          {/* ================= TABLE / GRID OF REFERENCES ================= */}
-          <div
-            style={{
-              background: "#ffffff",
-              borderRadius: 16,
-              border: "1px solid #e2e8f0",
-              boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
-              overflow: "hidden",
-            }}
-          >
-            {/* Table Header (Visible on Desktop / Tablet) */}
+          {/* ================= EMPTY STATE ================= */}
+          {filteredChapters.length === 0 && (
+            <div style={{ background: "#ffffff", borderRadius: 16, border: "1px solid #e2e8f0", padding: "60px 20px", textAlign: "center", color: "#64748b" }}>
+              <div style={{ fontSize: 36, marginBottom: 12 }}>🔍</div>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
+                {locale === "en"
+                  ? "No references found"
+                  : locale === "es"
+                  ? "No se encontraron referencias"
+                  : "Nenhuma referência encontrada"}
+              </h3>
+              <p style={{ fontSize: 14, margin: "0 0 16px" }}>
+                {locale === "en"
+                  ? "Try adjusting your search terms or clearing the active filters."
+                  : locale === "es"
+                  ? "Intente ajustar sus términos de búsqueda o limpiar los filtros activos."
+                  : "Tente ajustar os termos da busca ou limpar os filtros selecionados."}
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedSecao("all");
+                }}
+                style={{
+                  padding: "8px 20px",
+                  borderRadius: 8,
+                  background: "#001a3d",
+                  color: "#ffffff",
+                  border: "none",
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  cursor: "pointer",
+                }}
+              >
+                {locale === "en" ? "Clear Filters" : locale === "es" ? "Limpiar Filtros" : "Limpar Filtros"}
+              </button>
+            </div>
+          )}
+
+          {/* ================= VIEW 1: 3-COLUMN CARD GRID ================= */}
+          {filteredChapters.length > 0 && viewMode === "grid" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+              {filteredChapters.map((chap) => {
+                return (
+                  <div
+                    key={chap.numero}
+                    className="flex flex-col bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,30,80,0.05)] hover:shadow-[0_12px_32px_rgba(0,30,80,0.12)] transition-all duration-300 overflow-hidden h-full"
+                  >
+                    {/* Card Header: Section Badge + Chapter Number */}
+                    <div className="p-5 border-b border-slate-100 bg-gradient-to-br from-slate-50 to-white">
+                      <div className="flex items-center justify-between gap-2 mb-2.5">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider ${
+                            chap.secao_id <= 5
+                              ? "bg-red-50 text-red-700 border border-red-200/80"
+                              : "bg-sky-50 text-sky-800 border border-sky-200/80"
+                          }`}
+                        >
+                          <span>{locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}</span>
+                        </span>
+
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#001738] text-white text-xs font-extrabold shadow-sm">
+                          {chap.numero}
+                        </span>
+                      </div>
+
+                      {/* Section Title */}
+                      <p className="text-xs font-semibold text-slate-500 line-clamp-1 mb-1.5">
+                        {getSecaoTitle(chap.secao_id)}
+                      </p>
+
+                      {/* Chapter Title */}
+                      <h2 className="text-base sm:text-[17px] font-bold text-slate-900 leading-snug hover:text-red-600 transition-colors">
+                        <Link href={`/${locale}/capitulo/${chap.numero}`} className="hover:underline">
+                          {chap.titulo_pt}
+                        </Link>
+                      </h2>
+                    </div>
+
+                    {/* Authors Box */}
+                    <div className="px-5 py-3.5 bg-slate-50/60 border-b border-slate-100">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+                        <span>👥</span>
+                        <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {chap.autores.map((autor, aIdx) => (
+                          <span
+                            key={aIdx}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200/80 text-xs font-semibold text-slate-700 shadow-2xs"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                            <span>{autor.nome}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* References List in Card */}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                            <span>📚</span>
+                            <span>
+                              {locale === "en"
+                                ? `${chap.referencias.length} Citations`
+                                : locale === "es"
+                                ? `${chap.referencias.length} Citas`
+                                : `${chap.referencias.length} Referências`}
+                            </span>
+                          </span>
+                        </div>
+
+                        <div className="space-y-2.5">
+                          {chap.referencias.map((ref, rIdx) => {
+                            const refId = `card-ref-${chap.numero}-${rIdx}`;
+                            const isCopied = copiedId === refId;
+                            return (
+                              <div
+                                key={rIdx}
+                                className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-slate-300 transition-colors text-xs text-slate-700 leading-relaxed group"
+                              >
+                                <div className="flex items-start justify-between gap-2">
+                                  <p className="flex-1 text-[12px] text-slate-800 font-medium">
+                                    <strong className="text-red-600 font-bold mr-1">{rIdx + 1}.</strong>
+                                    {ref.text}
+                                  </p>
+                                </div>
+
+                                {/* Actions: DOI, PubMed, Copy */}
+                                <div className="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center justify-between flex-wrap gap-2">
+                                  <div className="flex items-center gap-1.5">
+                                    {ref.doi ? (
+                                      <a
+                                        href={`https://doi.org/${ref.doi}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-[10.5px] font-bold hover:bg-sky-200 transition-colors"
+                                      >
+                                        <span>doi</span>
+                                        <span>↗</span>
+                                      </a>
+                                    ) : (
+                                      <a
+                                        href={`https://scholar.google.com/scholar?q=${encodeURIComponent(ref.text)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-sky-100/80 text-sky-800 text-[10.5px] font-bold hover:bg-sky-200 transition-colors"
+                                      >
+                                        <span>doi</span>
+                                        <span>↗</span>
+                                      </a>
+                                    )}
+
+                                    {ref.pmid ? (
+                                      <a
+                                        href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10.5px] font-bold hover:bg-emerald-200 transition-colors"
+                                      >
+                                        <span>PubMed</span>
+                                        <span>↗</span>
+                                      </a>
+                                    ) : (
+                                      <a
+                                        href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(ref.text)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100/80 text-emerald-800 text-[10.5px] font-bold hover:bg-emerald-200 transition-colors"
+                                      >
+                                        <span>PubMed</span>
+                                        <span>↗</span>
+                                      </a>
+                                    )}
+                                  </div>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => copyToClipboard(ref.text, refId)}
+                                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                                    title="Copiar citação"
+                                  >
+                                    <span>{isCopied ? "✓ Copiado" : "Copiar"}</span>
+                                  </button>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Card Bottom CTA */}
+                      <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <Link
+                          href={`/${locale}/capitulo/${chap.numero}`}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#003382] hover:text-red-600 transition-colors"
+                        >
+                          <span>{locale === "en" ? "View Full Chapter" : locale === "es" ? "Ver Capítulo Completo" : "Ver Capítulo Completo"}</span>
+                          <span>→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ================= VIEW 2: 3-COLUMN STRUCTURED TABLE ================= */}
+          {filteredChapters.length > 0 && viewMode === "table" && (
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "180px 280px 290px 1fr",
-                gap: 20,
-                padding: "16px 24px",
-                background: "#001738",
-                color: "#ffffff",
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: "0.04em",
-                textTransform: "uppercase",
+                background: "#ffffff",
+                borderRadius: 16,
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
+                overflow: "hidden",
               }}
-              className="hidden lg:grid"
             >
-              <div>{locale === "en" ? "Section" : locale === "es" ? "Sección" : "Seção"}</div>
-              <div>{locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo"}</div>
-              <div>{locale === "en" ? "Authors / Contributors" : locale === "es" ? "Autores / Colaboradores" : "Autores / Colaboradores"}</div>
-              <div>{locale === "en" ? "Bibliographic References" : locale === "es" ? "Referencias Bibliográficas" : "Referências Bibliográficas"}</div>
-            </div>
-
-            {/* Empty State */}
-            {filteredChapters.length === 0 ? (
-              <div style={{ padding: "60px 20px", textAlign: "center", color: "#64748b" }}>
-                <div style={{ fontSize: 36, marginBottom: 12 }}>🔍</div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
-                  {locale === "en"
-                    ? "No references found"
-                    : locale === "es"
-                    ? "No se encontraron referencias"
-                    : "Nenhuma referência encontrada"}
-                </h3>
-                <p style={{ fontSize: 14, margin: "0 0 16px" }}>
-                  {locale === "en"
-                    ? "Try adjusting your search terms or clearing the active filters."
-                    : locale === "es"
-                    ? "Intente ajustar sus términos de búsqueda o limpiar los filtros activos."
-                    : "Tente ajustar os termos da busca ou limpar os filtros selecionados."}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSelectedSecao("all");
-                  }}
-                  style={{
-                    padding: "8px 20px",
-                    borderRadius: 8,
-                    background: "#001a3d",
-                    color: "#ffffff",
-                    border: "none",
-                    fontWeight: 700,
-                    fontSize: 13.5,
-                    cursor: "pointer",
-                  }}
-                >
-                  {locale === "en" ? "Clear Filters" : locale === "es" ? "Limpiar Filtros" : "Limpar Filtros"}
-                </button>
+              {/* 3-Column Table Header (Desktop) */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "360px 280px 1fr",
+                  gap: 24,
+                  padding: "16px 24px",
+                  background: "#001738",
+                  color: "#ffffff",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                }}
+                className="hidden lg:grid"
+              >
+                <div>1. {locale === "en" ? "Chapter & Section" : locale === "es" ? "Capítulo y Sección" : "Capítulo e Seção"}</div>
+                <div>2. {locale === "en" ? "Authors / Specialists" : locale === "es" ? "Autores / Especialistas" : "Autores / Especialistas"}</div>
+                <div>3. {locale === "en" ? "Bibliographic References" : locale === "es" ? "Referencias Bibliográficas" : "Referências Bibliográficas"}</div>
               </div>
-            ) : (
-              /* Rows of Chapters */
+
+              {/* 3-Column Rows */}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {filteredChapters.map((chap, index) => {
                   const isEven = index % 2 === 0;
@@ -537,52 +786,33 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                       onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f6fd")}
                       onMouseLeave={(e) => (e.currentTarget.style.background = isEven ? "#ffffff" : "#fcfdfe")}
                     >
-                      {/* Responsive Grid layout for Desktop / Tablet */}
                       <div
                         style={{
                           display: "grid",
-                          gap: 20,
+                          gap: 24,
                           alignItems: "flex-start",
                         }}
-                        className="grid grid-cols-1 lg:grid-cols-[180px_280px_290px_1fr]"
+                        className="grid grid-cols-1 lg:grid-cols-[360px_280px_1fr]"
                       >
-                        {/* 1. SEÇÃO */}
+                        {/* Coluna 1: CAPÍTULO & SEÇÃO */}
                         <div>
-                          <div
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: 6,
-                              background: chap.secao_id <= 5 ? "rgba(220, 38, 38, 0.08)" : "rgba(0, 51, 130, 0.08)",
-                              border: chap.secao_id <= 5 ? "1px solid rgba(220, 38, 38, 0.2)" : "1px solid rgba(0, 51, 130, 0.2)",
-                              color: chap.secao_id <= 5 ? "#b91c1c" : "#003382",
-                              padding: "4px 10px",
-                              borderRadius: 6,
-                              fontSize: 11.5,
-                              fontWeight: 700,
-                              marginBottom: 6,
-                            }}
-                          >
-                            <span>{locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span
+                              className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase ${
+                                chap.secao_id <= 5
+                                  ? "bg-red-50 text-red-700 border border-red-200"
+                                  : "bg-sky-50 text-sky-800 border border-sky-200"
+                              }`}
+                            >
+                              {locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}
+                            </span>
+                            <span className="text-xs font-bold text-slate-400">•</span>
+                            <span className="text-xs font-bold text-red-600 uppercase">
+                              {locale === "en" ? `Chapter ${chap.numero}` : locale === "es" ? `Capítulo ${chap.numero}` : `Capítulo ${chap.numero}`}
+                            </span>
                           </div>
-                          <div
-                            style={{
-                              fontSize: 13,
-                              fontWeight: 600,
-                              color: "#475569",
-                              lineHeight: 1.35,
-                            }}
-                          >
-                            {getSecaoTitle(chap.secao_id)}
-                          </div>
-                        </div>
 
-                        {/* 2. CAPÍTULO */}
-                        <div>
-                          <div style={{ fontSize: 12, fontWeight: 700, color: "#dc2626", marginBottom: 3, textTransform: "uppercase" }}>
-                            {locale === "en" ? `Chapter ${chap.numero}` : locale === "es" ? `Capítulo ${chap.numero}` : `Capítulo ${chap.numero}`}
-                          </div>
-                          <h2 style={{ fontSize: 15.5, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.35 }}>
+                          <h2 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.35 }}>
                             <Link
                               href={`/${locale}/capitulo/${chap.numero}`}
                               style={{
@@ -596,16 +826,21 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                               {chap.titulo_pt}
                             </Link>
                           </h2>
+
+                          <p className="text-xs text-slate-500 font-medium mb-3">
+                            {getSecaoTitle(chap.secao_id)}
+                          </p>
+
                           <Link
                             href={`/${locale}/capitulo/${chap.numero}`}
                             style={{
-                              fontSize: 12,
-                              fontWeight: 700,
-                              color: "#0284c7",
-                              textDecoration: "none",
                               display: "inline-flex",
                               alignItems: "center",
-                              gap: 4,
+                              gap: 6,
+                              fontSize: 12.5,
+                              fontWeight: 700,
+                              color: "#003382",
+                              textDecoration: "none",
                             }}
                           >
                             <span>{locale === "en" ? "View chapter" : locale === "es" ? "Ver capítulo" : "Ver capítulo"}</span>
@@ -613,127 +848,164 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                           </Link>
                         </div>
 
-                        {/* 3. AUTORES / COLABORADORES */}
+                        {/* Coluna 2: AUTORES / ESPECIALISTAS */}
                         <div>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", marginBottom: 6 }} className="lg:hidden">
-                            {locale === "en" ? "Authors / Contributors:" : locale === "es" ? "Autores / Colaboradores:" : "Autores / Colaboradores:"}
-                          </div>
-                          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
-                            {chap.autores.map((author, aIdx) => (
-                              <li key={aIdx} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#334155" }}>
-                                <span
-                                  style={{
-                                    width: 20,
-                                    height: 20,
-                                    borderRadius: "50%",
-                                    background: "#e2e8f0",
-                                    color: "#64748b",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontSize: 10,
-                                    fontWeight: 700,
-                                    flexShrink: 0,
-                                  }}
-                                >
-                                  👤
-                                </span>
-                                <Link
-                                  href={`/${locale}/autor/${author.slug}`}
-                                  style={{
-                                    color: "#1e293b",
-                                    textDecoration: "none",
-                                    fontWeight: 500,
-                                    lineHeight: 1.3,
-                                    transition: "color 0.15s ease",
-                                  }}
-                                  onMouseEnter={(e) => {
-                                    e.currentTarget.style.color = "#dc2626";
-                                    e.currentTarget.style.textDecoration = "underline";
-                                  }}
-                                  onMouseLeave={(e) => {
-                                    e.currentTarget.style.color = "#1e293b";
-                                    e.currentTarget.style.textDecoration = "none";
-                                  }}
-                                >
-                                  {author.nome}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* 4. REFERÊNCIAS BIBLIOGRÁFICAS */}
-                        <div>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", marginBottom: 6 }} className="lg:hidden">
-                            {locale === "en" ? "Bibliographic References:" : locale === "es" ? "Referencias Bibliográficas:" : "Referências Bibliográficas:"}
-                          </div>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                            {chap.referencias.map((ref) => (
+                          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                            {chap.autores.map((autor, aIdx) => (
                               <div
-                                key={ref.num}
+                                key={aIdx}
                                 style={{
-                                  background: "#f8fafc",
-                                  border: "1px solid #e2e8f0",
-                                  borderRadius: 8,
-                                  padding: "10px 14px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: 8,
                                   fontSize: 13,
-                                  lineHeight: 1.5,
                                   color: "#334155",
+                                  fontWeight: 600,
                                 }}
                               >
-                                <div style={{ marginBottom: 6 }}>
-                                  <strong style={{ color: "#001a3d", fontWeight: 700 }}>{ref.num}.</strong>{" "}
-                                  <span>{ref.text}</span>
-                                </div>
-                                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                                  {ref.doi && (
-                                    <a
-                                      href={ref.doi}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      style={{
-                                        display: "inline-flex",
-                                        alignItems: "center",
-                                        gap: 3,
-                                        padding: "2px 8px",
-                                        borderRadius: 4,
-                                        background: "#e0f2fe",
-                                        border: "1px solid #bae6fd",
-                                        color: "#0369a1",
-                                        fontSize: 11,
-                                        fontWeight: 700,
-                                        textDecoration: "none",
-                                      }}
-                                    >
-                                      <span>doi ↗</span>
-                                    </a>
-                                  )}
-                                  {ref.pmid && (
-                                    <a
-                                      href={ref.pmid}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      style={{
-                                        display: "inline-flex",
-                                        alignItems: "center",
-                                        gap: 3,
-                                        padding: "2px 8px",
-                                        borderRadius: 4,
-                                        background: "#dcfce7",
-                                        border: "1px solid #bbf7d0",
-                                        color: "#15803d",
-                                        fontSize: 11,
-                                        fontWeight: 700,
-                                        textDecoration: "none",
-                                      }}
-                                    >
-                                      <span>PubMed ↗</span>
-                                    </a>
-                                  )}
-                                </div>
+                                <span style={{ fontSize: 14 }}>👤</span>
+                                <span>{autor.nome}</span>
                               </div>
                             ))}
+                          </div>
+                        </div>
+
+                        {/* Coluna 3: REFERÊNCIAS BIBLIOGRÁFICAS */}
+                        <div>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                            {chap.referencias.map((ref, rIdx) => {
+                              const refId = `table-ref-${chap.numero}-${rIdx}`;
+                              const isCopied = copiedId === refId;
+                              return (
+                                <div
+                                  key={rIdx}
+                                  style={{
+                                    padding: "12px 14px",
+                                    borderRadius: 10,
+                                    background: "#f8fafc",
+                                    border: "1px solid #e2e8f0",
+                                    fontSize: 13,
+                                    lineHeight: 1.5,
+                                    color: "#334155",
+                                  }}
+                                >
+                                  <div style={{ marginBottom: 6 }}>
+                                    <strong style={{ color: "#001a3d", marginRight: 6 }}>{rIdx + 1}.</strong>
+                                    <span>{ref.text}</span>
+                                  </div>
+
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 6 }}>
+                                    {ref.doi ? (
+                                      <a
+                                        href={`https://doi.org/${ref.doi}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          gap: 4,
+                                          fontSize: 11,
+                                          fontWeight: 700,
+                                          padding: "3px 8px",
+                                          borderRadius: 4,
+                                          background: "rgba(0, 51, 130, 0.08)",
+                                          color: "#003382",
+                                          textDecoration: "none",
+                                          border: "1px solid rgba(0, 51, 130, 0.2)",
+                                        }}
+                                      >
+                                        <span>doi</span>
+                                        <span>↗</span>
+                                      </a>
+                                    ) : (
+                                      <a
+                                        href={`https://scholar.google.com/scholar?q=${encodeURIComponent(ref.text)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          gap: 4,
+                                          fontSize: 11,
+                                          fontWeight: 700,
+                                          padding: "3px 8px",
+                                          borderRadius: 4,
+                                          background: "rgba(0, 51, 130, 0.08)",
+                                          color: "#003382",
+                                          textDecoration: "none",
+                                          border: "1px solid rgba(0, 51, 130, 0.2)",
+                                        }}
+                                      >
+                                        <span>doi</span>
+                                        <span>↗</span>
+                                      </a>
+                                    )}
+
+                                    {ref.pmid ? (
+                                      <a
+                                        href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          gap: 4,
+                                          fontSize: 11,
+                                          fontWeight: 700,
+                                          padding: "3px 8px",
+                                          borderRadius: 4,
+                                          background: "rgba(16, 185, 129, 0.1)",
+                                          color: "#047857",
+                                          textDecoration: "none",
+                                          border: "1px solid rgba(16, 185, 129, 0.25)",
+                                        }}
+                                      >
+                                        <span>PubMed</span>
+                                        <span>↗</span>
+                                      </a>
+                                    ) : (
+                                      <a
+                                        href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(ref.text)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                          display: "inline-flex",
+                                          alignItems: "center",
+                                          gap: 4,
+                                          fontSize: 11,
+                                          fontWeight: 700,
+                                          padding: "3px 8px",
+                                          borderRadius: 4,
+                                          background: "rgba(16, 185, 129, 0.1)",
+                                          color: "#047857",
+                                          textDecoration: "none",
+                                          border: "1px solid rgba(16, 185, 129, 0.25)",
+                                        }}
+                                      >
+                                        <span>PubMed</span>
+                                        <span>↗</span>
+                                      </a>
+                                    )}
+
+                                    <button
+                                      type="button"
+                                      onClick={() => copyToClipboard(ref.text, refId)}
+                                      style={{
+                                        border: "none",
+                                        background: "none",
+                                        color: "#64748b",
+                                        fontSize: 11.5,
+                                        fontWeight: 600,
+                                        cursor: "pointer",
+                                        marginLeft: "auto",
+                                      }}
+                                    >
+                                      {isCopied ? "✓ Copiado" : "Copiar"}
+                                    </button>
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
@@ -741,83 +1013,8 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                   );
                 })}
               </div>
-            )}
-          </div>
-
-          {/* ================= COMPLEMENTARY FOOTNOTE BANNER ================= */}
-          <div
-            style={{
-              marginTop: 32,
-              background: "linear-gradient(135deg, #001738 0%, #002d6a 100%)",
-              borderRadius: 16,
-              padding: "28px 32px",
-              color: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              flexWrap: "wrap",
-            }}
-          >
-            <div style={{ maxWidth: 740 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                <span style={{ fontSize: 20 }}>📖</span>
-                <h3 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "#ffffff" }}>
-                  {locale === "en"
-                    ? "Printed Treatise by DiLivros Publisher"
-                    : locale === "es"
-                    ? "Tratado Impreso por Editorial DiLivros"
-                    : "Obra Impressa Oficial pela Editora DiLivros"}
-                </h3>
-              </div>
-              <p style={{ fontSize: 14, color: "#cbd5e1", lineHeight: 1.5, margin: 0 }}>
-                {locale === "en"
-                  ? "All illustrations, full surgical protocols, and in-depth scientific literature are published exclusively in the 2-volume printed edition of the Treatise."
-                  : locale === "es"
-                  ? "Todas las ilustraciones, protocolos quirúrgicos completos y bibliografía detallada están publicados exclusivamente en la edición impresa de 2 volúmenes del Tratado."
-                  : "Todos os esquemas cirúrgicos originais, lâminas anatômicas em alta resolução e o texto científico integral estão disponíveis com exclusividade nos 2 volumes da edição impressa oficial."}
-              </p>
             </div>
-
-            <div style={{ display: "flex", gap: 12 }}>
-              <Link
-                href={`/${locale}/indice`}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#ffffff",
-                  color: "#001a3d",
-                  padding: "10px 20px",
-                  borderRadius: 8,
-                  fontWeight: 700,
-                  fontSize: 14,
-                  textDecoration: "none",
-                }}
-              >
-                <span>{locale === "en" ? "Chapters Index" : locale === "es" ? "Índice de Capítulos" : "Índice de Capítulos"}</span>
-                <span>→</span>
-              </Link>
-              <Link
-                href={`/${locale}/autores`}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "rgba(255, 255, 255, 0.12)",
-                  color: "#ffffff",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                  padding: "10px 20px",
-                  borderRadius: 8,
-                  fontWeight: 700,
-                  fontSize: 14,
-                  textDecoration: "none",
-                }}
-              >
-                <span>{locale === "en" ? "Authors Directory" : locale === "es" ? "Directorio de Autores" : "Diretório de Autores"}</span>
-              </Link>
-            </div>
-          </div>
+          )}
         </section>
       </main>
 
