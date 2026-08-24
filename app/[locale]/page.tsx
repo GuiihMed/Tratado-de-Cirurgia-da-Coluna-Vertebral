@@ -76,7 +76,7 @@ export async function generateMetadata({
           alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
         },
         {
-          url: "https://www.tratadodecoluna.com.br/assets/book-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/capa-tratado-da-coluna.svg",
           width: 964,
           height: 1244,
           type: "image/png",
@@ -131,7 +131,7 @@ export default async function HomePage({ params }: HomePageProps) {
               <div className="md:col-span-6 lg:col-span-5 flex justify-center md:justify-end">
                 <div className="w-full max-w-[300px] sm:max-w-[380px] md:max-w-[460px] lg:max-w-[500px] transition-transform duration-300 hover:scale-[1.02]">
                   <img
-                    src="/assets/book-cover.png"
+                    src="/assets/capa-tratado-da-coluna.svg"
                     alt="Capa Oficial do Tratado de Cirurgia da Coluna Vertebral"
                     className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />

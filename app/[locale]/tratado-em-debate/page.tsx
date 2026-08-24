@@ -136,7 +136,7 @@ export default async function DebatePage({ params }: DebatePageProps) {
               {/* Left Column: Book Photo */}
               <div className="md:col-span-4 flex justify-center md:justify-end">
                 <img
-                  src="/assets/book-cover.png"
+                  src="/assets/capa-tratado-da-coluna.svg"
                   alt="Tratado de Cirurgia da Coluna Vertebral"
                   style={{
                     width: 240,

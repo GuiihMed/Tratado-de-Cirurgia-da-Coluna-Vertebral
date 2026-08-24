@@ -122,7 +122,7 @@ export async function generateMetadata({
           alt: `Capítulo ${num}: ${title} - Tratado de Cirurgia da Coluna Vertebral (SBC)`,
         },
         {
-          url: "https://www.tratadodecoluna.com.br/assets/book-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/capa-tratado-da-coluna.svg",
           width: 964,
           height: 1244,
           type: "image/png",
@@ -547,7 +547,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 />
                 <img
-                  src="/assets/book-cover.png"
+                  src="/assets/capa-tratado-da-coluna.svg"
                   alt="Capa 3D Tratado de Coluna"
                   style={{
                     width: "100%",

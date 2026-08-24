@@ -424,7 +424,7 @@ export default function AdminLoginPage() {
               }}
             />
             <img
-              src="/assets/book-cover.png"
+              src="/assets/capa-tratado-da-coluna.svg"
               alt="Tratado de Cirurgia da Coluna Vertebral"
               style={{
                 maxHeight: 260,

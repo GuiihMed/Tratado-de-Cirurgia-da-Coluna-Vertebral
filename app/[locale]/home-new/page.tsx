@@ -552,7 +552,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             <div className="modern-book-stage">
               <div className="modern-book-3d">
                 <img
-                  src="/assets/book-cover.png"
+                  src="/assets/capa-tratado-da-coluna.svg"
                   alt="Capa do Tratado de Cirurgia da Coluna Vertebral"
                 />
               </div>
@@ -1282,7 +1282,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] transition-transform duration-300 hover:scale-105">
                   <div className="absolute inset-0 bg-red-600/20 blur-[50px] rounded-full" />
                   <img
-                    src="/assets/book-cover.png"
+                    src="/assets/capa-tratado-da-coluna.svg"
                     alt="Tratado de Cirurgia da Coluna Vertebral Livro"
                     className="relative z-10 w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)]"
                   />

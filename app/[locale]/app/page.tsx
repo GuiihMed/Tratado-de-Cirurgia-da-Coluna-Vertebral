@@ -315,7 +315,7 @@ export default function MobileAppPage({ params }: MobileAppProps) {
               {/* 3D Book Cover */}
               <div style={{ display: "flex", justifyContent: "center", margin: "10px 0 20px" }}>
                 <img
-                  src="/assets/book-cover.png"
+                  src="/assets/capa-tratado-da-coluna.svg"
                   alt="Tratado de Cirurgia da Coluna Vertebral"
                   style={{
                     width: "100%",

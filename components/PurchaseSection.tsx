@@ -67,7 +67,7 @@ export default function PurchaseSection({
             {/* 2. Middle Column: 3D Book Cover */}
             <div className="lg:col-span-3 flex justify-center py-2">
               <img
-                src="/assets/book-cover.png"
+                src="/assets/capa-tratado-da-coluna.svg"
                 alt="Capa do livro impresso"
                 className="max-h-[260px] sm:max-h-[300px] lg:max-h-[340px] w-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300"
               />
@@ -139,7 +139,7 @@ export default function PurchaseSection({
 
           <div className="lg:col-span-3 flex justify-center">
             <img
-              src="/assets/book-cover.png"
+              src="/assets/capa-tratado-da-coluna.svg"
               alt="Capa da edição impressa"
               className="max-h-[260px] sm:max-h-[300px] w-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)]"
             />

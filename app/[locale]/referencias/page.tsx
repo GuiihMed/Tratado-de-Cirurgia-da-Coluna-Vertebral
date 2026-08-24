@@ -106,7 +106,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
               <div className="md:col-span-5 flex justify-center md:justify-end">
                 <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
                   <img
-                    src="/assets/book-cover.png"
+                    src="/assets/capa-tratado-da-coluna.svg"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
                     className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />
