@@ -69,6 +69,9 @@ export async function generateMetadata({
         "https://www.tratadodecoluna.com.br/assets/book-cover.png",
       ],
     },
+    verification: {
+      google: "nhqkwGi2V-nPklIFwAEOKvqtEJLjYJ_Tt5B8PTtNtTM",
+    },
   };
 }
 
