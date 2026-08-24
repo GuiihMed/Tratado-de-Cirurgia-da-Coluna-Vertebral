@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
+import GoogleTranslateWidget from "@/components/GoogleTranslateWidget";
 
 interface ModernHeaderProps {
   locale: Locale;
@@ -292,6 +293,8 @@ export default function ModernHeader({
               <img src="/assets/flags/eua.png" alt="English" style={{ width: 16, height: "auto" }} />
               <span>EN</span>
             </Link>
+            <div style={{ width: 1, height: 18, background: "rgba(255, 255, 255, 0.2)", margin: "0 4px" }} />
+            <GoogleTranslateWidget currentLocale={locale} />
           </div>
         </div>
 
