@@ -192,10 +192,7 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
                   <img
                     src="/assets/book-cover.png"
                     alt="Capa do Livro Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto object-contain rounded-2xl shadow-2xl border border-white/20"
-                    style={{
-                      boxShadow: "0 25px 60px rgba(0, 10, 30, 0.7), 0 0 40px rgba(245, 34, 56, 0.25)",
-                    }}
+                    className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.7)]"
                   />
                 </div>
               </div>

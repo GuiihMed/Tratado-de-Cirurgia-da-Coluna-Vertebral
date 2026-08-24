@@ -316,7 +316,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   <img
                     src="/assets/book-cover.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto rounded-xl drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
+                    className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />
                 </div>
               </div>

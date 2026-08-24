@@ -82,9 +82,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
                   style={{
                     width: 260,
                     height: "auto",
-                    borderRadius: "6px 14px 14px 6px",
-                    boxShadow: "0 24px 50px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4)",
-                    transform: "perspective(1000px) rotateY(-8deg)",
+                    filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.65))",
                   }}
                 />
               </div>
@@ -596,7 +594,7 @@ export default async function PrefacioPage({ params }: PrefacioPageProps) {
               <img
                 src="/assets/book-cover.png"
                 alt="Livro"
-                style={{ width: 70, height: "auto", borderRadius: 4, boxShadow: "0 6px 16px rgba(0,0,0,0.4)" }}
+                style={{ width: 70, height: "auto", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.4))" }}
               />
               <div>
                 <h3 style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px", color: "#fff" }}>

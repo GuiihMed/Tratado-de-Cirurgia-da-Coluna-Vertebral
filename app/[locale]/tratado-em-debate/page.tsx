@@ -141,8 +141,7 @@ export default async function DebatePage({ params }: DebatePageProps) {
                   style={{
                     width: 240,
                     height: "auto",
-                    borderRadius: "8px",
-                    boxShadow: "0 20px 45px rgba(0, 0, 0, 0.5)",
+                    filter: "drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5))",
                   }}
                 />
               </div>

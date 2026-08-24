@@ -364,23 +364,12 @@ svg {
   position: relative;
 }
 
-.book-wrap:before {
-  content: "";
-  position: absolute;
-  inset: 90px 10px 28px;
-  border-radius: 40px;
-  background: rgba(0, 0, 0, 0.4);
-  filter: blur(45px);
-  transform: translateY(18px);
-}
-
 .book-cover {
   width: 520px;
   max-width: 100%;
   height: auto;
   position: relative;
   filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.45));
-  border-radius: 6px;
 }
 
 .hero-copy {
@@ -2420,7 +2409,6 @@ svg {
     height: auto !important;
     margin: 0 auto !important;
     display: block !important;
-    border-radius: 12px !important;
   }
 
   /* 4. Cards e Métricas (Grid Mobile Refinado) */

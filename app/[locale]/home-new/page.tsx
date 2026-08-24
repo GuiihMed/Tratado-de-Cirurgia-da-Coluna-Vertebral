@@ -1284,7 +1284,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   <img
                     src="/assets/book-cover.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral Livro"
-                    className="relative z-10 w-full h-auto rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,0.85)] border border-white/20"
+                    className="relative z-10 w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)]"
                   />
                 </div>
               </div>

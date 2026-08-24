@@ -552,9 +552,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   style={{
                     width: "100%",
                     maxWidth: 290,
-                    borderRadius: 10,
-                    boxShadow: "0 25px 60px rgba(0, 0, 0, 0.7), -10px 10px 30px rgba(0, 20, 50, 0.4)",
-                    transform: "rotateY(-10deg) rotateX(3deg)",
+                    filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.65))",
                     position: "relative",
                     zIndex: 1,
                   }}

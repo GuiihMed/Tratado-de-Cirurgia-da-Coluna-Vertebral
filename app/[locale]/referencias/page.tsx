@@ -108,10 +108,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                   <img
                     src="/assets/book-cover.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
-                    style={{
-                      transform: "perspective(1000px) rotateY(-6deg)",
-                    }}
+                    className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />
                 </div>
               </div>

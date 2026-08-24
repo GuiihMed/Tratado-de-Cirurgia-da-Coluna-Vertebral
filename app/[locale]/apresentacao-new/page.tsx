@@ -116,9 +116,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                       width: "100%",
                       maxWidth: 280,
                       height: "auto",
-                      borderRadius: 12,
-                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)",
-                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7))",
                     }}
                   />
                 </div>
