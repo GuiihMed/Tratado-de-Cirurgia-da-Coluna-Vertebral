@@ -1061,49 +1061,64 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     href={`/pt/capitulo/${num}`}
                     style={{
                       flex: 1,
-                      textAlign: "center",
-                      padding: "8px",
-                      borderRadius: 6,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "8px 4px",
+                      borderRadius: 8,
                       background: locale === "pt" ? "#001a3d" : "#f1f5f9",
                       color: locale === "pt" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13,
+                      fontSize: 12,
                       textDecoration: "none",
+                      border: locale === "pt" ? "1px solid #001a3d" : "1px solid #e2e8f0",
                     }}
                   >
-                    PT
+                    <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 22, height: "auto" }} />
+                    <span>PT</span>
                   </Link>
                   <Link
                     href={`/es/capitulo/${num}`}
                     style={{
                       flex: 1,
-                      textAlign: "center",
-                      padding: "8px",
-                      borderRadius: 6,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "8px 4px",
+                      borderRadius: 8,
                       background: locale === "es" ? "#001a3d" : "#f1f5f9",
                       color: locale === "es" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13,
+                      fontSize: 12,
                       textDecoration: "none",
+                      border: locale === "es" ? "1px solid #001a3d" : "1px solid #e2e8f0",
                     }}
                   >
-                    ES
+                    <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 22, height: "auto" }} />
+                    <span>ES</span>
                   </Link>
                   <Link
                     href={`/en/capitulo/${num}`}
                     style={{
                       flex: 1,
-                      textAlign: "center",
-                      padding: "8px",
-                      borderRadius: 6,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "8px 4px",
+                      borderRadius: 8,
                       background: locale === "en" ? "#001a3d" : "#f1f5f9",
                       color: locale === "en" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13,
+                      fontSize: 12,
                       textDecoration: "none",
+                      border: locale === "en" ? "1px solid #001a3d" : "1px solid #e2e8f0",
                     }}
                   >
-                    EN
+                    <img src="/assets/flags/eua.png" alt="English" style={{ width: 22, height: "auto" }} />
+                    <span>EN</span>
                   </Link>
                 </div>
               </div>

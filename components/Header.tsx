@@ -157,10 +157,42 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", height: 20, margin: "0 2px" }} />
 
           {/* Languages */}
-          <div className="languages">
-            {locale === "pt" ? <b className="active-lang">PT</b> : <Link href={getLocalePath("pt")}>PT</Link>}
-            {locale === "es" ? <b className="active-lang">ES</b> : <Link href={getLocalePath("es")}>ES</Link>}
-            {locale === "en" ? <b className="active-lang">EN</b> : <Link href={getLocalePath("en")}>EN</Link>}
+          <div className="languages" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {locale === "pt" ? (
+              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 17, height: "auto", display: "inline-block" }} />
+                <b style={{ color: "#ff3247" }}>PT</b>
+              </span>
+            ) : (
+              <Link href={getLocalePath("pt")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
+                <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 15, height: "auto", display: "inline-block" }} />
+                <span>PT</span>
+              </Link>
+            )}
+            <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
+            {locale === "es" ? (
+              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 17, height: "auto", display: "inline-block" }} />
+                <b style={{ color: "#ff3247" }}>ES</b>
+              </span>
+            ) : (
+              <Link href={getLocalePath("es")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
+                <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 15, height: "auto", display: "inline-block" }} />
+                <span>ES</span>
+              </Link>
+            )}
+            <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
+            {locale === "en" ? (
+              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                <img src="/assets/flags/eua.png" alt="English" style={{ width: 17, height: "auto", display: "inline-block" }} />
+                <b style={{ color: "#ff3247" }}>EN</b>
+              </span>
+            ) : (
+              <Link href={getLocalePath("en")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
+                <img src="/assets/flags/eua.png" alt="English" style={{ width: 15, height: "auto", display: "inline-block" }} />
+                <span>EN</span>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -278,23 +310,31 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           >
             <span style={{ fontSize: 13, color: "#94a3b8", fontWeight: 600 }}>Idioma:</span>
             <div style={{ display: "flex", gap: 8 }}>
-              {["pt", "es", "en"].map((lang) => (
+              {[
+                { code: "pt", flag: "/assets/flags/brasil.png", label: "PT" },
+                { code: "es", flag: "/assets/flags/espanha.png", label: "ES" },
+                { code: "en", flag: "/assets/flags/eua.png", label: "EN" },
+              ].map(({ code, flag, label }) => (
                 <Link
-                  key={lang}
-                  href={getLocalePath(lang as Locale)}
+                  key={code}
+                  href={getLocalePath(code as Locale)}
                   onClick={() => setMobileMenuOpen(false)}
                   style={{
-                    padding: "6px 14px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "6px 12px",
                     borderRadius: 8,
-                    background: locale === lang ? "#f52238" : "rgba(255, 255, 255, 0.08)",
-                    border: locale === lang ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
+                    background: locale === code ? "#f52238" : "rgba(255, 255, 255, 0.08)",
+                    border: locale === code ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
                     color: "#ffffff",
                     fontSize: 13,
                     fontWeight: 700,
                     textDecoration: "none",
                   }}
                 >
-                  {lang.toUpperCase()}
+                  <img src={flag} alt={label} style={{ width: 18, height: "auto" }} />
+                  <span>{label}</span>
                 </Link>
               ))}
             </div>

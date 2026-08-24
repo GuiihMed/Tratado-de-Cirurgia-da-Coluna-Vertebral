@@ -267,24 +267,30 @@ export default function ModernHeader({
           <div style={{ width: 1, height: 22, background: "rgba(255, 255, 255, 0.2)" }} />
 
           {/* Desktop Language Switcher */}
-          <div className="modern-lang-pills">
+          <div className="modern-lang-pills" style={{ display: "flex", alignItems: "center", gap: 3 }}>
             <Link
               href={getLocalePath("pt")}
               className={`modern-lang-btn ${locale === "pt" ? "active" : ""}`}
+              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
             >
-              PT
+              <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 16, height: "auto" }} />
+              <span>PT</span>
             </Link>
             <Link
               href={getLocalePath("es")}
               className={`modern-lang-btn ${locale === "es" ? "active" : ""}`}
+              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
             >
-              ES
+              <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 16, height: "auto" }} />
+              <span>ES</span>
             </Link>
             <Link
               href={getLocalePath("en")}
               className={`modern-lang-btn ${locale === "en" ? "active" : ""}`}
+              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
             >
-              EN
+              <img src="/assets/flags/eua.png" alt="English" style={{ width: 16, height: "auto" }} />
+              <span>EN</span>
             </Link>
           </div>
         </div>
@@ -410,27 +416,33 @@ export default function ModernHeader({
           <div className="modern-drawer-footer">
             <div className="modern-drawer-langs">
               <span style={{ fontSize: 13, color: "#8da9cc" }}>Idioma:</span>
-              <div className="modern-lang-pills">
+              <div className="modern-lang-pills" style={{ display: "flex", alignItems: "center", gap: 4 }}>
                 <Link
                   href={getLocalePath("pt")}
                   className={`modern-lang-btn ${locale === "pt" ? "active" : ""}`}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  PT
+                  <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 16, height: "auto" }} />
+                  <span>PT</span>
                 </Link>
                 <Link
                   href={getLocalePath("es")}
                   className={`modern-lang-btn ${locale === "es" ? "active" : ""}`}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  ES
+                  <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 16, height: "auto" }} />
+                  <span>ES</span>
                 </Link>
                 <Link
                   href={getLocalePath("en")}
                   className={`modern-lang-btn ${locale === "en" ? "active" : ""}`}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  EN
+                  <img src="/assets/flags/eua.png" alt="English" style={{ width: 16, height: "auto" }} />
+                  <span>EN</span>
                 </Link>
               </div>
             </div>

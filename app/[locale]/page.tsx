@@ -501,15 +501,15 @@ export default async function HomePage({ params }: HomePageProps) {
 
                   <div className="flex flex-col gap-3 mb-6">
                     <Link href="/pt" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
-                      <img src="https://flagcdn.com/w40/br.png" alt="Brasil" className="w-6 h-auto rounded shadow" />
+                      <img src="/assets/flags/brasil.png" alt="Brasil" className="w-7 h-auto drop-shadow" />
                       <span>Português (Brasil)</span>
                     </Link>
                     <Link href="/en" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
-                      <img src="https://flagcdn.com/w40/us.png" alt="USA" className="w-6 h-auto rounded shadow" />
+                      <img src="/assets/flags/eua.png" alt="USA" className="w-7 h-auto drop-shadow" />
                       <span>English (Abstracts)</span>
                     </Link>
                     <Link href="/es" className="inline-flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold transition-all">
-                      <img src="https://flagcdn.com/w40/es.png" alt="Spain" className="w-6 h-auto rounded shadow" />
+                      <img src="/assets/flags/espanha.png" alt="Spain" className="w-7 h-auto drop-shadow" />
                       <span>Español (Resúmenes)</span>
                     </Link>
                   </div>

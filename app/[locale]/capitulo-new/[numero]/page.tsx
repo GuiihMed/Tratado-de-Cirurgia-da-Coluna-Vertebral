@@ -1209,50 +1209,68 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   <Link
                     href={`/pt/capitulo-new/${num}`}
                     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
                       textAlign: "center",
-                      padding: "10px",
-                      borderRadius: 8,
+                      padding: "8px 4px",
+                      borderRadius: 10,
                       background: locale === "pt" ? "#f52238" : "#f1f5f9",
                       color: locale === "pt" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13.5,
+                      fontSize: 12.5,
                       textDecoration: "none",
                       boxShadow: locale === "pt" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
+                      border: locale === "pt" ? "1px solid #f52238" : "1px solid #e2e8f0",
                     }}
                   >
-                    PT
+                    <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 22, height: "auto" }} />
+                    <span>PT</span>
                   </Link>
                   <Link
                     href={`/es/capitulo-new/${num}`}
                     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
                       textAlign: "center",
-                      padding: "10px",
-                      borderRadius: 8,
+                      padding: "8px 4px",
+                      borderRadius: 10,
                       background: locale === "es" ? "#f52238" : "#f1f5f9",
                       color: locale === "es" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13.5,
+                      fontSize: 12.5,
                       textDecoration: "none",
                       boxShadow: locale === "es" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
+                      border: locale === "es" ? "1px solid #f52238" : "1px solid #e2e8f0",
                     }}
                   >
-                    ES
+                    <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 22, height: "auto" }} />
+                    <span>ES</span>
                   </Link>
                   <Link
                     href={`/en/capitulo-new/${num}`}
                     style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 4,
                       textAlign: "center",
-                      padding: "10px",
-                      borderRadius: 8,
+                      padding: "8px 4px",
+                      borderRadius: 10,
                       background: locale === "en" ? "#f52238" : "#f1f5f9",
                       color: locale === "en" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 13.5,
+                      fontSize: 12.5,
                       textDecoration: "none",
                       boxShadow: locale === "en" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
+                      border: locale === "en" ? "1px solid #f52238" : "1px solid #e2e8f0",
                     }}
                   >
-                    EN
+                    <img src="/assets/flags/eua.png" alt="English" style={{ width: 22, height: "auto" }} />
+                    <span>EN</span>
                   </Link>
                 </div>
               </div>
