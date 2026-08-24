@@ -61,13 +61,12 @@ export async function generateMetadata({
   const fullChapter = getFullChapterByNumber(num, locale);
   const { data: cap } = await getCapituloByNumero(num);
 
-  const titlePt = fullChapter?.titulo || cap?.titulo_pt || `Capítulo ${num}`;
   const title =
-    locale === "en" && cap?.titulo_en
-      ? cap.titulo_en
-      : locale === "es" && cap?.titulo_es
-      ? cap.titulo_es
-      : titlePt;
+    (locale === "en"
+      ? (fullChapter?.titulo || cap?.titulo_en)
+      : locale === "es"
+      ? (fullChapter?.titulo || cap?.titulo_es)
+      : (fullChapter?.titulo || cap?.titulo_pt)) || `Capítulo ${num}`;
 
   const authors =
     (fullChapter?.autores && fullChapter.autores.length > 0
@@ -170,25 +169,27 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
     ? INITIAL_CHAPTERS.find((c) => c.numero === nextChapterNum)
     : null;
 
-  // Title in active locale
-  const title =
-    locale === "en" && cap.titulo_en
-      ? cap.titulo_en
-      : locale === "es" && cap.titulo_es
-      ? cap.titulo_es
-      : cap.titulo_pt;
-
-  const sectionTitle = secao
-    ? locale === "en"
-      ? secao.titulo_en
-      : locale === "es"
-      ? secao.titulo_es
-      : secao.titulo_pt
-    : `Seção ${cap.secao_id}`;
-
   const isCap8 = num === 8;
   const fullChapter = getFullChapterByNumber(num, locale);
   const chapterAuthors = getAuthorsByChapter(num);
+
+  // Title in active locale
+  const title =
+    (locale === "en"
+      ? (fullChapter?.titulo || cap.titulo_en)
+      : locale === "es"
+      ? (fullChapter?.titulo || cap.titulo_es)
+      : (fullChapter?.titulo || cap.titulo_pt)) || `Capítulo ${num}`;
+
+  const sectionTitle =
+    fullChapter?.secao ||
+    (secao
+      ? locale === "en"
+        ? secao.titulo_en
+        : locale === "es"
+        ? secao.titulo_es
+        : secao.titulo_pt
+      : `Seção ${cap.secao_id}`);
   const authorsText =
     (fullChapter?.autores && fullChapter.autores.length > 0
       ? fullChapter.autores.join(" • ")
