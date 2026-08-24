@@ -309,16 +309,13 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
             {/* Hero Main Responsive Grid */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-              {/* 3D Book Cover */}
+              {/* Book Cover Photo */}
               <div className="md:col-span-5 flex justify-center md:justify-end">
-                <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[280px] transition-transform duration-300 hover:scale-[1.03]">
+                <div className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.02]">
                   <img
                     src="/assets/book-cover.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
-                    style={{
-                      transform: "perspective(1000px) rotateY(-6deg)",
-                    }}
+                    className="w-full h-auto rounded-xl drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />
                 </div>
               </div>
@@ -356,7 +353,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                 </div>
 
                 {/* Authors (com links para os perfis dos autores) */}
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base font-semibold text-slate-200 mb-3">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base font-semibold text-slate-200 mb-5">
                   <span className="text-slate-300 font-normal">
                     {locale === "en" ? "Authors:" : locale === "es" ? "Autores:" : "Autores:"}
                   </span>
@@ -378,11 +375,6 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     <span>{authorsText}</span>
                   )}
                 </div>
-
-                {/* Lead Subtitle */}
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl mb-5">
-                  {leadText}
-                </p>
 
                 {/* Print Notice Box */}
                 <div

@@ -418,11 +418,6 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 )}
               </div>
 
-              {/* Lead */}
-              <p style={{ fontSize: 16, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 22px", maxWidth: 660 }}>
-                {leadText}
-              </p>
-
               {/* Notice Box */}
               <div
                 style={{
