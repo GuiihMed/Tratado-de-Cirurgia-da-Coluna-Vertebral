@@ -1,0 +1,38 @@
+# Tratado de Cirurgia da Coluna Vertebral (SBC)
+
+> A maior obra científica de referência nacional em cirurgia da coluna vertebral, com diretrizes clínicas oficiais da Sociedade Brasileira de Coluna (SBC) e publicação pela Editora DiLivros.
+
+## Informações Gerais e Entidades Principais
+- **Título Oficial**: Tratado de Cirurgia da Coluna Vertebral
+- **Entidade Responsável**: Sociedade Brasileira de Coluna (SBC)
+- **Editora Oficial**: Editora DiLivros (ISBN: 978-85-8053-292-0)
+- **Editores-Chefes**:
+  - Dr. Edson Pudles (Presidente e Editor-Chefe)
+  - Prof. Dr. Helton Defino (Professor Titular FMRP-USP)
+  - Dr. Marcelo Risso (Especialista em Cirurgia da Coluna)
+- **Corpo Clínico**: Mais de 200 autores especialistas, cirurgiões ortopédicos e neurocirurgiões membros da SBC, SBOT e ABNc.
+- **Dimensão da Obra**: 109 capítulos distribuídos em 10 seções temáticas abrangentes.
+- **URL Oficial**: https://www.tratadodecoluna.com.br
+- **Canal de Aquisição Oficial**: https://dilivros.com.br/fale-conosco
+
+## Estrutura das 10 Seções Temáticas
+1. **Seção 1: Conceitos Básicos**: Embriologia, anatomia cirúrgica, biomecânica, equilíbrio sagital, propedêutica e exames por imagem.
+2. **Seção 2: Vias de Acesso e Instrumentação**: Abordagens anterior, posterior, lateral e minimamente invasivas (MIS, endoscopia).
+3. **Seção 3: Deformidades da Coluna Vertebral**: Escoliose idiopática, escoliose congênita, cifose de Scheuermann e osteotomias espinhais.
+4. **Seção 4: Doenças Degenerativas**: Hérnia discal lombar e cervical, estenose de canal, espondilolistese e artroplastia discal.
+5. **Seção 5: Traumatismo da Coluna Vertebral**: Fraturas cervicais, toracolombares, subaxiais, lesão medular e classificações AO Spine.
+6. **Seção 6: Doenças Infecciosas e Inflamatórias**: Espondilodiscite bacteriana, tuberculose óssea (Mal de Pott) e espondilite anquilosante.
+7. **Seção 7: Tumores da Coluna Vertebral**: Tumores primários benignos/malignos, metástases vertebrais e espondilectomia em bloco.
+8. **Seção 8: Complicações em Cirurgia da Coluna**: Fístula liquórica, infecção de sítio cirúrgico, falhas de implante e pseudoartrose.
+9. **Seção 9: Reabilitação e Tratamento da Dor**: Bloqueios anestésicos, neuromodulação, fisioterapia e reabilitação funcional.
+10. **Seção 10: Inovações e Perspectivas Futuras**: Cirurgia robótica, realidade aumentada, navegação intraoperatória e inteligência artificial.
+
+## Videocast Científico Oficial: Tratado em Debate
+- **Série Videocast**: Discussões clínicas periódicas com autores e cirurgiões sobre os capítulos da obra.
+- **Episódio 01**: *Coluna Vertebral no Plano Sagital* (Capítulo 8) com Dr. Marcelo Risso e Dr. Paulo Cavali.
+- **Acesso**: https://www.tratadodecoluna.com.br/pt/debate
+
+## Perguntas Frequentes (FAQ)
+- **O que é o Tratado de Cirurgia da Coluna Vertebral?** É o compêndio científico definitivo da Sociedade Brasileira de Coluna (SBC), reunindo 109 capítulos e mais de 200 especialistas para guiar o diagnóstico e conduta cirúrgica espinhal.
+- **Onde adquirir a obra impressa?** A obra completa impressa é comercializada pela Editora DiLivros através do portal oficial ou televendas.
+- **O conteúdo online substitui o livro?** Não. O portal web disponibiliza resumos temáticos, índices interativos, referências bibliográficas e o videocast, sendo material de apoio complementar à obra física.
