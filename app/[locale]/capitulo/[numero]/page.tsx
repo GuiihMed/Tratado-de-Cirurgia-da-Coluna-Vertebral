@@ -63,7 +63,7 @@ export async function generateMetadata({
   const description =
     rawDesc.length > 200 ? `${rawDesc.slice(0, 197)}...` : rawDesc;
 
-  const pageUrl = `https://livro-sbc.vercel.app/${locale}/capitulo/${num}`;
+  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/capitulo/${num}`;
   const fullTitle = `Capítulo ${num}: ${title} | Tratado de Cirurgia da Coluna Vertebral`;
 
   return {
@@ -82,9 +82,9 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        pt: `https://livro-sbc.vercel.app/pt/capitulo/${num}`,
-        en: `https://livro-sbc.vercel.app/en/capitulo/${num}`,
-        es: `https://livro-sbc.vercel.app/es/capitulo/${num}`,
+        pt: `https://www.tratadodecoluna.com.br/pt/capitulo/${num}`,
+        en: `https://www.tratadodecoluna.com.br/en/capitulo/${num}`,
+        es: `https://www.tratadodecoluna.com.br/es/capitulo/${num}`,
       },
     },
     openGraph: {
@@ -96,14 +96,14 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           width: 1200,
           height: 630,
           type: "image/png",
           alt: `Capítulo ${num}: ${title} - Tratado de Cirurgia da Coluna Vertebral (SBC)`,
         },
         {
-          url: "https://livro-sbc.vercel.app/assets/book-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/book-cover.png",
           width: 964,
           height: 1244,
           type: "image/png",
@@ -115,7 +115,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `Capítulo ${num}: ${title} — Tratado SBC`,
       description,
-      images: ["https://livro-sbc.vercel.app/assets/og-cover.png"],
+      images: ["https://www.tratadodecoluna.com.br/assets/og-cover.png"],
     },
   };
 }

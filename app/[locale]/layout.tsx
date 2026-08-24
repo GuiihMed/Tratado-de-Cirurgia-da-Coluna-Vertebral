@@ -39,20 +39,20 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: locale === "en" ? "en_US" : locale === "es" ? "es_ES" : "pt_BR",
-      url: `https://livro-sbc.vercel.app/${locale}`,
+      url: `https://www.tratadodecoluna.com.br/${locale}`,
       siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
       title: currentTitle,
       description: currentDesc,
       images: [
         {
-          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           width: 1200,
           height: 630,
           type: "image/png",
           alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
         },
         {
-          url: "https://livro-sbc.vercel.app/assets/book-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/book-cover.png",
           width: 964,
           height: 1244,
           type: "image/png",
@@ -65,8 +65,8 @@ export async function generateMetadata({
       title: currentTitle,
       description: currentDesc,
       images: [
-        "https://livro-sbc.vercel.app/assets/og-cover.png",
-        "https://livro-sbc.vercel.app/assets/book-cover.png",
+        "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+        "https://www.tratadodecoluna.com.br/assets/book-cover.png",
       ],
     },
   };

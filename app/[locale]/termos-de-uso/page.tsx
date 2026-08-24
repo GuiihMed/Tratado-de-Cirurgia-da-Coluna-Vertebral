@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   const currentTitle = titles[locale] || titles.pt;
   const currentDesc = descriptions[locale] || descriptions.pt;
-  const pageUrl = `https://livro-sbc.vercel.app/${locale}/termos-de-uso`;
+  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/termos-de-uso`;
 
   return {
     title: currentTitle,
@@ -42,9 +42,9 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        pt: "https://livro-sbc.vercel.app/pt/termos-de-uso",
-        en: "https://livro-sbc.vercel.app/en/termos-de-uso",
-        es: "https://livro-sbc.vercel.app/es/termos-de-uso",
+        pt: "https://www.tratadodecoluna.com.br/pt/termos-de-uso",
+        en: "https://www.tratadodecoluna.com.br/en/termos-de-uso",
+        es: "https://www.tratadodecoluna.com.br/es/termos-de-uso",
       },
     },
     openGraph: {
@@ -56,7 +56,7 @@ export async function generateMetadata({
       description: currentDesc,
       images: [
         {
-          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           width: 1200,
           height: 630,
           type: "image/png",

@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://livro-sbc.vercel.app"),
+  metadataBase: new URL("https://www.tratadodecoluna.com.br"),
   title: {
     default: "Tratado de Cirurgia da Coluna Vertebral | Sociedade Brasileira de Coluna (SBC)",
     template: "%s | Tratado de Cirurgia da Coluna Vertebral",
@@ -46,21 +46,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     alternateLocale: ["en_US", "es_ES"],
-    url: "https://livro-sbc.vercel.app",
+    url: "https://www.tratadodecoluna.com.br",
     siteName: "Tratado de Cirurgia da Coluna Vertebral - SBC",
     title: "Tratado de Cirurgia da Coluna Vertebral | Obra Oficial SBC",
     description:
       "Plataforma digital e científica da maior obra de referência em cirurgia espinhal do Brasil. 109 capítulos especializados, diretrizes clínicas e coordenação da Sociedade Brasileira de Coluna.",
     images: [
       {
-        url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+        url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
         width: 1200,
         height: 630,
         type: "image/png",
         alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
       },
       {
-        url: "https://livro-sbc.vercel.app/assets/book-cover.png",
+        url: "https://www.tratadodecoluna.com.br/assets/book-cover.png",
         width: 964,
         height: 1244,
         type: "image/png",
@@ -74,8 +74,8 @@ export const metadata: Metadata = {
     description:
       "Obra oficial de referência médica nacional com 109 capítulos especializados e diretrizes científicas da SBC.",
     images: [
-      "https://livro-sbc.vercel.app/assets/og-cover.png",
-      "https://livro-sbc.vercel.app/assets/book-cover.png",
+      "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+      "https://www.tratadodecoluna.com.br/assets/book-cover.png",
     ],
   },
   robots: {
@@ -109,13 +109,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <meta property="og:image" content="https://livro-sbc.vercel.app/assets/og-cover.png" />
-        <meta property="og:image:secure_url" content="https://livro-sbc.vercel.app/assets/og-cover.png" />
+        <meta property="og:image" content="https://www.tratadodecoluna.com.br/assets/og-cover.png" />
+        <meta property="og:image:secure_url" content="https://www.tratadodecoluna.com.br/assets/og-cover.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Capa Oficial do Tratado de Cirurgia da Coluna Vertebral - SBC" />
-        <meta name="twitter:image" content="https://livro-sbc.vercel.app/assets/og-cover.png" />
+        <meta name="twitter:image" content="https://www.tratadodecoluna.com.br/assets/og-cover.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />

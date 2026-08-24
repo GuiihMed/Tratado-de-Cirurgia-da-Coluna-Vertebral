@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   const currentTitle = titles[locale] || titles.pt;
   const currentDesc = descriptions[locale] || descriptions.pt;
-  const pageUrl = `https://livro-sbc.vercel.app/${locale}/politica-de-privacidade-new`;
+  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/politica-de-privacidade-new`;
 
   return {
     title: currentTitle,
@@ -52,9 +52,9 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        pt: "https://livro-sbc.vercel.app/pt/politica-de-privacidade-new",
-        en: "https://livro-sbc.vercel.app/en/politica-de-privacidade-new",
-        es: "https://livro-sbc.vercel.app/es/politica-de-privacidade-new",
+        pt: "https://www.tratadodecoluna.com.br/pt/politica-de-privacidade-new",
+        en: "https://www.tratadodecoluna.com.br/en/politica-de-privacidade-new",
+        es: "https://www.tratadodecoluna.com.br/es/politica-de-privacidade-new",
       },
     },
     openGraph: {
@@ -66,7 +66,7 @@ export async function generateMetadata({
       description: currentDesc,
       images: [
         {
-          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           width: 1200,
           height: 630,
           type: "image/png",
@@ -78,7 +78,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: currentTitle,
       description: currentDesc,
-      images: ["https://livro-sbc.vercel.app/assets/og-cover.png"],
+      images: ["https://www.tratadodecoluna.com.br/assets/og-cover.png"],
     },
   };
 }

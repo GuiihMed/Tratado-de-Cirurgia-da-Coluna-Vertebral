@@ -52,13 +52,13 @@ export async function generateMetadata({
   const description =
     descRaw.length > 200 ? `${descRaw.slice(0, 197)}...` : descRaw;
 
-  const pageUrl = `https://livro-sbc.vercel.app/${locale}/autor/${author.slug || author.id}`;
+  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/autor/${author.slug || author.id}`;
   const authorPhoto =
     author.foto_url && author.foto_url.startsWith("http")
       ? author.foto_url
       : author.foto_url && author.foto_url.startsWith("/")
-      ? `https://livro-sbc.vercel.app${author.foto_url}`
-      : "https://livro-sbc.vercel.app/assets/og-cover.png";
+      ? `https://www.tratadodecoluna.com.br${author.foto_url}`
+      : "https://www.tratadodecoluna.com.br/assets/og-cover.png";
 
   return {
     title,
@@ -75,9 +75,9 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        pt: `https://livro-sbc.vercel.app/pt/autor/${author.slug || author.id}`,
-        en: `https://livro-sbc.vercel.app/en/autor/${author.slug || author.id}`,
-        es: `https://livro-sbc.vercel.app/es/autor/${author.slug || author.id}`,
+        pt: `https://www.tratadodecoluna.com.br/pt/autor/${author.slug || author.id}`,
+        en: `https://www.tratadodecoluna.com.br/en/autor/${author.slug || author.id}`,
+        es: `https://www.tratadodecoluna.com.br/es/autor/${author.slug || author.id}`,
       },
     },
     openGraph: {
@@ -96,7 +96,7 @@ export async function generateMetadata({
           alt: `${author.nome} - Tratado de Cirurgia da Coluna Vertebral (SBC)`,
         },
         {
-          url: "https://livro-sbc.vercel.app/assets/og-cover.png",
+          url: "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           width: 1200,
           height: 630,
           type: "image/png",

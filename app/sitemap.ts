@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { AUTHORS_DIRECTORY } from "@/lib/data/authors";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.tratadodecoluna.com.br";
@@ -34,10 +35,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}/${locale}/capitulo/${i}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
-        priority: 0.75,
+        priority: 0.85,
+      });
+    }
+
+    // Author Profiles (E-E-A-T Authority)
+    for (const author of AUTHORS_DIRECTORY) {
+      const slugOrId = author.slug || author.id;
+      entries.push({
+        url: `${baseUrl}/${locale}/autor/${slugOrId}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
       });
     }
   }
 
   return entries;
 }
+
+
