@@ -6298,3 +6298,67 @@ export function getAuthorsByChapter(chapterNum: number): AuthorProfile[] {
 export function getAllAuthors(): AuthorProfile[] {
   return AUTHORS_DIRECTORY;
 }
+
+export function translateAuthorRole(cargo: string, locale: "pt" | "en" | "es" = "pt"): string {
+  if (locale === "pt" || !cargo) return cargo;
+  if (locale === "en") {
+    return cargo
+      .replace(/Membro Titular da Sociedade Brasileira de Coluna/gi, "Full Member of the Brazilian Spine Society")
+      .replace(/Membro Especialista da Sociedade Brasileira de Coluna/gi, "Specialist Member of the Brazilian Spine Society")
+      .replace(/Membro Efetivo da Sociedade Brasileira de Coluna/gi, "Active Member of the Brazilian Spine Society")
+      .replace(/Membro Emérito da Sociedade Brasileira de Coluna/gi, "Emeritus Member of the Brazilian Spine Society")
+      .replace(/Médico Especialista em Cirurgia da Coluna/gi, "Spine Surgery Specialist Physician")
+      .replace(/Médico Neurocirurgião/gi, "Neurosurgeon")
+      .replace(/Médico Ortopedista/gi, "Orthopedic Surgeon")
+      .replace(/Professor Titular/gi, "Full Professor")
+      .replace(/Professor Associado/gi, "Associate Professor")
+      .replace(/Professor Adjunto/gi, "Adjunct Professor")
+      .replace(/Doutor em/gi, "PhD in")
+      .replace(/Mestre em/gi, "MSc in")
+      .replace(/Presidente da SBC/gi, "President of the Brazilian Spine Society")
+      .replace(/Presidente do Comitê/gi, "Committee President")
+      .replace(/Chefe do Grupo de Coluna/gi, "Head of Spine Surgery Group")
+      .replace(/Coordenador do Serviço de Coluna/gi, "Spine Service Coordinator")
+      .replace(/Residente do Serviço de Neurocirurgia/gi, "Neurosurgery Resident")
+      .replace(/Residente de Ortopedia/gi, "Orthopedics Resident");
+  }
+  if (locale === "es") {
+    return cargo
+      .replace(/Membro Titular da Sociedade Brasileira de Coluna/gi, "Miembro Titular de la Sociedad Brasileña de Columna")
+      .replace(/Membro Especialista da Sociedade Brasileira de Coluna/gi, "Miembro Especialista de la Sociedad Brasileña de Columna")
+      .replace(/Membro Efetivo da Sociedade Brasileira de Coluna/gi, "Miembro Efectivo de la Sociedad Brasileña de Columna")
+      .replace(/Membro Emérito da Sociedade Brasileira de Coluna/gi, "Miembro Emérito de la Sociedad Brasileña de Columna")
+      .replace(/Médico Especialista em Cirurgia da Coluna/gi, "Médico Especialista en Cirugía de Columna")
+      .replace(/Médico Neurocirurgião/gi, "Médico Neurocirujano")
+      .replace(/Médico Ortopedista/gi, "Médico Ortopedista")
+      .replace(/Professor Titular/gi, "Profesor Titular")
+      .replace(/Professor Associado/gi, "Profesor Asociado")
+      .replace(/Professor Adjunto/gi, "Profesor Adjunto")
+      .replace(/Doutor em/gi, "Doctor en")
+      .replace(/Mestre em/gi, "Magíster en")
+      .replace(/Presidente da SBC/gi, "Presidente de la Sociedad Brasileña de Columna")
+      .replace(/Presidente do Comitê/gi, "Presidente del Comité")
+      .replace(/Chefe do Grupo de Coluna/gi, "Jefe del Grupo de Columna")
+      .replace(/Coordenador do Serviço de Coluna/gi, "Coordinador del Servicio de Columna")
+      .replace(/Residente do Serviço de Neurocirurgia/gi, "Residente del Servicio de Neurocirugía")
+      .replace(/Residente de Ortopedia/gi, "Residente de Ortopedia");
+  }
+  return cargo;
+}
+
+export function translateAuthorDestaque(destaque: string, locale: "pt" | "en" | "es" = "pt"): string {
+  if (locale === "pt" || !destaque) return destaque;
+  if (locale === "en") {
+    return destaque
+      .replace(/Autor de (\d+) Capítulos? no Tratado SBC/gi, "Author of $1 Chapter(s) in the SBC Treatise")
+      .replace(/Coautor de (\d+) Capítulos? no Tratado SBC/gi, "Coauthor of $1 Chapter(s) in the SBC Treatise")
+      .replace(/Editor-Chefe do Tratado SBC/gi, "Editor-in-Chief of the SBC Treatise");
+  }
+  if (locale === "es") {
+    return destaque
+      .replace(/Autor de (\d+) Capítulos? no Tratado SBC/gi, "Autor de $1 Capítulo(s) en el Tratado SBC")
+      .replace(/Coautor de (\d+) Capítulos? no Tratado SBC/gi, "Coautor de $1 Capítulo(s) en el Tratado SBC")
+      .replace(/Editor-Chefe do Tratado SBC/gi, "Editor en Jefe del Tratado SBC");
+  }
+  return destaque;
+}

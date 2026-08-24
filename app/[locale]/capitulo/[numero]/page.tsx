@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Locale, Capitulo } from "@/lib/types";
 import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
-import { getAuthorsByChapter } from "@/lib/data/authors";
+import { getAuthorsByChapter, translateAuthorRole, translateAuthorDestaque } from "@/lib/data/authors";
 import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
@@ -39,7 +39,7 @@ export async function generateMetadata({
     ? (rawLocale as Locale)
     : "pt";
   const num = parseInt(numero, 10);
-  const fullChapter = getFullChapterByNumber(num);
+  const fullChapter = getFullChapterByNumber(num, locale);
   const { data: cap } = await getCapituloByNumero(num);
 
   const titlePt = fullChapter?.titulo || cap?.titulo_pt || `Capítulo ${num}`;
@@ -169,7 +169,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
   // Structured full chapter data
   const isCap8 = num === 8;
-  const fullChapter = getFullChapterByNumber(num);
+  const fullChapter = getFullChapterByNumber(num, locale);
   const chapterAuthors = getAuthorsByChapter(num);
 
   const authorsText =
@@ -1011,7 +1011,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                           {author.nome}
                         </Link>
                         <div style={{ fontSize: 11.5, color: "#64748b", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {author.cargo}
+                          {translateAuthorRole(author.cargo, locale)}
                         </div>
                         <Link
                           href={`/${locale}/autor/${author.slug}`}

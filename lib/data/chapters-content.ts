@@ -1,4 +1,6 @@
-import chaptersData from "./chapters-content-full.json";
+import chaptersDataPt from "./chapters-content-full.json";
+import chaptersDataEn from "./chapters-content-en.json";
+import chaptersDataEs from "./chapters-content-es.json";
 import { Locale } from "@/lib/types";
 
 export interface ChapterSubtopic {
@@ -38,8 +40,17 @@ export interface FullChapterContent {
   seo: ChapterSeo;
 }
 
-export const ALL_FULL_CHAPTERS: Record<number, FullChapterContent> = chaptersData as unknown as Record<number, FullChapterContent>;
+export const ALL_FULL_CHAPTERS_PT: Record<number, FullChapterContent> = chaptersDataPt as unknown as Record<number, FullChapterContent>;
+export const ALL_FULL_CHAPTERS_EN: Record<number, FullChapterContent> = chaptersDataEn as unknown as Record<number, FullChapterContent>;
+export const ALL_FULL_CHAPTERS_ES: Record<number, FullChapterContent> = chaptersDataEs as unknown as Record<number, FullChapterContent>;
 
-export function getFullChapterByNumber(numero: number): FullChapterContent | null {
-  return ALL_FULL_CHAPTERS[numero] || (ALL_FULL_CHAPTERS[numero.toString() as unknown as number]) || null;
+export function getFullChapterByNumber(numero: number, locale: Locale = "pt"): FullChapterContent | null {
+  const dataset =
+    locale === "en"
+      ? ALL_FULL_CHAPTERS_EN
+      : locale === "es"
+      ? ALL_FULL_CHAPTERS_ES
+      : ALL_FULL_CHAPTERS_PT;
+
+  return dataset[numero] || (dataset[numero.toString() as unknown as number]) || ALL_FULL_CHAPTERS_PT[numero] || null;
 }
