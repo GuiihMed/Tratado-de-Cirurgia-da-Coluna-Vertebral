@@ -1,0 +1,527 @@
+{
+  "9": {
+    "numero": 9,
+    "titulo": "Principios de la Artrodesis, Biología del Injerto y Sustitutos Óseos en la Columna",
+    "secao": "",
+    "autores": [
+      "Raphael Martus Marcon",
+      "Matheus Augusto Maciel Santiago",
+      "Henrique Griese Luciano dos Santos"
+    ],
+    "contexto": "La artrodesis (fusión) vertebral no se limita a la colocación mecánica de implantes metálicos, sino que constituye una compleja cascada biológica en la que convergen la estabilidad mecánica local, la biología del injerto, la biología del huésped, el lecho vascular receptor y el microambiente celular para lograr una consolidación ósea sólida y definitiva. La cascada biológica progresa a través de fases ordenadas: inflamación inicial y formación de hematoma, reclutamiento de progenitores osteogénicos, revascularización, síntesis de hueso inmaduro (osteogénesis y osteoconducción) y remodelación biomecánica a largo plazo según la ley de Wolff. El autoinjerto óseo —específicamente el obtenido de la cresta ilíaca— continúa siendo el estándar de oro biológico por reunir simultáneamente osteogénesis, osteoinducción y osteoconducción. No obstante, la morbilidad de la zona donante ha impulsado el desarrollo de sustitutos óseos: aloinjertos, matrices óseas desmineralizadas (DBM), cerámicas sintéticas (hidroxiapatita, fosfato tricálcico), aspirados de médula ósea concentrada y proteínas morfogenéticas óseas recombinantes (rhBMP-2 y rhBMP-7). Comprender la biología celular, el comportamiento del transportador, los factores de riesgo del huésped (tabaquismo, desnutrición, diabetes, osteoporosis, AINEs) y la preparación del lecho óseo es indispensable para evitar la seudoartrosis.",
+    "objetivo": "Presentar la biología celular y molecular de la consolidación ósea en la artrodesis vertebral y analizar las propiedades de los injertos y sustitutos óseos. Al finalizar, el lector deberá comprender la tríada de osteogénesis, osteoconducción y osteoinducción; diferenciar las ventajas, limitaciones e indicaciones de autoinjertos, aloinjertos, cerámicas sintéticas, DBM y BMPs; identificar factores locales y sistémicos que condicionan la fusión; y aplicar criterios basados en evidencia para la selección del injerto y el decorticado del lecho.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "La cascada biológica de la fusión vertebral",
+        "texto": "La consolidación de la artrodesis progresa a través de cuatro fases biológicas integradas: 1) Fase inflamatoria (días 0–7), con hematoma inicial, degranulación plaquetaria y liberación de citoquinas angiogénicas y mitogénicas (TGF-beta, PDGF, FGF, BMPs); 2) Fase vascular y de reclutamiento osteoprogenitor (semanas 1–4), donde la neoangiogénesis permite la migración de células madre mesenquimatosas al injerto; 3) Fase osteogénica y de aposición ósea (meses 1–6), mediante osificación membranosa o endocondral con depósito de matriz osteoide inmadura; y 4) Fase de remodelación (meses 6–24+), donde el hueso inmaduro se transforma en hueso trabecular laminar orientado según las líneas de carga mecánica (ley de Wolff)."
+      },
+      {
+        "subtitulo": "La tríada biológica: Osteogénesis, Osteoinducción, Osteoconducción",
+        "texto": "Un injerto exitoso debe poseer una o más propiedades de la tríada: 1) Osteogénesis: presencia de osteoblastos y progenitores viables con capacidad de sintetizar matriz ósea de novo; 2) Osteoinducción: capacidad de citoquinas bioactivas (ej. BMPs) para estimular la diferenciación de células mesenquimatosas indiferenciadas hacia el linaje osteoblástico; 3) Osteoconducción: provisión de un andamiaje tridimensional poroso (100–500 micrómetros) que permita la adhesión celular, la penetración fibrovascular y la aposición mineralizada."
+      },
+      {
+        "subtitulo": "Injertos y sustitutos óseos",
+        "texto": "El autoinjerto (cresta ilíaca o hueso local obtenido en laminectomía) reúne las tres propiedades de la tríada. El aloinjerto aporta osteoconducción y soporte estructural inicial, pero carece de células viables y posee baja osteoinducción. La matriz ósea desmineralizada (DBM) conserva el colágeno tipo I y trazas de BMPs nativas. Las cerámicas sintéticas (hidroxiapatita, beta-fosfato tricálcico, vidrios bioactivos) actúan exclusivamente como andamios osteoconductores. La proteína morfogenética recombinante humana tipo 2 (rhBMP-2) sobre esponja de colágeno absorbible induce una potente osteogénesis ectópica y ortotópica, requiriendo un control estricto de dosis para evitar osteólisis, seromas o formación ósea heterotópica."
+      },
+      {
+        "subtitulo": "Factores del huésped, decorticado y estabilidad mecánica",
+        "texto": "Los factores sistémicos influyen decisivamente en la tasa de consolidación: el consumo de tabaco/nicotina compromete la microvascularización; la diabetes descompensada altera la función osteoblástica; la desnutrición (albúmina < 3,5 g/dL) limita la síntesis proteica; y los corticoides crónicos y AINEs en dosis altas bloquean la cascada inflamatoria inicial. Localmente, el decorticado exhaustivo de apófisis transversas, láminas o platillos vertebrales expone el lecho vascular esponjoso. Las cajas intersomáticas proporcionan estabilidad inmediata, restauran la altura y protegen el injerto frente a fuerzas de cizallamiento."
+      }
+    ],
+    "aplicacao_clinica": "La selección del injerto debe adaptarse al lecho anatómico, la carga mecánica y el perfil biológico del paciente. En la fusión intersomática anterior o lateral (ALIF, LLIF, TLIF), el hueso local combinado con cerámicas osteoconductoras, DBM o rhBMP-2 dentro de una caja intersomática logra altas tasas de fusión debido al lecho esponjoso vascularizado y a la carga compresiva axial favorable. En la artrodesis posterolateral de gotieras (PLF), sometida a tensión y con menor vascularización, se recomienda autoinjerto, DBM con médula ósea concentrada o rhBMP-2. El decorticado minucioso hasta observar sangrado esponjoso es el paso quirúrgico más determinante. En pacientes de alto riesgo (tabaquismo, diabetes, cirugías de revisión, osteoporosis severa), se requiere optimización metabólica preoperatoria (cese del tabaco >6 semanas, HbA1c < 7,5%, teriparatida en osteoporosis) para prevenir la seudoartrosis y la falla de la instrumentación.",
+    "mensagem_central": "La artrodesis vertebral es un fenómeno biológico facilitado por la instrumentación mecánica. El éxito de la consolidación exige la interacción armónica entre una tríada biológica competente (osteogénesis, osteoinducción, osteoconducción), un decorticado meticuloso del lecho óseo, una fijación biomecánica rígida y la optimización de los factores sistémicos del huésped. Los implantes estabilizan temporalmente; el resultado clínico definitivo depende de la consolidación biológica ósea.",
+    "por_que_importa": "La instrumentación sostiene la columna, pero la biología la consolida. Si no se logra una fusión ósea sólida, cualquier implante raquídeo sufrirá aflojamiento o rotura por fatiga de materiales. Comprender las fases biológicas de la consolidación, las propiedades de los sustitutos óseos (DBM, cerámicas, BMPs) y los inhibidores sistémicos de la osteogénesis permite al cirujano seleccionar la mejor estrategia reconstructiva y prevenir la seudoartrosis.",
+    "decs": [
+      "Fusión Vertebral",
+      "Trasplante Óseo",
+      "Sustitutos Óseos",
+      "Osteogénesis",
+      "Proteínas Morfogenéticas Óseas",
+      "Seudoartrosis",
+      "Ley de Wolff",
+      "Materiales Biocompatibles"
+    ],
+    "mesh": [
+      "Spinal Fusion",
+      "Bone Transplantation",
+      "Bone Substitutes",
+      "Osteogenesis",
+      "Bone Morphogenetic Proteins",
+      "Pseudarthrosis",
+      "Wolff's Law",
+      "Biocompatible Materials"
+    ],
+    "palavras_chave_livres": [
+      "Autoinjerto óseo",
+      "Matriz ósea desmineralizada",
+      "rhBMP-2",
+      "Osteoconducción",
+      "Osteoinducción",
+      "Decorticado del lecho quirúrgico",
+      "Seudoartrosis"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "La tríada biológica de la consolidación",
+        "texto": "La consolidación sólida requiere osteogénesis (células viables), osteoinducción (señales moleculares como BMPs) y osteoconducción (andamio tridimensional poroso). El hueso autólogo reúne las tres; los sustitutos óseos deben combinarse para suplir las propiedades faltantes."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "El decorticado del lecho es insustituible",
+        "texto": "Ningún sustituto óseo o molécula inductora puede suplir la falta de un lecho receptor vascularizado. El decorticado exhaustivo de apófisis transversas, láminas y platillos vertebrales hasta exponer hueso esponjoso sangrante es la maniobra quirúrgica más crítica para la osteointegración."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Optimizar al huésped y dosificar BMP",
+        "texto": "El tabaquismo, la desnutrición, la diabetes no controlada y los AINEs crónicos duplican la tasa de seudoartrosis. Al utilizar rhBMP-2, respete rigurosamente las dosis y la contención del implante para evitar osteólisis, seromas inflamatorios y edema cervical obstructivo."
+      }
+    ],
+    "referencias": [
+      "Urist MR, O’Connor BT, Burwell RG. Bone graft, derivatives & substitutes. Cambridge: Butterworth-Heinemann; 1994.",
+      "Hampel GA, Yilmaz E, Massrey C, Clifton W, Iwanaga J, Loukas M, Tubbs RS. History of bone grafts in spine surgery. Cureus. 2022;14(5):e24655.",
+      "Lee BJ, Seok MC, Koo HW, Jeong JH, Ko MJ. Bone substitute options for spine fusion in patients with spine trauma — Part I: fusion biology, autografts, allografts, demineralized bone matrix, and ceramics. Korean J Neurotrauma. 2023;19(4):446-53.",
+      "Giannoudis PV, Dinopoulos H, Tsiridis E. Bone substitutes: an update. Injury. 2005;36 Suppl 3:S20-27.",
+      "Boden SD. Overview of the biology of lumbar spine fusion and principles for selecting a bone graft substitute. Spine (Phila Pa 1976). 2002;27:S26-31.",
+      "Bridwell KH, DeWald RL. Bridwell and DeWald’s textbook of spinal surgery. 4th ed. Philadelphia: Wolters Kluwer; 2019.",
+      "Morone MA, Boden SD, Martin G, Hair G, Titus L. Gene expression during autograft lumbar spine fusion and the effect of bone morphogenetic protein-2. Clin Orthop. 1998;351:252-65.",
+      "Stevenson S, Emery SE, Goldberg VM. Factors affecting bone graft incorporation. Clin Orthop. 1996;324:66-74.",
+      "Younger EM, Chapman MW. Morbidity at bone graft donor sites. J Orthop Trauma. 1989;3:192-95.",
+      "Hu RW, Bohlman HH. Fracture at the iliac bone graft harvest site after fusion of the spine. Clin Orthop Relat Res. 1994;309:208-13.",
+      "Burwell RG. The fate of bone grafts. In: Apley AG, editor. Recent advances in orthopaedics. London: Churchill Livingstone; 1969.",
+      "Khan SN, Cammisa FP Jr, Sandhu HS, et al. The biology of bone grafting. J Am Acad Orthop Surg. 2005;13:77-86.",
+      "Sandhu HS, Grewal HS, Parvataneni H. Bone grafting for spinal fusion. Orthop Clin North Am. 1999;30:685-98.",
+      "Johnson R. Bone marrow concentrate with allograft equivalent to autograft in lumbar fusions. Spine. 2014;39(9):695-700.",
+      "Hart R, Komzák M, Okál F, et al. Allograft alone versus allograft with bone marrow concentrate for the healing of instrumented posterolateral lumbar fusion. Spine J. 2014;14(7):1318-24.",
+      "Boyce T, Edwards J, Scarborough N. Allograft bone: the influence of processing on safety and performance. Orthop Clin North Am. 1999;30:571-81.",
+      "Fleming JE Jr, Cornell CN, Muschier GF. Bone cells and matrices in orthopedic tissue engineering. Orthop Clin North Am. 2000;31:357-74.",
+      "Shields LB, Raque GH, Glassman SD, et al. Adverse effects associated with high-dose rhBMP-2 in anterior cervical spine fusion. Spine. 2006;31(5):542-47.",
+      "Smucker JD, Rhee JM, Singh K, et al. Increased swelling complications associated with off-label usage of rhBMP-2 in the anterior cervical spine. Spine. 2006;31(24):2813-19.",
+      "Baskin DS, Ryan P, Sonntag V, et al. A prospective, randomized, controlled cervical fusion study using rhBMP-2. Spine. 2003;28(12):1219-25.",
+      "Carragee EJ, Hurwitz EL, Weiner BK. A critical review of rhBMP-2 trials in spinal surgery. Spine J. 2011;11(6):471-91.",
+      "Jorgenson SS, Lowe TG, France J, et al. A prospective analysis of autograft versus allograft in posterolateral lumbar fusion. Spine. 1994;19:2048-53.",
+      "Aurori BF, Weierman RJ, Lowell HA, et al. Pseudarthrosis after spinal fusion for scoliosis: a comparison of autogeneic and allogeneic bone grafts. Clin Orthop. 1985;199:153-58.",
+      "Cohen DB, Chotivichit A, Fujita T, et al. Pseudarthrosis repair: autogenous iliac crest vs femoral ring allograft. Clin Orthop Relat Res. 2000;371:46-55.",
+      "Kleinstueck FS, Hu SS, Bradford DS. Use of allograft femoral rings for spinal deformity in adults. Clin Orthop. 2002:84-91.",
+      "Gao Y, Li J, Cui H, et al. Comparison of intervertebral fusion rates of different bone graft materials in XLIF. Medicine. 2019;98(44):e17685.",
+      "Kasis AG, Jensen C, Dharmadhikari R, et al. Novel bone grafting technique in ALIF using allograft and autograft (“Northumbria Technique”). Eur Spine J. 2021;30:1296-1302.",
+      "Dodd CA, Fergusson CM, Freedman L, et al. Allograft versus autograft bone in scoliosis surgery. J Bone Joint Surg Br. 1988;70:431-34.",
+      "Fernandez de Grado G, Keller L, Idoux-Gillet Y, et al. Bone substitutes: a review of their characteristics, clinical use, and perspectives for large bone defects management. J Tissue Eng. 2018;9:2041731418776819.",
+      "Louis-Ugbo J, Murakami H, Kim HS, et al. Evidence of osteoinduction by Grafton DBM in spinal fusion. Spine. 2004;29:360-66.",
+      "Hsu WK, Polavarapu M, Riaz R, et al. Nanocomposite therapy vs rhBMP-2 in rodent arthrodesis model. J Orthop Res. 2011;29(12):1812-19.",
+      "Peterson B, Whang PG, Iglesias R, et al. Osteoinductivity of commercially available DBM preparations. J Bone Joint Surg Am. 2004;86-A(10):2243-50.",
+      "Lee YP, Jo M, Luna M, et al. Efficacy of DBM substances in rat model. J Spinal Disord Tech. 2005;18(5):439-44.",
+      "LeGeros RZ. Properties of osteoconductive biomaterials: calcium phosphates. Clin Orthop Relat Res. 2002;(395):81-98.",
+      "Tadjoedin ES, de Lange GL, Lyaruu DM, et al. Closure of extraction sockets with bioactive glass. J Oral Maxillofac Surg. 2003;61(11):1287-95.",
+      "Hulbert SF, Young FA, Mathews RS, et al. Ceramic materials as skeletal prostheses. J Biomed Mater Res. 1970;4(3):433-56.",
+      "Yoshikawa H, Tamai N, Murase T, et al. Porous HA ceramics for bone tissue engineering. J R Soc Interface. 2009;6 Suppl 3:S341-48.",
+      "Ohgushi H, Goldberg VM, Caplan AI. Heterotopic osteogenesis in porous ceramics. J Orthop Res. 1989;7(4):568-78.",
+      "Muschler GF, Raut VP, Patterson TE, et al. Animal models for translational research in bone tissue engineering. Tissue Eng Part B Rev. 2010;16(1):123-45.",
+      "Muschler GF, Nitto H, Boehm CA, et al. Age- and gender-related changes in bone marrow cellularity. J Orthop Res. 2001;19(1):117-25."
+    ],
+    "seo": {
+      "titulo": "Principios de Artrodesis y Biología del Injerto Óseo | Tratado de Columna",
+      "meta_descricao": "Guía integral de biología de fusión raquídea: autoinjerto, aloinjerto, DBM, rhBMP-2, cerámicas sintéticas, tríada biológica y prevención de seudoartrosis.",
+      "resumo_chamada": "Domine los fundamentos celulares de la artrodesis vertebral, la tríada osteogénica, el uso de sustitutos óseos, el decorticado y la prevención de fallas de consolidación.",
+      "slug": "principios-de-la-artrodesis-biologia-del-injerto-y-sustitutos-oseos-en-la-columna"
+    }
+  },
+  "10": {
+    "numero": 10,
+    "titulo": "Biomecánica de los Implantes en las Fijaciones Vertebrales",
+    "secao": "",
+    "autores": [
+      "Delio Eulálio MartinsORCID: 0000-0001-5510-3507",
+      "Marcos Gregory Cintra ParreiraORCID: 0000-0001-9061-8063"
+    ],
+    "contexto": "La fijación vertebral debe proporcionar una estabilidad estructural inmediata, restablecer y preservar la alineación multiplanar fisiológica, proteger el injerto óseo frente a fuerzas de cizallamiento destructivas y resistir la fatiga mecánica hasta que se complete la consolidación biológica de la artrodesis. El rendimiento biomecánico del constructo depende de la interacción compleja entre los biomateriales (aleaciones de titanio, cobalto-cromo, acero inoxidable, PEEK, nitruro de silicio, titanio poroso impreso en 3D), el diseño geométrico de los componentes (tornillos, barras, ganchos, alambres, placas, cajas intersomáticas), la fijación en la interfaz hueso-implante y la distribución global de cargas. Los tornillos transpediculares logran un anclaje de tres columnas en las paredes corticales del pedículo y el hueso esponjoso del cuerpo vertebral. Su resistencia al arrancamiento (pullout), a las fuerzas de alternancia (toggle) y a la fatiga depende del diámetro externo, el paso y diseño de rosca, la profundidad de inserción, la trayectoria anatómica frente a la trayectoria de hueso cortical (CBT) y la densidad mineral ósea (DMO). Las barras deben equilibrar la maleabilidad para el moldeado sagital con la rigidez y resistencia a la fatiga (rigidez: CoCr > acero > aleación Ti > PEEK). Las cajas intersomáticas reconstruyen el pilar anterior de soporte, restauran la altura discal y reducen la sobrecarga sobre las barras posteriores.",
+    "objetivo": "Presentar los fundamentos biomecánicos de la instrumentación vertebral y analizar la mecánica de tornillos pediculares, barras, ganchos, alambres, placas y cajas intersomáticas. Al finalizar, el lector deberá comprender los principios de distribución de cargas (load sharing), límite elástico, fatiga y módulo de elasticidad de los biomateriales; analizar los factores que condicionan el arrancamiento de tornillos y la elección de trayectorias (estándar vs. CBT); optimizar la rigidez del constructo mediante barras múltiples y conectores transversales; y aplicar estrategias biomecánicas para prevenir la subsidencia, el aflojamiento, la rotura de barras y la falla en los segmentos de transición.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Biomateriales y propiedades mecánicas",
+        "texto": "La elección del biomaterial condiciona la rigidez del montaje, la vida a la fatiga y los artefactos en neuroimagen. El titanio comercialmente puro y las aleaciones de titanio (Ti-6Al-4V) ofrecen excelente biocompatibilidad, alta resistencia a la corrosión y un módulo de elasticidad (110 GPa) más cercano al hueso cortical que el acero inoxidable (200 GPa) o el cobalto-cromo (CoCr, 210–230 GPa), reduciendo el blindaje de tensiones (stress shielding) y minimizando artefactos en RM. Las barras de cobalto-cromo proporcionan una rigidez superior para mantener correcciones sagitales complejas en deformidades del adulto, aunque incrementan las fuerzas en los niveles de transición. El PEEK (módulo de 3,6 GPa, similar al hueso esponjoso) y el titanio poroso 3D se emplean ampliamente en cajas intersomáticas para prevenir la subsidencia y favorecer la osteointegración directa."
+      },
+      {
+        "subtitulo": "Biomecánica del tornillo pedicular y anclaje",
+        "texto": "El tornillo pedicular proporciona la fijación más sólida al abarcar las tres columnas vertebrales. La resistencia al arrancamiento (pullout) y al aflojamiento cíclico depende de: 1) Diámetro externo del tornillo (el factor más crítico, debiendo ocupar el 70–80% del diámetro interno pedicular); 2) Longitud y profundidad de inserción (alcanzar el 70–80% del cuerpo vertebral incrementa la fijación un 20–30%); 3) Geometría de rosca (doble entrada, rosca cónica); 4) Trayectoria: la trayectoria anatómica transcurre por el eje del pedículo, mientras que la Trayectoria de Hueso Cortical (CBT) utiliza un vector mediolateral y caudocraneal que ancla en el hueso cortical denso de la lámina, el pedículo y el platillo superior, incrementando la resistencia al arrancamiento en más de un 30% en hueso osteoporótico; y 5) Densidad mineral ósea (DMO), que se correlaciona directamente con la resistencia de anclaje."
+      },
+      {
+        "subtitulo": "Barras, conectores y constructos multibarraw",
+        "texto": "Las barras transmiten cargas axiales, de flexión y torsión. La rigidez de una barra es proporcional a la cuarta potencia de su radio (Rigidez proporcional a r^4); por tanto, aumentar el diámetro de 5,5 mm a 6,35 mm incrementa la rigidez en flexión aproximadamente un 75%. En áreas de alta demanda mecánica (osteotomías de sustracción pedicular [PSO] o unión lumbosacra), los montajes con barras accesorias o satélites (constructos de 3 o 4 barras) distribuyen el estrés mecánico y reducen drásticamente la tasa de rotura de barras y seudoartrosis. Los conectores transversales (crosslinks) aumentan la rigidez torsional del constructo en fijaciones largas."
+      },
+      {
+        "subtitulo": "Cajas intersomáticas y soporte del pilar anterior",
+        "texto": "Las columnas anterior y media soportan fisiológicamente el 80% de las cargas compresivas axiales. Las cajas intersomáticas (ALIF, LLIF, OLIF, TLIF, PLIF) reconstruyen este pilar anterior de carga, compartiendo las fuerzas compresivas con los tornillos pediculares posteriores y reduciendo el momento flector sobre las barras hasta en un 70%. El tamaño de la caja (footprint), la lordosis del implante y su apoyo en el anillo apofisario periférico (la zona más densa y resistente del platillo vertebral) son indispensables para prevenir la subsidencia en el hueso esponjoso central."
+      },
+      {
+        "subtitulo": "Instrumentación en el raquis osteoporótico",
+        "texto": "La osteoporosis compromete gravemente el anclaje de los implantes, provocando aflojamiento precoz (efecto limpiaparabrisas) y arrancamiento. Las estrategias biomecánicas para optimizar la fijación incluyen: empleo de tornillos de mayor diámetro, roscado manual menor (undertapping de 1 mm), uso de trayectoria cortical (CBT), aumento con cemento de polimetilmetacrilato (PMMA) a través de tornillos fenestrados, fijaciones multinivel, anclaje bicortical (en S1 o cervical) y tornillos pélvicos alar-ilíacos (S2AI) en la unión lumbosacra."
+      }
+    ],
+    "aplicacao_clinica": "El diseño del constructo debe balancear rigidez y distribución de cargas para inducir consolidación ósea. En inestabilidades degenerativas cortas (1–2 niveles), barras de titanio de 5,5 mm o 6,0 mm con soporte intersomático proporcionan una distribución óptima de cargas. En deformidades del adulto o tras osteotomías de 3 columnas (PSO/VCR), se indican barras de CoCr o montajes multibarraw (3 o 4 barras) con conectores satélite para prevenir la rotura por fatiga antes de la consolidación biológica. En pacientes con osteoporosis (DMO T-score < -2,5), evite depender de tornillos pediculares estándar aislados: utilice tornillos fenestrados cementados con PMMA, tornillos CBT y cajas intersomáticas de gran superficie apoyadas en el anillo apofisario para evitar la subsidencia. En los extremos de la fijación, reduzca transiciones bruscas de rigidez mediante barras de transición o vertebroplastia profiláctica en la vértebra superior instrumentada (UIV/UIV+1) para prevenir la cifosis de la unión proximal (PJK).",
+    "mensagem_central": "La instrumentación vertebral es un puente mecánico temporal diseñado para mantener la alineación y la estabilidad mientras madura la artrodesis biológica. El éxito depende de compatibilizar la rigidez del biomaterial (Ti, CoCr, PEEK), la trayectoria de los tornillos (estándar vs. CBT), la configuración de barras (multibarraw) y el soporte anterior (cajas) con la calidad ósea del paciente. Un constructo excesivamente rígido induce fallas en los extremos, mientras que un montaje insuficiente fracasa por fatiga antes de consolidar la artrodesis.",
+    "por_que_importa": "Cada implante modifica la transmisión de fuerzas en la columna. Un tornillo perfectamente colocado fracasa por fatiga si la artrodesis no consolida; una barra excesivamente rígida puede corregir una deformidad pero inducir una fractura catastrófica de unión proximal; y una caja intersomática de diseño avanzado sufre subsidencia si se apoya en hueso esponjoso central débil. Este capítulo traduce los principios de la ingeniería biomecánica en decisiones quirúrgicas prácticas para maximizar la durabilidad de la reconstrucción y lograr la consolidación definitiva.",
+    "decs": [
+      "Fusión Vertebral",
+      "Tornillos Óseos",
+      "Fenómenos Biomecánicos",
+      "Prótesis e Implantes",
+      "Titanio",
+      "Polieteretercetona",
+      "Ensayo de Materiales",
+      "Estrés Mecánico"
+    ],
+    "mesh": [
+      "Spinal Fusion",
+      "Bone Screws",
+      "Biomechanical Phenomena",
+      "Prostheses and Implants",
+      "Titanium",
+      "Polyetheretherketone",
+      "Materials Testing",
+      "Stress, Mechanical"
+    ],
+    "palavras_chave_livres": [
+      "Biomecánica del tornillo pedicular",
+      "Trayectoria de hueso cortical",
+      "Constructos multibarraw",
+      "Subsidencia de caja intersomática",
+      "Blindaje de tensiones",
+      "Aumento con cemento",
+      "Cifosis de la unión proximal"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "La instrumentación es un puente de carga compartida",
+        "texto": "El constructo debe compartir cargas con el pilar anterior (caja intersomática) y el injerto óseo. Reconstruir el soporte anterior descarga hasta el 70% de las fuerzas de flexión sobre las barras posteriores, previniendo la rotura por fatiga y estimulando la artrodesis según la ley de Wolff."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Optimizar el anclaje en hueso osteoporótico",
+        "texto": "En pacientes con baja densidad mineral ósea (osteopenia/osteoporosis), utilice tornillos con trayectoria de hueso cortical (CBT), tornillos fenestrados cementados con PMMA y cajas intersomáticas amplias apoyadas en el anillo apofisario cortical para evitar aflojamiento y subsidencia."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Prevenir la fatiga en zonas de alta sobrecarga",
+        "texto": "A través de osteotomías de 3 columnas (PSO) y en la unión lumbosacra (L5–S1), los montajes estándar de 2 barras sufren momentos flectores extremos que provocan rotura por fatiga. Emplee siempre montajes multibarraw (3 o 4 barras) y tornillos pélvicos (S2AI) para disipar tensiones."
+      }
+    ],
+    "referencias": [
+      "Murugan SS. Mechanical properties of materials: definition, testing and application. Int J Mod Stud Mech Eng. 2020;6(2):28-38. doi:10.20431/2454-9711.0602003.",
+      "Ribeiro AMA, da Silva FS, Gomes JRA, de Andrade Silva J, Bártolo PJ, Oliveira AL. Biomaterials in orthopedic devices: current issues and future perspectives. Materials (Basel). 2022;15(10):3622. doi:10.3390/ma15103622.",
+      "Geetha M, Singh AK, Asokamani R, Gogia AK. Ti based biomaterials, the ultimate choice for orthopaedic implants: a review. Prog Mater Sci. 2009;54(3):397-425. doi:10.1016/j.pmatsci.2008.06.004.",
+      "Oladapo BI, Zahedi SA, Ismail SO, Omigbodun FT, Ikumapayi OM, Afolalu SA. 3D printing of PEEK and its composite to increase biointerfaces as a biomedical material: a review. Colloids Surf B Biointerfaces. 2021;208:111726. doi:10.1016/j.colsurfb.2021.111726.",
+      "Ruffilli A, Fiore M, Palumbo A, Barletta P, D’Amato R, Faldini C. 5.5-mm cobalt-chrome vs 6-mm titanium alloy rods in surgical treatment of Lenke 1 adolescent idiopathic scoliosis with high-density pedicle screws and direct vertebral rotation on differently shaped rods: a retrospective comparative cohort study. Global Spine J. 2022;12(6):1170-7. doi:10.1177/21925682211058997.",
+      "Dorozhkin SV. Bioceramics of calcium orthophosphates. Biomaterials. 2010;31(7):1465-85. doi:10.1016/j.biomaterials.2009.11.050.",
+      "Sobieraj MC, Rimnac CM. Ultra high molecular weight polyethylene: mechanics, morphology, and clinical behavior. J Mech Behav Biomed Mater. 2009;2(5):433-43. doi:10.1016/j.jmbbm.2008.11.006.",
+      "Liljenqvist U, Hackenberg L, Link T, Halm H. Pullout strength of pedicle screws versus pedicle and laminar hooks in the thoracic spine. Acta Orthop Belg. 2001;67(2):157-63.",
+      "Wadhwa RK, Thakur JD, Khan IS, et al. Adjustment of suboptimally placed lumbar pedicle screws decreases pullout strength and alters biomechanics of the construct: a pilot cadaveric study. World Neurosurg. 2015;83(4):604-11. doi:10.1016/j.wneu.2014.04.065.",
+      "Wu LC, Hsieh YY, Tsuang FY, et al. Pullout strength of different pedicle screws after primary and revision insertion: an in vitro study on polyurethane foam. BMC Musculoskelet Disord. 2023;24:863. doi:10.1186/s12891-023-07015-3.",
+      "Matsukawa K, Yato Y, Imabayashi H. Impact of screw diameter and length on pedicle screw fixation strength in osteoporotic vertebrae: a finite element analysis. Asian Spine J. 2021;15(5):566-74. doi:10.31616/asj.2020.0353.",
+      "Cho W, Cho SK, Wu C. The biomechanics of pedicle screw-based instrumentation. J Bone Joint Surg Br. 2010;92(8):1061-5. doi:10.1302/0301-620X.92B8.24237.",
+      "Zamarioli A, Simões PA, Shimano AC, Defino HLA. Torque de inserção e resistência ao arrancamento dos parafusos vertebrais com alma cilíndrica e cônica. Rev Bras Ortop. 2008;43(10):452-9.",
+      "Shih KS, Hsu CC, Hou SM, Yu SC, Liaw CK. Comparison of the bending performance of solid and cannulated spinal pedicle screws using finite element analyses and biomechanical tests. Med Eng Phys. 2015;37(11):1091-6. doi:10.1016/j.medengphy.2015.06.008.",
+      "Ye B, Yan M, Zhu H, Duan W, Hu X, Ye Z, et al. Novel screw head design of pedicle screw for reducing the correction loss in the patients with thoracolumbar vertebral fractures: a biomechanical study. Spine (Phila Pa 1976). 2017;42(7):E379-84.",
+      "Liu MY, Tsai TT, Lai PL, Hsieh MK, Chen LH, Tai CL. Biomechanical comparison of pedicle screw fixation strength in synthetic bones: effects of screw shape, core/thread profile and cement augmentation. PLoS One. 2020;15(2):e0229328. doi:10.1371/journal.pone.0229328.",
+      "Vendrame JRB, Shimano AC, Kandziora F, Defino HLA. Estudo da influência do diâmetro do orifício piloto na resistência ao arrancamento do parafuso pedicular. Acta Ortop Bras. 2008;16(2):69-74. doi:10.1590/S1413-78522008000200001.",
+      "Kanno H, Onoda Y, Hashimoto K, Aizawa T, Ozawa H. Reinforcement of percutaneous pedicle screw fixation with hydroxyapatite granules in patients with osteoporotic spine: biomechanical performance and clinical outcomes. Medicina (Kaunas). 2022;58(5):579. doi:10.3390/medicina58050579.",
+      "Solitro GF, Amirouche F. Currently adopted criteria for pedicle screw diameter selection. Spine Deform. 2018;6(6):751-9. doi:10.1016/j.jspd.2018.06.007.",
+      "Coe JD, Vaccaro AR, Dailey AT, Skolasky RL Jr, Sasso RC, Ludwig SC, et al. Lateral mass screw fixation in the cervical spine: a systematic literature review. J Bone Joint Surg Am. 2013;95(23):2136-43. doi:10.2106/JBJS.L.01522.",
+      "Lee S, Cho DC, Roh SW, et al. Cervical alignment after posterior cervical fusion surgery: pedicle screw versus lateral mass screw fixation. Spine (Phila Pa 1976). 2021;46(10):E576-83. doi:10.1097/BRS.0000000000003845.",
+      "Jones EL, Heller JG, Silcox DH, Hutton WC. Cervical pedicle screws versus lateral mass screws: anatomic feasibility and biomechanical comparison. Spine (Phila Pa 1976). 1997;22(9):977-82. doi:10.1097/00007632-199705010-00009.",
+      "Soliman MAR, Aguirre AO, Khan S, et al. Complications associated with subaxial placement of pedicle screws versus lateral mass screws in the cervical spine (C2-T1): systematic review and meta-analysis comprising 4,165 patients and 16,669 screws. Neurosurg Rev. 2023;46(1):61. doi:10.1007/s10143-023-01968-8.",
+      "Heller JG, Silcox DH, Sutterlin CE. Complications of posterior cervical plating. Spine (Phila Pa 1976). 1995;20(6):2442-8.",
+      "Teologia AA, Burch S. Safety and efficacy of reconstructing complex cervical spine pathology using pedicle screws inserted with Stealth navigation and O-Arm-guided 3D technology. Spine (Phila Pa 1976). 2015;40(18):1397-406. doi:10.1097/BRS.0000000000001026.",
+      "Warburton A, Girdler SJ, Mikhail CM, Ahn A, Cho SK. Biomaterials in spinal implants: a review. Neurospine. 2020;17(1):101-10. doi:10.14245/ns.1938296.148.",
+      "Shega FD, Zhang H, Manini DR, Tang M, Liu S. Comparison of effectiveness between cobalt chromium rods versus titanium rods for treatment of patients with spinal deformity: a systematic review and meta-analysis. Adv Orthop. 2020;2020:8475910. doi:10.1155/2020/8475910.",
+      "Kovacı H, Yetim AF, Çelik A. Biomechanical analysis of spinal implants with different rod diameters under static and fatigue loads: an experimental study. Biomed Eng-Biomed Tech. 2018. doi:10.1515/bmt-2017-0236.",
+      "Bourghli A, Boissière L, Kieser D, et al. Multiple-rod constructs do not reduce pseudarthrosis and rod fracture after pedicle subtraction osteotomy for adult spinal deformity correction but improve quality of life. Neurospine. 2021;18(4):816-23. doi:10.14245/ns.2142596.298.",
+      "Dvorak MF, MacNab I, eds. Anterior cervical plate fixation: a biomechanical study to evaluate the effects of plate design, endplate preparation, and bone mineral density. Spine. 2005;30(3):294-301. doi:10.1097/01.brs.0000150813.51034.5e.",
+      "Kim SH, Kim JH, Kwon JW, Kim HS, Moon SH, Suk KS, Lee BH. Biomechanical advantage of pedicle screws over lateral mass screws in combined anterior-posterior cervical surgery: radiologic outcomes. J Clin Med. 2023;12(9):3201. doi:10.3390/jcm12093201.",
+      "Eck JC, Humphreys SC, Lim TH, Jeong ST, Kim JG, Hodges SD, et al. Biomechanical study on the effect of cervical spine fusion on adjacent-level intradiscal pressure and segmental motion. Spine. 2002;27(22):2431-4.",
+      "Ryken TC, Clausen JD, Traynelis VC, Goel VK. Biomechanical analysis of bone mineral density, insertion technique, screw torque, and holding strength of anterior cervical plate screws. J Neurosurg. 1995;83(2):324-9. doi:10.3171/jns.1995.83.2.0324.",
+      "Brodke DS, Zdeblick TA, Kunz DN, McCabe R, Ogilvie JW. Anterior cervical fixation: analysis of load-sharing and stability with use of static and dynamic plates. J Bone Joint Surg Am. 2006;88(7):1566-73. doi:10.2106/JBJS.E.00305.",
+      "Alvi MA, Kerezoudis P, Wahood W, Wahood A, Elder BD, Bydon M. Titanium cages versus polyetheretherketone cages in interbody fusions: a meta-analysis of clinical and radiographic outcomes. Spine J. 2024;24(6):911-22. doi:10.1016/j.spinee.2024.05.009.",
+      "Hussain I, Konbaz FM, Ahmed SI, et al. Biomechanical stability analysis of a stand-alone cage, static and dynamic plate constructs in a two-level anterior cervical discectomy and fusion model. Orthop Surg. 2019;11(4):603-9.",
+      "Wang Y, Zhang K, Li Y, et al. Effects of new assembled titanium mesh cage on the improvement in biomechanical performance of single-level anterior cervical corpectomy and fusion: a finite element analysis. BMC Musculoskelet Disord. 2025;26:404.",
+      "Zhao Y, Yang S, Huo Y, Li Z, Yang D, Ding W. Locking stand-alone cage versus anterior plate construct in anterior cervical discectomy and fusion: a systematic review and meta-analysis based on randomized controlled trials. Eur Spine J. 2020;29(12):3122-35. doi:10.1007/s00586-020-06561-x.",
+      "Boer LFR, Zorzetto E, Yeh F, Wajchenberg M, Martins DE. Degenerative cervical disorder: stand-alone cage versus cage and cervical plate: a systematic review. Global Spine J. 2020;10(5):571-80. doi:10.1177/2192568219876288.",
+      "El Baz EA, Sultan AM, Barakat AS, et al. The use of anterior cervical interbody spacer with integrated fixation screws for management of cervical disc disease. SICOT J. 2019;5:4.",
+      "Ni S, Yang R, Liu S, et al. Biomechanical analysis of a newly designed and 3D printed plate-locking interbody cage: an observational study of finite element analysis. Sci Rep. 2025;15:3534.",
+      "Patwardhan AG, Havey RM. Biomechanics of cervical disc arthroplasty: a review of concepts and current technology. Int J Spine Surg. 2020;14(Suppl 2):S14-28. doi:10.14444/7087.",
+      "Lentz JM, Mun F, Suresh KV, Groves ML, Sponseller PD. How and when to use hooks to improve deformity correction. JPOSNA. 2021 Nov;3(4).",
+      "Ogura Y, Glassman SD, Sucato D, Hresko MT, Carreon LY. Incidence of proximal junctional kyphosis with pedicle screws at upper instrumented vertebrae in posterior spinal fusion for adolescent idiopathic scoliosis. Global Spine J. 2021;11(7):1019-24. doi:10.1177/2192568220935107.",
+      "Park SJ, Park JS, Kang DH, et al. Proximal junctional failure development despite achieving ideal sagittal correction according to age-adjusted alignment target in patients with adult spinal deformity: risk factor analysis of 196 cases undergoing low thoracic to pelvic fusion. Neurospine. 2024;21(4):1080-90. doi:10.14245/ns.2448734.367.",
+      "Helgeson MD, Shah SA, Newton PO, Clements DH, Betz RR, Marks MC, Bastrom T. Evaluation of proximal junctional kyphosis in adolescent idiopathic scoliosis following pedicle screw, hook, or hybrid instrumentation. Spine (Phila Pa 1976). 2010;35(2):177-81. doi:10.1097/BRS.0b013e3181c77f8c.",
+      "Canavese F, Samba A. Sublaminar polyester bands for the correction of idiopathic and neuromuscular scoliosis. Ann Transl Med. 2020;8(2):32. doi:10.21037/atm.2019.08.109.",
+      "Battista C, Wild C, Kreul S, Albert M. Prevention of proximal junctional kyphosis and failure using sublaminar bands in a hybrid construct in pediatric kyphosis deformity. Int J Spine Surg. 2018;12(6):644-9. doi:10.14444/5080.",
+      "Park BJ, Gold CJ, Christianson D, DeVries Watson NA, Nourski KV, Woodroffe RW, Hitchon PW. Biomechanical assessment of the effect of sublaminar band tensioning on lumbar motion. J Neurosurg Spine. 2022;37(6):836-42. doi:10.3171/2022.5.SPINE22371.",
+      "Gibbs D, Grossbach AJ, Mallory N, Toop N, Viljoen S. Delayed stenosis associated with sublaminar band placement in the thoracic spine for proximal junctional kyphosis. Surg Neurol Int. 2023;14:211. doi:10.25259/SNI_375_2022.",
+      "Cadieux C, Brzozowski P, Fernandes RJR, McGregor ME, Zdero R, Bailey CS, et al. Topping-off a long thoracic stabilization with semi-rigid constructs may have favorable biomechanical effects to prevent proximal junctional kyphosis: a biomechanical comparison. Global Spine J. 2025;15(3):1685-94. doi:10.1177/21925682241259695.",
+      "Liu SX, Feng AP, Zeng TH, Jhang SW, Chen CM, He LR, et al. 3Dprinted porous titanium versus polyetheretherketone cages in lateral lumbar interbody fusion: a systematic review and meta-analysis of subsidence. Front Med (Lausanne). 2024;11:1389533. doi:10.3389/fmed.2024.1389533.",
+      "Patel NA, O’Bryant S, Rogers CD, Boyett CK, Chakravarti S, Gendreau J, et al. Three-dimensional-printed titanium versus polyetheretherketone cages for lumbar interbody fusion: a systematic review of comparative in vitro, animal, and human studies. Neurospine. 2024;21(3):764-78. doi:10.14245/ns.2346244.122.",
+      "Akpolat Y, Görgülü FF, Kizmaz M, Acaroglu E. Does the application of expandable cages in TLIF provide improved clinical and radiological results compared to static cages? A meta-analysis. Front Surg. 2022;9:949938. doi:10.3389/fsurg.2022.949938."
+    ],
+    "seo": {
+      "titulo": "Biomecánica de los Implantes en Fijaciones Vertebrales | Tratado",
+      "meta_descricao": "Guía integral de biomecánica de implantes espinales: tornillos pediculares, trayectoria CBT, barras de Ti/CoCr, constructos multibarraw, cajas y fijación en osteoporosis.",
+      "resumo_chamada": "Domine la biomecánica de los implantes de fijación vertebral, distribución de cargas, anclaje pedicular, constructos multibarraw y prevención de fallas mecánicas.",
+      "slug": "biomecanica-de-los-implantes-en-las-fijaciones-vertebrales"
+    }
+  },
+  "11": {
+    "numero": 11,
+    "titulo": "Disrafismo Espinal — Defectos del Tubo Neural",
+    "secao": "",
+    "autores": [
+      "Márcio Vinhal de Carvalho"
+    ],
+    "contexto": "Los defectos del tubo neural (DTN) resultan del fallo en el cierre embrionario del tubo neural durante la tercera y cuarta semanas de gestación, abarcando malformaciones craneales y espinales con diversos grados de compromiso neurológico, urológico y ortopédico. Dentro de este espectro, el disrafismo espinal designa las anomalías congénitas de la línea media dorsal que comprometen piel, musculatura paravertebral, arcos vertebrales, meninges y tejido neuroectodérmico; mientras que el término espina bífida, en sentido estricto, describe el defecto de fusión ósea de los elementos posteriores. El capítulo diferencia las formas abiertas (espina bífida abierta, mielomeningocele, raquisquisis)—originadas por interrupción de la neurulación primaria con placoda neural expuesta al líquido amniótico—de las formas cerradas (espina bífida oculta, lipomielomeningocele, seno dérmico dorsal, diastematomielia, filum terminale engrosado)—asociadas a fallas de la neurulación secundaria o disyunción prematura y caracterizadas por médula anclada (síndrome de médula anclada). La etiología es multifactorial, integrando susceptibilidad genética (variantes de enzimas del metabolismo del folato como MTHFR), deficiencias nutricionales maternas (ácido fólico, inositol, vitamina B12), comorbilidades maternas (diabetes mellitus, obesidad), fármacos teratógenos (ácido valproico, carbamazepina) y factores ambientales. El manejo abarca la prevención preconcepcional con ácido fólico, el tamizaje prenatal (alfafetoproteína y ecografía), la cirugía fetal intrauterina y la reconstrucción posnatal con seguimiento multidisciplinario.",
+    "objetivo": "Presentar la embriología y la clasificación de los defectos del tubo neural, diferenciando la neurulación primaria de la secundaria y las formas abiertas de las cerradas. Al finalizar, el lector deberá reconocer los factores de riesgo nutricionales, genéticos, metabólicos, farmacológicos y ambientales; comprender las estrategias preventivas y modalidades de tratamiento prenatal y posnatal; e identificar las manifestaciones clínicas, el síndrome de médula anclada y los requerimientos de seguimiento multidisciplinario en la infancia y la vida adulta.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Embriología: Neurulación primaria y secundaria",
+        "texto": "La neurulación primaria (días 18 a 28) origina el encéfalo y la médula espinal hasta el nivel sacro superior (S1–S2): la placa neural prolifera, se invagina formando los pliegues neurales y se fusiona bidireccionalmente, cerrando el neuroporo anterior en el día 25 y el posterior en el día 28. La falla en este proceso genera DTN abiertos con exposición de tejido neural. La neurulación secundaria (días 28 a 48) forma los segmentos sacrococcígeos inferiores mediante cavitación y canalización de la masa celular caudal, seguida de diferenciación regresiva en cono medular, ventrículo terminal y filum terminale. Sus alteraciones causan disrafismos cerrados y anclaje medular."
+      },
+      {
+        "subtitulo": "Clasificación: Formas abiertas y cerradas",
+        "texto": "Los DTN abiertos (espina bífida abierta) presentan tejido neural expuesto sin cobertura cutánea y con fístula de LCR; el mielomeningocele (MMC, 98% de las formas abiertas) consiste en una bolsa quística con elementos neurales herniados, acompañada casi universalmente de malformación de Chiari II, hidrocefalia, paraparesia de extremidades inferiores y vejiga neurogénica. Los disrafismos cerrados presentan piel íntegra suprayacente y se dividen en: 1) Con masa subcutánea: lipomielomeningocele, lipomielocele, meningocele y mielocistocele; y 2) Sin masa subcutánea: diastematomielia (médula hendida tipo I con espolón óseo/cartilaginoso y tipo II con tabique fibroso), seno dérmico dorsal, síndrome de regresión caudal y filum terminale tenso/engrosado."
+      },
+      {
+        "subtitulo": "Estigmas cutáneos y síndrome de médula anclada",
+        "texto": "Los disrafismos cerrados frecuentemente se acompañan de estigmas cutáneos en la línea media lumbosacra: hipertricosis (cola de fauno), lipoma subcutáneo, hoyuelo sacro profundo (>5 mm o >2,5 cm del margen anal), hemangiomas, fosa del seno dérmico o aplasia cutis. El síndrome de médula anclada ocurre cuando estructuras inelásticas (lipoma, filum engrosado >2 mm, espolón óseo) fijan el cono medular por debajo de L2, provocando tracción mecánica e isquemia medular durante el crecimiento esquelético. Cursa con debilidad progresiva en extremidades inferiores, alteración de la marcha, deformidades podálicas (pie cavo, equinovaro), dolor lumbar/ciático, escoliosis progresiva e incontinencia de esfínteres."
+      },
+      {
+        "subtitulo": "Etiología multifactorial y prevención periconcepcional",
+        "texto": "El origen resulta de la interacción de factores genéticos y ambientales. Mutaciones en la vía del folato (MTHFR C677T) se asocian a mayor susceptibilidad. La diabetes materna preconcepcional eleva el riesgo de 2 a 4 veces, la obesidad materna de 1,5 a 3 veces, y el uso de ácido valproico confiere un riesgo de 1–2% de mielomeningocele. La suplementación periconcepcional con ácido fólico (0,4 mg/día en población general y 4,0–5,0 mg/día en mujeres con antecedentes o alto riesgo, iniciada 1–3 meses antes del embarazo y mantenida en el primer trimestre) previene hasta el 70% de los defectos del tubo neural."
+      },
+      {
+        "subtitulo": "Cirugía fetal intrauterina, manejo posnatal y seguimiento",
+        "texto": "El diagnóstico prenatal combina alfafetoproteína sérica materna, ecografía de alta resolución (signo del limón, signo de la banana, ventriculomegalia) y RM fetal. El estudio multicéntrico MOMS demostró que la corrección quirúrgica intrauterina antes de la semana 26 de gestación disminuye significativamente la necesidad de derivación por hidrocefalia, mejora el pronóstico motor y revierte la herniación rombencefálica (Chiari II) frente al reparo posnatal. En recién nacidos no operados in útero, el cierre hermético por planos dentro de las primeras 24–48 horas previene la meningitis bacteriana ascendente. El seguimiento a largo plazo requiere vigilancia de hidrocefalia, cateterismo vesical intermitente por vejiga neurogénica y corrección de deformidades ortopédicas."
+      }
+    ],
+    "aplicacao_clinica": "La evaluación neonatal comienza determinando si la lesión es abierta o cerrada. En el mielomeningocele abierto, mantenga al neonato en decúbito prono con gasas tibias estériles con suero fisiológico sobre la placoda, evite el contacto con látex, inicie antibioticoterapia y realice el cierre quirúrgico hermético dentro de las 24–48 horas. En lactantes con estigmas cutáneos en la línea media (hipertricosis, lipoma, hoyuelo profundo), es mandatario solicitar ecografía raquídea (<3–4 meses de vida) o RM para descartar disrafismo oculto y anclaje del cono medular antes de que se establezcan déficits neurológicos irreversibles. En niños con deformidad progresiva del pie (pie cavo), dolor lumbar, escoliosis de inicio reciente o deterioro esfinteriano, la RM de columna completa confirma el anclaje medular, la diastematomielia o la siringomielia. La liberación quirúrgica del anclaje (sección del filum terminale o resección del espolón óseo) previene el deterioro funcional permanente.",
+    "mensagem_central": "Los defectos del tubo neural constituyen un espectro determinado por el momento y nivel del fallo en la neurulación. Su expresión clínica deriva de la interacción entre susceptibilidad genética y factores ambientales, requiriendo atención desde la etapa fetal hasta la adultez. La prevención periconcepcional con ácido fólico, la clasificación anatómica rigurosa, el tratamiento quirúrgico oportuno (fetal o posnatal temprano) y la vigilancia multidisciplinaria continua son los pilares esenciales del manejo.",
+    "por_que_importa": "Este capítulo vincula un defecto embrionario precoz con alteraciones funcionales de por vida. Diferenciar la neurulación primaria de la secundaria explica por qué las formas abiertas cursan con placoda expuesta y malformación de Chiari II, mientras que los disrafismos cerrados permanecen ocultos hasta que el estirón de crecimiento desencadena síntomas de médula anclada (debilidad motora, pie cavo, vejiga neurogénica). Conocer este espectro clínico fundamenta la prevención, el asesoramiento prenatal, la selección para cirugía fetal y el tratamiento quirúrgico temprano.",
+    "decs": [
+      "Defectos del Tubo Neural",
+      "Disrafismo Espinal",
+      "Meningomielocele",
+      "Espina Bífida Oculta",
+      "Síndrome de Médula Anclada",
+      "Ácido Fólico",
+      "Diagnóstico Prenatal",
+      "Terapias Fetales"
+    ],
+    "mesh": [
+      "Neural Tube Defects",
+      "Spinal Dysraphism",
+      "Meningomyelocele",
+      "Spina Bifida Occulta",
+      "Neural Tube Defects/embryology",
+      "Tethered Cord Syndrome",
+      "Folic Acid",
+      "Prenatal Diagnosis",
+      "Fetal Therapies"
+    ],
+    "palavras_chave_livres": [
+      "Neurulación primaria",
+      "Neurulación secundaria",
+      "Malformación de Chiari II",
+      "Síndrome de médula anclada",
+      "Lipomielomeningocele",
+      "Estudio MOMS",
+      "Diastematomielia"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Neurulación primaria vs. secundaria",
+        "texto": "La falla de la neurulación primaria (días 18–28) origina defectos abiertos (mielomeningocele) con tejido neural expuesto, fístula de LCR y malformación de Chiari II. La falla de la neurulación secundaria (días 28–48) genera disrafismos cerrados (lipomielomeningocele, filum tenso) cubiertos por piel que provocan médula anclada."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Investigar siempre los estigmas cutáneos",
+        "texto": "La presencia de hipertricosis, lipoma subcutáneo, hoyuelo profundo (>5 mm) o seno dérmico en la línea media lumbosacra obliga a solicitar ecografía raquídea o RM en el lactante para descartar disrafismo cerrado antes de que ocurra daño neurológico o esfinteriano permanente."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Ácido fólico periconcepcional y cirugía fetal",
+        "texto": "La administración de ácido fólico (0,4 mg/día estándar; 4,0–5,0 mg/día en alto riesgo) iniciada 1–3 meses antes de la concepción previene hasta el 70% de los DTN. La cirugía fetal intrauterina antes de la semana 26 disminuye la necesidad de derivación de LCR y mejora la función motora."
+      }
+    ],
+    "referencias": [
+      "Greene ND, Copp AJ. Neural tube defects. Annu Rev Neurosci. 2014;37:221-42.",
+      "Yacob A, Carr CJ, Foote J, Scullen T, Werner C, Mathkour M, et al. The global burden of neural tube defects and disparities in neurosurgical care. World Neurosurg. 2021;149:e803-e820.",
+      "Dolk H, Loane M, Garne E. The prevalence of congenital anomalies in Europe. Adv Exp Med Biol. 2010;686:349-64.",
+      "Frey L, Hauser WA. Epidemiology of neural tube defects. Epilepsia. 2003;44 Suppl 3:4-13.",
+      "Chen CP. Chromosomal abnormalities associated with neural tube defects (I): full aneuploidy. Taiwan J Obstet Gynecol. 2007;46:325-35.",
+      "Chen CP. Syndromes, disorders, and maternal risk factors associated with neural tube defects (II). Taiwan J Obstet Gynecol. 2008;47:10-17.",
+      "Avagliano, Massa V, George TM, Qureshy S, Bulfamante GP, Finnell RH. Overview on neural tube defects: from development to physical characteristics. Birth Defect Res. 2019;111:1455-67.",
+      "Copp AJ, Stanier P, Greene ND. Neural tube defects: recent advances, unsolved questions, and controversies. Lancet Neurol. 2013;12:799-810.",
+      "Harris MJ, Juriloff DM. An update to the list of mouse mutants with neural tube closure defects and advances toward a complete genetic perspective of neural tube closure. Birth Defects Res A Clin Mol Teratol. 2010;88:653-69.",
+      "Nakatsu T, Uwabe C, Shiota K. Neural tube closure in humans initiates at multiple sites: evidence from human embryos and implications for the pathogenesis of neural tube defects. Anat Embryol (Berl). 2000;201:455-66.",
+      "O’Rahilly R, Müller F. The two sites of fusion of the neural folds and the two neuropores in the human embryo. Teratology. 2002;65:162-70.",
+      "Lew SM, Kothbauer KF. Tethered cord syndrome: an updated review. Pediatr Neurosurg. 2007;43:236-48.",
+      "Juriloff DM, Harris MJ. Hypothesis: the female excess in cranial neural tube defects reflects an epigenetic drag of the inactivating X chromosome on the molecular mechanisms of neural fold elevation. Birth Defects Res A Clin Mol Teratol. 2012;94:849-55.",
+      "Agopian, Tinker SC, Lupo PJ, Canfield MA, Mitchell LE; National Birth Defects Prevention Study. Proportion of neural tube defects attributable to known risk factors. Birth Defects Res A Clin Mol Teratol. 2013;97:42-6.",
+      "Pietrzik K, Bailey L, Shane B. Folic acid and L-5-methyltetrahydrofolate: comparison of clinical pharmacokinetics and pharmacodynamics. Clin Pharmacokinet. 2010;49:535-48.",
+      "Copp AJ, Greene ND. Genetics and development of neural tube defects. J Pathol. 2010;220:217-30.",
+      "Bortolus, Filippini F, Cipriani S, Trevisanuto D, Cavallin F, Zanconato G, et al. Efficacy of 4.0 mg versus 0.4 mg folic acid supplementation on the reproductive outcomes: a randomized controlled trial. Nutrients. 2021;13:4422.",
+      "Wang L, Chang S, Wang Z, Wang S, Huo J, Ding G, et al. Altered GNAS imprinting due to folic acid deficiency contributes to poor embryo development and may lead to neural tube defects. Oncotarget. 2017;8:110797-110810.",
+      "Harris MJ, Juriloff DM. An update to the list of mouse mutants with neural tube closure defects and advances toward a complete genetic perspective of neural tube closure. Birth Defects Res A Clin Mol Teratol. 2010;88:653-69.",
+      "Lei, Fathe K, McCartney D, Zhu H, Yang W, Ross ME, et al. Rare LRP6 variants identified in spina bifida patients. Hum Mutat. 2015;36:342-49.",
+      "Wlodarczyk BJ, Palacios AM, George TM, Finnell RH. Antiepileptic drugs and pregnancy outcomes. Am J Med Genet. 2012;158A:2071-90.",
+      "Moretti ME, Bar-Oz B, Fried S, Koren G. Maternal hyperthermia and the risk for neural tube defects in offspring: systematic review and meta-analysis. Epidemiology. 2005;16:216-19.",
+      "Abdel-Shafy HI, Mansour MSM. A review on polycyclic aromatic hydrocarbons: source, environmental impact, effect on human health and remediation. Egypt J Pet. 2016;25:107-23.",
+      "Li Z, Zhang L, Ye R, Pei L, Liu J, Zheng X, et al. Indoor air pollution from coal combustion and the risk of neural tube defects in a rural population in Shanxi Province, China. Am J Epidemiol. 2011;174:451-58.",
+      "Langlois PH, Hoyt AT, Lupo PJ, Lawson CC, Waters MA, Desrosiers TA, et al. Maternal occupational exposure to polycyclic aromatic hydrocarbons and risk of neural tube defect-affected pregnancies. Birth Defects Res A Clin Mol Teratol. 2012;94:693-700.",
+      "Wang B, Jin L, Ren A, Yuan Y, Liu J, Li Z, et al. Levels of polycyclic aromatic hydrocarbons in maternal serum and risk of neural tube defects in offspring. Environ Sci Technol. 2015;49:588-96.",
+      "Patel AB, Shaikh S, Jain KR, Desai C, Madamwar D. Polycyclic aromatic hydrocarbons: sources, toxicity, and remediation approaches. Front Microbiol. 2020;11:562813.",
+      "Amitai Y, Koren G. High risk for neural tube defects; the role of arsenic in drinking water and rice in Asia. Med Hypotheses. 2018;119:88-90.",
+      "Wlodarczyk BJ, Cabrera RM, Hill DS, Bozinov D, Zhu H, Finnell RH. Arsenic-induced gene expression changes in the neural tube of folate transport defective mouse embryos. Neurotoxicology. 2006;27:547-57.",
+      "Mazumdar M. Does arsenic increase the risk of neural tube defects among a highly exposed population? A new case-control study in Bangladesh. Birth Defects Res. 2017;109:92-8.",
+      "Kalra, Dewan P, Batra P, Sharma T, Tyagi V, Banerjee BD. Organochlorine pesticide exposure in mothers and neural tube defects in offsprings. Reprod Toxicol. 2016;66:56-60.",
+      "Brender JD, Felkner M, Suarez L, Canfield MA, Henry JP. Maternal pesticide exposure and neural tube defects in Mexican Americans. Ann Epidemiol. 2010;20:16-22.",
+      "Baldacci S, Gorini F, Santoro M, Pierini A, Minichilli F, Bianchi F. Environmental and individual exposure and the risk of congenital anomalies: a review of recent epidemiological evidence. Epidemiol Prev. 2018;42(3-4 Suppl 1):1-34.",
+      "Suarez L, Felkner M, Brender JD, Canfield M, Zhu H, Hendricks KA. Neural tube defects on the Texas-Mexico border: what we’ve learned in the 20 years since the Brownsville Cluster. Birth Defects Res A Clin Mol Teratol. 2012;94:882-92.",
+      "Shaw GM, Wasserman CR, O’Malley CD, Nelson V, Jackson RJ. Maternal pesticide exposure from multiple sources and selected congenital anomalies. Epidemiology. 1999;10:60-6.",
+      "Balarajan R, McDowall M. Congenital malformations and agricultural workers. Lancet. 1983;1:1112-13.",
+      "Zhang J, Chen FZ, Gao Q, Sun JH, Tian GP, Gao YM. Hyperthermia induces upregulation of connexin43 in the golden hamster neural tube. Birth Defects Res A Clin Mol Teratol. 2012;94:16-21.",
+      "Harvey MA, McRorie MM, Smith DW. Suggested limits to the use of the hot tub and sauna by pregnant women. Can Med Assoc J. 1981;125:50-3.",
+      "Lundberg YW, Wing MJ, Xiong W, Zhao J, Finnell RH. Genetic dissection of hyperthermia-induced neural tube defects in mice. Birth Defects Res A Clin Mol Teratol. 2003;67:409-13.",
+      "Crider KS, Cleves MA, Reefhuis J, Berry RJ, Hobbs CA, Hu DJ. Antibacterial medication use during pregnancy and risk of birth defects: National Birth Defects Prevention Study. Arch Pediatr Adolesc Med. 2009;163:978-85.",
+      "Gilboa SM, Broussard CS, Devine OJ, Duwe KN, Flak AL, Boulet SL, et al. Influencing clinical practice regarding the use of antiepileptic medications during pregnancy: modeling the potential impact on the prevalences of spina bifida and cleft palate in the United States. Am J Med Genet C Semin Med Genet. 2011;157:234-46.",
+      "Interrante JD, Ailes EC, Lind JN, Anderka M, Feldkamp ML, Werler MM, et al. Risk comparison for prenatal use of analgesics and selected birth defects, National Birth Defects Prevention Study 1997-2011. Ann Epidemiol. 2017;27:645-653.e2.",
+      "MRC Vitamin Study Research Group. Prevention of neural tube defects: results of the Medical Research Council Vitamin Study. Lancet. 1991;338:131-37.",
+      "Sudiwala, Palmer A, Massa V, Burns AJ, Dunlevy LPE, de Castro SCP, et al. Cellular mechanisms underlying Pax3-related neural tube defects and their prevention by folic acid. Dis Model Mech. 2019;12:dmm042234.",
+      "Barbera JP, Rodriguez TA, Greene ND, Weninger WJ, Simeone A, Copp AJ, et al. Folic acid prevents exencephaly in Cited2 deficient mice. Hum Mol Genet. 2002;11:283-93.",
+      "van Straaten HW, Copp AJ. Curly tail: a 50-year history of the mouse spina bifida model. Anat Embryol (Berl). 2001;203:225-37.",
+      "De Castro SC, Leung KY, Savery D, Burren K, Rozen R, Copp AJ, et al. Neural tube defects induced by folate deficiency in mutant curly tail (Grhl3) embryos are associated with alteration in folate one-carbon metabolism but are unlikely to result from diminished methylation. Birth Defects Res A Clin Mol Teratol. 2010;88:612-18.",
+      "Greene ND, Leung KY, Copp AJ. Inositol, neural tube closure and the prevention of neural tube defects. Birth Defects Res. 2017;109:68-80.",
+      "Cockroft DL, Brook FA, Copp AJ. Inositol deficiency increases the susceptibility to neural tube defects of genetically predisposed (curly tail) mouse embryos in vitro. Teratology. 1992;45:223-32.",
+      "Russo M, Forte G, Montanino Oliva M, Laganà AS, Unfer V. Melatonin and myo-inositol: supporting reproduction from the oocyte to birth. Int J Mol Sci. 2021;22:8433.",
+      "D’Souza SW, Copp AJ, Greene NDE, Glazier JD. Maternal inositol status and neural tube defects: a role for the human yolk sac in embryonic inositol delivery? Adv Nutr. 2021;12:212-22.",
+      "Dinicola S, Unfer V, Facchinetti F, Soulage CO, Greene ND, Bizzarri M, et al. Inositols: from established knowledge to novel approaches. Int J Mol Sci. 2021;22:10575.",
+      "Rose NC, Mennuti MT. Fetal neural tube defects: diagnosis, management, and treatment. Carlisle (UK): The Foundation for The Global Library of Women’s Medicine; 2009.",
+      "Volarevic V, Markovic BS, Gazdic M, Volarevic A, Jovicic N, Arsenijevic N, et al. Ethical and safety issues of stem cell-based therapy. Int J Med Sci. 2018;15:36-45.",
+      "Gupta DK, Sharma S, Venugopal P, Kumar L, Mohanty S, Dattagupta S. Stem cells as a therapeutic modality in pediatric malformations. Transplant Proc. 2007;39:700-2.",
+      "Mitrecic, Nicaise C, Klimaschewski L, Gajovic S, Bohl D, Pochet R. Genetically modified stem cells for the treatment of neurological diseases. Front Biosci (Elite Ed). 2012;4:1170-81.",
+      "Isaković J, Šimunić I, Jagečić D, Hribljan V, Mitrečić D. Overview of neural tube defects: gene-environment interactions, preventative approaches and future perspectives. Biomedicines. 2022;10:965.",
+      "Godzik, Ravindra VM, Ray WZ, Eskandari R, Dailey AT. Primary repair of open neural tube defect in adulthood: case example and review of management strategies. Spine J. 2015;15:e57-e63.",
+      "Rossi A, Cama A, Tortori-Donati P. Spinal dysraphism: a review of neurological features. Paediatr Neuroradiol. 2000;42:471-91.",
+      "Youmans JR, editor. Neurological surgery. 2nd ed. Philadelphia: WB Saunders; 1982. p. 1."
+    ],
+    "seo": {
+      "titulo": "Disrafismo Espinal y Defectos del Tubo Neural | Tratado de Columna",
+      "meta_descricao": "Guía integral de disrafismo espinal y defectos del tubo neural: mielomeningocele, espina bífida oculta, médula anclada, cirugía fetal MOMS y ácido fólico.",
+      "resumo_chamada": "Domine la embriología, clasificación (abierta vs. cerrada), diagnóstico prenatal, cirugía fetal e infantil y seguimiento multidisciplinario de los disrafismos espinales.",
+      "slug": "disrafismo-espinal-defectos-del-tubo-neural"
+    }
+  },
+  "12": {
+    "numero": 12,
+    "titulo": "Anamnesis y Examen Físico de la Columna Vertebral",
+    "secao": "",
+    "autores": [
+      "Helton L. A. Defino",
+      "Matheus Pippa Defino",
+      "Rian Souza Vieira"
+    ],
+    "contexto": "La evaluación integral del paciente con afecciones de la columna vertebral comienza antes de analizar cualquier estudio de neuroimagen. Formular una hipótesis clínica diagnóstica antes de revisar las imágenes evita el error común de tratar hallazgos radiológicos incidentales y asintomáticos (como protrusiones o hernias discales presentes en el 30–50% de la población sana). El dolor axial (cervicalgia, lumbalgia), el dolor radicular irradiado, la deformidad progresiva y la discapacidad funcional constituyen los motivos de consulta cardinales, pero cada uno requiere una caracterización rigurosa en cuanto a cronología, características mecánicas frente a inflamatorias, banderas rojas (fiebre, pérdida inexplicable de peso, dolor nocturno que no cede con el reposo, antecedentes oncológicos, déficit neurológico progresivo), banderas amarillas (factores psicosociales y gananciales) e impacto en las actividades cotidianas. El examen físico debe ser global y sistemático: inspección de la postura, balance sagital y coronal, dinámica de la marcha, estigmas cutáneos y evaluación articular de caderas y pelvis (síndrome cadera-columna); exploración neurológica segmentaria motora (miotomas escala MRC 0–5), sensitiva (dermatomas tacto fino y dolor) y de reflejos osteotendinosos y signos de motoneurona superior (Babinski, Hoffmann, clonus); y maniobras ortopédicas de provocación (Spurling, Lhermitte, Lasègue, estiramiento crural, Patrick FABER). En el trauma raquimedular, el soporte vital se acompaña de una evaluación estandarizada bajo la escala ASIA/ISNCSCI.",
+    "objetivo": "Enseñar una secuencia clínica completa, reproducible y estructurada para la evaluación de la columna vertebral. Al finalizar, el lector deberá estructurar la historia clínica; diferenciar patrones de dolor mecánico, neuropático, vascular e inflamatorio; examinar la alineación, movilidad y deformidad raquídea; realizar un examen neurológico segmentario riguroso (miotomas, dermatomas, reflejos); interpretar pruebas especiales cervicales, lumbares y sacroilíacas; identificar signos no orgánicos (signos de Waddell); y aplicar la clasificación de la escala ASIA en el trauma raquimedular.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Historia clínica y patrones de dolor",
+        "texto": "La anamnesis evalúa la queja principal, antecedentes y características del dolor mediante la mnemotecnia OPQRST (Inicio, Provocación/Alivio, Calidad, Región/Irradiación, Severidad, Tiempo). Se deben diferenciar los patrones de dolor: 1) Dolor axial mecánico (empeora con la carga y el movimiento, cede con el reposo); 2) Dolor radicular neuropático (urente o punzante, irradiación dermatómica por debajo de la rodilla o codo, parestesias); 3) Claudicación neurogénica (pesadez, calambres y dolor en nalgas y pantorrillas al caminar o en extensión lumbar, que cede al sentarse o flexionar el tronco—\"signo del carrito de compras\"); 4) Claudicación vascular (distancia de marcha fija, cede al detenerse de pie, disminución de pulsos periféricos y cambios tróficos); 5) Dolor inflamatorio (rigidez matutina >30–60 min, mejora con el ejercicio, dolor nocturno). Identificar banderas rojas (infección, tumor, fractura, cauda equina) y banderas amarillas (catastrofismo, depresión)."
+      },
+      {
+        "subtitulo": "Inspección, palpación y movilidad articular",
+        "texto": "La exploración inicia con la observación de la marcha (marcha antiálgica, marcha en estepaje por pie caído, marcha espástica o tijera, marcha atáxica mielopática con base amplia). En bipedestación se evalúa la plomada coronal de C7, el balance sagital, la asimetría de hombros, la oblicuidad pélvica y el test de inclinación anterior de Adams con escoliómetro para medir la giba costal. La palpación busca dolor focal en apófisis espinosas, escalones óseos (espondilolistesis) y contractura paravertebral. Se mide la movilidad activa en flexión, extensión, inclinación lateral y rotación axial."
+      },
+      {
+        "subtitulo": "Examen neurológico segmentario",
+        "texto": "La localización neurológica requiere evaluar fuerza, sensibilidad y reflejos: 1) Exploración motora (escala MRC 0–5): C5 (deltoides/bíceps), C6 (extensores de muñeca), C7 (tríceps/flexores de muñeca), C8 (flexores de dedos), T1 (abductores de dedos), L2 (flexores de cadera), L3 (cuádriceps), L4 (tibial anterior/dorsiflexión), L5 (extensor largo del hallux), S1 (gastronemio-sóleo/flexión plantar); 2) Sensibilidad: puntos clave de dermatomas C2 a S4–S5 (tacto ligero y pinchazo); 3) Reflejos osteotendinosos: bicipital (C5), estilorradial (C6), tricipital (C7), patelar (L4), aquileo (S1); y 4) Signos piramidales de motoneurona superior: signo de Hoffmann, reflejo radial invertido, clonus aquíleo sostenido y signo de Babinski."
+      },
+      {
+        "subtitulo": "Pruebas especiales y diagnóstico diferencial cadera-columna",
+        "texto": "Pruebas cervicales: maniobra de Spurling (compresión axial con extensión y rotación ipsilateral, alta especificidad para radiculopatía cervical), prueba de distracción cervical, signo de Bakody (abducción del hombro) y signo de Lhermitte (descarga eléctrica al flexionar el cuello, indicador de mielopatía). Pruebas lumbares: elevación de la pierna recta (SLR/signo de Lasègue, positivo si reproduce dolor radicular típico entre 30° y 70°), maniobra de Bragard (Lasègue + dorsiflexión de tobillo), Lasègue cruzado (altamente específico de hernia discal) y estiramiento del nervio femoral (decúbito prono, raíces L2–L4). Diagnóstico diferencial cadera-columna: maniobra de Patrick FABER y rotación interna/externa de cadera."
+      },
+      {
+        "subtitulo": "Trauma raquimedular y escala ASIA",
+        "texto": "En el traumatismo agudo, el soporte vital avanzado (ATLS) precede a la evaluación espinal. La evaluación neurológica se estandariza según la escala ASIA/ISNCSCI: 10 grupos musculares clave bilaterales (puntuación motora 0–100), 28 dermatomas sensitivos bilaterales (puntuación sensitiva 0–112) y examen rectal digital para evaluar preservación sacra (presión anal profunda [DAP] y contracción anal voluntaria [VAC]). La preservación sacra define una lesión medular incompleta (ASIA B, C o D) frente a una lesión completa (ASIA A), fundamentando el pronóstico funcional."
+      }
+    ],
+    "aplicacao_clinica": "En la consulta diaria, la exploración clínica guía la interpretación de las imágenes, evitando tratamientos quirúrgicos innecesarios basados en hallazgos degenerativos incidentales. Un paciente con lumbalgia y una hernia discal L4–L5 en RM pero con examen neurológico normal y Lasègue negativo presenta dolor axial puro y no radiculopatía compresiva, requiriendo manejo conservador. Por el contrario, detectar hiperreflexia, signo de Hoffmann y marcha atáxica en un paciente con parestesias vagas en manos confirma una mielopatía espondilótica cervical que requiere descompresión quirúrgica urgente. En traumatismos, constatar preservación sacra (contracción anal voluntaria o sensibilidad anal profunda) determina una lesión medular incompleta con alto potencial de recuperación funcional, justificando descompresión quirúrgica de urgencia.",
+    "mensagem_central": "La anamnesis y el examen físico estructuran el diagnóstico integral de la columna vertebral. Los estudios de neuroimagen confirman o descartan hipótesis, pero jamás reemplazan la caracterización del dolor, la inspección global, la evaluación del movimiento y el examen neurológico segmentario. En traumatismos raquimedulares, la documentación seriada de la preservación sacra y la clasificación ASIA son indispensables para el diagnóstico, pronóstico y tratamiento.",
+    "por_que_importa": "Las alteraciones morfológicas en neuroimagen son frecuentes en individuos asintomáticos, mientras que déficits neurológicos graves pueden manifestarse tempranamente como una alteración de la marcha o la pérdida de un reflejo. Este capítulo enseña a construir el diagnóstico clínico a partir del paciente y no de la imagen. Integrar los patrones de dolor, la alineación corporal, el diagnóstico diferencial cadera-columna, los signos no orgánicos de Waddell y la escala ASIA permite indicar estudios pertinentes y evitar procedimientos quirúrgicos inapropiados.",
+    "decs": [
+      "Anamnesis",
+      "Examen Físico",
+      "Columna Vertebral",
+      "Examen Neurológico",
+      "Traumatismos de la Médula Espinal",
+      "Radiculopatía",
+      "Reflejo Anormal",
+      "Dimensión del Dolor"
+    ],
+    "mesh": [
+      "Medical History Taking",
+      "Physical Examination",
+      "Spine",
+      "Neurologic Examination",
+      "Spinal Cord Injuries",
+      "Radiculopathy",
+      "Reflex, Abnormal",
+      "Pain Measurement"
+    ],
+    "palavras_chave_livres": [
+      "Examen neurológico segmentario",
+      "Maniobra de Spurling",
+      "Signo de Lasègue",
+      "Clasificación ASIA",
+      "Síndrome cadera-columna",
+      "Signos de Waddell",
+      "Banderas rojas"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Formular el diagnóstico antes de la imagen",
+        "texto": "Las hernias discales y estenosis asintomáticas están presentes en el 30–50% de la población sana. Formule siempre su hipótesis diagnóstica mediante el interrogatorio y el examen neurológico segmentario antes de solicitar y revisar las resonancias magnéticas."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Diferenciar patología de cadera y columna",
+        "texto": "El dolor inguinal que se agrava con la rotación interna sugiere artrosis de cadera, mientras que el dolor en nalga/muslo que empeora al caminar y cede al sentarse orienta a estenosis de canal lumbar (síndrome cadera-columna). Realice siempre el test de Patrick FABER."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "La preservación sacra define el pronóstico",
+        "texto": "En el traumatismo raquimedular agudo, el tacto rectal para evaluar sensibilidad anal profunda (DAP) y contracción anal voluntaria (VAC) es obligatorio. La presencia de preservación sacra define una lesión incompleta (ASIA B, C o D) con elevado potencial de recuperación neurológica."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração apresentadas no capítulo. A pontuação e a disposição foram uniformizadas segundo o estilo Vancouver, sem completar por suposição informações ausentes.",
+      "Barros Filho TEP, Lech O. Exame físico em ortopedia. São Paulo: Sarvier; 2001.",
+      "Bridwell KH, Dewald RL, editors. The textbook of spinal surgery. 2nd ed. Philadelphia: Lippincott-Raven; 1997.",
+      "Pudles E, Defino HLA. A Coluan Vertebral: Conceitos Básicos. Artmed Editora; 2014.",
+      "Frymoyer JW, Wiesel SW, Howard SA, Boden SD, Lauerman WC, Lenke LG, et al., editors. The adult and pediatric spine: an atlas of differential diagnosis. 3rd ed. Philadelphia: Lippincott Williams & Wilkins; 2003.",
+      "Herkowitz HN, Garfin SR, Eismont FJ, Bell GR, Balderston RA. Rothman-Simeone the spine online. 5th ed. Philadelphia: Saunders; 2006.",
+      "Hoppenfeld S, Hutton R, editors. Physical examination of the spine and extremities. Upper Saddle River: Prentice Hall; 1976.",
+      "Defino HLA. Lesões traumáticas da coluna vertebral. São Paulo: Bevilacqua; 2005.",
+      "Defino HLA, Pudles E, Rocha LEM. Coluna vertebral: lesões traumáticas. Artmed; 2019.",
+      "Machado A. Neuroanatomia funcional. 2. ed. Rio de Janeiro: Atheneu; 2000.",
+      "Waddell G, McCulloch JA, Kummel E, Venner RM. Nonorganic physical signs in low-back pain. Spine (Phila Pa 1976). 1980;5(2):117-25.",
+      "American Spinal Injury Association. International standards for neurological classification of spinal cord injury. Chicago: ASIA; 1992.",
+      "Frankel HL, Hancock DO, Hyslop G, Melzak J, Michaelis LS, Ungar GH, et al. The value of postural reduction in the initial management of closed injuries of the spine with paraplegia and tetraplegia. I. Paraplegia. 1969;7(3):179-92."
+    ],
+    "seo": {
+      "titulo": "Anamnesis y Examen Físico de la Columna | Tratado de Columna",
+      "meta_descricao": "Guía clínica de semiología raquídea: patrones de dolor, examen motor/sensitivo/reflejos, pruebas de Spurling y Lasègue, y escala ASIA en trauma.",
+      "resumo_chamada": "Domine la exploración clínica y neurológica de la columna: historia clínica estructurada, miotomas, dermatomas, signos mielopáticos, pruebas especiales y escala ASIA.",
+      "slug": "anamnesis-y-examen-fisico-de-la-columna-vertebral"
+    }
+  }
+}

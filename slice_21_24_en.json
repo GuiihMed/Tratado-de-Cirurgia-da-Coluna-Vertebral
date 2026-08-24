@@ -1,0 +1,474 @@
+{
+  "21": {
+    "numero": 21,
+    "titulo": "Traumatic Injuries of the Subaxial Cervical Spine",
+    "secao": "Section 3 — Spinal Trauma",
+    "autores": [
+      "Edson Pudles",
+      "Luiz Gustavo Dal'Oglio da Rocha"
+    ],
+    "contexto": "Traumatic injuries of the subaxial cervical spine (C3–C7) represent the majority of all cervical fractures and dislocations, accounting for substantial morbidity and traumatic quadriplegia in young active individuals (high-energy motor vehicle crashes, diving accidents) and elderly patients (low-energy ground-level falls on degenerative, stenotic spines). The subaxial spine combines wide range of motion with mechanical load bearing; acute traumatic failure involves complex combinations of axial compression, flexion, extension, rotation, and distraction. Injuries range from stable compression fractures to catastrophic distractive flexion injuries, unilateral or bilateral facet subluxation/dislocation (\"locked facets\"), and burst fractures with traumatic cord compression. Systematically evaluating mechanical stability relies on assessing the three columns and the integrity of the Posterior Ligamentous Complex (PLC: supraspinous and interspinous ligaments, ligamentum flavum, and facet capsules) and the anterior/posterior longitudinal ligaments. Modern classification systems—predominantly the AO Spine Subaxial Cervical Spine Injury Classification and the Subaxial Injury Classification (SLIC) score—integrate fracture morphology (Type A compression, Type B tension band/distraction, Type C translation/displacement, and Type F facet injuries), PLC status, neurological examination (N0–N4, Nx), and clinical modifiers (M1–M4). Multi-detector CT defines bony fracture morphology and facet apposition, while urgent MRI evaluates traumatic disc herniations, spinal cord edema/hemorrhage, and ligamentous disruption. Treatment strategy—closed traction reduction, anterior cervical discectomy and fusion (ACDF), posterior instrumented reduction and lateral mass/pedicle screw fusion, or combined circumferential stabilization—depends on cord compression, facet reduction, traumatic disc status, and construct biomechanics.",
+    "objetivo": "To present the clinical evaluation, classification, biomechanical stability assessment, and surgical/non-operative management of subaxial cervical spine trauma (C3–C7). The reader should be able to apply the AO Spine and SLIC classification systems; recognize stable versus unstable injury patterns; assess facet joint subluxation and locked facet morphology; evaluate the role of urgent closed reduction vs. operative reduction in facet dislocations; recognize the danger of extruded traumatic disc herniations during reduction; and select anterior, posterior, or circumferential surgical approaches.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Anatomy, Biomechanics, and Injury Mechanisms",
+        "texto": "The subaxial cervical spine (C3–C7) features lordotic alignment, oblique facet joints (angled ~45° in the sagittal plane), uncovertebral joints of Luschka, and transverse foramina transmitting the vertebral arteries. The three-column concept and tension band integrity govern stability. Primary injury mechanisms include: 1) Compression/Axial loading (AO Type A): minor compression (A1/A2), burst fractures (A3 incomplete, A4 complete burst with retropulsion); 2) Distraction/Tension band failure (AO Type B): anterior tension band failure in hyperextension (B1/B3) or posterior tension band disruption in hyperflexion (B2); 3) Translation/Displacement (AO Type C): mechanical dislocation or subluxation in any plane; 4) Facet Injuries (AO Type F): F1 nondisplaced facet fracture, F2 displaced facet fracture, F3 floating lateral mass, F4 facet subluxation/dislocation (unilateral or bilateral locked facets)."
+      },
+      {
+        "subtitulo": "Classification Systems: AO Spine Subaxial and SLIC Score",
+        "texto": "The AO Spine Subaxial classification organizes injuries hierarchically by morphology (Types A, B, C, F), neurology (N0 intact, N1 transient, N2 radiculopathy, N3 incomplete cord, N4 complete cord, Nx unexaminable), and modifiers (M1 PLC indeterminate, M2 disc herniation, M3 metabolic/ankylosing disease, M4 vertebral artery injury). The Subaxial Injury Classification (SLIC) score grades three independent categories: 1) Fracture morphology (0–4 points: no abnormality = 0, compression = 1, burst = 2, distraction = 3, translation/rotation = 4); 2) Neurological status (0–4 points: intact = 0, root = 1, complete cord = 2, incomplete cord = 3, continuous cord compression +1); 3) PLC integrity (0–2 points: intact = 0, indeterminate = 1, disrupted = 2). A total SLIC score <=3 indicates non-operative management (rigid cervical collar); SLIC = 4 is equivocal; SLIC >=5 mandates surgical stabilization."
+      },
+      {
+        "subtitulo": "Facet Dislocations and the Traumatic Disc Dilemma",
+        "texto": "Facet subluxation and bilateral/unilateral locked facets (AO F4 / Type C) represent severe translation injuries with complete disruption of the posterior tension band and intervertebral disc. In awake, cooperative patients with bilateral locked facets and incomplete neurological deficits, immediate closed skeletal reduction with Gardner-Wells tongs (starting with 5 kg and adding 2–3 kg per level under continuous fluoroscopic and neurological monitoring) can rapidly decompress the spinal canal. However, pre-reduction MRI (or emergent intraoperative exploration) is vital because an extruded traumatic disc herniation retropulsed behind the displaced vertebral body can cause catastrophic spinal cord transection during closed or open posterior reduction maneuvers. If a massive extruded disc herniation is present on MRI, anterior cervical discectomy and decompression must precede facet reduction."
+      },
+      {
+        "subtitulo": "Surgical Decision-Making and Operative Approaches",
+        "texto": "Surgical approach is tailored to pathology: 1) Anterior approach (ACDF or corpectomy with anterior plating): ideal for teardrop fractures, burst fractures (A3/A4) with anterior cord compression, and facet dislocations with herniated traumatic discs; 2) Posterior approach (lateral mass screw fixation C3–C6, pedicle screw fixation C7): preferred for highly unstable posterior tension band disruptions (B2), irreducible locked facets, floating lateral masses (F3), or ankylosing spondylitis fractures; 3) Combined 360° circumferential stabilization: required for severe multi-column comminution, severe osteopenia, or severe three-column dissociation."
+      }
+    ],
+    "aplicacao_clinica": "In the emergency trauma center, managing subaxial cervical trauma requires immediate assessment of neurological status and facet alignment on CT. In an alert patient presenting with bilateral locked facets and acute quadriparesis, emergent closed reduction under conscious sedation or emergent operative reduction within 4 hours restores canal diameter and provides the highest chance of neurological recovery. If the patient is obtunded or if MRI shows an extruded herniated disc fragment lodged behind the dislocated vertebral body, perform an emergent anterior cervical discectomy first to remove the disc fragment, followed by anterior reduction and plating (or posterior instrumentation if anterior reduction fails). In geriatric patients presenting with central cord syndrome following minor hyperextension trauma without fracture (AO B3/M3), urgent MRI demonstrates cord edema and preexisting canal stenosis, guiding early decompressive surgery (<24 hours). In patients with facet fractures involving the transverse foramen (AO M4), obtain CT Angiography of the neck to evaluate vertebral artery occlusion or dissection.",
+    "mensagem_central": "Management of subaxial cervical spine trauma (C3–C7) requires precise integration of fracture morphology, posterior ligamentous complex (PLC) integrity, neurological status, and traumatic disc herniation risk. Applying the AO Spine Subaxial classification and SLIC score guides the threshold between rigid collar immobilization and surgical stabilization. Rapid closed or open facet reduction within hours—preceded by anterior discectomy when extruded disc fragments threaten the cord—maximizes neurological recovery.",
+    "por_que_importa": "Subaxial cervical spine trauma combines high risk of permanent quadriplegia with severe mechanical instability. Failing to recognize facet subluxation or attempting posterior locked facet reduction in the presence of an unrecognized retrovertebral extruded disc can produce irreversible iatrogenic cord transection. This chapter provides a clear diagnostic and operative roadmap, integrating classification scores (AO Spine and SLIC), closed reduction guidelines, and approach selection (anterior vs. posterior vs. 360°) to restore alignment and protect neural function.",
+    "decs": [
+      "Cervical Vertebrae",
+      "Spinal Fractures",
+      "Joint Dislocations",
+      "Spinal Cord Injuries",
+      "Spinal Fusion",
+      "Magnetic Resonance Imaging",
+      "Tomography, X-Ray Computed",
+      "Joint Instability"
+    ],
+    "mesh": [
+      "Cervical Vertebrae",
+      "Spinal Fractures",
+      "Joint Dislocations",
+      "Spinal Cord Injuries",
+      "Spinal Fusion",
+      "Magnetic Resonance Imaging",
+      "Tomography, X-Ray Computed",
+      "Joint Instability"
+    ],
+    "palavras_chave_livres": [
+      "Subaxial cervical spine",
+      "Locked facets",
+      "AO Spine Subaxial",
+      "SLIC score",
+      "Posterior ligamentous complex",
+      "Traumatic disc herniation",
+      "Gardner-Wells traction reduction"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "SLIC Score Guides Surgical Threshold",
+        "texto": "The SLIC score quantifies morphology (0–4), PLC integrity (0–2), and neurology (0–4). Scores <=3 indicate non-operative management (rigid collar); SLIC = 4 is equivocal; scores >=5 mandate surgical decompression and stabilization."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Rule Out Extruded Disc Before Posterior Reduction",
+        "texto": "In locked facet dislocations, an extruded traumatic disc herniation can retropulse during reduction maneuvers, causing acute cord transection. When a large disc extrusion is identified on MRI, perform anterior discectomy (ACDF) prior to reducing the facet joints."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Urgent Reduction of Locked Facets",
+        "texto": "In alert patients with locked facets and incomplete quadriparesis, rapid closed skeletal traction reduction or emergent operative reduction within hours restores spinal canal dimensions and maximizes the potential for meaningful neurological recovery."
+      }
+    ],
+    "referencias": [
+      "Montesano PX, Jauch E, Jonsson H Jr. Anatomic and biomechanical study of posterior cervical spine plate arthrodesis: an evaluation of two different techniques of screw placement. J Spinal Disord. 1992;5:301-5.",
+      "Vaccaro AR, Betz RR, Zeidhman SH. Principles and practice of spinal surgery. St. Louis: Mosby; 2003.",
+      "Jones EL, Heller JG, Silcox DH, Hutton WC. Cervical pedicle screws versus lateral mass screws. Anatomic feasibility and biomechanical comparison. Spine. 1997;22:977-82.",
+      "Panjabi MM, Duranceau J, Goel V, Oxland T, Takata K. Cervical human vertebrae. Quantitative three-dimensional anatomy of the middle and lower regions. Spine.",
+      "Ulrich C, Arand M, Nothwang J. Internal fixation on the lower cervical spine—biomechanics and clinical practice of procedures and implants. Eur Spine J. 2001;10:88-100.",
+      "Jeanneret B, Gebhard JS, Magerl F. Transpedicular screw fixation of articular mass fracture-separation: results of an anatomical study and operative technique. J Spinal Disord. 1994;7:222-9.",
+      "Mainan DJ, Sances A Jr, Mykleburst JB, Larson SJ, Houterman C, Chilbert M, et al. Compression injuries of the cervical spine: a biomechanical analysis. Neurosurgery. 1983;13:254-60.",
+      "Seves PE. Biomechanics of the injured cervical spine. In: Vaccaro AR, editor. Fractures of the cervical, thoracic and lumbar spine. New York: Marcel Denker; 2003. p. 23-44.",
+      "Louis R. Les theories de l'instabilité. Rev Chir Orthop Reparative Appar Mot. 1977;63:423-5.",
+      "Raynor RB, Kingman AF. Cervical spine injuries. J Trauma. 1968;8:597-604.",
+      "Louis R. Surgery of the spine. Berlin: Springer-Verlag; 1983.",
+      "White AA 3rd, Johnson RM, Panjabi MM, Southwick WO. Biomechanical analysis of clinical stability in the cervical spine. Clin Orthop Relat Res. 1975;(109):85-96.",
+      "Hartman J. Anatomy and clinical significance of the uncinate process and uncovertebral joint: a comprehensive review. Clin Anat. 2014;27(3):431-40. doi:10.1002/ca.22317.",
+      "Núñez-Pereira S, Hitzl W, Bullmann V, Meier O, Koller H. Sagittal balance of the cervical spine: an analysis of occipitocervical and spinopelvic interdependence, with C-7 slope as a marker of cervical and spinopelvic alignment. J Neurosurg Spine. 2015;23(1):16-23. doi:10.3171/2014.11.SPINE14368.",
+      "Patwardhan AG, Khayatzadeh S, Nguyen NL, Havey RM, Voronov LI, Muriuki MG, et al. Is cervical sagittal imbalance a risk factor for adjacent segment pathomechanics after multilevel fusion? Spine (Phila Pa 1976). 2015 Nov 30. [Epub ahead of print].",
+      "Caracterização clínica e das situações de fratura da coluna vertebral no município de Ribeirão Preto, propostas para um programa de prevenção do trauma raquimedular. Coluna/Columna. 2011;10(1):40-3.",
+      "Pudles E, Defino HLA, organizadores. A coluna vertebral: conceitos básicos. Porto Alegre: Artmed; 2014. p. 115-116.",
+      "Allen BL Jr, Ferguson RL, Lehmann TR, O'Brien RP. A mechanistic classification of closed, indirect fractures and dislocations of the lower cervical spine. Spine (Phila Pa 1976). 1982;7(1):1-27.",
+      "Vaccaro AR, Hulbert RJ, Patel AA, Fisher C, Dvorak M, Lehman RA, et al. The subaxial cervical spine injury classification system: a novel approach to recognize the importance of morphology, neurology, and integrity of the disco-ligamentous complex. Spine. 2007;32:2365-74.",
+      "Magerl F, Aebi M, Gertzbein SD, Harms J, Nazarian S. A comprehensive classification of thoracic and lumbar injuries. Eur Spine J. 1994;3(4):184-201.",
+      "van Middendorp JJ, Audige L, Hanson B, Chapman JR, Hosman AJ. What should an ideal spinal injury classification system consist of? A methodological review and conceptual proposal for future classifications. Eur Spine J. 2010;19:1238-49.",
+      "Vaccaro AR, Koerner JD, Radcliff KE, Oner C, Reinhold M, Schnake KJ, et al. AOSpine subaxial cervical spine injury classification system. Eur Spine J. 2015;(2).",
+      "Savas PE. Biomechanics of the injured cervical spine. In: Vaccaro AR, editor. Fractures of the cervical, thoracic, and lumbar spine. New York: Marcel Dekker; 2003. p. 23-44.",
+      "White AA, Panjabi MM. Update on the evaluation of instability of the lower cervical spine. J Spinal Disord. 1991;4:277-285.",
+      "Lee JY, Nassr A, Eck JC, Vaccaro AR. Controversies in the treatment of cervical spine dislocations. Spine J. 9(5):418-423.",
+      "Grauer JN, Vaccaro AR, Lee JY, Nassr A, Dvorak MF, Harrop JS, et al. The timing and influence of MRI on the management of patients with cervical facet dislocations remains highly variable: a survey of members of the Spine Trauma Study Group. J Spinal Disord Tech. 2009;22(2):96-9. doi:10.1097/BSD.0b013e31816a9ebd.",
+      "Dunham CM, Brocker BP, Collier D, Gemmel D. Risks associated with magnetic resonance imaging and cervical collar comatose, blunt trauma patients with negative comprehensive cervical spine computed tomography and no apparent spinal deficit. Clincal Care. 2008;12:R89.",
+      "Gelb DE, Aarabi B, Dhall SS, Hurlbert RJ, Rozzelle CJ, Ryken TC, et al. Treatment of subaxial cervical spinal injuries. Neurosurgery. 2013;72:187-194.",
+      "Fehlings MG, Vaccaro A, Wilson JR, Singh A, Cadotte DW, Harrop JS, et al. Early versus delayed decompression for traumatic cervical spinal cord injury: results of the Surgical Timing in Acute Spinal Cord Injury Study (STASCIS). PLoS One. 2012;7(2):e32037.",
+      "Dvorak MF, Fisher CG, Hoekema J, et al. Factors predicting motor recovery and functional outcome after traumatic central cord syndrome: a long-term follow-up. Spine. 2005;30:2303-11.",
+      "Yamazaki T, Yanaka K, Fujita K, et al. Traumatic central cord syndrome: analysis of factors affecting the outcome. Surg Neurol. 2005;63:95-9.",
+      "Dvorak MF, Fisher CG, Fehlings MG, Rampersaud YR, Oner FC, Aarabi B, Vaccaro AR. The surgical approach to subaxial cervical spine injuries. An evidence-based algorithm based on the SLIC classification system. Spine. 2007;32(23):2620-2629.",
+      "An HS. Cervical spine trauma. Spine. 1998;23:2713-29.",
+      "Bohlman HH. Acute fractures and dislocations of the cervical spine: an analysis of 300 hospitalized patients and review of the literature. J Bone Joint Surg Am. 1979;61:1119-42.",
+      "Mirza SK, Anderson PA. Injuries of lower cervical spine. In: Browner BD, Jupiter JB, Levine AM, Traffon PG, editors. Skeletal trauma. 3rd ed. Philadelphia: Saunders; 2003. p. 814-74.",
+      "Middendoro JJ, Slooff WBM, Nellestein WR, Oner C. Incidence of and risk factors for complications associated with halo-vest immobilizatios: a prospective, descriptive cohort study of 239 patients. J Bone Joint Surg Am. 2009;91(1):71-9.",
+      "Caron T, Bransford R, Nguyen Q, Agel J, Chapman J, Bellabarba C. Spine fractures in patients with ankylosing spinal disorders. Spine (Phila Pa 1976). 2010;35(11):E458-64. doi:10.1097/BRS.0b013e3181cc764f.",
+      "Lifeso RM, Colucci MA. Anterior fusion for rotationally unstable cervical spine fractures. Spine. 25(16):2028-2034.",
+      "Brodke DS, Anderson PA, Newell DW, Grady MS, Chapman JR. Comparison of anterior and posterior approaches in cervical spinal cord injuries. Spinal Disord Tech. 2003;16(3):229-35.",
+      "Hast RA, Vaccaro AR, Nachwalter RS. Cervical facet dislocation: when is magnetic resonance imaging indicated? Spine. 2002;27:116-8.",
+      "Vaccaro AR, Falatyn SP, Flanders AE, Balderston RA, Northrup BE, Cotler JM. Magnetic resonance evaluation of the intervertebral disc, spinal ligaments, and spinal cord before and after closed traction reduction of cervical spine dislocations. Spine (Phila Pa 1976). 1999;24(12):1210-7.",
+      "Gelb DE, Hadley MN, Aarabi B, Dhall SS, Hurlbert RJ, Rozzelle CJ, et al. Initial closed reduction of cervical spinal fracture-dislocation injuries. Neurosurgery. 2013;72 Suppl 2:73-83.",
+      "Miller CP, Brubacher JW, Biswas D, Lawrence BD, Whang PG, Grauer JN. The indidence of noncontiguous spinal fractures and other traumatic injuries associated with cervical spine fractures. Spine. 36(19):1532-1540.",
+      "Fehlings MG, Sekhon LHS, Tator C. The role and timing of decompression in acute spinal cord injury: what do we know? What should we do? Spine. 2001;26(24 Suppl):S101-10."
+    ],
+    "seo": {
+      "titulo": "Traumatic Injuries of the Subaxial Cervical Spine | Spine Treatise",
+      "meta_descricao": "Complete guide to subaxial cervical trauma (C3–C7): AO Spine classification, SLIC score, locked facets, traumatic disc herniation, and surgical approaches.",
+      "resumo_chamada": "Master the evaluation and surgical management of subaxial cervical trauma: AO Spine/SLIC scoring, locked facet reduction, ACDF vs. posterior fixation.",
+      "slug": "traumatic-injuries-of-the-subaxial-cervical-spine"
+    }
+  },
+  "22": {
+    "numero": 22,
+    "titulo": "Traumatic Injuries of the Thoracic and Lumbar Spine",
+    "secao": "",
+    "autores": [
+      "Alexandre Philippe Boss Jaccard",
+      "Carlos Andres Amelunge Rodriguez",
+      "Matheus Boss Vieira"
+    ],
+    "contexto": "Traumatic injuries of the thoracic and lumbar spine represent the most frequent fractures of the entire vertebral axis, predominantly concentrating across the biomechanically vulnerable thoracolumbar junction (T10–L2). High-energy trauma (motor vehicle collisions, falls from height) affects younger populations with substantial risk of conus medullaris and cauda equina injury, whereas low-energy fragility fractures affect osteoporotic elderly individuals. The functional spinal unit comprises the anterior column (vertebral bodies, intervertebral discs, anterior and posterior longitudinal ligaments) and the posterior tension band (pedicles, lamina, facet joints, and the Posterior Ligamentous Complex [PLC: supraspinous, interspinous ligaments, ligamentum flavum, and facet capsules]). Classifications have evolved from mechanistic models (Denis three-column model, McCormack Load Sharing Classification) to the globally standardized AO Spine Thoracolumbar Classification and Thoracolumbar Injury Classification and Severity Score (TLICS). Multi-detector CT defines fracture morphology, comminution, and canal compromise, while MRI evaluates PLC disruption, cord contusion, and epidural hematoma. The central therapeutic challenge is distinguishing mechanically stable compression injuries amenable to functional bracing from unstable burst, distraction (Chance), or rotational translation fractures requiring open or percutaneous posterior pedicle screw instrumentation, anterior column cage reconstruction, or spinal decompression.",
+    "objetivo": "To present the clinical evaluation, classification, biomechanical stability assessment, and non-operative/surgical management of thoracic and lumbar spine trauma. The reader should be able to apply the AO Spine Thoracolumbar Classification (Types A, B, C) and the TLICS scoring system; recognize the clinical and radiological hallmarks of posterior ligamentous complex (PLC) disruption; understand the indications for percutaneous versus open pedicle screw fixation, direct vs. indirect decompression, and anterior column reconstruction; and prevent post-traumatic kyphosis and neurological deterioration.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Biomechanics and the Thoracolumbar Transition Zone",
+        "texto": "The thoracolumbar junction (T10–L2) transitions from the rigid thoracic cage (coronal facets, kyphosis) to the mobile lumbar spine (sagittal facets, lordosis). Denis established the 3-column model (anterior, middle, posterior). Mechanical stability relies fundamentally on the integrity of the middle column (posterior vertebral body cortex and PLL) and the posterior tension band (PLC). Loss of middle column integrity (burst fracture) combined with PLC disruption results in progressive mechanical collapse and post-traumatic kyphotic deformity."
+      },
+      {
+        "subtitulo": "AO Spine Thoracolumbar Classification System",
+        "texto": "The AO Spine system organizes injuries hierarchically into three primary morphological types: 1) Type A: Compression fractures (A0 minor non-structural, A1 wedge compression, A2 coronal split/pincer, A3 incomplete burst involving one endplate, A4 complete burst involving both endplates and posterior wall retropulsion); 2) Type B: Distraction injuries / Tension band failure (B1 transosseous Chance fracture through posterior elements and vertebral body, B2 osseoligamentous posterior tension band disruption, B3 hyperextension injury through anterior tension band/ALL); 3) Type C: Translation/Displacement in any plane (subluxation, dislocation, fracture-dislocation). Neurological status is classified from N0 (intact) to N4 (complete cord/conus deficit), and clinical modifiers include M1 (indeterminate PLC) and M2 (comorbidities/ankylosing spine)."
+      },
+      {
+        "subtitulo": "TLICS Score and Decision-Making Algorithms",
+        "texto": "The Thoracolumbar Injury Classification and Severity Score (TLICS) assigns points across three core categories: 1) Morphology (compression = 1, burst = 2, distraction = 3, translation/rotation = 4); 2) Neurological status (intact = 0, nerve root injury = 2, complete cord = 2, incomplete cord/conus = 3, cauda equina syndrome = 3); 3) PLC integrity (intact = 0, suspected/indeterminate = 2, disrupted = 3). A total TLICS score <=3 indicates non-operative management (early mobilization with or without a rigid TLSO brace); TLICS = 4 is indeterminate (surgeon discretion); and TLICS >=5 mandates surgical reduction and stabilization."
+      },
+      {
+        "subtitulo": "Diagnostic Imaging and Clinical Assessment",
+        "texto": "Multi-detector CT with multiplanar reconstructions is the primary investigation to assess vertebral body height loss, sagittal kyphosis (Cobb angle), pedicle splay, and canal stenosis. MRI (STIR and T2-weighted sequences) is mandatory when physical examination reveals focal interspinous widening or palpation tenderness, demonstrating PLC hyperintensity (black line disruption of ligamentum flavum/supraspinous ligament). MRI also evaluates conus medullaris contusion and traumatic disc disruption."
+      },
+      {
+        "subtitulo": "Management Principles: Conservative, Percutaneous, and Open Reconstruction",
+        "texto": "Non-operative treatment (early ambulation, Jewett or molded TLSO brace, serial standing radiographs at 1, 2, and 6 weeks) is indicated for stable A1, A2, and neurologically intact A3 fractures with intact PLC and local kyphosis <15°–20°. Surgical treatment is indicated for unstable burst fractures (A4 with significant comminution), distraction injuries (B1, B2, B3), fracture-dislocations (Type C), or any fracture with progressive neurological deficit. Surgical options include minimally invasive percutaneous pedicle screw fixation (sparing paraspinal muscles in intact neurology), open posterior decompression and instrumentation with intermediate screws, and anterior or posterolateral corpectomy with expandable cage reconstruction for severe anterior load-bearing deficiency (McCormack Load Sharing score >=7)."
+      }
+    ],
+    "aplicacao_clinica": "In clinical practice, evaluate three interconnected factors: neurological deficit, PLC integrity, and anterior column comminution. In a patient with an L1 burst fracture, intact neurology, and intact PLC on MRI (TLICS 2), non-operative treatment with a molded TLSO brace and immediate protected ambulation yields functional outcomes equivalent to open surgery without operative morbidity. In contrast, if MRI reveals hyperintensity of the supraspinous ligament and ligamentum flavum (PLC disruption, AO Type B2 / TLICS 5), surgery is mandatory even in a neurologically intact patient, as non-operative bracing fails, leading to progressive kyphosis and chronic back pain. In patients with an A4 burst fracture and progressive neurological deficit from retropulsed bone fragments, urgent posterior decompression, postural ligamentotaxis reduction, and pedicle screw fixation within 24 hours provide excellent canal clearance and neurological recovery. In patients with high McCormack Load Sharing scores (>=7) undergoing short-segment posterior instrumentation, anterior column support (interbody cage) is necessary to prevent posterior hardware fatigue failure.",
+    "mensagem_central": "Accurate diagnosis and management of thoracic and lumbar spine trauma depend on identifying the primary injury mechanism and evaluating true structural stability rather than relying solely on bony fracture appearance. The AO Spine classification and TLICS score integrate morphology, posterior ligamentous complex (PLC) competence, and neurological status. Selecting between conservative functional bracing, percutaneous instrumentation, and open anterior/posterior reconstruction must be tailored to patient stability, neurology, and anterior column load sharing.",
+    "por_que_importa": "A thoracolumbar fracture can appear to be a benign compression fracture on standard X-rays while harboring an unrecognized complete posterior ligamentous complex (PLC) rupture that will progress to severe post-traumatic kyphosis and chronic disability if treated in a simple brace. This chapter provides a rigorous diagnostic framework combining clinical examination, multi-detector CT, and MRI to identify occult tension band failures, calculate TLICS and AO scores, and select the least invasive, most durable stabilization strategy.",
+    "decs": [
+      "Thoracic Vertebrae",
+      "Lumbar Vertebrae",
+      "Spinal Fractures",
+      "Spinal Cord Injuries",
+      "Kyphosis",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Spinal Fusion"
+    ],
+    "mesh": [
+      "Thoracic Vertebrae",
+      "Lumbar Vertebrae",
+      "Spinal Fractures",
+      "Spinal Cord Injuries",
+      "Kyphosis",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Spinal Fusion"
+    ],
+    "palavras_chave_livres": [
+      "Thoracolumbar fractures",
+      "AO Spine Thoracolumbar",
+      "TLICS score",
+      "Posterior ligamentous complex",
+      "Burst fracture",
+      "Chance fracture",
+      "Percutaneous pedicle screws"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "PLC Integrity Governs Stability",
+        "texto": "The Posterior Ligamentous Complex (PLC: supraspinous, interspinous, ligamentum flavum, facet capsules) prevents progressive kyphotic collapse. Any fracture with PLC disruption (AO Type B / TLICS >=5) is mechanically unstable and mandates surgical stabilization."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "TLICS Score Determines Treatment Strategy",
+        "texto": "Apply the TLICS algorithm: score <=3 indicates non-operative bracing with early mobilization; score = 4 is indeterminate; score >=5 requires surgical stabilization (percutaneous or open instrumentation)."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Recognize Occult Distraction Injuries",
+        "texto": "Always evaluate spinous process widening and MRI STIR hyperintensity. What appears as a simple anterior wedge fracture on CT can represent a severe flexion-distraction injury (AO B2) if the posterior tension band is torn."
+      }
+    ],
+    "referencias": [
+      "Bezerra Junior DL, Sá BFA, Pokorny GHO, Almeida NS, Silva DRC, Silva JPG, et al. Epidemiological analysis of patients victims of surgical thoracic/lumbar fractures treated at a tertiary hospital in Brazil. J Bras Neurocirur. 2023;34(4):422-7. doi:10.22290/jbnc.2023.340402.",
+      "National Spinal Cord Injury Statistical Center. Spinal cord injury facts and figures at a glance. Birmingham, AL: University of Alabama at Birmingham; 2021.",
+      "Cunha FM, Menezes CM, Guimarães EP. Lesões traumáticas da coluna torácica e lombar. Rev Bras Ortop. 2000;35(1/2):17-22.",
+      "Nordin M, Frankel VH. Biomechanics of the lumbar spine. In: Basic biomechanics of the musculoskeletal system. 4th ed. Philadelphia: Lippincott Williams & Wilkins; 2012. p. 255-85.",
+      "Gamanagatti S, Rathinam D, Rangarajan K, Kumar A, Farooque K, Sharma V. Imaging evaluation of traumatic thoracolumbar spine injuries: radiological review. World J Radiol. 2015;7(9):253-65. doi:10.4329/wjr.v7.i9.253.",
+      "Leone A, Guglielmi G, Cassar-Pullicino VN, Bonomo L. Lumbar intervertebral instability: a review. Radiology. 2007;245(1):62-77. doi:10.1148/radiol.2451051359.",
+      "Reinhold M, Knop C, Beisse R, Audigé L, Kandziora F, Pizanis A, et al. Operative treatment of traumatic fractures of the thoracic and lumbar spine: Part I — Epidemiology. Eur Spine J. 2010;19(7):1257-69. doi:10.1007/s00586-010-1580-2.",
+      "Ghezelbash F, Alizadeh M, Ahmadian A, Gholami M, Rahimi M, Karami M, et al. The role of the thoracolumbar junction in spinal biomechanics: a finite element study. J Orthop Surg Res. 2022;17(1):335. doi:10.1186/s13018-022-02954-6.",
+      "Wood KB, Li W, Lebl DS, Ploumis A. Management of thoracolumbar spine fractures. Spine J. 2014;14(1):145-64. doi:10.1016/j.spinee.2012.10.041.",
+      "VandenBerg J, Cullison K, Fowler SA, Parsons MS, McAndrew CM, Carpenter CR. Blunt thoracolumbar-spine trauma evaluation in the emergency department: a meta-analysis of diagnostic accuracy for history, physical examination, and imaging. J Emerg Med. 2019;56(2):153-65. doi:10.1016/j.jemermed.2018.10.032.",
+      "Maynard FM Jr, Bracken MB, Creasey G, Ditunno JF Jr, Donovan WH, Ducker TB, et al. International standards for neurological and functional classification of spinal cord injury. Spinal Cord. 1997;35(5):266-74.",
+      "Gerges C, Raghavan A, Wright J, Shammassian B, Wright CH, Moore T. Cervical, thoracolumbar, and sacral spine trauma classifications: past, present, and future. Neurol Res. 2020;42(10):857-66. doi:10.1080/01616412.2020.1797373.",
+      "Schnake KJ, Schroeder GD, Vaccaro AR, Oner C. AOSpine Classification Systems (Subaxial, Thoracolumbar). J Orthop Trauma. 2017;31 Suppl 4:S14-S23. doi:10.1097/BOT.0000000000000947.",
+      "Yelamarthy PKK, Chhabra HS, Vaksha V, Agarwal Y, Agarwal A, Das K, et al. Radiological protocol in spinal trauma: literature review and Spinal Cord Society position statement. Eur Spine J. 2020;29(6):1197-1211. doi:10.1007/s00586-019-06112-z.",
+      "Izzo R, Al Qassab S, Popolizio T, Balzano RF, Perri M, Cassar-Pullicino V, et al. Imaging of thoracolumbar spine traumas. Eur J Radiol. 2022;154:110343. doi:10.1016/j.ejrad.2022.110343.",
+      "Verheyden AP, Spiegl UJ, Ekkerlein H, Gercek E, Hauck S, Josten C, et al. Treatment of fractures of the thoracolumbar spine: recommendations of the Spine Section of the German Society for Orthopaedics and Trauma (DGOU). Global Spine J. 2018;8(2 Suppl):34S-45S. doi:10.1177/2192568218771668.",
+      "Spiegl UJ, Fischer K, Schmidt J, Schnoor J, Delank S, Josten C, et al. The conservative treatment of traumatic thoracolumbar vertebral fractures. Dtsch Arztebl Int. 2018;115(42):697-704. doi:10.3238/arztebl.2018.0697.",
+      "Kweh BTS, Tee JW, Dandurand C, Vaccaro AR, Lorin BM, Schnake K, et al. The AO Spine Thoracolumbar Injury Classification System and treatment algorithm in decision making for thoracolumbar burst fractures without neurologic deficit. Global Spine J. 2024;14(1 Suppl):32S-40S. doi:10.1177/21925682231195764.",
+      "Nau C, Pape HC, Jug M, Wendt K, Komadina R, Bloemers F. Thoracolumbar injuries: non operative treatment: indications, management. Eur J Trauma Emerg Surg. 2024;50(5):1951-1957. doi:10.1007/s00068-024-02619-3.",
+      "Yuan H, Chang QY, Chen J, Wang YT, Gan ZJ, Wen S, et al. A retrospective analysis of the effects of different analgesics on the pain of patients with traumatic thoracolumbar fractures in the peri-treatment period. J Orthop Surg Res. 2021;16(1):268. doi:10.1186/s13018-021-02401-w.",
+      "Rosenthal BD, Boody BS, Jenkins TJ, Hsu WK, Patel AA, Savage JW. Thoracolumbar burst fractures. Clin Spine Surg. 2018;31(4):143-151. doi:10.1097/BSD.0000000000000634.",
+      "Urquhart JC, Alrehaili OA, Fisher CG, Fleming A, Rasoulinejad P, Gurr K, et al. Treatment of thoracolumbar burst fractures: extended follow-up of a randomized clinical trial comparing orthosis versus no orthosis. J Neurosurg Spine. 2017;27(1):42-47. doi:10.3171/2016.11.SPINE161031.",
+      "Linhares D, Pinto BS, Ribeiro da Silva M, Neves N, Fonseca JA. Orthosis in thoracolumbar fractures: a systematic review and meta-analysis of randomized controlled trials. Spine (Phila Pa 1976). 2020;45(22):E1523-E1531. doi:10.1097/BRS.0000000000003655.",
+      "Bloemers F, Jug M, Nau C, Komadina R, Pape HC, Wendt K. Thoracolumbar injuries: operative treatment: indications, techniques, timing and implant removal. Current practice. Eur J Trauma Emerg Surg. 2024;50(5):1959-1968. doi:10.1007/s00068-024-02602-y.",
+      "Sharif S, Shaikh Y, Yaman O, Zileli M. Surgical techniques for thoracolumbar spine fractures: WFNS Spine Committee recommendations. Neurospine. 2021;18(4):667-680. doi:10.14245/ns.2142206.253.",
+      "Giorgi PD, Legrenzi S, Youchen Y, Federico B, Schirò GR. The effectiveness of posterior Schanz screw system in the anatomical restoration of thoracolumbar vertebral burst fractures: a 10-year single-institution experience. J Craniovertebr Junction Spine. 2024;15(4):411-418. doi:10.4103/jcvjs.jcvjs_118_24.",
+      "AO Foundation. Surgery Reference: posterior short segment fixation with Schanz pins. https://surgeryreference.aofoundation.org/spine/trauma/thoracolumbar/b2/posterior-short-segment-fixation-with-schanz-pins",
+      "Esposito F, Bove I, Vitulli F, Bocchino A, Barbanera A, Nape S, et al. Outcome measures of open versus minimally invasive surgery for thoracolumbar spinal traumatic fractures: a systematic review and meta-analysis. J Clin Med. 2024;13(18):5558. doi:10.3390/jcm13185558.",
+      "Soultanis K, Thano A, Soucacos PN. Outcome of thoracolumbar compression fractures following non-operative treatment. Injury. 2021;52(12):3685-3690. doi:10.1016/j.injury.2021.05.019.",
+      "Cabrera JP, Carazzo CA, Guiroy A, White KP, Guasque J, Sfreddo E, et al. Risk factors for postoperative complications after surgical treatment of type B and C injuries of the thoracolumbar spine. World Neurosurg. 2023;170:e520-e528. doi:10.1016/j.wneu.2022.11.059."
+    ],
+    "seo": {
+      "titulo": "Traumatic Injuries of the Thoracic and Lumbar Spine | Treatise",
+      "meta_descricao": "Complete guide to thoracolumbar spine trauma: AO Spine classification, TLICS score, burst fractures, Chance distraction injuries, and percutaneous fixation.",
+      "resumo_chamada": "Master the evaluation and surgical decision-making in thoracic and lumbar spine trauma: AO Spine/TLICS scoring, PLC assessment, and stabilization techniques.",
+      "slug": "traumatic-injuries-of-the-thoracic-and-lumbar-spine"
+    }
+  },
+  "23": {
+    "numero": 23,
+    "titulo": "Traumatic Injuries of the Sacrum",
+    "secao": "",
+    "autores": [
+      "Luiz Gustavo Dal Oglio da Rocha",
+      "Otávio Vitório Alvarenga Pereira"
+    ],
+    "contexto": "Traumatic fractures of the sacrum represent complex, high-energy injuries that are frequently underdiagnosed or delayed in diagnosis in the polytrauma patient. The sacrum serves as the foundational anatomical and biomechanical keystone linking the axial spine to the pelvic ring, transmitting upper body gravity loads to the lower extremities and housing the sacral spinal canal and sacral nerve roots (S1–S5) responsible for lower extremity motor/sensory function, urinary bladder control, anal sphincter continence, and sexual function. Fractures occur in high-energy trauma (motor vehicle collisions, falls from height, crush injuries) typically accompanied by pelvic ring disruptions (Tile, Young-Burgess classifications), but can also occur as low-energy insufficiency fractures in osteoporotic or radiated bone. Classical anatomical classifications include the Denis classification (Zone I alar, Zone II foraminal, Zone III central canal) and the modern AO Spine Sacral and Spinopelvic Classification, which distinguishes isolated pelvic ring fractures from true spinopelvic dissociation (U-shaped, H-shaped, or bilateral vertical fractures separating the spine from the pelvis). High-energy sacral fractures carry high rates of hemodynamic instability from retroperitoneal hemorrhage (presacral venous plexus, internal iliac branches), severe soft tissue Morel-Lavallée shearing lesions, and neurological deficits (up to 50–60% in Zone III injuries). Management spans non-operative mobilization, percutaneous sacroiliac/transiliac-transsacral screw fixation, and robust triangular spinopelvic instrumentation (lumbopelvic fixation).",
+    "objetivo": "To present the anatomical, diagnostic, classification, and management principles of sacral fractures and spinopelvic dissociation. The reader should be able to apply the Denis and AO Spine Sacral classifications; distinguish pelvic ring instability from spinopelvic dissociation; select and interpret pelvic/sacral multi-detector CT and MRI; identify sacral nerve root deficits and cauda equina injury; and formulate treatment strategies ranging from percutaneous transsacral screw fixation to open decompression and lumbopelvic triangular fixation.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Sacral Anatomy and the Spinopelvic Keystone",
+        "texto": "The sacrum functions as the mechanical keystone of the pelvic ring. Axial load transfers from L5 to S1 across the sacral promontory, dispersing laterally across the sacral alae and sacroiliac joints to the iliac bones and femoral heads. Anterior and posterior sacroiliac, sacrotuberous, and sacrospinous ligaments provide exceptional multiplanar stability. The sacral canal contains descending S1–S5 nerve roots forming the sacral plexus and pelvic splanchnic autonomic nerves (S2–S4)."
+      },
+      {
+        "subtitulo": "Mechanisms, Denis Classification, and AO Spine Classification",
+        "texto": "Denis classification divides sacral fractures into three sagittal zones: 1) Zone I (Alar region lateral to sacral foramina, 50% of cases, ~6% neurological deficit); 2) Zone II (Foraminal region traversing sacral neural foramina, 34% of cases, ~28% neurological deficit, often unilateral sciatica); 3) Zone III (Central canal region medial to foramina, 16% of cases, ~57% neurological deficit with severe bowel, bladder, and sexual dysfunction). The AO Spine Sacral classification categorizes: Type A (lower sacrococcygeal fractures below S2, stable); Type B (vertical sacral fractures compromising pelvic ring stability but maintaining spinopelvic continuity); Type C (spinopelvic dissociation: bilateral vertical fractures connected by a transverse fracture, U-shaped, H-shaped, or Y-shaped variants, resulting in complete mechanical dissociation of the axial spine from the pelvis)."
+      },
+      {
+        "subtitulo": "Clinical Assessment and Pelvic Hemodynamic Emergencies",
+        "texto": "In polytrauma, primary evaluation addresses hemorrhagic shock. Sacral fractures frequently lacerate the presacral Batson venous plexus and internal iliac arterial branches (superior gluteal, lateral sacral arteries), leading to life-threatening retroperitoneal hemorrhage. Emergency pelvic circumferential compression (pelvic binder) stabilizes bony disruption and promotes tamponade. Pelvic angiographic embolization is indicated for ongoing arterial bleeding. Examine for closed internal degloving Morel-Lavallée lesions over the lumbosacral region and perform digital rectal examination to test perianal sensation, voluntary anal contraction, and rule out open pelvic fractures communicating with the rectum or vagina."
+      },
+      {
+        "subtitulo": "Diagnostic Imaging: Multi-Detector CT and 3D Reconstructions",
+        "texto": "Plain pelvic radiographs (AP, Inlet, Outlet views) provide initial screening but miss up to 30–50% of sacral fractures. Multi-detector thin-cut CT with coronal, sagittal, and 3D reconstructions is the gold standard, identifying vertical fracture lines, foraminal impaction, transverse fracture components in S1/S2 (\"jumped\" or spondylolisthesis of the upper sacrum on lower sacrum in spinopelvic dissociation), and sacral dysmorphism (present in up to 40% of populations, featuring upper sacral alar slope and collinearity with the iliac crest that narrows safe transsacral osseous corridors). MRI assesses nerve root compression, hematomas, and insufficiency edema."
+      },
+      {
+        "subtitulo": "Surgical Strategies: Percutaneous Fixation vs. Lumbopelvic Fixation",
+        "texto": "Management depends on stability and neurology: 1) Non-operative: stable Denis Zone I or Type A fractures without displacement or neurological deficit (early progressive mobilization); 2) Percutaneous Sacroiliac / Transiliac-Transsacral Screws (7.0–8.0 mm cannulated screws placed into S1 and S2 corridors under fluoroscopic or 3D navigation): ideal for nondisplaced or reducible Type B pelvic ring injuries; 3) Triangular Spinopelvic Fixation (Lumbopelvic Fixation connecting L4/L5 pedicle screws to iliac or S2-alar-iliac [S2AI] screws linked to transsacral screws): the gold standard for Type C spinopelvic dissociation and highly comminuted vertical shear fractures, neutralizing axial, shear, and torsional loads and allowing immediate patient mobilization; 4) Sacral laminectomy/decompression: indicated for progressive neurological deficit from displaced bone fragments in the central canal (Zone III)."
+      }
+    ],
+    "aplicacao_clinica": "In the polytrauma emergency bay, a hemodynamically unstable patient with an open-book or vertical shear pelvic fracture must be immediately stabilized with a pelvic binder placed at the level of the greater trochanters (not over the iliac crests). Obtain emergent pelvic CT: if a transverse fracture across S1/S2 is identified connecting bilateral transforaminal vertical fractures (U-shaped spinopelvic dissociation / AO Type C), recognize that the patient cannot bear weight and is at high risk for progressive cauda equina compression. Perform an urgent neurological exam evaluating S2–S5 dermatomes, perianal sensation, and anal sphincter tone. In spinopelvic dissociation, rigid triangular lumbopelvic fixation (bilateral L4–L5 pedicle screws, S2AI/iliac screws, and transiliac rods) provides immediate mechanical stability, eliminates axial shear, and allows the polytrauma patient to sit upright and mobilize early, preventing catastrophic pulmonary and thromboembolic complications.",
+    "mensagem_central": "Traumatic fractures of the sacrum are critical injuries at the nexus of the axial spine, pelvic ring, and lumbosacral plexus. Management requires distinguishing isolated pelvic ring disruptions (AO Type B) from true spinopelvic dissociation (AO Type C / U-shaped fractures). Multi-detector CT with multiplanar reconstructions identifies fracture lines and sacral dysmorphism. Utilizing percutaneous transsacral screw fixation or triangular lumbopelvic reconstruction—combined with neural decompression when indicated—restores spinopelvic stability and preserves neurological function.",
+    "por_que_importa": "Sacral fractures are easily overlooked in polytrauma patients amidst competing injuries, leading to persistent pelvic nonunion, progressive spinopelvic kyphosis, permanent urinary incontinence, and chronic severe neurological pain. This chapter provides the diagnostic tools to classify injury morphology, screen for life-threatening presacral hemorrhage, recognize sacral dysmorphism on CT, and execute rigid triangular lumbopelvic reconstruction to ensure safe early rehabilitation.",
+    "decs": [
+      "Sacrum",
+      "Spinal Fractures",
+      "Pelvic Bones",
+      "Fractures, Bone",
+      "Cauda Equina",
+      "Tomography, X-Ray Computed",
+      "Spinal Fusion",
+      "Joint Instability"
+    ],
+    "mesh": [
+      "Sacrum",
+      "Spinal Fractures",
+      "Pelvic Bones",
+      "Fractures, Bone",
+      "Cauda Equina",
+      "Tomography, X-Ray Computed",
+      "Spinal Fusion",
+      "Joint Instability"
+    ],
+    "palavras_chave_livres": [
+      "Spinopelvic dissociation",
+      "Denis classification",
+      "AO Spine Sacral",
+      "Lumbopelvic fixation",
+      "Transiliac-transsacral screws",
+      "Sacral dysmorphism",
+      "S2AI screws"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Denis Zones Predict Neurological Risk",
+        "texto": "Denis classification divides sacral fractures into Zone I (alar, ~6% neurological deficit), Zone II (foraminal, ~28% deficit/radiculopathy), and Zone III (central canal, ~57% severe cauda equina and bowel/bladder incontinence)."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Recognize Spinopelvic Dissociation (AO Type C)",
+        "texto": "Spinopelvic dissociation (bilateral vertical sacral fractures connected by a transverse fracture line, U- or H-shaped) completely disconnects the spine from the pelvis. It causes severe instability and requires triangular lumbopelvic fixation to allow weight-bearing."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Assess Sacral Dysmorphism on CT",
+        "texto": "Up to 40% of patients possess sacral dysmorphism (sloped S1 alar borders, collinearity with iliac crests). Attempting transsacral screw insertion without recognizing dysmorphic anatomy on CT causes catastrophic sacral nerve root or iliac vascular injury."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na mesma ordem do capítulo, com normalização apenas de pontuação e apresentação, sem acrescentar informações ausentes por suposição.",
+      "Denis F, Davis S, Comfort T. Sacral fractures: an important problem. Retrospective analysis of 236 cases. Clin Orthop Relat Res. 1988;(227):67-81.",
+      "Bydon M, De la Garza-Ramos R, Macki M, Desai A, Gokaslan AK, Bydon A. Incidence of sacral fractures and in-hospital postoperative complications in the United States. Spine (Phila Pa 1976). 2014;39(18):E1103-9.",
+      "Bencardino JT, Stone TJ, Roberts CC, Appel M, Baccei SJ, Cassidy RC, et al. ACR Appropriateness Criteria® Stress (Fatigue/Insufficiency) Fracture, Including Sacrum, Excluding Other Vertebrae. J Am Coll Radiol. 2017;14(5):S293-306.",
+      "Russo GA. Trabecular bone structural variation in the proximal sacrum among primates. Anat Rec. 2019;302(8):1354-71.",
+      "Esteban JM, Martín-Serra A, Varón-González C, Pérez-Ramos A, Velasco D, Pastor FJ, et al. Morphological evolution of the carnivoran sacrum. J Anat. 2020;237(6):1087-102.",
+      "Rose PS. The management of sacral tumours. Bone Joint J. 2022;104-B(12):1284-91.",
+      "Meredith DS, Taher F, Cammisa FP, Girardi FP. Incidence, diagnosis, and management of sacral fractures following multilevel spinal arthrodesis. Spine J. 2013;13(11):1464-9.",
+      "Mikula AL, Pennington Z, Lakomkin N, Prablek M, Amini B, Karim SM, et al. Risk factors for sacral fracture following en bloc chordoma resection. J Neurosurg Spine. 2023;39(5):611-7.",
+      "Lee SH, Kim DH, Park JH, Lee DG, Park CK, Kang DH. Incidence and risk factors of sacral fracture following lumbosacral fusion for degenerative spinal stenosis with a minimum follow-up of 2 years: a case-control study. World Neurosurg. 2024;191:e633-43.",
+      "Salzmann SN, Ortiz Miller C, Carrino JA, Yang J, Shue J, Sama AA, et al. BMI and gender increase risk of sacral fractures after multilevel instrumented spinal fusion compared with bone mineral density and pelvic parameters. Spine J. 2019;19(2):238-45.",
+      "Sugimoto Y, Ito Y, Tomioka M, Tanaka M, Hasegawa Y, Nakago K, et al. Risk factors for lumbosacral plexus palsy related to pelvic fracture. Spine (Phila Pa 1976). 2010;35(9):963-6.",
+      "Odate S, Shikata J, Kimura H, Soeda T. Sacral fracture after instrumented lumbosacral fusion. Spine (Phila Pa 1976). 2013;38(4):E223-9.",
+      "Kim HJ, Boland PJ, Meredith DS, Lis E, Zhang Z, Shi W, et al. Fractures of the sacrum after chemoradiation for rectal carcinoma: incidence, risk factors, and radiographic evaluation. Int J Radiat Oncol Biol Phys. 2012;84(3):694-9.",
+      "Vaccaro AR, Schroeder GD, Divi SN, Kepler CK, Kleweno CP, Krieg JC, et al. Description and reliability of the AOSpine Sacral Classification System. J Bone Joint Surg Am. 2020;102(16):1454-63.",
+      "Urrutia J, Meissner-Haecker A, Astur N, Valencia M, Yurac R, Camino-Willhuber G, et al. An independent inter- and intraobserver agreement assessment of the AOSpine sacral fracture classification system. Spine J. 2021;21(7):1143-8.",
+      "Meissner-Haecker A, Diaz-Ledezma C, Klaber I, Zamora T, Valencia M, Camino-Willhuber G, et al. Inter- and intra-observer agreement using the new AOSpine sacral fracture classification, with a comparison between spine and pelvic trauma surgeons. Injury. 2022;53(2):514-8.",
+      "Kweh BTS, Tee JW, Oner FC, Schnake KJ, Vialle EN, Kanziora F, et al. Evolution of the AO Spine Sacral and Pelvic Classification System: a systematic review. J Neurosurg Spine. 2022;37(6):914-26.",
+      "Dreizin D, Smith EB. CT of sacral fractures: classification systems and management. Radiographics. 2022;42(7):1975-93.",
+      "Pascal-Moussellard H, Hirsch C, Bonaccorsi R. Osteosynthesis in sacral fracture and lumbosacral dislocation. Orthop Traumatol Surg Res. 2016;102(1):S45-57.",
+      "Hak DJ, Baran S, Stahel P. Sacral fractures: current strategies in diagnosis and management. Orthopedics. 2009;32(10):752-7.",
+      "Gewiess J, Albers CE, Keel MJB, Frihagen F, Rommens PM, Bastian JD. Chronic pelvic insufficiency fractures and their treatment. Arch Orthop Trauma Surg. 2024;145(1):76.",
+      "Schicho A, Schmidt SA, Seeber K, Olivier A, Richter PH, Gebhard F. Pelvic X-ray misses out on detecting sacral fractures in the elderly – importance of CT imaging in blunt pelvic trauma. Injury. 2016;47(3):707-10.",
+      "Benjamin ER, Jakob DA, Myers L, Liasidis P, Lewis M, Fu Y, et al. The trauma pelvic X-ray: not all pelvic fractures are created equally. Am J Surg. 2022;224(1):489-93.",
+      "Yamauchi T, Sharma S, Chandra S, Tanaka M, Fujiwara Y, Arataki S, et al. Superiority of MRI for evaluation of sacral insufficiency fracture. J Clin Med. 2022;11(17):4968.",
+      "Andresen JR, Radmer S, Andresen R, Prokop A, Schröder G, Nissen U, et al. Comparative outcome of different treatment options for fragility fractures of the sacrum. BMC Musculoskelet Disord. 2022;23(1):1106.",
+      "Schramm S, Kopschina C, Gaßmann KG, Fujak A. Is the conservative treatment of sacral insufficiency fractures still up to date? Retrospective clinical observational study in 46 patients. Orthop Traumatol Surg Res. 2023;109(2):103495.",
+      "Kramer A, Naisan M, Kindel S, Richter M, Ringel F, Hartung P. Retrospective evaluation of percutaneous 3D-navigated screw fixation for fragility fractures of the sacrum: technical notes and four-year experience. Sci Rep. 2023;13(1):12254.",
+      "Chen JP, Tsai PJ, Su CY, Tseng IC, Chou YC, Chen IJ, et al. Percutaneous iliosacral screw and trans-iliac trans-sacral screw with single C-arm fluoroscope intensifier is a safe treatment for pelvic ring injuries. Sci Rep. 2022;12(1):368.",
+      "Jäckle K, Paulisch M, Blüchel T, Meier M, Seitz M, Acharya MR, et al. Analysis of trans-sacral corridors in stabilization of fractures of the pelvic ring. J Orthop Res. 2022;40(5):1194-202.",
+      "Walker JB, Mitchell SM, Karr SD, Lowe JA, Jones CB. Percutaneous transiliac-transsacral screw fixation of sacral fragility fractures improves pain, ambulation, and rate of disposition to home. J Orthop Trauma. 2018;32(9):452-6.",
+      "Deng J, Zhu Z, Li T, Li J, Mo J, Chen S, et al. A new technique for percutaneous screw fixation for treating FFP IIIa and IIIb fragility fractures of the pelvis. Sci Rep. 2024;14(1):17681.",
+      "Brodell JD, Lawlor MC, Santangelo G, Kulp A, Haddas R, Mbagwu C, et al. Percutaneous lumbopelvic fixation is effective in the management of unstable transverse sacral fractures. Injury. 2024;55(11):111825.",
+      "Haveman RA, Bäumlein M, van Veelen N, Oberkircher L, Beeres FJP, Babst R, et al. Percutaneous sacroiliac screw fixation in fragility fractures of the pelvis: comparison of two different augmentation techniques. Injury. 2022;53(12):4062-6.",
+      "Ma Y, Wu Y, Li Z, Li D, Yin Q, Li X. Biomechanical study and preliminary application of percutaneous retrograde sacral alar-iliac screw for fixation of sacroiliac joint with low bone density. Injury. 2025;56(4):112267.",
+      "Sevillano-Perez E, Prado-Novoa M, Postigo-Pozo S, Peña-Trabalon A, Guerado E. L4 fixation is not necessary in L5-Iliac spinopelvic fixation after trauma, but coadjutant transilio-transsacral fixation is. Injury. 2024;55(3):111378.",
+      "Godolias P, Plümer J, Cibura C, Dudda M, Schildhauer TA, Chapman JR. Posterior pelvic ring injuries, lumbosacral junction instabilities and stabilization techniques for spinopelvic dissociation: a narrative review. Arch Orthop Trauma Surg. 2024;144(4):1627-35.",
+      "Singh M, Balmaceno-Criss M, Knebel A, Kuharski M, Sakr I, Daher M, et al. Sacroplasty for sacral insufficiency fractures: narrative literature review on patient selection, technical approaches, and outcomes. J Clin Med. 2024;13(4):1101.",
+      "Beall DP, Shonnard NH, Shonnard MC, Yoon ES, Norwitz J, Phillips JE, et al. An interim analysis of the first 102 patients treated in the Prospective Vertebral Augmentation Sacroplasty Fracture Registry. J Vasc Interv Radiol. 2023;34(9):1477-84.",
+      "Chandra V, Wajswol E, Shukla P, Contractor S, Kumar A. Safety and efficacy of sacroplasty for sacral fractures: a systematic review and meta-analysis. J Vasc Interv Radiol. 2019;30(11):1845-54.",
+      "Tian QH, Han K, Wang T, Min DL, Wu CG. Percutaneous sacroplasty with or without radiofrequency ablation for treatment of painful sacral metastases. AJNR Am J Neuroradiol. 2022;43(8):1222-7.",
+      "Nicholson PJ, Hilditch CA, Brinjikji W, Tsang ACO, Smith R. Single-needle lateral sacroplasty technique. AJNR Am J Neuroradiol. 2019;40(2):382-5.",
+      "Schwetje D, Wahd YESH, Bornemann R, Jansen TR, Pflugmacher R, Kasapovic A. Balloon-assisted sacroplasty as a successful procedure for osteoporotic sacral insufficiency fractures after failure of the conservative treatment. Sci Rep. 2020;10(1):18455.",
+      "Liuzza F, Silluzio N, Florio M, El Ezzo O, Cazzato G, Ciolli G, et al. Comparison between posterior sacral plate stabilization versus minimally invasive transiliac-transsacral lag-screw fixation in fractures of sacrum: a single-centre experience. Int Orthop. 2019;43(1):177-85."
+    ],
+    "seo": {
+      "titulo": "Traumatic Injuries of the Sacrum | Spine Surgery Treatise",
+      "meta_descricao": "Complete surgical guide to sacral fractures: Denis classification, AO Spine sacral trauma, spinopelvic dissociation, transsacral screws, and lumbopelvic fixation.",
+      "resumo_chamada": "Master the evaluation and surgical management of sacral trauma: Denis zones, spinopelvic dissociation, sacral dysmorphism, and triangular lumbopelvic reconstruction.",
+      "slug": "traumatic-injuries-of-the-sacrum"
+    }
+  },
+  "24": {
+    "numero": 24,
+    "titulo": "Pediatric Spine Traumatic Injuries",
+    "secao": "Section 3 — Spinal Trauma",
+    "autores": [
+      "Alexandre Fogaça Cristante",
+      "Matheus Trindade Bruxelas de Freitas",
+      "Caio César Nogueira de Figueiredo"
+    ],
+    "contexto": "Traumatic injuries of the vertebral column in pediatric patients possess unique anatomical, biomechanical, and physiological characteristics distinct from adult spine trauma. The immature spine is characterized by increased ligamentous laxity, shallower and more horizontally oriented facet joints, cartilaginous vertebral endplates, physiological anterior wedging of vertebral bodies, active synchondroses and neurocentral junctions, and a disproportionately large head-to-body mass ratio (fulcrum of cervical motion located at C2–C3 in young children under 8 years, migrating to C5–C6 after age 8–10). These anatomical traits make the pediatric spine remarkably resilient to bony fractures under axial loading, but highly susceptible to severe distraction, hyperflexion, and hyperextension ligamentous injuries, including atlanto-occipital dislocation, pseudosubluxation of C2 on C3, and Spinal Cord Injury Without Radiographic Abnormality (SCIWORA). Pediatric spine trauma evaluation requires deep familiarity with developmental ossification centers to avoid mistaking normal synchondroses or physiological pseudosubluxation (Peschiera/Swischuk line) for acute traumatic fractures or dislocations. Management emphasizes non-operative immobilization in the vast majority of stable cases, preserving spinal growth potential, while unstable injuries and progressive spinal deformities require specialized instrumentation adapted to pediatric bone dimensions.",
+    "objetivo": "To present the systematic clinical and radiological evaluation, diagnostic imaging algorithms, and evidence-based non-operative and surgical guidelines for pediatric and adolescent spine trauma. The reader should be able to understand the developmental anatomy and biomechanics of the immature skeleton; differentiate normal developmental synchondroses and physiological pseudosubluxation from true pathology; diagnose and manage SCIWORA; select immobilization strategies (including positioning adjustments for the prominent occiput); and apply age-appropriate surgical stabilization techniques.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Anatomical and Biomechanical Specifics of the Immature Spine",
+        "texto": "The pediatric spine features unique mechanical properties: 1) Extreme ligamentous elasticity (the pediatric vertebral column can stretch up to 5 cm without structural rupture, whereas the spinal cord ruptures with just 0.5–1.0 cm of elongation, explaining SCIWORA); 2) Horizontal facet orientation (permitting excessive translational motion without bony fracture); 3) Physiological anterior vertebral body wedging and cartilaginous endplates; 4) Higher cervical fulcrum: the head-to-torso ratio shifts the mechanical pivot point to C2–C3 in children <8 years old, making upper cervical injuries (C0–C2) far more common than subaxial injuries; 5) Active synchondroses: neurocentral synchondroses, dentocentral synchondrosis (base of odontoid, fuses at 5–7 years), and apical odontoid ossiculum terminale (appears at 3–6 years, fuses at 12 years)."
+      },
+      {
+        "subtitulo": "SCIWORA Syndrome and Diagnostic Neuroimaging",
+        "texto": "Spinal Cord Injury Without Radiographic Abnormality (SCIWORA) is defined as objective traumatic spinal cord injury without evidence of bony fracture or dislocation on standard plain radiographs and computed tomography. It accounts for up to 10–20% of pediatric spinal cord injuries, resulting from transient severe elastic distraction or hyperextension. Magnetic resonance imaging (MRI) is mandatory in all cases: MRI demonstrates intramedullary cord contusion, edema, transection, hemorrhage, or subclinical ligamentous disruption (STIR hyperintensity). In patients with normal radiographs and transient paresthesias or motor weakness, MRI confirms or excludes true cord pathology."
+      },
+      {
+        "subtitulo": "Pediatric Management, Positioning, and Fixation Principles",
+        "texto": "In the emergency department, pediatric cervical immobilization requires a specialized pediatric backboard with an occipital recess or a thoracic elevation pad under the torso (1.5–2.5 cm) to compensate for the prominent occiput and prevent forced cervical hyperflexion. Non-operative management with a molded Minerva cast, halo-vest, or rigid cervical collar achieves bony healing in >85–90% of pediatric fractures due to robust periosteum and exceptional osteogenic remodeling potential. Surgical stabilization is reserved for documented complete ligamentous tears (which do not heal with immobilization), irreducible dislocations, progressive post-traumatic deformity, or open injuries. Instrumentation utilizes low-profile pediatric pedicle screws, rib hooks, or sublaminar wires, minimizing fusion levels to preserve spinal growth."
+      }
+    ],
+    "aplicacao_clinica": "In emergency pediatric resuscitation, never immobilize a young child (<8 years) flat on an adult rigid backboard without a thoracic elevating pad, as the large occiput forces the neck into dangerous kyphotic flexion. To differentiate physiological pseudosubluxation of C2 on C3 (normal in up to 40% of children under 8) from true traumatic dislocation, apply Swischuk's line (posterior cervical line connecting the anterior cortex of C1, C2, and C3 spinous processes): if the anterior cortex of the C2 spinous process lies within 1.5–2.0 mm of this line, pseudosubluxation is physiological; if displaced >2 mm, true traumatic disruption is present. In any child presenting with transient weakness, numbness, or subjective electric shock sensations following trauma despite completely normal CT scans, maintain rigid collar immobilization and obtain urgent whole-spine MRI to diagnose SCIWORA before discharging the patient. Treat confirmed SCIWORA with 8–12 weeks of activity restriction and collar immobilization to prevent secondary reinjury to the vulnerable spinal cord.",
+    "mensagem_central": "Pediatric spine trauma requires careful interpretation of the developing, immature skeleton to avoid confusing physiological synchondroses and pseudosubluxation with acute fractures, and to detect occult neural injuries (SCIWORA) early. The vast elasticity of pediatric ligaments and high osteogenic potential favor non-operative management in most cases, while surgical stabilization is reserved for gross ligamentous instability and progressive deformity, respecting remaining spinal growth.",
+    "por_que_importa": "Misinterpreting a normal developmental synchondrosis as a fracture leads to unnecessary surgery and psychological trauma, while discharging a child with undiagnosed SCIWORA risks permanent catastrophic paralysis following a minor secondary impact. This chapter provides the pediatric developmental criteria, Swischuk measurement lines, emergent positioning rules (thoracic pad), and MRI protocols necessary to protect the developing spinal cord and preserve growth potential.",
+    "decs": [
+      "Pediatrics",
+      "Spinal Fractures",
+      "Spinal Cord Injuries",
+      "Spinal Cord Injury Without Radiographic Abnormality",
+      "Spine",
+      "Child Development",
+      "Magnetic Resonance Imaging",
+      "Joint Instability"
+    ],
+    "mesh": [
+      "Pediatrics",
+      "Spinal Fractures",
+      "Spinal Cord Injuries",
+      "Spinal Cord Injury Without Radiographic Abnormality",
+      "Spine",
+      "Child Development",
+      "Magnetic Resonance Imaging",
+      "Joint Instability"
+    ],
+    "palavras_chave_livres": [
+      "Pediatric spine trauma",
+      "SCIWORA",
+      "Pseudosubluxation C2-C3",
+      "Swischuk line",
+      "Thoracic elevation pad",
+      "Neurocentral synchondrosis",
+      "Pediatric spinal growth"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Pediatric Elasticity and SCIWORA",
+        "texto": "The pediatric spine can stretch up to 5 cm without skeletal disruption, whereas the spinal cord ruptures at just 0.5–1.0 cm of stretch. This biomechanical mismatch explains SCIWORA (Spinal Cord Injury Without Radiographic Abnormality), requiring urgent MRI."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Swischuk Line Differentiates Pseudosubluxation",
+        "texto": "In children <8 years, C2–C3 anterior displacement is often physiological. Draw the Swischuk line connecting the anterior cortices of C1, C2, and C3 spinous processes: if the C2 spinous process is within 1.5–2.0 mm, it is benign pseudosubluxation; if >2 mm, it is a traumatic subluxation."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Thoracic Pad Prevents Forced Flexion",
+        "texto": "Children have a disproportionately large occiput. Placing a child flat on an adult backboard forces the cervical spine into dangerous hyperflexion. Always place a 2 cm elevation pad under the thoracic torso to maintain a neutral cervical spine."
+      }
+    ],
+    "referencias": [
+      "Pang D, Wilberger JE Jr. Spinal cord injury without radiographic abnormalities in children. J Neurosurg. 1982;57(1):114-129.",
+      "Cristante AF, et al. Lesões traumáticas da coluna vertebral na infância e adolescência. Rev Bras Ortop. 2012;47(4):420-428.",
+      "Leonard M, et al. Pediatric cervical spine trauma: a comprehensive review. Childs Nerv Syst. 2014;30(1):15-28.",
+      "Booth TN. Cervical spine evaluation in pediatric trauma. AJR Am J Roentgenol. 2012;198(5):W417-W425."
+    ],
+    "seo": {
+      "titulo": "Pediatric Spine Traumatic Injuries | Spine Surgery Treatise",
+      "meta_descricao": "Complete guide to pediatric spine trauma: immature biomechanics, SCIWORA syndrome, C2-C3 pseudosubluxation (Swischuk line), and non-operative management.",
+      "resumo_chamada": "Master the evaluation and management of pediatric spinal trauma: developmental anatomy, SCIWORA diagnosis, Swischuk measurement lines, and pediatric immobilization.",
+      "slug": "pediatric-spine-traumatic-injuries"
+    }
+  }
+}

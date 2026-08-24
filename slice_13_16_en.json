@@ -1,0 +1,535 @@
+{
+  "13": {
+    "numero": 13,
+    "titulo": "Neurophysiology in the Diagnosis of Spinal Disorders",
+    "secao": "",
+    "autores": [
+      "Ricardo José Rodriguez Ferreira",
+      "Patrícia Toscano Barreto Nogueira",
+      "Roberto Waldesmand Farias Pontes"
+    ],
+    "contexto": "Diagnostic clinical neurophysiology serves as an indispensable functional extension of history taking, physical examination, and neuroimaging in spine practice. While magnetic resonance imaging (MRI) and computed tomography (CT) document structural anatomy and canal narrowing, electromyography and nerve conduction studies (EMG/NCS) evaluate the physiological integrity and viability of motor axons, sensory fibers, neuromuscular junctions, and myotomal motor units. Diagnostic electrophysiology is crucial for confirming or refuting suspected radiculopathy, establishing disease acuity (acute vs. subacute vs. chronic reinervating), determining severity of axonal loss, distinguishing true compressive radiculopathy from peripheral entrapment neuropathies (carpal tunnel syndrome, cubital tunnel syndrome, peroneal nerve compression at the fibular head) or generalized polyneuropathies (\"double crush syndrome\"), and identifying motor neuron disease (amyotrophic lateral sclerosis) or plexopathies. Electromyographic changes (fibrillation potentials, positive sharp waves) require 18 to 21 days following acute axonal injury to appear in distal limb muscles, though paraspinal muscle denervation appears within 7 to 10 days. Sensory nerve action potentials (SNAPs) remain normal in preganglionic compressive radiculopathy (because dorsal root ganglion [DRG] cells lie distal to the intraspinal compression), providing a pivotal diagnostic distinction from postganglionic plexopathies or peripheral neuropathies. Understanding neurophysiological principles, optimal timing, and limitations prevents diagnostic delays and inappropriate spinal surgery.",
+    "objetivo": "To present the neurophysiological methods used in evaluating spinal pathologies and demonstrate their application in differentiating radiculopathy, plexopathy, entrapment neuropathy, polyneuropathy, and motor neuron disease. The reader should be able to interpret nerve conduction studies (CMAP, SNAP, F-waves, H-reflex), understand needle electromyography findings (spontaneous activity, motor unit potential morphology, recruitment patterns), recognize the physiological timing of denervation, understand the diagnostic significance of preserved SNAPs in preganglionic root lesions, and formulate targeted electrodiagnostic requests.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Clinical Neurophysiology and Diagnostic Integration",
+        "texto": "Diagnostic electrophysiology comprises nerve conduction studies (NCS), late responses (F-waves, H-reflex), and needle electromyography (EMG). These modalities transform clinical symptoms into objective neurophysiological data. NCS measures compound muscle action potential (CMAP) and sensory nerve action potential (SNAP) amplitudes and conduction velocities. Late responses evaluate proximal nerve segments: F-waves assess motor conduction to the anterior horn cells, while the H-reflex (primarily S1 reflex arc via tibial nerve stimulation) evaluates sensory afferent and motor efferent monosynaptic pathway integrity. Needle EMG evaluates insertional activity, spontaneous abnormal activity at rest (fibrillations, positive sharp waves, fasciculations), and motor unit action potential (MUAP) morphology during voluntary contraction."
+      },
+      {
+        "subtitulo": "Preganglionic vs. Postganglionic Lesions (SNAP Preservation)",
+        "texto": "The sensory dorsal root ganglion (DRG) is situated within or just lateral to the intervertebral foramen. In standard spinal compressive radiculopathies (e.g., disc herniation, canal stenosis), the site of nerve root compression is preganglionic (proximal to the DRG). Consequently, wallerian degeneration affects only the central axon ascending the dorsal columns of the spinal cord; the peripheral sensory axon and DRG cell body remain intact. Therefore, sensory nerve action potential (SNAP) amplitude remains completely normal in preganglionic radiculopathy, despite profound clinical sensory loss. In contrast, in postganglionic lesions (brachial/lumbosacral plexopathies, peripheral nerve lacerations, entrapment neuropathies), the peripheral axon undergoes wallerian degeneration, causing reduced or absent SNAP amplitudes. This rule is the cornerstone of electrodiagnostic localization in spine surgery."
+      },
+      {
+        "subtitulo": "Timing, Denervation, and Reinnervation Cascade",
+        "texto": "Following acute axonal compression or transection, physiological changes progress chronologically. Immediate motor block occurs, but needle EMG does not display denervation potentials immediately. Spontaneous denervation activity (fibrillation potentials and positive sharp waves) appears first in the paraspinal muscles (dorsal rami innervation) within 7 to 10 days, proximal limb muscles (14–18 days), and distal limb muscles (21–28 days). Performing EMG prior to 3 weeks following acute nerve injury yields a high rate of false-negative studies for denervation. With chronicity (>2–3 months), collateral sprouting produces polyphasic, high-amplitude, long-duration reinnervation motor unit action potentials (MUAPs) with reduced recruitment density."
+      },
+      {
+        "subtitulo": "Differential Diagnosis: Entrapment, Double Crush, and ALS",
+        "texto": "Electrodiagnosis effectively resolves clinical dilemmas: 1) Differentiating C8–T1 radiculopathy from carpal tunnel syndrome (CTS) or ulnar neuropathy at the elbow; 2) Differentiating L5 radiculopathy (tibialis anterior, extensor hallucis longus, and tensor fasciae latae involvement with normal superficial peroneal SNAP) from common peroneal neuropathy at the fibular head (peroneal muscles affected, tensor fasciae latae spared, abnormal superficial peroneal SNAP); 3) Identifying \"Double Crush Syndrome,\" where proximal subclinical cervical/lumbar root compression increases susceptibility of the distal axon to entrapment neuropathy; 4) Identifying generalized sensorimotor polyneuropathy (diabetic, toxic, CIDP); and 5) Detecting Amyotrophic Lateral Sclerosis (ALS), characterized by widespread active denervation and chronic reinnervation across three or four anatomical regions (bulbar, cervical, thoracic, lumbosacral) without sensory conduction abnormalities."
+      }
+    ],
+    "aplicacao_clinica": "Electrodiagnostic testing should be requested when clinical history and MRI are discordant, when multiple anatomical levels of stenosis exist and the clinically symptomatic culprit root must be confirmed before targeted decompression, or when peripheral neuropathy/plexopathy is suspected. Testing should be scheduled at least 3 weeks after symptom onset to allow wallerian degeneration and distal fibrillations to manifest. In suspected cervical radiculopathy with shoulder pain, EMG distinguishes C5 radiculopathy from rotator cuff tears or suprascapular/axillary neuropathy. In foot drop, EMG confirms L5 radiculopathy versus common peroneal nerve palsy. In patients with multi-level lumbar stenosis and peripheral diabetic neuropathy, EMG objectively quantifies whether active motor radiculopathy is present, guiding surgical decision-making. Testing paraspinal muscles confirms preganglionic root involvement, though prior spinal surgery causes non-specific paraspinal denervation artifact that must be interpreted cautiously.",
+    "mensagem_central": "Diagnostic clinical neurophysiology bridges structural neuroimaging and clinical neurological examination by evaluating the functional physiological viability of motor and sensory axons. Normal sensory nerve action potentials in a numb dermatome identify preganglionic root compression, while paraspinal and myotomal needle EMG timing (optimal after 3 weeks) distinguishes active denervation, chronic reinnervation, entrapment neuropathies, and motor neuron disease.",
+    "por_que_importa": "Operating on structural MRI abnormalities that do not correlate with active neurophysiological radiculopathy is a leading cause of failed back surgery syndrome. A preserved SNAP amplitude differentiates spinal radiculopathy from brachial/lumbar plexopathies; myotomal mapping separates L5 radiculopathy from peroneal nerve entrapment; and paraspinal testing identifies true root pathology. Understanding electrodiagnostic timing and interpretation ensures accurate indications and protects patients from inappropriate surgical interventions.",
+    "decs": [
+      "Electromyography",
+      "Neural Conduction",
+      "Radiculopathy",
+      "Action Potentials",
+      "Peripheral Nervous System Diseases",
+      "Motor Neuron Disease",
+      "Spinal Cord Diseases",
+      "Differential Diagnosis"
+    ],
+    "mesh": [
+      "Electromyography",
+      "Neural Conduction",
+      "Radiculopathy",
+      "Action Potentials",
+      "Peripheral Nervous System Diseases",
+      "Motor Neuron Disease",
+      "Spinal Cord Diseases",
+      "Differential Diagnosis"
+    ],
+    "palavras_chave_livres": [
+      "Sensory nerve action potential",
+      "Preganglionic radiculopathy",
+      "Fibrillation potentials",
+      "Double crush syndrome",
+      "Needle electromyography",
+      "H-reflex"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Preserved SNAPs Indicate Preganglionic Lesions",
+        "texto": "In compressive spinal radiculopathies, the sensory dorsal root ganglion (DRG) is distal to the compression site. Therefore, sensory nerve action potentials (SNAPs) remain completely normal despite marked dermatomal numbness, differentiating radiculopathy from plexopathy or peripheral neuropathy."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Wait 3 Weeks for Accurate Needle EMG",
+        "texto": "Spontaneous denervation potentials (fibrillations and positive sharp waves) require 18–21 days to appear in distal limb muscles following acute axonal injury (7–10 days in paraspinals). Requesting needle EMG before 3 weeks leads to false-negative examinations."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Differentiate Foot Drop: L5 vs. Peroneal Nerve",
+        "texto": "In foot drop, L5 radiculopathy causes denervation in both peroneal-innervated muscles (tibialis anterior, EHL) and non-peroneal L5 muscles (tensor fasciae latae, gluteus medius) with normal superficial peroneal SNAP. Peroneal neuropathy spares the gluteus medius/TFL and demonstrates an absent SNAP."
+      }
+    ],
+    "referencias": [
+      "Preston DC, Shapiro BE. Electromyography and neuromuscular disorders: clinical-electrophysiologic-ultrasound correlations. 4th ed. Philadelphia: Elsevier; 2021.",
+      "Dillingham TR, et al. Evaluation of persons with suspected lumbosacral and cervical radiculopathy: electrodiagnostic assessment and implications for treatment and outcomes. Part I. Muscle Nerve. 2020 Oct;62(4):462-73. doi:10.1002/mus.26997.",
+      "DePalma MJ, et al. What is the source of chronic low back pain and does age play a role? Pain Med. 2011 Feb;12(2):224-33. doi:10.1111/j.1526-4637.2010.01045.x.",
+      "Manchikanti L, et al. Evaluation of the relative contributions of various structures in chronic low back pain. Pain Physician. 2001 Oct;4(4):308-16. Erratum in: Pain Physician. 2002 Jan;5(1):114.",
+      "Dumitru D, Zwarts MJ. Radiculopathies. In: Dumitru D, et al. Electrodiagnostic medicine. 2nd ed. Philadelphia: Hanley & Belfus; 2002. p. 713-776.",
+      "Jerath N, Kimura J. F wave, A wave, H reflex, and blink reflex. Handb Clin Neurol. 2019;160:225-39. doi:10.1016/B978-0-444-64032-1.00015-1.",
+      "Preston DC, Shapiro BE. Radiculopathy. In: Electromyography and neuromuscular disorders: clinical-electrophysiologic-ultrasound correlations. 4th ed. Philadelphia: Elsevier; 2021. p. 557-576.",
+      "Dillingham TR. Evaluating the patient with suspected radiculopathy. PM R. 2013 May;5(5 Suppl):S41-9. doi:10.1016/j.pmrj.2013.03.015.",
+      "Gupta R, et al. Human motor endplate remodeling after traumatic nerve injury. J Neurosurg. 2020 Sep 18;135(1):220-7. doi:10.3171/2020.8.JNS201461.",
+      "Park JH, et al. Electrodiagnostic characteristics of upper lumbar stenosis: discrepancy between neurological and structural levels. Muscle Nerve. 2020 May;61(5):580-6. doi:10.1002/mus.26844.",
+      "Boogaarts HD, Bartels RH. Prevalence of cervical spondylotic myelopathy. Eur Spine J. 2015 Apr;24 Suppl 2:139-41. doi:10.1007/s00586-013-2781-x.",
+      "Woods BI, Hilibrand AS. Cervical radiculopathy: epidemiology, etiology, diagnosis, and treatment. J Spinal Disord Tech. 2015 Jun;28(5):E251-9. doi:10.1097/BSD.0000000000000284.",
+      "Cavazos DR, et al. Neuroforaminal stenosis in the lumbosacral spine: a scoping review of pathophysiology, clinical manifestations, diagnostic imaging, and treatment. Spartan Med Res J. 2023 Dec 5;8(1):87848. doi:10.51894/001c.87848.",
+      "Court C, et al. Thoracic disc herniation: surgical treatment. Orthop Traumatol Surg Res. 2018 Feb;104(1 Suppl):S31-S40. doi:10.1016/j.otsr.2017.04.022.",
+      "Frey SE, Riggs JE. Diabetic truncal neuropathy—clinical and radiological image. Diabetes Care. 2021 Sep 21:dc211235. doi:10.2337/dc21-1235.",
+      "Saal JA, Firtch W, Saal JS, Herzog RJ. The value of somatosensory evoked potential testing for upper lumbar radiculopathy: a correlation of electrophysiologic and anatomic data. Spine (Phila Pa 1976). 1992 Jun;17(6 Suppl):S133-7. doi:10.1097/00007632-199206001-00012.",
+      "Kimura J. Somatosensory evoked potential. In: Electrodiagnosis in diseases of nerve and muscle: principles and practice. 4th ed. New York: Oxford; 2013. p. 477-510.",
+      "Chiou-Tan FY. Musculoskeletal mimics of cervical radiculopathy. Muscle Nerve. 2022 Jul;66(1):6-14. doi:10.1002/mus.27553.",
+      "Smith CC, Bevelaqua AC. Challenging pain syndromes: Parsonage-Turner syndrome. Phys Med Rehabil Clin N Am. 2014 May;25(2):265-77. doi:10.1016/j.pmr.2014.01.001.",
+      "Upton AR, McComas AJ. The double crush in nerve entrapment syndromes. Lancet. 1973 Aug 18;2(7825):359-62. doi:10.1016/S0140-6736(73)93196-6.",
+      "Gullborg EJ, et al. Surgical management of double crush syndrome: outcomes of cervical decompression with and without peripheral nerve release. J Hand Surg Glob Online. 2025 Jun 19;7(5):100770. doi:10.1016/j.jhsg.2025.100770.",
+      "Xiong C, et al. Dynamic evaluation of the cervical spine and the spinal cord of symptomatic patients using a kinetic magnetic resonance imaging technique. Clin Spine Surg. 2017 Oct;30(8):E1149-E1155. doi:10.1097/BSD.0000000000000429.",
+      "Ferreira RJR, et al. Cervical spinal surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 513-538.",
+      "Siebner HR, et al. Transcranial magnetic stimulation of the brain: what is stimulated? A consensus and critical position paper. Clin Neurophysiol. 2022 Aug;140:59-97. doi:10.1016/j.clinph.2022.04.022.",
+      "Izenberg A. Amyotrophic lateral sclerosis and other motor neuron diseases. Continuum (Minneap Minn). 2023 Oct 1;29(5):1538-63. doi:10.1212/CON.0000000000001345.",
+      "Torrieri MC, et al. Comorbidity of cervical spondylogenic myelopathy and amyotrophic lateral sclerosis: when electromyography makes the difference in diagnosis. Eur Neurol. 2020;83(6):626-9. doi:10.1159/000512269.",
+      "Glenn MD, Jabari D. Diabetic lumbosacral radiculoplexus neuropathy—diabetic amyotrophy. Neurol Clin. 2020 Aug;38(3):553-64. doi:10.1016/j.ncl.2020.03.010.",
+      "Jorgensen SP, Chiodo AE. Musculoskeletal mimics for lumbosacral radiculopathy. Part 2: specific disorders. Muscle Nerve. 2025 Jan;71(1):22-8. doi:10.1002/mus.28279.",
+      "Miller TA, Ross DC. Sciatic and tibial neuropathies. Handb Clin Neurol. 2024;201:165-81. doi:10.1016/B978-0-323-90108-6.00003-X.",
+      "Peselzon O, Colditz M, Maclachlan LR. L5 mononeuritis, an uncommon cause of foot drop: illustrative case. J Neurosurg Case Lessons. 2023 Jan 30;5(5):CASE22499. doi:10.3171/CASE22499."
+    ],
+    "seo": {
+      "titulo": "Neurophysiology in the Diagnosis of Spinal Disorders | Treatise",
+      "meta_descricao": "Clinical neurophysiology for spine surgeons: electromyography (EMG), nerve conduction (NCS), preganglionic SNAP preservation, radiculopathy vs. entrapment, and ALS.",
+      "resumo_chamada": "Master diagnostic electromyography and nerve conduction studies in spine surgery: SNAP localization, denervation timing, and differential diagnosis of radiculopathy.",
+      "slug": "neurophysiology-in-the-diagnosis-of-spinal-pathologies"
+    }
+  },
+  "14": {
+    "numero": 14,
+    "titulo": "Intraoperative Neurophysiological Monitoring in Spine Surgery",
+    "secao": "",
+    "autores": [
+      "Ricardo José Rodriguez Ferreira",
+      "Patrícia Toscano Barreto Nogueira",
+      "Roberto Waldesmand Farias Pontes"
+    ],
+    "contexto": "Intraoperative neurophysiological monitoring (IONM) provides real-time functional assessment of the central and peripheral nervous system during spine surgery, serving as an early-warning diagnostic tool to detect impending iatrogenic neural injury, guide safe corrective maneuvers, and prevent postoperative neurological deficits. Multimodal IONM integrates transcranial motor evoked potentials (TcMEP), somatosensory evoked potentials (SSEP), spontaneous and triggered electromyography (sEMG and tEMG), and dermatomal/reflex responses (D-wave, bulbocavernosus reflex). Each modality monitors distinct neural pathways with specific temporal sensitivities and alarm criteria: SSEPs assess the dorsal column-medial lemniscal sensory pathway (supplied by the posterior spinal arteries), while TcMEPs evaluate the corticospinal motor pathway and anterior horn cells (supplied by the anterior spinal artery). Consequently, selective anterior spinal artery ischemia or direct anterior motor tract contusion can abolish TcMEPs without altering SSEPs. Free-run sEMG detects mechanical nerve root traction, irritation, or compression during instrumentation and decompression, while pedicle screw triggered EMG (tEMG) detects pedicle cortical breaches. Successful IONM requires total intravenous anesthesia (TIVA) without halogenated inhalational agents or neuromuscular blockade (which abolish MEPs and EMG), temperature and blood pressure optimization, and adherence to structured institutional checklists to identify and rapidly reverse intraoperative neurological insults.",
+    "objetivo": "To present the neurophysiological principles, modalities, alarm criteria, and anesthetic protocols of multimodal intraoperative neuromonitoring (IONM) in spine surgery. The reader should be able to understand the physiological pathways evaluated by SSEP, TcMEP, EMG, D-wave, and reflex testing; apply multimodal monitoring in deformity, cervical myelopathy, intradural tumor, and minimally invasive lateral surgery; recognize significant neurophysiological alarm threshold criteria; and execute structured intraoperative rescue protocols following acute signal degradation.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Multimodal IONM Modalities and Neural Pathways",
+        "texto": "Multimodal IONM combines complementary neurophysiological modalities: 1) Somatosensory Evoked Potentials (SSEP): elicited by peripheral nerve stimulation (median, ulnar, posterior tibial nerves) and recorded over the primary somatosensory cortex and cervical spine, evaluating the ascending dorsal column-medial lemniscal sensory pathways; 2) Transcranial Motor Evoked Potentials (TcMEP): generated by transcranial electrical stimulation over the motor cortex and recorded as compound muscle action potentials (CMAPs) from target limb muscles, evaluating the descending lateral corticospinal tracts and alpha motor neurons; 3) D-Wave: recorded directly from the spinal epidural space via a catheter electrode, evaluating direct pyramidal tract axonal conduction independent of neuromuscular junction transmission; 4) Spontaneous EMG (sEMG): continuous monitoring of root-specific muscles for neurotonic burst and train discharges indicating mechanical root irritation; 5) Triggered EMG (tEMG): delivering electrical current to pedicle screw probes to detect bone breaches; and 6) Bulbocavernosus Reflex (BCR): monitoring the S2–S4 conus medullaris and pudendal reflex arc."
+      },
+      {
+        "subtitulo": "Validated Alarm Threshold Criteria",
+        "texto": "Neurophysiological alarm criteria define significant signal loss requiring immediate surgical and systemic action: 1) SSEP alarm: a >=50% decrease in amplitude and/or a >=10% increase in latency compared to stable baseline; 2) TcMEP alarm: a >=50–80% amplitude reduction, significant threshold voltage increase (>100 V), or complete loss of CMAP response in one or more limb muscles; 3) D-Wave alarm: a >=50% reduction in D-wave amplitude during intramedullary tumor resection indicates permanent motor tract injury; 4) sEMG alarm: neurotonic train activity (sustained high-frequency discharge) indicates active mechanical root stretch or compression; 5) Triggered EMG: pedicle screw threshold <6–8 mA in the lumbar spine or <5–6 mA in the thoracic spine indicates medial/inferior pedicle wall breach with direct nerve root contact."
+      },
+      {
+        "subtitulo": "Anesthetic Requirements: TIVA Protocol",
+        "texto": "Anesthesia profoundly influences IONM signal acquisition. Halogenated volatile inhalational anesthetics (sevoflurane, desflurane, isoflurane) and nitrous oxide produce dose-dependent suppression of anterior horn alpha motor neurons, markedly blunting or abolishing TcMEP and H-reflex responses. Therefore, Total Intravenous Anesthesia (TIVA)—utilizing continuous infusions of propofol and short-acting opioids (remifentanil, sufentanil, fentanyl), with or without low-dose ketamine/dexmedetomidine—is mandatory. Neuromuscular blocking agents (paralytics) can be used for initial endotracheal intubation but must be completely avoided or reversed during monitoring (train-of-four [TOF] maintained at 4/4 twitches) to permit muscle MEP and EMG recordings."
+      },
+      {
+        "subtitulo": "Clinical Indications Across Spine Subspecialties",
+        "texto": "IONM indications are tailored to surgical risk: 1) Adult and adolescent deformity (scoliosis/kyphosis): continuous TcMEP and SSEP monitoring during correction maneuvers (derotation, translation, distraction) and osteotomies (PCO, PSO, VCR); 2) Cervical and thoracic myelopathy: TcMEP and SSEP monitoring from patient positioning (head positioning and traction) through decompression; 3) Intramedullary spinal cord tumors (ependymomas, astrocytomas): combined TcMEP, SSEP, and D-wave monitoring to establish safe resection margins (stopping resection if D-wave drops >50%); 4) Lateral lumbar interbody fusion (LLIF transpsoas): real-time triggered EMG directional mapping to detect and avoid lumbar plexus branches within the psoas; 5) Lumbosacral instrumented fusion: tEMG screw testing and BCR monitoring to protect roots and bowel/bladder function."
+      },
+      {
+        "subtitulo": "Structured Intraoperative Rescue Protocol",
+        "texto": "Upon an IONM alert, a rapid, standardized multidisciplinary checklist must be executed simultaneously: 1) Systemic optimization: verify mean arterial pressure (MAP target >80–85 mmHg to restore cord perfusion), check core temperature (>35.5°C), hematocrit (>28–30%), arterial blood gases, and rule out anesthetic bolus or volatile gas accidental administration; 2) Technical verification: check recording/stimulating electrodes and machine grounding; 3) Surgical intervention: immediately halt active surgical maneuvers, remove compressive retractors, irrigate wound with warm saline, release temporary correction rods or distraction forces, reverse deformity correction, and remove recently placed screws or interbody cages. If signals fail to recover despite optimization, consider an intraoperative wake-up test (Stagnara wake-up test)."
+      }
+    ],
+    "aplicacao_clinica": "In spine deformity surgery, TcMEPs detect impending spinal cord ischemia or stretch injury minutes before SSEP changes appear. When a sudden loss of lower extremity MEPs occurs during scoliosis rod derotation or vertebral column resection (VCR), the surgical team immediately raises MAP to >85–90 mmHg, pauses the procedure, and releases rod tension. In over 85–90% of cases, timely release of correction and perfusion augmentation restore MEP signals and prevent permanent paraplegia. In thoracic and lumbar pedicle screw placement, triggered EMG with thresholds <6 mA accurately flags misplaced screws encroaching on the spinal canal or exiting nerve root, enabling immediate repositioning before wound closure. In intramedullary tumor resections, preserving a D-wave amplitude >50% ensures that the patient will maintain long-term ambulatory motor function, even if transient postoperative paresis occurs due to spinal cord stunning.",
+    "mensagem_central": "Multimodal intraoperative neuromonitoring (TcMEP, SSEP, EMG, D-wave) acts as a dynamic neurological examination in the anesthetized patient. Integrating motor and sensory modalities under total intravenous anesthesia (TIVA), adhering to standardized alarm criteria (>=50% SSEP drop, >=50–80% TcMEP loss, tEMG <6 mA), and executing structured multidisciplinary rescue protocols (MAP elevation >85 mmHg, release of surgical distraction) significantly minimizes catastrophic neurological complications in spine surgery.",
+    "por_que_importa": "A postoperative neurological deficit is among the most devastating complications in spine surgery. IONM provides real-time feedback during the reversible window of neural compromise. Relying on SSEPs alone risks missing pure motor tract ischemia, while monitoring without TIVA results in uninterpretable signals. This chapter provides the evidence-based neurophysiological parameters, anesthetic guidelines, and immediate intraoperative response algorithms necessary to safeguard neural function across complex deformity, degenerative, tumor, and minimally invasive spine procedures.",
+    "decs": [
+      "Intraoperative Neurophysiological Monitoring",
+      "Evoked Potentials, Motor",
+      "Evoked Potentials, Somatosensory",
+      "Electromyography",
+      "Spinal Cord Injuries",
+      "Spine",
+      "Anesthesia, Intravenous",
+      "Surgical Procedures, Operative"
+    ],
+    "mesh": [
+      "Intraoperative Neurophysiological Monitoring",
+      "Evoked Potentials, Motor",
+      "Evoked Potentials, Somatosensory",
+      "Electromyography",
+      "Spinal Cord Injuries",
+      "Spine",
+      "Anesthesia, Intravenous",
+      "Surgical Procedures, Operative"
+    ],
+    "palavras_chave_livres": [
+      "Transcranial motor evoked potentials",
+      "Somatosensory evoked potentials",
+      "D-wave",
+      "Triggered EMG",
+      "TIVA protocol",
+      "Spinal cord perfusion",
+      "Intraoperative rescue checklist"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Multimodal Monitoring is Mandatory",
+        "texto": "SSEPs monitor dorsal columns (posterior spinal artery), while TcMEPs monitor corticospinal motor tracts (anterior spinal artery). Anterior cord ischemia or motor tract compression can cause complete paraplegia while SSEPs remain entirely normal. Always utilize combined TcMEP and SSEP monitoring."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Standardized IONM Alarm Thresholds",
+        "texto": "Recognize significant alarm criteria: >=50% drop in SSEP amplitude, >=50–80% loss of TcMEP amplitude, >=50% decrease in D-wave, sustained neurotonic sEMG trains, or pedicle screw triggered EMG threshold <6 mA in the lumbar spine (indicating medial cortical breach)."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Immediate Rescue Algorithm",
+        "texto": "Upon acute IONM signal loss: immediately elevate Mean Arterial Pressure (MAP > 80–85 mmHg), rule out anesthetic boluses/paralytics, halt surgical manipulation, warm the surgical field, and release correction rods or distraction. Timely reversal restores signals and prevents permanent deficits."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração apresentadas no capítulo. A pontuação e a disposição foram uniformizadas segundo o estilo Vancouver, sem completar por suposição informações ausentes.",
+      "Vauzelle C, et al. Functional monitoring of spinal cord activity during spinal surgery. Clin Orthop Relat Res. 1973;(93):173-8.",
+      "Ferreira RJR, et al. Spinal deformity surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 459-493.",
+      "Jahangiri FR, et al. Scoliosis corrective surgery with continuous intraoperative neurophysiological monitoring (IONM). Cureus. 2022 Oct 5;14(10):e29958. doi:10.7759/cureus.29958.",
+      "Schlaeppi JA, et al. Intraoperative neurophysiological monitoring during spinal cord stimulation surgery: a systematic review. Neuromodulation. 2023 Oct;26(7):1319-1327. doi:10.1016/j.neurom.2023.06.010.",
+      "Fehlings MG, et al. The evidence for intraoperative neurophysiological monitoring in spine surgery: does it make a difference? Spine. 2010;35(9 Suppl):S37-46.",
+      "Lall RR, et al. Intraoperative neurophysiological monitoring in spine surgery: indications, efficacy, and role of the preoperative checklist. Neurosurg Focus. 2012 Nov;33(5):E10. doi:10.3171/2012.9.FOCUS12235.",
+      "Hilibrand AS, et al. Comparison of transcranial electric motor and somatosensory evoked potential monitoring during cervical spine surgery. J Bone Joint Surg Am. 2004;86(6):1248-1253.",
+      "Jurcak V, et al. 10/20, 10/10, and 10/5 systems revisited: their validity as relative head-surface-based positioning systems. Neuroimage. 2007 Feb 15;34(4):1600-11. doi:10.1016/j.neuroimage.2006.09.024.",
+      "Abiola G, et al. Safe intraoperative neurophysiologic monitoring during posterior spinal fusion in a patient with cochlear implants. Otol Neurotol. 2018 Jun;39(5):e314-e318. doi:10.1097/MAO.0000000000001788.",
+      "Pan T, et al. Neurophysiological intraoperative monitoring in patients with cochlear implant undergoing posterior spinal fusion: a case report. JBJS Case Connect. 2022 Jan 20;12(1). doi:10.2106/JBJS.CC.21.00609.",
+      "Yellin JL, et al. Safe transcranial electric stimulation motor evoked potential monitoring during posterior spinal fusion in two patients with cochlear implants. J Clin Monit Comput. 2016 Aug;30(4):503-6. doi:10.1007/s10877-015-9730-7.",
+      "Deletis V, et al. Neurophysiological mechanisms underlying motor evoked potentials in anesthetized humans. Part 1. Recovery time of corticospinal tract direct waves elicited by pairs of transcranial electrical stimuli. Clin Neurophysiol. 2001 Mar;112(3):438-44. doi:10.1016/S1388-2457(01)00461-8.",
+      "Sala F, et al. Motor evoked potential monitoring improves outcome after surgery for intramedullary spinal cord tumors: a historical control study. Neurosurgery. 2006 Jun;58(6):1129-43; discussion 1129-43. doi:10.1227/01.NEU.0000215948.97195.58.",
+      "Ferreira RJR, et al. Cervical spinal surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 513-538.",
+      "Toleikis JR, et al. Intraoperative somatosensory evoked potential monitoring: an updated position statement by the American Society of Neurophysiological Monitoring. J Clin Monit Comput. 2024 Oct;38(5):1003-1042. doi:10.1007/s10877-024-01201-x.",
+      "Jacobs MJ, et al. The value of motor evoked potentials in reducing paraplegia during thoracoabdominal aneurysm repair. J Vasc Surg. 2006 Feb;43(2):239-46. doi:10.1016/j.jvs.2005.09.042.",
+      "Skinner SA, Vodušek DB. Intraoperative recording of the bulbocavernosus reflex. J Clin Neurophysiol. 2014 Aug;31(4):313-22. doi:10.1097/WNP.0000000000000054.",
+      "Yang T, et al. Intraoperative bulbocavernosus reflex monitoring for predicting postoperative voiding dysfunction in patients with distal intraspinal tumors. J Clin Neurosci. 2024 Nov;129:110865. doi:10.1016/j.jocn.2024.110865.",
+      "Shinjo T, et al. Intraoperative feasibility of bulbocavernosus reflex monitoring during untethering surgery in infants and children. J Clin Monit Comput. 2019 Feb;33(1):155-163. doi:10.1007/s10877-018-0127-2.",
+      "Lee W. The latest trend in neuromuscular monitoring: return of the electromyography. Anesth Pain Med (Seoul). 2021 Apr;16(2):133-137. doi:10.17085/apm.21014.",
+      "Tewari A, et al. Intraoperative neurophysiological monitoring team’s communiqué with anesthesia professionals. J Anaesthesiol Clin Pharmacol. 2018 Jan-Mar;34(1):84-93. doi:10.4103/joacp.JOACP_315_17.",
+      "Boada MD, et al. Nerve injury induces a new profile of tactile and mechanical nociceptor input from undamaged peripheral afferents. J Neurophysiol. 2015 Jan 1;113(1):100-9. doi:10.1152/jn.00506.2014.",
+      "Walker CT, et al. Neuroanesthesia guidelines for optimizing transcranial motor evoked potential neuromonitoring during deformity and complex spinal surgery: a Delphi consensus study. Spine. 2020;45(13):911-920.",
+      "Yang J, Huang Z, Yin J, Deng IL, Xie XB, Li FB, et al. A proposed classification system of guiding surgical strategy in cases of severe spinal deformity based on spinal cord function. Eur Spine J. 2016;25(6):1821-9.",
+      "Kottenberg-Assenmacher E, et al. Hypothermia does not alter somatosensory evoked potential amplitude and global cerebral oxygen extraction during marked sodium nitroprusside-induced arterial hypotension. Anesthesiology. 2003 May;98(5):1112-8. doi:10.1097/00000542-200305000-00013.",
+      "MacDonald DB. Overview on criteria for MEP monitoring. J Clin Neurophysiol. 2017 Jan;34(1):4-11. doi:10.1097/WNP.0000000000000302.",
+      "Ferreira RJR, Segura MJ. A proposed new algorithm for decision making in the face of the neurophysiological alarms during spinal deformity surgeries. Oral presentation: New proposals for Tc-MEP interpretation in spinal deformities and intramedullary spinal cord umor (MSCT) surgeries; 31st International Congress of Clinical Neurophysiology—IFCN; 2018 May; Washington, DC.",
+      "Calancie B, et al. “Threshold-level” multipulse transcranial electrical stimulation of motor cortex for intraoperative monitoring of spinal motor tracts: description of method and comparison to somatosensory evoked potential monitoring. J Neurosurg. 1998;88:457-470.",
+      "Kothbauer KF, et al. Motor-evoked potential monitoring for intramedullary spinal cord tumor surgery: correlation of clinical and neurophysiological data in a series of 100 consecutive procedures. Neurosurg Focus. 1998;4(5):3.",
+      "Quinones-Hinojosa A, et al. Spinal cord mapping as an adjunct for resection of intramedullary tumors: surgical technique with case illustrations. Neurosurgery. 2002;51:1199-1206.",
+      "Langeloo DD, et al. Criteria for transcranial electrical motor evoked potential monitoring during spinal deformity surgery: a review and discussion of the literature. Neurophysiol Clin. 2007;37(6):431-9.",
+      "Segura MJ, et al. A multiparametric alarm criterion for motor evoked potential monitoring during spine deformity surgery. J Clin Neurophysiol. 2017 Jan;34(1):38-48. doi:10.1097/WNP.0000000000000323. PMID:28045856.",
+      "Rattenni RN, et al. Intraoperative spinal cord and nerve root monitoring: a hospital survey and review. Bull Hosp Jt Dis (2013). 2015 Mar;73(1):25-36.",
+      "Ferreira RJR. Neurofisiologia intraoperatória. In: Pudles E, Defino HLA. A coluna vertebral: conceitos básicos. Artmed; 2013.",
+      "Bauer JM, et al. Pediatric halo use: indications, application, and potential complications. J Pediatr Soc North Am. 2024 Oct;9:100129. doi:10.1016/j.jposna.2024.100129.",
+      "Ferreira RJR. Neurofisiologia aplicada à coluna vertebral. In: Martins DE, et al. Clínica da coluna vertebral. Atheneu; 2014. p. 39-56.",
+      "Villas C, Barrios RH. Congenital absence of the pedicles and the neural arch of L2. Eur Spine J. 1997;6(5):354-6. doi:10.1007/BF01142686.",
+      "Calancie B, et al. Intraoperative evoked EMG monitoring in an animal model. A new technique for evaluating pedicle screw placement. Spine (Phila Pa 1976). 1992 Oct;17(10):1229-35. doi:10.1097/00007632-199210000-00017.",
+      "Calancie B, et al. Neuromonitoring with pulse-train stimulation for implantation of thoracic pedicle screws: a blinded and randomized clinical study. Part 1. Methods and alarm criteria. J Neurosurg Spine. 2014 Jun;20(6):675-91. doi:10.3171/2014.2.SPINE13648.",
+      "Calancie B, et al. Neuromonitoring with pulse-train stimulation for implantation of thoracic pedicle screws: a blinded and randomized clinical study. Part 2. The role of feedback. J Neurosurg Spine. 2014 Jun;20(6):692-704. doi:10.3171/2014.2.SPINE13649.",
+      "Cavali PTM. Pedicular screw fixation of the thoracic spine: freehand versus 3D image-guided techniques. In: van de Kelft E. Surgery of the spine and spinal cord. Springer; 2016. doi:10.1007/978-3-319-27613-7_17.",
+      "Clements DH, et al. Evoked and spontaneous electromyography to evaluate lumbosacral pedicle screw placement. Spine. 1996;21(5):600-4.",
+      "Toleikis JR, et al. The usefulness of electrical stimulation for assessing pedicle screw placements. J Spinal Disord. 2000;13(4):283-9.",
+      "Ferreira RJR. Monitoramento neurofisiológico intraoperatório nas cirurgias espinhais. In: Chamlian TR. Medicina física e reabilitação. Guanabara Koogan; 2010. p. 24-41.",
+      "Schwartz DM, et al. Neurophysiological detection of impending spinal cord injury during scoliosis surgery. J Bone Joint Surg Am. 2007 Nov;89(11):2440-9. doi:10.2106/JBJS.F.01476.",
+      "Thompson SE, et al. C5 palsy after cervical spine surgery: a multicenter retrospective review of 59 cases. Global Spine J. 2017 Apr;7(1 Suppl):64S-70S. doi:10.1177/2192568216688189.",
+      "Akbari KK, et al. Do intraoperative neurophysiological changes during decompressive surgery for cervical myeloradiculopathy affect functional outcome? A prospective study. Global Spine J. 2022 Apr;12(3):366-372. doi:10.1177/2192568220951779.",
+      "Kerimbayev T, et al. Transforaminal endoscopic discectomy under general and local anesthesia: a single-center study. Front Surg. 2022 Apr 19;9:873954. doi:10.3389/fsurg.2022.873954.",
+      "Wiedemayer H, et al. The impact of neurophysiological intraoperative monitoring on surgical decisions: a critical analysis of 423 cases. J Neurosurg. 2002;96(2):255-262.",
+      "Zhang H, et al. The application of neuroelectrophysiological monitoring in posterior percutaneous endoscopic cervical discectomy. World J Surg Surgical Res. 2020;3:1197.",
+      "Shils JL, Arle JE. Intraoperative neurophysiologic methods for spinal cord stimulator placement under general anesthesia. Neuromodulation. 2012 Nov-Dec;15(6):560-71. doi:10.1111/j.1525-1403.2012.00460.x.",
+      "Ferreira RJR, et al. Lumbar interbody fusion surgeries: LIFS. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 495-512.",
+      "Dias Pereira Filho AR. Technique for exposing lumbar discs in anterior approach using Steinmann wires: arthroplasties or arthrodesis. World Neurosurg. 2021 Apr;148:189-195. doi:10.1016/j.wneu.2020.12.113.",
+      "Gong M, et al. Surgery for giant calcified herniated thoracic discs: a systematic review. World Neurosurg. 2018 Oct;118:109-117. doi:10.1016/j.wneu.2018.06.232.",
+      "Holdefer RN, et al. Analyzing the value of IONM as a complex intervention: the gap between published evidence and clinical practice. Clin Neurophysiol. 2023 Jul;151:59-73. doi:10.1016/j.clinph.2023.03.364.",
+      "Sala F, et al. Motor evoked potential monitoring improves outcome after surgery for intramedullary spinal cord tumors: a historical control study. Neurosurgery. 2006 Jun;58(6):1129-43. doi:10.1227/01.NEU.0000215948.97195.58.",
+      "Verst SM, Ferreira RJR. Neurofisiologia clínica aplicada à coluna vertebral: eletroneuromiografia, potencial evocado e monitoração neurofisiológica intraoperatória. In: Siqueira MG, et al. Tratado de neurocirurgia. Vol. 1. Barueri: Manole; 2016. p. 841-857.",
+      "DeVivo MJ. Causes and costs of spinal cord injury in the United States. Spinal Cord. 1997 Dec;35(12):809-13.",
+      "Ament JD, et al. Intraoperative neuromonitoring in spine surgery: large database analysis of cost-effectiveness. N Am Spine Soc J. 2023 Feb 23;14:100206. doi:10.1016/j.xnsj.2023.100206.",
+      "Yagi M, et al. Risk, recovery, and clinical impact of neurological complications in adult spinal deformity surgery. Spine (Phila Pa 1976). 2019 Oct 1;44(19):1364-1370. doi:10.1097/BRS.0000000000003080.",
+      "Zanin L, et al. Intraoperative neurophysiological monitoring in contemporary spinal surgery: a systematic review of clinical outcomes and cost-effectiveness. Brain Sci. 2025;15:768. doi:10.3390/brainsci15070768.",
+      "Nuwer MR, et al. Evidence-based guideline update: intraoperative spinal monitoring with somatosensory and transcranial electrical motor evoked potentials: report of the Therapeutics and Technology Assessment Subcommittee of the American Academy of Neurology and the American Clinical Neurophysiology Society. Neurology. 2012 Feb 21;78(8):585-9. doi:10.1212/WNL.0b013e318247fa0e.",
+      "Nuwer MR, et al. Somatosensory evoked potential spinal cord monitoring reduces neurologic deficits after scoliosis surgery: results of a large multicenter survey. Electroencephalogr Clin Neurophysiol. 1995 Jan;96(1):6-11. doi:10.1016/0013-4694(94)00235-D."
+    ],
+    "seo": {
+      "titulo": "Intraoperative Neuromonitoring (IONM) in Spine Surgery | Treatise",
+      "meta_descricao": "Complete guide to intraoperative neurophysiological monitoring: TcMEP, SSEP, triggered EMG, D-wave, TIVA anesthesia, alarm criteria, and rescue protocols.",
+      "resumo_chamada": "Master multimodal IONM in spine surgery: neural pathways, SSEP/TcMEP alarm criteria, TIVA anesthetic management, triggered EMG screw testing, and rescue algorithms.",
+      "slug": "intraoperative-neurophysiological-monitoring-in-spine-surgery"
+    }
+  },
+  "15": {
+    "numero": 15,
+    "titulo": "Diagnostic Imaging of the Spine",
+    "secao": "",
+    "autores": [
+      "Marcello Henrique Nogueira-Barbosa",
+      "Guilherme Naves"
+    ],
+    "contexto": "Diagnostic imaging modalities of the vertebral column address distinct clinical questions and must be selected based on the target anatomical tissue, functional weight-bearing status, and pre-test clinical hypothesis. Plain radiographs remain indispensable as the primary weight-bearing investigation to demonstrate overall spinal alignment, degenerative instability on dynamic flexion-extension views, and global spinopelvic parameters. Computed tomography (CT) provides superior multiplanar resolution of osseous architecture, cortical breaches, osteolysis, pars defects, facet arthrosis, vacuum phenomena (gas), and ossification of the posterior longitudinal ligament (OPLL) without anatomical overlap. Magnetic resonance imaging (MRI) is the gold standard for evaluating neural structures (spinal cord, conus medullaris, cauda equina, exiting nerve roots), intervertebral disc morphology, bone marrow edema, soft-tissue collections, spinal infections (spondylodiscitis), and epidural tumors. Ultrasonography finds focused application in neonatal spinal dysraphism screening and image-guided interventional procedures. Bone scintigraphy and SPECT/CT detect altered osteoblastic turnover in facet arthropathy, active spondylolysis, pseudarthrosis, and metastatic disease. A fundamental clinical challenge is avoiding both the inappropriate selection of imaging modalities and the over-interpretation of incidental findings: asymptomatic disc bulges, degenerative Modic endplate changes, facet arthrosis, and benign vertebral hemangiomas are highly prevalent in healthy populations. Imaging findings must always be correlated strictly with the patient’s clinical history and neurological examination.",
+    "objetivo": "To present the principles, indications, diagnostic strengths, and limitations of major spine imaging modalities (radiography, CT, MRI, ultrasound, nuclear medicine) across degenerative disc disease, canal stenosis, diffuse idiopathic skeletal hyperostosis (DISH), ankylosing spondylitis, spinal infections, acute trauma, and incidental findings. The reader should be able to select the optimal imaging modality, recognize characteristic imaging patterns, determine when intravenous contrast or dynamic views are required, and correlate radiographic findings with clinical pathology.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Modalities: Radiography, CT, MRI, and Scintigraphy",
+        "texto": "Plain radiographs (AP, lateral, obliques, dynamic flexion-extension) evaluate alignment, disc height loss, osteophytes, and dynamic spondylolisthesis (>3–4 mm translation or >10° angular motion). Multi-detector CT provides sub-millimeter isotropic osseous detail, indispensable for complex fractures, surgical instrumentation planning, and pseudarthrosis assessment. MRI utilizes T1-weighted (anatomical detail, fatty marrow), T2-weighted (CSF, disc hydration, cord edema, stenosis), STIR/T2 fat-suppressed (bone marrow edema, acute fractures, active inflammation), and gadolinium-enhanced T1 sequences (differentiating recurrent disc herniation from epidural scar, vascular malformations, tumors, and epidural abscesses)."
+      },
+      {
+        "subtitulo": "Degenerative Cascade, Modic Changes, and Stenosis",
+        "texto": "MRI readily depicts the degenerative cascade (Pfirrmann grading of disc degeneration 1–5). Modic endplate classifications reflect vertebral marrow changes: Type 1 (inflammatory/vascular edema, hypointense on T1, hyperintense on T2/STIR, highly correlated with active axial pain); Type 2 (fatty conversion, hyperintense on T1 and T2); Type 3 (sclerosis, hypointense on T1 and T2). Spinal canal and neural foraminal stenosis are categorized qualitatively and quantitatively (Schizas classification for lumbar central stenosis, Lee classification for foraminal stenosis) based on CSF obliteration, root compression, and epidural fat loss."
+      },
+      {
+        "subtitulo": "DISH and Axial Spondyloarthritis (Ankylosing Spondylitis)",
+        "texto": "Diffuse Idiopathic Skeletal Hyperostosis (DISH / Forestier disease) is defined radiographically by flowing anterolateral ossification spanning at least four contiguous vertebral bodies, preservation of disc height, and absence of sacroiliitis. Ankylosing Spondylitis (AS) features early bilateral symmetric sacroiliitis, squaring of vertebral bodies, Romanus lesions (shiny corners), Andersson lesions (inflammatory discitis), and thin, delicate syndesmophytes producing a \"bamboo spine.\" Both conditions create a rigid, long-lever arm spine highly susceptible to catastrophic, highly unstable extension-distraction fractures after trivial trauma."
+      },
+      {
+        "subtitulo": "Spinal Infections: Spondylodiscitis vs. Tuberculosis",
+        "texto": "Pyogenic spondylodiscitis characteristically demonstrates early T2/STIR hyperintensity and post-contrast enhancement of the intervertebral disc and adjacent subchondral vertebral endplates, with rapid disc space collapse and endplate erosion. In contrast, tuberculous spondylodiscitis (Pott disease) frequently spares the intervertebral disc initially, involves multiple contiguous or non-contiguous vertebral bodies, causes extensive anterior subligamentous spread, large calcified cold paraspinal/psoas abscesses, and profound angular kyphotic collapse (gibbus deformity)."
+      },
+      {
+        "subtitulo": "Trauma Evaluation and Incidental Findings",
+        "texto": "In acute trauma, whole-spine CT is the primary modality to identify fracture lines, retropulsed fragments, and facet dislocations. MRI is mandatory to evaluate spinal cord compression, intramedullary contusion/hemorrhage (presaging poor neurological recovery), and posterior ligamentous complex (PLC) disruption, which determines surgical instability under AO Spine and TLICS classifications. Incidental benign findings—such as typical vertebral hemangiomas (corduroy cloth appearance on coronal CT, hyperintense on T1 and T2) and Tarlov cysts—must be recognized to prevent unnecessary biopsies or surgeries."
+      }
+    ],
+    "aplicacao_clinica": "In clinical practice, imaging must always be guided by the clinical question. In suspected mechanical instability or spondylolisthesis, weight-bearing dynamic flexion-extension radiographs are essential because supine MRI can mask significant translational instability. In suspected cauda equina syndrome, cervical myelopathy, or epidural abscess, emergent MRI (with contrast for infection/tumor) is the modality of choice. In patients with previous spine surgery presenting with recurrent leg pain, gadolinium-enhanced MRI differentiates non-enhancing avascular recurrent disc herniation from diffusely enhancing vascularized epidural scar tissue. In rigid spine patients (ankylosing spondylitis or DISH) presenting with new back pain following minor falls, thin-cut CT of the entire spine is mandatory, as lethal transdiscal/transvertebral fractures are frequently missed on plain radiographs. Recognizing that Modic 1 changes represent active inflammatory remodeling helps guide targeted non-operative and interventional therapies.",
+    "mensagem_central": "Spine diagnostic imaging is governed by matching the specific clinical question to the complementary strengths of each modality. Radiographs assess weight-bearing alignment and dynamic instability; CT resolves complex osseous architecture, gas, and mineralization; MRI characterizes neural elements, bone marrow edema, and soft tissues; and nuclear imaging highlights active metabolic turnover. Radiographic findings must never be interpreted in isolation, as degenerative changes and incidental lesions are ubiquitous in asymptomatic individuals.",
+    "por_que_importa": "Selecting the wrong imaging study can obscure the exact pathology being sought: dynamic instability disappears in supine MRI, osseous bridging in pseudarthrosis is unresolvable on plain radiographs, and life-threatening fractures in ankylosing spondylitis are invisible on standard X-rays. Conversely, over-interpreting incidental MRI abnormalities leads to unnecessary patient anxiety and inappropriate surgical interventions. This chapter equips the clinician to select the most appropriate imaging modality, interpret critical imaging patterns, and integrate radiographic findings with clinical decision-making.",
+    "decs": [
+      "Diagnostic Imaging",
+      "Radiography",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Spine",
+      "Intervertebral Disc Degeneration",
+      "Spinal Stenosis",
+      "Spondylodiscitis"
+    ],
+    "mesh": [
+      "Diagnostic Imaging",
+      "Radiography",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Spine",
+      "Intervertebral Disc Degeneration",
+      "Spinal Stenosis",
+      "Spondylodiscitis"
+    ],
+    "palavras_chave_livres": [
+      "Modic changes",
+      "Dynamic spinal radiographs",
+      "Spondylodiscitis MRI",
+      "DISH Forestier",
+      "Ankylosing spondylitis imaging",
+      "Posterior ligamentous complex",
+      "Pfirrmann grading"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Complementary Roles of Imaging Modalities",
+        "texto": "Plain radiographs assess alignment and dynamic instability under load; CT provides sub-millimeter osseous detail and fracture morphology; MRI evaluates the spinal cord, nerve roots, marrow edema, and discs; and gadolinium-enhanced MRI separates recurrent disc from epidural scar."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Differentiate Pyogenic from Tuberculous Infection",
+        "texto": "Pyogenic spondylodiscitis destroys the intervertebral disc and adjacent endplates early with intense contrast enhancement. Tuberculous spondylodiscitis (Pott disease) spares the disc initially, features extensive subligamentous spread, large cold abscesses, and angular gibbus collapse."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "CT is Mandatory for Rigid Spine Trauma",
+        "texto": "In patients with ankylosing spondylitis or DISH, minor trauma can produce highly unstable extension-distraction fractures (\"chalk stick fractures\") that are frequently missed on plain X-rays. Always perform thin-cut whole-spine CT in these patients."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração do capítulo. A pontuação e a apresentação foram uniformizadas segundo o estilo Vancouver, sem completar por suposição informações ausentes.",
+      "Hassankhani A, Freeman CW, Banks J, Parsons MS, Wessell DE, Hutchins TA, et al. ACR Appropriateness Criteria® Acute Spinal Trauma: 2024 Update. J Am Coll Radiol. 2025;22(5S):S48-S66.",
+      "Loizides A, Obernauer J, Bale R, Plaikner M, Galiano K, Gruber H. Ultrasound-guided injections in the spine. Tech Orthop. 2013;28:6-11.",
+      "Wang YX, Wu A, Santiago FR, Nogueira-Barbosa MH. Informed appropriate imaging for low back pain management: a narrative review. J Orthop Translat. 2018;15:21-34.",
+      "Dahmoush H, Gaddam DS, Ho M, Bauer DF, Bosemani T, Buchhalter J. ACR Appropriateness Criteria® Back Pain-Child: 2024 Update. J Am Coll Radiol. 2025;22(5S):S79-S107.",
+      "Fardon DF, Willians AL, Dohring EJ, Murtagh FR, Rothman G, Sze GK. Lumbar disc nomenclature: version 2.0. The Spine Journal. 2014;14(11):2525-45.",
+      "Nascimento ED, Simão MN, Nogueira-Barbosa MH. Fluid-sensitive sequences modify the Modic classification in MRI. Coluna/Columna. 2025;24(1):e292286.",
+      "Madsen R, Jensen TS, Pope M, Sorensen JS, Bendix T. The effect of body position and axial load on spinal canal morphology, an MRI study of central spinal stenosis. Spine (Phila Pa 1976). 2008;33(1):61-7.",
+      "Kanbara S, Yukawa Y, Ito K, Machino M, Kato F. Dynamic changes in the dural sac of patients with lumbar canal stenosis evaluated by multidetector-row computed tomography after myelography. Eur Spine J. 2014;23(1):74-9.",
+      "Eshed I. Imaging characteristics of diffuse idiopathic skeletal hyperostosis: more than just spinal bony bridges. Diagnostics. 2023;13(3):563.",
+      "Resnick D, Niwayama G. Radiographic and pathologic features of spinal involvement in diffuse idiopathic skeletal hyperostosis (DISH). Radiology. 1976;119(3):559-68.",
+      "Ortiz O, Levitt A, Shah L, Parsons, Argawal V, Baldwin K, et al. MS, ACR Appropriateness Criteria® Suspected Spine Infection. J Am Coll Radiol. 2021;18(11S):S488-S501.",
+      "Czuczman GJ, Mandell JC, Wessel DE, Lenchick L, Ahlawat S, Baker JC, et al. ACR Appropriateness Criteria Inflammatory Back Pain: known or suspected axial spondyloarthritis 2021 update. J Am Coll Radiol. 2021;18(11S):S340-60.",
+      "Maksymowych WP, Lambert RG, Bariliakos X, Weber U, Machado PM, Pedersen SJ, et al. Data-driven definitions for active and structural MRI lesions in the sacroiliac joint in spondyloarthritis and their predictive utility. Rheumatology. 2021;60(10):4778-89."
+    ],
+    "seo": {
+      "titulo": "Diagnostic Imaging of the Spine | Spine Surgery Treatise",
+      "meta_descricao": "Comprehensive guide to spine imaging: radiography, CT, MRI, nuclear medicine, Modic changes, stenosis, DISH, ankylosing spondylitis, and spondylodiscitis.",
+      "resumo_chamada": "Master diagnostic imaging of the spine: selection of radiography, CT, and MRI, differential diagnosis of infections and inflammatory disorders, and trauma evaluation.",
+      "slug": "diagnostic-imaging-of-the-spine"
+    }
+  },
+  "16": {
+    "numero": 16,
+    "titulo": "Differential Diagnosis: Spinal Disorders and Orthopedic Conditions",
+    "secao": "",
+    "autores": [
+      "Maria Fernanda Silber Caffaro",
+      "Rafael Moraes Trincado",
+      "Jorge Rafael Durigan"
+    ],
+    "contexto": "Axial neck or back pain and radiating limb pain frequently originate from adjacent or distant non-spinal musculoskeletal structures rather than primary vertebral pathology. Because the vertebral column spans from the occiput to the sacrum and maintains intimate neural, mechanical, and kinetic-chain relationships with the shoulder girdle, thoracic rib cage, pelvic ring, hip joints, and peripheral nerves, non-spinal conditions frequently mimic spinal disorders. In the cervical region, rotator cuff tendinopathy, subacromial impingement, glenohumeral osteoarthritis, and thoracic outlet syndrome (TOS) can mimic cervical radiculopathy. In the thoracic region, costovertebral/costotransverse joint dysfunction, intercostal neuralgia, rib fractures, and slipping rib syndrome can mimic thoracic radiculopathy or disc disease. In the lumbosacral region, hip osteoarthritis (\"hip-spine syndrome\"), sacroiliac joint dysfunction, trochanteric bursitis (greater trochanteric pain syndrome [GTPS]), piriformis syndrome, plantar fasciitis, and common peroneal nerve entrapment at the fibular head can closely simulate lumbar disc herniation, radiculopathy, or spinal stenosis. Because asymptomatic degenerative disc bulges and facet arthrosis are ubiquitous on MRI, discovering a radiographic abnormality does not establish causality. A structured clinical history, regional joint physical examination, provocative maneuvers, and selective diagnostic anesthetic injections are essential for distinguishing true spinal disorders from mimicking orthopedic conditions.",
+    "objetivo": "To present the primary orthopedic differential diagnoses of clinical symptoms attributed to the cervical, thoracic, and lumbar spine. The reader should be able to systematically characterize pain patterns; examine adjacent joints (shoulder, ribs, sacroiliac joint, hip); perform and interpret validated provocative orthopedic maneuvers; utilize diagnostic anesthetic blocks and electrodiagnostic testing; and distinguish primary spinal pathologies from mimicking or coexisting musculoskeletal disorders.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Clinical Reasoning: Avoiding the MRI Trap",
+        "texto": "Diagnostic reasoning begins with detailed symptom mapping using the OPQRST mnemonic: exact anatomical origin, pain radiation boundaries, aggravating motions, and relieving positions. A major pitfall in spine surgery is the \"MRI trap\"—attributing symptoms to asymptomatic degenerative changes (present in >40% of asymptomatic adults) without establishing clinical concordance. Clinicians must confirm that the anatomical location, dermatomal/myotomal distribution, and provocative maneuvers match the radiological abnormality before initiating invasive treatment."
+      },
+      {
+        "subtitulo": "Cervical Region: Spine vs. Shoulder and Entrapment Neuropathies",
+        "texto": "Cervical radiculopathy causes dermatomal pain radiating below the elbow, aggravated by neck extension/rotation (positive Spurling test) and relieved by shoulder abduction (positive Bakody sign). Shoulder pathologies (rotator cuff tear, subacromial bursitis, adhesive capsulitis) cause pain localized over the lateral deltoid that does not radiate below the elbow, aggravated by overhead arm elevation, internal rotation, and active shoulder abduction (positive Neer, Hawkins-Kennedy, and Jobe empty-can tests) with normal neurological examination. Thoracic outlet syndrome (TOS) produces diffuse arm paresthesias and vascular symptoms exacerbated by elevated arm maneuvers (Roos and Adson tests). Peripheral entrapments (carpal tunnel, cubital tunnel) feature localized focal nerve compression without neck pain."
+      },
+      {
+        "subtitulo": "Thoracic Region: Spine vs. Thoracic Cage and Costovertebral Joints",
+        "texto": "Thoracic spine disorders (herniations, fractures, tumors) produce dermatomal band-like radiation around the chest wall, exacerbated by axial loading and coughing. Thoracic cage conditions—such as costovertebral/costotransverse joint arthrosis, costochondritis (Tietze syndrome), sternoclavicular arthritis, and slipping rib syndrome (hypermobility of the 8th–10th false ribs, positive hooking maneuver)—cause localized chest wall tenderness reproduced by direct anterior-posterior rib cage compression, trunk twisting, or deep inspiration, without true neurological deficits."
+      },
+      {
+        "subtitulo": "Lumbar Region: Hip-Spine Syndrome, SI Joint, and Peripheral Nerves",
+        "texto": "Hip osteoarthritis produces anterior groin and buttock pain that radiates along the anteromedial thigh to the knee, aggravated by weight-bearing and hip internal rotation (restricted internal rotation, positive Patrick FABER test, antalgic Trendelenburg gait). Sacroiliac (SI) joint dysfunction produces pain below the L5 level over the posterior superior iliac spine (Fortin finger test), buttock, and posterior thigh, reproduced by SI stress tests (distraction, compression, thigh thrust, FABER, Gaenslen tests; 3 or more positive tests yield >90% sensitivity). Greater trochanteric pain syndrome (GTPS) causes pinpoint tenderness over the lateral greater trochanter, aggravated by lying on the affected side. Piriformis syndrome causes sciatic notch tenderness without true spinal motor/sensory deficits. Common peroneal nerve entrapment at the fibular head causes foot drop with isolated weakness of ankle dorsiflexion and eversion (preserving ankle inversion and hip abduction) and focal Tinel sign at the fibular neck."
+      }
+    ],
+    "aplicacao_clinica": "In clinical practice, the physical examination must systematically interrogate adjacent joints before confirming a spinal diagnosis. When a patient presents with neck and shoulder pain, examine both cervical range of motion with Spurling test and active shoulder abduction with Hawkins/Neer tests. If shoulder active and passive motion is limited and painful, administer a diagnostic subacromial local anesthetic injection: immediate pain relief confirms shoulder impingement as the primary pain driver. In a patient with buttock, thigh, and groin pain with both lumbar stenosis and severe hip osteoarthritis on radiographs (hip-spine syndrome), evaluate hip internal rotation and consider an intra-articular hip joint lidocaine injection. If hip injection resolves the predominant groin/thigh pain, total hip arthroplasty should precede lumbar decompression. In refractory buttock pain, a fluoroscopically guided sacroiliac joint injection achieving >=70–80% pain relief confirms the SI joint as the primary pain generator, avoiding unnecessary lumbar fusion.",
+    "mensagem_central": "Differential diagnosis of spinal complaints requires strict concordance between clinical history, regional joint examination, neurological localization, and neuroimaging. Radiating limb pain is not synonymous with compressive radiculopathy, and an abnormal spine MRI does not prove causality. Systematic examination of the shoulder, thoracic cage, hip, sacroiliac joint, and peripheral nerves—supplemented by targeted diagnostic anesthetic blocks—differentiates primary spinal disorders from mimicking orthopedic conditions.",
+    "por_que_importa": "Operating on a spinal disc herniation or performing lumbar decompression in a patient whose true pain generator is hip osteoarthritis, rotator cuff arthropathy, or sacroiliac joint dysfunction represents a catastrophic diagnostic failure that leaves the patient symptomatic. This chapter organizes the clinical and orthopedic differential diagnosis by region, equipping clinicians with validated provocative tests and diagnostic injection protocols to correctly pinpoint the pain source and deliver appropriate care.",
+    "decs": [
+      "Diagnosis, Differential",
+      "Spinal Diseases",
+      "Joint Diseases",
+      "Rotator Cuff Injuries",
+      "Osteoarthritis, Hip",
+      "Sacroiliac Joint",
+      "Peripheral Nerve Injuries",
+      "Physical Examination"
+    ],
+    "mesh": [
+      "Diagnosis, Differential",
+      "Spinal Diseases",
+      "Joint Diseases",
+      "Rotator Cuff Injuries",
+      "Osteoarthritis, Hip",
+      "Sacroiliac Joint",
+      "Peripheral Nerve Injuries",
+      "Physical Examination"
+    ],
+    "palavras_chave_livres": [
+      "Hip-spine syndrome",
+      "Rotator cuff vs. radiculopathy",
+      "Sacroiliac joint dysfunction",
+      "Patrick FABER test",
+      "Diagnostic joint blocks",
+      "Greater trochanteric pain syndrome",
+      "Common peroneal nerve entrapment"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Avoid the MRI Causality Trap",
+        "texto": "Asymptomatic disc bulges, facet arthrosis, and foraminal narrowing are ubiquitous on spine MRI in healthy adults. Never attribute symptoms to a radiographic abnormality without demonstrating clinical concordance through dermatomal pain mapping and physical exam."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Deciphering Hip-Spine Syndrome",
+        "texto": "Groin pain aggravated by walking and restricted hip internal rotation indicate primary hip osteoarthritis, whereas buttock/thigh pain relieved by lumbar flexion indicates spinal stenosis. When both coexist, perform an intra-articular hip local anesthetic injection to identify the primary pain driver."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Diagnostic Blocks Resolve Diagnostic Dilemmas",
+        "texto": "When shoulder, sacroiliac, or hip pathology overlaps with cervical or lumbar spine MRI findings, targeted image-guided local anesthetic injections (subacromial, intra-articular hip, or SI joint) providing >=70–80% immediate relief confirm the true pain generator before undertaking spinal surgery."
+      }
+    ],
+    "referencias": [
+      "Moore KL, Dalley AF, Agur AMR. Anatomia orientada para a clínica. 7. ed. Rio de Janeiro: Guanabara Koogan; 2014.",
+      "Deyo RA, Weinstein JN. Low back pain. N Engl J Med. 2001;344(5):363-70.",
+      "Henschke N, Maher CG, Refshauge KM, et al. Prevalence of and screening for serious spinal pathology in patients presenting to primary care settings with acute low back pain. Arthritis Rheum. 2009;60(10):3072-80.",
+      "Bogduk N. Clinical anatomy of the lumbar spine and sacrum. 5th ed. Philadelphia: Elsevier; 2012.",
+      "Ghasemi M, Mousavi M, Bayat M, et al. Differentiating spinal from extraspinal causes of back pain. Clin Neurol Neurosurg. 2019;181:105-112.",
+      "Tarulli AW, Raynor EM. Lumbosacral radiculopathy. Neurol Clin. 2007;25(2):387-405.",
+      "Modic MT, Ross JS. Lumbar degenerative disk disease. Radiology. 2007;245(1):43-61.",
+      "Whitecloud TS, Seago R. Degenerative conditions of the lumbar spine. In: Bridwell KH, DeWald RL, editors. The textbook of spinal surgery. 2nd ed. Philadelphia: Lippincott-Raven; 1997. p. 1847-78.",
+      "Ross JS, Moore KR. Imaging of the spine. 2nd ed. Philadelphia: Elsevier Saunders; 2010.",
+      "Dumitru D, Amato AA, Zwarts MJ. Electrodiagnostic medicine. 2nd ed. Philadelphia: Hanley & Belfus; 2002.",
+      "Sweis R, Luketich SK, Zhou Y, et al. Diagnostic imaging in spine care: evolving concepts and challenges. Orthop Clin North Am. 2021;52(4):379-91.",
+      "Hosny A, Parmar C, Quackenbush J, Schwartz LH, Aerts HJWL. Artificial intelligence in radiology. Nat Rev Cancer. 2018;18(8):500-10.",
+      "Hoppenfeld S. Exame físico da coluna vertebral e extremidades. 4. ed. Rio de Janeiro: Guanabara Koogan; 2016.",
+      "Brinjikji W, Luetmer PH, Comstock B, et al. Systematic literature review of imaging features of spinal degeneration in asymptomatic populations. AJNR Am J Neuroradiol. 2015;36(4):811-6.",
+      "Jarvik JG, Deyo RA. Diagnostic evaluation of low back pain with emphasis on imaging. Ann Intern Med. 2002;137(7):586-97.",
+      "Le Huec JC, Saddiki R, Franke J, Rigal J, Aunoble S. Equilibrium of the human body and the gravity line: the basics. Eur Spine J. 2011;20(Suppl 5):S558-63.",
+      "Kujala UM, Orava S. Ischial pain due to piriformis syndrome. Scand J Rehabil Med. 1991;23(1):33-6.",
+      "Fejer R, Kyvik KO, Hartvigsen J. The prevalence of neck pain in the world population: a systematic critical review of the literature. Eur Spine J. 2006;15(6):834-848.",
+      "Cohen SP. Epidemiology, diagnosis, and treatment of neck pain. Mayo Clin Proc. 2015;90(2):284-299.",
+      "Wong JJ, Côté P, Quesnele JJ, Stern PJ, Mior SA. The course and prognostic factors of symptomatic cervical disc herniation with radiculopathy: a systematic review of the literature. Spine J. 2014;14(8):1781-1789.",
+      "Radhakrishnan K, Litchy WJ, O’Fallon WM, Kurland LT. Epidemiology of cervical radiculopathy: a population-based study from Rochester, Minnesota, 1976 through 1990. Brain. 1994;117(2):325-335.",
+      "Childress MA, Becker BA. Nonoperative management of cervical radiculopathy. Am Fam Physician. 2016;93(9):746-754.",
+      "Fish DE, Gerstman BA, Lin V. Evaluation of the patient with neck versus shoulder pain. Phys Med Rehabil Clin N Am. 2011;22(3):395-410, vii. doi:10.1016/j.pmr.2011.03.009.",
+      "Maigne JY, Vautravers P. Mechanisms of thoracic pain. Rev Rhum Engl Ed. 2002;69(5):407-12.",
+      "Hegedus EJ, Stern B, Tarara DT, et al. Thoracic spine pain: diagnosis and management. J Orthop Sports Phys Ther. 2022;52(1):CPG1-CPG48.",
+      "Bogduk N. The anatomy and pathophysiology of neck pain. Phys Med Rehabil Clin N Am. 2003;14(3):455-72.",
+      "Bakhsh W, Saleh A, Yokogawa N, Gruber J, Rubery PT, Mesfin A. Thoracic spine fractures: evaluation and treatment. Orthop Clin North Am. 2014;45(4):529-36.",
+      "Lee CH, Hyun SJ, Kim KJ, Jahng TA, Kim HJ. Thoracic disc herniation: surgical treatment strategies and outcomes. J Korean Neurosurg Soc. 2020;63(3):319-28.",
+      "Hadler NM. Thoracic pain syndromes. In: Spinal disorders: fundamentals of diagnosis and treatment. Philadelphia: Lippincott Williams & Wilkins; 1997. p. 417-27.",
+      "Simons DG, Travell JG, Simons LS. Myofascial pain and dysfunction: the trigger point manual. Vol. 1, Upper half of body. 2nd ed. Baltimore: Lippincott Williams & Wilkins; 1999.",
+      "Gerwin RD. A review of myofascial pain and fibromyalgia: factors that promote their persistence. Acupunct Med. 2005;23(3):121-34.",
+      "Kibler WB, Sciascia A. Scapular dyskinesis and its relation to shoulder pain. J Am Acad Orthop Surg. 2010;18(6):350-60.",
+      "Lewis JS. Rotator cuff tendinopathy. Br J Sports Med. 2009;43(4):236-41.",
+      "Frost A, Robinson CM. Capsular constraints in shoulder stability. Shoulder Elbow. 2015;7(2):78-84.",
+      "Chang EY, Yu JS, Resnick DL. Imaging of stress fractures in the spine. Radiol Clin North Am. 2010;48(5):1083-103.",
+      "Wolfe F, Michaud K. Costochondritis, costosternal syndrome, and Tietze’s syndrome. In: Clinical and Experimental Rheumatology. 2009;27(1):1-5.",
+      "Quinn SF, Sheley RC, Demlow TA, Szumowski J. Iliopsoas bursitis: a rare cause of lower thoracic pain. Radiology. 1991;180(1):261-2.",
+      "Rudwaleit M, Haibel H, Baraliakos X, et al. The early diagnosis of axial spondyloarthritis. Nat Rev Rheumatol. 2012;8(5):262-71.",
+      "Wolfe F, Walitt B, Perrot S, Rasker JJ, Häuser W. Fibromyalgia diagnosis and biased assessment: sex, prevalence and bias. PLoS One. 2018;13(9):e0203755.",
+      "Brinjikji W, Diehn FE, Jarvik JG, et al. MRI findings of disc degeneration in asymptomatic populations: a systematic review. Spine J. 2015;15(6):1195-205.",
+      "Smith J, et al. Current concepts in the diagnosis and management of spinal pain. SN Compr Clin Med. 2022.",
+      "Reiman MP, et al. Diagnostic accuracy of clinical tests of the hip. Br J Sports Med. 2013.",
+      "Smith J, et al. Current concepts in the diagnosis and management of spinal pain. SN Compr Clin Med. 2022.",
+      "Reiman MP, et al. Diagnostic accuracy of clinical tests of the hip. Br J Sports Med. 2013.",
+      "Murphy NJ, et al. Hip osteoarthritis: etiopathogenesis. Adv Ther. 2016.",
+      "Brown MD, et al. Differential diagnosis hip vs spine. Clin Orthop Relat Res. 2004.",
+      "Martin RL, et al. Clinical examination of hip. J Sport Rehabil. 2009.",
+      "Deshmukh AJ, et al. Diagnostic hip injection. J Arthroplasty. 2010.",
+      "Guermazi A, et al. Imaging of osteoarthritis. Rheum Dis Clin North Am. 2013.",
+      "Entrapment neuropathies of the lower extremity. Med Clin North Am. 2019;103(2):371-82.",
+      "Diagnostic approach to lower limb entrapment neuropathies. Diagnostics. 2023;13(21):3385.",
+      "Stump PR, et al. Lombociatalgia. Rev Dor. 2016;17(Supl 1):S63-6.",
+      "Cohen SP, Chen Y, Neufeld NJ. Sacroiliac joint pain: a comprehensive review. Expert Rev Neurother. 2013;13(1):99-116.",
+      "Vleeming A, et al. The sacroiliac joint: anatomy and clinical implications. J Anat. 2012;221(6):537-67.",
+      "Szadek KM, et al. Diagnostic validity of sacroiliac joint pain criteria. J Pain. 2009;10(4):354-68.",
+      "Fortin JD, et al. Sacroiliac joint pain referral patterns. Spine. 1994;19(13):1483-9.",
+      "van der Wurff P, et al. Sacroiliac joint pain provocation tests. Arch Phys Med Rehabil. 2006;87(1):10-4.",
+      "Laslett M, et al. Diagnosis of sacroiliac joint pain. Man Ther. 2005;10(3):207-18.",
+      "Slipman CW, et al. Sacroiliac joint pain referral zones. Arch Phys Med Rehabil. 2000;81(3):334-8.",
+      "Weber U, et al. MRI in spondylarthritis. Arthritis Rheum. 2010;62(10):3048-58.",
+      "Hansen H, et al. Therapeutic effectiveness of sacroiliac joint interventions. Pain Physician. 2012;15(1):E247-78.",
+      "Braun J, et al. Management of ankylosing spondylitis. Ann Rheum Dis. 2011;70(6):896-904.",
+      "Stuge B, et al. Stabilizing exercises for pelvic girdle pain. Spine. 2004;29(4):351-9.",
+      "Cohen SP, et al. Radiofrequency denervation for sacroiliac joint pain. Reg Anesth Pain Med. 2009;34(3):206-14.",
+      "Riddle DL, Schappert SM. Epidemiology of plantar fasciitis. Foot Ankle Int. 2004;25(5):303-10.",
+      "Martin RL, et al. Heel pain—plantar fasciitis. J Orthop Sports Phys Ther. 2014;44(11):A1-33.",
+      "Wearing SC, et al. Pathomechanics of plantar fasciitis. Sports Med. 2006;36(7):585-611.",
+      "Cole C, et al. Plantar fasciitis: diagnosis and therapy. Am Fam Physician. 2005;72(11):2237-42.",
+      "Urits I, et al. Plantar fasciitis review. Curr Pain Headache Rep. 2021;25(2):8.",
+      "McPoil TG, et al. Clinical practice guidelines for plantar fasciitis. J Orthop Sports Phys Ther. 2008;38(4):A1-A18.",
+      "Lareau CR, et al. Plantar heel pain: diagnosis and management. J Am Acad Orthop Surg. 2014;22(6):372-80."
+    ],
+    "seo": {
+      "titulo": "Differential Diagnosis: Spinal Disorders and Orthopedic Conditions | Treatise",
+      "meta_descricao": "Clinical guide to orthopedic differential diagnosis in spine surgery: hip-spine syndrome, rotator cuff vs. cervical radiculopathy, SI joint dysfunction, and diagnostic blocks.",
+      "resumo_chamada": "Master the differential diagnosis between spine disorders and orthopedic conditions: hip-spine syndrome, shoulder impingement, sacroiliac dysfunction, and diagnostic injections.",
+      "slug": "differential-diagnosis-spinal-pathologies-and-orthopedic-conditions"
+    }
+  }
+}

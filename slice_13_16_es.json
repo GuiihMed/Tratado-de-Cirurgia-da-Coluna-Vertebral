@@ -1,0 +1,535 @@
+{
+  "13": {
+    "numero": 13,
+    "titulo": "Neurofisiología en el Diagnóstico de las Patologías de la Columna",
+    "secao": "",
+    "autores": [
+      "Ricardo José Rodriguez Ferreira",
+      "Patrícia Toscano Barreto Nogueira",
+      "Roberto Waldesmand Farias Pontes"
+    ],
+    "contexto": "La neurofisiología clínica diagnóstica constituye una extensión funcional indispensable de la anamnesis, el examen neurológico y la neuroimagen en la patología de la columna vertebral. Mientras que la resonancia magnética (RM) y la tomografía computarizada (TC) documentan la morfología anatómica y el estrechamiento del conducto o foramen, la electroneuromiografía (ENMG) y los estudios de conducción nerviosa evalúan la integridad fisiológica y la viabilidad de los axones motores, sensitivos y unidades motoras. La neurofisiología es determinante para confirmar o descartar una radiculopatía compresiva, definir su agudeza (aguda, subaguda o crónica con reinervación), cuantificar el daño axonal, diferenciar una radiculopatía de neuropatías por atrapamiento periférico (síndrome del túnel carpiano, neuropatía cubital o compresión del nervio peroneo en la cabeza del peroné), polineuropatías (\"síndrome de doble aplastamiento\" o double crush) y enfermedades de motoneurona (esclerosis lateral amiotrófica) o plexopatías. La actividad espontánea de denervación (fibrilaciones, ondas agudas positivas) requiere entre 18 y 21 días tras la lesión axonal para manifestarse en músculos distales, aunque aparece a los 7–10 días en la musculatura paravertebral. Los potenciales de acción sensitivos (SNAP) se conservan normales en las radiculopatías preganglionares (debido a que el ganglio anexo a la raíz dorsal [GARD] se ubica distal al sitio de compresión intradural/foraminal), constituyendo la clave electrodiagnóstica para diferenciar radiculopatías de plexopatías.",
+    "objetivo": "Presentar los métodos neurofisiológicos utilizados en la evaluación de las afecciones raquídeas y demostrar su aplicación en la diferenciación entre radiculopatía, plexopatía, neuropatía por atrapamiento, polineuropatía y enfermedad de motoneurona. Al finalizar, el lector deberá interpretar los estudios de conducción nerviosa (CMAP, SNAP, ondas F, reflejo H); comprender los hallazgos de la electromiografía de aguja (actividad espontánea, morfología de potenciales de unidad motora, patrones de reclutamiento); reconocer el tiempo fisiológico de denervación; y valorar la preservación de los SNAP en lesiones preganglionares.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Neurofisiología clínica e integración diagnóstica",
+        "texto": "La electrofisiología diagnóstica comprende los estudios de conducción nerviosa (NCS), respuestas tardías (ondas F, reflejo H) y electromiografía de aguja (EMG). Los estudios de conducción motora y sensitiva miden la amplitud del potencial de acción muscular compuesto (CMAP) y del potencial de acción del nervio sensitivo (SNAP), así como velocidades de conducción y latencias. Las respuestas tardías evalúan segmentos proximales: las ondas F analizan la conducción motora retrógrada hasta el asta anterior, mientras que el reflejo H (arco monosináptico S1 vía nervio tibial) evalúa las vías aferentes sensitivas y eferentes motoras. La EMG de aguja analiza la actividad de inserción, la presencia de actividad espontánea anormal en reposo (fibrilaciones, ondas agudas positivas, fasciculaciones) y los potenciales de unidad motora (PUM) durante la contracción voluntaria."
+      },
+      {
+        "subtitulo": "Lesión preganglionar vs. postganglionar (Preservación del SNAP)",
+        "texto": "El ganglio de la raíz dorsal (GARD) se sitúa en el foramen intervertebral. En las radiculopatías compresivas vertebrales típicas, la compresión ocurre a nivel preganglionar (proximal al GARD). Por ello, la degeneración walleriana ocurre solo en el axón central hacia la médula, mientras que el cuerpo neuronal en el GARD y el axón sensitivo periférico permanecen intactos. En consecuencia, la amplitud del potencial de acción sensitivo (SNAP) permanece completamente normal en una radiculopatía preganglionar, a pesar de que el paciente presente hipoestesia clínica en el dermatoma. Por el contrario, en lesiones postganglionares (plexopatías, sección nerviosa periférica o atrapamientos), el axón periférico degenera y el SNAP disminuye o desaparece. Este principio es el pilar de la localización electrodiagnóstica."
+      },
+      {
+        "subtitulo": "Cronología: Cascada de denervación y reinervación",
+        "texto": "Tras una compresión axonal aguda, los cambios electromiográficos evolucionan de manera predecible. La actividad espontánea de denervación (fibrilaciones y ondas agudas positivas) aparece primero en la musculatura paravertebral (inervada por los ramos dorsales posteriores) a los 7–10 días, luego en músculos proximales de la extremidad (14–18 días) y finalmente en músculos distales a los 21–28 días. Realizar una ENMG antes de las 3 semanas de inicio del cuadro genera falsos negativos para denervación distal. En fases crónicas (>2–3 meses), los brotes axonales colaterales generan PUM polifásicos de gran amplitud y larga duración con patrón de reclutamiento reducido."
+      },
+      {
+        "subtitulo": "Diagnóstico diferencial: Atrapamiento, Doble Compresión y ELA",
+        "texto": "El electrodiagnóstico resuelve encrucijadas clínicas: 1) Diferencia radiculopatía C8–T1 de síndrome del túnel carpiano o neuropatía cubital; 2) Diferencia radiculopatía L5 (denervación en tibial anterior, extensor largo del hallux y tensor de la fascia lata con SNAP peroneo superficial normal) de neuropatía del nervio peroneo común en la cabeza del peroné (músculos peroneos afectados, tensor de la fascia lata indemne y SNAP ausente); 3) Identifica el \"Síndrome de Doble Compresión\" (Double Crush), donde una compresión radicular proximal incrementa la vulnerabilidad del axón distal al atrapamiento; 4) Detecta polineuropatías sensitivomotoras difusas; y 5) Descarta Esclerosis Lateral Amiotrófica (ELA), caracterizada por denervación activa difusa en múltiples segmentos (bulbar, cervical, torácico, lumbosacro) con estudios de conducción sensitiva normales."
+      }
+    ],
+    "aplicacao_clinica": "La electroneuromiografía debe solicitarse cuando exista discrepancia clínico-radiológica, cuando existan múltiples niveles de estenosis en la RM y se requiera identificar la raíz sintomática culpable antes de la cirugía, o cuando se sospeche una neuropatía periférica asociada. El estudio debe programarse al menos 3 semanas después del inicio de los síntomas. En pacientes con dolor en hombro y cuello, la ENMG distingue radiculopatía C5 de patología del manguito rotador o neuropatía supraescapular. En el pie caído, confirma radiculopatía L5 frente a lesión del nervio peroneo común. En pacientes con estenosis lumbar multinivel y neuropatía diabética, la ENMG cuantifica objetivamente el compromiso radicular motor activo para justificar la descompresión. La exploración de músculos paravertebrales confirma compromiso preganglionar, si bien cirugías previas generan cambios residuales que deben interpretarse con cautela.",
+    "mensagem_central": "La neurofisiología clínica diagnóstica vincula la anatomía radiológica con el examen neurológico al evaluar la viabilidad funcional de los axones motores y sensitivos. La conservación del potencial sensitivo (SNAP) en un dermatoma con hipoestesia identifica una compresión radicular preganglionar, mientras que la electromiografía de aguja (óptima tras 3 semanas) diferencia denervación activa, reinervación crónica, neuropatías por atrapamiento y enfermedad de motoneurona.",
+    "por_que_importa": "Operar alteraciones anatómicas en la RM que no se corresponden con una radiculopatía activa funcional es una causa principal de fracaso quirúrgico raquídeo. La conservación del SNAP permite diferenciar una radiculopatía vertebral de una plexopatía; el mapeo miotómico distingue una hernia L5 de una parálisis del nervio peroneo; y el examen paravertebral confirma el compromiso radicular. Comprender la indicación y cronología electrodiagnóstica previene intervenciones quirúrgicas innecesarias y asegura un tratamiento dirigido a la verdadera causa.",
+    "decs": [
+      "Electromiografía",
+      "Conducción Nerviosa",
+      "Radiculopatía",
+      "Potenciales de Acción",
+      "Enfermedades del Sistema Nervioso Periférico",
+      "Enfermedades de la Motoneurona",
+      "Enfermedades de la Médula Espinal",
+      "Diagnóstico Diferencial"
+    ],
+    "mesh": [
+      "Electromyography",
+      "Neural Conduction",
+      "Radiculopathy",
+      "Action Potentials",
+      "Peripheral Nervous System Diseases",
+      "Motor Neuron Disease",
+      "Spinal Cord Diseases",
+      "Differential Diagnosis"
+    ],
+    "palavras_chave_livres": [
+      "Potencial de acción sensitivo",
+      "Radiculopatía preganglionar",
+      "Fibrilaciones musculares",
+      "Síndrome de doble aplastamiento",
+      "Electromiografía de aguja",
+      "Reflejo H"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "El SNAP normal indica lesión preganglionar",
+        "texto": "En las radiculopatías vertebrales compresivas, el ganglio de la raíz dorsal (GARD) se encuentra distal al sitio de compresión. Por tanto, el potencial de acción del nervio sensitivo (SNAP) permanece completamente normal a pesar de la hipoestesia clínica, diferenciando la radiculopatía de una plexopatía o lesión periférica."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Esperar 3 semanas para la EMG de aguja",
+        "texto": "Los potenciales de denervación activa (fibrilaciones y ondas agudas positivas) tardan entre 18 y 21 días en manifestarse en músculos distales tras una lesión axonal aguda (7–10 días en paravertebrales). Solicitar la EMG antes de las 3 semanas genera falsos negativos."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Diferenciar pie caído: L5 vs. Nervio Peroneo",
+        "texto": "En el pie caído, la radiculopatía L5 causa denervación en músculos dependientes del peroneo (tibial anterior, extensor del hallux) y músculos extrínsecos (tensor de la fascia lata, glúteo medio) con SNAP normal. La compresión del peroneo en la cabeza del peroné respeta el glúteo medio/TFL y presenta SNAP ausente."
+      }
+    ],
+    "referencias": [
+      "Preston DC, Shapiro BE. Electromyography and neuromuscular disorders: clinical-electrophysiologic-ultrasound correlations. 4th ed. Philadelphia: Elsevier; 2021.",
+      "Dillingham TR, et al. Evaluation of persons with suspected lumbosacral and cervical radiculopathy: electrodiagnostic assessment and implications for treatment and outcomes. Part I. Muscle Nerve. 2020 Oct;62(4):462-73. doi:10.1002/mus.26997.",
+      "DePalma MJ, et al. What is the source of chronic low back pain and does age play a role? Pain Med. 2011 Feb;12(2):224-33. doi:10.1111/j.1526-4637.2010.01045.x.",
+      "Manchikanti L, et al. Evaluation of the relative contributions of various structures in chronic low back pain. Pain Physician. 2001 Oct;4(4):308-16. Erratum in: Pain Physician. 2002 Jan;5(1):114.",
+      "Dumitru D, Zwarts MJ. Radiculopathies. In: Dumitru D, et al. Electrodiagnostic medicine. 2nd ed. Philadelphia: Hanley & Belfus; 2002. p. 713-776.",
+      "Jerath N, Kimura J. F wave, A wave, H reflex, and blink reflex. Handb Clin Neurol. 2019;160:225-39. doi:10.1016/B978-0-444-64032-1.00015-1.",
+      "Preston DC, Shapiro BE. Radiculopathy. In: Electromyography and neuromuscular disorders: clinical-electrophysiologic-ultrasound correlations. 4th ed. Philadelphia: Elsevier; 2021. p. 557-576.",
+      "Dillingham TR. Evaluating the patient with suspected radiculopathy. PM R. 2013 May;5(5 Suppl):S41-9. doi:10.1016/j.pmrj.2013.03.015.",
+      "Gupta R, et al. Human motor endplate remodeling after traumatic nerve injury. J Neurosurg. 2020 Sep 18;135(1):220-7. doi:10.3171/2020.8.JNS201461.",
+      "Park JH, et al. Electrodiagnostic characteristics of upper lumbar stenosis: discrepancy between neurological and structural levels. Muscle Nerve. 2020 May;61(5):580-6. doi:10.1002/mus.26844.",
+      "Boogaarts HD, Bartels RH. Prevalence of cervical spondylotic myelopathy. Eur Spine J. 2015 Apr;24 Suppl 2:139-41. doi:10.1007/s00586-013-2781-x.",
+      "Woods BI, Hilibrand AS. Cervical radiculopathy: epidemiology, etiology, diagnosis, and treatment. J Spinal Disord Tech. 2015 Jun;28(5):E251-9. doi:10.1097/BSD.0000000000000284.",
+      "Cavazos DR, et al. Neuroforaminal stenosis in the lumbosacral spine: a scoping review of pathophysiology, clinical manifestations, diagnostic imaging, and treatment. Spartan Med Res J. 2023 Dec 5;8(1):87848. doi:10.51894/001c.87848.",
+      "Court C, et al. Thoracic disc herniation: surgical treatment. Orthop Traumatol Surg Res. 2018 Feb;104(1 Suppl):S31-S40. doi:10.1016/j.otsr.2017.04.022.",
+      "Frey SE, Riggs JE. Diabetic truncal neuropathy—clinical and radiological image. Diabetes Care. 2021 Sep 21:dc211235. doi:10.2337/dc21-1235.",
+      "Saal JA, Firtch W, Saal JS, Herzog RJ. The value of somatosensory evoked potential testing for upper lumbar radiculopathy: a correlation of electrophysiologic and anatomic data. Spine (Phila Pa 1976). 1992 Jun;17(6 Suppl):S133-7. doi:10.1097/00007632-199206001-00012.",
+      "Kimura J. Somatosensory evoked potential. In: Electrodiagnosis in diseases of nerve and muscle: principles and practice. 4th ed. New York: Oxford; 2013. p. 477-510.",
+      "Chiou-Tan FY. Musculoskeletal mimics of cervical radiculopathy. Muscle Nerve. 2022 Jul;66(1):6-14. doi:10.1002/mus.27553.",
+      "Smith CC, Bevelaqua AC. Challenging pain syndromes: Parsonage-Turner syndrome. Phys Med Rehabil Clin N Am. 2014 May;25(2):265-77. doi:10.1016/j.pmr.2014.01.001.",
+      "Upton AR, McComas AJ. The double crush in nerve entrapment syndromes. Lancet. 1973 Aug 18;2(7825):359-62. doi:10.1016/S0140-6736(73)93196-6.",
+      "Gullborg EJ, et al. Surgical management of double crush syndrome: outcomes of cervical decompression with and without peripheral nerve release. J Hand Surg Glob Online. 2025 Jun 19;7(5):100770. doi:10.1016/j.jhsg.2025.100770.",
+      "Xiong C, et al. Dynamic evaluation of the cervical spine and the spinal cord of symptomatic patients using a kinetic magnetic resonance imaging technique. Clin Spine Surg. 2017 Oct;30(8):E1149-E1155. doi:10.1097/BSD.0000000000000429.",
+      "Ferreira RJR, et al. Cervical spinal surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 513-538.",
+      "Siebner HR, et al. Transcranial magnetic stimulation of the brain: what is stimulated? A consensus and critical position paper. Clin Neurophysiol. 2022 Aug;140:59-97. doi:10.1016/j.clinph.2022.04.022.",
+      "Izenberg A. Amyotrophic lateral sclerosis and other motor neuron diseases. Continuum (Minneap Minn). 2023 Oct 1;29(5):1538-63. doi:10.1212/CON.0000000000001345.",
+      "Torrieri MC, et al. Comorbidity of cervical spondylogenic myelopathy and amyotrophic lateral sclerosis: when electromyography makes the difference in diagnosis. Eur Neurol. 2020;83(6):626-9. doi:10.1159/000512269.",
+      "Glenn MD, Jabari D. Diabetic lumbosacral radiculoplexus neuropathy—diabetic amyotrophy. Neurol Clin. 2020 Aug;38(3):553-64. doi:10.1016/j.ncl.2020.03.010.",
+      "Jorgensen SP, Chiodo AE. Musculoskeletal mimics for lumbosacral radiculopathy. Part 2: specific disorders. Muscle Nerve. 2025 Jan;71(1):22-8. doi:10.1002/mus.28279.",
+      "Miller TA, Ross DC. Sciatic and tibial neuropathies. Handb Clin Neurol. 2024;201:165-81. doi:10.1016/B978-0-323-90108-6.00003-X.",
+      "Peselzon O, Colditz M, Maclachlan LR. L5 mononeuritis, an uncommon cause of foot drop: illustrative case. J Neurosurg Case Lessons. 2023 Jan 30;5(5):CASE22499. doi:10.3171/CASE22499."
+    ],
+    "seo": {
+      "titulo": "Neurofisiología en Patologías de la Columna | Tratado de Columna",
+      "meta_descricao": "Guía de neurofisiología clínica en columna: electromiografía (EMG), conducción nerviosa (NCS), preservación del SNAP, radiculopatía vs. atrapamiento y ELA.",
+      "resumo_chamada": "Domine la electromiografía y estudios de conducción nerviosa en cirugía de columna: diferenciación preganglionar del SNAP, tiempos de denervación y diagnóstico radicular.",
+      "slug": "neurofisiologia-en-el-diagnostico-de-las-patologias-de-la-columna"
+    }
+  },
+  "14": {
+    "numero": 14,
+    "titulo": "Monitorización Neurofisiológica Intraoperatoria en Cirugía de Columna",
+    "secao": "",
+    "autores": [
+      "Ricardo José Rodriguez Ferreira",
+      "Patrícia Toscano Barreto Nogueira",
+      "Roberto Waldesmand Farias Pontes"
+    ],
+    "contexto": "La monitorización neurofisiológica intraoperatoria (MNIO) proporciona una evaluación funcional continua en tiempo real del sistema nervioso central y periférico durante la cirugía raquídea. Actúa como un sistema de alerta temprana para detectar sufrimiento neural reversible, guiar maniobras correctivas y prevenir secuelas neurológicas postoperatorias permanentes. La MNIO multimodal integra potenciales evocados motores transcraneales (TcMEP), potenciales evocados somatosensoriales (SSEP), electromiografía espontánea y evocada/gatillada (sEMG y tEMG), y registros de onda D y reflejo bulbocavernoso. Cada modalidad monitoriza vías neurales distintas con perfiles de vascularización independientes: los SSEP evalúan los cordones posteriores y la vía lemniscal (arterias espinales posteriores), mientras que los TcMEP evalúan el tracto corticoespinal y las motoneuronas del asta anterior (arteria espinal anterior). Por tanto, una isquemia selectiva del territorio espinal anterior o una contusión motora puede abolir los TcMEP sin alterar los SSEP. La EMG espontánea detecta tracción o irritación radicular mecánica, y la EMG gatillada (tEMG) identifica perforaciones de la pared pedicular por tornillos. La MNIO requiere anestesia total intravenosa (TIVA) sin gases halogenados ni relajantes musculares (que bloquean los TcMEP y EMG), control de temperatura y presión arterial, y protocolos estandarizados de rescate intraoperatorio.",
+    "objetivo": "Presentar los fundamentos neurofisiológicos, modalidades, criterios de alarma y protocolos anestésicos de la monitorización neurofisiológica intraoperatoria (MNIO) en cirugía de columna. Al finalizar, el lector deberá comprender las vías evaluadas por SSEP, TcMEP, EMG, onda D y reflejos sacros; aplicar la monitorización multimodal en deformidades, mielopatía cervical, tumores intradurales y abordajes laterales mínimamente invasivos; reconocer los umbrales de alarma neurofisiológica; y ejecutar protocolos de rescate ante la pérdida aguda de señales.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Modalidades de MNIO multimodal y vías neurales",
+        "texto": "La MNIO multimodal combina modalidades complementarias: 1) Potenciales Evocados Somatosensoriales (SSEP): estimulación de nervios periféricos (tibial posterior, mediano, ulnar) con registro cortical y cervical, evaluando los cordones posteriores y la vía del lemnisco medial; 2) Potenciales Evocados Motores Transcraneales (TcMEP): estimulación eléctrica transcraneal de la corteza motora con registro en músculos diana de las extremidades, evaluando el haz corticoespinal lateral y las motoneuronas alfa; 3) Onda D: registro epidural directo con electrodo tubular que evalúa la conducción axonal piramidal pura sin depender de la unión neuromuscular; 4) EMG espontánea (sEMG): registro continuo de actividad muscular para detectar descargas neurotónicas por tracción o compresión radicular; 5) EMG gatillada (tEMG): estimulación eléctrica de tornillos pediculares para verificar integridad cortical ósea; y 6) Reflejo Bulbocavernoso (BCR): evalúa el cono medular (S2–S4) y las raíces pudendas."
+      },
+      {
+        "subtitulo": "Criterios de alarma neurofisiológica validados",
+        "texto": "Los umbrales de alarma definen deterioro significativo que exige intervención correctiva inmediata: 1) Alarma SSEP: caída >=50% en la amplitud y/o aumento >=10% en la latencia respecto a la línea de base estable; 2) Alarma TcMEP: reducción >=50–80% en la amplitud del potencial, elevación sustancial del umbral de estimulación (>100 V) o pérdida total de la respuesta muscular; 3) Alarma de Onda D: caída >=50% en la amplitud durante la resección de tumores intramedulares predice déficit motor permanente; 4) Alarma sEMG: trenes de descarga neurotónicos continuos indican irritación mecánica radicular activa; 5) EMG gatillada: umbral de estimulación <6–8 mA en columna lumbar o <5–6 mA en torácica indica perforación de la cortical pedicular medial con contacto neural."
+      },
+      {
+        "subtitulo": "Protocolo anestésico: Manejo TIVA",
+        "texto": "La anestesia influye de manera determinante en el registro de la MNIO. Los anestésicos inhalatorios halogenados (sevoflurano, desflurano, isoflurano) y el óxido nitroso suprimen la excitabilidad sináptica del asta anterior medular de forma dosis-dependiente, aboliendo los TcMEP. Por ello, es obligatorio el protocolo de Anestesia Total Intravenosa (TIVA) mediante infusiones de propofol y opioides de acción corta (remifentanilo, sufentanilo). Los bloqueadores neuromusculares (relajantes) solo se utilizan para la intubación endotraqueal y deben evitarse por completo durante la cirugía, manteniendo el tren de cuatro (TOF) en 4/4 respuestas para permitir el registro de TcMEP y EMG."
+      },
+      {
+        "subtitulo": "Indicaciones clínicas en cirugía raquídea",
+        "texto": "La indicación se adapta al riesgo quirúrgico: 1) Cirugía de deformidades (escoliosis/cifosis): monitorización continua de TcMEP y SSEP durante maniobras de derotación, distracción y osteotomías (PCO, PSO, VCR); 2) Mielopatía cervical y torácica: monitorización desde el posicionamiento de la cabeza y tracción hasta la descompresión; 3) Tumores intramedulares: combinación de TcMEP, SSEP y onda D para determinar límites de resección seguros; 4) Abordaje lateral transpsoas (LLIF): mapeo continuo con EMG gatillada direccional para sortear las ramas del plexo lumbar; 5) Artrodesis instrumentada lumbosacra: control de tornillos con tEMG y monitorización del BCR."
+      },
+      {
+        "subtitulo": "Protocolo de rescate intraoperatorio ante pérdida de señal",
+        "texto": "Ante una alarma neurofisiológica se ejecuta inmediatamente una lista de verificación multidisciplinaria: 1) Optimización sistémica: elevar la presión arterial media (PAM >80–85 mmHg para restaurar la perfusión medular), verificar normotermia (>35,5°C), hematocrito (>28–30%) y descartar bolos accidentales de anestésicos o relajantes; 2) Verificación técnica: comprobar electrodos e impedancias; 3) Intervención quirúrgica: detener inmediatamente la maniobra en curso, retirar separadores compresivos, irrigar con suero caliente, aflojar barras de corrección o fuerzas de distracción y retirar tornillos o cajas recién implantados. Si las señales no recuperan, considerar la prueba del despertar intraoperatorio (test de Stagnara)."
+      }
+    ],
+    "aplicacao_clinica": "En cirugía de deformidades, los TcMEP detectan isquemia o elongación medular minutos antes de que aparezcan cambios en los SSEP. Si ocurre una pérdida aguda de TcMEP durante la corrección de una escoliosis o tras una osteotomía VCR, el equipo quirúrgico eleva de inmediato la PAM a >85–90 mmHg, suspende la manipulación y libera la tensión de las barras de corrección. En más del 85–90% de los casos, la reversión temprana de la deformidad y la optimización hemodinámica restablecen las señales y previenen la paraplejía permanente. En la colocación de tornillos pediculares, la EMG gatillada con umbrales <6 mA alerta con precisión sobre la perforación de la pared pedicular medial, permitiendo recolocar el implante inmediatamente. En tumores intramedulares, preservar una onda D >50% asegura que el paciente conservará la marcha funcional a largo plazo.",
+    "mensagem_central": "La monitorización neurofisiológica intraoperatoria multimodal (TcMEP, SSEP, EMG, onda D) funciona como un examen neurológico continuo en el paciente anestesiado. La integración de vías motoras y sensitivas bajo anestesia total intravenosa (TIVA), el respeto a los umbrales de alarma validados (caída >=50% SSEP, >=50–80% TcMEP, tEMG <6 mA) y la aplicación inmediata de protocolos de rescate (PAM >85 mmHg, liberación de distracción) reducen drásticamente las complicaciones neurológicas en cirugía de columna.",
+    "por_que_importa": "El déficit neurológico postoperatorio es una de las complicaciones más devastadoras en cirugía de columna. La MNIO ofrece una ventana de oportunidad crítica durante la fase reversible del daño neural. Confiar únicamente en los SSEP expone al riesgo de no detectar isquemias motoras puras, mientras que operar sin protocolo TIVA anula la utilidad de los potenciales motores. Este capítulo proporciona las bases neurofisiológicas, pautas anestésicas y algoritmos de rescate esenciales para proteger el tejido neural en procedimientos complejos.",
+    "decs": [
+      "Monitorización Neurofisiológica Intraoperatoria",
+      "Potenciales Evocados Motores",
+      "Potenciales Evocados Somatosensoriales",
+      "Electromiografía",
+      "Traumatismos de la Médula Espinal",
+      "Columna Vertebral",
+      "Anestesia Intravenosa",
+      "Procedimientos Quirúrgicos Operativos"
+    ],
+    "mesh": [
+      "Intraoperative Neurophysiological Monitoring",
+      "Evoked Potentials, Motor",
+      "Evoked Potentials, Somatosensory",
+      "Electromyography",
+      "Spinal Cord Injuries",
+      "Spine",
+      "Anesthesia, Intravenous",
+      "Surgical Procedures, Operative"
+    ],
+    "palavras_chave_livres": [
+      "Potenciales evocados motores transcraneales",
+      "Potenciales somatosensoriales",
+      "Onda D",
+      "EMG gatillada",
+      "Protocolo TIVA",
+      "Perfusión medular",
+      "Algoritmo de rescate intraoperatorio"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "La monitorización debe ser multimodal",
+        "texto": "Los SSEP monitorizan los cordones posteriores (arteria espinal posterior), mientras que los TcMEP evalúan la vía motora corticoespinal (arteria espinal anterior). La isquemia anterior o contusión motora puede provocar paraplejía con SSEP completamente normales. Utilice siempre monitorización combinada TcMEP y SSEP."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Criterios de alarma neurofisiológica",
+        "texto": "Considere alarmas críticas: caída >=50% en amplitud de SSEP, pérdida >=50–80% en amplitud de TcMEP, disminución >=50% en onda D, trenes neurotónicos en sEMG o umbrales de EMG gatillada de tornillos <6 mA en columna lumbar (que indican perforación cortical medial)."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Protocolo de rescate inmediato",
+        "texto": "Ante la pérdida aguda de señales: eleve inmediatamente la Presión Arterial Media (PAM >80–85 mmHg), descarte bolos anestésicos/relajantes, detenga la manipulación quirúrgica, irrigue con suero caliente y libere barras o fuerzas de distracción. La acción temprana revierte el daño neural."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração apresentadas no capítulo. A pontuação e a disposição foram uniformizadas segundo o estilo Vancouver, sem completar por suposição informações ausentes.",
+      "Vauzelle C, et al. Functional monitoring of spinal cord activity during spinal surgery. Clin Orthop Relat Res. 1973;(93):173-8.",
+      "Ferreira RJR, et al. Spinal deformity surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 459-493.",
+      "Jahangiri FR, et al. Scoliosis corrective surgery with continuous intraoperative neurophysiological monitoring (IONM). Cureus. 2022 Oct 5;14(10):e29958. doi:10.7759/cureus.29958.",
+      "Schlaeppi JA, et al. Intraoperative neurophysiological monitoring during spinal cord stimulation surgery: a systematic review. Neuromodulation. 2023 Oct;26(7):1319-1327. doi:10.1016/j.neurom.2023.06.010.",
+      "Fehlings MG, et al. The evidence for intraoperative neurophysiological monitoring in spine surgery: does it make a difference? Spine. 2010;35(9 Suppl):S37-46.",
+      "Lall RR, et al. Intraoperative neurophysiological monitoring in spine surgery: indications, efficacy, and role of the preoperative checklist. Neurosurg Focus. 2012 Nov;33(5):E10. doi:10.3171/2012.9.FOCUS12235.",
+      "Hilibrand AS, et al. Comparison of transcranial electric motor and somatosensory evoked potential monitoring during cervical spine surgery. J Bone Joint Surg Am. 2004;86(6):1248-1253.",
+      "Jurcak V, et al. 10/20, 10/10, and 10/5 systems revisited: their validity as relative head-surface-based positioning systems. Neuroimage. 2007 Feb 15;34(4):1600-11. doi:10.1016/j.neuroimage.2006.09.024.",
+      "Abiola G, et al. Safe intraoperative neurophysiologic monitoring during posterior spinal fusion in a patient with cochlear implants. Otol Neurotol. 2018 Jun;39(5):e314-e318. doi:10.1097/MAO.0000000000001788.",
+      "Pan T, et al. Neurophysiological intraoperative monitoring in patients with cochlear implant undergoing posterior spinal fusion: a case report. JBJS Case Connect. 2022 Jan 20;12(1). doi:10.2106/JBJS.CC.21.00609.",
+      "Yellin JL, et al. Safe transcranial electric stimulation motor evoked potential monitoring during posterior spinal fusion in two patients with cochlear implants. J Clin Monit Comput. 2016 Aug;30(4):503-6. doi:10.1007/s10877-015-9730-7.",
+      "Deletis V, et al. Neurophysiological mechanisms underlying motor evoked potentials in anesthetized humans. Part 1. Recovery time of corticospinal tract direct waves elicited by pairs of transcranial electrical stimuli. Clin Neurophysiol. 2001 Mar;112(3):438-44. doi:10.1016/S1388-2457(01)00461-8.",
+      "Sala F, et al. Motor evoked potential monitoring improves outcome after surgery for intramedullary spinal cord tumors: a historical control study. Neurosurgery. 2006 Jun;58(6):1129-43; discussion 1129-43. doi:10.1227/01.NEU.0000215948.97195.58.",
+      "Ferreira RJR, et al. Cervical spinal surgery. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 513-538.",
+      "Toleikis JR, et al. Intraoperative somatosensory evoked potential monitoring: an updated position statement by the American Society of Neurophysiological Monitoring. J Clin Monit Comput. 2024 Oct;38(5):1003-1042. doi:10.1007/s10877-024-01201-x.",
+      "Jacobs MJ, et al. The value of motor evoked potentials in reducing paraplegia during thoracoabdominal aneurysm repair. J Vasc Surg. 2006 Feb;43(2):239-46. doi:10.1016/j.jvs.2005.09.042.",
+      "Skinner SA, Vodušek DB. Intraoperative recording of the bulbocavernosus reflex. J Clin Neurophysiol. 2014 Aug;31(4):313-22. doi:10.1097/WNP.0000000000000054.",
+      "Yang T, et al. Intraoperative bulbocavernosus reflex monitoring for predicting postoperative voiding dysfunction in patients with distal intraspinal tumors. J Clin Neurosci. 2024 Nov;129:110865. doi:10.1016/j.jocn.2024.110865.",
+      "Shinjo T, et al. Intraoperative feasibility of bulbocavernosus reflex monitoring during untethering surgery in infants and children. J Clin Monit Comput. 2019 Feb;33(1):155-163. doi:10.1007/s10877-018-0127-2.",
+      "Lee W. The latest trend in neuromuscular monitoring: return of the electromyography. Anesth Pain Med (Seoul). 2021 Apr;16(2):133-137. doi:10.17085/apm.21014.",
+      "Tewari A, et al. Intraoperative neurophysiological monitoring team’s communiqué with anesthesia professionals. J Anaesthesiol Clin Pharmacol. 2018 Jan-Mar;34(1):84-93. doi:10.4103/joacp.JOACP_315_17.",
+      "Boada MD, et al. Nerve injury induces a new profile of tactile and mechanical nociceptor input from undamaged peripheral afferents. J Neurophysiol. 2015 Jan 1;113(1):100-9. doi:10.1152/jn.00506.2014.",
+      "Walker CT, et al. Neuroanesthesia guidelines for optimizing transcranial motor evoked potential neuromonitoring during deformity and complex spinal surgery: a Delphi consensus study. Spine. 2020;45(13):911-920.",
+      "Yang J, Huang Z, Yin J, Deng IL, Xie XB, Li FB, et al. A proposed classification system of guiding surgical strategy in cases of severe spinal deformity based on spinal cord function. Eur Spine J. 2016;25(6):1821-9.",
+      "Kottenberg-Assenmacher E, et al. Hypothermia does not alter somatosensory evoked potential amplitude and global cerebral oxygen extraction during marked sodium nitroprusside-induced arterial hypotension. Anesthesiology. 2003 May;98(5):1112-8. doi:10.1097/00000542-200305000-00013.",
+      "MacDonald DB. Overview on criteria for MEP monitoring. J Clin Neurophysiol. 2017 Jan;34(1):4-11. doi:10.1097/WNP.0000000000000302.",
+      "Ferreira RJR, Segura MJ. A proposed new algorithm for decision making in the face of the neurophysiological alarms during spinal deformity surgeries. Oral presentation: New proposals for Tc-MEP interpretation in spinal deformities and intramedullary spinal cord umor (MSCT) surgeries; 31st International Congress of Clinical Neurophysiology—IFCN; 2018 May; Washington, DC.",
+      "Calancie B, et al. “Threshold-level” multipulse transcranial electrical stimulation of motor cortex for intraoperative monitoring of spinal motor tracts: description of method and comparison to somatosensory evoked potential monitoring. J Neurosurg. 1998;88:457-470.",
+      "Kothbauer KF, et al. Motor-evoked potential monitoring for intramedullary spinal cord tumor surgery: correlation of clinical and neurophysiological data in a series of 100 consecutive procedures. Neurosurg Focus. 1998;4(5):3.",
+      "Quinones-Hinojosa A, et al. Spinal cord mapping as an adjunct for resection of intramedullary tumors: surgical technique with case illustrations. Neurosurgery. 2002;51:1199-1206.",
+      "Langeloo DD, et al. Criteria for transcranial electrical motor evoked potential monitoring during spinal deformity surgery: a review and discussion of the literature. Neurophysiol Clin. 2007;37(6):431-9.",
+      "Segura MJ, et al. A multiparametric alarm criterion for motor evoked potential monitoring during spine deformity surgery. J Clin Neurophysiol. 2017 Jan;34(1):38-48. doi:10.1097/WNP.0000000000000323. PMID:28045856.",
+      "Rattenni RN, et al. Intraoperative spinal cord and nerve root monitoring: a hospital survey and review. Bull Hosp Jt Dis (2013). 2015 Mar;73(1):25-36.",
+      "Ferreira RJR. Neurofisiologia intraoperatória. In: Pudles E, Defino HLA. A coluna vertebral: conceitos básicos. Artmed; 2013.",
+      "Bauer JM, et al. Pediatric halo use: indications, application, and potential complications. J Pediatr Soc North Am. 2024 Oct;9:100129. doi:10.1016/j.jposna.2024.100129.",
+      "Ferreira RJR. Neurofisiologia aplicada à coluna vertebral. In: Martins DE, et al. Clínica da coluna vertebral. Atheneu; 2014. p. 39-56.",
+      "Villas C, Barrios RH. Congenital absence of the pedicles and the neural arch of L2. Eur Spine J. 1997;6(5):354-6. doi:10.1007/BF01142686.",
+      "Calancie B, et al. Intraoperative evoked EMG monitoring in an animal model. A new technique for evaluating pedicle screw placement. Spine (Phila Pa 1976). 1992 Oct;17(10):1229-35. doi:10.1097/00007632-199210000-00017.",
+      "Calancie B, et al. Neuromonitoring with pulse-train stimulation for implantation of thoracic pedicle screws: a blinded and randomized clinical study. Part 1. Methods and alarm criteria. J Neurosurg Spine. 2014 Jun;20(6):675-91. doi:10.3171/2014.2.SPINE13648.",
+      "Calancie B, et al. Neuromonitoring with pulse-train stimulation for implantation of thoracic pedicle screws: a blinded and randomized clinical study. Part 2. The role of feedback. J Neurosurg Spine. 2014 Jun;20(6):692-704. doi:10.3171/2014.2.SPINE13649.",
+      "Cavali PTM. Pedicular screw fixation of the thoracic spine: freehand versus 3D image-guided techniques. In: van de Kelft E. Surgery of the spine and spinal cord. Springer; 2016. doi:10.1007/978-3-319-27613-7_17.",
+      "Clements DH, et al. Evoked and spontaneous electromyography to evaluate lumbosacral pedicle screw placement. Spine. 1996;21(5):600-4.",
+      "Toleikis JR, et al. The usefulness of electrical stimulation for assessing pedicle screw placements. J Spinal Disord. 2000;13(4):283-9.",
+      "Ferreira RJR. Monitoramento neurofisiológico intraoperatório nas cirurgias espinhais. In: Chamlian TR. Medicina física e reabilitação. Guanabara Koogan; 2010. p. 24-41.",
+      "Schwartz DM, et al. Neurophysiological detection of impending spinal cord injury during scoliosis surgery. J Bone Joint Surg Am. 2007 Nov;89(11):2440-9. doi:10.2106/JBJS.F.01476.",
+      "Thompson SE, et al. C5 palsy after cervical spine surgery: a multicenter retrospective review of 59 cases. Global Spine J. 2017 Apr;7(1 Suppl):64S-70S. doi:10.1177/2192568216688189.",
+      "Akbari KK, et al. Do intraoperative neurophysiological changes during decompressive surgery for cervical myeloradiculopathy affect functional outcome? A prospective study. Global Spine J. 2022 Apr;12(3):366-372. doi:10.1177/2192568220951779.",
+      "Kerimbayev T, et al. Transforaminal endoscopic discectomy under general and local anesthesia: a single-center study. Front Surg. 2022 Apr 19;9:873954. doi:10.3389/fsurg.2022.873954.",
+      "Wiedemayer H, et al. The impact of neurophysiological intraoperative monitoring on surgical decisions: a critical analysis of 423 cases. J Neurosurg. 2002;96(2):255-262.",
+      "Zhang H, et al. The application of neuroelectrophysiological monitoring in posterior percutaneous endoscopic cervical discectomy. World J Surg Surgical Res. 2020;3:1197.",
+      "Shils JL, Arle JE. Intraoperative neurophysiologic methods for spinal cord stimulator placement under general anesthesia. Neuromodulation. 2012 Nov-Dec;15(6):560-71. doi:10.1111/j.1525-1403.2012.00460.x.",
+      "Ferreira RJR, et al. Lumbar interbody fusion surgeries: LIFS. In: Verst S, et al. Intraoperative monitoring neurophysiology and surgical approaches. Springer; 2022. p. 495-512.",
+      "Dias Pereira Filho AR. Technique for exposing lumbar discs in anterior approach using Steinmann wires: arthroplasties or arthrodesis. World Neurosurg. 2021 Apr;148:189-195. doi:10.1016/j.wneu.2020.12.113.",
+      "Gong M, et al. Surgery for giant calcified herniated thoracic discs: a systematic review. World Neurosurg. 2018 Oct;118:109-117. doi:10.1016/j.wneu.2018.06.232.",
+      "Holdefer RN, et al. Analyzing the value of IONM as a complex intervention: the gap between published evidence and clinical practice. Clin Neurophysiol. 2023 Jul;151:59-73. doi:10.1016/j.clinph.2023.03.364.",
+      "Sala F, et al. Motor evoked potential monitoring improves outcome after surgery for intramedullary spinal cord tumors: a historical control study. Neurosurgery. 2006 Jun;58(6):1129-43. doi:10.1227/01.NEU.0000215948.97195.58.",
+      "Verst SM, Ferreira RJR. Neurofisiologia clínica aplicada à coluna vertebral: eletroneuromiografia, potencial evocado e monitoração neurofisiológica intraoperatória. In: Siqueira MG, et al. Tratado de neurocirurgia. Vol. 1. Barueri: Manole; 2016. p. 841-857.",
+      "DeVivo MJ. Causes and costs of spinal cord injury in the United States. Spinal Cord. 1997 Dec;35(12):809-13.",
+      "Ament JD, et al. Intraoperative neuromonitoring in spine surgery: large database analysis of cost-effectiveness. N Am Spine Soc J. 2023 Feb 23;14:100206. doi:10.1016/j.xnsj.2023.100206.",
+      "Yagi M, et al. Risk, recovery, and clinical impact of neurological complications in adult spinal deformity surgery. Spine (Phila Pa 1976). 2019 Oct 1;44(19):1364-1370. doi:10.1097/BRS.0000000000003080.",
+      "Zanin L, et al. Intraoperative neurophysiological monitoring in contemporary spinal surgery: a systematic review of clinical outcomes and cost-effectiveness. Brain Sci. 2025;15:768. doi:10.3390/brainsci15070768.",
+      "Nuwer MR, et al. Evidence-based guideline update: intraoperative spinal monitoring with somatosensory and transcranial electrical motor evoked potentials: report of the Therapeutics and Technology Assessment Subcommittee of the American Academy of Neurology and the American Clinical Neurophysiology Society. Neurology. 2012 Feb 21;78(8):585-9. doi:10.1212/WNL.0b013e318247fa0e.",
+      "Nuwer MR, et al. Somatosensory evoked potential spinal cord monitoring reduces neurologic deficits after scoliosis surgery: results of a large multicenter survey. Electroencephalogr Clin Neurophysiol. 1995 Jan;96(1):6-11. doi:10.1016/0013-4694(94)00235-D."
+    ],
+    "seo": {
+      "titulo": "Monitorización Neurofisiológica Intraoperatoria | Tratado de Columna",
+      "meta_descricao": "Guía integral de MNIO en columna: TcMEP, SSEP, EMG gatillada, onda D, protocolo anestésico TIVA, criterios de alarma y algoritmos de rescate intraoperatorio.",
+      "resumo_chamada": "Domine la monitorización neurofisiológica intraoperatoria en cirugía de columna: vías neurales, umbrales de alarma, técnica TIVA y manejo de eventos críticos.",
+      "slug": "monitorizacion-neurofisiologica-intraoperatoria-en-cirugia-de-columna"
+    }
+  },
+  "15": {
+    "numero": 15,
+    "titulo": "Diagnóstico por Imagen de la Columna Vertebral",
+    "secao": "",
+    "autores": [
+      "Marcello Henrique Nogueira-Barbosa",
+      "Guilherme Naves"
+    ],
+    "contexto": "Los métodos de diagnóstico por imagen de la columna vertebral responden a preguntas clínicas específicas y deben seleccionarse en función del tejido anatómico diana, la posición de carga funcional del paciente y la hipótesis clínica formulada. Las radiografías simples conservan un valor fundamental como estudio inicial en bipedestación para evaluar la alineación espinopélvica global, la pérdida de altura discal y la inestabilidad segmentaria mediante proyecciones dinámicas en flexoextensión. La tomografía computarizada (TC) ofrece una resolución submilimétrica superior para la anatomía ósea, fracturas complejas, gas intradiscal, osteólisis y valoración de consolidación de artrodesis sin superposición de estructuras. La resonancia magnética (RM) constituye el estándar de oro para el tejido neural (médula espinal, cono medular, raíces nerviosas), discos intervertebrales, edema óseo, abscesos e infecciones (espondilodiscitis) y tumores epidurales. La ecografía tiene un rol acotado pero valioso en el tamizaje de disrafismos en neonatos y en procedimientos intervencionistas guiados. La gammagrafía y el SPECT/CT detectan alteraciones del recambio osteoblástico en espondilólisis activa, artrosis facetaria y metástasis. El principal reto clínico consiste en evitar la solicitud inadecuada de estudios y la sobreinterpretación de hallazgos degenerativos incidentales (hernias asintomáticas, cambios Modic, hemangiomas típicos), asegurando que la imagen siempre se interprete en correlación con el examen neurológico.",
+    "objetivo": "Presentar los principios, indicaciones, ventajas y limitaciones de las principales modalidades de imagen raquídea (radiografía, TC, RM, ecografía, medicina nuclear) y demostrar su aplicación en enfermedad degenerativa, estenosis, hiperostosis esquelética (DISH), espondiloartritis anquilosante, infecciones, traumatismos y hallazgos incidentales. Al finalizar, el lector deberá seleccionar el método óptimo, reconocer patrones morfológicos característicos y determinar cuándo se requiere contraste intravenoso o estudios dinámicos.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Modalidades: Radiografía, TC, RM y Medicina Nuclear",
+        "texto": "Las radiografías en carga (AP, lateral y dinámicas en flexoextensión) evalúan alineación, escoliosis, lordosis e inestabilidad dinámica (>3–4 mm de traslación o >10° de angulación). La TC multidetector define la cortical ósea, el conducto raquídeo y las fracturas conminutas. La RM utiliza secuencias T1 (anatomía y grasa medular), T2 (líquido cefalorraquídeo, hidratación discal, edema medular y estenosis), STIR/T2 con supresión grasa (edema óseo agudo, inflamación activa) y secuencias T1 con contraste de gadolinio (diferenciación entre fibrosis epidural vascularizada y recidiva herniaria avascular, tumores y abscesos)."
+      },
+      {
+        "subtitulo": "Degeneración discal, cambios Modic y estenosis",
+        "texto": "La RM clasifica la degeneración discal (escala de Pfirrmann 1–5). Los cambios de Modic en los platillos vertebrales reflejan estados histopatológicos: Tipo 1 (edema inflamatorio vascular, hipointenso en T1 e hiperintenso en T2/STIR, estrechamente asociado a lumbalgia activa); Tipo 2 (sustitución grasa, hiperintenso en T1 y T2); Tipo 3 (esclerosis ósea, hipointenso en T1 y T2). La estenosis del conducto lumbar y de los forámenes se clasifica cualitativamente mediante escalas como la de Schizas (según la obliteración de las raicillas en el saco dural) y la de Lee para estenosis foraminal."
+      },
+      {
+        "subtitulo": "Hiperostosis (DISH) y Espondiloartritis Axial",
+        "texto": "La Hiperostosis Esquelética Idiopática Difusa (DISH / enfermedad de Forestier) se caracteriza radiológicamente por osificación anterolateral continua que abarca al menos cuatro cuerpos vertebrales contiguos, con conservación del espacio discal y ausencia de sacroilitis. La Espondilitis Anquilosante (EA) presenta sacroilitis bilateral simétrica precoz, cuadratura vertebral, lesiones de Romanus (esquinas brillantes), lesiones de Andersson (disquitis inflamatoria) y sindesmofitos delgados y verticales (\"columna en caña de bambú\"). Ambas confieren una rigidez extrema que predispone a fracturas inestables transdiscales tras traumatismos leves."
+      },
+      {
+        "subtitulo": "Infecciones raquídeas: Espondilodiscitis piógena vs. Tuberculosa",
+        "texto": "La espondilodiscitis piógena muestra precozmente hiperintensidad en T2/STIR y realce con contraste en el disco intervertebral y platillos adyacentes, con rápida destrucción discal y erosión subcondral. Por el contrario, la espondilodiscitis tuberculosa (mal de Pott) respeta inicialmente el disco intervertebral, compromete múltiples cuerpos vertebrales contiguos con extensión subligamentaria anterior, produce grandes abscesos fríos paravertebrales/psoas calcificados y colapso angular en cifosis grave (giba)."
+      },
+      {
+        "subtitulo": "Evaluación en trauma y hallazgos incidentales",
+        "texto": "En traumatismos agudos, la TC de columna completa es el estudio inicial de elección para definir trazos de fractura, fragmentos retropulsados y luxaciones articulares. La RM es indispensable para valorar contusión o hemorragia medular y la integridad del complejo ligamentario posterior (PLC), determinante de la inestabilidad en las clasificaciones AO Spine y TLICS. Los hallazgos incidentales benignos (como hemangiomas vertebrales típicos con patrón en empalizada en TC e hiperintensidad en T1/T2, y quistes de Tarlov) deben reconocerse para evitar intervenciones innecesarias."
+      }
+    ],
+    "aplicacao_clinica": "En la práctica diaria, la indicación del estudio debe partir del problema clínico. Ante sospecha de inestabilidad mecánica o espondilolistesis, las radiografías dinámicas en flexoextensión son esenciales, ya que la RM en decúbito puede ocultar la traslación. En sospecha de síndrome de cauda equina, mielopatía cervical o absceso epidural, la RM urgente (con contraste si se sospecha infección/tumor) es la técnica obligada. En pacientes operados previamente con dolor radicular recurrente, la RM con gadolinio diferencia el tejido cicatrizal fibrótico (que realza intensamente de forma precoz) de una recidiva discal herniaria (que no realza centralmente). En pacientes con columna rígida (espondilitis anquilosante o DISH) que presenten dolor tras una caída menor, la TC completa es obligatoria para descartar fracturas transvertebrales por hiperextensión que pasan desapercibidas en radiografías simples.",
+    "mensagem_central": "El diagnóstico por imagen de la columna vertebral se rige por la complementariedad entre los métodos y su correlación con la clínica. La radiografía evalúa alineación e inestabilidad en carga; la TC detalla la arquitectura ósea, calcificaciones y fracturas; la RM caracteriza el tejido neural, médula ósea y partes blandas; y la medicina nuclear detecta hipermetabolismo activo. Ningún hallazgo en imagen debe interpretarse de forma aislada sin una adecuada correlación clínica.",
+    "por_que_importa": "Elegir el estudio de imagen equivocado puede ocultar la patología: la inestabilidad funcional desaparece en decúbito supino, las calcificaciones pueden confundirse con gas en RM y las fracturas en columnas anquilosadas son invisibles en radiografías simples. Por otra parte, la sobreinterpretación de anomalías degenerativas incidentales en la RM genera cirugías innecesarias. Este capítulo proporciona las claves para seleccionar el método adecuado, reconocer patrones de urgencia e integrar las imágenes a la decisión quirúrgica.",
+    "decs": [
+      "Diagnóstico por Imagen",
+      "Radiografía",
+      "Tomografía Computarizada por Rayos X",
+      "Imagen por Resonancia Magnética",
+      "Columna Vertebral",
+      "Degeneración del Disco Intervertebral",
+      "Estenosis Espinal",
+      "Espondilodiscitis"
+    ],
+    "mesh": [
+      "Diagnostic Imaging",
+      "Radiography",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Spine",
+      "Intervertebral Disc Degeneration",
+      "Spinal Stenosis",
+      "Spondylodiscitis"
+    ],
+    "palavras_chave_livres": [
+      "Cambios de Modic",
+      "Radiografías dinámicas",
+      "Resonancia de espondilodiscitis",
+      "DISH enfermedad de Forestier",
+      "Espondilitis anquilosante imagen",
+      "Complejo ligamentario posterior",
+      "Escala de Pfirrmann"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Complementariedad de las técnicas de imagen",
+        "texto": "La radiografía evalúa alineación y movilidad dinámica en bipedestación; la TC define con precisión milimétrica el hueso y las fracturas; la RM caracteriza médula espinal, raíces, discos y edema óseo; y la RM con gadolinio distingue recidiva discal de fibrosis postquirúrgica."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Diferenciar infección piógena de tuberculosis",
+        "texto": "La espondilodiscitis piógena destruye precozmente el disco y platillos vertebrales con intenso realce inflamatorio. El mal de Pott tuberculoso respeta inicialmente el disco, compromete múltiples vértebras por extensión subligamentaria y produce grandes abscesos fríos calcificados."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "TC obligatoria en traumatismos de columna rígida",
+        "texto": "En pacientes con espondilitis anquilosante o DISH, caídas menores pueden provocar fracturas transdiscales muy inestables que pasan desapercibidas en radiografías. Solicite siempre TC de columna completa ante cualquier nuevo dolor tras un traumatismo."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração do capítulo. A pontuação e a apresentação foram uniformizadas segundo o estilo Vancouver, sem completar por suposição informações ausentes.",
+      "Hassankhani A, Freeman CW, Banks J, Parsons MS, Wessell DE, Hutchins TA, et al. ACR Appropriateness Criteria® Acute Spinal Trauma: 2024 Update. J Am Coll Radiol. 2025;22(5S):S48-S66.",
+      "Loizides A, Obernauer J, Bale R, Plaikner M, Galiano K, Gruber H. Ultrasound-guided injections in the spine. Tech Orthop. 2013;28:6-11.",
+      "Wang YX, Wu A, Santiago FR, Nogueira-Barbosa MH. Informed appropriate imaging for low back pain management: a narrative review. J Orthop Translat. 2018;15:21-34.",
+      "Dahmoush H, Gaddam DS, Ho M, Bauer DF, Bosemani T, Buchhalter J. ACR Appropriateness Criteria® Back Pain-Child: 2024 Update. J Am Coll Radiol. 2025;22(5S):S79-S107.",
+      "Fardon DF, Willians AL, Dohring EJ, Murtagh FR, Rothman G, Sze GK. Lumbar disc nomenclature: version 2.0. The Spine Journal. 2014;14(11):2525-45.",
+      "Nascimento ED, Simão MN, Nogueira-Barbosa MH. Fluid-sensitive sequences modify the Modic classification in MRI. Coluna/Columna. 2025;24(1):e292286.",
+      "Madsen R, Jensen TS, Pope M, Sorensen JS, Bendix T. The effect of body position and axial load on spinal canal morphology, an MRI study of central spinal stenosis. Spine (Phila Pa 1976). 2008;33(1):61-7.",
+      "Kanbara S, Yukawa Y, Ito K, Machino M, Kato F. Dynamic changes in the dural sac of patients with lumbar canal stenosis evaluated by multidetector-row computed tomography after myelography. Eur Spine J. 2014;23(1):74-9.",
+      "Eshed I. Imaging characteristics of diffuse idiopathic skeletal hyperostosis: more than just spinal bony bridges. Diagnostics. 2023;13(3):563.",
+      "Resnick D, Niwayama G. Radiographic and pathologic features of spinal involvement in diffuse idiopathic skeletal hyperostosis (DISH). Radiology. 1976;119(3):559-68.",
+      "Ortiz O, Levitt A, Shah L, Parsons, Argawal V, Baldwin K, et al. MS, ACR Appropriateness Criteria® Suspected Spine Infection. J Am Coll Radiol. 2021;18(11S):S488-S501.",
+      "Czuczman GJ, Mandell JC, Wessel DE, Lenchick L, Ahlawat S, Baker JC, et al. ACR Appropriateness Criteria Inflammatory Back Pain: known or suspected axial spondyloarthritis 2021 update. J Am Coll Radiol. 2021;18(11S):S340-60.",
+      "Maksymowych WP, Lambert RG, Bariliakos X, Weber U, Machado PM, Pedersen SJ, et al. Data-driven definitions for active and structural MRI lesions in the sacroiliac joint in spondyloarthritis and their predictive utility. Rheumatology. 2021;60(10):4778-89."
+    ],
+    "seo": {
+      "titulo": "Diagnóstico por Imagen de la Columna Vertebral | Tratado de Columna",
+      "meta_descricao": "Guía integral de diagnóstico por imagen raquídeo: radiografías dinámicas, TC, RM, cambios Modic, estenosis, DISH, espondilitis anquilosante y espondilodiscitis.",
+      "resumo_chamada": "Domine la selección e interpretación de radiografía, TC y RM en columna vertebral, diagnóstico diferencial de infecciones y evaluación de fracturas.",
+      "slug": "diagnostico-por-imagen-de-la-columna-vertebral"
+    }
+  },
+  "16": {
+    "numero": 16,
+    "titulo": "Diagnóstico Diferencial: Patologías de la Columna y Condiciones Ortopédicas",
+    "secao": "",
+    "autores": [
+      "Maria Fernanda Silber Caffaro",
+      "Rafael Moraes Trincado",
+      "Jorge Rafael Durigan"
+    ],
+    "contexto": "El dolor axial cervical o lumbar y el dolor irradiado a las extremidades frecuentemente se originan en estructuras musculoesqueléticas no raquídeas adyacentes o periféricas. Debido a que la columna vertebral se extiende desde el occipucio hasta el sacro y mantiene relaciones anatómicas, biomecánicas y de cadenas cinéticas estrechas con la cintura escapular, la caja torácica, la pelvis, las caderas y los nervios periféricos, diversas afecciones ortopédicas mimetizan enfermedades de la columna. En la región cervical, las tendinopatías del manguito rotador, el pinzamiento subacromial, la artrosis glenohumeral y el síndrome del opérculo torácico pueden simular una radiculopatía cervical. En la región torácica, la disfunción costovertebral/costotransversa, las fracturas costales y el síndrome de la costilla deslizante simulan radiculopatías torácicas. En la región lumbosacra, la artrosis de cadera (\"síndrome cadera-columna\"), la disfunción de la articulación sacroilíaca, el síndrome doloroso del trocánter mayor (bursitis trocantérea), el síndrome del piriforme, la fascitis plantar y la compresión del nervio peroneo común en la cabeza del peroné simulan hernias discales, radiculopatías o estenosis de canal lumbar. Dado que las protrusiones discales y la artrosis facetaria asintomáticas son sumamente frecuentes en la RM de personas sanas, identificar una alteración radiológica no demuestra causalidad. Una anamnesis rigurosa, el examen articular sistemático, pruebas provocativas validadas y bloqueos anestésicos diagnósticos son esenciales para diferenciar afecciones raquídeas de patologías ortopédicas simuladoras.",
+    "objetivo": "Presentar los principales diagnósticos diferenciales ortopédicos de las manifestaciones clínicas atribuidas a la columna cervical, torácica y lumbar. Al finalizar, el lector deberá caracterizar de forma sistemática los patrones de dolor; explorar articulaciones adyacentes (hombro, parrilla costal, sacroilíaca, cadera); realizar e interpretar maniobras ortopédicas de provocación validadas; utilizar bloqueos anestésicos diagnósticos y estudios electrofisiológicos de manera dirigida; y distinguir patologías vertebrales primarias de condiciones ortopédicas coexistentes o simuladoras.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Razonamiento clínico: Evitar la trampa de la RM",
+        "texto": "El diagnóstico diferencial se inicia con la caracterización sistemática del dolor mediante la mnemotecnia OPQRST: origen anatómico exacto, límites de irradiación, maniobras agravantes y posturas de alivio. La \"trampa de la resonancia magnética\" consiste en atribuir síntomas a alteraciones degenerativas incidentales (presentes en más del 40% de adultos asintomáticos) sin concordancia clínica. El cirujano debe demostrar que la semiología neurológica y las maniobras de provocación coinciden con el nivel radiológico antes de indicar procedimientos invasivos."
+      },
+      {
+        "subtitulo": "Región cervical: Columna vs. Hombro y Atrapamientos Periféricos",
+        "texto": "La radiculopatía cervical produce dolor que irradia por debajo del codo siguiendo un dermatoma, agravado con la extensión y rotación cervical (prueba de Spurling positiva) y aliviado con la abducción del hombro (signo de Bakody). Las afecciones del hombro (rotura del manguito rotador, bursitis subacromial, capsulitis adhesiva) provocan dolor localizado en el deltoides lateral que no sobrepasa el codo, empeora con la elevación del brazo sobre la cabeza y rotación interna (pruebas de Neer, Hawkins-Kennedy y Jobe positivas) con examen neurológico normal. El síndrome del opérculo torácico causa parestesias difusas y síntomas vasculares que aumentan con maniobras de elevación del brazo (pruebas de Roos y Adson)."
+      },
+      {
+        "subtitulo": "Región torácica: Columna vs. Parrilla Costal y Articulaciones Costovertebrales",
+        "texto": "Las afecciones de la columna torácica (hernias, fracturas, tumores) generan dolor en banda metamérico alrededor del tórax agravado por la carga axial y la maniobra de Valsalva. Las afecciones de la pared torácica —como la artrosis costovertebral/costotransversa, la costocondritis (síndrome de Tietze) y el síndrome de la costilla deslizante (hipermovilidad de las costillas 8.ª a 10.ª, maniobra del gancho positiva)— producen dolor a la palpación focal, compresión de la caja torácica o respiración profunda, sin déficit neurológico."
+      },
+      {
+        "subtitulo": "Región lumbar: Síndrome Cadera-Columna, Sacroilíaca y Nervios Periféricos",
+        "texto": "La artrosis de cadera genera dolor inguinal y en nalga que irradia por la cara anteromedial del muslo hasta la rodilla, agravado con la bipedestación y la rotación interna de cadera (rotación interna limitada, test de Patrick FABER positivo, marcha de Trendelenburg). La disfunción de la articulación sacroilíaca causa dolor bajo L5 sobre la espina ilíaca posterosuperior (test del dedo de Fortin), nalga y muslo posterior, reproducible con pruebas de estrés sacroilíaco (distracción, compresión, empuje femoral, FABER, Gaenslen; 3 o más pruebas positivas confieren >90% de sensibilidad). El síndrome de dolor trocantéreo mayor genera dolor exquisito a la palpación del trocánter mayor. El atrapamiento del nervio peroneo común en la cabeza del peroné causa pie caído con debilidad aislada de dorsiflexión y eversión (respetando la inversión del tobillo y la abducción de cadera)."
+      }
+    ],
+    "aplicacao_clinica": "En la práctica clínica, el examen físico debe evaluar sistemáticamente las articulaciones vecinas antes de confirmar una indicación quirúrgica espinal. En un paciente con dolor cervicobraquial, explore la columna con la prueba de Spurling y el hombro con las pruebas de Hawkins/Neer. Si la movilidad del hombro es dolorosa y limitada, una infiltración subacromial diagnóstica con anestésico local que alivie el dolor confirma el pinzamiento subacromial como el origen primario. En pacientes con dolor lumbosacro, inguinal y de muslo que presenten tanto estenosis lumbar como artrosis severa de cadera (síndrome cadera-columna), evalúe la rotación interna coxofemoral y realice un bloqueo anestésico intraarticular de cadera: si alivia el dolor principal, la artroplastia total de cadera debe preceder a la cirugía de columna. En dolor lumboglúteo refractario, un bloqueo sacroilíaco guiado por fluoroscopia con alivio >=70–80% confirma la articulación sacroilíaca como generador del dolor, evitando artrodesis lumbares innecesarias.",
+    "mensagem_central": "El diagnóstico diferencial de las afecciones de la columna requiere una estricta concordancia entre la historia clínica, el examen articular regional, la localización neurológica y la neuroimagen. El dolor irradiado no es sinónimo de radiculopatía y una alteración en la RM no demuestra causalidad. La exploración sistemática del hombro, tórax, cadera, articulación sacroilíaca y nervios periféricos —complementada con bloqueos diagnósticos selectivos— permite diferenciar las enfermedades raquídeas de condiciones ortopédicas simuladoras.",
+    "por_que_importa": "Operar una hernia discal o realizar una descompresión lumbar en un paciente cuyo dolor real proviene de una artrosis de cadera, una tendinopatía de hombro o una disfunción sacroilíaca constituye un fracaso diagnóstico grave que deja al paciente sin alivio. Este capítulo estructura el diagnóstico diferencial ortopédico por regiones, proporcionando al cirujano pruebas clínicas validadas y protocolos de infiltración diagnóstica para identificar con certeza el origen del dolor y orientar el tratamiento correcto.",
+    "decs": [
+      "Diagnóstico Diferencial",
+      "Enfermedades de la Columna Vertebral",
+      "Enfermedades Articulares",
+      "Lesiones del Manguito de los Rotadores",
+      "Osteoartritis de la Cadera",
+      "Articulación Sacroilíaca",
+      "Traumatismos de los Nervios Periféricos",
+      "Examen Físico"
+    ],
+    "mesh": [
+      "Diagnosis, Differential",
+      "Spinal Diseases",
+      "Joint Diseases",
+      "Rotator Cuff Injuries",
+      "Osteoarthritis, Hip",
+      "Sacroiliac Joint",
+      "Peripheral Nerve Injuries",
+      "Physical Examination"
+    ],
+    "palavras_chave_livres": [
+      "Síndrome cadera-columna",
+      "Manguito rotador vs. radiculopatía",
+      "Disfunción articulación sacroilíaca",
+      "Prueba Patrick FABER",
+      "Bloqueos anestésicos diagnósticos",
+      "Síndrome trocantéreo mayor",
+      "Compresión nervio peroneo común"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Evitar la trampa de la causalidad en RM",
+        "texto": "Las protrusiones discales, artrosis facetaria y estenosis asintomáticas son hallazgos habituales en la RM de adultos sanos. No atribuya el dolor a una imagen sin demostrar correlación clínica exacta mediante mapeo dermatómico y examen articular."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Descifrar el Síndrome Cadera-Columna",
+        "texto": "El dolor inguinal que empeora al caminar y la limitación de la rotación interna señalan artrosis de cadera, mientras que el dolor glúteo que cede al sentarse indica estenosis lumbar. Si coexisten, realice una infiltración intraarticular de cadera para definir el tratamiento prioritario."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Los bloqueos anestésicos resuelven dilemas",
+        "texto": "Cuando el dolor de hombro, cadera o sacroilíaca coincida con alteraciones en la RM de columna, los bloqueos anestésicos locales ecoguiados o radioscópicos con alivio >=70–80% confirman la verdadera fuente del dolor antes de indicar cirugía raquídea."
+      }
+    ],
+    "referencias": [
+      "Moore KL, Dalley AF, Agur AMR. Anatomia orientada para a clínica. 7. ed. Rio de Janeiro: Guanabara Koogan; 2014.",
+      "Deyo RA, Weinstein JN. Low back pain. N Engl J Med. 2001;344(5):363-70.",
+      "Henschke N, Maher CG, Refshauge KM, et al. Prevalence of and screening for serious spinal pathology in patients presenting to primary care settings with acute low back pain. Arthritis Rheum. 2009;60(10):3072-80.",
+      "Bogduk N. Clinical anatomy of the lumbar spine and sacrum. 5th ed. Philadelphia: Elsevier; 2012.",
+      "Ghasemi M, Mousavi M, Bayat M, et al. Differentiating spinal from extraspinal causes of back pain. Clin Neurol Neurosurg. 2019;181:105-112.",
+      "Tarulli AW, Raynor EM. Lumbosacral radiculopathy. Neurol Clin. 2007;25(2):387-405.",
+      "Modic MT, Ross JS. Lumbar degenerative disk disease. Radiology. 2007;245(1):43-61.",
+      "Whitecloud TS, Seago R. Degenerative conditions of the lumbar spine. In: Bridwell KH, DeWald RL, editors. The textbook of spinal surgery. 2nd ed. Philadelphia: Lippincott-Raven; 1997. p. 1847-78.",
+      "Ross JS, Moore KR. Imaging of the spine. 2nd ed. Philadelphia: Elsevier Saunders; 2010.",
+      "Dumitru D, Amato AA, Zwarts MJ. Electrodiagnostic medicine. 2nd ed. Philadelphia: Hanley & Belfus; 2002.",
+      "Sweis R, Luketich SK, Zhou Y, et al. Diagnostic imaging in spine care: evolving concepts and challenges. Orthop Clin North Am. 2021;52(4):379-91.",
+      "Hosny A, Parmar C, Quackenbush J, Schwartz LH, Aerts HJWL. Artificial intelligence in radiology. Nat Rev Cancer. 2018;18(8):500-10.",
+      "Hoppenfeld S. Exame físico da coluna vertebral e extremidades. 4. ed. Rio de Janeiro: Guanabara Koogan; 2016.",
+      "Brinjikji W, Luetmer PH, Comstock B, et al. Systematic literature review of imaging features of spinal degeneration in asymptomatic populations. AJNR Am J Neuroradiol. 2015;36(4):811-6.",
+      "Jarvik JG, Deyo RA. Diagnostic evaluation of low back pain with emphasis on imaging. Ann Intern Med. 2002;137(7):586-97.",
+      "Le Huec JC, Saddiki R, Franke J, Rigal J, Aunoble S. Equilibrium of the human body and the gravity line: the basics. Eur Spine J. 2011;20(Suppl 5):S558-63.",
+      "Kujala UM, Orava S. Ischial pain due to piriformis syndrome. Scand J Rehabil Med. 1991;23(1):33-6.",
+      "Fejer R, Kyvik KO, Hartvigsen J. The prevalence of neck pain in the world population: a systematic critical review of the literature. Eur Spine J. 2006;15(6):834-848.",
+      "Cohen SP. Epidemiology, diagnosis, and treatment of neck pain. Mayo Clin Proc. 2015;90(2):284-299.",
+      "Wong JJ, Côté P, Quesnele JJ, Stern PJ, Mior SA. The course and prognostic factors of symptomatic cervical disc herniation with radiculopathy: a systematic review of the literature. Spine J. 2014;14(8):1781-1789.",
+      "Radhakrishnan K, Litchy WJ, O’Fallon WM, Kurland LT. Epidemiology of cervical radiculopathy: a population-based study from Rochester, Minnesota, 1976 through 1990. Brain. 1994;117(2):325-335.",
+      "Childress MA, Becker BA. Nonoperative management of cervical radiculopathy. Am Fam Physician. 2016;93(9):746-754.",
+      "Fish DE, Gerstman BA, Lin V. Evaluation of the patient with neck versus shoulder pain. Phys Med Rehabil Clin N Am. 2011;22(3):395-410, vii. doi:10.1016/j.pmr.2011.03.009.",
+      "Maigne JY, Vautravers P. Mechanisms of thoracic pain. Rev Rhum Engl Ed. 2002;69(5):407-12.",
+      "Hegedus EJ, Stern B, Tarara DT, et al. Thoracic spine pain: diagnosis and management. J Orthop Sports Phys Ther. 2022;52(1):CPG1-CPG48.",
+      "Bogduk N. The anatomy and pathophysiology of neck pain. Phys Med Rehabil Clin N Am. 2003;14(3):455-72.",
+      "Bakhsh W, Saleh A, Yokogawa N, Gruber J, Rubery PT, Mesfin A. Thoracic spine fractures: evaluation and treatment. Orthop Clin North Am. 2014;45(4):529-36.",
+      "Lee CH, Hyun SJ, Kim KJ, Jahng TA, Kim HJ. Thoracic disc herniation: surgical treatment strategies and outcomes. J Korean Neurosurg Soc. 2020;63(3):319-28.",
+      "Hadler NM. Thoracic pain syndromes. In: Spinal disorders: fundamentals of diagnosis and treatment. Philadelphia: Lippincott Williams & Wilkins; 1997. p. 417-27.",
+      "Simons DG, Travell JG, Simons LS. Myofascial pain and dysfunction: the trigger point manual. Vol. 1, Upper half of body. 2nd ed. Baltimore: Lippincott Williams & Wilkins; 1999.",
+      "Gerwin RD. A review of myofascial pain and fibromyalgia: factors that promote their persistence. Acupunct Med. 2005;23(3):121-34.",
+      "Kibler WB, Sciascia A. Scapular dyskinesis and its relation to shoulder pain. J Am Acad Orthop Surg. 2010;18(6):350-60.",
+      "Lewis JS. Rotator cuff tendinopathy. Br J Sports Med. 2009;43(4):236-41.",
+      "Frost A, Robinson CM. Capsular constraints in shoulder stability. Shoulder Elbow. 2015;7(2):78-84.",
+      "Chang EY, Yu JS, Resnick DL. Imaging of stress fractures in the spine. Radiol Clin North Am. 2010;48(5):1083-103.",
+      "Wolfe F, Michaud K. Costochondritis, costosternal syndrome, and Tietze’s syndrome. In: Clinical and Experimental Rheumatology. 2009;27(1):1-5.",
+      "Quinn SF, Sheley RC, Demlow TA, Szumowski J. Iliopsoas bursitis: a rare cause of lower thoracic pain. Radiology. 1991;180(1):261-2.",
+      "Rudwaleit M, Haibel H, Baraliakos X, et al. The early diagnosis of axial spondyloarthritis. Nat Rev Rheumatol. 2012;8(5):262-71.",
+      "Wolfe F, Walitt B, Perrot S, Rasker JJ, Häuser W. Fibromyalgia diagnosis and biased assessment: sex, prevalence and bias. PLoS One. 2018;13(9):e0203755.",
+      "Brinjikji W, Diehn FE, Jarvik JG, et al. MRI findings of disc degeneration in asymptomatic populations: a systematic review. Spine J. 2015;15(6):1195-205.",
+      "Smith J, et al. Current concepts in the diagnosis and management of spinal pain. SN Compr Clin Med. 2022.",
+      "Reiman MP, et al. Diagnostic accuracy of clinical tests of the hip. Br J Sports Med. 2013.",
+      "Smith J, et al. Current concepts in the diagnosis and management of spinal pain. SN Compr Clin Med. 2022.",
+      "Reiman MP, et al. Diagnostic accuracy of clinical tests of the hip. Br J Sports Med. 2013.",
+      "Murphy NJ, et al. Hip osteoarthritis: etiopathogenesis. Adv Ther. 2016.",
+      "Brown MD, et al. Differential diagnosis hip vs spine. Clin Orthop Relat Res. 2004.",
+      "Martin RL, et al. Clinical examination of hip. J Sport Rehabil. 2009.",
+      "Deshmukh AJ, et al. Diagnostic hip injection. J Arthroplasty. 2010.",
+      "Guermazi A, et al. Imaging of osteoarthritis. Rheum Dis Clin North Am. 2013.",
+      "Entrapment neuropathies of the lower extremity. Med Clin North Am. 2019;103(2):371-82.",
+      "Diagnostic approach to lower limb entrapment neuropathies. Diagnostics. 2023;13(21):3385.",
+      "Stump PR, et al. Lombociatalgia. Rev Dor. 2016;17(Supl 1):S63-6.",
+      "Cohen SP, Chen Y, Neufeld NJ. Sacroiliac joint pain: a comprehensive review. Expert Rev Neurother. 2013;13(1):99-116.",
+      "Vleeming A, et al. The sacroiliac joint: anatomy and clinical implications. J Anat. 2012;221(6):537-67.",
+      "Szadek KM, et al. Diagnostic validity of sacroiliac joint pain criteria. J Pain. 2009;10(4):354-68.",
+      "Fortin JD, et al. Sacroiliac joint pain referral patterns. Spine. 1994;19(13):1483-9.",
+      "van der Wurff P, et al. Sacroiliac joint pain provocation tests. Arch Phys Med Rehabil. 2006;87(1):10-4.",
+      "Laslett M, et al. Diagnosis of sacroiliac joint pain. Man Ther. 2005;10(3):207-18.",
+      "Slipman CW, et al. Sacroiliac joint pain referral zones. Arch Phys Med Rehabil. 2000;81(3):334-8.",
+      "Weber U, et al. MRI in spondylarthritis. Arthritis Rheum. 2010;62(10):3048-58.",
+      "Hansen H, et al. Therapeutic effectiveness of sacroiliac joint interventions. Pain Physician. 2012;15(1):E247-78.",
+      "Braun J, et al. Management of ankylosing spondylitis. Ann Rheum Dis. 2011;70(6):896-904.",
+      "Stuge B, et al. Stabilizing exercises for pelvic girdle pain. Spine. 2004;29(4):351-9.",
+      "Cohen SP, et al. Radiofrequency denervation for sacroiliac joint pain. Reg Anesth Pain Med. 2009;34(3):206-14.",
+      "Riddle DL, Schappert SM. Epidemiology of plantar fasciitis. Foot Ankle Int. 2004;25(5):303-10.",
+      "Martin RL, et al. Heel pain—plantar fasciitis. J Orthop Sports Phys Ther. 2014;44(11):A1-33.",
+      "Wearing SC, et al. Pathomechanics of plantar fasciitis. Sports Med. 2006;36(7):585-611.",
+      "Cole C, et al. Plantar fasciitis: diagnosis and therapy. Am Fam Physician. 2005;72(11):2237-42.",
+      "Urits I, et al. Plantar fasciitis review. Curr Pain Headache Rep. 2021;25(2):8.",
+      "McPoil TG, et al. Clinical practice guidelines for plantar fasciitis. J Orthop Sports Phys Ther. 2008;38(4):A1-A18.",
+      "Lareau CR, et al. Plantar heel pain: diagnosis and management. J Am Acad Orthop Surg. 2014;22(6):372-80."
+    ],
+    "seo": {
+      "titulo": "Diagnóstico Diferencial: Columna y Condiciones Ortopédicas | Tratado",
+      "meta_descricao": "Guía clínica de diagnóstico diferencial ortopédico en columna: síndrome cadera-columna, manguito rotador vs. radiculopatía, sacroilíaca y bloqueos diagnósticos.",
+      "resumo_chamada": "Domine el diagnóstico diferencial entre patologías de columna y afecciones ortopédicas: síndrome cadera-columna, hombro doloroso, disfunción sacroilíaca y bloqueos.",
+      "slug": "diagnostico-diferencial-patologias-de-la-columna-y-condiciones-ortopedicas"
+    }
+  }
+}

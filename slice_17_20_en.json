@@ -1,0 +1,512 @@
+{
+  "17": {
+    "numero": 17,
+    "titulo": "Differential Diagnosis: Spinal Disorders and Neurological Diseases",
+    "secao": "",
+    "autores": [
+      "Charles André Carazzo",
+      "Werner Petry Silva"
+    ],
+    "contexto": "Primary diseases of the vertebral column and intrinsic neurological disorders frequently share overlapping clinical presentations, including motor weakness, sensory disturbances, gait impairment, sphincter dysfunction, and axial or neuropathic limb pain. Because degenerative spine changes on MRI (disc bulging, facet arthropathy, canal narrowing) are widespread in the asymptomatic general population, discovering a structural vertebral abnormality in a patient with an underlying primary neurological disease can easily lead to diagnostic errors, delayed medical therapy, or unwarranted spinal surgery. This chapter structures the differential diagnosis between compressive spinal pathologies (cervical spondylotic myelopathy, compressive radiculopathy, lumbar spinal stenosis) and major non-compressive neurological diseases. It covers upper and lower motor neuron diseases (Amyotrophic Lateral Sclerosis [ALS]), central demyelinating and inflammatory disorders (Multiple Sclerosis [MS], Neuromyelitis Optica Spectrum Disorder [NMOSD], transverse myelitis), movement disorders (Parkinson disease, normal pressure hydrocephalus [NPH]), metabolic/toxic myelopathies (subacute combined degeneration from vitamin B12/copper deficiency), acute/chronic immune-mediated neuropathies (Guillain-Barré Syndrome [GBS], Chronic Inflammatory Demyelinating Polyradiculoneuropathy [CIDP]), and vascular malformations (dural arteriovenous fistulas). Synthesizing clinical history, cranial nerve examination, upper vs. lower motor neuron signs, cerebrospinal fluid analysis, neurophysiology, and targeted neuroimaging is essential for avoiding misdiagnosis and ensuring appropriate medical or surgical care.",
+    "objetivo": "To present the clinical and neurological differential diagnosis between structural spinal disorders and primary neurological diseases. The reader should be able to differentiate motor neuron diseases (ALS) from cervical spondylotic myelopathy; identify demyelinating, inflammatory, and metabolic myelopathies mimicking spinal compression; distinguish movement disorders and normal pressure hydrocephalus from neurogenic claudication and myelopathic gait; and utilize electromyography, CSF analysis, and advanced neuroimaging to establish accurate, timely diagnoses.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Clinical Reasoning and the \"Double Trap\" of Neuroimaging",
+        "texto": "Diagnostic evaluation begins by distinguishing structural compressive myelopathy/radiculopathy from intrinsic central or peripheral neurological disorders. The presence of MRI canal stenosis in a patient with progressive neurological decline is not proof of compressive etiology. Clinicians must actively search for signs inconsistent with pure spinal compression: cranial nerve involvement, dysarthria, dysphagia, tongue fasciculations, cognitive decline, early prominent ataxia out of proportion to weakness, and widespread lower motor neuron denervation across non-contiguous cranial, cervical, thoracic, and lumbosacral segments."
+      },
+      {
+        "subtitulo": "Motor Neuron Disease: Amyotrophic Lateral Sclerosis (ALS) vs. Myelopathy",
+        "texto": "Amyotrophic lateral sclerosis (ALS) frequently mimics cervical spondylotic myelopathy (CSM) because both present with progressive upper extremity weakness, spasticity, and hyperreflexia. Crucial differentiating features of ALS include: 1) Simultaneous upper and lower motor neuron signs within the same limb; 2) Absence of sensory deficits (intact pinprick, light touch, and vibration); 3) Bulbar involvement (tongue atrophy, fasciculations, dysarthria, dysphagia); 4) Split-hand syndrome (preferential atrophy of thenar muscles and first dorsal interosseous with relative sparing of hypothenar muscles); and 5) Electromyography demonstrating active denervation (fibrillations, positive sharp waves) and chronic reinnervation in three or more anatomical regions (bulbar, cervical, thoracic, lumbosacral) with normal sensory nerve conduction."
+      },
+      {
+        "subtitulo": "Demyelinating, Inflammatory, and Metabolic Myelopathies",
+        "texto": "Multiple sclerosis (MS) and Neuromyelitis Optica Spectrum Disorder (NMOSD) present with acute or subacute myelopathy (Lhermitte sign, optic neuritis, area postrema syndrome with intractable hiccups/vomiting). Spinal MRI in MS shows peripheral, short-segment (<2 vertebral segments), wedge-shaped posterolateral T2 hyperintensities; NMOSD shows longitudinally extensive transverse myelitis (LETM, >=3 contiguous vertebral bodies) with central cord involvement and positive serum Aquaporin-4 (AQP4-IgG) antibodies. Subacute Combined Degeneration (vitamin B12 deficiency) and copper deficiency produce symmetric dorsal and lateral column dysfunction (gait ataxia, loss of proprioception/vibration, spastic paraparesis) with characteristic inverted \"V\" sign T2 hyperintensity in the posterior columns."
+      },
+      {
+        "subtitulo": "Movement Disorders, NPH, and Polyneuropathies",
+        "texto": "Parkinson disease and Normal Pressure Hydrocephalus (NPH) cause gait disturbances easily confused with cervical myelopathy or lumbar spinal stenosis. Parkinsonism features resting tremor, cogwheel rigidity, bradykinesia, and a shuffling festinating gait. NPH presents with Adams-Hakim triad: magnetic \"glued-to-the-floor\" gait ataxia, cognitive decline, and urinary incontinence, with ventriculomegaly on brain CT/MRI. Guillain-Barré Syndrome (GBS) presents with acute ascending flaccid quadriparesis, hyporeflexia/areflexia, and albuminocytological dissociation on lumbar puncture. Spinal Dural Arteriovenous Fistulas (SDAVF) produce progressive slowly ascending lower extremity paraparesis and sphincter dysfunction in older males, appearing on T2 MRI as extensive cord edema and serpentine perimedullary flow voids."
+      }
+    ],
+    "aplicacao_clinica": "In clinical practice, recognizing non-compressive neurological features prevents catastrophic surgical misadventures. In a patient referred for decompressive cervical laminectomy due to hyperreflexia and hand clumsiness, examining the cranial nerves and tongue for fasciculations and obtaining full-body needle EMG rules out ALS before irreversible cervical surgery is mistakenly performed. In a young adult presenting with acute paraparesis and a focal thoracic disc bulge, brain MRI and CSF analysis for oligoclonal bands and Aquaporin-4 antibodies distinguish multiple sclerosis or NMOSD from surgical disc herniation. In an elderly patient with bilateral leg weakness and MRI lumbar stenosis, testing for resting rigidity, assessing cognitive status, and examining for magnetic gait prevent unnecessary lumbosacral decompression for unrecognized Parkinson disease or NPH. When extensive thoracic cord T2 edema with perimedullary serpentine flow voids is noted, perform spinal digital subtraction angiography (DSA) to diagnose and embolize a spinal dural AV fistula.",
+    "mensagem_central": "Differentiating structural spinal disorders from primary neurological diseases requires rigorous neurological synthesis. Structural canal stenosis on MRI is a common bystander; clinicians must identify red-flag neurological signs (bulbar symptoms, isolated motor loss without sensory changes, cognitive decline, serpentine flow voids) and utilize electromyography, brain MRI, and CSF analysis to distinguish ALS, demyelinating myelitis, movement disorders, and vascular malformations from surgical spinal conditions.",
+    "por_que_importa": "Performing spinal decompression in a patient with unsuspected ALS, multiple sclerosis, or Parkinson disease will not halt disease progression and frequently accelerates functional decline. This chapter provides the clinical roadmap to separate compressive spine disease from intrinsic neurological disorders, avoiding tragic surgical errors and directing patients to appropriate, life-saving disease-modifying therapies.",
+    "decs": [
+      "Diagnosis, Differential",
+      "Spinal Cord Diseases",
+      "Amyotrophic Lateral Sclerosis",
+      "Multiple Sclerosis",
+      "Parkinson Disease",
+      "Normal Pressure Hydrocephalus",
+      "Polyneuropathies",
+      "Central Nervous System Diseases"
+    ],
+    "mesh": [
+      "Diagnosis, Differential",
+      "Spinal Cord Diseases",
+      "Amyotrophic Lateral Sclerosis",
+      "Multiple Sclerosis",
+      "Parkinson Disease",
+      "Normal Pressure Hydrocephalus",
+      "Polyneuropathies",
+      "Central Nervous System Diseases"
+    ],
+    "palavras_chave_livres": [
+      "ALS vs. cervical myelopathy",
+      "Longitudinally extensive transverse myelitis",
+      "Subacute combined degeneration",
+      "Normal pressure hydrocephalus",
+      "Spinal dural arteriovenous fistula",
+      "Split-hand sign"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "Degenerative MRI Does Not Equal Neurological Etiology",
+        "texto": "Cervical stenosis and disc bulges are present in over 50% of asymptomatic older adults. In patients with progressive weakness or gait disturbance, always rule out primary neurological conditions (ALS, MS, Parkinson, NPH) before committing to spinal surgery."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Key ALS Distinguishing Hallmarks",
+        "texto": "ALS features simultaneous upper and lower motor neuron signs, complete absence of sensory deficits, bulbar involvement (tongue fasciculations, dysarthria), and widespread active denervation on EMG across three or four anatomical body segments."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Recognize Dural Arteriovenous Fistulas",
+        "texto": "Progressive ascending paraparesis with T2 cord edema and serpentine perimedullary flow voids on MRI indicates a Spinal Dural Arteriovenous Fistula (SDAVF). Decompressing the spine without treating the vascular shunt worsens venous hypertension and causes acute paraplegia."
+      }
+    ],
+    "referencias": [
+      "Krasin E, Schermann H, Snir N, Tudor A, Behrbalk E. A quick and comprehensive guide to differential diagnosis of neck and back pain: a narrative review. SN Compr Clin Med. 2022;4(1):232.",
+      "Afonso Jr AS, Alves AC, Oliveira CH, Carreiro LRR, Becker N. Introdução à neuroanatomia e à neurofisiologia. Cadernos de Pós-Graduação em Distúrbios do Desenvolvimento (São Paulo). 2022;22(2):84-107.",
+      "Lopes JMC. Fisiopatologia da dor. 1. ed. Porto, Portugal: Permanyer Portugal; 2003.",
+      "Dodson SC, Koontz NA. Spinal manifestations of systemic disease. Radiol Clin North Am. 2019;57(2):281-306.",
+      "Greenland J, Barker RA. The differential diagnosis of Parkinson’s disease. In: Stoker TB, Greenland JC, editors. Parkinson’s disease: pathogenesis and clinical aspects. Brisbane (AU): Codon Publications; 2018.",
+      "Colela ACM. Diagnóstico diferencial do AVC (acidente vascular cerebral) pela propedêutica clínica [dissertação]. São Paulo: Escola Paulista de Medicina, Universidade Federal de São Paulo; 2016. 96 f.",
+      "Kim HJ, Tetreault LA, Massicotte EM, Arnold PM, Skelly AC, Brodt ED, Riew KD. Differential diagnosis for cervical spondylotic myelopathy: literature review. Spine (Phila Pa 1976). 2013;38(22 Suppl 1):S78-88.",
+      "Radu AS. Hérnia discal. In: Natour J, editor. Coluna vertebral: conhecimentos básicos. São Paulo: Etcetera Editora; 2004.",
+      "Radu AS. Síndrome do canal estreito. In: Natour J, editor. Coluna vertebral: conhecimentos básicos. São Paulo: Etcetera Editora; 2004.",
+      "Appel F. Artropatias inflamatórias. In: Natour J, editor. Coluna vertebral: conhecimentos básicos. São Paulo: Etcetera Editora; 2004.",
+      "AOSpine. Classificação das lesões traumáticas vertebrais. Programa de Formação Contínua. Disponível em: https://www.aolatam.org/ftp/edudatabase/open-files/aos_da_n1m3t3_sadao_prt.pdf",
+      "Orguc S, Arkun R. Primary tumors of the spine. Semin Musculoskelet Radiol. 2014;18(3):280-99.",
+      "Greenberg MS. Manual de neurocirurgia. 7. ed. Porto Alegre: Artmed; 2013.",
+      "Travers BS, Benjamin K-TT, Barton JL. Multiple sclerosis: diagnosis, disease-modifying therapy and prognosis. Aust J Gen Pract. 2022;51(4):199-206.",
+      "Sivadasan A. Peripheral nervous system and neuromuscular disorders in theemergency department: a review. Acad Emerg Med. 2024;31:386-97.",
+      "Natour J. Coluna vertebral: conhecimentos básicos. 2. ed. São Paulo: Etcetera Editora; 2004.",
+      "Santos RP, Fernandes RCL. Exame neurológico essencial baseado em evidências. Brazilian Journal of Development. 2021;7(12):117286-301.",
+      "Cecin HA. Diretriz I: fundamentos do diagnóstico das doenças da coluna vertebral lombar. Rev Bras Reumatol. 2008;48 Suppl 1:3-7."
+    ],
+    "seo": {
+      "titulo": "Differential Diagnosis: Spinal Disorders vs. Neurological Diseases | Treatise",
+      "meta_descricao": "Clinical guide to differentiating spine pathologies from neurological diseases: ALS vs. cervical myelopathy, multiple sclerosis, NMOSD, NPH, Parkinson, and SDAVF.",
+      "resumo_chamada": "Master the differential diagnosis between surgical spinal disorders and primary neurological diseases (ALS, MS, NMOSD, NPH, Parkinson disease, spinal AV fistulas).",
+      "slug": "differential-diagnosis-spine-diseases-and-neurological-disorders"
+    }
+  },
+  "18": {
+    "numero": 18,
+    "titulo": "Spine Evaluation in the Polytrauma Patient",
+    "secao": "",
+    "autores": [
+      "Charbel Jacob Júnior",
+      "Igor de Barcellos Zanon"
+    ],
+    "contexto": "The evaluation and management of the vertebral column in a polytrauma patient must be integrated seamlessly into Advanced Trauma Life Support (ATLS) resuscitation priorities (ABCDE: Airway with cervical spine protection, Breathing, Circulation with hemorrhage control, Disability, Exposure). In high-energy trauma (motor vehicle collisions, falls from height, crush injuries), occult spinal fractures, non-contiguous multi-level injuries (occurring in 10% to 15% of cases), and traumatic spinal cord injuries are frequently masked by traumatic brain injury (TBI), severe intoxication, endotracheal intubation, or painful distracting injuries. Maintaining strict spinal motion restriction—utilizing manual in-line stabilization during endotracheal intubation and flat log-rolling precautions rather than prolonged immobilization on rigid backboards (which cause pressure ulcers and respiratory compromise within 2 hours)—is critical for preventing secondary neurological deterioration. Validated clinical decision rules (NEXUS criteria and Canadian C-Spine Rule) allow safe clinical cervical spine clearance exclusively in fully alert, cooperative, non-intoxicated, asymptomatic patients without distracting injuries. In all obtunded, high-energy, or symptomatic trauma patients, multi-detector whole-spine CT scanning from the occiput to the sacrum represents the mandatory gold standard. Magnetic resonance imaging (MRI) is essential for evaluating spinal cord contusion, epidural hematoma, and posterior ligamentous complex disruption. Standardized documentation according to the ASIA/ISNCSCI scale provides the diagnostic and prognostic baseline for multidisciplinary surgical decision-making.",
+    "objetivo": "To present the structured protocol for spinal evaluation, clearance, and stabilization in the polytrauma patient according to ATLS principles. The reader should be able to execute spinal motion restriction and airway management safely; apply and interpret the NEXUS criteria and Canadian C-Spine Rule for cervical clearance; select and interpret whole-spine multi-detector CT and MRI; identify non-contiguous spinal injuries and associated blunt cerebrovascular injuries (BCVI); and perform standardized neurological assessment using the ASIA impairment scale.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Trauma Priorities and Spinal Motion Restriction",
+        "texto": "The primary survey prioritizes life over limb/spine. The cervical spine is protected immediately during Airway management using manual in-line stabilization (MILS) with video-laryngoscopy or fiberoptic intubation. Spinal motion restriction (SMR) with a rigid cervical collar and firm mattress replaces the antiquated prolonged use of rigid spine boards, which must be removed as soon as the patient is transferred to the trauma bay stretcher (within 20–30 minutes) to prevent pressure necrosis, pain, and compromised ventilatory mechanics. Hemodynamic resuscitation maintains mean arterial pressure (MAP target 85–90 mmHg) to ensure adequate spinal cord perfusion."
+      },
+      {
+        "subtitulo": "Clinical Decision Rules: NEXUS vs. Canadian C-Spine Rule",
+        "texto": "Cervical spine clearance without imaging is permitted only when validated criteria are fully met: 1) NEXUS Criteria requires the absence of all five criteria: no midline cervical spine tenderness, no focal neurological deficit, normal level of alertness (GCS 15), no evidence of intoxication, and no painful distracting injury; 2) Canadian C-Spine Rule (CCSR) evaluates high-risk factors (age >=65, dangerous mechanism, paresthesias in extremities), low-risk factors permitting safe range of motion assessment (simple rear-end collision, ambulatory at any time, delayed onset of neck pain, absence of midline tenderness), and active rotation (45° left and right). If any high-risk factor is present or the patient cannot actively rotate their neck 45° bilaterally, CT imaging is mandatory."
+      },
+      {
+        "subtitulo": "Imaging Algorithms: Whole-Spine CT and MRI",
+        "texto": "Multi-detector computed tomography (MDCT) with coronal and sagittal reconstructions from occiput to sacrum is the definitive gold standard for all high-energy trauma, obtunded patients, and symptomatic individuals. Plain radiographs have been entirely superseded by CT due to high miss rates (>50% of cervical fractures). In patients with high-energy cervical trauma (fractures involving the transverse foramen, facet subluxation/dislocation, high cervical C1–C3 fractures), CT Angiography (CTA) of the neck is mandatory to screen for Blunt Cerebrovascular Injury (BCVI) of the vertebral and carotid arteries (Denver criteria). MRI is indicated within 24–48 hours to evaluate spinal cord injury, ligamentous disruption, and epidural hematoma."
+      },
+      {
+        "subtitulo": "Non-Contiguous Injuries and Associated Visceral Trauma",
+        "texto": "A vital rule in polytrauma is that finding one spinal fracture warrants full whole-spine imaging: non-contiguous secondary spinal fractures occur in 10% to 15% of patients. Furthermore, specific spinal fracture patterns correlate with major visceral trauma: upper thoracic fractures associate with tracheobronchial, aortic, and sternal fractures; thoracolumbar Chance flexion-distraction fractures strongly correlate with intra-abdominal hollow viscus bowel perforations (seatbelt sign); and sacral/pelvic fractures associate with retroperitoneal hemorrhage and genitourinary bladder/urethral tears."
+      },
+      {
+        "subtitulo": "Neurological Assessment and Secondary Survey",
+        "texto": "Once vital stability is achieved, a complete secondary survey includes rolling the patient (log-roll technique maintaining strict spinal alignment) to palpate the entire spinous process chain for focal tenderness, step-offs, and hematomas. Perform standardized ASIA/ISNCSCI neurological examination: test 10 motor key muscles, 28 sensory dermatomes, and digital rectal examination (evaluating deep anal pressure, voluntary sphincter tone, and the bulbocavernosus reflex to assess for spinal shock vs. complete cord transection)."
+      }
+    ],
+    "aplicacao_clinica": "In the trauma resuscitation bay, never remove the cervical collar in an obtunded, intubated, or intoxicated patient based solely on normal plain X-rays; obtain a thin-cut whole-spine CT. If a patient with a flexion-distraction Chance fracture of L1 presents with abdominal wall bruising (seatbelt sign), immediately request a contrast-enhanced abdominal CT and consult trauma surgery to rule out occult small bowel perforation. In a patient with a C6–C7 unilateral locked facet and transverse foramen fracture, perform immediate neck CT angiography to evaluate vertebral artery thrombosis or dissection before attempting closed reduction or open operative stabilization. Always remove the rigid spinal backboard immediately upon arrival in the emergency department to prevent severe sacral and occipital pressure ulcers. Maintain mean arterial pressure (MAP) above 85 mmHg with crystalloids and vasopressors (norepinephrine) to prevent secondary ischemic spinal cord injury.",
+    "mensagem_central": "Spine evaluation in polytrauma requires strict adherence to ATLS resuscitation priorities. Restrict spinal motion without prolonging backboard immobilization, apply NEXUS/Canadian rules only in awake and non-intoxicated patients, obtain thin-cut whole-spine MDCT for high-energy trauma, and systematically rule out non-contiguous spinal fractures (10–15%), blunt cerebrovascular injuries (BCVI), and associated occult visceral trauma.",
+    "por_que_importa": "In the polytrauma patient, spinal fractures and cord injury are frequently asymptomatic initially, masked by head injury, severe intoxication, or painful distracting limb trauma, and can catastrophically worsen during careless intubation or transfers. This chapter provides a unified management framework: protecting the spine from the airway stage, establishing baseline ASIA neurological status, using whole-spine CT, screening for vertebral artery dissection, and identifying non-contiguous injuries before permanent harm occurs.",
+    "decs": [
+      "Multiple Trauma",
+      "Spine",
+      "Spinal Cord Injuries",
+      "Spinal Fractures",
+      "Advanced Trauma Life Support Care",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Emergency Medical Services"
+    ],
+    "mesh": [
+      "Multiple Trauma",
+      "Spine",
+      "Spinal Cord Injuries",
+      "Spinal Fractures",
+      "Advanced Trauma Life Support Care",
+      "Tomography, X-Ray Computed",
+      "Magnetic Resonance Imaging",
+      "Emergency Medical Services"
+    ],
+    "palavras_chave_livres": [
+      "ATLS spine evaluation",
+      "NEXUS criteria",
+      "Canadian C-spine rule",
+      "Whole-spine CT",
+      "Blunt cerebrovascular injury",
+      "Non-contiguous spine fractures",
+      "Spinal motion restriction"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "ATLS Priorities and Backboard Removal",
+        "texto": "Spinal protection accompanies Airway management with manual in-line stabilization (MILS). Rigid spine boards must be removed within 20–30 minutes to prevent debilitating pressure necrosis and respiratory compromise, replacing them with a firm stretcher and cervical collar."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Whole-Spine CT is Mandatory for High-Energy Trauma",
+        "texto": "Plain X-rays miss over 50% of cervical fractures in trauma. In all high-energy, symptomatic, or obtunded polytrauma patients, obtain thin-cut multi-detector whole-spine CT from occiput to sacrum to identify fractures and rule out non-contiguous injuries (10–15%)."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Screen for Vertebral Artery Injury (BCVI)",
+        "texto": "In cervical fractures extending into the transverse foramen, facet dislocations, or upper cervical injuries, immediately obtain CT Angiography of the neck (Denver criteria) to diagnose and treat vertebral artery dissection or thrombosis before stroke occurs."
+      }
+    ],
+    "referencias": [
+      "American College of Surgeons. Advanced Trauma Life Support® student course manual. 10. ed. Chicago (IL): American College of Surgeons; 2018.",
+      "Neal CJ, McCafferty RR, Freedman B, et al. Cervical and thoracolumbar spine injury evaluation, transport, and surgery in the deployed setting. Mil Med. 2018;183:83-91.",
+      "Filho TEPDB, Lech O. Exame físico em ortopedia. 3. ed. São Paulo: Sarvier Editora de Livros Médicos.",
+      "Vaccaro AR, Albert TJ. Physical examination of the spine. 2. ed. Rio de Janeiro: Thieme Publishers Rio de Janeiro, Thieme Publicações Ltda.; 2017.",
+      "Guha A. The Canadian C-Spine Rule for radiography in alert and stable trauma patients. Crit Care. 2002;6:1841-1848.",
+      "Hoffman JR, Wolfson AB, Todd K, et al. Selective cervical spine radiography in blunt trauma: methodology of the National Emergency X-Radiography Utilization Study (NEXUS). Ann Emerg Med. 1998;32:461-469.",
+      "Worthington JR, Eisenhauer M a, Cass D, et al. The Canadian C-Spine Rule versus the NEXUS Low-Risk Criteria in Patients with Trauma Ian. N Engl J Med. 2003;349:2510-8.",
+      "Vazirizadeh-mahabadi M, Yarahmadi M. Canadian C-spine Rule versus NEXUS in screening of clinically important traumatic cervical spine injuries: a systematic review and meta-analysis. Arch Acad Emerg Med. 2023;11:1-8.",
+      "Yelamarthy PKK, Chhabra HS, Vaksha V, et al. Radiological protocol in spinal trauma: literature review and Spinal Cord Society position statement. Eur Spine J. 2020;29:1197-1211."
+    ],
+    "seo": {
+      "titulo": "Spine Evaluation in the Polytrauma Patient | Spine Surgery Treatise",
+      "meta_descricao": "Complete ATLS protocol for spine trauma: motion restriction, NEXUS/Canadian rules, whole-spine CT, MRI, vertebral artery dissection (BCVI), and ASIA scoring.",
+      "resumo_chamada": "Master the evaluation of the spine in polytrauma: ATLS airway management, clinical clearance rules, whole-spine CT algorithms, and non-contiguous injury detection.",
+      "slug": "spine-evaluation-in-the-polytrauma-patient"
+    }
+  },
+  "19": {
+    "numero": 19,
+    "titulo": "Spinal Cord Injury and Traumatic Myelopathy",
+    "secao": "",
+    "autores": [
+      "Emiliano Neves Vialle",
+      "Mauricio Zanon"
+    ],
+    "contexto": "Traumatic spinal cord injury (SCI) represents a devastating medical and surgical emergency combining mechanical disruption of neural pathways, acute vertebral instability, and profound systemic autonomic dysregulation. Pathophysiologically, SCI evolves in a two-phase cascade: the primary injury consists of immediate mechanical tissue disruption, axonal shearing, petechial microvascular hemorrhage, and localized ischemia at the moment of impact; this triggers a destructive secondary injury cascade evolving over subsequent hours and days, characterized by extensive microvascular vasospasm, blood-spinal cord barrier breakdown, cytotoxic and vasogenic edema, glutamate excitotoxicity, free radical lipid peroxidation, neuroinflammation, oligodendrocyte apoptosis, and expanding secondary ischemia. Clinical presentation ranges from complete transection (ASIA A) to incomplete spinal cord syndromes: Central Cord syndrome (greater motor weakness in upper than lower extremities), Brown-Séquard syndrome (ipsilateral motor/proprioceptive loss with contralateral pain/temperature loss), Anterior Cord syndrome (loss of motor and spinothalamic function with preserved dorsal column proprioception), Conus Medullaris syndrome, and Cauda Equina syndrome. Management requires immediate systemic neuroprotection: maintaining Mean Arterial Pressure (MAP >= 85–90 mmHg for 5–7 days), avoiding hypoxia (PaO2 > 60 mmHg), early surgical decompression and realignment (<24 hours, ideally <12 hours according to the STASCIS trial), and preventing systemic complications (neurogenic shock, autonomic dysreflexia, venous thromboembolism, neurogenic bladder/bowel, and pressure ulcers).",
+    "objetivo": "To present current evidence-based principles for the evaluation, neuroprotection, surgical decompression, and comprehensive acute management of traumatic spinal cord injury. The reader should be able to understand the primary mechanical insult and secondary biochemical injury cascades; perform and document standardized neurological examinations according to ISNCSCI/ASIA standards; differentiate incomplete cord syndromes; execute hemodynamic optimization protocols (MAP targets); select candidates for urgent surgical decompression; and manage acute systemic complications and neurogenic shock.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Primary Injury and the Secondary Pathophysiological Cascade",
+        "texto": "Primary injury occurs at impact via contusion, compression, distraction, or laceration of neural tissue and microvasculature. Secondary injury develops over hours to weeks: 1) Vascular phase: petechial central gray matter hemorrhage, loss of autoregulation, vasospasm, and microthrombosis causing expanding ischemia; 2) Cellular phase: energy failure (ATP depletion), massive glutamate release, pathological intracellular calcium influx, and free radical generation (lipid peroxidation); 3) Inflammatory and apoptotic phase: neutrophil and macrophage infiltration, cytokine release (TNF-alpha, IL-1beta), and programmed cell death (apoptosis) of oligodendrocytes causing post-traumatic demyelination and secondary cord cavitation."
+      },
+      {
+        "subtitulo": "Standardized Neurological Assessment (ISNCSCI/ASIA)",
+        "texto": "Baseline examination must follow the International Standards for Neurological Classification of Spinal Cord Injury (ISNCSCI) as soon as the patient is alert and resuscitated: 1) Motor examination: test 10 key muscle groups bilaterally (MRC scale 0–5, total score 100); 2) Sensory examination: test 28 dermatomes bilaterally for pinprick and light touch (total score 112 each); 3) Anorectal examination: assess voluntary anal contraction (VAC, S4–S5 motor) and deep anal pressure (DAP, S4–S5 sensory). Define the Motor Level, Sensory Level, and Neurological Level of Injury (NLI). Classify using the ASIA Impairment Scale (AIS): AIS A (Complete, no sacral sparing S4–S5); AIS B (Sensory Incomplete, sensory but no motor preserved below NLI including S4–S5); AIS C (Motor Incomplete, more than half of key muscles below NLI have muscle grade <3); AIS D (Motor Incomplete, at least half of key muscles below NLI have muscle grade >=3); AIS E (Normal)."
+      },
+      {
+        "subtitulo": "Incomplete Cord Syndromes and Neurogenic Shock",
+        "texto": "Incomplete syndromes feature specific tract injury patterns: 1) Central Cord Syndrome: hyperextension injury in stenotic cervical spines, causing disproportionately greater upper extremity weakness (distal hand intrinsics) than lower extremity impairment, with variable sensory loss; 2) Brown-Séquard Syndrome: hemisection from penetrating or burst trauma, causing ipsilateral loss of motor function and proprioception/vibration with contralateral loss of pain and temperature 1–2 segments below injury; 3) Anterior Cord Syndrome: flexion-compression injury with anterior spinal artery occlusion, causing complete bilateral motor paralysis and loss of pain/temperature with preserved dorsal column proprioception (worst recovery prognosis). Neurogenic shock (cervical/high-thoracic T6 and above injury) is characterized by the triad of hypotension, bradycardia, and peripheral vasodilation due to loss of sympathetic tone, distinct from spinal shock (transient loss of all spinal reflex activity and flaccidity below injury level, ending when the bulbocavernosus reflex returns)."
+      },
+      {
+        "subtitulo": "Hemodynamic Neuroprotection and Surgical Timing (STASCIS)",
+        "texto": "Hemodynamic management aims to prevent secondary ischemic cord injury: maintain Mean Arterial Pressure (MAP) between 85 and 90 mmHg for 5 to 7 days in the ICU using volume resuscitation and vasopressors with combined inotropic and vasoconstrictive properties (norepinephrine, dopamine, or epinephrine; avoid pure vasoconstrictors like phenylephrine that worsen bradycardia). Surgical decompression and rigid stabilization within 24 hours (and ideally within 12 hours) of injury—supported by the landmark STASCIS prospective trial and subsequent pooled analyses—significantly increases the likelihood of >=2 AIS grade neurological recovery compared to delayed decompression (>24 hours)."
+      },
+      {
+        "subtitulo": "Pharmacotherapy, Complications, and Acute Rehabilitation",
+        "texto": "High-dose methylprednisolone (NASCIS protocol) remains highly controversial; modern international guidelines (AANS/CNS and AO Spine) consider it a treatment option rather than a standard of care due to high risks of severe pneumonia, sepsis, GI bleeding, and death. Systemic management includes: early venous thromboembolism prophylaxis (LMWH started 24–48 hours post-injury/surgery and mechanical compression), aggressive pulmonary toilet and mechanical ventilation weaning, clean intermittent catheterization to avoid bladder distension and dysreflexia, bowel protocols, and pressure-relieving air mattresses."
+      }
+    ],
+    "aplicacao_clinica": "In the emergency department, when a patient presents with cervical trauma and acute quadriparesis, immediately obtain emergent whole-spine CT and urgent MRI to demonstrate compressive bone fragments, disc herniation, or facet subluxation. Simultaneously initiate invasive arterial line monitoring and titrate norepinephrine to maintain MAP between 85 and 90 mmHg. In patients with bilateral facet dislocations, prompt closed skeletal traction with Gardner-Wells tongs (under conscious sedation with continuous neurological monitoring) or emergent operative open reduction within hours restores canal dimensions and cord perfusion. Transfer the patient to the operating room immediately for definitive anterior, posterior, or circumferential decompression and instrumented fusion (<12–24 hours). In patients with high lesions (T6 and above), remain vigilant for autonomic dysreflexia (paroxysmal severe hypertension, throbbing headache, bradycardia, profuse sweating above lesion triggered by bladder distension or fecal impaction), treating it by sitting the patient upright and rapidly emptying the bladder or bowel.",
+    "mensagem_central": "Traumatic spinal cord injury management requires rapid, aggressive neuroprotection to arrest the secondary injury cascade. Integrating emergent surgical decompression and spinal stabilization within 12 to 24 hours (STASCIS), maintaining intensive hemodynamic augmentation (MAP >= 85–90 mmHg for 5–7 days), performing rigorous ISNCSCI/ASIA evaluations, and executing systematic multi-organ intensive care are the cornerstones of maximizing neurological recovery.",
+    "por_que_importa": "Primary mechanical damage occurs in milliseconds, but the biological fate of marginal, penumbral spinal cord axons is decided in the subsequent hours and days. Overlooking hypotension, delaying operative decompression beyond 24 hours, or failing to differentiate neurogenic shock from hypovolemia leads to permanent paralysis. This chapter equips the clinician with actionable neuroprotective protocols, standardized classification tools, and surgical timing principles to optimize recovery and prevent secondary systemic morbidity.",
+    "decs": [
+      "Spinal Cord Injuries",
+      "Trauma, Nervous System",
+      "Paraplegia",
+      "Quadriplegia",
+      "Neuroprotection",
+      "Spinal Fusion",
+      "Intensive Care Units",
+      "Decompression, Surgical"
+    ],
+    "mesh": [
+      "Spinal Cord Injuries",
+      "Trauma, Nervous System",
+      "Paraplegia",
+      "Quadriplegia",
+      "Neuroprotection",
+      "Spinal Fusion",
+      "Intensive Care Units",
+      "Decompression, Surgical"
+    ],
+    "palavras_chave_livres": [
+      "STASCIS trial",
+      "MAP augmentation 85-90 mmHg",
+      "ASIA impairment scale",
+      "Neurogenic shock vs. spinal shock",
+      "Central cord syndrome",
+      "Secondary injury cascade",
+      "Autonomic dysreflexia"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "The Two Phases of Spinal Cord Injury",
+        "texto": "Primary mechanical disruption triggers a secondary biochemical cascade (ischemia, excitotoxicity, calcium influx, apoptosis) expanding over hours and days. Intensive neuroprotection aims to rescue penumbral axons through early decompression and perfusion optimization."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Early Surgical Decompression (<24h, Ideally <12h)",
+        "texto": "The STASCIS prospective trial demonstrated that early surgical decompression within 24 hours (and ideally <12 hours) significantly improves neurological recovery (>=2 AIS grade improvement) compared to delayed surgery in acute spinal cord injury."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Maintain MAP 85–90 mmHg for 5–7 Days",
+        "texto": "Autoregulation of spinal cord blood flow is lost after trauma. Maintain Mean Arterial Pressure (MAP) >= 85–90 mmHg for 5 to 7 days in the ICU using volume and norepinephrine to prevent secondary spinal cord ischemia. Recognize neurogenic shock (hypotension + bradycardia)."
+      }
+    ],
+    "referencias": [
+      "Simeonova I, Sandner B, et al. Neural stem cell transplantation for spinal cord repair. In: Fehlings MG, Harrop JS, editors. AOSpine master series. Vol. 10. Stuttgart: Thieme; 2017. p. 111-123. doi:10.1055/b-0036-137999.",
+      "Bracken MB. Steroids for acute spinal cord injury. Cochrane Database Syst Rev. 2012;(1):CD001046. doi:10.1002/14651858.CD001046.pub2.",
+      "Schouten R, Albert T, et al. The spine-injured patient: initial assessment and emergency treatment. J Am Acad Orthop Surg. 2012 Jun;20(6):336-46. doi:10.5435/JAAOS-20-06-336. PMID:22661563.",
+      "Nouri A, Fehlings MG, et al. The timing of management of spinal cord injuries. In: Browner BD, Jupiter JB, Levine AM, Trafton PG, editors. Skeletal trauma: basic science, management, and reconstruction. 5th ed. Philadelphia: Saunders; 2014. p. 769-790.",
+      "Jazayeri SB, Maroufi SF, et al. Incidence of traumatic spinal cord injury worldwide: a systematic review, data integration, and update. World Neurosurg X. 2023 Feb 1;18:100171. doi:10.1016/j.wnsx.2023.100171. PMID:36910686.",
+      "Vaccaro AR, Harrop JS, et al. Prehospital and emergency room management, as well as timing of treatment. In: Eismont FJ, Bell GR, editors. Spine: core knowledge in orthopaedics. Philadelphia: Mosby Elsevier; 2010. p. 275-289.",
+      "Catapano JS, Hawryluk GWJ, et al. Acute non-operative management of traumatic spinal cord injury: state of the art. In: Fehlings MG, Harrop JS, editors. AOSpine master series. Vol. 5. Stuttgart: Thieme; 2017. p. 55-72. doi:10.1055/b-0036-137994.",
+      "Kirshblum SC, Burns SP, et al. International standards for neurological classification of spinal cord injury: revised 2011. J Spinal Cord Med. 2011 Nov;34(6):535-46. doi:10.1179/204577211X13207446293695. PMID:22330108.",
+      "Zhang L-X, Yin Y-M, et al. Grafted bone marrow stromal cells: a contributor to glial repair after spinal cord injury. The Neuroscientist. 2014;21(3):277-289. doi:10.1177/1073858414532171.",
+      "Wilson JR, Fehlings MG. Riluzole for acute traumatic spinal cord injury: a promising neuroprotective treatment strategy. World Neurosurg. 2014 May-Jun;81(5-6):825-9. doi:10.1016/j.wneu.2013.01.001. PMID:23295632.",
+      "Wilson JR, Cadotte DW, et al. Clinical predictors of neurological outcome, functional status, and survival after traumatic spinal cord injury: a systematic review. J Neurosurg Spine. 2012 Sep;17(1 Suppl):11-26. doi:10.3171/2012.4.AOSPINE1245. PMID:22985366.",
+      "Fehlings MG, Vaccaro A, et al. Early versus delayed decompression for traumatic cervical spinal cord injury: results of the Surgical Timing in Acute Spinal Cord Injury Study (STASCIS). PLoS One. 2012;7(2):e32037. doi:10.1371/journal.pone.0032037. PMID:22384132.",
+      "Kamiya K, Koda M, et al. Neuroprotective therapy with granulocyte colony-stimulating factor in acute spinal cord injury: a comparison with high-dose methylprednisolone as a historical control. Eur Spine J. 2015 May;24(5):963-7. doi:10.1007/s00586-014-3373-0. PMID:24961222.",
+      "Casha S, Zygun D, et al. Results of a phase II placebo-controlled randomized trial of minocycline in acute spinal cord injury. Brain. 2012 Apr;135(Pt 4):1224-36. doi:10.1093/brain/aws072. PMID:22505632.",
+      "Grossman RG, Fehlings MG, et al. A prospective, multicenter, phase I matched-comparison group trial of safety, pharmacokinetics, and preliminary efficacy of riluzole in patients with traumatic spinal cord injury. J Neurotrauma. 2014 Feb 1;31(3):239-55. doi:10.1089/neu.2013.2969. PMID:23859435.",
+      "Dasari VR, Veeravalli KK, et al. Mesenchymal stem cells in the treatment of spinal cord injuries: a review. World J Stem Cells. 2014 Apr 26;6(2):120-33. doi:10.4252/wjsc.v6.i2.120. PMID:24772239.",
+      "Ramer LM, Ramer MS, et al. Restoring function after spinal cord injury: towards clinical translation of experimental strategies. Lancet Neurol. 2014 Dec;13(12):1241-56. doi:10.1016/S1474-4422(14)70144-9. PMID:25453463.",
+      "Jazayeri SB, Maroufi SF, et al. Incidence of traumatic spinal cord injury worldwide: a systematic review, data integration, and update. World Neurosurg X. 2023 Feb 1;18:100171. doi:10.1016/j.wnsx.2023.100171. PMID:36910686.",
+      "Hubertus V, Badhiwala JH, et al. AO Spine clinical practice recommendations for the surgical management of acute traumatic spinal cord injury: contemporary concepts. Global Spine J. 2025 Jun 8:21925682251350941. doi:10.1177/21925682251350941. PMID:40483581.",
+      "Aarabi B, Olexa J, et al. Extent of spinal cord decompression in motor complete American Spinal Injury Association Impairment Scale grades A and B traumatic spinal cord injury patients: postoperative magnetic resonance imaging analysis of standard operative approaches. J Neurotrauma. 2019;36:862-876. doi:10.1089/neu.2018.5834."
+    ],
+    "seo": {
+      "titulo": "Spinal Cord Injury and Traumatic Myelopathy | Spine Surgery Treatise",
+      "meta_descricao": "Comprehensive guide to traumatic spinal cord injury: pathophysiology, ASIA/ISNCSCI scale, STASCIS early decompression (<24h), MAP 85-90 targets, and neurogenic shock.",
+      "resumo_chamada": "Master the emergency management of traumatic spinal cord injury: secondary injury cascades, ASIA grading, hemodynamic neuroprotection, and early surgical decompression.",
+      "slug": "spinal-cord-injury-and-traumatic-myelopathy"
+    }
+  },
+  "20": {
+    "numero": 20,
+    "titulo": "Traumatic Injuries of the Upper Cervical Spine",
+    "secao": "",
+    "autores": [
+      "André Rafael Hübner",
+      "Igor Ebert Cechin",
+      "Alvaro Diego Heredia Suarez"
+    ],
+    "contexto": "Traumatic injuries of the upper cervical spine encompass the craniocervical junction (occipital condyles, C0–C1 articulation) and the atlantoaxial complex (C1–C2), an anatomical region characterized by extraordinary multidirectional mobility, complex ligamentous stabilization (transverse atlantal ligament, alar ligaments, tectorial membrane, apical ligament), and extreme vulnerability due to the immediate proximity of the brainstem, high cervical spinal cord, cranial nerves (IX, X, XI, XII), and the vertebral arteries. The clinical and radiological spectrum includes occipital condyle fractures (Anderson-Montesano / Tuli classifications), atlanto-occipital dissociation (AOD / Traynelis classification), atlas (C1) fractures (Jefferson burst and arch fractures / Gehweiler classification), atlantoaxial rotatory fixation/subluxation (Fielding-Hawkins classification), odontoid (dens) fractures (Anderson-D'Alonzo and Grauer classifications), and traumatic spondylolisthesis of the axis (Hangman's fracture / Effendi and Levine-Edwards classifications). Because high cervical injuries range from stable purely bony fractures amenable to rigid external immobilization (cervical collar or halo-vest) to catastrophic, highly unstable ligamentous disruptions demanding emergent surgical stabilization, evaluating true mechanical stability is paramount. Multi-detector CT provides definitive osseous detail and craniocervical alignment measurements (Basion-Dens Interval [BDI], Basion-Axial Interval [BAI], Powers ratio, Sun ratio, Condylar Gap), while MRI evaluates ligamentous integrity and neural compression. CT Angiography (CTA) is mandatory when fracture patterns involve the transverse foramen or craniocervical junction. Management must balance fracture morphology, ligamentous competence, patient age (young high-energy trauma vs. low-energy falls in osteoporotic elderly), and comorbidities.",
+    "objetivo": "To present an integrated, evidence-based approach to the diagnosis, classification, stability assessment, and management of upper cervical spine trauma (C0–C2). The reader should be able to identify injury mechanisms and clinical presentations; apply validated radiographic criteria and measurement lines (BDI, BAI, Powers ratio, Rule of Spence) for craniocervical instability; classify occipital condyle, atlas, odontoid, and Hangman fractures; select appropriate non-operative vs. surgical strategies (anterior odontoid screw, C1–C2 Harms/Magerl fusion, occipitocervical arthrodesis); and manage distinct considerations in pediatric and geriatric populations.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Biomechanical Stability and Diagnostic Imaging Principles",
+        "texto": "Upper cervical stability relies predominantly on dense ligamentous structures: the transverse atlantal ligament (TAL, the primary stabilizer of C1–C2 preventing anterior atlas translation), alar ligaments (limiting axial rotation and lateral bending), and the tectorial membrane. Multi-detector CT with coronal and sagittal reconstructions is the gold standard for bone detail. Craniocervical alignment is assessed via: 1) Basion-Dens Interval (BDI < 8.5 mm on CT in adults, <10 mm in children); 2) Basion-Axial Interval (BAI < 8.5 mm); 3) Powers ratio (Basion-posterior C1 arch distance divided by anterior C1 arch-opisthion distance, normal <0.9; >1.0 indicates anterior AOD); 4) Condylar Gap / Occipital Condyle-C1 Joint Space (normal <1.5–2.0 mm; >=2 mm indicates AOD). MRI is mandatory to directly assess TAL disruption, cord contusion, and epidural hematoma. CT Angiography evaluates vertebral artery injury."
+      },
+      {
+        "subtitulo": "Occipital Condyle Fractures and Atlanto-Occipital Dissociation (AOD)",
+        "texto": "Occipital condyle fractures (Anderson-Montesano): Type I (comminuted impaction, stable); Type II (extension of basilar skull fracture, stable); Type III (avulsion fracture of condyle by alar ligament, potentially unstable). Atlanto-Occipital Dissociation (AOD) is a highly lethal injury resulting from complete disruption of the tectorial membrane and alar ligaments, classified by Traynelis into Type I (anterior displacement of occiput), Type II (longitudinal distraction), and Type III (posterior displacement). Traction is strictly contraindicated in AOD; definitive treatment is prompt rigid posterior Occipitocervical (C0–C2/C3) instrumented fusion."
+      },
+      {
+        "subtitulo": "Atlas (C1) Fractures and the Rule of Spence",
+        "texto": "Atlas fractures (Gehweiler classification): Type I (anterior arch), Type II (posterior arch—most common, stable), Type III (anterior and posterior arch/Jefferson burst fracture), Type IV (lateral mass fracture), Type V (transverse process). The integrity of the Transverse Atlantal Ligament (TAL) is the primary determinant of stability: Dickman classification differentiates Type I (intrasubstance TAL ligamentous tear, poor non-operative healing, requires C1–C2 fusion) from Type II (TAL bony avulsion at tubercle of C1, can heal with rigid halo-vest immobilization). On coronal CT or open-mouth X-ray, the Rule of Spence states that lateral displacement of C1 lateral masses over C2 (overhang) totaling >=6.9 mm on X-ray or >=8.1 mm on CT indicates TAL rupture."
+      },
+      {
+        "subtitulo": "Odontoid (Dens) Fractures",
+        "texto": "Odontoid fractures (Anderson and D'Alonzo classification): Type I (avulsion of dens apex above TAL, rare, stable); Type II (fracture through the waist/base of the odontoid process, most common, high rate of nonunion/pseudarthrosis [30–60%] due to watershed blood supply and micro-motion); Type III (fracture extending into the cancellous body of C2, excellent healing rate with rigid collar/halo-vest >90%). For unstable Type II fractures in younger patients with intact transverse ligament, minimal comminution, and preserved anterior-inferior oblique fracture line, anterior single or dual odontoid screw fixation preserves C1–C2 rotational mobility. In elderly patients (>65–70 years) or comminuted/osteoporotic fractures, posterior C1–C2 Harms (C1 lateral mass - C2 pedicle/pars screw) instrumented fusion is the gold standard."
+      },
+      {
+        "subtitulo": "Traumatic Spondylolisthesis of the Axis (Hangman's Fracture)",
+        "texto": "Hangman's fracture involves bilateral pars interarticularis fractures of C2 resulting from hyperextension-axial loading (or rebound flexion). Levine and Edwards classification guides management: Type I (undisplaced <3 mm translation, no angulation, stable, treated with rigid collar for 10–12 weeks); Type II (significant translation >3 mm and angulation due to disruption of C2–C3 disc and posterior longitudinal ligament [PLL], treated with halo-vest or anterior C2–C3 ACDF / posterior C2–C3 fusion); Type IIA (minimal translation, severe flexion-angulation due to oblique pars fracture and intact anterior longitudinal ligament [ALL], traction is strictly contraindicated as it causes catastrophic distraction; treated in extension with halo-vest or surgery); Type III (bilateral facet dislocation of C2 on C3 with pars fracture, highly unstable, requires open reduction and posterior C2–C3 or anterior-posterior fusion)."
+      }
+    ],
+    "aplicacao_clinica": "In the emergency room, evaluating upper cervical spine injuries requires recognizing that catastrophic ligamentous instability can exist with minimal initial neurological deficit. In suspected atlanto-occipital dissociation (AOD) on CT (BDI/BAI >8.5 mm or condyle-C1 joint space >=2 mm), immediately place the patient in a rigid collar and sandbags; never apply cervical skeletal traction, which can cause fatal brainstem transection. In Type II odontoid fractures, evaluate patient age and fracture morphology: in an active 35-year-old with a reducible Type II fracture and intact TAL, anterior odontoid screw fixation preserves 50% of cervical axial rotation; in an 80-year-old patient following a ground-level fall, avoiding halo-vest morbidity (which carries up to 40% mortality in the elderly from pneumonia and dysphagia) by utilizing an optimized rigid collar or posterior C1–C2 Harms instrumentation yields superior outcomes. In Hangman fractures, always differentiate Type II (traction allowed for reduction) from Type IIA (traction strictly contraindicated due to severe distraction across the C2–C3 disc space). In C1 lateral mass fractures or Jefferson fractures with transverse ligament avulsion (Dickman Type II), halo-vest immobilization allows bony consolidation, whereas ligamentous tears (Dickman Type I) require posterior C1–C2 fusion.",
+    "mensagem_central": "Management of upper cervical spine trauma is governed by the biomechanical competence of craniocervical and atlantoaxial ligamentous complexes rather than superficial radiographic appearances alone. Differentiating stable bony fractures from unstable ligamentous disruptions (TAL rupture, AOD, Type IIA Hangman, Type II odontoid) using multi-detector CT, MRI, and vascular imaging dictates whether non-operative collar immobilization, motion-preserving anterior screw osteosynthesis, or rigid posterior instrumented fusion is required.",
+    "por_que_importa": "In the upper cervical spine, a radiographically subtle injury (such as atlanto-occipital dissociation or a Type IIA Hangman fracture) can be rapidly fatal if mismanaged with skeletal traction, while an apparently alarming Jefferson burst fracture with an intact transverse ligament may heal uneventfully with non-operative management. This chapter provides the evidence-based classification systems, measurement criteria (BDI, BAI, Powers, Spence), and technical surgical indications to prevent neurological catastrophe and preserve vital cervical kinematics.",
+    "decs": [
+      "Cervical Vertebrae",
+      "Axis, Cervical Vertebra",
+      "Atlanto-Axial Joint",
+      "Atlanto-Occipital Joint",
+      "Spinal Fractures",
+      "Odontoid Process",
+      "Joint Instability",
+      "Spinal Fusion"
+    ],
+    "mesh": [
+      "Cervical Vertebrae",
+      "Axis, Cervical Vertebra",
+      "Atlanto-Axial Joint",
+      "Atlanto-Occipital Joint",
+      "Spinal Fractures",
+      "Odontoid Process",
+      "Joint Instability",
+      "Spinal Fusion"
+    ],
+    "palavras_chave_livres": [
+      "Atlanto-occipital dissociation",
+      "Odontoid fracture Type II",
+      "Hangman fracture",
+      "Jefferson fracture",
+      "Transverse atlantal ligament",
+      "Harms C1-C2 fusion",
+      "Anterior odontoid screw"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Core Concept",
+        "titulo": "TAL Integrity Dictates Atlas Stability",
+        "texto": "The Transverse Atlantal Ligament (TAL) is the primary stabilizer of C1–C2. Rule of Spence (C1 lateral mass overhang >=6.9 mm on X-ray or >=8.1 mm on CT) indicates TAL rupture. Intrasubstance tears (Dickman I) require C1–C2 fusion; bony avulsions (Dickman II) heal with rigid immobilization."
+      },
+      {
+        "tipo": "Card 2 — Clinical Decision",
+        "titulo": "Traction is Strictly Contraindicated in AOD and Type IIA",
+        "texto": "Never apply skeletal traction in Atlanto-Occipital Dissociation (AOD) or Type IIA Hangman fractures. In AOD, traction causes fatal brainstem transection; in Type IIA, traction produces extreme distraction across disrupted C2–C3 discs."
+      },
+      {
+        "tipo": "Card 3 — Key Pearl / Warning",
+        "titulo": "Tailor Type II Odontoid Fracture Care",
+        "texto": "In young adults with reducible Type II odontoid fractures and intact TAL, anterior odontoid screw fixation preserves 50% of cervical rotation. In elderly patients (>65–70 years), posterior C1–C2 Harms fusion avoids the high mortality and respiratory morbidity of halo-vests."
+      }
+    ],
+    "referencias": [
+      "Burg MC, Siewe J, Eysel P, Sobottke R. Clinical relevance of occipital condyle fractures. J Craniovertebr Junction Spine. 2020;11(2):83-7.",
+      "Batista RF, de Andrade LCS, Garcia JS, Lima MJ, Chagas-Neto FA. Observational study of patients with occipital condyle fracture at a Brazilian referral trauma center. Rev Col Bras Cir. 2021;48:e20213024.",
+      "Kwon JH, Chinthala AS, Arnold JC, Witten AJ, Bohnstedt BN. Management of Type III occipital condyle fractures. J Clin Med. 2024;13(24):7639. doi:10.3390/jcm13247639.",
+      "Karam YR, Traynelis VC. Occipital condyle fractures. Neurosurgery. 2010;66 Suppl 3:56-9.",
+      "AOSpine Master Cervical. Occipital condyle fractures and occipitocervical dissociation. [Manual técnico].",
+      "Anderson PA, Montesano PX. Morphology and treatment of occipital condyle fractures. Spine (Phila Pa 1976). 1988;13(7):731-6. doi:10.1097/00007632-198807000-00004.",
+      "Tuli S, Tator CH, Fehlings MG, Mackay M. Occipital condyle fractures. Neurosurgery. 1997;41(2):368-76; discussion 376-7.",
+      "Theodore N, Aarabi B, Dhall SS, Gelb DE, Hurlbert RJ, Rozzelle CJ, et al. Occipital condyle fractures. Neurosurgery. 2013;72 Suppl 2:106-13. doi:10.1227/NEU.0b013e3182775527.",
+      "Blackwood NJ 3rd. Atlo-occipital dislocation: a case of fracture of the atlas and axis, and forward dislocation of the occiput on the spinal column, life being maintained for thirty-four hours and forty minutes by artificial respiration, during which a laminectomy was performed upon the third cervical vertebra. Ann Surg. 1908;47(5):654-8.",
+      "Farthing JW. Atlantocranial dislocation with survival: a case report. N C Med J. 1948;9(1):34-6.",
+      "Hall GC, Buehler KC, Holman PJ. Atlanto-occipital dislocation. World J Orthop. 2015;6(2):236-43.",
+      "Astur DC, Zanoni C, Arliani GG, Moraes VY, Pochini AC, Ejnisman B. Traumatic atlanto-occipital dislocation in children. J Am Acad Orthop Surg. 2014;22(5):274-82.",
+      "Harmanli O, Koyfman Y. Traumatic atlanto-occipital dislocation with survival: a case report and review of the literature. Surg Neurol. 1993;39(4):324-30.",
+      "Schellenberg M, de Rooij R, de Jongh M, van der Vliet QMJ, de Witte M, de Lange F. Radiologic predictors of in-hospital mortality after traumatic craniocervical dissociation. J Trauma Acute Care Surg. 2020;89(3):e75-e81.",
+      "Bellabarba C, Mirza SK, West GA, Mann FA, Dailey AT, Newell DW, et al. Diagnosis and treatment of craniocervical dislocation in a series of 17 consecutive survivors during an 8-year period. J Neurosurg Spine. 2006;4(5):429-40.",
+      "Horn EM, Feiz-Erfan I, Lekovic GP, Dickman CA, Sonntag VK, Theodore N. Survivors of occipitoatlantal dislocation injuries: imaging and clinical correlates. J Neurosurg Spine. 2007;6(2):113-20.",
+      "Dyas AR, Niemeier TE, McGwin G, Theiss SM. Ability of magnetic resonance imaging to accurately determine alar ligament integrity in patients with atlanto-occipital injuries. J Craniovertebr Junction Spine. 2018;9(4):241-5.",
+      "Lee C, Woodring JH, Goldstein SJ, Daniel TL, Young AB, Tibbs PA. Evaluation of traumatic atlantooccipital dislocations. AJNR Am J Neuroradiol. 1987;8(1):19-26.",
+      "Harris JH Jr, Carson GC, Wagner LK, Kerr N. Radiologic diagnosis of traumatic occipitovertebral dissociation: 2. Comparison of three methods of detecting occipitovertebral relationships on lateral radiographs of supine subjects. AJR Am J Roentgenol. 1994;162(5):887-92.",
+      "Sun PP, Poffenbarger GJ, Durham S, Zimmerman RA. Spectrum of occipitoatlantoaxial injury in young children. J Neurosurg. 2000;93(1 Suppl):28-39.",
+      "Gire JD, Roberto RF, Bobinski M, Klineberg EO, Durbin-Johnson B. The utility and accuracy of computed tomography in the diagnosis of occipitocervical dissociation. Spine J. 2013;13(4):510-9. doi:10.1016/j.spinee.2013.01.023.",
+      "Lyons JG, Mian HM. Epidemiology of atlas fractures in the United States: a 20-year analysis. J Craniovert Jun Spine. 2022;13(2):85-93.",
+      "Kakarla UK, Chang SW, Theodore N, Sonntag VKH. Atlas fractures. Neurosurgery. 2010;66 Suppl 3:60-7.",
+      "Watanabe M, Sakai D, Yamamoto Y, Sato M, Mochida J. Upper cervical spine injuries: age-specific clinical features. J Orthop Sci. 2010;15(4):485-92.",
+      "Fiedler C, Zubler C, Ryang Y-M, Meyer B. Epidemiology and management of atlas fractures. Eur Spine J. 2020;29(4):879-88.",
+      "Kandziora F, Chapman JR, Vaccaro AR, Schroeder GD, Scholz M. Atlas fractures and atlas osteosynthesis: a comprehensive narrative review. J Orthop Trauma. 2017;31 Suppl 4:S81-6.",
+      "Jefferson G. Fracture of the atlas vertebra: report of four cases, and a review of those previously recorded. Br J Surg. 1920;7:407-22.",
+      "Gehweiler JA, Osborne RL, Becker RF. The radiology of vertebral trauma. New York: W.B. Saunders Company; 1980.",
+      "Dickman CA, Greene KA, Sonntag VKH. Injuries involving the transverse atlantal ligament: classification and treatment guidelines based upon experience with 39 injuries. Neurosurgery. 1996;38(1):44-50.",
+      "Heller JG, Viroslav S, Hudson T. Jefferson fractures: the role of magnification artifact in assessing transverse ligament integrity. J Spinal Disord. 1993;6(5):392-6.",
+      "Niu J, Wang D, Zhang Y, et al. Direct osteosynthesis in the treatment of atlas burst fractures: a systematic review. J Orthop Surg Res. 2024;19:129.",
+      "Shin JW, Kim DJ, Kim YS, et al. Direct internal fixation for unstable atlas fractures. Yonsei Med J. 2022;63(3):265-71.",
+      "Chan KS, Shlobin NA, Dahdaleh NS. Diagnosis and management of isolated C1 fractures: a systematic review. J Craniovert Jun Spine. 2022;13(4):233-44.",
+      "Kim MK, Shin JJ. Comparison of radiological and clinical outcomes after surgical reduction with fixation or halo-vest immobilization for treating unstable atlas fractures. Acta Neurochir (Wien). 2019;161(4):685-93.",
+      "Arena S, Raco A, Santoro A. Navigated osteosynthesis for unstable atlas fractures: technical note and case series. World Neurosurg. 2025;194:123524.",
+      "Attia W, Aoude A, Miron G, Ouellet JA, Jarzem P. Role of the O-arm and computer-assisted navigation in safe screw fixation in children with traumatic rotatory atlantoaxial subluxation. Asian Spine J. 2012;6(4):266-73.",
+      "Osman SG, Bakhsh W, Shimer AL. Traumatic atlantoaxial rotatory subluxation in adults: is cervical fusion the answer? J Spine Surg. 2022;8(2):193-5.",
+      "Singh VK, Singh PK, Balakrishnan SK, et al. Traumatic bilateral atlantoaxial rotatory subluxation mimicking as torticollis in an adult female. J Clin Neurosci. 2009;16(7):721-2.",
+      "Jezensek S, Dvorak J, Baur M, Koller H. Transoral closed reduction of fixed atlantoaxial rotatory subluxation (AARS) in childhood and adolescence. Clin Spine Surg. 2018;31(5):E251-6.",
+      "Pang D, Li V, Zovickian J. Atlantoaxial rotatory fixation: part 3—a prospective study of the clinical manifestation, diagnosis, management, and outcome of children with atlantoaxial rotatory fixation. Neurosurgery. 2005;57(5):954-72.",
+      "Fielding JW, Hawkins RJ. Atlanto-axial rotatory fixation. J Bone Joint Surg Am. 1977;59(1):37-44.",
+      "Philips WA, Hensinger RN. The management of rotatory atlantoaxial subluxation in children. J Bone Joint Surg Am. 1989;71(5):664-8.",
+      "Mihara H, Onari K, Yamagata M, Masuda T, Kondo S. Follow-up study of conservative treatment for atlantoaxial rotatory displacement. J Spinal Disord. 2001;14(6):494-9.",
+      "Subach BR, McLaughlin MR, Albright AL, Pollack IF. Current management of pediatric atlantoaxial rotatory subluxation. Spine (Phila Pa 1976). 1998;23(20):2174-9.",
+      "Clarck CR, Withe AA 3rd. Fractures of dens. A multicenter study. J Bone Joint Surg Am. 1985;67:1340-8.",
+      "Fujii E, Kobayashi K, Hirabayashi K. Treatement in fractures in of the odontoid process. Spine (Phila Pa 1976). 1988;13:604-9.",
+      "Greene KA, Dickman CA, Marciano FF, Drabier JB, Hadley MN, Sonntag VK. Acute axis fractures: analysis of management and outcome in 340 consecutive cases. Spine (Phila Pa 1976). 1997;22:1843-52.",
+      "White AA 3rd, Panjabi MM. The basic kinematics of the human spine. A review of past and current knowledge. Spine. 1978;3:12-20.",
+      "White AA 3rd, Panjabi MM. Practical biomechanics of spine trauma. In: White AA 3rd, Panjabi MM, editors. Clinical biomechanics of the spine. Philadelphia: J B Lippincott; 1990. p. 169-275.",
+      "Schatzker J, Rorabeck CH, Waddell JP. Fractures of the dens (odontoid process). J Bone Joint Surg Br. 1971;53-B(3):392-405.",
+      "Schatzker J, Rorabeck CH, Waddell JP. Non-union of the odontoid process: an experimental investigation. Clin Orthop Relat Res. 1975;108:127-37.",
+      "Anderson LD, D’Alonzo RT. Fractures of the odontoid process of the axis. J Bone Joint Surg Am. 1974;56:1663-74.",
+      "Hadley MN, Browner CM, Liu SS, Sonntag VK. New subtype of acute odontoid fractures (type IIA). Neurosurgery. 1988;22:67-71.",
+      "American Association of Neurological Surgeons. Isolated fractures of the axis in adults. Neurosurgery. 2002;50:S125-139.",
+      "Polin RS, Szabo T, Bogaev CA, Replogle RE, Jane JA. Nonoperative management of Types II and III odontoid fractures: the Philadelphia collar versus the halo vest. Neurosurgery. 1996;38:450-6; discussion 456-7.",
+      "Chiba K, Fujimura Y, Toyama Y, Fujii E, Nakanishi T, Hirabayashi K. Treatment protocol for fractures of the odontoid process. J Spinal Disord. 1996;9:267-76.",
+      "Traynelis VC. Evidence-based management of type II odontoid fractures. Clin Neurosurg. 1997;44:41-9.",
+      "Julien TD, Frankel B, Traynelis VC, Ryken TC. Evidence-based analysis of odontoid fracture management. Neurosurg Focus. 2000;8:1-6.",
+      "Apfelbaum RI, Lonser RR, Veres R, Casey A. Direct anterior screw fixation for recent and remote odontoid fractures. J Neurosurg. 2000;93:227-36.",
+      "Jenkins JD, Coric D, Branch CL Jr. A clinical comparison of one and two-screw odontoid fixation. J Neurosurg. 1998;89:366-70.",
+      "Subach BR, Morone MA, Haid RW Jr, McLaughlin MR, Rodts GR, Comey CH. Management of acute odontoid fractures with single-screw anterior fixation. Neurosurgery. 1999;45:812-9; discussion 819-20.",
+      "Jeanneret B, Magerl F. Primary posterior fusion C1-C2 in odontoid fractures: indications, technique, and results of transarticular screw fixation. J Spinal Disord. 1992;5:464-75.",
+      "Harms J, Melcher RP. Posterior C1-C2 fusion with polyaxial screw and rod fixation. Spine. 2001;26:2467-71.",
+      "Ryan MD, Taylor TK. Odontoid fractures in the elderly. J Spinal Disord. 1993;6:397-401.",
+      "Andersson S, Rodrigues M, Olerud C. Odontoid fractures: high complication rate associated with anterior screw fixation in the elderly. Eur Spine J. 2000;9:56-9.",
+      "Pepin JW, Bourne RB, Hawkins RJ. Odontoid fractures, with special reference to the elderly patient. Clin Orthop Relat Res. 1985;193:178-83.",
+      "Lennarson PJ, Mostafavi H, Traynelis VC, Walters BC. Management of type II dens fractures: a case-control study. Spine. 2000;25:1234-7.",
+      "Ryken TC, Hadley MN, Arabi B, Dhall SS, Gelb DE, Hurlbert RJ, Rozzelle CJ, Theodore N, Walters BC. Management of isolated fractures of the axis in adults. Neurosurgery. 2013;72(3):132-150.",
+      "Grauer JN, Shafi B, Hilibrand AS, et al. Proposal of a modified, treatment-oriented classification of odontoid fractures. Spine J. 2005;5(2):123-9.",
+      "Defino HLA. Lesões traumáticas da coluna vertebral. São Paulo: Bevilacqua Editora; 2005.",
+      "Severo AL, Hübner AR. Atlas de classificação em ortopedia e traumatoligia. São Paulo: Solução & Ma.",
+      "Lauda FLV, Hübner AR, Daher RL. Fraturas do processo odontóide do áxis. Revisão de 14 casos. Coluna/Columna. 2006;5(4):229-34.",
+      "Defino HLA. Lesões traumáticas da coluna cervical alta. Rev Bras Ortop. 2002;37(4):99-107.",
+      "Hübner AR, Spinelli LF, Klaus AM. Decisão no tratamento das fraturas do odontóide. Coluna/Columna. 2010;9(1):43-48.",
+      "Defino HLA. Lesões traumáticas da coluna vertebral. Porto Alegre: Editora Artmed; 2020.",
+      "Greene KA, Dickman CA, Marciano FF, Drabier JB, Hadley MN, Sonntag VK. Acute axis fractures: analysis of management and outcomes. Spine. 1997;22:1843-1852.",
+      "Ferro FP, Borgo GD, Letaif OB, Cristante AF, Marcon RM, Lutaka AS. Traumatic spondylolisthesis of the axis: epidimilogy, management and outcome. Acta Ortop Bras. 2012;20(2):84-7.",
+      "Suchomel P, Choutka O. Reconstruction of upper cervical spine and craniovertebral junction. Berlin: Heidelberg Springer-Verlang; 2011.",
+      "Haughton S. On hanging, considered from a mechanical and physiological point of view. Philo Mag J Sci. 1866;32:23-34.",
+      "Schneider RC, Livingston KE, Cave AJ, Hamilton G. Hangman’s fracture of the cervical spine. J Neurosurg. 1965;22:141-154.",
+      "Hadley MN, Sonntag VK, Grahm TW, Masferrer R, Browner C. Axis fractures resulting from motor vehicle accidents. The need for occupant restraints. Spine. 1986;11:861-4.",
+      "Dunbar HS, Ray BS. Chronic atlanto-axial dislocations with late neurologic manifestations. Surg Gynecol Obstet. 1961;113:757-62.",
+      "Francis WR, Fielding JW, Hawkins RJ, Pepin J, Hensinger R. Traumatic spondylolisthesis of the axis. J Bone Joint Surg Br. 1981;63:313-8.",
+      "Effendi B, Roy D, Cornish B, Dussault RG, Laurin CA. Fractures of the ring of the axis. A classification based on the analysis of 131 cases. J Bone Joint Surg Br. 1981.",
+      "Li XF, Dai LY, Lu H, Chen XD. A systematic review of the management of Hangman’s fracture. Eur Spine J. 2006;15:257-269.",
+      "Levine AM, Edwards CC. Fractures of the atlas. J Bone Joint Surg Am. 1991;73:680-91.",
+      "Brashear R Jr, Venters G, Preston ET. Fractures of the neural arch of the axis. A report of twenty-nine cases. J Bone Joint Surg Am. 1975;57:879-87.",
+      "Ersmark H, Kalen R. Injuries of the atlas and axis. A follow-up study of 85 axis and 10 atlas fractures. Clin Orthop Relat Res. 1987;(217):257-60.",
+      "Barret TW, Mower WR, Zucker MI, et al. Injuries missed by limited computed tomographic imaging of patients with spine injuries. Ann Emerg Med. 2006;47:129-33.",
+      "Sharma OP, Oswanski MF, Yazdi JS, et al. Assessment for additional spinal trauma in patients with cervical spine injury. Am Surg. 2007;73:7074.",
+      "Crim JR, Moore K, Brodke D. Clearance of the cervical spine in multi trauma patients: the role of advanced imaging. Semin Ultrasound CT MR. 2001;22:283-305.",
+      "Levine AM, Edwards CC. Traumatic lesions of the occipito-atlantoaxial complex. Clin Orthop Relat Res. 1989;(239):53-68.",
+      "Star JK, Eismont FJ. Atypical hangman’s fractures. Spine. 1993;18:1954-1957.",
+      "Grob D, Magerl F. Operative Stabilisierung bei Frakturen von C1 und C2. Surgical stabilization of C1 and C2 fractures. Orthopade. 1987;16(1):46-54.",
+      "Levine AM, Edwards CC. Treatment of injuries in the C1-C2 complex. Orthop Clin North Am. 1986;17:31-44.",
+      "Porto Filho MA. Fraturas do pedículo do áxis. Clin Ortop. 2000;1:807-13.",
+      "Buchholz A, Morgan S, Robinson L, Frankel B. Minimally invasive percutaneous screw fixation of traumatic spondylolistesis of the axis. J Neurosurg Spine. 2015;27:1-7.",
+      "Judet R, Roy-Camille R, Saillant G. Fractures du rachis cervical. In: Actualites de Cirurgie Orthopedique de l’Hopital Raymond-Poincaré. No VIII: Fractures du Rachis Cervical. Paris: Msson; 1970. p. 174-195.",
+      "Taller S, Suchomel P, Lukas R, Beran J. CT-guided internal fixation of a hangmans’s fracture. Eur Spine J. 2000;9:393-397.",
+      "Schaefer C, Begemann P, Fuhrhop I, Schroeder M, Viezens L, Weisner L, Algentaedt NH. Percutaneus instrumentation of the cervical and cervico-thoracic spine using pedicle screws: preliminar clinical results and analysis of acuracy. Eur Spine J. 2011;20:977-985.",
+      "Yoshida G, Kanemura T, Ishikawa Y. Percutaneus pedicle screw fixation of Hangmans’s fracture using intraoperative, full rotation, three-dimensional image (O-arm)-based navigation: a technical case report. Asian Spine J. 2012;6(3):194-198.",
+      "Tian W, Weng C, Liu B, Li Q, Hu L, Li ZY, Sun YZ. Posterior fixation and fusion of unstable Hangman’s fracture by using intraoperative three-dimensional fluoroscopy based navigation. Eur Spine J. 2012;21:863-871.",
+      "Wu YS, Lin Y, Zhang XL, Tian NF, Sun LJ, Xu HZ, Chi YL, Pan ZJ. Management of hangmans’s fracture with percutaneus transpedicular screw fixation. Eur Spine J. 2013;22:79-86.",
+      "Jansen J, Verheggen R. Hangman’s fracture: arguments in favor of surgical therapy for type II and III according to Edwards and Levine. Surg Neurol. 1998;49:253-262.",
+      "Defino HLA. Lesões traumáticas da coluna vertebral. São Paulo: Bevilacqua Editora; 2005.",
+      "Severo AL, Hübner AR. Atlas de classificação em ortopedia e traumatoligia. São Paulo: Solução & Marketing; 2012.",
+      "Defino HLA, Pudles E, Rocha LEM. Coluna vertebral lesões. Porto Alegre: Artmed; 2020."
+    ],
+    "seo": {
+      "titulo": "Traumatic Injuries of the Upper Cervical Spine | Treatise",
+      "meta_descricao": "Complete guide to upper cervical trauma (C0–C2): atlanto-occipital dissociation, atlas Jefferson fractures, odontoid fractures, Hangman fracture, and Harms fusion.",
+      "resumo_chamada": "Master the diagnosis, classification, stability criteria (BDI, BAI, Spence), and surgical management of upper cervical spine trauma (C0, C1, C2, odontoid).",
+      "slug": "traumatic-injuries-of-the-upper-cervical-spine"
+    }
+  }
+}

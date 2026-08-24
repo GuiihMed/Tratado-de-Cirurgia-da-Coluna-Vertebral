@@ -1,0 +1,400 @@
+{
+  "1": {
+    "numero": 1,
+    "titulo": "Embriología de la Columna Vertebral",
+    "secao": "",
+    "autores": [
+      "Erasmo de Abreu Zardo",
+      "Joel Abramczuk",
+      "Fernando Augusto Dannenbrock"
+    ],
+    "contexto": "El desarrollo de la columna vertebral es el resultado de una secuencia coordinada de eventos que se inicia en las primeras semanas de gestación e integra la organización del eje embrionario, la formación de la notocorda y del tubo neural, la segmentación de los somitas y la diferenciación progresiva de los tejidos vertebrales. La comprensión de esta secuencia permite relacionar la anatomía definitiva de la columna, los discos intervertebrales, la musculatura axial, la médula espinal y las meninges con sus orígenes embrionarios. El capítulo describe la transición del disco embrionario bilaminar al trilaminar, la formación de los esclerotomas y la resegmentación que confiere un carácter intersegmentario a las vértebras. Asimismo, detalla los estadios mesenquimatoso, cartilaginoso y óseo, así como el crecimiento diferencial entre la columna vertebral y la médula espinal. Este conocimiento ofrece una base fundamental para interpretar malformaciones congénitas, defectos de segmentación, disrafismos y variaciones anatómicas relevantes para el diagnóstico y la planificación quirúrgica.",
+    "objetivo": "Presentar, en secuencia cronológica, los principales procesos embrionarios involucrados en la formación de la columna vertebral. Al finalizar, el lector deberá reconocer el papel de la gastrulación, la notocorda, la neurulación y los somitas; comprender el origen de las vértebras, los discos intervertebrales y la musculatura axial; diferenciar los estadios mesenquimatoso, cartilaginoso y óseo; y correlacionar el crecimiento de la médula y las meninges con la anatomía definitiva y las malformaciones congénitas.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "De la implantación a la organización axial",
+        "texto": "Tras la fecundación y la segmentación, se forma el blastocisto, que transita por la trompa uterina y se implanta en el endometrio. En la segunda semana aparecen la cavidad amniótica y el saco coriónico, mientras que el embrioblasto se organiza como un disco bilaminar constituido por epiblasto e hipoblasto. En la tercera semana, la gastrulación transforma este disco en una estructura trilaminar con ectodermo, mesodermo y endodermo. La línea primitiva, el nódulo de Hensen, el surco y la fosita primitiva orientan la migración celular y establecen el eje longitudinal y la simetría bilateral del embrión."
+      },
+      {
+        "subtitulo": "Notocorda, neurulación y somitas",
+        "texto": "Las células mesenquimatosas originadas en la región del nódulo primitivo forman el proceso notocordal, que evoluciona a placa notocordal y, posteriormente, a la notocorda continua. La notocorda actúa como centro inductor fundamental de la placa neural suprayacente. El neuroectodermo se invagina formando el surco y los pliegues neurales, los cuales se fusionan al final de la tercera semana para constituir el tubo neural. Tras su separación del ectodermo superficial, emergen las células de la cresta neural, responsables del desarrollo de los ganglios sensitivos, autónomos y células de Schwann. Paralelamente, el mesodermo paraxial se segmenta en somitas. Hacia el final de la quinta semana se describen entre 42 y 44 pares de somitas diferenciados en esclerotoma y dermomiotoma. El esclerotoma contribuye a la formación de las vértebras y costillas; el dermatoma origina los fibroblastos de la dermis; y el miotoma produce los mioblastos de las porciones epiaxial e hipoaxial. La musculatura epiaxial originará los extensores intrínsecos del cuello y la columna, mientras que la porción hipoaxial forma los grupos musculares ventrales y laterales de la pared corporal."
+      },
+      {
+        "subtitulo": "Resegmentación y formación vertebral",
+        "texto": "En la fase mesenquimatosa, las células de los esclerotomas migran y se distribuyen alrededor de la notocorda y del tubo neural. Cada esclerotoma presenta una mitad craneal menos densa y una mitad caudal densamente celular. La recombinación de estas mitades determina que cada vértebra definitiva se origine a partir de dos esclerotomas adyacentes, estableciendo una estructura intersegmentaria. El centro mesenquimatoso forma el cuerpo vertebral, mientras que el mesénquima que rodea el tubo neural da origen al arco vertebral. La notocorda involuciona en los cuerpos vertebrales y persiste en el espacio discal como núcleo pulposo; el anillo fibroso deriva de las células mesenquimatosas dispuestas circunferencialmente alrededor de la notocorda. Los miotomas y nervios espinales conservan su disposición segmentaria original, cruzando los espacios discales, mientras que las arterias intersegmentarias transcurren a la altura media de los cuerpos vertebrales."
+      },
+      {
+        "subtitulo": "Estadios cartilaginoso y óseo",
+        "texto": "El estadio cartilaginoso inicia en la sexta semana con la aparición de centros de condrificación en las vértebras mesenquimatosas. Al final del periodo embrionario, los centros del cuerpo se unen en un centro cartilaginoso único y los arcos vertebrales se fusionan con el cuerpo. Las apófisis transversas y espinosas se desarrollan a partir de centros condrales en los arcos. La osificación comienza durante el periodo embrionario: aparecen centros primarios en el cuerpo y en cada mitad del arco vertebral. Al nacer, cada vértebra consta de tres partes óseas unidas por cartílago (sincondrosis neurocentrales y del arco). La fusión de los arcos posteriores ocurre entre los 3 y 5 años de edad, y la unión neurocentral entre los 3 y 6 años. Los centros de osificación secundarios (anillos epifisarios, vértices de apófisis) aparecen en la pubertad, completándose la maduración ósea en la edad adulta temprana."
+      },
+      {
+        "subtitulo": "Médula espinal y meninges",
+        "texto": "Durante el periodo embrionario temprano, la médula espinal ocupa la totalidad del conducto vertebral. Debido a que la columna y la duramadre crecen con mayor rapidez que el tejido neural (crecimiento diferencial), el extremo distal de la médula (cono medular) adopta una posición progresivamente más craneal, mientras que las raíces lumbosacras se alargan oblicuamente en el espacio subaracnoideo para formar la cauda equina. En el recién nacido, el cono medular se sitúa a nivel L2–L3 y en el adulto alcanza L1 (o disco L1–L2). El filum terminale corresponde a la porción caudal regresiva de la médula y se extiende desde el cono hasta el cóccix. Las meninges primitivas que rodean el tubo neural se diferencian en duramadre externa y leptomeninges (aracnoides y piamadre), delimitando el espacio subaracnoideo."
+      }
+    ],
+    "aplicacao_clinica": "En la práctica clínica, la embriología constituye la clave fundamental para interpretar la anatomía normal y las malformaciones de la columna vertebral. El principio de resegmentación esclerotomal permite comprender por qué las vértebras son estructuras intersegmentarias y por qué los nervios espinales, vasos y músculos mantienen relaciones funcionales coordinadas a través de las articulaciones. Las alteraciones en la formación, migración o fusión de los esclerotomas originan anomalías congénitas como hemivértebras, vértebras en bloque y defectos de segmentación. Los defectos en la neurulación y el cierre del arco neural explican el espectro de disrafismos espinales (espina bífida abierta y oculta, mielomeningocele). El crecimiento diferencial raquimedular explica el ascenso fisiológico del cono medular y la etiopatogenia del síndrome de médula anclada. Aunque el capítulo no describe algoritmos terapéuticos específicos, proporciona la base morfológica imprescindible para diagnosticar malformaciones vertebrales y planificar procedimientos quirúrgicos con máxima seguridad.",
+    "mensagem_central": "La columna vertebral se forma mediante una secuencia integrada que articula gastrulación, inducción notocordal, neurulación, segmentación somítica, resegmentación esclerotomal y maduración tisular mesenquimatosa, cartilaginosa y ósea. Comprender esta secuencia proporciona la base indispensable para interpretar la anatomía del adulto y el origen embrionario de las malformaciones congénitas y disrafismos espinales.",
+    "por_que_importa": "La anatomía vertebral del adulto no puede comprenderse cabalmente sin su fundamento embrionario. La resegmentación de los esclerotomas explica el carácter intersegmentario de las vértebras; la persistencia notocordal explica el origen del núcleo pulposo; y el crecimiento desigual entre el raquis y la médula justifica la posición del cono medular y la configuración de la cauda equina. Conocer estos procesos permite al cirujano de columna identificar malformaciones congénitas, evitar confusiones diagnósticas y planificar abordajes con pleno dominio de las relaciones anatómicas.",
+    "decs": [
+      "Desarrollo Embrionario",
+      "Columna Vertebral",
+      "Notocorda",
+      "Somitas",
+      "Neurulación",
+      "Disco Intervertebral",
+      "Médula Espinal",
+      "Osteogénesis"
+    ],
+    "mesh": [
+      "Embryonic Development",
+      "Spine",
+      "Notochord",
+      "Somites",
+      "Neurulation",
+      "Intervertebral Disc",
+      "Spinal Cord",
+      "Osteogenesis"
+    ],
+    "palavras_chave_livres": [
+      "Esclerotoma",
+      "Resegmentación vertebral",
+      "Estadio mesenquimatoso",
+      "Ascenso del cono medular",
+      "Centros de condrificación"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "La notocorda como eje organizador",
+        "texto": "La notocorda establece el eje longitudinal del embrión e induce la formación del tubo neural y del esqueleto axial. Aunque involuciona en los cuerpos vertebrales, persiste en los espacios intervertebrales formando el núcleo pulposo, uniendo de manera directa una estructura embrionaria transitoria con la anatomía y biomecánica definitivas de la columna."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Interpretar la malformación desde su origen",
+        "texto": "En hemivértebras y fallas de segmentación, comprender la alteración en la fusión de los esclerotomas explica la morfología tridimensional observada y fundamenta la estrategia quirúrgica. Este razonamiento embriológico debe guiar la evaluación de disrafismos, anomalías de osificación y médula anclada."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "No confundir los estadios de desarrollo",
+        "texto": "Los estadios mesenquimatoso, cartilaginoso y óseo son sucesivos y no intercambiables. Interpretar sincondrosis cartilaginosas normales como fracturas o fallas de fusión conduce a errores diagnósticos en pacientes pediátricos. La osificación vertebral inicia en el embrión y concluye en la adultez temprana."
+      }
+    ],
+    "referencias": [
+      "Garcia SML, Fernández CG. Embriologia. Porto Alegre: Artmed; 2009.",
+      "Wolpert L, et al. Princípios de biologia do desenvolvimento. In: Beddington R, Brockes J, Jessel T, et al. Princípios de biologia do desenvolvimento. 2000;484-484.",
+      "Schoenwolf GC, Bleyl SB, Brauer PR, Franciswest PH. Larsen: embriologia humana. Rio de Janeiro; 1996.",
+      "Moore K. Embriologia básica. Rio de Janeiro: Elsevier Brasil; 2008."
+    ],
+    "seo": {
+      "titulo": "Embriología de la Columna Vertebral | Tratado de Cirugía de Columna",
+      "meta_descricao": "Síntesis del desarrollo embrionario de la columna vertebral: notocorda, neurulación, somitas, resegmentación vertebral, discos y médula espinal.",
+      "resumo_chamada": "Conozca la secuencia embrionaria que conecta la notocorda, los somitas y la neurulación con el desarrollo de vértebras, discos, médula espinal y malformaciones congénitas.",
+      "slug": "embriologia-de-la-columna-vertebral"
+    }
+  },
+  "2": {
+    "numero": 2,
+    "titulo": "Biomecánica de la Columna Vertebral",
+    "secao": "Sección 1 — Conceptos Básicos",
+    "autores": [
+      "Marcos Antônio Tebet"
+    ],
+    "contexto": "La columna vertebral debe conciliar exigencias mecánicas aparentemente opuestas: soportar cargas axiales elevadas, permitir movimientos multiaxiales, mantener la estabilidad postural y proteger las estructuras neurológicas. Esta combinación se logra mediante una arquitectura segmentaria en la que cuerpos vertebrales, discos intervertebrales, articulaciones cigapofisarias, ligamentos y músculos actúan de manera integrada. Las curvaturas fisiológicas aumentan la flexibilidad y la capacidad de absorción de impactos, mientras que la orientación regional de las facetas articulares condiciona los patrones de movimiento cervical, torácico y lumbar. En el centro de este sistema, el disco intervertebral distribuye presiones hidrostáticas y responde a fuerzas de compresión, tracción, cizallamiento y torsión. Con el envejecimiento y la deshidratación del núcleo pulposo, esta distribución se modifica, transfiriendo una sobrecarga desproporcionada al anillo fibroso y a las articulaciones posteriores. Comprender estas relaciones es esencial para interpretar los procesos degenerativos, la inestabilidad segmentaria, las hernias discales y las estenosis, así como para orientar la planificación de procedimientos quirúrgicos reconstructivos.",
+    "objetivo": "Presentar los principios fundamentales de la biomecánica de la columna vertebral, relacionando la arquitectura segmentaria, las curvaturas fisiológicas, la orientación facetaria, el comportamiento del disco intervertebral y la cinemática tridimensional. El capítulo busca capacitar al lector para interpretar los efectos de la compresión, el cizallamiento, la tracción y la torsión; reconocer la participación de las alteraciones biomecánicas en la degeneración y la inestabilidad; y aplicar estos conceptos a la evaluación clínica, los estudios dinámicos y la planificación quirúrgica.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Arquitectura segmentaria y funciones biomecánicas",
+        "texto": "La columna vertebral se define como una estructura segmentaria articulada compuesta por unidades funcionales operando en serie. Esta organización permite combinar una rigidez suficiente para soportar cargas y proteger la médula espinal con la movilidad necesaria para los movimientos de la cabeza y el tronco. Las funciones biomecánicas centrales incluyen la absorción de cargas axiales, la movilidad segmentaria, la protección neurológica y la estabilidad postural. Las curvaturas fisiológicas (lordosis cervical y lumbar, cifosis torácica y sacra) multiplican la resistencia elástica ante sobrecargas axiales. La orientación de las facetas articulares determina la cinemática regional: en la columna cervical facilita la inclinación lateral combinada con rotación axial; en la columna torácica, la caja torácica y las facetas coronales limitan la movilidad proporcionando estabilidad; y en la columna lumbar, la orientación predominantemente sagital favorece la flexoextensión y restringe la rotación axial."
+      },
+      {
+        "subtitulo": "Disco intervertebral y distribución de cargas",
+        "texto": "El disco intervertebral actúa como el principal amortiguador y distribuidor de presiones entre vértebras adyacentes. En individuos jóvenes, el núcleo pulposo posee una elevada hidratación y se comporta como un gel hidrostático presurizable. Bajo compresión axial, la presión se transmite radialmente en sentido centrífugo, permitiendo que el núcleo y el anillo fibroso distribuyan las tensiones de manera uniforme sobre los platillos vertebrales. Con la deshidratación degenerativa, el núcleo pierde su comportamiento hidrostático, transfiriendo el soporte de cargas a la periferia del anillo fibroso y a las articulaciones facetarias posteriores. Esta sobrecarga favorece la aparición de fisuras anulares, hernias discales, inestabilidad y dolor discogénico. Las fuerzas de torsión axial asociadas a flexión incrementan drásticamente la tensión sobre las fibras del anillo, constituyendo el mecanismo principal de rotura anular."
+      },
+      {
+        "subtitulo": "Cinemática tridimensional",
+        "texto": "La cinemática describe los movimientos vertebrales mediante rotaciones y traslaciones en un sistema tridimensional de coordenadas cartesianas (ejes X, Y y Z). La combinación de desplazamientos y giros alrededor de estos ejes describe la flexoextensión, la inclinación lateral y la rotación axial. La dirección y magnitud del movimiento dependen primordialmente de la orientación de las facetas articulares. El eje instantáneo de rotación (EIR) se define como el centro cinemático alrededor del cual un segmento vertebral rota en un instante determinado. La alteración y migración patológica del EIR constituye un marcador objetivo de degeneración discal e inestabilidad segmentaria."
+      },
+      {
+        "subtitulo": "Degeneración, inestabilidad y compresión neural",
+        "texto": "La degeneración espinal sigue una cascada biomecánica que se inicia con la deshidratación del núcleo pulposo y la pérdida de altura discal. La redistribución de cargas hacia el anillo fibroso y las facetas articulares promueve hipertrofia facetaria, laxitud capsular, formación de osteofitos y redundancia del ligamento amarillo. La inestabilidad puede manifestarse como hipermovilidad, espondilolistesis o movilidad paradójica en radiografías dinámicas. La estenosis de canal y foraminal surge de la combinación progresiva de colapso discal, hipertrofia articular y engrosamiento ligamentario, reduciendo el espacio disponible para los elementos neurales."
+      },
+      {
+        "subtitulo": "Repercusiones biomecánicas del tratamiento quirúrgico",
+        "texto": "Toda intervención quirúrgica modifica la distribución de cargas y la cinemática del segmento operado y de los niveles adyacentes. La selección de la vía de abordaje (anterior, lateral, transforaminal o posterior), la rigidez de la instrumentación y las características del implante intersomático generan repercusiones biomecánicas específicas. Los espaciadores intersomáticos (cages) restauran la altura discal, descomprimen indirectamente los forámenes y restituyen la lordosis segmentaria y el centro de rotación. Omitir la restauración del alineamiento sagital o alterar bruscamente la mecánica segmentaria predispone a seudoartrosis, falla de implantes, subsidencia y degeneración del segmento adyacente. Las tecnologías de preservación de movimiento (artroplastia discal) exigen una rigurosa indemnidad facetaria y un alineamiento espinopélvico conservado."
+      }
+    ],
+    "aplicacao_clinica": "Los principios biomecánicos permiten al cirujano distinguir alteraciones morfológicas estáticas de disfunciones dinámicas sintomáticas. En pacientes con sospecha de inestabilidad lumbar, las radiografías dinámicas en flexoextensión son indispensables para evidenciar traslación anormal o apertura angular excesiva. En la planificación quirúrgica, la evaluación debe integrar los parámetros espinopélvicos y el equilibrio sagital global (incidencia pélvica, lordosis lumbar, eje vertical sagital). La colocación y lordosis del espaciador intersomático deben dimensionarse para restituir la altura del pilar anterior y el centro fisiológico de rotación. Evitar la fijación de deformidades sin corregir el balance sagital y respetar las articulaciones adyacentes son precauciones fundamentales para prevenir la sobrecarga mecánica y la falla del tratamiento.",
+    "mensagem_central": "La biomecánica de la columna resulta de la interacción coordinada entre curvaturas fisiológicas, discos intervertebrales, facetas articulares, ligamentos y fuerzas musculares. La hidratación del núcleo pulposo, la orientación facetaria y el eje instantáneo de rotación gobiernan la transmisión de cargas y la estabilidad segmentaria. Tratar la anatomía quirúrgica sin considerar la cinemática y el alineamiento sagital global perpetúa sobrecargas y conduce al fracaso mecánico.",
+    "por_que_importa": "Cualquier intervención raquídea —desde el manejo conservador hasta la artrodesis instrumentada— modifica sustancialmente las fuerzas mecánicas. Conocer la hidrostática discal, el acoplamiento de movimientos facetarios y el comportamiento del eje de rotación permite interpretar con precisión la inestabilidad y anticipar las repercusiones estructurales de la cirugía. Los estudios estáticos resultan insuficientes para diagnosticar fenómenos que solo se manifiestan durante la dinámica vertebral.",
+    "decs": [
+      "Fenómenos Biomecánicos",
+      "Columna Vertebral",
+      "Disco Intervertebral",
+      "Degeneración del Disco Intervertebral",
+      "Articulación Cigapofisaria",
+      "Estrés Mecánico",
+      "Rango del Movimiento Articular",
+      "Inestabilidad Articular"
+    ],
+    "mesh": [
+      "Biomechanical Phenomena",
+      "Spine",
+      "Intervertebral Disc",
+      "Intervertebral Disc Degeneration",
+      "Zygapophyseal Joint",
+      "Stress, Mechanical",
+      "Range of Motion, Articular",
+      "Joint Instability"
+    ],
+    "palavras_chave_livres": [
+      "Eje instantáneo de rotación",
+      "Cinemática tridimensional",
+      "Alineamiento espinopélvico",
+      "Distribución de cargas",
+      "Unidad funcional vertebral"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "El movimiento nace de la arquitectura",
+        "texto": "La movilidad de cada región vertebral no depende exclusivamente del disco. La orientación de las facetas articulares, las curvaturas fisiológicas, las estructuras ligamentosas y la contención de la caja torácica determinan los planos de movimiento permitidos, los movimientos acoplados y la capacidad de disipación de cargas."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Evaluar el segmento en movimiento",
+        "texto": "La inestabilidad segmentaria frecuentemente pasa desapercibida en estudios estáticos en decúbito. Ante la sospecha clínica de dolor mecánico o espondilolistesis, las radiografías dinámicas en bipedestación (flexoextensión) son esenciales para documentar hipermovilidad, traslación o movilidad paradójica."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "El alineamiento local no es suficiente",
+        "texto": "Restaurar la altura discal local sin reconstruir la lordosis segmentaria y el balance sagital global transfiere sobrecargas mecánicas a los niveles vecinos, incrementando el riesgo de enfermedad del segmento adyacente, subsidencia y falla de la osteosíntesis."
+      }
+    ],
+    "referencias": [
+      "Hirsch C. The reaction of intervertebral discs to compression forces. J Bone Joint Surg. 1955;37A:1188.",
+      "Prasad P, King AI, Ewing CL. The role of articular facets during +Gz acceleration. J Appl Mech. 1974;41:321.",
+      "Yoganandan N, Kumaresan S, Pintar FA. Spinal facet joint biomechanics and mechanotransduction in injury and degeneration. Spine Pain. 2011.",
+      "Pal GP, Routal RV, Saggu SK. The orientation of the articular facets of the zygapophyseal joints at the cervical and upper thoracic region. J Anat. 2001;198(Pt 4):431–441.",
+      "Tebet MA, Barros Filho TEP, Machado IR, Paulin JBP, Shimano AC. Estudo biomecânico por impacto do mecanismo de flexão com rotação axial da coluna cervical de cadáveres. Acta Ortop Bras. 1999;7(1):29.",
+      "Naylor A, Happey F, MacRae T. Changes in the lumbar intervertebral disc with age: a biophysical study. J Am Geriatr Soc. 1955;3:964.",
+      "Markolf KL, Morris JM. The structural components of the intervertebral disc. J Bone Joint Surg. 1974;56A:675.",
+      "Nachemson A, Morris JM. In vivo measurements of intradiscal pressure: discometry. J Bone Joint Surg. 1974;46A:1077.",
+      "Panjabi MM, White AA, Brand RA. A note on defining body parts configurations. J Biomech. 1974;7:385.",
+      "White AA III, Panjabi MM. Clinical biomechanics of the spine. 2nd ed. Philadelphia: JB Lippincott; 1990.",
+      "Farfan HF. Mechanical disorders of the low back. Philadelphia: Lea & Febiger; 1973.",
+      "Herkowitz HN, Garfin SR, Eismont FJ, Bell GR, Balderston RA. Rothman-Simeone the spine. 5th ed. Philadelphia: Elsevier Inc.; 2006. p. 132–156.",
+      "Lumsden RM, Morris JM. An in vivo study of axial rotation and immobilization at the lumbosacral joint. J Bone Joint Surg. 1968;50A:1591.",
+      "Rolander SD. Motion of the lumbar spine with special reference to the stabilizing effect of posterior fusion. Acta Orthop Scand. 1966;(Suppl 99).",
+      "Cossette JW, Farfan HF, Robertson GH, Wells RV. The instantaneous center of rotation of the third intervertebral joint. J Biomech. 1971;4:149."
+    ],
+    "seo": {
+      "titulo": "Biomecánica de la Columna Vertebral | Tratado de Cirugía de Columna",
+      "meta_descricao": "Principios fundamentales de biomecánica raquídea: unidades funcionales, cinemática 3D, distribución de cargas discales, eje de rotación y repercusiones quirúrgicas.",
+      "resumo_chamada": "Descubra cómo discos, facetas, curvaturas fisiológicas y balance sagital gobiernan la transmisión de cargas, la degeneración y la planificación en cirugía de columna.",
+      "slug": "biomecanica-de-la-columna-vertebral"
+    }
+  },
+  "3": {
+    "numero": 3,
+    "titulo": "Neuroanatomía Funcional de la Médula Espinal",
+    "secao": "",
+    "autores": [
+      "Aluízio Augusto Arantes Junior",
+      "Bernardo Drummond Braga",
+      "Adriano M. Lino Filho",
+      "Diogo Nogueira Ribeiro"
+    ],
+    "contexto": "La médula espinal integra estructuras anatómicas, circuitos segmentarios y vías largas ascendentes y descendentes responsables de la motricidad, la sensibilidad, el control postural, los arcos reflejos y la regulación autonómica. Para el cirujano de columna, dominar esta organización requiere correlacionar tres dimensiones fundamentales: la topografía de la médula y las raíces en el conducto raquídeo, la distribución de la sustancia gris y blanca en corte transversal y el trayecto de las vías largas. La disociación entre los niveles vertebrales y los segmentos medulares (disociación vertebromedular) reviste una importancia primordial, ya que una lesión ósea o compresiva puede comprometer estructuras neurales situadas varios segmentos por encima de lo sugerido por la vértebra correspondiente. El capítulo vincula la anatomía de los cordones, astas, núcleos y láminas de Rexed con los patrones clínicos de los síndromes medulares, del cono medular y de la cauda equina, permitiendo una localización precisa de las lesiones y una planificación quirúrgica rigurosa.",
+    "objetivo": "Presentar la anatomía macroscópica e interna de la médula espinal, su relación topográfica con la columna vertebral y la organización funcional de neuronas, láminas de Rexed, cordones y tractos. Al finalizar, el lector deberá correlacionar las vías motoras, sensitivas y autonómicas con los hallazgos del examen neurológico; distinguir patrones sindrómicos característicos; y aplicar la localización neuroanatómica a la planificación quirúrgica y descompresión.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Anatomía macroscópica y topografía vertebromedular",
+        "texto": "La médula espinal es una estructura cilíndrica alojada en el conducto vertebral que se extiende desde el bulbo raquídeo en el foramen magno hasta el cono medular, el cual finaliza a nivel L1–L2 en el adulto. Las intumescencias cervical y lumbosacra corresponden a los segmentos de origen de los plexos braquial y lumbosacro. Los surcos longitudinales delimitan la superficie medular y señalan la emergencia de las raíces ventrales (motoras) y la entrada de las raíces dorsales (sensitivas). Los 31 pares de nervios espinales corresponden a 31 segmentos medulares. Debido al crecimiento diferencial de la columna vertebral respecto a la médula, las raíces inferiores se alargan oblicuamente dentro del saco dural formando la cauda equina. Como regla práctica de correspondencia: sumar 2 a las apófisis espinosas de C2 a T10; T11–T12 se proyectan sobre los segmentos lumbares y L1 sobre los segmentos sacros y coccígeos."
+      },
+      {
+        "subtitulo": "Meninges y elementos de fijación",
+        "texto": "La duramadre espinal se extiende desde el foramen magno hasta S2, donde termina el fondo de saco dural. Sus prolongaciones envainan las raíces nerviosas y se continúan con el epineuro en los forámenes intervertebrales. La piamadre forma el filum terminale, que fija caudalmente el cono al cóccix, y origina los ligamentos dentados. Dispuestos lateralmente entre las raíces ventrales y dorsales, estos ligamentos estabilizan la médula en el espacio subaracnoideo y constituyen puntos de referencia fundamentales en abordajes intradurales."
+      },
+      {
+        "subtitulo": "Organización de la sustancia gris",
+        "texto": "En corte transversal, la sustancia gris adopta una morfología en \"H\" dividida en astas anteriores, posteriores y laterales (estas últimas presentes de T1 a L2 con neuronas preganglionares simpáticas). Las neuronas se dividen en radiculares motoras, cordonales y de axón corto (como las células de Renshaw mediadoras de inhibición recurrente). Citoarquitectónicamente, la sustancia gris se organiza en diez láminas de Rexed: las láminas I–IV procesan aferencias exteroceptivas; la lámina II (sustancia gelatinosa de Rolando) modula la nocicepción mediante la teoría de la compuerta; las láminas V–VII reciben información propioceptiva y visceral; las láminas VIII y IX contienen motoneuronas alfa y gamma; y la lámina X rodea el conducto ependimario central."
+      },
+      {
+        "subtitulo": "Vías descendentes y control motor",
+        "texto": "El sistema motor lateral está compuesto principalmente por los tractos corticoespinal lateral y rubroespinal. El tracto corticoespinal lateral, que se decusa en las pirámides bulbares (85–90% de sus fibras), ejerce el control voluntario fino de la musculatura distal de las extremidades. El sistema motor medial incluye los tractos corticoespinal anterior, tectoespinal, vestibuloespinales y reticuloespinales, encargados de la musculatura axial y proximal, del tono postural, del equilibrio y de las respuestas automáticas de tronco y cabeza."
+      },
+      {
+        "subtitulo": "Vías ascendentes y correlación sindrómica",
+        "texto": "El cordón posterior (fascículos grácil y cuneiforme) conduce propiocepción consciente, tacto discriminativo fino, vibración y estereognosia ipsilateralmente hasta los núcleos bulbares. El tracto espinotalámico anterior conduce tacto grueso y presión, mientras que el espinotalámico lateral transmite dolor y temperatura tras decusarse en la comisura blanca anterior. Las vías espinocerebelosas transportan propiocepción inconsciente al cerebelo. Esta distribución espacial explica los síndromes medulares clásicos: Brown-Séquard (déficit motor y propioceptivo ipsilateral con pérdida contralateral de termoalgesia); síndrome medular central (mayor debilidad en miembros superiores y disociación sensitiva); y las diferencias clínicas entre lesión del cono medular y de la cauda equina."
+      }
+    ],
+    "aplicacao_clinica": "La aplicación clínica se fundamenta en la localización neuroanatómica topográfica. La exploración motora diferencia lesiones de motoneurona inferior (paresia flácida, hipotonía, arreflexia) de lesiones de motoneurona superior (espasticidad, hiperreflexia, clonus, signo de Babinski). La exploración sensitiva permite determinar el cordón o tracto lesionado al contrastar la propiocepción con la sensibilidad termoalgésica. La disociación vertebromedular evita errores diagnósticos en traumatismos toracolumbares. En cirugía intradural, los ligamentos dentados delimitan el corredor seguro hacia la cara anterior medular. En el diagnóstico diferencial, las lesiones del cono medular se manifiestan con anestesia en silla de montar bilateral y simétrica, compromiso esfinteriano precoz y debilidad simétrica; por el contrario, el síndrome de cauda equina se caracteriza por dolor radicular intenso y asimétrico, debilidad flácida parcheada y arreflexia asimétrica de extremidades inferiores.",
+    "mensagem_central": "La neuroanatomía funcional traduce la semiología clínica en localización anatómica exacta. La topografía vertebromedular, las láminas de Rexed, la distribución somatotópica de los cordones y la decusación de las vías explican por qué distintas lesiones medulares generan patrones sindrómicos específicos. Dominar estos conceptos permite diferenciar el compromiso medular, del cono y de la cauda equina, asegurando una descompresión en el nivel neural preciso.",
+    "por_que_importa": "La neuroimagen documenta la alteración estructural, pero la neuroanatomía determina la función neurológica en riesgo. Comprender la disociación vertebromedular, el nivel de decusación de los tractos y la organización de los sistemas motores permite interpretar déficits con precisión y evita exploraciones quirúrgicas en niveles erróneos. Este capítulo proporciona el lenguaje anatómico que vincula el examen físico con los hallazgos radiológicos y la técnica quirúrgica.",
+    "decs": [
+      "Médula Espinal",
+      "Sustancia Gris",
+      "Sustancia Blanca",
+      "Tractos Piramidales",
+      "Tractos Espinotalámicos",
+      "Raíces Nerviosas Espinales",
+      "Síndrome de Brown-Séquard",
+      "Síndrome de la Cauda Equina"
+    ],
+    "mesh": [
+      "Spinal Cord",
+      "Gray Matter",
+      "White Matter",
+      "Pyramidal Tracts",
+      "Spinothalamic Tracts",
+      "Spinal Nerve Roots",
+      "Brown-Sequard Syndrome",
+      "Cauda Equina Syndrome"
+    ],
+    "palavras_chave_livres": [
+      "Topografía vertebromedular",
+      "Láminas de Rexed",
+      "Sistema motor lateral",
+      "Disociación sensitiva",
+      "Síndrome del cono medular"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Nivel vertebral no equivale a segmento medular",
+        "texto": "En el adulto, la médula espinal concluye a nivel L1–L2. El crecimiento diferencial raquimedular alarga las raíces inferiores formando la cauda equina. Por ello, el cirujano debe aplicar la regla de correspondencia vertebromedular al correlacionar lesiones óseas radiográficas con la clínica neurológica."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Localización por patrón sindrómico",
+        "texto": "La presencia de déficit motor y de propiocepción ipsilateral combinado con pérdida contralateral de sensibilidad termoalgésica define una hemisección medular (síndrome de Brown-Séquard), debido a la anatomía ipsilateral del tracto corticoespinal y al cruce precoz del tracto espinotalámico."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Diferenciar cono medular de cauda equina",
+        "texto": "Aunque ambos cursan con anestesia en silla de montar y disfunción vesical, el cono medular produce déficits simétricos y compromiso esfinteriano precoz y grave, mientras que la compresión de la cauda equina genera ciatalgia radicular intensa y asimétrica, paresia flácida e hiporreflexia asimétrica."
+      }
+    ],
+    "referencias": [
+      "As referências foram mantidas na ordem e com a numeração apresentadas no capítulo. A formatação foi uniformizada segundo o padrão Vancouver, sem completar dados por suposição.",
+      "Alvarez FJ, Fyffe RE. The continuing case for the Renshaw cell. J Physiol. 2007 Oct 1;584(Pt 1):31–45. doi: 10.1113/jphysiol.2007.136200. Epub 2007 Jul 19.",
+      "Rexed B. The cytoarchitectonic organization of the spinal cord in cat. J Comp Neurol. 1952;96:415–495.",
+      "Rexed B. A cytoarchitectonic atlas of the spinal cord in the cat. J Comp Neurol. 1954;100:297–379.",
+      "Rexed B. Some aspects of the cytoarchitcctonics and synaptology of the spinal cord. In: Eccles JC, Schade JP, editors. Progress in brain research. Vol. II. Organization of the spinal cord. Amsterdam: Elsevier; 1964. p. 58–92.",
+      "Melzack R, Wall PD. Pain mechanisms: a new theory. Science. 1965;150(3699):971–979.",
+      "Price TJ, Prescott SA. Inhibitory regulation of the pain gate and how its failure causes pathological pain. Pain. 2015;156(5):789–792.",
+      "Machado ABM. Neuroanatomia funcional. 4. ed. Rio de Janeiro: Guanabara Koogan; 2004.",
+      "Tan S, Faull RLM, Curtis MA. The tracts, cytoarchitecture, and neurochemistry of the spinal cord. Anat Rec (Hoboken). 2023;306(4):777–819. doi: 10.1002/ar.25079.",
+      "Carpenter MB. Human neuroanatomy. 9th ed. Baltimore: Williams & Wilkins; 1996."
+    ],
+    "seo": {
+      "titulo": "Neuroanatomía Funcional de la Médula Espinal | Tratado de Columna",
+      "meta_descricao": "Guía integral de neuroanatomía medular: topografía vertebromedular, láminas de Rexed, tractos motores y sensitivos, y síndromes clínicos.",
+      "resumo_chamada": "Comprenda cómo la topografía vertebromedular, las láminas de Rexed y las vías motoras y sensitivas fundamentan la localización de lesiones y la cirugía raquídea.",
+      "slug": "neuroanatomia-funcional-de-la-medula-espinal"
+    }
+  },
+  "4": {
+    "numero": 4,
+    "titulo": "Anatomía Quirúrgica y Vías de Abordaje de la Columna Cervical",
+    "secao": "",
+    "autores": [
+      "Sara Reis de Paula",
+      "Mauro dos Santos Volpi",
+      "Bruno da Costa Ancheschi",
+      "Guilherme Pagioro Miranda"
+    ],
+    "contexto": "Las vías de abordaje a la columna cervical deben proporcionar una exposición suficiente de la lesión respetando las estructuras vasculares, neurológicas y viscerales concentradas en un corredor anatómico de dimensiones reducidas. La elección y ejecución del abordaje dependen del nivel vertebral tratado, distinguiendo la unión craneocervical, la columna cervical superior y la columna subaxial. Los reparos anatómicos de superficie, los planos fasciales, la disposición muscular y el trayecto de la arteria vertebral guían la disección quirúrgica. El capítulo describe los abordajes anterior, anterolateral, transoral-transfaríngeo y posterior, detallando la posición del paciente, la incisión, la disección por planos y los límites seguros de exposición. Asimismo, contrasta los riesgos específicos de cada vía: disfagia, disfonía, perforación esofágica o síndrome de Horner en abordajes anteriores; y hemorragia grave, lesión de la arteria vertebral, lesión medular o radicular y fístula de LCR en abordajes posteriores. El dominio fascial, la disección subperióstica y la hemostasia rigurosa constituyen las premisas esenciales de seguridad.",
+    "objetivo": "Presentar la anatomía quirúrgica indispensable para reconocer y ejecutar los principales abordajes a la columna cervical. Al finalizar, el lector deberá identificar los reparos anatómicos y planos de disección; comprender las particularidades técnicas de los accesos anterior, anterolateral, transoral-transfaríngeo y posterior; relacionar cada vía con los niveles y estructuras expuestos; y reconocer los riesgos quirúrgicos, límites de seguridad y medidas para prevenir complicaciones.",
+    "conteudo_principal": [
+      {
+        "subtitulo": "Reparos anatómicos y posicionamiento",
+        "texto": "La columna cervical consta de siete vértebras con notables diferencias entre C1–C2 y el segmento subaxial C3–C7. En la región anterior, los reparos superficiales orientan topográficamente: el paladar duro corresponde al arco anterior de C1; el borde inferior mandibular a C2–C3; el hueso hioides a C3; el cartílago tiroides a C4–C5; y el cartílago cricoides y el tubérculo de Chassaignac (en la apófisis transversa de C6) a C6. La arteria vertebral transcurre por los forámenes transversos lateral a la articulación uncovertebral y anterior a la raíz nerviosa. Para abordajes anteriores se utiliza decúbito supino con leve extensión cervical y tracción suave de hombros. Para abordajes posteriores se emplea decúbito prono con cabezal de fijación rígida tipo Mayfield, manteniendo la cabeza neutra o ligeramente flexionada y elevada respecto al nivel cardíaco."
+      },
+      {
+        "subtitulo": "Vías anterior y anterolateral",
+        "texto": "El abordaje anterior clásico de Smith-Robinson utiliza una incisión transversal siguiendo las líneas de Langer y progresa medial a la vaina carotídea. El paquete vasculonervioso del cuello (arteria carótida común, vena yugular interna y nervio vago) se separa lateralmente, mientras que el eje visceral (tráquea, esófago y glándula tiroides) se desplaza medialmente. La disección profunda incide la fascia prevertebral y eleva subperiósticamente los músculos longus colli para exponer los cuerpos y discos vertebrales. El abordaje anterolateral utiliza una incisión longitudinal sobre el borde anterior del esternocleidomastoideo, permitiendo exponer las articulaciones uncovertebrales y la arteria vertebral. Las complicaciones más frecuentes incluyen disfagia postoperatoria transitoria, disfonía por lesión del nervio laríngeo recurrente, perforación esofágica, síndrome de Horner por tracción de la cadena simpática y hematoma asfíctico sofocante."
+      },
+      {
+        "subtitulo": "Vía transoral-transfaríngea",
+        "texto": "Indicada para patología ventral de la unión craneocervical, esta vía expone el clivus inferior, el borde anterior del foramen magno, el arco anterior de C1, la apófisis odontoides y el cuerpo de C2 (extensible a C3). Requiere una apertura bucal adecuada para colocar el retractor autoestático. Se incide la pared faríngea posterior en la línea media elevando un colgajo miomucoso de espesor total y realizando disección subperióstica. La exposición lateral debe restringirse a 15 mm de la línea media para evitar lesionar los nervios hipoglosos, la trompa de Eustaquio y las arterias vertebrales. Se requiere profilaxis antibiótica amplia, irrigación exhaustiva y cierre hermético en dos planos. Los riesgos principales incluyen infección profunda, dehiscencia, edema de vía aérea, fístula de LCR con meningitis e inestabilidad craneocervical."
+      },
+      {
+        "subtitulo": "Vías posteriores",
+        "texto": "En la unión craneocervical, una incisión mediana a través del ligamento nucal avascular expone la escama occipital y los arcos posteriores de C1 y C2. La disección debe preservar los nervios occipitales mayores y respetar el trayecto de la arteria vertebral sobre el arco posterior de C1, limitando la disección lateral a 1,5 cm de la línea media en adultos (1,0 cm en niños) y no superando los 8 mm en el borde superior del arco. Entre C3 y C7, la disección subperióstica caudocraneal expone apófisis espinosas, láminas, masas laterales y cápsulas articulares. Los riesgos asociados incluyen lesión de la arteria vertebral en la colocación de tornillos, radiculopatía, desgarro dural, contusión medular y hemorragia venosa."
+      }
+    ],
+    "aplicacao_clinica": "La selección del abordaje debe ajustarse a la localización de la lesión: las afecciones anteriores subaxiales (C3–C7) se tratan mediante abordaje de Smith-Robinson o anterolateral; las lesiones ventrales de la unión craneocervical requieren abordaje transoral o transnasal endoscópico; y las compresiones dorsales o inestabilidades posteriores se abordan por vía posterior para laminectomía, laminoplastia o artrodesis instrumentada. La angiografía por TC o RM preoperatoria es obligatoria para evaluar variantes anatómicas de la arteria vertebral. Durante la cirugía, la disección rigurosamente subperióstica sobre el longus colli protege la cadena simpática cervical, mientras que la retracción visceral cuidadosa previene lesiones esofágicas y del nervio laríngeo recurrente. En la vía posterior alta, respetar los límites de disección en C1 evita laceraciones arteriales catastróficas. Al cierre, la hemostasia meticulosa antes de la extubación es mandataria para prevenir hematomas sofocantes del cuello.",
+    "mensagem_central": "La seguridad de las vías de acceso a la columna cervical se basa en el reconocimiento sistemático del nivel vertebral, los reparos anatómicos, los planos fasciales y las zonas de peligro neurovascular. El posicionamiento adecuado, la disección subperióstica estricta, el respeto a los márgenes de seguridad de la arteria vertebral y la hemostasia rigurosa permiten adaptar los abordajes anterior, transoral y posterior con máxima eficacia.",
+    "por_que_importa": "En la columna cervical, milímetros separan una exposición quirúrgica óptima de una lesión vascular, neural o visceral grave. Este capítulo proporciona una guía práctica integral desde el posicionamento hasta el cierre, detallando los corredores quirúrgicos y sus riesgos inherentes. Comprender la anatomía del longus colli, la vaina carotídea, el eje visceral, la cadena simpática y la arteria vertebral es indispensable para prevenir complicaciones mayores y garantizar la seguridad del paciente.",
+    "decs": [
+      "Vértebras Cervicales",
+      "Anatomía",
+      "Procedimientos Quirúrgicos Operativos",
+      "Arteria Vertebral",
+      "Fusión Vertebral",
+      "Complicaciones Intraoperatorias",
+      "Complicaciones Posoperatorias",
+      "Hemostasia Quirúrgica"
+    ],
+    "mesh": [
+      "Cervical Vertebrae",
+      "Anatomy",
+      "Surgical Procedures, Operative",
+      "Vertebral Artery",
+      "Spinal Fusion",
+      "Intraoperative Complications",
+      "Postoperative Complications",
+      "Hemostasis, Surgical"
+    ],
+    "palavras_chave_livres": [
+      "Abordaje de Smith-Robinson",
+      "Anatomía quirúrgica cervical",
+      "Abordaje transoral",
+      "Tubérculo de Chassaignac",
+      "Músculo longus colli",
+      "Unión craneocervical"
+    ],
+    "cards_destaque": [
+      {
+        "tipo": "Card 1 — Concepto esencial",
+        "titulo": "Los planos fasciales definen corredores seguros",
+        "texto": "Los abordajes cervicales siguen planos naturales definidos por fascias. En la vía anterior, la retracción lateral de la vaina carotídea y medial del eje visceral (tráquea y esófago) permite un acceso prevertebral avascular directo a los cuerpos y discos vertebrales."
+      },
+      {
+        "tipo": "Card 2 — Decisión clínica",
+        "titulo": "Seleccionar la vía según la patología",
+        "texto": "El corredor debe corresponder a la localización de la enfermedad: vía anterior de Smith-Robinson para patología ventral subaxial; abordaje transoral/transnasal para lesiones ventrales de la unión craneocervical; y vía posterior para descompresión dorsal y fijación con tornillos a masas laterales o pedículos."
+      },
+      {
+        "tipo": "Card 3 — Perla o alerta",
+        "titulo": "Respetar los márgenes de la arteria vertebral",
+        "texto": "En el arco posterior de C1, no sobrepasar 1,5 cm lateral a la línea media ni 8 mm en su borde superior para evitar lesionar la arteria vertebral. En abordajes anteriores, mantener la disección subperióstica medial a los músculos longus colli para proteger la cadena simpática cervical."
+      }
+    ],
+    "referencias": [
+      "Denaro V, Di Martino A. Cervical spine surgery: an historical perspective. Clin Orthop Relat Res. 2011 Mar;469(3):639-48. doi: 10.1007/s11999-010-1752-3. PMID: 21213087; PMCID: PMC3032865.",
+      "Araújo JA, Ribeiro R, Fiore N. Anatomia e técnicas: abordagens anterior e laterais à coluna vertebral. Programa de formação contínua. AO Spine Latin America; 2015.",
+      "De Boer P, Buckley R, Hoppenfeld S. Surgical exposures in orthopaedics: the anatomic approach. 6th ed. Philadelphia: Wolters Kluwer; 2022.",
+      "Simeone H, Herkowitz. The spine. 7th ed. Philadelphia: Elsevier; 2018. p. 318-326.",
+      "Canale ST, Beaty JH, Campbell WC, Daugherty K, Burns B. Campbell’s operative orthopaedics: get full access and more at ExpertConsult.com. 12th ed., international ed. Philadelphia: Elsevier Mosby; 2013.",
+      "Mantelli E, Fiore N. Anatomia e técnicas: abordagens posteriores. Programa de formação contínua. AO Spine Latin America; 2015.",
+      "Zdeblick T, Albert T. The spine. 3rd ed. Philadelphia: Lippincott Williams & Wilkins; 2014. p. 6-7.",
+      "Vigo V, Pastor-Escartín F, Doniz-Gonzalez A, Quilis-Quesada V, Capilla-Guasch P, González-Darder JM, et al. The Smith-Robinson approach to the subaxial cervical spine: a stepwise microsurgical technique using volumetric models from anatomic dissections. Operative Surg. 2021;20(1):83-90.",
+      "Chibbaro S, Mirone G, Bresson D, George B. Cervical spine lateral approach for myeloradiculopathy: technique and pitfalls. Surgical Neurology. 2009;72(4):318-24.",
+      "Fountas KN, Kapsalaki EZ, Nikolakakos LG, et al. Anterior cervical discectomy and fusion associated complications. Spine. 2007;32(21):2310-7.",
+      "Jung A, Schramm J. How to reduce recurrent laryngeal nerve palsy in anterior cervical spine surgery: a prospective observational study. Neurosurgery. 2010;67(1):10-5.",
+      "Whitehill R. Late esophageal perforation from an autogenous bone grat: report of a case. J Bone Joint Surg Am. 1985;67:644-5.",
+      "Bridwell K, DeWald R. The textbook of spinal surgery. 3rd ed. Philadelphia: Lippincott Williams & Wilkins; 2011. p. 128-129.",
+      "Kim DH, Vaccaro AR, Dickman CA, Cho D, Lee S, Kim I. Surgical anatomy and techniques to the spine. 2nd ed. Philadelphia: Elsevier Saunders; 2006.",
+      "Civelek E, Karasu A, Cansever T, et al. Surgical anatomy of the cervical sympathetic trunk during anterolateral approach to cervical spine. Eur Spine J. 2008;17(8):991-5. doi: 10.1007/s00586-008-0696-8.",
+      "Schroeder GD, Hsu WK. Vertebral artery injuries in cervical spine surgery. Surg Neurol Int. 2013;4(Suppl 5):S362-7. Published 2013 Oct 29. doi: 10.4103/2152-7806.120777."
+    ],
+    "seo": {
+      "titulo": "Anatomía Quirúrgica y Vías de Acceso Cervical | Tratado de Columna",
+      "meta_descricao": "Guía quirúrgica de abordajes a la columna cervical: Smith-Robinson anterior, transoral, vías posteriores, límites de seguridad de la arteria vertebral y complicaciones.",
+      "resumo_chamada": "Revisión exhaustiva de los corredores quirúrgicos cervicales, planos fasciales, reparos anatómicos y técnicas de preservación neurovascular.",
+      "slug": "anatomia-quirurgica-y-vias-de-acceso-de-la-columna-cervical"
+    }
+  }
+}
