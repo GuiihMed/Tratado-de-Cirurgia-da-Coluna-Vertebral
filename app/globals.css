@@ -1147,7 +1147,7 @@ svg {
 /* OUTLINE ACCORDION (INDICE PAGE) */
 .outline,
 #conteudo {
-  padding: 20px 0 60px !important;
+  padding: 64px 0 70px !important;
   background: #ffffff !important;
   border: none !important;
   border-top: none !important;
@@ -1161,10 +1161,12 @@ svg {
 
 .outline h2 {
   text-align: center;
-  font-size: 38px;
-  line-height: 1.1;
-  margin: 4px 0 26px;
-  letter-spacing: -0.025em;
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 800;
+  color: #001738;
+  line-height: 1.18;
+  margin: 6px 0 14px;
+  letter-spacing: -0.03em;
   border: none !important;
   border-top: none !important;
 }
