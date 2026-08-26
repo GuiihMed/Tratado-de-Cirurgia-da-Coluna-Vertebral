@@ -437,14 +437,24 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                 <p style={{ margin: 0, fontSize: 14.5, color: "#475569", lineHeight: 1.65 }}>
                   {APRESENTACAO_DATA.sobreAObra}
                 </p>
-                <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid #f1f5f9", display: "flex", flexDirection: "column", gap: 6, fontSize: 14, color: "#334155" }}>
+                <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid #f1f5f9", display: "flex", flexDirection: "column", gap: 8, fontSize: 14, color: "#334155" }}>
                   <div>
-                    <strong>Editores na ficha catalográfica:</strong>{" "}
+                    <strong>{locale === "en" ? "Editors in the cataloging card:" : locale === "es" ? "Editores en la ficha catalográfica:" : "Editores na ficha catalográfica:"}</strong>{" "}
                     <span>Edson Pudles; Helton Defino; Marcelo Risso</span>
                   </div>
                   <div>
-                    <strong>Editores na referência:</strong>{" "}
+                    <strong>{locale === "en" ? "Editors in the reference:" : locale === "es" ? "Editores en la referencia:" : "Editores na referência:"}</strong>{" "}
                     <span>Pudles E, Defino H, Risso M</span>
+                  </div>
+                  <div>
+                    <strong>{locale === "en" ? "Pagination criterion:" : locale === "es" ? "Criterio de paginación:" : "Critério de paginação:"}</strong>{" "}
+                    <span>
+                      {locale === "en"
+                        ? "The final page of each chapter was defined as the page immediately preceding the start of the following chapter. Chapter 109 ends on page 1316, as the Subject Index begins on page 1317."
+                        : locale === "es"
+                        ? "La página final de cada capítulo se definió como la página inmediatamente anterior al inicio del capítulo siguiente. El capítulo 109 termina en la página 1316, ya que el Índice Temático comienza en la página 1317."
+                        : "A página final de cada capítulo foi definida como a página imediatamente anterior ao início do capítulo seguinte. O capítulo 109 termina na página 1316, pois o Índice Remissivo começa na página 1317."}
+                    </span>
                   </div>
                 </div>
               </div>
