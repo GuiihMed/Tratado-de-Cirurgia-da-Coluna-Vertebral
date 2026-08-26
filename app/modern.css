@@ -130,32 +130,29 @@
 .modern-nav-pills {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  padding: 5px;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 4px;
 }
 
 .modern-nav-link {
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 14px;
+  padding: 6.5px 13px;
+  border-radius: 8px;
+  font-size: 13.5px;
   font-weight: 600;
-  color: #d7e4f4;
+  color: #e2e8f0;
   text-decoration: none;
-  transition: all 0.2s ease;
+  white-space: nowrap;
+  transition: all 0.15s ease;
 }
 
 .modern-nav-link:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .modern-nav-link.active {
-  background: linear-gradient(135deg, #f52238, #d01428);
+  background: #f52238;
   color: #fff;
-  box-shadow: 0 4px 14px rgba(245, 34, 56, 0.35);
+  box-shadow: 0 3px 10px rgba(245, 34, 56, 0.35);
 }
 
 .modern-lang-pills {

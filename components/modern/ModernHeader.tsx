@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface ModernHeaderProps {
@@ -15,9 +16,9 @@ export default function ModernHeader({
   locale,
   currentPage = "home-new",
 }: ModernHeaderProps) {
+  const dict = getDictionary(locale);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [tratadoDropdownOpen, setTratadoDropdownOpen] = useState(false);
   const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
 
   const getLocalePath = (targetLocale: Locale) => {
@@ -28,180 +29,97 @@ export default function ModernHeader({
     return `/${segments.join("/")}`;
   };
 
-  const isTratadoActive =
-    currentPage === "home-new" ||
-    currentPage === "prefacio-new" ||
-    currentPage === "apresentacao-new" ||
-    pathname?.includes("/prefacio-new") ||
-    pathname?.includes("/apresentacao-new");
-
   return (
     <div className="modern-nav-sticky">
       <header className="modern-nav-bar">
-        <Link href={`/${locale}/home-new`} className="modern-brand-link">
+        {/* Brand Logo & Title */}
+        <Link href={`/${locale}/home-new`} className="modern-brand-link" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff", flexShrink: 0 }}>
           <img
             src="/assets/sbc-logo-white.svg"
             alt="Logo Sociedade Brasileira de Coluna (SBC)"
-            style={{ height: 38, width: "auto", objectFit: "contain" }}
+            style={{ height: 36, width: "auto", objectFit: "contain" }}
           />
-          <div className="modern-brand-text hidden min-[1240px]:block" style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 12 }}>
-            <span>Tratado Oficial</span>
-            <strong>Cirurgia da Coluna Vertebral</strong>
+          <div className="modern-brand-text hidden min-[1240px]:flex" style={{ flexDirection: "column", justifyContent: "center", borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 12 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.15, color: "#94a3b8", letterSpacing: "0.02em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+              Tratado Oficial
+            </span>
+            <strong style={{ fontSize: 15.5, fontWeight: 700, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>
+              Cirurgia da Coluna Vertebral
+            </strong>
           </div>
         </Link>
 
-        {/* Desktop Navigation (Centralizada) */}
-        <nav className="modern-nav-pills desktop-only-nav" style={{ margin: "0 auto", display: "flex", alignItems: "center", gap: 6 }}>
-          {/* Dropdown O Tratado */}
-          <div
-            className="relative"
-            onMouseEnter={() => setTratadoDropdownOpen(true)}
-            onMouseLeave={() => setTratadoDropdownOpen(false)}
+        {/* Desktop Navigation Links */}
+        <nav className="desktop-only-nav" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", gap: 4, margin: "0 auto" }}>
+          <Link
+            href={`/${locale}/prefacio-new`}
+            className={`modern-nav-link ${currentPage === "prefacio-new" || pathname?.includes("/prefacio") ? "active" : ""}`}
+            style={{ whiteSpace: "nowrap" }}
           >
-            <button
-              type="button"
-              className={`modern-nav-link ${isTratadoActive ? "active" : ""}`}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 4,
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-              }}
-              onClick={() => setTratadoDropdownOpen(!tratadoDropdownOpen)}
-            >
-              <span>{locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                style={{
-                  transform: tratadoDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                  transition: "transform 0.2s ease",
-                }}
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
+            <span>{dict.nav.preface}</span>
+          </Link>
 
-            {tratadoDropdownOpen && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  left: 0,
-                  paddingTop: 8,
-                  zIndex: 100,
-                  minWidth: 200,
-                }}
-              >
-                <div
-                  style={{
-                    background: "rgba(0, 20, 50, 0.95)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    borderRadius: 12,
-                    backdropFilter: "blur(16px)",
-                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
-                    padding: 6,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 2,
-                  }}
-                >
-                  <Link
-                    href={`/${locale}/home-new`}
-                    className="dropdown-item"
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: 8,
-                      color: pathname?.endsWith("/home-new") ? "#f52238" : "#ffffff",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      display: "block",
-                      transition: "background 0.2s ease",
-                    }}
-                  >
-                    {locale === "en" ? "Overview" : locale === "es" ? "Visión General" : "Visão Geral"}
-                  </Link>
-                  <Link
-                    href={`/${locale}/prefacio-new`}
-                    className="dropdown-item"
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: 8,
-                      color: pathname?.includes("/prefacio-new") ? "#f52238" : "#ffffff",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      display: "block",
-                      transition: "background 0.2s ease",
-                    }}
-                  >
-                    {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
-                  </Link>
-                  <Link
-                    href={`/${locale}/apresentacao-new`}
-                    className="dropdown-item"
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: 8,
-                      color: pathname?.includes("/apresentacao-new") ? "#f52238" : "#ffffff",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      display: "block",
-                      transition: "background 0.2s ease",
-                    }}
-                  >
-                    {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
-                  </Link>
-                  <Link
-                    href={`/${locale}/debate-new`}
-                    className="dropdown-item"
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: 8,
-                      color: pathname?.includes("/debate") ? "#f52238" : "#ffffff",
-                      fontSize: 13,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      transition: "background 0.2s ease",
-                    }}
-                  >
-                    <span style={{ color: "#f52238", fontSize: 11 }}>▶</span>
-                    <span>{locale === "en" ? "Debate Videocast" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}</span>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+          <Link
+            href={`/${locale}/apresentacao-new`}
+            className={`modern-nav-link ${currentPage === "apresentacao-new" || pathname?.includes("/apresentacao") ? "active" : ""}`}
+            style={{ whiteSpace: "nowrap" }}
+          >
+            <span>{dict.nav.presentation}</span>
+          </Link>
 
           <Link
             href={`/${locale}/indice-new`}
-            className={`modern-nav-link ${currentPage === "indice-new" || pathname?.includes("/indice-new") ? "active" : ""}`}
+            className={`modern-nav-link ${currentPage === "indice-new" && !pathname?.includes("#conteudo") ? "active" : ""}`}
+            style={{ whiteSpace: "nowrap" }}
           >
-            {locale === "en" ? "Index" : locale === "es" ? "Índice" : "Índice"}
+            <span>{dict.nav.index}</span>
           </Link>
+
+          <Link
+            href={`/${locale}/indice-new#conteudo`}
+            className="modern-nav-link"
+            style={{ whiteSpace: "nowrap" }}
+          >
+            <span>{dict.nav.chapters}</span>
+          </Link>
+
+          <Link
+            href={`/${locale}/autores-new`}
+            className={`modern-nav-link ${currentPage === "autores-new" || pathname?.includes("/autores") || pathname?.includes("/autor-") ? "active" : ""}`}
+            style={{ whiteSpace: "nowrap" }}
+          >
+            <span>{dict.nav.authors}</span>
+          </Link>
+
+          <Link
+            href={`/${locale}/referencias-new`}
+            className={`modern-nav-link ${currentPage === "referencias-new" || pathname?.includes("/referencias") ? "active" : ""}`}
+            style={{ whiteSpace: "nowrap" }}
+          >
+            <span>{dict.nav.references}</span>
+          </Link>
+
           <button
             type="button"
             onClick={() => setMiniPlayerOpen(true)}
-            className="modern-nav-link"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
               background: "transparent",
               border: "none",
               cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              color: "#ffffff",
+              font: "inherit",
+              fontSize: 13.5,
+              fontWeight: 600,
+              padding: "7px 12px",
+              borderRadius: 20,
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+              transition: "all 0.2s ease",
             }}
+            className="hover:bg-white/10 text-slate-200 hover:text-white"
             title={locale === "en" ? "Watch Official Videocast (Mini Player)" : locale === "es" ? "Ver Videocast Oficial (Mini Player)" : "Assistir Videocast Oficial (Mini Player)"}
           >
             <span
@@ -220,24 +138,12 @@ export default function ModernHeader({
             >
               ▶
             </span>
-            <span>{locale === "en" ? "Debate Cast" : "Tratado em Debate"}</span>
+            <span style={{ whiteSpace: "nowrap" }}>{dict.nav.debate}</span>
           </button>
-          <Link
-            href={`/${locale}/autores-new`}
-            className={`modern-nav-link ${currentPage === "autores-new" || pathname?.includes("/autores-new") || pathname?.includes("/autor-new") ? "active" : ""}`}
-          >
-            {locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}
-          </Link>
-          <Link
-            href={`/${locale}/referencias-new`}
-            className={`modern-nav-link ${currentPage === "referencias-new" || pathname?.includes("/referencias-new") ? "active" : ""}`}
-          >
-            {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
-          </Link>
         </nav>
 
         {/* Desktop Right Side: Botão Onde Comprar + Idiomas */}
-        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+        <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
           {/* Botão Onde Comprar */}
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
@@ -247,215 +153,231 @@ export default function ModernHeader({
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              padding: "7.5px 16px",
-              borderRadius: 8,
+              padding: "7px 15px",
+              borderRadius: 10,
               background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
               color: "#ffffff",
               fontSize: 13,
               fontWeight: 700,
               textDecoration: "none",
-              boxShadow: "0 3px 12px rgba(245, 34, 56, 0.4)",
+              boxShadow: "0 4px 14px rgba(245, 34, 56, 0.4)",
+              whiteSpace: "nowrap",
               transition: "all 0.2s ease",
             }}
             className="hover:brightness-110 active:scale-[0.98]"
           >
-            <span>{locale === "en" ? "Buy Book" : locale === "es" ? "Dónde Comprar" : "Onde Comprar"}</span>
-            <span>🛒</span>
+            <span>{dict.nav.buy}</span>
+            <span style={{ fontSize: 13 }}>🛒</span>
           </a>
 
-          {/* Divisor Vertical */}
-          <div style={{ width: 1, height: 22, background: "rgba(255, 255, 255, 0.2)" }} />
+          {/* Languages Divider */}
+          <div style={{ width: 1, height: 20, background: "rgba(255, 255, 255, 0.2)" }} />
 
-          {/* Desktop Language Switcher */}
-          <div className="modern-lang-pills" style={{ display: "flex", alignItems: "center", gap: 3 }}>
-            <Link
-              href={getLocalePath("pt")}
-              className={`modern-lang-btn ${locale === "pt" ? "active" : ""}`}
-              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-            >
-              <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 16, height: "auto" }} />
-              <span>PT</span>
-            </Link>
-            <Link
-              href={getLocalePath("es")}
-              className={`modern-lang-btn ${locale === "es" ? "active" : ""}`}
-              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-            >
-              <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 16, height: "auto" }} />
-              <span>ES</span>
-            </Link>
-            <Link
-              href={getLocalePath("en")}
-              className={`modern-lang-btn ${locale === "en" ? "active" : ""}`}
-              style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-            >
-              <img src="/assets/flags/eua.png" alt="English" style={{ width: 16, height: "auto" }} />
-              <span>EN</span>
-            </Link>
+          {/* Languages Switcher */}
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            {[
+              { code: "pt", flag: "/assets/flags/brasil.png", label: "PT" },
+              { code: "es", flag: "/assets/flags/espanha.png", label: "ES" },
+              { code: "en", flag: "/assets/flags/estados-unidos.png", label: "EN" },
+            ].map((item) => {
+              const isActive = locale === item.code;
+              return (
+                <Link
+                  key={item.code}
+                  href={getLocalePath(item.code as Locale)}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                    padding: "4px 8px",
+                    borderRadius: 6,
+                    fontSize: 12,
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    transition: "all 0.15s ease",
+                    background: isActive ? "#f52238" : "rgba(255, 255, 255, 0.08)",
+                    color: isActive ? "#ffffff" : "rgba(255, 255, 255, 0.75)",
+                    border: isActive ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
+                  }}
+                  className={isActive ? "" : "hover:bg-white/20 hover:text-white"}
+                  title={item.code === "pt" ? "Português" : item.code === "en" ? "English" : "Español"}
+                >
+                  <img
+                    src={item.flag}
+                    alt={item.label}
+                    style={{ width: 15, height: 11, objectFit: "cover", borderRadius: 2 }}
+                  />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="modern-mobile-burger"
+          className="mobile-only-btn"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={mobileMenuOpen}
+          aria-label="Abrir menu"
+          style={{
+            background: "rgba(255, 255, 255, 0.1)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            color: "#ffffff",
+            padding: 8,
+            borderRadius: 8,
+            cursor: "pointer",
+            display: "none",
+          }}
         >
-          {mobileMenuOpen ? (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          ) : (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          )}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            {mobileMenuOpen ? (
+              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+            ) : (
+              <path d="M3 12h18M3 6h18M3 18h18" strokeLinecap="round" strokeLinejoin="round" />
+            )}
+          </svg>
         </button>
       </header>
 
-      {/* Mobile Drawer Dropdown */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="modern-mobile-drawer">
-          <nav className="modern-drawer-links">
+        <div
+          style={{
+            position: "fixed",
+            top: 72,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0, 16, 38, 0.98)",
+            backdropFilter: "blur(20px)",
+            zIndex: 9999,
+            padding: "24px 20px",
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <Link
               href={`/${locale}/home-new`}
-              className={pathname?.endsWith("/home-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "The Treatise - Overview" : locale === "es" ? "El Tratado - Visión General" : "O Tratado - Visão Geral"}
+              🏠 {dict.nav.presentation}
             </Link>
             <Link
               href={`/${locale}/prefacio-new`}
-              className={pathname?.includes("/prefacio-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "Preface" : locale === "es" ? "Prefacio" : "Prefácio"}
+              📜 {dict.nav.preface}
             </Link>
             <Link
               href={`/${locale}/apresentacao-new`}
-              className={pathname?.includes("/apresentacao-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "Presentation" : locale === "es" ? "Presentación" : "Apresentação"}
+              📄 {dict.nav.presentation}
             </Link>
             <Link
               href={`/${locale}/indice-new`}
-              className={pathname?.includes("/indice-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "Interactive Index" : locale === "es" ? "Índice Interactivo" : "Índice Interativo"}
+              📖 {dict.nav.index}
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setMiniPlayerOpen(true);
-              }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "10px 14px",
-                borderRadius: 10,
-                background: "rgba(245, 34, 56, 0.15)",
-                border: "1px solid rgba(245, 34, 56, 0.35)",
-                color: "#ff8290",
-                fontSize: 14,
-                fontWeight: 700,
-                cursor: "pointer",
-                textAlign: "left",
-                width: "100%",
-              }}
+            <Link
+              href={`/${locale}/indice-new#conteudo`}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              <span
-                style={{
-                  width: 22,
-                  height: 22,
-                  borderRadius: "50%",
-                  background: "#f52238",
-                  display: "grid",
-                  placeItems: "center",
-                  fontSize: 10,
-                  color: "#fff",
-                  flexShrink: 0,
-                }}
-              >
-                ▶
-              </span>
-              <span>{locale === "en" ? "Watch Debate Cast (Mini Player)" : locale === "es" ? "Ver Tratado en Debate (Mini Player)" : "Assistir Tratado em Debate (Mini Player)"}</span>
-            </button>
+              📑 {dict.nav.chapters}
+            </Link>
             <Link
               href={`/${locale}/autores-new`}
-              className={pathname?.includes("/autores-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "Authors & Editors" : locale === "es" ? "Autores y Editores" : "Autores e Editores"}
+              👥 {dict.nav.authors}
             </Link>
             <Link
               href={`/${locale}/referencias-new`}
-              className={pathname?.includes("/referencias-new") ? "active" : ""}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 16 }}
             >
-              {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
+              📚 {dict.nav.references}
             </Link>
-            <a
-              href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/${locale}/debate-new`}
               onClick={() => setMobileMenuOpen(false)}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(245, 34, 56, 0.15)", border: "1px solid rgba(245, 34, 56, 0.4)", color: "#ff808f", fontWeight: 700, textDecoration: "none", fontSize: 16, display: "flex", alignItems: "center", gap: 8 }}
             >
-              {locale === "en" ? "Get Book 🛒" : locale === "es" ? "Comprar 🛒" : "Adquirir Obra 🛒"}
-            </a>
-          </nav>
-
-          <div className="modern-drawer-footer">
-            <div className="modern-drawer-langs">
-              <span style={{ fontSize: 13, color: "#8da9cc" }}>Idioma:</span>
-              <div className="modern-lang-pills" style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                <Link
-                  href={getLocalePath("pt")}
-                  className={`modern-lang-btn ${locale === "pt" ? "active" : ""}`}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 16, height: "auto" }} />
-                  <span>PT</span>
-                </Link>
-                <Link
-                  href={getLocalePath("es")}
-                  className={`modern-lang-btn ${locale === "es" ? "active" : ""}`}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 16, height: "auto" }} />
-                  <span>ES</span>
-                </Link>
-                <Link
-                  href={getLocalePath("en")}
-                  className={`modern-lang-btn ${locale === "en" ? "active" : ""}`}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 5 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <img src="/assets/flags/eua.png" alt="English" style={{ width: 16, height: "auto" }} />
-                  <span>EN</span>
-                </Link>
-              </div>
-            </div>
+              <span>▶</span>
+              <span>{dict.nav.debate}</span>
+            </Link>
           </div>
+
+          {/* Mobile Languages */}
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255, 255, 255, 0.1)", display: "flex", gap: 8 }}>
+            {[
+              { code: "pt", flag: "/assets/flags/brasil.png", label: "Português" },
+              { code: "es", flag: "/assets/flags/espanha.png", label: "Español" },
+              { code: "en", flag: "/assets/flags/estados-unidos.png", label: "English" },
+            ].map((item) => (
+              <Link
+                key={item.code}
+                href={getLocalePath(item.code as Locale)}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  flex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 6,
+                  padding: "10px",
+                  borderRadius: 8,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  background: locale === item.code ? "#f52238" : "rgba(255, 255, 255, 0.08)",
+                  color: "#ffffff",
+                }}
+              >
+                <img src={item.flag} alt={item.label} style={{ width: 18, height: 13, borderRadius: 2 }} />
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </div>
+
+          <a
+            href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              marginTop: 10,
+              padding: "14px",
+              borderRadius: 10,
+              background: "#f52238",
+              color: "#ffffff",
+              fontWeight: 700,
+              fontSize: 16,
+              textAlign: "center",
+              textDecoration: "none",
+              display: "block",
+            }}
+          >
+            {dict.nav.buy} 🛒
+          </a>
         </div>
       )}
 
-      {/* Floating / Modal Mini Player */}
+      {/* Mini Player Modal */}
       <DebateMiniPlayer
         locale={locale}
         isOpen={miniPlayerOpen}
         onClose={() => setMiniPlayerOpen(false)}
-        isModern={true}
       />
     </div>
   );
