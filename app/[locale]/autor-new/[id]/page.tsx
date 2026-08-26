@@ -144,7 +144,7 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
         background: "#001026",
         color: "#1e293b",
         minHeight: "100vh",
-        fontFamily: "system-ui, -apple-system, sans-serif",
+        fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
       }}
     >
       <ModernHeader locale={locale} currentPage="other" />

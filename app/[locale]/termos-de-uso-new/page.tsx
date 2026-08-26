@@ -262,7 +262,7 @@ export default async function TermosDeUsoNewPage({ params }: PageProps) {
   };
 
   return (
-    <div style={{ background: "#001026", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div style={{ background: "#001026", color: "#1e293b", minHeight: "100vh", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
       <ModernHeader locale={locale} currentPage="other" />
 
       <main>

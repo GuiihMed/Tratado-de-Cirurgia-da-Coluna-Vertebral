@@ -267,7 +267,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
   ).slice(0, 4);
 
   return (
-    <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
       {/* Classic Top Header */}
       <Header locale={locale} currentPage="other" />
 

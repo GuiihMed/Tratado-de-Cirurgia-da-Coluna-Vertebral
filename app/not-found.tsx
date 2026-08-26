@@ -115,7 +115,7 @@ export default function NotFound() {
   ];
 
   return (
-    <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
       {/* Header Clássico */}
       <Header locale={locale} currentPage="other" />
 

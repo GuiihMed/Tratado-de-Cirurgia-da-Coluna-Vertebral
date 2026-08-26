@@ -90,7 +90,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
   };
 
   return (
-    <div style={{ background: "#000d1e", color: "#f8fafc", minHeight: "100vh", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+    <div style={{ background: "#000d1e", color: "#f8fafc", minHeight: "100vh", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
       {/* Header */}
       <ModernHeader locale={locale} currentPage="referencias-new" />
 

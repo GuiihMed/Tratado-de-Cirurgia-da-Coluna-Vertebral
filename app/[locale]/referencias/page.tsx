@@ -125,7 +125,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
   };
 
   return (
-    <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+    <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
       {/* Header */}
       <Header locale={locale} currentPage="referencias" />
 
