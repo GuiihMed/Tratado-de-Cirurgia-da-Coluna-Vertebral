@@ -364,7 +364,6 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                           justifyContent: "space-between",
                           alignItems: "center",
                           color: "#fff",
-                          borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
                         }}
                       >
                         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>

@@ -1026,14 +1026,17 @@ svg {
 }
 
 /* STRUCTURE (INDICE PAGE) */
-.structure {
+.structure,
+#estrutura {
   height: auto !important;
   min-height: auto !important;
   position: relative;
   overflow: visible !important;
   background: #ffffff !important;
   border: none !important;
+  border-top: none !important;
   border-bottom: none !important;
+  outline: none !important;
   box-shadow: none !important;
   padding-bottom: 20px !important;
   margin-bottom: 0 !important;
@@ -1053,6 +1056,8 @@ svg {
   padding-top: 46px;
   position: relative;
   z-index: 2;
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .structure h2 {
@@ -1074,6 +1079,8 @@ svg {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 23px 31px;
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .section-card {
@@ -1138,11 +1145,14 @@ svg {
 }
 
 /* OUTLINE ACCORDION (INDICE PAGE) */
-.outline {
+.outline,
+#conteudo {
   padding: 20px 0 60px !important;
   background: #ffffff !important;
   border: none !important;
   border-top: none !important;
+  border-bottom: none !important;
+  outline: none !important;
   box-shadow: none !important;
   margin-top: 0 !important;
   position: relative;
@@ -1155,6 +1165,8 @@ svg {
   line-height: 1.1;
   margin: 4px 0 26px;
   letter-spacing: -0.025em;
+  border: none !important;
+  border-top: none !important;
 }
 
 .outline-row {
