@@ -1,8 +1,6 @@
 "use client";
 
 import SectionIcon from "./SectionIcon";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 import Link from "next/link";
 import { Capitulo, Locale, SecaoInfo } from "@/lib/types";
 import { SECOES } from "@/lib/data/sections-and-chapters";
@@ -18,27 +16,6 @@ export default function ChapterAccordion({
   locale,
   isLoading = false,
 }: ChapterAccordionProps) {
-  // Store open state for each section (all 10 sections open by default as in static template)
-  const [openSections, setOpenSections] = useState<Record<number, boolean>>({
-    1: true,
-    2: true,
-    3: true,
-    4: true,
-    5: true,
-    6: true,
-    7: true,
-    8: true,
-    9: true,
-    10: true,
-  });
-
-  const toggleSection = (secaoId: number) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [secaoId]: !prev[secaoId],
-    }));
-  };
-
   const getChapterTitle = (cap: Capitulo) => {
     if (locale === "en" && cap.titulo_en) return cap.titulo_en;
     if (locale === "es" && cap.titulo_es) return cap.titulo_es;
@@ -83,7 +60,6 @@ export default function ChapterAccordion({
           </div>
         ) : (
           SECOES.map((secao) => {
-            const isOpen = Boolean(openSections[secao.id]);
             const chapters = initialCapitulos.filter(
               (c) => Number(c.secao_id) === secao.id
             );
@@ -95,32 +71,20 @@ export default function ChapterAccordion({
                 id={secao.tag}
                 className={`outline-row ${secao.colorClass} ${
                   isSection8 ? "section-eight" : ""
-                } ${isOpen ? "is-open" : ""}`}
+                } is-open`}
               >
-                <button
-                  className="row-toggle"
-                  type="button"
-                  aria-expanded={isOpen}
-                  aria-controls={`chapters-${secao.id}`}
-                  onClick={() => toggleSection(secao.id)}
-                  id={`toggle-secao-${secao.id}`}
-                >
-                  <span className="row-title">
-                    <span className="row-icon" style={{ display: "grid", placeItems: "center" }}>
-                      <SectionIcon sectionId={secao.id} size={18} />
-                    </span>
-                    <span>
-                      <b>
-                        {sectionPrefix} {secao.numero}
-                      </b>
-                      <strong>{getSectionTitle(secao)}</strong>
-                      <small>{secao.range}</small>
-                    </span>
+                <div className="row-title">
+                  <span className="row-icon" style={{ display: "grid", placeItems: "center" }}>
+                    <SectionIcon sectionId={secao.id} size={18} />
                   </span>
-                  <span className="toggle-icon" style={{ display: "grid", placeItems: "center" }}>
-                    <ChevronDown size={18} />
+                  <span>
+                    <b>
+                      {sectionPrefix} {secao.numero}
+                    </b>
+                    <strong>{getSectionTitle(secao)}</strong>
+                    <small>{secao.range}</small>
                   </span>
-                </button>
+                </div>
 
                 <ol
                   id={`chapters-${secao.id}`}

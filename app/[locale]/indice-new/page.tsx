@@ -321,50 +321,6 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                   <span>{locale === "en" ? "Compact Table" : locale === "es" ? "Tabla Compacta" : "Tabela Compacta"}</span>
                 </button>
               </div>
-
-              {/* Accordion Expand / Collapse Buttons */}
-              {layoutView === "accordion" && (
-                <div className="modern-controls-actions">
-                  <button
-                    onClick={() => setAllSections(true)}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
-                      padding: "6px 14px",
-                      borderRadius: 8,
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      background: "rgba(255, 255, 255, 0.08)",
-                      color: "#fff",
-                      fontSize: 12,
-                      fontWeight: 650,
-                      cursor: "pointer",
-                    }}
-                  >
-                    <span>{locale === "en" ? "Expand All" : locale === "es" ? "Expandir Todos" : "Expandir Todos"}</span>
-                    <ChevronDown size={13} />
-                  </button>
-                  <button
-                    onClick={() => setAllSections(false)}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
-                      padding: "6px 14px",
-                      borderRadius: 8,
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      background: "rgba(255, 255, 255, 0.08)",
-                      color: "#fff",
-                      fontSize: 12,
-                      fontWeight: 650,
-                      cursor: "pointer",
-                    }}
-                  >
-                    <span>{locale === "en" ? "Collapse All" : locale === "es" ? "Contraer Todos" : "Recolher Todos"}</span>
-                    <ChevronUp size={13} />
-                  </button>
-                </div>
-              )}
             </div>
           </div>
         </section>
@@ -372,11 +328,10 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
         {/* ================= DYNAMIC LAYOUT DISPLAY VIEWS ================= */}
         <section style={{ padding: "36px 0 90px" }}>
           <div className="shell">
-            {/* VIEW 1: ACCORDION BY SECTIONS (ESTRUTURA EM SANFONA) */}
+            {/* VIEW 1: SECTIONS DIRECT LIST */}
             {layoutView === "accordion" && (
               <div>
                 {SECOES.filter((s) => selectedSecao === "all" || s.id === selectedSecao).map((secao) => {
-                  const isOpen = Boolean(openSections[secao.id]);
                   const secChapters = filteredChapters.filter(
                     (c) => c.secao_id === secao.id
                   );
@@ -388,7 +343,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     <article
                       key={secao.id}
                       id={secao.tag}
-                      className={`modern-section-accordion ${isOpen ? "is-open" : ""}`}
+                      className="modern-section-accordion is-open"
                       style={{
                         marginBottom: 16,
                         borderRadius: 16,
@@ -399,24 +354,17 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                         borderLeft: "5px solid #f52238",
                         boxShadow: "0 10px 30px rgba(0, 5, 20, 0.4)",
                         overflow: "hidden",
-                        transition: "all 0.25s ease",
                       }}
                     >
-                      <button
-                        type="button"
-                        onClick={() => toggleSection(secao.id)}
-                        aria-expanded={isOpen}
+                      <div
                         style={{
                           width: "100%",
-                          textAlign: "left",
                           padding: "18px 22px",
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                          background: "transparent",
-                          border: "none",
-                          cursor: "pointer",
                           color: "#fff",
+                          borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
                         }}
                       >
                         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -445,25 +393,18 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             </span>
                           </div>
                         </div>
+                      </div>
 
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 10 }}>
-                          <span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700, display: "flex", alignItems: "center" }}>
-                            {isOpen ? <ChevronUp size={20} color="#94a3b8" /> : <ChevronDown size={20} color="#94a3b8" />}
-                          </span>
-                        </div>
-                      </button>
-
-                      {isOpen && (
-                        <div
-                          className="indice-section-chapters-grid"
-                          style={{
-                            margin: 0,
-                            padding: "0 22px 22px 22px",
-                            display: "grid",
-                            gridTemplateColumns: "repeat(2, 1fr)",
-                            gap: 10,
-                          }}
-                        >
+                      <div
+                        className="indice-section-chapters-grid"
+                        style={{
+                          margin: 0,
+                          padding: "18px 22px 22px 22px",
+                          display: "grid",
+                          gridTemplateColumns: "repeat(2, 1fr)",
+                          gap: 10,
+                        }}
+                      >
                           {secChapters.map((cap) => {
                             const isMatch =
                               searchQuery &&
@@ -542,7 +483,6 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             );
                           })}
                         </div>
-                      )}
                     </article>
                   );
                 })}

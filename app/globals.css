@@ -1160,15 +1160,15 @@ svg {
 .outline-row {
   position: relative;
   display: grid;
-  grid-template-columns: 390px 1fr 60px;
+  grid-template-columns: 360px 1fr;
   min-height: 134px;
-  margin-bottom: 6px;
-  border-radius: 10px;
+  margin-bottom: 8px;
+  border-radius: 12px;
   overflow: hidden;
   color: #fff;
   background: linear-gradient(100deg, #073a76, #002853 58%, #001f49);
   border: 1px solid #0a4c87;
-  box-shadow: 0 4px 8px rgba(4, 38, 75, 0.05);
+  box-shadow: 0 4px 12px rgba(4, 38, 75, 0.15);
   transition: all 0.2s ease;
 }
 
@@ -1192,23 +1192,9 @@ svg {
   background: #1aa6be;
 }
 
-.row-toggle {
-  grid-column: 1 / 4;
-  grid-row: 1;
-  background: none;
-  border: 0;
-  color: #fff;
-  padding: 0;
-  display: contents;
-  cursor: pointer;
-  text-align: left;
-}
-
 .row-title {
-  grid-column: 1;
-  grid-row: 1;
   min-height: 134px;
-  padding: 22px 18px 18px 25px;
+  padding: 24px 20px 20px 26px;
   display: flex;
   align-items: flex-start;
   gap: 18px;
@@ -1218,8 +1204,8 @@ svg {
 }
 
 .row-icon {
-  width: 65px;
-  height: 65px;
+  width: 60px;
+  height: 60px;
   border: 2px solid rgba(255, 255, 255, 0.55);
   border-radius: 50%;
   display: grid;
@@ -1229,75 +1215,48 @@ svg {
 }
 
 .row-icon svg {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 }
 
 .row-title > span:last-child {
   display: flex;
   flex-direction: column;
-  padding-top: 3px;
+  padding-top: 2px;
 }
 
 .row-title b {
-  font-size: 17px;
+  font-size: 16px;
   color: #ff4e61;
   margin-bottom: 4px;
 }
 
 .row-title strong {
-  font-size: 22px;
-  line-height: 1.13;
+  font-size: 21px;
+  line-height: 1.15;
   max-width: 245px;
 }
 
 .row-title small {
-  font-size: 14px;
-  margin-top: 7px;
+  font-size: 13.5px;
+  margin-top: 6px;
   color: #e4eefb;
 }
 
-.toggle-icon {
-  grid-column: 3;
-  grid-row: 1;
-  align-self: start;
-  justify-self: center;
-  margin-top: 41px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  display: grid;
-  place-items: center;
-  position: relative;
-  z-index: 3;
-  transition: transform 0.28s ease;
-}
-
-.toggle-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
 .chapters {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: center;
   margin: 0;
-  padding: 22px 16px 18px 28px;
+  padding: 22px 24px 20px 28px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px 25px;
+  gap: 8px 24px;
   list-style: none;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.25s ease;
-  max-height: 900px;
-  opacity: 1;
+  align-self: center;
 }
 
 .chapters li {
   font-size: 14.5px;
-  line-height: 1.18;
+  line-height: 1.25;
   color: #ecf5ff;
   min-width: 0;
 }
@@ -1320,41 +1279,10 @@ svg {
   align-items: center;
 }
 
-.section-eight .toggle-icon {
-  margin-top: 194px;
-}
-
 .section-eight .chapters {
   padding-top: 26px;
   padding-bottom: 25px;
   gap: 8px 24px;
-}
-
-.outline-row:not(.is-open) {
-  min-height: 86px;
-}
-
-.outline-row:not(.is-open) .row-title {
-  min-height: 86px;
-  align-items: center;
-  padding-top: 11px;
-  padding-bottom: 11px;
-}
-
-.outline-row:not(.is-open) .chapters {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  opacity: 0;
-}
-
-.outline-row:not(.is-open) .toggle-icon {
-  margin-top: 24px;
-  transform: rotate(-90deg);
-}
-
-.outline-row:not(.is-open).section-eight .toggle-icon {
-  margin-top: 24px;
 }
 
 /* PURCHASE SECTION (HOME & INDICE) */
@@ -2029,28 +1957,15 @@ svg {
   .section-eight .row-title {
     min-height: auto !important;
   }
-  .row-toggle {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    padding: 16px 18px !important;
-    cursor: pointer !important;
-    background: transparent !important;
-    border: none !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
   .row-title {
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
     min-height: auto !important;
-    padding: 0 !important;
+    padding: 16px 18px !important;
     border-right: none !important;
-    flex: 1 !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    width: 100% !important;
   }
   .row-icon {
     width: 48px !important;
@@ -2074,26 +1989,13 @@ svg {
     font-size: 12px !important;
     margin-top: 3px !important;
   }
-  .toggle-icon {
-    position: static !important;
-    margin: 0 0 0 12px !important;
-    width: 36px !important;
-    height: 36px !important;
-    flex-shrink: 0 !important;
-    align-self: center !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
   .chapters {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 8px !important;
     padding: 14px 18px 20px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-    max-height: 4000px !important;
+    max-height: none !important;
     opacity: 1 !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
   }
   .chapters li {
     font-size: 14px !important;
@@ -2103,18 +2005,6 @@ svg {
   }
   .chapters li:last-child {
     border-bottom: none !important;
-  }
-  .outline-row:not(.is-open) .chapters {
-    max-height: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    opacity: 0 !important;
-    overflow: hidden !important;
-    border-top: none !important;
-  }
-  .outline-row:not(.is-open) .toggle-icon {
-    transform: rotate(-90deg) !important;
-    margin: 0 0 0 12px !important;
   }
   .about-content {
     grid-template-columns: 1fr;
