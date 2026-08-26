@@ -23,24 +23,6 @@ function IconMail({ size = 18 }: { size?: number }) {
   );
 }
 
-function IconUser({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  );
-}
-
-function IconBriefcase({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-    </svg>
-  );
-}
-
 function IconArrowRight({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -50,145 +32,28 @@ function IconArrowRight({ size = 18 }: { size?: number }) {
   );
 }
 
-function IconCheckCircle({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
-    </svg>
-  );
-}
-
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [mode, setMode] = useState<"login" | "register">("login");
 
   // Form state
-  const [nome, setNome] = useState("");
-  const [cargoInstituicao, setCargoInstituicao] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
 
   // Status state
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
-    setSuccessMessage(null);
     setLoading(true);
 
     try {
       if (!email.trim() || !password.trim()) {
-        setErrorMessage("Por favor, preencha todos os campos obrigatórios.");
+        setErrorMessage("Por favor, preencha o e-mail e a senha.");
         setLoading(false);
         return;
-      }
-
-      if (mode === "register") {
-        if (!nome.trim()) {
-          setErrorMessage("Por favor, informe seu nome completo.");
-          setLoading(false);
-          return;
-        }
-
-        if (password !== confirmPassword) {
-          setErrorMessage("As senhas digitadas não coincidem.");
-          setLoading(false);
-          return;
-        }
-
-        if (password.length < 6) {
-          setErrorMessage("A senha deve conter no mínimo 6 caracteres.");
-          setLoading(false);
-          return;
-        }
-
-        if (isSupabaseConfigured()) {
-          const { data, error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-              data: {
-                nome,
-                cargo_instituicao: cargoInstituicao || "Membro SBC",
-              },
-            },
-          });
-
-          if (error) {
-            setErrorMessage(error.message || "Não foi possível criar a conta.");
-            setLoading(false);
-            return;
-          }
-
-          const novoPerfil = {
-            id: data?.user?.id || `usr-${Date.now()}`,
-            nome,
-            email,
-            cargo_instituicao: cargoInstituicao || "Membro SBC",
-            role: "escritor",
-            status: "pendente",
-            created_at: new Date().toISOString(),
-          };
-
-          try {
-            const existing = localStorage.getItem("sbc_registered_users");
-            const parsed = existing ? JSON.parse(existing) : [];
-            parsed.unshift(novoPerfil);
-            localStorage.setItem("sbc_registered_users", JSON.stringify(parsed));
-          } catch (lsErr) {}
-
-          if (data?.user) {
-            try {
-              await supabase.from("perfis").upsert({
-                id: data.user.id,
-                nome,
-                email,
-                role: "escritor",
-                status: "pendente",
-                cargo_instituicao: cargoInstituicao || "Membro SBC",
-              });
-            } catch (pErr) {
-              console.warn("Perfil trigger auto or manual upsert:", pErr);
-            }
-          }
-
-          setSuccessMessage(
-            "Cadastro realizado com sucesso! Sua solicitação está pendente de aprovação por um Super Admin."
-          );
-          setMode("login");
-          setLoading(false);
-          return;
-        } else {
-          const novoPerfil = {
-            id: `usr-${Date.now()}`,
-            nome,
-            email,
-            cargo_instituicao: cargoInstituicao || "Membro SBC",
-            role: "escritor",
-            status: "pendente",
-            created_at: new Date().toISOString(),
-          };
-
-          try {
-            const existing = localStorage.getItem("sbc_registered_users");
-            const parsed = existing ? JSON.parse(existing) : [];
-            parsed.unshift(novoPerfil);
-            localStorage.setItem("sbc_registered_users", JSON.stringify(parsed));
-          } catch (lsErr) {}
-
-          setSuccessMessage(
-            "Cadastro realizado com sucesso! Sua solicitação está pendente de aprovação por um Super Admin."
-          );
-          setMode("login");
-          setLoading(false);
-          return;
-        }
       }
 
       // Mode: Login
@@ -234,7 +99,7 @@ export default function AdminLoginPage() {
         const customPassMap = JSON.parse(localStorage.getItem("sbc_custom_passwords") || "{}");
         const requiredPass = customPassMap[email.toLowerCase()];
         if (requiredPass && requiredPass !== password) {
-          setErrorMessage("Senha incorreta. Verifique a senha redefinida com o Super Admin.");
+          setErrorMessage("Senha incorreta. Verifique a senha com o Super Admin da SBC.");
           setLoading(false);
           return;
         }
@@ -267,7 +132,7 @@ export default function AdminLoginPage() {
 
       router.push("/admin/painel");
     } catch (err: any) {
-      setErrorMessage(err.message || "Erro inesperado ao processar.");
+      setErrorMessage(err.message || "Erro inesperado ao processar o login.");
       setLoading(false);
     }
   };
@@ -464,9 +329,9 @@ export default function AdminLoginPage() {
             color: "#0f172a",
           }}
         >
-          {/* Logo Section with Generous Top Spacing */}
-          <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <Link href="/pt" style={{ display: "inline-block", marginBottom: 24 }}>
+          {/* Logo Section */}
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Link href="/pt" style={{ display: "inline-block", marginBottom: 20 }}>
               <img
                 src="/assets/sbc-logo.png"
                 alt="Logo SBC"
@@ -474,74 +339,16 @@ export default function AdminLoginPage() {
               />
             </Link>
 
-            {/* Mode Switcher Tabs */}
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}>
-              <div
-                style={{
-                  display: "inline-flex",
-                  background: "#f1f5f9",
-                  padding: 5,
-                  borderRadius: 30,
-                  gap: 6,
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("login");
-                    setErrorMessage(null);
-                    setSuccessMessage(null);
-                  }}
-                  style={{
-                    padding: "9px 24px",
-                    borderRadius: 24,
-                    border: "none",
-                    fontWeight: 700,
-                    fontSize: 14,
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                    background: mode === "login" ? "#003382" : "transparent",
-                    color: mode === "login" ? "#ffffff" : "#64748b",
-                    boxShadow: mode === "login" ? "0 2px 10px rgba(0, 51, 130, 0.35)" : "none",
-                  }}
-                >
-                  Entrar
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("register");
-                    setErrorMessage(null);
-                    setSuccessMessage(null);
-                  }}
-                  style={{
-                    padding: "9px 24px",
-                    borderRadius: 24,
-                    border: "none",
-                    fontWeight: 700,
-                    fontSize: 14,
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                    background: mode === "register" ? "#003382" : "transparent",
-                    color: mode === "register" ? "#ffffff" : "#64748b",
-                    boxShadow: mode === "register" ? "0 2px 10px rgba(0, 51, 130, 0.35)" : "none",
-                  }}
-                >
-                  Criar Conta
-                </button>
-              </div>
-            </div>
-
             <h1
               style={{
-                fontSize: 25,
+                fontSize: 26,
                 fontWeight: 700,
                 letterSpacing: "-0.02em",
                 margin: "0 0 6px 0",
                 color: "#0f172a",
               }}
             >
-              {mode === "login" ? "Acesse sua conta" : "Solicitar Cadastro"}
+              Acesso Restrito
             </h1>
             <p
               style={{
@@ -550,9 +357,7 @@ export default function AdminLoginPage() {
                 margin: 0,
               }}
             >
-              {mode === "login"
-                ? "Preencha seus dados para acessar o painel editorial."
-                : "Informe seus dados institucionais para solicitar acesso."}
+              Preencha seus dados para acessar o painel editorial SBC.
             </p>
           </div>
 
@@ -574,126 +379,8 @@ export default function AdminLoginPage() {
             </div>
           )}
 
-          {successMessage && (
-            <div
-              style={{
-                background: "#f0fdf4",
-                border: "1px solid #bbf7d0",
-                color: "#16a34a",
-                padding: "14px 16px",
-                borderRadius: 14,
-                fontSize: 13.5,
-                lineHeight: 1.45,
-                marginBottom: 18,
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 10,
-              }}
-            >
-              <IconCheckCircle size={20} />
-              <span>{successMessage}</span>
-            </div>
-          )}
-
           {/* Form */}
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {mode === "register" && (
-              <>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "#334155",
-                      marginBottom: 6,
-                    }}
-                  >
-                    Nome Completo
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 16,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        color: "#94a3b8",
-                      }}
-                    >
-                      <IconUser size={18} />
-                    </div>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Digite seu nome completo"
-                      value={nome}
-                      onChange={(e) => setNome(e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: 48,
-                        padding: "0 16px 0 46px",
-                        borderRadius: 24,
-                        border: "1.5px solid #e2e8f0",
-                        fontSize: 14,
-                        color: "#0f172a",
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "#003382")}
-                      onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "#334155",
-                      marginBottom: 6,
-                    }}
-                  >
-                    Cargo / Instituição
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 16,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        color: "#94a3b8",
-                      }}
-                    >
-                      <IconBriefcase size={18} />
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Digite seu cargo ou instituição"
-                      value={cargoInstituicao}
-                      onChange={(e) => setCargoInstituicao(e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: 48,
-                        padding: "0 16px 0 46px",
-                        borderRadius: 24,
-                        border: "1.5px solid #e2e8f0",
-                        fontSize: 14,
-                        color: "#0f172a",
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = "#003382")}
-                      onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
             <div>
               <label
                 style={{
@@ -721,7 +408,7 @@ export default function AdminLoginPage() {
                 <input
                   type="email"
                   required
-                  placeholder="Digite seu e-mail"
+                  placeholder="Digite seu e-mail institucional"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
@@ -788,91 +475,40 @@ export default function AdminLoginPage() {
               </div>
             </div>
 
-            {mode === "register" && (
-              <div>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "#334155",
-                    marginBottom: 6,
-                  }}
-                >
-                  Confirmar Senha
-                </label>
-                <div style={{ position: "relative" }}>
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: 16,
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      color: "#94a3b8",
-                    }}
-                  >
-                    <IconLock size={18} />
-                  </div>
-                  <input
-                    type="password"
-                    required
-                    placeholder="Confirme sua senha"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: 48,
-                      padding: "0 16px 0 46px",
-                      borderRadius: 24,
-                      border: "1.5px solid #e2e8f0",
-                      fontSize: 14,
-                      color: "#0f172a",
-                      outline: "none",
-                      transition: "border-color 0.2s",
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = "#003382")}
-                    onBlur={(e) => (e.target.style.borderColor = "#e2e8f0")}
-                  />
-                </div>
-              </div>
-            )}
-
-            {mode === "login" && (
-              <div
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                fontSize: 13,
+                marginTop: -2,
+              }}
+            >
+              <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", color: "#64748b" }}>
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  style={{ accentColor: "#003382", width: 16, height: 16 }}
+                />
+                Lembrar de mim
+              </label>
+              <button
+                type="button"
+                onClick={() => alert("Para redefinir sua senha, contate a administração da SBC.")}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
+                  background: "none",
+                  border: "none",
+                  color: "#003382",
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  padding: 0,
                   fontSize: 13,
-                  marginTop: -2,
                 }}
               >
-                <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", color: "#64748b" }}>
-                  <input
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    style={{ accentColor: "#003382", width: 16, height: 16 }}
-                  />
-                  Lembrar de mim
-                </label>
-                <button
-                  type="button"
-                  onClick={() => alert("Para redefinir sua senha, contate o Super Admin da SBC.")}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#003382",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    padding: 0,
-                    fontSize: 13,
-                  }}
-                >
-                  Esqueceu a senha?
-                </button>
-              </div>
-            )}
+                Esqueceu a senha?
+              </button>
+            </div>
 
             {/* Primary Action Button */}
             <button
@@ -891,89 +527,28 @@ export default function AdminLoginPage() {
                 justifyContent: "center",
                 gap: 8,
                 cursor: loading ? "wait" : "pointer",
-                marginTop: 6,
+                marginTop: 8,
                 boxShadow: "0 4px 16px rgba(0, 51, 130, 0.35)",
                 transition: "all 0.2s ease",
               }}
             >
               {loading ? (
-                "Processando..."
-              ) : mode === "login" ? (
-                <>
-                  Entrar no Painel <IconArrowRight size={16} />
-                </>
+                "Acessando..."
               ) : (
                 <>
-                  Solicitar Cadastro <IconArrowRight size={16} />
+                  Entrar no Painel <IconArrowRight size={16} />
                 </>
               )}
             </button>
           </form>
 
-          {/* Footer toggle prompt */}
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: 22,
-              fontSize: 13.5,
-              color: "#64748b",
-            }}
-          >
-            {mode === "login" ? (
-              <span>
-                Não possui uma conta?{" "}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("register");
-                    setErrorMessage(null);
-                    setSuccessMessage(null);
-                  }}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#003382",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    padding: 0,
-                    textDecoration: "underline",
-                  }}
-                >
-                  Criar Conta
-                </button>
-              </span>
-            ) : (
-              <span>
-                Já possui uma conta?{" "}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMode("login");
-                    setErrorMessage(null);
-                    setSuccessMessage(null);
-                  }}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#003382",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    padding: 0,
-                    textDecoration: "underline",
-                  }}
-                >
-                  Fazer Login
-                </button>
-              </span>
-            )}
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: 14 }}>
+          <div style={{ textAlign: "center", marginTop: 24 }}>
             <Link
               href="/pt"
               style={{
-                fontSize: 12.5,
-                color: "#94a3b8",
+                fontSize: 13,
+                color: "#64748b",
+                fontWeight: 600,
                 textDecoration: "none",
               }}
             >
