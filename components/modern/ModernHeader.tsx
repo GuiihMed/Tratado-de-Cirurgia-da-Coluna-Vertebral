@@ -12,6 +12,12 @@ interface ModernHeaderProps {
   currentPage?: "home-new" | "indice-new" | "prefacio-new" | "apresentacao-new" | "autores-new" | "referencias-new" | "debate-new" | "debate" | "other" | string;
 }
 
+const LANGUAGES = [
+  { code: "pt", flag: "/assets/flags/brasil.png", label: "PT", fullName: "Português" },
+  { code: "es", flag: "/assets/flags/espanha.png", label: "ES", fullName: "Español" },
+  { code: "en", flag: "/assets/flags/estados-unidos.png", label: "EN", fullName: "English" },
+];
+
 export default function ModernHeader({
   locale,
   currentPage = "home-new",
@@ -19,7 +25,10 @@ export default function ModernHeader({
   const dict = getDictionary(locale);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
+
+  const currentLang = LANGUAGES.find((l) => l.code === locale) || LANGUAGES[0];
 
   const getLocalePath = (targetLocale: Locale) => {
     if (!pathname) return `/${targetLocale}/home-new`;
@@ -49,8 +58,21 @@ export default function ModernHeader({
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="desktop-only-nav" aria-label="Navegação principal" style={{ display: "flex", alignItems: "center", gap: 4, margin: "0 auto" }}>
+        {/* Desktop Navigation Links with Container Pill ("caixa por baixo") */}
+        <nav
+          className="desktop-only-nav"
+          aria-label="Navegação principal"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            margin: "0 auto",
+            background: "rgba(255, 255, 255, 0.06)",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            borderRadius: 30,
+            padding: "4px 8px",
+          }}
+        >
           <Link
             href={`/${locale}/prefacio-new`}
             className={`modern-nav-link ${currentPage === "prefacio-new" || pathname?.includes("/prefacio") ? "active" : ""}`}
@@ -113,7 +135,7 @@ export default function ModernHeader({
               font: "inherit",
               fontSize: 13.5,
               fontWeight: 600,
-              padding: "7px 12px",
+              padding: "6px 12px",
               borderRadius: 20,
               whiteSpace: "nowrap",
               flexShrink: 0,
@@ -142,7 +164,7 @@ export default function ModernHeader({
           </button>
         </nav>
 
-        {/* Desktop Right Side: Botão Onde Comprar + Idiomas */}
+        {/* Desktop Right Side: Botão Onde Comprar + Language Dropdown */}
         <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
           {/* Botão Onde Comprar */}
           <a
@@ -173,44 +195,114 @@ export default function ModernHeader({
           {/* Languages Divider */}
           <div style={{ width: 1, height: 20, background: "rgba(255, 255, 255, 0.2)" }} />
 
-          {/* Languages Switcher */}
-          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            {[
-              { code: "pt", flag: "/assets/flags/brasil.png", label: "PT" },
-              { code: "es", flag: "/assets/flags/espanha.png", label: "ES" },
-              { code: "en", flag: "/assets/flags/estados-unidos.png", label: "EN" },
-            ].map((item) => {
-              const isActive = locale === item.code;
-              return (
-                <Link
-                  key={item.code}
-                  href={getLocalePath(item.code as Locale)}
+          {/* Languages Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setLangDropdownOpen(true)}
+            onMouseLeave={() => setLangDropdownOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: "rgba(255, 255, 255, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                color: "#ffffff",
+                fontSize: 12.5,
+                fontWeight: 700,
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+              }}
+              className="hover:bg-white/15"
+              aria-label="Selecionar idioma"
+            >
+              <img
+                src={currentLang.flag}
+                alt={currentLang.label}
+                style={{ width: 16, height: 12, objectFit: "cover", borderRadius: 2 }}
+              />
+              <span>{currentLang.label}</span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                style={{
+                  transform: langDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.2s ease",
+                  opacity: 0.8,
+                }}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            {langDropdownOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  right: 0,
+                  paddingTop: 8,
+                  zIndex: 100,
+                  minWidth: 145,
+                }}
+              >
+                <div
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                    padding: "4px 8px",
-                    borderRadius: 6,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    textDecoration: "none",
-                    transition: "all 0.15s ease",
-                    background: isActive ? "#f52238" : "rgba(255, 255, 255, 0.08)",
-                    color: isActive ? "#ffffff" : "rgba(255, 255, 255, 0.75)",
-                    border: isActive ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
+                    background: "rgba(0, 20, 50, 0.96)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderRadius: 12,
+                    backdropFilter: "blur(16px)",
+                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
+                    padding: 6,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
                   }}
-                  className={isActive ? "" : "hover:bg-white/20 hover:text-white"}
-                  title={item.code === "pt" ? "Português" : item.code === "en" ? "English" : "Español"}
                 >
-                  <img
-                    src={item.flag}
-                    alt={item.label}
-                    style={{ width: 15, height: 11, objectFit: "cover", borderRadius: 2 }}
-                  />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
+                  {LANGUAGES.map((item) => {
+                    const isActive = locale === item.code;
+                    return (
+                      <Link
+                        key={item.code}
+                        href={getLocalePath(item.code as Locale)}
+                        onClick={() => setLangDropdownOpen(false)}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          padding: "8px 12px",
+                          borderRadius: 8,
+                          fontSize: 13,
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          transition: "all 0.15s ease",
+                          background: isActive ? "rgba(245, 34, 56, 0.25)" : "transparent",
+                          color: isActive ? "#ff808f" : "#ffffff",
+                        }}
+                        className={isActive ? "" : "hover:bg-white/10"}
+                      >
+                        <img
+                          src={item.flag}
+                          alt={item.label}
+                          style={{ width: 16, height: 12, objectFit: "cover", borderRadius: 2 }}
+                        />
+                        <span>{item.fullName}</span>
+                        {isActive && <span style={{ marginLeft: "auto", fontSize: 11, color: "#f52238", fontWeight: 700 }}>✓</span>}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -321,11 +413,7 @@ export default function ModernHeader({
 
           {/* Mobile Languages */}
           <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255, 255, 255, 0.1)", display: "flex", gap: 8 }}>
-            {[
-              { code: "pt", flag: "/assets/flags/brasil.png", label: "Português" },
-              { code: "es", flag: "/assets/flags/espanha.png", label: "Español" },
-              { code: "en", flag: "/assets/flags/estados-unidos.png", label: "English" },
-            ].map((item) => (
+            {LANGUAGES.map((item) => (
               <Link
                 key={item.code}
                 href={getLocalePath(item.code as Locale)}
@@ -346,7 +434,7 @@ export default function ModernHeader({
                 }}
               >
                 <img src={item.flag} alt={item.label} style={{ width: 18, height: 13, borderRadius: 2 }} />
-                <span>{item.label}</span>
+                <span>{item.fullName}</span>
               </Link>
             ))}
           </div>
