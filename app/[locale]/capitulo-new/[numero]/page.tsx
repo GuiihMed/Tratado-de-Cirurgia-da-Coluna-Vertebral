@@ -958,7 +958,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     </p>
                   </div>
 
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                     <Link
                       href={`/${locale}/debate-new`}
                       style={{
@@ -979,6 +979,33 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
                       <Play size={12} className="fill-current" />
                     </Link>
+
+                    <a
+                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 6,
+                        padding: "9px 14px",
+                        borderRadius: 10,
+                        background: "#1DB954",
+                        color: "#fff",
+                        textDecoration: "none",
+                        fontSize: 12.5,
+                        fontWeight: 700,
+                        boxShadow: "0 4px 12px rgba(29, 185, 84, 0.35)",
+                        transition: "all 0.2s ease",
+                      }}
+                      className="hover:bg-[#1aa34a]"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.498 17.306c-.216.353-.678.468-1.03.252-2.824-1.725-6.378-2.115-10.563-1.159-.404.093-.807-.163-.9-.567-.093-.404.163-.807.567-.9 4.582-1.047 8.513-.604 11.674 1.344.352.216.468.678.252 1.03zm1.464-3.254c-.272.443-.852.585-1.295.313-3.233-1.987-8.161-2.563-11.986-1.402-.497.151-1.024-.134-1.175-.631-.151-.497.134-1.024.631-1.175 4.372-1.327 9.805-.683 13.512 1.599.443.272.585.852.313 1.296zm.126-3.39c-3.876-2.302-10.274-2.514-13.987-1.387-.595.181-1.226-.157-1.407-.752-.181-.595.157-1.226.752-1.407 4.267-1.296 11.332-1.046 15.795 1.603.535.318.709 1.012.391 1.547-.318.535-1.012.709-1.544.396z"/>
+                      </svg>
+                      <span>Spotify</span>
+                    </a>
 
                     <Link
                       href={`/${locale}/debate-new`}

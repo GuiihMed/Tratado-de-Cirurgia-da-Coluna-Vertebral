@@ -24,6 +24,7 @@ export interface DebateEpisode {
   descricao_es: string;
   vimeoId: string;
   vimeoUrl: string;
+  spotifyUrl?: string;
   capituloNum: number;
   capituloTitulo_pt: string;
   capituloTitulo_en: string;
@@ -61,6 +62,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
       "En este episodio de estreno del Tratado en Debate, el Dr. Marcelo Risso y el Dr. Paulo Cavali profundizan en los conceptos anátomo-biomecánicos esenciales del Capítulo 8 del Tratado de la SBC. Abordan los parámetros radiográficos espinopélvicos (Incidencia Pélvica, Versión Pélvica, Pendiente Sacra, SVA y Lordosis Lumbar), el cono de economía de Jean Dubousset, la clasificación de Roussouly, modificadores SRS-Schwab y cómo guían la decisión quirúrgica para restaurar el alineamiento global y prevenir fallas mecánicas.",
     vimeoId: "1220279985",
     vimeoUrl: "https://player.vimeo.com/video/1220279985",
+    spotifyUrl: "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q",
     capituloNum: 8,
     capituloTitulo_pt: "Coluna Vertebral no Plano Sagital",
     capituloTitulo_en: "The Spine in the Sagittal Plane",

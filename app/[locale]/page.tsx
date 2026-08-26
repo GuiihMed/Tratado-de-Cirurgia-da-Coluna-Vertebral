@@ -411,7 +411,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     {dict.debate.description || "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos."}
                   </p>
 
-                  <div>
+                  <div className="flex flex-wrap items-center gap-3">
                     <Link
                       href={`/${locale}/capitulo/8`}
                       className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
@@ -420,6 +420,19 @@ export default async function HomePage({ params }: HomePageProps) {
                       <span>{dict.debate.cta || "Assistir episódio"}</span>
                       <span className="text-base font-bold">→</span>
                     </Link>
+
+                    <a
+                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1aa34a] text-white font-bold text-sm sm:text-base shadow-lg shadow-green-600/30 transition-all active:scale-[0.98]"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.498 17.306c-.216.353-.678.468-1.03.252-2.824-1.725-6.378-2.115-10.563-1.159-.404.093-.807-.163-.9-.567-.093-.404.163-.807.567-.9 4.582-1.047 8.513-.604 11.674 1.344.352.216.468.678.252 1.03zm1.464-3.254c-.272.443-.852.585-1.295.313-3.233-1.987-8.161-2.563-11.986-1.402-.497.151-1.024-.134-1.175-.631-.151-.497.134-1.024.631-1.175 4.372-1.327 9.805-.683 13.512 1.599.443.272.585.852.313 1.296zm.126-3.39c-3.876-2.302-10.274-2.514-13.987-1.387-.595.181-1.226-.157-1.407-.752-.181-.595.157-1.226.752-1.407 4.267-1.296 11.332-1.046 15.795 1.603.535.318.709 1.012.391 1.547-.318.535-1.012.709-1.544.396z"/>
+                      </svg>
+                      <span>{locale === "en" ? "Listen on Spotify" : locale === "es" ? "Escuchar en Spotify" : "Ouvir no Spotify"}</span>
+                    </a>
                   </div>
                 </div>
 
