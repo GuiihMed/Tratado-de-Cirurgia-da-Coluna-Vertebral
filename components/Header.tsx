@@ -7,7 +7,6 @@ import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
-import GoogleTranslateWidget from "@/components/GoogleTranslateWidget";
 
 interface HeaderProps {
   locale: Locale;
@@ -194,8 +193,6 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
                 <span>EN</span>
               </Link>
             )}
-            <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
-            <GoogleTranslateWidget currentLocale={locale} />
           </div>
         </div>
 
