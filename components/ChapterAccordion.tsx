@@ -37,11 +37,11 @@ export default function ChapterAccordion({
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h2
             style={{
-              fontSize: "clamp(32px, 3.8vw, 44px)",
-              fontWeight: 800,
+              fontSize: "clamp(30px, 3.4vw, 40px)",
+              fontWeight: 700,
               color: "#001738",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.18,
+              letterSpacing: "-0.025em",
+              lineHeight: 1.2,
               margin: 0,
             }}
           >
