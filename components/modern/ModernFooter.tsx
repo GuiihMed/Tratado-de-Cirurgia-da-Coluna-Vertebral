@@ -153,6 +153,12 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                 />
               </a>
             </div>
+
+            {/* Edition & ISBN Metadata */}
+            <div className="mt-4 flex flex-col gap-1 text-xs text-slate-300">
+              <span className="font-semibold text-slate-100">© 2026 Tratado de Cirurgia da Coluna Vertebral.</span>
+              <span className="text-slate-400">1 edição | ISBN: 978-85-8053-292-0 | Rio de Janeiro</span>
+            </div>
           </div>
 
           {/* 2. Navegação (Embaixo no mobile) */}

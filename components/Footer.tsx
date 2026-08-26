@@ -39,7 +39,14 @@ export default function Footer({ locale }: FooterProps) {
               />
             </a>
           </div>
-          <small>{dict.footer.copyright}</small>
+          <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 3 }}>
+            <small style={{ fontSize: 13, color: "#f1f5f9", lineHeight: 1.4, display: "block", fontWeight: 600 }}>
+              © 2026 Tratado de Cirurgia da Coluna Vertebral.
+            </small>
+            <small style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.4, display: "block" }}>
+              1 edição | ISBN: 978-85-8053-292-0 | Rio de Janeiro
+            </small>
+          </div>
         </div>
 
         <div className="footer-links">
