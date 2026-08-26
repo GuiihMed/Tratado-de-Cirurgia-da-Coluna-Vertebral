@@ -2,36 +2,24 @@
 
 import { use, useState, useMemo, useEffect } from "react";
 import Link from "next/link";
-import ModernHeader from "@/components/modern/ModernHeader";
-import ModernFooter from "@/components/modern/ModernFooter";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
-import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
-import { SECOES, INITIAL_CHAPTERS } from "@/lib/data/sections-and-chapters";
-import {
-  Search,
-  Filter,
-  Copy,
-  Check,
-  ExternalLink,
-  Users,
-  ArrowRight,
-  BookOpen,
-  LayoutGrid,
-  List,
-} from "lucide-react";
+import { SECOES } from "@/lib/data/sections-and-chapters";
+import { ALL_CHAPTER_REFERENCES, ChapterFullReference } from "@/lib/data/references";
 
-interface ReferenciasNewProps {
+interface ReferenciasPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
+export default function ReferenciasPage({ params }: ReferenciasPageProps) {
   const resolvedParams = use(params);
   const rawLocale = resolvedParams.locale;
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedSecao, setSelectedSecao] = useState<number | "all">("all");
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -56,7 +44,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
     }
   };
 
-  // Filtered chapters list
+  // Filter references based on selected section and search query
   const filteredChapters = useMemo(() => {
     return ALL_CHAPTER_REFERENCES.filter((chap) => {
       if (selectedSecao !== "all" && chap.secao_id !== selectedSecao) {
@@ -64,19 +52,19 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
       }
 
       if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase().trim();
+        const query = searchQuery.toLowerCase().trim();
         const matchesNum =
-          chap.numero.toString() === q ||
-          `cap ${chap.numero}` === q ||
-          `capitulo ${chap.numero}` === q ||
-          `chapter ${chap.numero}` === q;
-        const matchesTitle = chap.titulo_pt.toLowerCase().includes(q);
+          chap.numero.toString() === query ||
+          `cap ${chap.numero}` === query ||
+          `capitulo ${chap.numero}` === query ||
+          `chapter ${chap.numero}` === query;
+        const matchesTitle = chap.titulo_pt.toLowerCase().includes(query);
         const matchesSecao =
-          chap.secao_nome.toLowerCase().includes(q) ||
-          chap.secao_nome_en.toLowerCase().includes(q) ||
-          chap.secao_nome_es.toLowerCase().includes(q);
-        const matchesAuthor = chap.autores.some((a) => a.nome.toLowerCase().includes(q));
-        const matchesRefs = chap.referencias.some((r) => r.text.toLowerCase().includes(q));
+          chap.secao_nome.toLowerCase().includes(query) ||
+          chap.secao_nome_en.toLowerCase().includes(query) ||
+          chap.secao_nome_es.toLowerCase().includes(query);
+        const matchesAuthor = chap.autores.some((a) => a.nome.toLowerCase().includes(query));
+        const matchesRefs = chap.referencias.some((r) => r.text.toLowerCase().includes(query));
 
         return matchesNum || matchesTitle || matchesSecao || matchesAuthor || matchesRefs;
       }
@@ -137,9 +125,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
   };
 
   return (
-    <div style={{ background: "#000d1e", color: "#f8fafc", minHeight: "100vh", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+    <div style={{ background: "#f8fafc", color: "#1e293b", minHeight: "100vh", fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* Header */}
-      <ModernHeader locale={locale} currentPage="referencias-new" />
+      <Header locale={locale} currentPage="referencias" />
 
       <main style={{ paddingBottom: 80 }}>
         {/* ================= HERO SECTION ================= */}
@@ -161,7 +149,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
             <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", marginBottom: 24, display: "flex", alignItems: "center", gap: 8 }}>
-              <Link href={`/${locale}/home-new`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
@@ -178,30 +166,44 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               </span>
             </div>
 
-            {/* Hero Main Grid */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
               {/* Left Column: 3D Book Cover */}
               <div className="md:col-span-5 flex justify-center md:justify-end">
                 <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
                   <img
                     src="/assets/capa-tratado.png"
-                    alt="Capa do Livro Tratado de Cirurgia da Coluna Vertebral"
-                    className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.7)]"
+                    alt="Tratado de Cirurgia da Coluna Vertebral"
+                    className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />
                 </div>
               </div>
 
-              {/* Right Column: Hero Content */}
+              {/* Right Column: Hero Info */}
               <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
-                {/* Institutional Badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-4">
-                  <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
+                {/* Badge */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    background: "rgba(245, 34, 56, 0.22)",
+                    border: "1px solid rgba(245, 34, 56, 0.4)",
+                    padding: "6px 14px",
+                    borderRadius: 20,
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                    color: "#ff8090",
+                    marginBottom: 16,
+                    backdropFilter: "blur(8px)",
+                  }}
+                >
+                  <span>📚</span>
+                  <span>
                     {locale === "en"
-                      ? "OFFICIAL SCIENTIFIC CORPUS • 109 CHAPTERS"
+                      ? "OFFICIAL SCIENTIFIC INDEX • 109 CHAPTERS"
                       : locale === "es"
-                      ? "CORPUS CIENTÍFICO OFICIAL • 109 CAPÍTULOS"
-                      : "CORPO CIENTÍFICO OFICIAL • 109 CAPÍTULOS"}
+                      ? "ÍNDICE CIENTÍFICO OFICIAL • 109 CAPÍTULOS"
+                      : "INDEXAÇÃO CIENTÍFICA OFICIAL • 109 CAPÍTULOS"}
                   </span>
                 </div>
 
@@ -272,7 +274,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   </a>
                   <Link
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/40 backdrop-blur-sm transition-all active:scale-[0.98]"
-                    href={`/${locale}/indice-new`}
+                    href={`/${locale}/indice`}
                     style={{ textDecoration: "none" }}
                   >
                     <span>{locale === "en" ? "Chapter Index" : locale === "es" ? "Índice de Capítulos" : "Índice de Capítulos"}</span>
@@ -336,20 +338,19 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
           </div>
         </section>
 
-        {/* ================= CONTROLS & TABLE SECTION ================= */}
-        <section id="tabela-referencias" style={{ maxWidth: 1440, margin: "0 auto", padding: "40px 20px 0" }}>
-          {/* Controls Bar */}
+        {/* ================= CONTROLS & FILTER SECTION ================= */}
+        <section id="tabela-referencias" style={{ maxWidth: 1440, margin: "0 auto", padding: "32px 20px 0" }}>
           <div
             style={{
-              background: "rgba(0, 20, 50, 0.8)",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              borderRadius: 18,
+              background: "#ffffff",
+              borderRadius: 16,
               padding: "24px",
-              backdropFilter: "blur(16px)",
-              marginBottom: 32,
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+              boxShadow: "0 4px 20px rgba(0, 30, 80, 0.05)",
+              border: "1px solid #e2e8f0",
+              marginBottom: 28,
             }}
           >
+            {/* Search, View Switcher and Summary */}
             <div
               style={{
                 display: "grid",
@@ -360,38 +361,52 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               }}
               className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto]"
             >
-              {/* Search input */}
+              {/* Search Bar Input */}
               <div style={{ position: "relative", width: "100%" }}>
-                <Search
-                  size={18}
+                <span
                   style={{
                     position: "absolute",
-                    left: 14,
+                    left: 16,
                     top: "50%",
                     transform: "translateY(-50%)",
                     color: "#94a3b8",
+                    fontSize: 16,
+                    pointerEvents: "none",
                   }}
-                />
+                >
+                  🔍
+                </span>
                 <input
                   type="text"
-                  placeholder={
-                    locale === "en"
-                      ? "Search by chapter, author, journal, or keyword..."
-                      : locale === "es"
-                      ? "Buscar por capítulo, autor, revista o palabra clave..."
-                      : "Buscar por capítulo, autor, periódico ou palavra-chave..."
-                  }
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={
+                    locale === "en"
+                      ? "Search by chapter, section, author name, keyword or citation..."
+                      : locale === "es"
+                      ? "Buscar por capítulo, sección, autor, palabra clave o cita..."
+                      : "Buscar por capítulo, seção, autor, palavra-chave ou citação..."
+                  }
                   style={{
                     width: "100%",
                     padding: "13px 44px 13px 46px",
-                    borderRadius: 12,
-                    background: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                    color: "#ffffff",
+                    borderRadius: 10,
+                    border: "1.5px solid #cbd5e1",
                     fontSize: 14.5,
+                    color: "#0f172a",
                     outline: "none",
+                    background: "#f8fafc",
+                    transition: "all 0.2s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#003382";
+                    e.currentTarget.style.background = "#ffffff";
+                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(0, 51, 130, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "#cbd5e1";
+                    e.currentTarget.style.background = "#f8fafc";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 />
                 {searchQuery && (
@@ -421,10 +436,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  background: "rgba(0, 15, 35, 0.6)",
+                  background: "#f1f5f9",
                   padding: "4px",
                   borderRadius: 10,
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid #e2e8f0",
                   gap: 4,
                 }}
               >
@@ -437,8 +452,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     fontSize: 13,
                     fontWeight: 700,
                     border: "none",
-                    background: viewMode === "grid" ? "#f52238" : "transparent",
-                    color: "#ffffff",
+                    background: viewMode === "grid" ? "#001a3d" : "transparent",
+                    color: viewMode === "grid" ? "#ffffff" : "#64748b",
                     cursor: "pointer",
                     display: "inline-flex",
                     alignItems: "center",
@@ -447,7 +462,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   }}
                   title="3 Capítulos por Linha (Grade de 3 Colunas)"
                 >
-                  <LayoutGrid size={15} />
+                  <span>🔲</span>
                   <span>{locale === "en" ? "3-Col Grid" : locale === "es" ? "Grid 3 Col" : "Grade 3 Colunas"}</span>
                 </button>
 
@@ -460,8 +475,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     fontSize: 13,
                     fontWeight: 700,
                     border: "none",
-                    background: viewMode === "table" ? "#f52238" : "transparent",
-                    color: "#ffffff",
+                    background: viewMode === "table" ? "#001a3d" : "transparent",
+                    color: viewMode === "table" ? "#ffffff" : "#64748b",
                     cursor: "pointer",
                     display: "inline-flex",
                     alignItems: "center",
@@ -470,12 +485,12 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   }}
                   title="Tabela Estruturada de 3 Colunas"
                 >
-                  <List size={15} />
+                  <span>📑</span>
                   <span>{locale === "en" ? "3-Col Table" : locale === "es" ? "Tabla 3 Col" : "Tabela 3 Colunas"}</span>
                 </button>
               </div>
 
-              {/* Results count badge & items per page */}
+              {/* Counter Result Badge & Items per Page */}
               <div
                 style={{
                   display: "flex",
@@ -486,18 +501,17 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               >
                 <div
                   style={{
-                    background: "rgba(255, 255, 255, 0.08)",
+                    background: "#f1f5f9",
                     padding: "10px 16px",
                     borderRadius: 10,
                     fontSize: 13.5,
                     fontWeight: 600,
-                    color: "#cbd5e1",
+                    color: "#475569",
                     whiteSpace: "nowrap",
                     textAlign: "center",
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
                   }}
                 >
-                  <strong style={{ color: "#ffffff", fontWeight: 800 }}>{filteredChapters.length}</strong>{" "}
+                  <strong style={{ color: "#001a3d", fontWeight: 800 }}>{filteredChapters.length}</strong>{" "}
                   <span>
                     {locale === "en"
                       ? `of ${ALL_CHAPTER_REFERENCES.length} chapters`
@@ -512,10 +526,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    background: "rgba(255, 255, 255, 0.06)",
+                    background: "#f1f5f9",
                     padding: "3px 4px",
                     borderRadius: 10,
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    border: "1px solid #e2e8f0",
                     gap: 3,
                   }}
                 >
@@ -533,8 +547,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                           fontSize: 12,
                           fontWeight: 700,
                           border: "none",
-                          background: isSelected ? "#f52238" : "transparent",
-                          color: "#ffffff",
+                          background: isSelected ? "#001a3d" : "transparent",
+                          color: isSelected ? "#ffffff" : "#64748b",
                           cursor: "pointer",
                           transition: "all 0.15s ease",
                         }}
@@ -552,9 +566,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
               <span
                 style={{
-                  fontSize: 12,
+                  fontSize: 12.5,
                   fontWeight: 700,
-                  color: "#94a3b8",
+                  color: "#64748b",
                   textTransform: "uppercase",
                   letterSpacing: "0.04em",
                   marginRight: 4,
@@ -572,9 +586,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   borderRadius: 20,
                   fontSize: 12.5,
                   fontWeight: 700,
-                  border: selectedSecao === "all" ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
-                  background: selectedSecao === "all" ? "#f52238" : "rgba(255, 255, 255, 0.05)",
-                  color: "#ffffff",
+                  border: selectedSecao === "all" ? "1px solid #001a3d" : "1px solid #e2e8f0",
+                  background: selectedSecao === "all" ? "#001a3d" : "#f8fafc",
+                  color: selectedSecao === "all" ? "#ffffff" : "#475569",
                   cursor: "pointer",
                   transition: "all 0.15s ease",
                 }}
@@ -582,7 +596,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 {locale === "en" ? "All Sections (1–10)" : locale === "es" ? "Todas las Secciones (1–10)" : "Todas as Seções (1–10)"}
               </button>
 
-              {/* 10 Sections */}
+              {/* 10 Sections Buttons */}
               {SECOES.map((sec) => {
                 const isSelected = selectedSecao === sec.id;
                 return (
@@ -595,9 +609,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       borderRadius: 20,
                       fontSize: 12.5,
                       fontWeight: 700,
-                      border: isSelected ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.15)",
-                      background: isSelected ? "#f52238" : "rgba(255, 255, 255, 0.05)",
-                      color: "#ffffff",
+                      border: isSelected ? "1px solid #dc2626" : "1px solid #e2e8f0",
+                      background: isSelected ? "#dc2626" : "#f8fafc",
+                      color: isSelected ? "#ffffff" : "#475569",
                       cursor: "pointer",
                       transition: "all 0.15s ease",
                     }}
@@ -620,25 +634,25 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 gap: 12,
                 margin: "0 0 20px 0",
                 padding: "10px 16px",
-                background: "rgba(0, 20, 50, 0.6)",
+                background: "#ffffff",
                 borderRadius: 12,
-                border: "1px solid rgba(255, 255, 255, 0.12)",
+                border: "1px solid #e2e8f0",
                 fontSize: 13,
-                color: "#94a3b8",
+                color: "#64748b",
               }}
             >
               <div>
                 <span>
                   {locale === "en" ? "Showing chapters " : locale === "es" ? "Mostrando capítulos " : "Exibindo capítulos "}
                 </span>
-                <strong style={{ color: "#ffffff" }}>{startItem}–{endItem}</strong>
+                <strong style={{ color: "#001a3d" }}>{startItem}–{endItem}</strong>
                 <span>
                   {locale === "en" ? ` of ${totalItems}` : locale === "es" ? ` de ${totalItems}` : ` de ${totalItems}`}
                 </span>
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ fontWeight: 600, color: "#e2e8f0" }}>
+                <span style={{ fontWeight: 600 }}>
                   {locale === "en" ? `Page ${safeCurrentPage} of ${totalPages}` : locale === "es" ? `Página ${safeCurrentPage} de ${totalPages}` : `Página ${safeCurrentPage} de ${totalPages}`}
                 </span>
               </div>
@@ -647,18 +661,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
           {/* ================= EMPTY STATE ================= */}
           {filteredChapters.length === 0 && (
-            <div
-              style={{
-                background: "rgba(0, 20, 50, 0.6)",
-                borderRadius: 16,
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                padding: "60px 20px",
-                textAlign: "center",
-                color: "#94a3b8",
-              }}
-            >
+            <div style={{ background: "#ffffff", borderRadius: 16, border: "1px solid #e2e8f0", padding: "60px 20px", textAlign: "center", color: "#64748b" }}>
               <div style={{ fontSize: 36, marginBottom: 12 }}>🔍</div>
-              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#ffffff", margin: "0 0 8px" }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
                 {locale === "en"
                   ? "No references found"
                   : locale === "es"
@@ -681,7 +686,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 style={{
                   padding: "8px 20px",
                   borderRadius: 8,
-                  background: "#f52238",
+                  background: "#001a3d",
                   color: "#ffffff",
                   border: "none",
                   fontWeight: 700,
@@ -705,48 +710,48 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 return (
                   <div
                     key={chap.numero}
-                    className="flex flex-col bg-[#001738]/90 rounded-2xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:border-red-500/50 transition-all duration-300 overflow-hidden h-full backdrop-blur-md"
+                    className="flex flex-col bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,30,80,0.05)] hover:shadow-[0_12px_32px_rgba(0,30,80,0.12)] transition-all duration-300 overflow-hidden h-full"
                   >
                     {/* Card Header */}
-                    <div className="p-5 border-b border-white/10 bg-gradient-to-br from-white/5 to-transparent">
+                    <div className="p-5 border-b border-slate-100 bg-gradient-to-br from-slate-50 to-white">
                       <div className="flex items-center justify-between gap-2 mb-2.5">
                         <span
                           className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider ${
                             chap.secao_id <= 5
-                              ? "bg-red-500/20 text-red-300 border border-red-500/30"
-                              : "bg-sky-500/20 text-sky-300 border border-sky-500/30"
+                              ? "bg-red-50 text-red-700 border border-red-200/80"
+                              : "bg-sky-50 text-sky-800 border border-sky-200/80"
                           }`}
                         >
                           <span>{locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}</span>
                         </span>
 
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-600 text-white text-xs font-extrabold shadow-sm">
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#001738] text-white text-xs font-extrabold shadow-sm">
                           {chap.numero}
                         </span>
                       </div>
 
                       {/* Section Title */}
-                      <p className="text-xs font-semibold text-slate-400 line-clamp-1 mb-1.5">
+                      <p className="text-xs font-semibold text-slate-500 line-clamp-1 mb-1.5">
                         {getSecaoTitle(chap.secao_id)}
                       </p>
 
                       {/* Chapter Title */}
-                      <h2 className="text-base font-bold text-white leading-snug hover:text-red-400 transition-colors min-h-[44px]">
-                        <Link href={`/${locale}/capitulo-new/${chap.numero}`} className="hover:underline">
+                      <h2 className="text-base font-bold text-slate-900 leading-snug hover:text-red-600 transition-colors min-h-[44px]">
+                        <Link href={`/${locale}/capitulo/${chap.numero}`} className="hover:underline">
                           {chap.titulo_pt}
                         </Link>
                       </h2>
                     </div>
 
                     {/* Authors Box */}
-                    <div className="px-5 py-3 bg-black/20 border-b border-white/10 min-h-[68px]">
+                    <div className="px-5 py-3 bg-slate-50/60 border-b border-slate-100 min-h-[68px]">
                       <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center justify-between gap-1.5">
-                        <div className="flex items-center gap-1.5">
-                          <Users size={13} className="text-slate-400" />
+                        <span className="flex items-center gap-1.5">
+                          <span>👥</span>
                           <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
-                        </div>
+                        </span>
                         {chap.pagina_inicial && chap.pagina_final && (
-                          <span className="text-[10.5px] font-bold text-slate-300 bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                          <span className="text-[10.5px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
                             📖 {locale === "en" ? "p. " : locale === "es" ? "p. " : "p. "}{chap.pagina_inicial}–{chap.pagina_final}
                           </span>
                         )}
@@ -755,15 +760,15 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         {chap.autores.map((autor, aIdx) => (
                           <span
                             key={aIdx}
-                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/10 border border-white/10 text-[11.5px] font-semibold text-slate-200"
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white border border-slate-200/80 text-[11.5px] font-semibold text-slate-700 shadow-2xs"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                             <span>{autor.nome}</span>
                           </span>
                         ))}
                       </div>
                       {chap.autores_vancouver && (
-                        <div className="text-[11px] text-sky-300 bg-sky-950/40 px-2 py-1 rounded border border-sky-500/20 font-medium">
+                        <div className="text-[11px] text-sky-800 bg-sky-50 px-2 py-1 rounded border border-sky-100 font-medium">
                           <strong>Vancouver:</strong> {chap.autores_vancouver}
                         </div>
                       )}
@@ -771,21 +776,21 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
                     {/* Official Chapter Vancouver Reference Card */}
                     {chap.referencia_vancouver && (
-                      <div className="px-5 py-3 bg-red-950/30 border-b border-red-500/20">
+                      <div className="px-5 py-3 bg-gradient-to-r from-red-50/70 to-slate-50 border-b border-slate-100">
                         <div className="flex items-center justify-between gap-2 mb-1">
-                          <span className="text-[10.5px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1">
+                          <span className="text-[10.5px] font-bold text-red-700 uppercase tracking-wider flex items-center gap-1">
                             <span>📑</span>
                             <span>{locale === "en" ? "Official Chapter Citation" : locale === "es" ? "Cita Oficial del Capítulo" : "Citação Oficial do Capítulo"}</span>
                           </span>
                           <button
                             type="button"
-                            onClick={() => copyToClipboard(chap.referencia_vancouver || "", `van-card-new-${chap.numero}`)}
-                            className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30 transition-colors cursor-pointer"
+                            onClick={() => copyToClipboard(chap.referencia_vancouver || "", `van-card-${chap.numero}`)}
+                            className="text-[10px] font-bold px-2 py-0.5 rounded bg-white text-red-700 border border-red-200 hover:bg-red-50 transition-colors cursor-pointer"
                           >
-                            {copiedId === `van-card-new-${chap.numero}` ? "✓ Copiado" : "Copiar"}
+                            {copiedId === `van-card-${chap.numero}` ? "✓ Copiado" : "Copiar"}
                           </button>
                         </div>
-                        <p className="text-[11.5px] text-slate-300 leading-relaxed font-mono select-all">
+                        <p className="text-[11.5px] text-slate-800 leading-relaxed font-mono select-all">
                           {chap.referencia_vancouver}
                         </p>
                       </div>
@@ -795,8 +800,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                            <BookOpen size={13} className="text-sky-400" />
+                          <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                            <span>📚</span>
                             <span>
                               {locale === "en"
                                 ? `${chap.referencias.length} Citations`
@@ -809,28 +814,28 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
                         <div className="space-y-2.5">
                           {displayedRefs.map((ref, rIdx) => {
-                            const refId = `new-card-ref-${chap.numero}-${rIdx}`;
+                            const refId = `card-ref-${chap.numero}-${rIdx}`;
                             const isCopied = copiedId === refId;
                             return (
                               <div
                                 key={rIdx}
-                                className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors text-xs text-slate-300 leading-relaxed"
+                                className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-slate-300 transition-colors text-xs text-slate-700 leading-relaxed"
                               >
                                 <div className="flex items-start justify-between gap-2">
-                                  <p className="flex-1 text-[11.5px] text-slate-200 font-medium">
-                                    <strong className="text-red-400 font-bold mr-1">{rIdx + 1}.</strong>
+                                  <p className="flex-1 text-[11.5px] text-slate-800 font-medium">
+                                    <strong className="text-red-600 font-bold mr-1">{rIdx + 1}.</strong>
                                     {ref.text}
                                   </p>
                                 </div>
 
-                                <div className="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between flex-wrap gap-2">
+                                <div className="mt-2 pt-1.5 border-t border-slate-200/60 flex items-center justify-between flex-wrap gap-2">
                                   <div className="flex items-center gap-1.5">
                                     {ref.doi ? (
                                       <a
                                         href={`https://doi.org/${ref.doi}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 text-[10px] font-bold hover:bg-sky-200 transition-colors"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -840,7 +845,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://scholar.google.com/scholar?q=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-bold hover:bg-sky-500/30 transition-colors border border-sky-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-sky-100/80 text-sky-800 text-[10px] font-bold hover:bg-sky-200 transition-colors"
                                       >
                                         <span>doi</span>
                                         <span>↗</span>
@@ -852,7 +857,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold hover:bg-emerald-200 transition-colors"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -862,7 +867,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                         href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(ref.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30"
+                                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-100/80 text-emerald-800 text-[10px] font-bold hover:bg-emerald-200 transition-colors"
                                       >
                                         <span>PubMed</span>
                                         <span>↗</span>
@@ -873,7 +878,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                   <button
                                     type="button"
                                     onClick={() => copyToClipboard(ref.text, refId)}
-                                    className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer"
+                                    className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
                                   >
                                     <span>{isCopied ? "✓ Copiado" : "Copiar"}</span>
                                   </button>
@@ -887,7 +892,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                           <button
                             type="button"
                             onClick={() => toggleExpandCard(chap.numero)}
-                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 text-xs font-bold transition-colors cursor-pointer border border-white/10"
+                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
                           >
                             {isExpanded
                               ? (locale === "en" ? "▲ Show less" : locale === "es" ? "▲ Mostrar menos" : "▲ Mostrar menos")
@@ -901,13 +906,13 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       </div>
 
                       {/* Card Bottom Link */}
-                      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                         <Link
-                          href={`/${locale}/capitulo-new/${chap.numero}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-red-400 transition-colors"
+                          href={`/${locale}/capitulo/${chap.numero}`}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#003382] hover:text-red-600 transition-colors"
                         >
                           <span>{locale === "en" ? "View Full Chapter" : locale === "es" ? "Ver Capítulo Completo" : "Ver Capítulo Completo"}</span>
-                          <ArrowRight size={13} />
+                          <span>→</span>
                         </Link>
                       </div>
                     </div>
@@ -921,12 +926,11 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
           {filteredChapters.length > 0 && viewMode === "table" && (
             <div
               style={{
-                background: "rgba(0, 16, 40, 0.7)",
+                background: "#ffffff",
                 borderRadius: 16,
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 overflow: "hidden",
-                backdropFilter: "blur(12px)",
               }}
             >
               {/* 3-Column Table Header */}
@@ -936,13 +940,12 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   gridTemplateColumns: "360px 280px 1fr",
                   gap: 24,
                   padding: "16px 24px",
-                  background: "rgba(0, 8, 24, 0.9)",
+                  background: "#001738",
                   color: "#ffffff",
                   fontSize: 13,
                   fontWeight: 700,
                   letterSpacing: "0.04em",
                   textTransform: "uppercase",
-                  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
                 className="hidden lg:grid"
               >
@@ -960,12 +963,12 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       key={chap.numero}
                       style={{
                         padding: "24px",
-                        background: isEven ? "rgba(255, 255, 255, 0.02)" : "rgba(255, 255, 255, 0.05)",
-                        borderBottom: index === paginatedChapters.length - 1 ? "none" : "1px solid rgba(255, 255, 255, 0.08)",
+                        background: isEven ? "#ffffff" : "#fcfdfe",
+                        borderBottom: index === paginatedChapters.length - 1 ? "none" : "1px solid #edf2f7",
                         transition: "background 0.2s ease",
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = isEven ? "rgba(255, 255, 255, 0.02)" : "rgba(255, 255, 255, 0.05)")}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "#f1f6fd")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = isEven ? "#ffffff" : "#fcfdfe")}
                     >
                       <div
                         style={{
@@ -981,56 +984,56 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                             <span
                               className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase ${
                                 chap.secao_id <= 5
-                                  ? "bg-red-500/20 text-red-400 border border-red-500/30"
-                                  : "bg-sky-500/20 text-sky-400 border border-sky-500/30"
+                                  ? "bg-red-50 text-red-700 border border-red-200"
+                                  : "bg-sky-50 text-sky-800 border border-sky-200"
                               }`}
                             >
                               {locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}
                             </span>
-                            <span className="text-xs font-bold text-slate-500">•</span>
-                            <span className="text-xs font-bold text-red-400 uppercase">
+                            <span className="text-xs font-bold text-slate-400">•</span>
+                            <span className="text-xs font-bold text-red-600 uppercase">
                               {locale === "en" ? `Chapter ${chap.numero}` : locale === "es" ? `Capítulo ${chap.numero}` : `Capítulo ${chap.numero}`}
                             </span>
                             {chap.pagina_inicial && chap.pagina_final && (
-                              <span className="text-[11px] font-bold text-slate-300 bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                              <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
                                 p. {chap.pagina_inicial}–{chap.pagina_final}
                               </span>
                             )}
                           </div>
 
-                          <h2 style={{ fontSize: 16, fontWeight: 700, color: "#ffffff", margin: "0 0 8px", lineHeight: 1.35 }}>
+                          <h2 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.35 }}>
                             <Link
-                              href={`/${locale}/capitulo-new/${chap.numero}`}
+                              href={`/${locale}/capitulo/${chap.numero}`}
                               style={{
                                 color: "inherit",
                                 textDecoration: "none",
                                 transition: "color 0.2s ease",
                               }}
-                              onMouseEnter={(e) => (e.currentTarget.style.color = "#f52238")}
-                              onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+                              onMouseEnter={(e) => (e.currentTarget.style.color = "#dc2626")}
+                              onMouseLeave={(e) => (e.currentTarget.style.color = "#001a3d")}
                             >
                               {chap.titulo_pt}
                             </Link>
                           </h2>
 
-                          <p className="text-xs text-slate-400 font-medium mb-3">
+                          <p className="text-xs text-slate-500 font-medium mb-3">
                             {getSecaoTitle(chap.secao_id)}
                           </p>
 
                           <Link
-                            href={`/${locale}/capitulo-new/${chap.numero}`}
+                            href={`/${locale}/capitulo/${chap.numero}`}
                             style={{
                               display: "inline-flex",
                               alignItems: "center",
                               gap: 6,
                               fontSize: 12.5,
                               fontWeight: 700,
-                              color: "#f52238",
+                              color: "#003382",
                               textDecoration: "none",
                             }}
                           >
                             <span>{locale === "en" ? "View chapter" : locale === "es" ? "Ver capítulo" : "Ver capítulo"}</span>
-                            <ArrowRight size={14} />
+                            <span>→</span>
                           </Link>
                         </div>
 
@@ -1045,7 +1048,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                   alignItems: "center",
                                   gap: 8,
                                   fontSize: 13,
-                                  color: "#cbd5e1",
+                                  color: "#334155",
                                   fontWeight: 600,
                                 }}
                               >
@@ -1055,8 +1058,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                             ))}
 
                             {chap.autores_vancouver && (
-                              <div style={{ marginTop: 6, padding: "6px 10px", borderRadius: 8, background: "rgba(56, 189, 248, 0.1)", border: "1px solid rgba(56, 189, 248, 0.25)", fontSize: 11.5, color: "#38bdf8", lineHeight: 1.4 }}>
-                                <strong style={{ display: "block", fontSize: 10.5, textTransform: "uppercase", letterSpacing: "0.04em", color: "#94a3b8", marginBottom: 2 }}>
+                              <div style={{ marginTop: 6, padding: "6px 10px", borderRadius: 8, background: "#f0f7ff", border: "1px solid #dbeafe", fontSize: 11.5, color: "#003382", lineHeight: 1.4 }}>
+                                <strong style={{ display: "block", fontSize: 10.5, textTransform: "uppercase", letterSpacing: "0.04em", color: "#64748b", marginBottom: 2 }}>
                                   {locale === "en" ? "Vancouver Author Names" : locale === "es" ? "Autores en Vancouver" : "Nomes em Vancouver"}
                                 </strong>
                                 <span>{chap.autores_vancouver}</span>
@@ -1074,23 +1077,23 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                 marginBottom: 14,
                                 padding: "12px 14px",
                                 borderRadius: 10,
-                                background: "rgba(245, 34, 56, 0.15)",
-                                border: "1px solid rgba(245, 34, 56, 0.3)",
+                                background: "#fff5f5",
+                                border: "1px solid #fed7d7",
                                 fontSize: 12.5,
                                 lineHeight: 1.5,
                               }}
                             >
                               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 6 }}>
-                                <strong style={{ color: "#fca5a5", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                                <strong style={{ color: "#9b1c1c", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                                   📑 {locale === "en" ? "Chapter Vancouver Reference" : locale === "es" ? "Referencia Vancouver del Capítulo" : "Referência Vancouver do Capítulo"}
                                 </strong>
                                 <button
                                   type="button"
-                                  onClick={() => copyToClipboard(chap.referencia_vancouver || "", `table-van-new-${chap.numero}`)}
+                                  onClick={() => copyToClipboard(chap.referencia_vancouver || "", `table-van-${chap.numero}`)}
                                   style={{
-                                    border: "1px solid rgba(245, 34, 56, 0.4)",
-                                    background: "rgba(245, 34, 56, 0.25)",
-                                    color: "#ffffff",
+                                    border: "1px solid #feb2b2",
+                                    background: "#ffffff",
+                                    color: "#9b1c1c",
                                     fontSize: 11,
                                     fontWeight: 700,
                                     padding: "3px 8px",
@@ -1098,10 +1101,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                     cursor: "pointer",
                                   }}
                                 >
-                                  {copiedId === `table-van-new-${chap.numero}` ? "✓ Copiado" : "Copiar Citação"}
+                                  {copiedId === `table-van-${chap.numero}` ? "✓ Copiado" : "Copiar Citação"}
                                 </button>
                               </div>
-                              <p style={{ margin: 0, color: "#f1f5f9", fontFamily: "ui-monospace, monospace", fontSize: 12 }}>
+                              <p style={{ margin: 0, color: "#1e293b", fontFamily: "ui-monospace, monospace", fontSize: 12 }}>
                                 {chap.referencia_vancouver}
                               </p>
                             </div>
@@ -1109,7 +1112,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
                           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             {chap.referencias.map((ref, rIdx) => {
-                              const refId = `new-table-ref-${chap.numero}-${rIdx}`;
+                              const refId = `table-ref-${chap.numero}-${rIdx}`;
                               const isCopied = copiedId === refId;
                               return (
                                 <div
@@ -1117,21 +1120,21 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                   style={{
                                     padding: "12px 14px",
                                     borderRadius: 10,
-                                    background: "rgba(255, 255, 255, 0.05)",
-                                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                                    background: "#f8fafc",
+                                    border: "1px solid #e2e8f0",
                                     fontSize: 13,
                                     lineHeight: 1.5,
-                                    color: "#e2e8f0",
+                                    color: "#334155",
                                   }}
                                 >
                                   <div style={{ marginBottom: 6 }}>
-                                    <strong style={{ color: "#ffffff", marginRight: 6 }}>{rIdx + 1}.</strong>
+                                    <strong style={{ color: "#001a3d", marginRight: 6 }}>{rIdx + 1}.</strong>
                                     <span>{ref.text}</span>
                                   </div>
 
                                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 6 }}>
                                     {ref.doi ? (
-                                      <a
+                                       <a
                                         href={`https://doi.org/${ref.doi}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -1143,10 +1146,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                           fontWeight: 700,
                                           padding: "3px 8px",
                                           borderRadius: 4,
-                                          background: "rgba(56, 189, 248, 0.15)",
-                                          color: "#38bdf8",
+                                          background: "rgba(0, 51, 130, 0.08)",
+                                          color: "#003382",
                                           textDecoration: "none",
-                                          border: "1px solid rgba(56, 189, 248, 0.3)",
+                                          border: "1px solid rgba(0, 51, 130, 0.2)",
                                         }}
                                       >
                                         <span>doi</span>
@@ -1165,10 +1168,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                           fontWeight: 700,
                                           padding: "3px 8px",
                                           borderRadius: 4,
-                                          background: "rgba(56, 189, 248, 0.15)",
-                                          color: "#38bdf8",
+                                          background: "rgba(0, 51, 130, 0.08)",
+                                          color: "#003382",
                                           textDecoration: "none",
-                                          border: "1px solid rgba(56, 189, 248, 0.3)",
+                                          border: "1px solid rgba(0, 51, 130, 0.2)",
                                         }}
                                       >
                                         <span>doi</span>
@@ -1189,10 +1192,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                           fontWeight: 700,
                                           padding: "3px 8px",
                                           borderRadius: 4,
-                                          background: "rgba(16, 185, 129, 0.15)",
-                                          color: "#34d399",
+                                          background: "rgba(16, 185, 129, 0.1)",
+                                          color: "#047857",
                                           textDecoration: "none",
-                                          border: "1px solid rgba(16, 185, 129, 0.3)",
+                                          border: "1px solid rgba(16, 185, 129, 0.25)",
                                         }}
                                       >
                                         <span>PubMed</span>
@@ -1211,10 +1214,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                           fontWeight: 700,
                                           padding: "3px 8px",
                                           borderRadius: 4,
-                                          background: "rgba(16, 185, 129, 0.15)",
-                                          color: "#34d399",
+                                          background: "rgba(16, 185, 129, 0.1)",
+                                          color: "#047857",
                                           textDecoration: "none",
-                                          border: "1px solid rgba(16, 185, 129, 0.3)",
+                                          border: "1px solid rgba(16, 185, 129, 0.25)",
                                         }}
                                       >
                                         <span>PubMed</span>
@@ -1228,7 +1231,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                       style={{
                                         border: "none",
                                         background: "none",
-                                        color: "#94a3b8",
+                                        color: "#64748b",
                                         fontSize: 11.5,
                                         fontWeight: 600,
                                         cursor: "pointer",
@@ -1257,22 +1260,21 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               style={{
                 marginTop: 36,
                 padding: "20px 24px",
-                background: "rgba(0, 20, 50, 0.7)",
+                background: "#ffffff",
                 borderRadius: 16,
-                border: "1px solid rgba(255, 255, 255, 0.12)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 4px 20px rgba(0, 30, 80, 0.04)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
                 gap: 16,
-                backdropFilter: "blur(12px)",
               }}
             >
               {/* Left Info: Current slice */}
-              <div style={{ fontSize: 13.5, color: "#94a3b8" }}>
+              <div style={{ fontSize: 13.5, color: "#64748b" }}>
                 <span>{locale === "en" ? "Showing chapters " : locale === "es" ? "Mostrando capítulos " : "Exibindo capítulos "}</span>
-                <strong style={{ color: "#ffffff", fontWeight: 700 }}>{startItem}–{endItem}</strong>
+                <strong style={{ color: "#001a3d", fontWeight: 700 }}>{startItem}–{endItem}</strong>
                 <span>{locale === "en" ? ` of ${totalItems} total` : locale === "es" ? ` de ${totalItems} en total` : ` de ${totalItems} no total`}</span>
               </div>
 
@@ -1299,9 +1301,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     borderRadius: 10,
                     fontSize: 13,
                     fontWeight: 700,
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    background: safeCurrentPage <= 1 ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.1)",
-                    color: safeCurrentPage <= 1 ? "#64748b" : "#ffffff",
+                    border: "1px solid #cbd5e1",
+                    background: safeCurrentPage <= 1 ? "#f8fafc" : "#ffffff",
+                    color: safeCurrentPage <= 1 ? "#94a3b8" : "#001a3d",
                     cursor: safeCurrentPage <= 1 ? "not-allowed" : "pointer",
                     transition: "all 0.15s ease",
                   }}
@@ -1318,7 +1320,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         key={`ellipsis-${idx}`}
                         style={{
                           padding: "0 6px",
-                          color: "#64748b",
+                          color: "#94a3b8",
                           fontWeight: 700,
                           fontSize: 14,
                         }}
@@ -1341,11 +1343,11 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         borderRadius: 10,
                         fontSize: 13.5,
                         fontWeight: 700,
-                        border: isCurrent ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.12)",
-                        background: isCurrent ? "#f52238" : "rgba(255, 255, 255, 0.05)",
-                        color: "#ffffff",
+                        border: isCurrent ? "1px solid #001a3d" : "1px solid #e2e8f0",
+                        background: isCurrent ? "#001a3d" : "#f8fafc",
+                        color: isCurrent ? "#ffffff" : "#334155",
                         cursor: "pointer",
-                        boxShadow: isCurrent ? "0 4px 14px rgba(245, 34, 56, 0.4)" : "none",
+                        boxShadow: isCurrent ? "0 4px 12px rgba(0, 26, 61, 0.2)" : "none",
                         transition: "all 0.15s ease",
                       }}
                     >
@@ -1367,9 +1369,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     borderRadius: 10,
                     fontSize: 13,
                     fontWeight: 700,
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    background: safeCurrentPage >= totalPages ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.1)",
-                    color: safeCurrentPage >= totalPages ? "#64748b" : "#ffffff",
+                    border: "1px solid #cbd5e1",
+                    background: safeCurrentPage >= totalPages ? "#f8fafc" : "#ffffff",
+                    color: safeCurrentPage >= totalPages ? "#94a3b8" : "#001a3d",
                     cursor: safeCurrentPage >= totalPages ? "not-allowed" : "pointer",
                     transition: "all 0.15s ease",
                   }}
@@ -1380,7 +1382,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
               </div>
 
               {/* Right: Items per page quick switcher */}
-              <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#94a3b8" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#64748b" }}>
                 <span>{locale === "en" ? "Per page:" : locale === "es" ? "Por pág:" : "Por página:"}</span>
                 <div style={{ display: "flex", gap: 4 }}>
                   {[12, 24, 48, "all"].map((size) => (
@@ -1393,9 +1395,9 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         borderRadius: 6,
                         fontSize: 12,
                         fontWeight: 700,
-                        border: pageSize === size ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.12)",
-                        background: pageSize === size ? "#f52238" : "rgba(255, 255, 255, 0.05)",
-                        color: "#ffffff",
+                        border: pageSize === size ? "1px solid #001a3d" : "1px solid #e2e8f0",
+                        background: pageSize === size ? "#001a3d" : "#f1f5f9",
+                        color: pageSize === size ? "#ffffff" : "#475569",
                         cursor: "pointer",
                       }}
                     >
@@ -1410,7 +1412,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
       </main>
 
       {/* Footer */}
-      <ModernFooter locale={locale} />
+      <Footer locale={locale} />
     </div>
   );
 }

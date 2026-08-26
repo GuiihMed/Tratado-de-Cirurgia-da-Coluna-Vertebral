@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ModernHeader from "@/components/modern/ModernHeader";
-import ModernFooter from "@/components/modern/ModernFooter";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import PurchaseSection from "@/components/PurchaseSection";
 import { Locale } from "@/lib/types";
-import { DEBATE_EPISODES, getDebateEpisodes } from "@/lib/data/debate-episodes";
-import DebateEpisodesClientView from "@/components/modern/DebateEpisodesClientView";
+import { DEBATE_EPISODES } from "@/lib/data/debate-episodes";
+import DebateClassicClientView from "@/components/DebateClassicClientView";
 
 export const revalidate = 0;
 
-interface DebateNewPageProps {
+interface DebatePageProps {
   params: Promise<{ locale: string }>;
 }
 
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: DebateNewPageProps): Promise<Metadata> {
+}: DebatePageProps): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
@@ -38,7 +39,7 @@ export async function generateMetadata({
 
   const currentTitle = titles[locale] || titles.pt;
   const currentDesc = descriptions[locale] || descriptions.pt;
-  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/debate-new`;
+  const pageUrl = `https://www.tratadodecoluna.com.br/${locale}/debate`;
 
   return {
     title: currentTitle,
@@ -56,9 +57,9 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        pt: "https://www.tratadodecoluna.com.br/pt/debate-new",
-        en: "https://www.tratadodecoluna.com.br/en/debate-new",
-        es: "https://www.tratadodecoluna.com.br/es/debate-new",
+        pt: "https://www.tratadodecoluna.com.br/pt/debate",
+        en: "https://www.tratadodecoluna.com.br/en/debate",
+        es: "https://www.tratadodecoluna.com.br/es/debate",
       },
     },
     openGraph: {
@@ -87,7 +88,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function DebateNewPage({ params }: DebateNewPageProps) {
+export default async function DebatePage({ params }: DebatePageProps) {
   const resolvedParams = await params;
   const rawLocale = resolvedParams.locale;
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
@@ -95,59 +96,34 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
     : "pt";
 
   return (
-    <div
-      style={{
-        background: "#001026",
-        color: "#ffffff",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      }}
-    >
-      <ModernHeader locale={locale} currentPage="debate-new" />
+    <>
+      <Header locale={locale} currentPage="debate" />
 
-      <main style={{ flex: 1 }}>
-        {/* ================= HERO SECTION ================= */}
+      <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
+        {/* ================= HERO SECTION (DESIGN CLÁSSICO) ================= */}
         <section
+          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
           style={{
-            position: "relative",
-            padding: "135px 24px 60px",
-            marginTop: "-88px",
             background:
-              "radial-gradient(circle at 75% 20%, rgba(245, 34, 56, 0.22) 0%, rgba(0, 51, 130, 0.35) 45%, transparent 70%), linear-gradient(180deg, #001026 0%, #03142b 60%, #001026 100%)",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-            overflow: "hidden",
+              "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
           }}
         >
-          {/* Anatomical Spine Background Asset */}
+          {/* Subtle Anatomical Spine Background Overlay */}
           <img
             src="/assets/hero-spine.png"
             alt=""
-            className="absolute right-0 top-0 h-full w-auto max-w-[55%] object-contain pointer-events-none opacity-20 hidden md:block"
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
             style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
-          <div className="shell" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
+          <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                fontSize: 13,
-                color: "rgba(255, 255, 255, 0.75)",
-                marginBottom: 20,
-              }}
-            >
-              <Link
-                href={`/${locale}/home-new`}
-                style={{ color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}
-              >
+            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.8)", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.85)", textDecoration: "none" }}>
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "rgba(255, 255, 255, 0.8)" }}>
+              <span style={{ color: "rgba(255, 255, 255, 0.85)" }}>
                 {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
               </span>
               <span>›</span>
@@ -156,76 +132,96 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
               </span>
             </div>
 
-            {/* Institutional Badge */}
-            <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 16px",
-                  borderRadius: 999,
-                  background: "linear-gradient(135deg, rgba(245, 34, 56, 0.18) 0%, rgba(0, 51, 130, 0.3) 100%)",
-                  border: "1px solid rgba(245, 34, 56, 0.35)",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: "#ff8290",
-                  marginBottom: 16,
-                  boxShadow: "0 4px 15px rgba(245, 34, 56, 0.2)",
-                }}
-              >
-                <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
-                <span style={{ color: "#ffffff" }}>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+              {/* Left Column: Book Photo */}
+              <div className="md:col-span-4 flex justify-center md:justify-end">
+                <img
+                  src="/assets/capa-tratado.png"
+                  alt="Tratado de Cirurgia da Coluna Vertebral"
+                  style={{
+                    width: 240,
+                    height: "auto",
+                    filter: "drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5))",
+                  }}
+                />
+              </div>
+
+              {/* Right Column: Hero Info */}
+              <div className="md:col-span-8">
+                {/* Institutional Badge */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "4px 12px",
+                    borderRadius: 4,
+                    border: "1px solid rgba(255, 255, 255, 0.35)",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: "#fff",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    marginBottom: 14,
+                    background: "rgba(0, 16, 48, 0.4)",
+                  }}
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#ff3047] animate-pulse" />
+                  <span>
+                    {locale === "en"
+                      ? "OFFICIAL SBC SCIENTIFIC VIDEOCAST"
+                      : locale === "es"
+                      ? "VIDEOCAST CIENTÍFICO OFICIAL SBC"
+                      : "VIDEOCAST CIENTÍFICO OFICIAL SBC"}
+                  </span>
+                </div>
+
+                {/* Main Hero Title */}
+                <h1
+                  style={{
+                    fontSize: "clamp(30px, 3.8vw, 48px)",
+                    letterSpacing: "-0.03em",
+                    margin: "0 0 14px",
+                    fontWeight: 800,
+                    color: "#ffffff",
+                    lineHeight: 1.15,
+                  }}
+                >
+                  {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
+                </h1>
+
+                {/* Subtitle */}
+                <p
+                  style={{
+                    fontSize: "clamp(15px, 1.6vw, 18px)",
+                    color: "#e2e8f0",
+                    maxWidth: 680,
+                    margin: 0,
+                    lineHeight: 1.55,
+                    fontWeight: 400,
+                  }}
+                >
                   {locale === "en"
-                    ? "OFFICIAL SBC VIDEOCAST SERIES"
+                    ? "Scientific clinical discussions and surgical insights directly with the authors of each chapter of the SBC Spine Treatise."
                     : locale === "es"
-                    ? "SERIE DE VIDEOCAST OFICIAL SBC"
-                    : "SÉRIE DE VIDEOCAST OFICIAL SBC"}
-                </span>
+                    ? "Debates clínicos y enfoques quirúrgicos directamente con los autores de cada capítulo del Tratado de la SBC."
+                    : "Debates clínicos aprofundados e condutas cirúrgicas práticas diretamente com os autores e especialistas dos capítulos da obra."}
+                </p>
               </div>
             </div>
-
-            {/* Main Hero Title */}
-            <h1
-              style={{
-                fontSize: "clamp(32px, 4.2vw, 52px)",
-                letterSpacing: "-0.035em",
-                margin: "0 0 16px",
-                fontWeight: 800,
-                color: "#ffffff",
-                lineHeight: 1.15,
-              }}
-            >
-              {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
-            </h1>
-
-            {/* Subtitle */}
-            <p
-              style={{
-                fontSize: "clamp(16px, 1.8vw, 19px)",
-                color: "#94b8db",
-                maxWidth: 720,
-                margin: "0 auto",
-                lineHeight: 1.55,
-                fontWeight: 500,
-              }}
-            >
-              {locale === "en"
-                ? "Scientific clinical discussions and surgical insights directly with the authors of each chapter of the SBC Spine Treatise."
-                : locale === "es"
-                ? "Debates clínicos y enfoques quirúrgicos directamente con los autores de cada capítulo del Tratado de la SBC."
-                : "Debates clínicos aprofundados e condutas cirúrgicas práticas diretamente com os autores e especialistas dos capítulos da obra."}
-            </p>
           </div>
         </section>
 
-        {/* ================= VIDEOCAST CLIENT VIEW ================= */}
-        <section style={{ background: "#000c1e" }}>
-          <DebateEpisodesClientView locale={locale} />
+        {/* ================= VIDEOCAST CLASSIC CLIENT VIEW ================= */}
+        <section style={{ background: "#f8fafc" }}>
+          <DebateClassicClientView locale={locale} />
         </section>
+
+        {/* ================= ONDE COMPRAR SECTION ================= */}
+        <PurchaseSection locale={locale} variant="home" />
       </main>
 
-      <ModernFooter locale={locale} />
-    </div>
+      <Footer locale={locale} />
+    </>
   );
 }
