@@ -18,6 +18,10 @@ export interface ChapterFullReference {
   secao_nome_es: string;
   titulo_pt: string;
   autores: AuthorRefInfo[];
+  autores_vancouver?: string;
+  pagina_inicial?: number;
+  pagina_final?: number;
+  referencia_vancouver?: string;
   referencias: ChapterReferenceItem[];
 }
 
@@ -29,6 +33,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Embriologia da Coluna Vertebral",
+    "autores_vancouver": "Zardo EA, Abramczuk J, Dannenbrock FA",
+    "pagina_inicial": 3,
+    "pagina_final": 10,
+    "referencia_vancouver": "Zardo EA, Abramczuk J, Dannenbrock FA. Embriologia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 3-10.",
     "autores": [
       {
         "nome": "Erasmo de Abreu Zardo",
@@ -77,6 +85,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Biomecânica da Coluna Vertebral",
+    "autores_vancouver": "Tebet MA",
+    "pagina_inicial": 11,
+    "pagina_final": 16,
+    "referencia_vancouver": "Tebet MA. Biomecânica da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 11-16.",
     "autores": [
       {
         "nome": "Marcos Antônio Tebet",
@@ -183,6 +195,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Neuroanatomia Funcional da Medula Espinhal",
+    "autores_vancouver": "Arantes Junior AA, Braga BD, Lino Filho AM, Ribeiro DN",
+    "pagina_inicial": 17,
+    "pagina_final": 28,
+    "referencia_vancouver": "Arantes Junior AA, Braga BD, Lino Filho AM, Ribeiro DN. Neuroanatomia funcional da medula espinhal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 17-28.",
     "autores": [
       {
         "nome": "Aluízio Augusto Arantes Junior",
@@ -271,6 +287,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Anatomia Cirúrgica e Vias de Acesso da Coluna Cervical",
+    "autores_vancouver": "Paula SR, Volpi MS, Ancheschi BC, Miranda GP",
+    "pagina_inicial": 29,
+    "pagina_final": 36,
+    "referencia_vancouver": "Paula SR, Volpi MS, Ancheschi BC, Miranda GP. Anatomia cirúrgica e vias de acesso da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 29-36.",
     "autores": [
       {
         "nome": "Sara Reis de Paula",
@@ -395,6 +415,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Anatomia Cirúrgica e Vias de Acesso da Coluna Torácica",
+    "autores_vancouver": "Coutinho T, Vieira M",
+    "pagina_inicial": 37,
+    "pagina_final": 48,
+    "referencia_vancouver": "Coutinho T, Vieira M. Anatomia cirúrgica e vias de acesso da coluna torácica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 37-48.",
     "autores": [
       {
         "nome": "Thiago Coutinho",
@@ -523,6 +547,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Anatomia Cirúrgica e Abordagens da Junção Toracolombar",
+    "autores_vancouver": "Cavali PTM, Pereira Filho ARD, Oliveira R",
+    "pagina_inicial": 49,
+    "pagina_final": 70,
+    "referencia_vancouver": "Cavali PTM, Pereira Filho ARD, Oliveira R. Anatomia cirúrgica e abordagens da junção toracolombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 49-70.",
     "autores": [
       {
         "nome": "Paulo Tadeu Maia Cavali",
@@ -661,6 +689,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Anatomia Cirúrgica e Vias de Acesso da Coluna Lombar e Lombossacra",
+    "autores_vancouver": "Menezes CM, Leal JS",
+    "pagina_inicial": 71,
+    "pagina_final": 94,
+    "referencia_vancouver": "Menezes CM, Leal JS. Anatomia cirúrgica e vias de acesso da coluna lombar e lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 71-94.",
     "autores": [
       {
         "nome": "Cristiano Magalhães Menezes",
@@ -753,6 +785,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Coluna Vertebral no Plano Sagital",
+    "autores_vancouver": "Risso Neto MI, Cavali PTM",
+    "pagina_inicial": 95,
+    "pagina_final": 112,
+    "referencia_vancouver": "Risso Neto MI, Cavali PTM. Coluna vertebral no plano sagital. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 95-112.",
     "autores": [
       {
         "nome": "Marcelo Italo Risso Neto",
@@ -953,6 +989,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
+    "autores_vancouver": "Marcon RM, Santiago MAM, Santos HGL",
+    "pagina_inicial": 113,
+    "pagina_final": 118,
+    "referencia_vancouver": "Marcon RM, Santiago MAM, Santos HGL. Princípios da artrodese, biologia do enxerto e substitutos ósseos na coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 113-118.",
     "autores": [
       {
         "nome": "Raphael Martus Marcon",
@@ -1217,6 +1257,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Biomecânica dos Implantes nas Fixações Vertebrais",
+    "autores_vancouver": "Martins DE, Parreira MGC",
+    "pagina_inicial": 119,
+    "pagina_final": 134,
+    "referencia_vancouver": "Martins DE, Parreira MGC. Biomecânica dos implantes nas fixações vertebrais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 119-134.",
     "autores": [
       {
         "nome": "Delio Eulálio MartinsORCID: 0000-0001-5510-3507",
@@ -1561,6 +1605,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Basic Concepts",
     "secao_nome_es": "Conceptos Básicos",
     "titulo_pt": "Disrafismo Espinhal — Defeitos do Tubo Neural",
+    "autores_vancouver": "Carvalho MV",
+    "pagina_inicial": 135,
+    "pagina_final": 146,
+    "referencia_vancouver": "Carvalho MV. Disrafismo espinhal – defeitos do tubo neural. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 135-146.",
     "autores": [
       {
         "nome": "Márcio Vinhal de Carvalho",
@@ -1937,6 +1985,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Anamnese e Exame Físico da Coluna Vertebral",
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 147,
+    "pagina_final": 170,
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Anamnese e exame físico da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 147-170.",
     "autores": [
       {
         "nome": "Helton L. A. Defino",
@@ -2039,6 +2091,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Neurofisiologia no Diagnóstico das Patologias da Coluna",
+    "autores_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF",
+    "pagina_inicial": 171,
+    "pagina_final": 184,
+    "referencia_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF. Neurofisiologia no diagnóstico das patologias da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 171-184.",
     "autores": [
       {
         "nome": "Ricardo José Rodriguez Ferreira",
@@ -2243,6 +2299,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+    "autores_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF",
+    "pagina_inicial": 185,
+    "pagina_final": 200,
+    "referencia_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF. Monitorização neurofisiológica intraoperatória em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 185-200.",
     "autores": [
       {
         "nome": "Ricardo José Rodriguez Ferreira",
@@ -2651,6 +2711,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Diagnóstico por Imagem da Coluna Vertebral",
+    "autores_vancouver": "Nogueira-Barbosa MH, Alves GNL",
+    "pagina_inicial": 201,
+    "pagina_final": 214,
+    "referencia_vancouver": "Nogueira-Barbosa MH, Alves GNL. Diagnóstico por imagem da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 201-214.",
     "autores": [
       {
         "nome": "Marcello Henrique Nogueira-Barbosa",
@@ -2755,6 +2819,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Diagnóstico Diferencial: Patologias da Coluna e Condições Ortopédicas",
+    "autores_vancouver": "Caffaro MFS, Trincado RM, Durigan JR",
+    "pagina_inicial": 215,
+    "pagina_final": 228,
+    "referencia_vancouver": "Caffaro MFS, Trincado RM, Durigan JR. Diagnóstico diferencial: doenças da coluna e condições ortopédicas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 215-228.",
     "autores": [
       {
         "nome": "Maria Fernanda Silber Caffaro",
@@ -3205,6 +3273,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Semiology and Diagnosis",
     "secao_nome_es": "Semiología y Diagnóstico",
     "titulo_pt": "Diagnóstico Diferencial: Doenças da Coluna e Doenças Neurológicas",
+    "autores_vancouver": "Carazzo CA, Silva WP",
+    "pagina_inicial": 229,
+    "pagina_final": 242,
+    "referencia_vancouver": "Carazzo CA, Silva WP. Diagnóstico diferencial: doenças da coluna e doenças neurológicas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 229-242.",
     "autores": [
       {
         "nome": "Charles André Carazzo",
@@ -3333,6 +3405,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Avaliação da Coluna do Paciente Politraumatizado",
+    "autores_vancouver": "Jacob Junior C, Zanon IB",
+    "pagina_inicial": 243,
+    "pagina_final": 250,
+    "referencia_vancouver": "Jacob Junior C, Zanon IB. Avaliação da coluna do paciente politraumatizado. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 243-250.",
     "autores": [
       {
         "nome": "Charbel Jacob Júnior",
@@ -3407,6 +3483,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Trauma Raquimedular",
+    "autores_vancouver": "Vialle EN, Zanon M",
+    "pagina_inicial": 251,
+    "pagina_final": 258,
+    "referencia_vancouver": "Vialle EN, Zanon M. Trauma raquimedular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 251-258.",
     "autores": [
       {
         "nome": "Emiliano Neves Vialle",
@@ -3547,6 +3627,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Lesões Traumáticas da Coluna Cervical Alta",
+    "autores_vancouver": "Hübner AR, Cechin IE, Suarez ADH",
+    "pagina_inicial": 259,
+    "pagina_final": 298,
+    "referencia_vancouver": "Hübner AR, Cechin IE, Suarez ADH. Lesões traumáticas da coluna cervical alta. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 259-298.",
     "autores": [
       {
         "nome": "André Rafael Hübner",
@@ -4213,6 +4297,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Lesões Traumáticas da Coluna Cervical Subaxial",
+    "autores_vancouver": "Pudles E, Rocha LGD",
+    "pagina_inicial": 299,
+    "pagina_final": 318,
+    "referencia_vancouver": "Pudles E, Rocha LGD. Lesões traumáticas da coluna cervical subaxial. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 299-318.",
     "autores": [
       {
         "nome": "Edson Pudles",
@@ -4497,6 +4585,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Lesões Traumáticas da Coluna Torácica e Lombar",
+    "autores_vancouver": "Jaccard APB, Rodriguez CAA, Vieira MB",
+    "pagina_inicial": 319,
+    "pagina_final": 330,
+    "referencia_vancouver": "Jaccard APB, Rodriguez CAA, Vieira MB. Lesões traumáticas da coluna torácica e lombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 319-330.",
     "autores": [
       {
         "nome": "Alexandre Philippe Boss Jaccard",
@@ -4701,6 +4793,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Lesões Traumáticas do Sacro",
+    "autores_vancouver": "Rocha LGD, Pereira OVA",
+    "pagina_inicial": 331,
+    "pagina_final": 346,
+    "referencia_vancouver": "Rocha LGD, Pereira OVA. Lesões traumáticas do sacro. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 331-346.",
     "autores": [
       {
         "nome": "Luiz Gustavo Dal Oglio da Rocha",
@@ -4985,6 +5081,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Lesões Traumáticas da Coluna na Infância",
+    "autores_vancouver": "Cristante AF, Freitas MTB, Figueiredo CCN",
+    "pagina_inicial": 347,
+    "pagina_final": 352,
+    "referencia_vancouver": "Cristante AF, Freitas MTB, Figueiredo CCN. Lesões traumáticas da coluna na infância. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 347-352.",
     "autores": [
       {
         "nome": "Alexandre Fogaça Cristante",
@@ -5033,6 +5133,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Fraturas Vertebrais por Insuficiência",
+    "autores_vancouver": "Graells XS, Kulcheski AL, Sebben AL",
+    "pagina_inicial": 353,
+    "pagina_final": 362,
+    "referencia_vancouver": "Graells XS, Kulcheski AL, Sebben AL. Fraturas vertebrais por insuficiência. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 353-362.",
     "autores": [
       {
         "nome": "Xavier Soler Graells",
@@ -5129,6 +5233,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Trauma",
     "secao_nome_es": "Trauma de la Columna",
     "titulo_pt": "Deformidades Pós-Traumáticas",
+    "autores_vancouver": "Barsotti CEG, Cardeal AC",
+    "pagina_inicial": 363,
+    "pagina_final": 374,
+    "referencia_vancouver": "Barsotti CEG, Cardeal AC. Deformidades pós-traumáticas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 363-374.",
     "autores": [
       {
         "nome": "Carlos Eduardo Gonçales Barsotti",
@@ -5299,6 +5407,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Introdução às Deformidades da Coluna Vertebral",
+    "autores_vancouver": "Pudles E, Defino HLA",
+    "pagina_inicial": 375,
+    "pagina_final": 398,
+    "referencia_vancouver": "Pudles E, Defino HLA. Introdução às deformidades da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 375-398.",
     "autores": [
       {
         "nome": "Edson Pudles",
@@ -5499,6 +5611,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose de Início Precoce",
+    "autores_vancouver": "Cristante AF, Tipan SAN, Figueiredo CCN",
+    "pagina_inicial": 399,
+    "pagina_final": 404,
+    "referencia_vancouver": "Cristante AF, Tipan SAN, Figueiredo CCN. Escoliose de início precoce. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 399-404.",
     "autores": [
       {
         "nome": "Alexandre Fogaça Cristante",
@@ -5763,6 +5879,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Tratamento Não Cirúrgico das Escolioses",
+    "autores_vancouver": "Rangel TAM, Pereira AFF, Souza MPM",
+    "pagina_inicial": 405,
+    "pagina_final": 410,
+    "referencia_vancouver": "Rangel TAM, Pereira AFF, Souza MPM. Tratamento não cirúrgico das escolioses. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 405-410.",
     "autores": [
       {
         "nome": "Túlio Albuquerque de Moura Rangel",
@@ -6027,6 +6147,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose Neuromuscular",
+    "autores_vancouver": "Aguiar CA, Cordeiro LEB",
+    "pagina_inicial": 411,
+    "pagina_final": 422,
+    "referencia_vancouver": "Aguiar CA, Cordeiro LEB. Escoliose neuromuscular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 411-422.",
     "autores": [
       {
         "nome": "Carlos Abreu de Aguiar",
@@ -6503,6 +6627,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Deformidades nos Disrafismos Espinhais",
+    "autores_vancouver": "Cavali PTM, Lima MC, Rossato AJ",
+    "pagina_inicial": 423,
+    "pagina_final": 444,
+    "referencia_vancouver": "Cavali PTM, Lima MC, Rossato AJ. Deformidades nos disrafismos espinhais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 423-444.",
     "autores": [
       {
         "nome": "Paulo Tadeu Maia Cavali",
@@ -6719,6 +6847,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose na Neurofibromatose",
+    "autores_vancouver": "Rocha LEM",
+    "pagina_inicial": 445,
+    "pagina_final": 452,
+    "referencia_vancouver": "Rocha LEM. Escoliose na neurofibromatose. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 445-452.",
     "autores": [
       {
         "nome": "Luiz Eduardo Munhoz",
@@ -6867,6 +6999,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Deformidades Congênitas da Coluna Vertebral",
+    "autores_vancouver": "Avila LM, Aguiar CA",
+    "pagina_inicial": 453,
+    "pagina_final": 460,
+    "referencia_vancouver": "Avila LM, Aguiar CA. Deformidades congênitas da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 453-460.",
     "autores": [
       {
         "nome": "Luiz Müller Avila",
@@ -7055,6 +7191,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose Idiopática",
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 461,
+    "pagina_final": 480,
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Escoliose idiopática. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 461-480.",
     "autores": [
       {
         "nome": "Helton L. A. Defino",
@@ -7397,6 +7537,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose do Adulto",
+    "autores_vancouver": "Cristante AF, Aragão VAS, Perini DD",
+    "pagina_inicial": 481,
+    "pagina_final": 486,
+    "referencia_vancouver": "Cristante AF, Aragão VAS, Perini DD. Escoliose do adulto. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 481-486.",
     "autores": [
       {
         "nome": "Alexandre Fogaça Cristante",
@@ -7649,6 +7793,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose nas Síndromes Genéticas",
+    "autores_vancouver": "Letaif OB, Aragão VAS, Alves DYYO",
+    "pagina_inicial": 487,
+    "pagina_final": 492,
+    "referencia_vancouver": "Letaif OB, Aragão VAS, Alves DYYO. Escoliose nas síndromes genéticas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 487-492.",
     "autores": [
       {
         "nome": "Olavo Biraghi Letaif",
@@ -7817,6 +7965,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Escoliose Idiopática de Alto Valor Angular",
+    "autores_vancouver": "Barros AGC, Carelli LE, Almeida GJ",
+    "pagina_inicial": 493,
+    "pagina_final": 502,
+    "referencia_vancouver": "Barros AGC, Carelli LE, Almeida GJ. Escoliose idiopática de alto valor angular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 493-502.",
     "autores": [
       {
         "nome": "Alderico Girão Campos de Barros",
@@ -8021,6 +8173,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Espondilolistese na Criança",
+    "autores_vancouver": "Andujar ALF, Grandini RS, Arjona HD",
+    "pagina_inicial": 503,
+    "pagina_final": 518,
+    "referencia_vancouver": "Andujar ALF, Grandini RS, Arjona HD. Espondilolistese na criança. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 503-518.",
     "autores": [
       {
         "nome": "André Luis Fernandes Andujar",
@@ -8441,6 +8597,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Espondilolistese No Adulto",
+    "autores_vancouver": "Amaral R, Pokorny J, Pokorny G, Silva FTM, Moriguchi R, Magro IB, Pimenta L",
+    "pagina_inicial": 519,
+    "pagina_final": 530,
+    "referencia_vancouver": "Amaral R, Pokorny J, Pokorny G, Silva FTM, Moriguchi R, Magro IB, Pimenta L. Espondilolistese no adulto. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 519-530.",
     "autores": [
       {
         "nome": "Rodrigo Amaral",
@@ -8709,6 +8869,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Cifose",
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 531,
+    "pagina_final": 550,
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Cifose. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 531-550.",
     "autores": [
       {
         "nome": "Helton L. A. Defino",
@@ -8991,6 +9155,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spinal Deformities",
     "secao_nome_es": "Deformidades de la Columna",
     "titulo_pt": "Deformidades da Coluna Cervical",
+    "autores_vancouver": "Carelli LE, Barros AGC, Pupp LG",
+    "pagina_inicial": 551,
+    "pagina_final": 568,
+    "referencia_vancouver": "Carelli LE, Barros AGC, Pupp LG. Deformidades da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 551-568.",
     "autores": [
       {
         "nome": "Luis Eduardo Carelli",
@@ -9279,6 +9447,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "FISIOPATOLOGIA DA DEGENERAÇÃO DISCAL",
+    "autores_vancouver": "Righesso Neto O, Falavigna A, Falavigna VF, Viapiana MEL, Righesso EP",
+    "pagina_inicial": 569,
+    "pagina_final": 578,
+    "referencia_vancouver": "Righesso Neto O, Falavigna A, Falavigna VF, Viapiana MEL, Righesso EP. Fisiopatologia da degeneração discal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 569-578.",
     "autores": [
       {
         "nome": "Orlando Righesso Neto",
@@ -9731,6 +9903,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "HÉRNIA DE DISCO CERVICAL",
+    "autores_vancouver": "Arantes Junior AA, Braga BD, Ribeiro DN, Lino Filho AM",
+    "pagina_inicial": 579,
+    "pagina_final": 592,
+    "referencia_vancouver": "Arantes Junior AA, Braga BD, Ribeiro DN, Lino Filho AM. Hérnia de disco cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 579-592.",
     "autores": [
       {
         "nome": "Aluízio Augusto Arantes Junior",
@@ -10035,6 +10211,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "HÉRNIA DE DISCO TORÁCICA",
+    "autores_vancouver": "Daher MT, Mangueira LJA, Balsimelli F",
+    "pagina_inicial": 593,
+    "pagina_final": 604,
+    "referencia_vancouver": "Daher MT, Mangueira LJA, Balsimelli F. Hérnia de disco torácica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 593-604.",
     "autores": [
       {
         "nome": "Murilo Tavares Daher",
@@ -10539,6 +10719,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "HÉRNIA DE DISCO LOMBAR",
+    "autores_vancouver": "Ueta RHS, Jorge TF, Schussel VC, Vaz GN",
+    "pagina_inicial": 605,
+    "pagina_final": 612,
+    "referencia_vancouver": "Ueta RHS, Jorge TF, Schussel VC, Vaz GN. Hérnia de disco lombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 605-612.",
     "autores": [
       {
         "nome": "Renato Hiroshi Salvioni Ueta",
@@ -10741,6 +10925,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "ESTENOSE LOMBAR: DIAGNÓSTICO E MANEJO CONTEMPORÂNEO",
+    "autores_vancouver": "Meves R, Mendonça RGM",
+    "pagina_inicial": 613,
+    "pagina_final": 624,
+    "referencia_vancouver": "Meves R, Mendonça RGM. Estenose lombar: diagnóstico e manejo contemporâneo. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 613-624.",
     "autores": [
       {
         "nome": "Robert Meves",
@@ -10929,6 +11117,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "INSTABILIDADE VERTEBRAL",
+    "autores_vancouver": "Pudles E",
+    "pagina_inicial": 625,
+    "pagina_final": 632,
+    "referencia_vancouver": "Pudles E. Instabilidade vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 625-632.",
     "autores": [
       {
         "nome": "Edson Pudles",
@@ -11059,6 +11251,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "ESTENOSE CERVICAL, MIELOPATIA CERVICAL DEGENERATIVA E OLLP",
+    "autores_vancouver": "Dantas FLR, Dantas F, Fonseca VKT",
+    "pagina_inicial": 633,
+    "pagina_final": 654,
+    "referencia_vancouver": "Dantas FLR, Dantas F, Fonseca VKT. Estenose cervical, mielopatia cervical degenerativa e ossificação do ligamento longitudinal posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 633-654.",
     "autores": [
       {
         "nome": "Fernando Luiz Rolemberg Dantas",
@@ -11617,6 +11813,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "INFILTRAÇÕES E RADIOFREQUÊNCIA NA COLUNA VERTEBRAL",
+    "autores_vancouver": "Mistro Neto S, Risso Neto MI",
+    "pagina_inicial": 655,
+    "pagina_final": 662,
+    "referencia_vancouver": "Mistro Neto S, Risso Neto MI. Infiltrações e radiofrequência na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 655-662.",
     "autores": [
       {
         "nome": "Sylvio Mistro Neto",
@@ -11871,6 +12071,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Degenerative Spine Diseases",
     "secao_nome_es": "Enfermedades Degenerativas",
     "titulo_pt": "MEDICINA REGENERATIVA NO MANEJO DA DOENÇA DEGENERATIVA DA COLUNA",
+    "autores_vancouver": "Machado ES, Meves R",
+    "pagina_inicial": 663,
+    "pagina_final": 672,
+    "referencia_vancouver": "Machado ES, Meves R. Medicina regenerativa no manejo da doença degenerativa da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 663-672.",
     "autores": [
       {
         "nome": "Edilson Silva Machado",
@@ -12029,6 +12233,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "Princípios no Manejo das Neoplasias da Coluna Vertebral",
+    "autores_vancouver": "Risso Neto MI, Zuiani GR",
+    "pagina_inicial": 673,
+    "pagina_final": 694,
+    "referencia_vancouver": "Risso Neto MI, Zuiani GR. Princípios no manejo das neoplasias da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 673-694.",
     "autores": [
       {
         "nome": "Marcelo Italo Risso Neto",
@@ -12379,6 +12587,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "INSTABILIDADE VERTEBRAL EM NEOPLASIA DE COLUNA",
+    "autores_vancouver": "Vialle LRG, Pereira OVA",
+    "pagina_inicial": 695,
+    "pagina_final": 700,
+    "referencia_vancouver": "Vialle LRG, Pereira OVA. Instabilidade vertebral em neoplasia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 695-700.",
     "autores": [
       {
         "nome": "Luiz Roberto Gomes Vialle",
@@ -12699,6 +12911,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "TUMORES BENIGNOS E LESÕES PSEUDOTUMORAIS DA COLUNA",
+    "autores_vancouver": "Barros AGC, Carelli LE, Alves GF",
+    "pagina_inicial": 701,
+    "pagina_final": 712,
+    "referencia_vancouver": "Barros AGC, Carelli LE, Alves GF. Tumores benignos e lesões pseudotumorais da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 701-712.",
     "autores": [
       {
         "nome": "Alderico Girão Campos de Barros",
@@ -13059,6 +13275,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "TUMORES ÓSSEOS PRIMÁRIOS MALIGNOS",
+    "autores_vancouver": "Coimbra BGMM, Teixeira WGJ, Perini DD",
+    "pagina_inicial": 713,
+    "pagina_final": 720,
+    "referencia_vancouver": "Coimbra BGMM, Teixeira WGJ, Perini DD. Tumores ósseos primários malignos. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 713-720.",
     "autores": [
       {
         "nome": "Brian Guilherme Monteiro Marta Coimbra",
@@ -13377,6 +13597,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "Tumores Metastáticos na Coluna",
+    "autores_vancouver": "Risso Neto MI, Rosa AF",
+    "pagina_inicial": 721,
+    "pagina_final": 742,
+    "referencia_vancouver": "Risso Neto MI, Rosa AF. Tumores metastáticos na coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 721-742.",
     "autores": [
       {
         "nome": "Marcelo Italo Risso Neto",
@@ -13913,6 +14137,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "TUMORES INTRAMEDULARES E EXTRAMEDULARES: CLASSIFICAÇÃO, DIAGNÓSTICO E MANEJO",
+    "autores_vancouver": "Pinheiro LCP, Moraes OJS",
+    "pagina_inicial": 743,
+    "pagina_final": 752,
+    "referencia_vancouver": "Pinheiro LCP, Moraes OJS. Tumores intramedulares e extramedulares: classificação, diagnóstico e manejo. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 743-752.",
     "autores": [
       {
         "nome": "Leon Cleres Penido Pinheiro",
@@ -14131,6 +14359,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Spine Tumors",
     "secao_nome_es": "Tumores de la Columna",
     "titulo_pt": "RADIOTERAPIA NOS TUMORES DE COLUNA",
+    "autores_vancouver": "Hanriot RM, Gutierrez NS",
+    "pagina_inicial": 753,
+    "pagina_final": 766,
+    "referencia_vancouver": "Hanriot RM, Gutierrez NS. Radioterapia nos tumores de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 753-766.",
     "autores": [
       {
         "nome": "Rodrigo de Morais Hanriot",
@@ -14307,6 +14539,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Infections and Inflammatory Diseases",
     "secao_nome_es": "Infecciones y Enfermedades Inflamatorias",
     "titulo_pt": "INFECÇÃO PRIMÁRIA DA COLUNA VERTEBRAL",
+    "autores_vancouver": "Pudles E",
+    "pagina_inicial": 767,
+    "pagina_final": 776,
+    "referencia_vancouver": "Pudles E. Infecção primária da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 767-776.",
     "autores": [
       {
         "nome": "Edson Pudles",
@@ -14437,6 +14673,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Infections and Inflammatory Diseases",
     "secao_nome_es": "Infecciones y Enfermedades Inflamatorias",
     "titulo_pt": "DOENÇAS REUMÁTICAS DA COLUNA VERTEBRAL",
+    "autores_vancouver": "Teixeira CEG, Yazbek MA, Sachetto Z",
+    "pagina_inicial": 777,
+    "pagina_final": 782,
+    "referencia_vancouver": "Teixeira CEG, Yazbek MA, Sachetto Z. Doenças reumáticas da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 777-782.",
     "autores": [
       {
         "nome": "Carlos Eduardo Garcez Teixeira",
@@ -14611,6 +14851,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Infections and Inflammatory Diseases",
     "secao_nome_es": "Infecciones y Enfermedades Inflamatorias",
     "titulo_pt": "DOENÇAS METABÓLICAS QUE AFETAM A COLUNA",
+    "autores_vancouver": "Gomes MM, Paula FJA",
+    "pagina_inicial": 783,
+    "pagina_final": 792,
+    "referencia_vancouver": "Gomes MM, Paula FJA. Doenças metabólicas que afetam a coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 783-792.",
     "autores": [
       {
         "nome": "Mayra Macena Gomes",
@@ -14733,6 +14977,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Infections and Inflammatory Diseases",
     "secao_nome_es": "Infecciones y Enfermedades Inflamatorias",
     "titulo_pt": "TRATAMENTO CIRÚRGICO DAS DOENÇAS REUMÁTICAS DA COLUNA",
+    "autores_vancouver": "Marcon RM, Santiago MAM, Santos HGL",
+    "pagina_inicial": 793,
+    "pagina_final": 804,
+    "referencia_vancouver": "Marcon RM, Santiago MAM, Santos HGL. Tratamento cirúrgico das doenças reumáticas da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 793-804.",
     "autores": [
       {
         "nome": "Raphael Martus Marcon",
@@ -14907,6 +15155,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ENDOSCOPIA TRANSFORAMINAL NA COLUNA LOMBOSSACRA",
+    "autores_vancouver": "Bergamaschi JPM, Brito MBS, Lobo SE",
+    "pagina_inicial": 805,
+    "pagina_final": 822,
+    "referencia_vancouver": "Bergamaschi JPM, Brito MBS, Lobo SE. Endoscopia transforaminal na coluna lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 805-822.",
     "autores": [
       {
         "nome": "João Paulo Machado Bergamaschi",
@@ -15219,6 +15471,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ENDOSCOPIA INTERLAMINAR NA COLUNA LOMBOSSACRA",
+    "autores_vancouver": "Carvalho MOP, Moscatelli MA, Silva RB",
+    "pagina_inicial": 823,
+    "pagina_final": 838,
+    "referencia_vancouver": "Carvalho MOP, Moscatelli MA, Silva RB. Endoscopia interlaminar na coluna lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 823-838.",
     "autores": [
       {
         "nome": "Marcio Oliveira Penna de Carvalho",
@@ -15627,6 +15883,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "CIRURGIA ENDOSCÓPICA UNIPORTAL NO SEGMENTO TORÁCICO",
+    "autores_vancouver": "Rocha ID, Gabana E",
+    "pagina_inicial": 839,
+    "pagina_final": 844,
+    "referencia_vancouver": "Rocha ID, Gabana E. Cirurgia endoscópica uniportal no segmento torácico. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 839-844.",
     "autores": [
       {
         "nome": "Ivan Dias da Rocha",
@@ -15737,6 +15997,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ENDOSCOPIA NA COLUNA CERVICAL PELA VIA POSTERIOR",
+    "autores_vancouver": "Del Curto D, Vaz GN, Schussel VC, Jorge TF",
+    "pagina_inicial": 845,
+    "pagina_final": 852,
+    "referencia_vancouver": "Del Curto D, Vaz GN, Schussel VC, Jorge TF. Endoscopia na coluna cervical pela via posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 845-852.",
     "autores": [
       {
         "nome": "David Del Curto",
@@ -15831,6 +16095,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ENDOSCOPIA CERVICAL — VIA ANTERIOR",
+    "autores_vancouver": "Teixeira KO, Assis RR, Lobo SE, Bergamaschi JPM",
+    "pagina_inicial": 853,
+    "pagina_final": 862,
+    "referencia_vancouver": "Teixeira KO, Assis RR, Lobo SE, Bergamaschi JPM. Endoscopia na coluna cervical pela via anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 853-862.",
     "autores": [
       {
         "nome": "Kelsen de Oliveira Teixeira",
@@ -15991,6 +16259,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ENDOSCOPIA UNILATERAL BIPORTAL",
+    "autores_vancouver": "Braga BD, Morais WJ, Fernandes MNF",
+    "pagina_inicial": 863,
+    "pagina_final": 872,
+    "referencia_vancouver": "Braga BD, Morais WJ, Fernandes MNF. Endoscopia unilateral biportal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 863-872.",
     "autores": [
       {
         "nome": "Bernardo Drummond Braga",
@@ -16381,6 +16653,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ARTRODESE INTERSOMÁTICA LOMBAR POSTERIOR",
+    "autores_vancouver": "Dambrós JM, Suarez ADH, Cechin IE",
+    "pagina_inicial": 873,
+    "pagina_final": 880,
+    "referencia_vancouver": "Dambrós JM, Suarez ADH, Cechin IE. Artrodese intersomática lombar posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 873-880.",
     "autores": [
       {
         "nome": "Jean Marcel Dambrós",
@@ -16873,6 +17149,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ARTRODESE LOMBAR EM SINGLE-POSITION LATERAL",
+    "autores_vancouver": "Menezes CM, Leal JS",
+    "pagina_inicial": 881,
+    "pagina_final": 890,
+    "referencia_vancouver": "Menezes CM, Leal JS. Artrodese lombar em single-position lateral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 881-890.",
     "autores": [
       {
         "nome": "Cristiano Magalhães Menezes",
@@ -17025,6 +17305,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ARTRODESE LOMBAR PRONE TRANSPSOAS",
+    "autores_vancouver": "Pimenta L, Amaral R, Pokorny J, Pokorny G",
+    "pagina_inicial": 891,
+    "pagina_final": 898,
+    "referencia_vancouver": "Pimenta L, Amaral R, Pokorny J, Pokorny G. Artrodese lombar prone transpsoas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 891-898.",
     "autores": [
       {
         "nome": "Luiz Pimenta",
@@ -17227,6 +17511,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ARTRODESE LOMBAR OBLÍQUA",
+    "autores_vancouver": "Malheiros JA, Ferreira Junior MA",
+    "pagina_inicial": 899,
+    "pagina_final": 908,
+    "referencia_vancouver": "Malheiros JA, Ferreira Junior MA. Artrodese lombar oblíqua. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 899-908.",
     "autores": [
       {
         "nome": "José Augusto Malheiros",
@@ -17307,6 +17595,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "ARTRODESE LOMBAR ANTERIOR",
+    "autores_vancouver": "Teles AR, Martins AGS, Ludwig GA",
+    "pagina_inicial": 909,
+    "pagina_final": 918,
+    "referencia_vancouver": "Teles AR, Martins AGS, Ludwig GA. Artrodese lombar anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 909-918.",
     "autores": [
       {
         "nome": "Alisson Roberto Teles",
@@ -17637,6 +17929,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Artroplastia da Coluna",
+    "autores_vancouver": "Benites VM",
+    "pagina_inicial": 919,
+    "pagina_final": 926,
+    "referencia_vancouver": "Benites VM. Artroplastia da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 919-926.",
     "autores": [
       {
         "nome": "Vinicius de Meldau Benites",
@@ -17881,6 +18177,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnicas Cirúrgicas para a Fixação da Coluna Cervical Alta",
+    "autores_vancouver": "Carneiro-Filho GS, Bezerra Júnior DL",
+    "pagina_inicial": 927,
+    "pagina_final": 936,
+    "referencia_vancouver": "Carneiro-Filho GS, Bezerra Júnior DL. Técnicas cirúrgicas para a fixação da coluna cervical alta. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 927-936.",
     "autores": [
       {
         "nome": "Geraldo de Sá Carneiro-Filho",
@@ -17997,6 +18297,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnicas de Fixação Cervical Anterior",
+    "autores_vancouver": "Milano JB, Lindorfer Neto EE",
+    "pagina_inicial": 937,
+    "pagina_final": 946,
+    "referencia_vancouver": "Milano JB, Lindorfer Neto EE. Técnicas de fixação cervical anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 937-946.",
     "autores": [
       {
         "nome": "Jeronimo Buzetti Milano",
@@ -18251,6 +18555,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Fixação Posterior da Coluna Cervical",
+    "autores_vancouver": "Tavares RH, Moliterno LAM, Almeida GJ",
+    "pagina_inicial": 947,
+    "pagina_final": 954,
+    "referencia_vancouver": "Tavares RH, Moliterno LAM, Almeida GJ. Fixação posterior da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 947-954.",
     "autores": [
       {
         "nome": "Renato Henriques Tavares",
@@ -18359,6 +18667,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Laminoplastia Cervical: Princípios, Técnicas e Evidências Atuais",
+    "autores_vancouver": "Brock RS, Soares AM",
+    "pagina_inicial": 955,
+    "pagina_final": 966,
+    "referencia_vancouver": "Brock RS, Soares AM. Laminoplastia cervical: princípios, técnicas e evidências atuais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 955-966.",
     "autores": [
       {
         "nome": "Roger Schmidt Brock",
@@ -18823,6 +19135,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Parafusos Pediculares na Coluna Torácica, Lombar e Lombossacra — Técnica Free-Hand",
+    "autores_vancouver": "Cavali PTM, Risso Neto MI",
+    "pagina_inicial": 967,
+    "pagina_final": 984,
+    "referencia_vancouver": "Cavali PTM, Risso Neto MI. Parafusos pediculares na coluna torácica, lombar e lombossacra – técnica free-hand. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 967-984.",
     "autores": [
       {
         "nome": "Paulo Tadeu Maia Cavali",
@@ -18933,6 +19249,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Fixação do Ilíaco - Técnica S2 Alar Ilíaco",
+    "autores_vancouver": "Letaif OB, Alves DYYO, Rotondo IG",
+    "pagina_inicial": 985,
+    "pagina_final": 990,
+    "referencia_vancouver": "Letaif OB, Alves DYYO, Rotondo IG. Fixação do ilíaco – técnica S2 alar ilíaco. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 985-990.",
     "autores": [
       {
         "nome": "Olavo Biraghi Letaif",
@@ -19059,6 +19379,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnicas de fixação na coluna osteoporótica",
+    "autores_vancouver": "Façanha Filho FAM, Façanha AS, Vasconcelos PHC",
+    "pagina_inicial": 991,
+    "pagina_final": 1000,
+    "referencia_vancouver": "Façanha Filho FAM, Façanha AS, Vasconcelos PHC. Técnicas de fixação na coluna osteoporótica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 991-1000.",
     "autores": [
       {
         "nome": "Fernando Antônio Mendes Façanha Filho",
@@ -19329,6 +19653,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Osteotomias da Coluna Vertebral",
+    "autores_vancouver": "Santos RA, Herrero F",
+    "pagina_inicial": 1001,
+    "pagina_final": 1010,
+    "referencia_vancouver": "Santos RA, Herrero F. Ostetomias da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1001-1010.",
     "autores": [
       {
         "nome": "Ricardo Acacio Dos Santos",
@@ -19415,6 +19743,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Aplicação do Halo e Tração Craniana",
+    "autores_vancouver": "Lima MC, Cavali PTM, Rossato AJ, Risso Neto MI",
+    "pagina_inicial": 1011,
+    "pagina_final": 1022,
+    "referencia_vancouver": "Lima MC, Cavali PTM, Rossato AJ, Risso Neto MI. Aplicação do halo e tração craniana. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1011-1022.",
     "autores": [
       {
         "nome": "Mauricio Coelho Lima",
@@ -19701,6 +20033,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Colete Gessado para Escoliose de Início Precoce",
+    "autores_vancouver": "Andujar ALF, Grandini RS, Freu CM",
+    "pagina_inicial": 1023,
+    "pagina_final": 1032,
+    "referencia_vancouver": "Andujar ALF, Grandini RS, Freu CM. Colete gessado para escoliose de início precoce. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1023-1032.",
     "autores": [
       {
         "nome": "André Luis Fernandes Andujar",
@@ -19887,6 +20223,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Infiltrações e Bloqueios da Coluna",
+    "autores_vancouver": "Gotfryd AO, Garcia JTFC",
+    "pagina_inicial": 1033,
+    "pagina_final": 1042,
+    "referencia_vancouver": "Gotfryd AO, Garcia JTFC. Infiltrações e bloqueios da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1033-1042.",
     "autores": [
       {
         "nome": "Alberto Ofenhejm Gotfryd",
@@ -20129,6 +20469,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Sistemas de Crescimento Guiado para Deformidades da Coluna: Hastes de Crescimento Tradicionais",
+    "autores_vancouver": "Fontes BPC, Rios JVLG",
+    "pagina_inicial": 1043,
+    "pagina_final": 1048,
+    "referencia_vancouver": "Fontes BPC, Rios JVLG. Sistemas de crescimento guiado para deformidades da coluna: hastes de crescimento tradicionais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1043-1048.",
     "autores": [
       {
         "nome": "Bruno Pinto Coelho Fontes",
@@ -20269,6 +20613,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnica de Fixação Bipolar da Coluna Vertebral",
+    "autores_vancouver": "Rossato AJ, Lima MC, Cavali PTM",
+    "pagina_inicial": 1049,
+    "pagina_final": 1060,
+    "referencia_vancouver": "Rossato AJ, Lima MC, Cavali PTM. Técnica de fixação bipolar da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1049-1060.",
     "autores": [
       {
         "nome": "Alexander Junqueira Rossato",
@@ -20401,6 +20749,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnicas de Correção Cirúrgica das Deformidades da Coluna Vertebral",
+    "autores_vancouver": "Sakai DS",
+    "pagina_inicial": 1061,
+    "pagina_final": 1064,
+    "referencia_vancouver": "Sakai DS. Técnicas de correção cirúrgica das deformidades da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1061-1064.",
     "autores": [
       {
         "nome": "Denis Seguchi Sakai",
@@ -20585,6 +20937,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Vertebrectomia Torácica e Lombar nas Neoplasias",
+    "autores_vancouver": "Meirelles RSP, Simões CE, Azevedo GBL, Ramos PJS, Silva VTG, Gasbarrini A, Pereira OVA, Cini C",
+    "pagina_inicial": 1065,
+    "pagina_final": 1078,
+    "referencia_vancouver": "Meirelles RSP, Simões CE, Azevedo GBL, Ramos PJS, Silva VTG, Gasbarrini A, Pereira OVA, Cini C. Vertebrectomia torácica e lombar nas neoplasias. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1065-1078.",
     "autores": [
       {
         "nome": "Ricardo de Souza Portes Meirelles",
@@ -21001,6 +21357,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Sacrectomia",
+    "autores_vancouver": "Simões CE, Pereira OVA",
+    "pagina_inicial": 1079,
+    "pagina_final": 1088,
+    "referencia_vancouver": "Simões CE, Pereira OVA. Sacrectomia. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1079-1088.",
     "autores": [
       {
         "nome": "Christiano Esteves Simões",
@@ -21189,6 +21549,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Cirurgia Complexa dos Tumores Cervicais",
+    "autores_vancouver": "Narazaki DK, Tipan SAN, Façanha AS",
+    "pagina_inicial": 1089,
+    "pagina_final": 1104,
+    "referencia_vancouver": "Narazaki DK, Tipan SAN, Façanha AS. Cirurgia complexa dos tumores cervicais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1089-1104.",
     "autores": [
       {
         "nome": "Douglas Kenji Narazaki",
@@ -21465,6 +21829,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Técnicas Minimamente Invasivas para Tratamento e Adjuvância nos Tumores da Coluna Vertebral",
+    "autores_vancouver": "Mudo ML, Tatsui CE",
+    "pagina_inicial": 1105,
+    "pagina_final": 1126,
+    "referencia_vancouver": "Mudo ML, Tatsui CE. Técnicas minimamente invasivas para tratamento e adjuvância nos tumores da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1105-1126.",
     "autores": [
       {
         "nome": "Marcelo Luis Mudo",
@@ -21905,6 +22273,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Surgical Techniques and Approaches",
     "secao_nome_es": "Técnicas Quirúrgicas y Vías de Acceso",
     "titulo_pt": "Navegação e Robótica",
+    "autores_vancouver": "Defino HLA, Carneiro VM, Defino MP",
+    "pagina_inicial": 1127,
+    "pagina_final": 1136,
+    "referencia_vancouver": "Defino HLA, Carneiro VM, Defino MP. Navegação e robótica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1127-1136.",
     "autores": [
       {
         "nome": "Helton Luiz Aparecido Defino",
@@ -22145,6 +22517,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "INFECÇÕES PÓS-OPERATÓRIAS",
+    "autores_vancouver": "Volpi MS, Ancheschi BC, Paula SR",
+    "pagina_inicial": 1137,
+    "pagina_final": 1144,
+    "referencia_vancouver": "Volpi MS, Ancheschi BC, Paula SR. Infecções pós-operatórias. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1137-1144.",
     "autores": [
       {
         "nome": "Mauro dos Santos Volpi",
@@ -22385,6 +22761,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "LESÃO DURAL, ARACNOIDITE E FIBROSE PÓS-OPERATÓRIA",
+    "autores_vancouver": "Campos WK, Amancio Filho W",
+    "pagina_inicial": 1145,
+    "pagina_final": 1150,
+    "referencia_vancouver": "Campos WK, Amancio Filho W. Lesão dural, aracnoidite e fibrose pós-operatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1145-1150.",
     "autores": [
       {
         "nome": "Wuilker Knoner Campos",
@@ -22849,6 +23229,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "QUEDA DAS RESPOSTAS NA MONITORAÇÃO NEUROFISIOLÓGICA INTRAOPERATÓRIA",
+    "autores_vancouver": "Rodrigues LMR, Pajanoti GP, Oliveira LSR",
+    "pagina_inicial": 1151,
+    "pagina_final": 1156,
+    "referencia_vancouver": "Rodrigues LMR, Pajanoti GP, Oliveira LSR. Queda das respostas na monitoração neurofisiológica intraoperatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1151-1156.",
     "autores": [
       {
         "nome": "Luciano Miller Reis Rodrigues",
@@ -22933,6 +23317,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "DOENÇA DO NÍVEL ADJACENTE",
+    "autores_vancouver": "Cardoso IM, Jacob Junior C",
+    "pagina_inicial": 1157,
+    "pagina_final": 1162,
+    "referencia_vancouver": "Cardoso IM, Jacob Junior C. Doença do nível adjacente. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1157-1162.",
     "autores": [
       {
         "nome": "Igor Machado Cardoso",
@@ -23205,6 +23593,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "PSEUDOARTROSE E FALHA MECÂNICA DA INSTRUMENTAÇÃO",
+    "autores_vancouver": "Astur Neto N, Monteiro FNS, Prates RC",
+    "pagina_inicial": 1163,
+    "pagina_final": 1174,
+    "referencia_vancouver": "Astur Neto N, Monteiro FNS, Prates RC. Pseudoartrose e falha mecânica da instrumentação na cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1163-1174.",
     "autores": [
       {
         "nome": "Nelson Astur Neto",
@@ -23535,6 +23927,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "COMPLICAÇÕES DA ABORDAGEM ANTERIOR DA COLUNA",
+    "autores_vancouver": "Pereira Filho ARD",
+    "pagina_inicial": 1175,
+    "pagina_final": 1188,
+    "referencia_vancouver": "Pereira Filho ARD. Complicações da abordagem anterior da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1175-1188.",
     "autores": [
       {
         "nome": "Aécio Rubens Dias Pereira Filho",
@@ -23629,6 +24025,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "LESÃO NEUROLÓGICA PERIOPERATÓRIA",
+    "autores_vancouver": "Ferreira MAC, Asano LYJ, Januario AMS",
+    "pagina_inicial": 1189,
+    "pagina_final": 1204,
+    "referencia_vancouver": "Ferreira MAC, Asano LYJ, Januario AMS. Lesão neurológica perioperatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1189-1204.",
     "autores": [
       {
         "nome": "Marcus André Costa Ferreira",
@@ -23779,6 +24179,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Complications in Spine Surgery",
     "secao_nome_es": "Complicaciones en Cirugía de Columna",
     "titulo_pt": "SÍNDROME DA FALHA DA CIRURGIA DA COLUNA VERTEBRAL",
+    "autores_vancouver": "Hennemann SA, Abreu M",
+    "pagina_inicial": 1205,
+    "pagina_final": 1216,
+    "referencia_vancouver": "Hennemann SA, Abreu M. Síndrome da falha da cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1205-1216.",
     "autores": [
       {
         "nome": "Sergio Afonso Hennemann",
@@ -23985,6 +24389,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "JUNÇÃO CRANIOVERTEBRAL: ANORMALIDADES CONGÊNITAS, ADQUIRIDAS E TRAUMA",
+    "autores_vancouver": "Carelli LE, Barros AGC, Bianconi AM",
+    "pagina_inicial": 1217,
+    "pagina_final": 1232,
+    "referencia_vancouver": "Carelli LE, Barros AGC, Bianconi AM. Junção craniovertebral: anormalidades congênitas, adquiridas e trauma. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1217-1232.",
     "autores": [
       {
         "nome": "Luis Eduardo Carelli",
@@ -24147,6 +24555,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "MANEJO DA DOR AGUDA E CRÔNICA NA COLUNA VERTEBRAL",
+    "autores_vancouver": "Risso RC, Braghiroli KS",
+    "pagina_inicial": 1233,
+    "pagina_final": 1248,
+    "referencia_vancouver": "Risso RC, Braghiroli KS. Manejo da dor aguda e crônica na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1233-1248.",
     "autores": [
       {
         "nome": "Roberta Cristina Risso",
@@ -24527,6 +24939,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "ABORDAGENS PARA O TRATAMENTO DA DOR PÓS-OPERATÓRIA EM CIRURGIA DE COLUNA",
+    "autores_vancouver": "Abrão J, Zuazo SM",
+    "pagina_inicial": 1249,
+    "pagina_final": 1260,
+    "referencia_vancouver": "Abrão J, Zuazo SM. Abordagens para o tratamento da dor pós-operatória em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1249-1260.",
     "autores": [
       {
         "nome": "João Abrão",
@@ -24733,6 +25149,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "ANESTESIA PARA CIRURGIA DA COLUNA VERTEBRAL",
+    "autores_vancouver": "Malito ML",
+    "pagina_inicial": 1261,
+    "pagina_final": 1272,
+    "referencia_vancouver": "Malito ML. Anestesia para cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1261-1272.",
     "autores": [
       {
         "nome": "Mauricio Luiz Malito",
@@ -24983,6 +25403,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "CONTROLE DO SANGRAMENTO INTRAOPERATÓRIO",
+    "autores_vancouver": "Paula EV, Cralcev C, Isaias GAB",
+    "pagina_inicial": 1273,
+    "pagina_final": 1282,
+    "referencia_vancouver": "Paula EV, Cralcev C, Isaias GAB. Controle do sangramento intraoperatório. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1273-1282.",
     "autores": [
       {
         "nome": "Erich Vinicius de Paula",
@@ -25193,6 +25617,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "USO DE ÓRTESES NA COLUNA VERTEBRAL",
+    "autores_vancouver": "Zylbersztejn S, Antoneli PHL, Gallina D",
+    "pagina_inicial": 1283,
+    "pagina_final": 1292,
+    "referencia_vancouver": "Zylbersztejn S, Antoneli PHL, Gallina D. Uso de órteses na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1283-1292.",
     "autores": [
       {
         "nome": "Sergio Zylbersztejn",
@@ -25379,6 +25807,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "SEGURANÇA EM CIRURGIA DE COLUNA",
+    "autores_vancouver": "Zuiani GR, Risso Neto MI",
+    "pagina_inicial": 1293,
+    "pagina_final": 1302,
+    "referencia_vancouver": "Zuiani GR, Risso Neto MI. Segurança em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1293-1302.",
     "autores": [
       {
         "nome": "Guilherme Rebechi Zuiani",
@@ -25813,6 +26245,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "MANEJO DO PACIENTE FRÁGIL COM SARCOPENIA EM CIRURGIA DE COLUNA",
+    "autores_vancouver": "Almada Filho CM, Kusabara R",
+    "pagina_inicial": 1303,
+    "pagina_final": 1310,
+    "referencia_vancouver": "Almada Filho CM, Kusabara R. Manejo do paciente frágil com sarcopenia em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1303-1310.",
     "autores": [
       {
         "nome": "Clineu de Mello Almada Filho",
@@ -25863,6 +26299,10 @@ export const ALL_CHAPTER_REFERENCES: ChapterFullReference[] = [
     "secao_nome_en": "Special Topics and Rehabilitation",
     "secao_nome_es": "Tópicos Especiales y Rehabilitación",
     "titulo_pt": "AVALIAÇÃO DOS RESULTADOS EM CIRURGIA DE COLUNA",
+    "autores_vancouver": "Nogueira PA, Farias SAB, Joaquim AF",
+    "pagina_inicial": 1311,
+    "pagina_final": 1316,
+    "referencia_vancouver": "Nogueira PA, Farias SAB, Joaquim AF. Avaliação dos resultados em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1. ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1311-1316.",
     "autores": [
       {
         "nome": "Pedro Aleixo Nogueira",

@@ -10,6 +10,8 @@ import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import { getFullChapterByNumber } from "@/lib/data/chapters-content";
+import VancouverCitationCard from "@/components/VancouverCitationCard";
+import { getVancouverData } from "@/lib/data/vancouver";
 import {
   BookOpen,
   ShoppingCart,
@@ -172,6 +174,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
   const isCap8 = num === 8;
   const fullChapter = getFullChapterByNumber(num, locale);
   const chapterAuthors = getAuthorsByChapter(num);
+  const vancouverData = getVancouverData(num);
 
   // Title in active locale
   const title =
@@ -418,6 +421,20 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   <span>{authorsText}</span>
                 )}
               </div>
+
+              {/* Vancouver Author Citation Pill & Page Range */}
+              {vancouverData?.autores_vancouver && (
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 18, fontSize: 13 }}>
+                  <span style={{ padding: "4px 12px", borderRadius: 8, background: "rgba(56, 189, 248, 0.12)", border: "1px solid rgba(56, 189, 248, 0.3)", color: "#7dd3fc", fontWeight: 600 }}>
+                    <strong style={{ color: "#ffffff" }}>Vancouver:</strong> {vancouverData.autores_vancouver}
+                  </span>
+                  {vancouverData.paginas && (
+                    <span style={{ padding: "4px 12px", borderRadius: 8, background: "rgba(255, 255, 255, 0.08)", border: "1px solid rgba(255, 255, 255, 0.15)", color: "#e2e8f0", fontWeight: 600 }}>
+                      📖 {locale === "en" ? "Pages: " : locale === "es" ? "Págs: " : "Páginas: "} {vancouverData.paginas}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* Notice Box */}
               <div
@@ -816,6 +833,26 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     );
                   })}
                 </div>
+              )}
+
+              {/* CARD: COMO CITAR ESTE CAPÍTULO (VANCOUVER) */}
+              {(vancouverData?.referencia_vancouver_pt || fullChapter?.referencia_vancouver) && (
+                <VancouverCitationCard
+                  numero={num}
+                  referenciaVancouver={
+                    (locale === "en"
+                      ? vancouverData?.referencia_vancouver_en
+                      : locale === "es"
+                      ? vancouverData?.referencia_vancouver_es
+                      : vancouverData?.referencia_vancouver_pt) ||
+                    fullChapter?.referencia_vancouver ||
+                    ""
+                  }
+                  autoresVancouver={vancouverData?.autores_vancouver || fullChapter?.autores_vancouver}
+                  paginas={vancouverData?.paginas || fullChapter?.paginas}
+                  locale={locale}
+                  variant="light"
+                />
               )}
 
               {/* CARD 5: REFERÊNCIAS BIBLIOGRÁFICAS INTERATIVAS */}

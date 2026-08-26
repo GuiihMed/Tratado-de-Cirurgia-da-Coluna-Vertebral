@@ -90,7 +90,12 @@
       "meta_descricao": "Síntesis del desarrollo embrionario de la columna vertebral: notocorda, neurulación, somitas, resegmentación vertebral, discos y médula espinal.",
       "resumo_chamada": "Conozca la secuencia embrionaria que conecta la notocorda, los somitas y la neurulación con el desarrollo de vértebras, discos, médula espinal y malformaciones congénitas.",
       "slug": "embriologia-de-la-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Zardo EA, Abramczuk J, Dannenbrock FA",
+    "pagina_inicial": 3,
+    "pagina_final": 10,
+    "paginas": "3-10",
+    "referencia_vancouver": "Zardo EA, Abramczuk J, Dannenbrock FA. Embriologia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 3-10."
   },
   "2": {
     "numero": 2,
@@ -192,7 +197,12 @@
       "meta_descricao": "Principios fundamentales de biomecánica raquídea: unidades funcionales, cinemática 3D, distribución de cargas discales, eje de rotación y repercusiones quirúrgicas.",
       "resumo_chamada": "Descubra cómo discos, facetas, curvaturas fisiológicas y balance sagital gobiernan la transmisión de cargas, la degeneración y la planificación en cirugía de columna.",
       "slug": "biomecanica-de-la-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Tebet MA",
+    "pagina_inicial": 11,
+    "pagina_final": 16,
+    "paginas": "11-16",
+    "referencia_vancouver": "Tebet MA. Biomecânica da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 11-16."
   },
   "3": {
     "numero": 3,
@@ -292,7 +302,12 @@
       "meta_descricao": "Guía integral de neuroanatomía medular: topografía vertebromedular, láminas de Rexed, tractos motores y sensitivos, y síndromes clínicos.",
       "resumo_chamada": "Comprenda cómo la topografía vertebromedular, las láminas de Rexed y las vías motoras y sensitivas fundamentan la localización de lesiones y la cirugía raquídea.",
       "slug": "neuroanatomia-funcional-de-la-medula-espinal"
-    }
+    },
+    "autores_vancouver": "Arantes Junior AA, Braga BD, Lino Filho AM, Ribeiro DN",
+    "pagina_inicial": 17,
+    "pagina_final": 28,
+    "paginas": "17-28",
+    "referencia_vancouver": "Arantes Junior AA, Braga BD, Lino Filho AM, Ribeiro DN. Neuroanatomia funcional da medula espinhal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 17-28."
   },
   "4": {
     "numero": 4,
@@ -395,7 +410,12 @@
       "meta_descricao": "Guía quirúrgica de abordajes a la columna cervical: Smith-Robinson anterior, transoral, vías posteriores, límites de seguridad de la arteria vertebral y complicaciones.",
       "resumo_chamada": "Revisión exhaustiva de los corredores quirúrgicos cervicales, planos fasciales, reparos anatómicos y técnicas de preservación neurovascular.",
       "slug": "anatomia-quirurgica-y-vias-de-acceso-de-la-columna-cervical"
-    }
+    },
+    "autores_vancouver": "Paula SR, Volpi MS, Ancheschi BC, Miranda GP",
+    "pagina_inicial": 29,
+    "pagina_final": 36,
+    "paginas": "29-36",
+    "referencia_vancouver": "Paula SR, Volpi MS, Ancheschi BC, Miranda GP. Anatomia cirúrgica e vias de acesso da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 29-36."
   },
   "5": {
     "numero": 5,
@@ -502,7 +522,12 @@
       "meta_descricao": "Guía integral de abordajes torácicos: posterior, costotransversectomía, transtorácico, toracoabdominal, arteria de Adamkiewicz y prevención de complicaciones.",
       "resumo_chamada": "Conozca los corredores quirúrgicos de la columna torácica, variaciones anatómicas de T1 a T12, referencias vasculares y técnicas de preservación neural y visceral.",
       "slug": "anatomia-quirurgica-y-vias-de-acceso-de-la-columna-toracica"
-    }
+    },
+    "autores_vancouver": "Coutinho T, Vieira M",
+    "pagina_inicial": 37,
+    "pagina_final": 48,
+    "paginas": "37-48",
+    "referencia_vancouver": "Coutinho T, Vieira M. Anatomia cirúrgica e vias de acesso da coluna torácica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 37-48."
   },
   "6": {
     "numero": 6,
@@ -607,7 +632,12 @@
       "meta_descricao": "Guía quirúrgica de la unión toracolumbar (T10–L2): biomecánica, abordajes posteriores, extrapleurales, retroperitoneales, diafragma y complicaciones.",
       "resumo_chamada": "Explore la biomecánica de la transición toracolumbar, técnicas de desinserción diafragmática y corredores quirúrgicos para fracturas y deformidades.",
       "slug": "anatomia-quirurgica-y-abordajes-de-la-union-toracolumbar"
-    }
+    },
+    "autores_vancouver": "Cavali PTM, Pereira Filho ARD, Oliveira R",
+    "pagina_inicial": 49,
+    "pagina_final": 70,
+    "paginas": "49-70",
+    "referencia_vancouver": "Cavali PTM, Pereira Filho ARD, Oliveira R. Anatomia cirúrgica e abordagens da junção toracolombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 49-70."
   },
   "7": {
     "numero": 7,
@@ -705,7 +735,12 @@
       "meta_descricao": "Guía quirúrgica de abordajes a la columna lumbar: ALIF, OLIF, LLIF, TLIF, disección retroperitoneal, plexo lumbar y preservación vascular.",
       "resumo_chamada": "Domine la anatomía quirúrgica y selección de vías de acceso a la columna lumbar y lumbosacra, técnicas ALIF, LLIF, OLIF y prevención de complicaciones.",
       "slug": "anatomia-quirurgica-y-vias-de-acceso-de-la-columna-lumbar-y-lombosacra"
-    }
+    },
+    "autores_vancouver": "Menezes CM, Leal JS",
+    "pagina_inicial": 71,
+    "pagina_final": 94,
+    "paginas": "71-94",
+    "referencia_vancouver": "Menezes CM, Leal JS. Anatomia cirúrgica e vias de acesso da coluna lombar e lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 71-94."
   },
   "8": {
     "numero": 8,
@@ -825,7 +860,12 @@
       "meta_descricao": "Guía integral de balance sagital espinopélvico: parámetros pélvicos (IP, VP, PS), clasificación de Roussouly, puntaje GAP, SRS-Schwab y corrección quirúrgica.",
       "resumo_chamada": "Domine los fundamentos del alineamiento sagital espinopélvico, mecanismos compensatorios, tipos de Roussouly, escala GAP y planificación en deformidad raquídea.",
       "slug": "columna-vertebral-en-el-plano-sagital"
-    }
+    },
+    "autores_vancouver": "Risso Neto MI, Cavali PTM",
+    "pagina_inicial": 95,
+    "pagina_final": 112,
+    "paginas": "95-112",
+    "referencia_vancouver": "Risso Neto MI, Cavali PTM. Coluna vertebral no plano sagital. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 95-112."
   },
   "9": {
     "numero": 9,
@@ -952,7 +992,12 @@
       "meta_descricao": "Guía integral de biología de fusión raquídea: autoinjerto, aloinjerto, DBM, rhBMP-2, cerámicas sintéticas, tríada biológica y prevención de seudoartrosis.",
       "resumo_chamada": "Domine los fundamentos celulares de la artrodesis vertebral, la tríada osteogénica, el uso de sustitutos óseos, el decorticado y la prevención de fallas de consolidación.",
       "slug": "principios-de-la-artrodesis-biologia-del-injerto-y-sustitutos-oseos-en-la-columna"
-    }
+    },
+    "autores_vancouver": "Marcon RM, Santiago MAM, Santos HGL",
+    "pagina_inicial": 113,
+    "pagina_final": 118,
+    "paginas": "113-118",
+    "referencia_vancouver": "Marcon RM, Santiago MAM, Santos HGL. Princípios da artrodese, biologia do enxerto e substitutos ósseos na coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 113-118."
   },
   "10": {
     "numero": 10,
@@ -1096,7 +1141,12 @@
       "meta_descricao": "Guía integral de biomecánica de implantes espinales: tornillos pediculares, trayectoria CBT, barras de Ti/CoCr, constructos multibarraw, cajas y fijación en osteoporosis.",
       "resumo_chamada": "Domine la biomecánica de los implantes de fijación vertebral, distribución de cargas, anclaje pedicular, constructos multibarraw y prevención de fallas mecánicas.",
       "slug": "biomecanica-de-los-implantes-en-las-fijaciones-vertebrales"
-    }
+    },
+    "autores_vancouver": "Martins DE, Parreira MGC",
+    "pagina_inicial": 119,
+    "pagina_final": 134,
+    "paginas": "119-134",
+    "referencia_vancouver": "Martins DE, Parreira MGC. Biomecânica dos implantes nas fixações vertebrais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 119-134."
   },
   "11": {
     "numero": 11,
@@ -1246,7 +1296,12 @@
       "meta_descricao": "Guía integral de disrafismo espinal y defectos del tubo neural: mielomeningocele, espina bífida oculta, médula anclada, cirugía fetal MOMS y ácido fólico.",
       "resumo_chamada": "Domine la embriología, clasificación (abierta vs. cerrada), diagnóstico prenatal, cirugía fetal e infantil y seguimiento multidisciplinario de los disrafismos espinales.",
       "slug": "disrafismo-espinal-defectos-del-tubo-neural"
-    }
+    },
+    "autores_vancouver": "Carvalho MV",
+    "pagina_inicial": 135,
+    "pagina_final": 146,
+    "paginas": "135-146",
+    "referencia_vancouver": "Carvalho MV. Disrafismo espinhal – defeitos do tubo neural. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 135-146."
   },
   "12": {
     "numero": 12,
@@ -1350,7 +1405,12 @@
       "meta_descricao": "Guía clínica de semiología raquídea: patrones de dolor, examen motor/sensitivo/reflejos, pruebas de Spurling y Lasègue, y escala ASIA en trauma.",
       "resumo_chamada": "Domine la exploración clínica y neurológica de la columna: historia clínica estructurada, miotomas, dermatomas, signos mielopáticos, pruebas especiales y escala ASIA.",
       "slug": "anamnesis-y-examen-fisico-de-la-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 147,
+    "pagina_final": 170,
+    "paginas": "147-170",
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Anamnese e exame físico da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 147-170."
   },
   "13": {
     "numero": 13,
@@ -1466,7 +1526,12 @@
       "meta_descricao": "Guía de neurofisiología clínica en columna: electromiografía (EMG), conducción nerviosa (NCS), preservación del SNAP, radiculopatía vs. atrapamiento y ELA.",
       "resumo_chamada": "Domine la electromiografía y estudios de conducción nerviosa en cirugía de columna: diferenciación preganglionar del SNAP, tiempos de denervación y diagnóstico radicular.",
       "slug": "neurofisiologia-en-el-diagnostico-de-las-patologias-de-la-columna"
-    }
+    },
+    "autores_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF",
+    "pagina_inicial": 171,
+    "pagina_final": 184,
+    "paginas": "171-184",
+    "referencia_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF. Neurofisiologia no diagnóstico das patologias da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 171-184."
   },
   "14": {
     "numero": 14,
@@ -1621,7 +1686,12 @@
       "meta_descricao": "Guía integral de MNIO en columna: TcMEP, SSEP, EMG gatillada, onda D, protocolo anestésico TIVA, criterios de alarma y algoritmos de rescate intraoperatorio.",
       "resumo_chamada": "Domine la monitorización neurofisiológica intraoperatoria en cirugía de columna: vías neurales, umbrales de alarma, técnica TIVA y manejo de eventos críticos.",
       "slug": "monitorizacion-neurofisiologica-intraoperatoria-en-cirugia-de-columna"
-    }
+    },
+    "autores_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF",
+    "pagina_inicial": 185,
+    "pagina_final": 200,
+    "paginas": "185-200",
+    "referencia_vancouver": "Ferreira RJR, Nogueira PTB, Pontes RWF. Monitorização neurofisiológica intraoperatória em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 185-200."
   },
   "15": {
     "numero": 15,
@@ -1725,7 +1795,12 @@
       "meta_descricao": "Guía integral de diagnóstico por imagen raquídeo: radiografías dinámicas, TC, RM, cambios Modic, estenosis, DISH, espondilitis anquilosante y espondilodiscitis.",
       "resumo_chamada": "Domine la selección e interpretación de radiografía, TC y RM en columna vertebral, diagnóstico diferencial de infecciones y evaluación de fracturas.",
       "slug": "diagnostico-por-imagen-de-la-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Nogueira-Barbosa MH, Alves GNL",
+    "pagina_inicial": 201,
+    "pagina_final": 214,
+    "paginas": "201-214",
+    "referencia_vancouver": "Nogueira-Barbosa MH, Alves GNL. Diagnóstico por imagem da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 201-214."
   },
   "16": {
     "numero": 16,
@@ -1883,7 +1958,12 @@
       "meta_descricao": "Guía clínica de diagnóstico diferencial ortopédico en columna: síndrome cadera-columna, manguito rotador vs. radiculopatía, sacroilíaca y bloqueos diagnósticos.",
       "resumo_chamada": "Domine el diagnóstico diferencial entre patologías de columna y afecciones ortopédicas: síndrome cadera-columna, hombro doloroso, disfunción sacroilíaca y bloqueos.",
       "slug": "diagnostico-diferencial-patologias-de-la-columna-y-condiciones-ortopedicas"
-    }
+    },
+    "autores_vancouver": "Caffaro MFS, Trincado RM, Durigan JR",
+    "pagina_inicial": 215,
+    "pagina_final": 228,
+    "paginas": "215-228",
+    "referencia_vancouver": "Caffaro MFS, Trincado RM, Durigan JR. Diagnóstico diferencial: doenças da coluna e condições ortopédicas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 215-228."
   },
   "17": {
     "numero": 17,
@@ -1986,7 +2066,12 @@
       "meta_descricao": "Guía clínica de diagnóstico diferencial neurológico en columna: ELA vs. mielopatía cervical, esclerosis múltiple, NMOSD, HPN, Parkinson y fístula dural espinal.",
       "resumo_chamada": "Domine la diferenciación entre patologías quirúrgicas de columna y enfermedades neurológicas primarias (ELA, esclerosis múltiple, NMOSD, Parkinson, HPN y FAVDE).",
       "slug": "diagnostico-diferencial-enfermedades-de-la-columna-y-enfermedades-neurologicas"
-    }
+    },
+    "autores_vancouver": "Carazzo CA, Silva WP",
+    "pagina_inicial": 229,
+    "pagina_final": 242,
+    "paginas": "229-242",
+    "referencia_vancouver": "Carazzo CA, Silva WP. Diagnóstico diferencial: doenças da coluna e doenças neurológicas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 229-242."
   },
   "18": {
     "numero": 18,
@@ -2085,7 +2170,12 @@
       "meta_descricao": "Protocolo ATLS de evaluación raquídea en politrauma: restricción de movimiento, criterios NEXUS/Regla Canadiense, TC completa, Angio-TC y escala ASIA.",
       "resumo_chamada": "Domine la evaluación de la columna en politrauma: manejo de la vía aérea, despeje clínico cervical, algoritmos de TC completa y detección de lesiones asociadas.",
       "slug": "evaluacion-de-la-columna-en-el-paciente-politraumatizado"
-    }
+    },
+    "autores_vancouver": "Jacob Junior C, Zanon IB",
+    "pagina_inicial": 243,
+    "pagina_final": 250,
+    "paginas": "243-250",
+    "referencia_vancouver": "Jacob Junior C, Zanon IB. Avaliação da coluna do paciente politraumatizado. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 243-250."
   },
   "19": {
     "numero": 19,
@@ -2195,7 +2285,12 @@
       "meta_descricao": "Guía integral de trauma raquimedular: fisiopatología, escala ASIA/ISNCSCI, descompresión temprana STASCIS (<24h), PAM 85-90 mmHg y shock neurogénico.",
       "resumo_chamada": "Domine el manejo del traumatismo raquimedular: cascadas de lesión secundaria, clasificación ASIA, neuroprotección hemodinámica y descompresión quirúrgica temprana.",
       "slug": "trauma-raquimedular-y-mielopatia-traumatica"
-    }
+    },
+    "autores_vancouver": "Vialle EN, Zanon M",
+    "pagina_inicial": 251,
+    "pagina_final": 258,
+    "paginas": "251-258",
+    "referencia_vancouver": "Vialle EN, Zanon M. Trauma raquimedular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 251-258."
   },
   "20": {
     "numero": 20,
@@ -2393,7 +2488,12 @@
       "meta_descricao": "Guía integral de traumatismos cervicales altos (C0–C2): disociación atlanto-occipital, fracturas de Jefferson, odontoides Tipo II, Hangman y artrodesis de Harms.",
       "resumo_chamada": "Domine el diagnóstico, clasificación, criterios de estabilidad (BDI, BAI, Spence) y tratamiento quirúrgico del trauma cervical alto (C0, C1, C2 y odontoides).",
       "slug": "lesiones-traumaticas-de-la-columna-cervical-alta"
-    }
+    },
+    "autores_vancouver": "Hübner AR, Cechin IE, Suarez ADH",
+    "pagina_inicial": 259,
+    "pagina_final": 298,
+    "paginas": "259-298",
+    "referencia_vancouver": "Hübner AR, Cechin IE, Suarez ADH. Lesões traumáticas da coluna cervical alta. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 259-298."
   },
   "21": {
     "numero": 21,
@@ -2523,7 +2623,12 @@
       "meta_descricao": "Guía integral de traumatismos cervicales subaxiales (C3–C7): clasificación AO Spine, escala SLIC, luxación facetaria, hernia traumática y técnicas de ACDF.",
       "resumo_chamada": "Domine la evaluación y tratamiento quirúrgico del trauma cervical subaxial: escalas AO Spine y SLIC, reducción de facetas enganchadas y abordajes anterior y posterior.",
       "slug": "lesiones-traumaticas-de-la-columna-cervical-subaxial"
-    }
+    },
+    "autores_vancouver": "Pudles E, Rocha LGD",
+    "pagina_inicial": 299,
+    "pagina_final": 318,
+    "paginas": "299-318",
+    "referencia_vancouver": "Pudles E, Rocha LGD. Lesões traumáticas da coluna cervical subaxial. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 299-318."
   },
   "22": {
     "numero": 22,
@@ -2644,7 +2749,12 @@
       "meta_descricao": "Guía integral de traumatismos toracolumbares: clasificación AO Spine, escala TLICS, fracturas por estallido, lesiones de Chance y tornillos percutáneos.",
       "resumo_chamada": "Domine la evaluación y toma de decisiones en trauma de columna torácica y lumbar: clasificaciones AO Spine y TLICS, valoración del PLC y técnicas de estabilización.",
       "slug": "lesiones-traumaticas-de-la-columna-toracica-y-lumbar"
-    }
+    },
+    "autores_vancouver": "Jaccard APB, Rodriguez CAA, Vieira MB",
+    "pagina_inicial": 319,
+    "pagina_final": 330,
+    "paginas": "319-330",
+    "referencia_vancouver": "Jaccard APB, Rodriguez CAA, Vieira MB. Lesões traumáticas da coluna torácica e lombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 319-330."
   },
   "23": {
     "numero": 23,
@@ -2778,7 +2888,12 @@
       "meta_descricao": "Guía quirúrgica de fracturas sacras: clasificación de Denis, trauma sacropélvico AO Spine, disociación espinopélvica, tornillos transsacros y fijación lumbopélvica.",
       "resumo_chamada": "Domine el diagnóstico y manejo quirúrgico del trauma sacro: zonas de Denis, disociación espinopélvica, dismorfismo sacro y reconstrucción triangular lumbopélvica.",
       "slug": "lesiones-traumaticas-del-sacro"
-    }
+    },
+    "autores_vancouver": "Rocha LGD, Pereira OVA",
+    "pagina_inicial": 331,
+    "pagina_final": 346,
+    "paginas": "331-346",
+    "referencia_vancouver": "Rocha LGD, Pereira OVA. Lesões traumáticas do sacro. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 331-346."
   },
   "24": {
     "numero": 24,
@@ -2854,7 +2969,12 @@
       "meta_descricao": "Evaluación, diagnóstico por imagen y manejo del trauma de la columna pediátrica y síndrome de SCIWORA.",
       "resumo_chamada": "Particularidades del trauma raquimedular infantil, síndrome de SCIWORA y conductas terapéuticas.",
       "slug": "lesiones-traumaticas-de-la-columna-en-la-infancia"
-    }
+    },
+    "autores_vancouver": "Cristante AF, Freitas MTB, Figueiredo CCN",
+    "pagina_inicial": 347,
+    "pagina_final": 352,
+    "paginas": "347-352",
+    "referencia_vancouver": "Cristante AF, Freitas MTB, Figueiredo CCN. Lesões traumáticas da coluna na infância. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 347-352."
   },
   "25": {
     "numero": 25,
@@ -2949,7 +3069,12 @@
       "meta_descricao": "Guía clínica de fracturas osteoporóticas por insuficiencia: diagnóstico por RM con STIR, clasificación de Genant/DGOU, cifoplastia con balón y vertebroplastia.",
       "resumo_chamada": "Domine la evaluación y tratamiento de las fracturas vertebrales por insuficiencia: diagnóstico por RM, protocolo conservador, cifoplastia y prevención de fugas de cemento.",
       "slug": "fracturas-vertebrales-por-insuficiencia"
-    }
+    },
+    "autores_vancouver": "Graells XS, Kulcheski AL, Sebben AL",
+    "pagina_inicial": 353,
+    "pagina_final": 362,
+    "paginas": "353-362",
+    "referencia_vancouver": "Graells XS, Kulcheski AL, Sebben AL. Fraturas vertebrais por insuficiência. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 353-362."
   },
   "26": {
     "numero": 26,
@@ -3064,7 +3189,12 @@
       "meta_descricao": "Guía quirúrgica de cifosis postraumática: patogenia, balance sagital, mielopatía tardía, osteotomías correctoras (PSO, VCR, PCO) y fijación multibarraw.",
       "resumo_chamada": "Domine la evaluación y corrección quirúrgica de deformidades postraumáticas: biomecánica, realineación sagital, técnicas de osteotomía PSO/VCR y montajes multibarraw.",
       "slug": "deformidades-postraumaticas-de-la-columna"
-    }
+    },
+    "autores_vancouver": "Barsotti CEG, Cardeal AC",
+    "pagina_inicial": 363,
+    "pagina_final": 374,
+    "paginas": "363-374",
+    "referencia_vancouver": "Barsotti CEG, Cardeal AC. Deformidades pós-traumáticas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 363-374."
   },
   "27": {
     "numero": 27,
@@ -3188,7 +3318,12 @@
       "meta_descricao": "Guía integral de deformidades raquídeas: biomecánica 3D de la escoliosis, ángulo de Cobb, madurez de Risser/Sanders, curvas estructuradas y signos de alarma en RM.",
       "resumo_chamada": "Domine los fundamentos de las deformidades de columna: biomecánica tridimensional, evaluación de madurez esquelética, estructuración de curvas y algoritmos diagnósticos.",
       "slug": "introduccion-a-las-deformidades-de-la-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Pudles E, Defino HLA",
+    "pagina_inicial": 375,
+    "pagina_final": 398,
+    "paginas": "375-398",
+    "referencia_vancouver": "Pudles E, Defino HLA. Introdução às deformidades da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 375-398."
   },
   "28": {
     "numero": 28,
@@ -3315,7 +3450,12 @@
       "meta_descricao": "Guía integral de escoliosis de inicio temprano (EIT): síndrome de insuficiencia torácica, clasificación C-EOS, yesos de Mehta y barras de crecimiento (MCGR).",
       "resumo_chamada": "Domine la evaluación y tratamiento guiado por el crecimiento en escoliosis de inicio temprano: desarrollo pulmonar, yesos de Mehta, escala C-EOS y barras magnéticas.",
       "slug": "escoliosis-de-inicio-temprano"
-    }
+    },
+    "autores_vancouver": "Cristante AF, Tipan SAN, Figueiredo CCN",
+    "pagina_inicial": 399,
+    "pagina_final": 404,
+    "paginas": "399-404",
+    "referencia_vancouver": "Cristante AF, Tipan SAN, Figueiredo CCN. Escoliose de início precoce. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 399-404."
   },
   "29": {
     "numero": 29,
@@ -3444,7 +3584,12 @@
       "meta_descricao": "Conozca el yeso seriado, órtesis y ejercicios específicos en el tratamiento no quirúrgico de la escoliosis, con foco en indicación, adherencia y evidencia.",
       "resumo_chamada": "Síntesis de indicaciones y evidencia para yeso seriado EDF, corsés ortopédicos y ejercicios específicos según crecimiento, patrón de curva y metas clínicas.",
       "slug": "tratamiento-no-quirurgico-escoliosis"
-    }
+    },
+    "autores_vancouver": "Rangel TAM, Pereira AFF, Souza MPM",
+    "pagina_inicial": 405,
+    "pagina_final": 410,
+    "paginas": "405-410",
+    "referencia_vancouver": "Rangel TAM, Pereira AFF, Souza MPM. Tratamento não cirúrgico das escolioses. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 405-410."
   },
   "30": {
     "numero": 30,
@@ -3608,7 +3753,12 @@
       "meta_descricao": "Comprenda etiología, evaluación funcional GMFCS/FMS, oblicuidad pélvica, optimización multidisciplinaria y principios quirúrgicos en escoliosis neuromuscular.",
       "resumo_chamada": "Abordaje de la escoliosis neuromuscular centrado en la función, etiología de base, equilibrio sentado, oblicuidad pélvica, optimización médica y metas reconstructivas.",
       "slug": "escoliosis-neuromuscular"
-    }
+    },
+    "autores_vancouver": "Aguiar CA, Cordeiro LEB",
+    "pagina_inicial": 411,
+    "pagina_final": 422,
+    "paginas": "411-422",
+    "referencia_vancouver": "Aguiar CA, Cordeiro LEB. Escoliose neuromuscular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 411-422."
   },
   "31": {
     "numero": 31,
@@ -3728,7 +3878,12 @@
       "meta_descricao": "Deformidades en disrafismos espinales y mielomeningocele: fisiopatología, cifosectomía, oblicuidad pélvica, neuroeje y manejo multidisciplinario.",
       "resumo_chamada": "Abordaje integrado de las deformidades en disrafismos espinales, relacionando neuroeje, nivel funcional, escoliosis, cifosis, pelvis, piel y principios reconstructivos.",
       "slug": "deformidades-disrafismos-espinales"
-    }
+    },
+    "autores_vancouver": "Cavali PTM, Lima MC, Rossato AJ",
+    "pagina_inicial": 423,
+    "pagina_final": 444,
+    "paginas": "423-444",
+    "referencia_vancouver": "Cavali PTM, Lima MC, Rossato AJ. Deformidades nos disrafismos espinhais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 423-444."
   },
   "32": {
     "numero": 32,
@@ -3839,7 +3994,12 @@
       "meta_descricao": "Escoliosis en neurofibromatosis tipo 1: patrones distróficos, RM del neuroeje, riesgo de pseudartrosis y principios del tratamiento quirúrgico.",
       "resumo_chamada": "Síntesis de la escoliosis asociada a NF1, enfocando en la diferenciación entre curvas distróficas y no distróficas, estudio del neuroeje y estrategias reconstructivas.",
       "slug": "escoliosis-neurofibromatosis-tipo-1"
-    }
+    },
+    "autores_vancouver": "Rocha LEM",
+    "pagina_inicial": 445,
+    "pagina_final": 452,
+    "paginas": "445-452",
+    "referencia_vancouver": "Rocha LEM. Escoliose na neurofibromatose. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 445-452."
   },
   "33": {
     "numero": 33,
@@ -3962,7 +4122,12 @@
       "meta_descricao": "Deformidades congénitas de la columna: hemivértebra, fallas de formación y segmentación, clasificación 3D, neuroeje y estrategias quirúrgicas.",
       "resumo_chamada": "Abordaje sistemático de las deformidades congénitas vertebrales, integrando embriología, clasificación 3D, despistaje sistémico y principios de prevención quirúrgica precoz.",
       "slug": "deformidades-congenitas-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Avila LM, Aguiar CA",
+    "pagina_inicial": 453,
+    "pagina_final": 460,
+    "paginas": "453-460",
+    "referencia_vancouver": "Avila LM, Aguiar CA. Deformidades congênitas da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 453-460."
   },
   "34": {
     "numero": 34,
@@ -4107,7 +4272,12 @@
       "meta_descricao": "Escoliosis idiopática: diagnóstico de exclusión, madurez esquelética, clasificación de Lenke, artrodesis selectiva y modulación del crecimiento.",
       "resumo_chamada": "Abordaje de la escoliosis idiopática integrando diagnóstico de exclusión, historia natural, madurez, evaluación radiográfica, clasificación de Lenke y principios terapéuticos.",
       "slug": "escoliosis-idiopatica"
-    }
+    },
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 461,
+    "pagina_final": 480,
+    "paginas": "461-480",
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Escoliose idiopática. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 461-480."
   },
   "35": {
     "numero": 35,
@@ -4240,7 +4410,12 @@
       "meta_descricao": "Escoliosis del adulto: fisiopatología degenerativa, parámetros sagitales, clasificación SRS-Schwab, tratamiento conservador y reconstrucción quirúrgica.",
       "resumo_chamada": "Abordaje de la escoliosis del adulto integrando degeneración discal, claudicación, equilibrio espinopélvico, clasificación SRS-Schwab y principios quirúrgicos.",
       "slug": "escoliosis-del-adulto"
-    }
+    },
+    "autores_vancouver": "Cristante AF, Aragão VAS, Perini DD",
+    "pagina_inicial": 481,
+    "pagina_final": 486,
+    "paginas": "481-486",
+    "referencia_vancouver": "Cristante AF, Aragão VAS, Perini DD. Escoliose do adulto. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 481-486."
   },
   "36": {
     "numero": 36,
@@ -4357,7 +4532,12 @@
       "meta_descricao": "Escoliosis sindrómica: Marfan, Down, Rett, NF1, laxitud ligamentosa, RM del neuroeje y principios de reconstrucción quirúrgica individualizada.",
       "resumo_chamada": "Abordaje sistemático de la escoliosis sindrómica integrando etiología genética, biología tisular, comorbilidades cardiopulmonares, RM de neuroeje y principios quirúrgicos.",
       "slug": "escoliosis-sindromes-geneticas"
-    }
+    },
+    "autores_vancouver": "Letaif OB, Aragão VAS, Alves DYYO",
+    "pagina_inicial": 487,
+    "pagina_final": 492,
+    "paginas": "487-492",
+    "referencia_vancouver": "Letaif OB, Aragão VAS, Alves DYYO. Escoliose nas síndromes genéticas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 487-492."
   },
   "37": {
     "numero": 37,
@@ -4479,7 +4659,12 @@
       "meta_descricao": "Manejo de escoliosis grave y rígida: morfología medular apical, DAR, tracción halo-gravitacional, PVCR, LIEPO y protocolos de neuromonitorización.",
       "resumo_chamada": "Abordaje sistemático de curvas idiopáticas de gran magnitud integrando riesgo neurológico, displasia pedicular, tracción, etapas quirúrgicas y osteotomías correctoras.",
       "slug": "escoliose-idiopatica-alto-valor-angular"
-    }
+    },
+    "autores_vancouver": "Barros AGC, Carelli LE, Almeida GJ",
+    "pagina_inicial": 493,
+    "pagina_final": 502,
+    "paginas": "493-502",
+    "referencia_vancouver": "Barros AGC, Carelli LE, Almeida GJ. Escoliose idiopática de alto valor angular. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 493-502."
   },
   "38": {
     "numero": 38,
@@ -4640,7 +4825,12 @@
       "meta_descricao": "Espondilólisis y espondilolistesis pediátrica: diagnóstico, clasificación SDSG, cifosis lumbosacra, balance espinopélvico y reducción quirúrgica.",
       "resumo_chamada": "Abordaje sistemático de la espondilolistesis pediátrica integrando crecimiento, estadificación SDSG, cifosis lumbosacra, balance sagital y principios quirúrgicos.",
       "slug": "espondilolistesis-nino-adolescente"
-    }
+    },
+    "autores_vancouver": "Andujar ALF, Grandini RS, Arjona HD",
+    "pagina_inicial": 503,
+    "pagina_final": 518,
+    "paginas": "503-518",
+    "referencia_vancouver": "Andujar ALF, Grandini RS, Arjona HD. Espondilolistese na criança. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 503-518."
   },
   "39": {
     "numero": 39,
@@ -4757,7 +4947,12 @@
       "meta_descricao": "Guía técnica sobre espondilolistesis degenerativa e ístmica en el adulto: epidemiología, diagnóstico por imagen, balance sagital, ALIF, LLIF y técnica PTP.",
       "resumo_chamada": "Síntesis sobre espondilolistesis degenerativa e ístmica en el adulto, abordando criterios diagnósticos, balance sagital, descompresión vs. fusión y técnicas intersomáticas.",
       "slug": "espondilolistesis-adulto"
-    }
+    },
+    "autores_vancouver": "Amaral R, Pokorny J, Pokorny G, Silva FTM, Moriguchi R, Magro IB, Pimenta L",
+    "pagina_inicial": 519,
+    "pagina_final": 530,
+    "paginas": "519-530",
+    "referencia_vancouver": "Amaral R, Pokorny J, Pokorny G, Silva FTM, Moriguchi R, Magro IB, Pimenta L. Espondilolistese no adulto. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 519-530."
   },
   "40": {
     "numero": 40,
@@ -4894,7 +5089,12 @@
       "meta_descricao": "Guía completa sobre cifosis vertebral: enfermedad de Scheuermann, cifosis congénita, balance sagital, osteotomías de Ponte y PSO.",
       "resumo_chamada": "Abordaje sistemático de la cifosis torácica y toracolumbar, integrando balance sagital, clasificación etiológica, flexibilidad y osteotomías quirúrgicas.",
       "slug": "cifosis-evaluacion-tratamiento"
-    }
+    },
+    "autores_vancouver": "Defino HLA, Defino MP, Vieira RS",
+    "pagina_inicial": 531,
+    "pagina_final": 550,
+    "paginas": "531-550",
+    "referencia_vancouver": "Defino HLA, Defino MP, Vieira RS. Cifose. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 531-550."
   },
   "41": {
     "numero": 41,
@@ -4999,7 +5199,12 @@
       "meta_descricao": "Evaluación de deformidades cervicales: T1 slope, cSVA, CBVA, mielopatía por estiramiento, anatomía de arteria vertebral y osteotomías.",
       "resumo_chamada": "Abordaje sistemático de las deformidades cervicales, integrando mirada horizontal, balance sagital global, flexibilidad, angio-TC y principios quirúrgicos.",
       "slug": "deformidades-columna-cervical"
-    }
+    },
+    "autores_vancouver": "Carelli LE, Barros AGC, Pupp LG",
+    "pagina_inicial": 551,
+    "pagina_final": 568,
+    "paginas": "551-568",
+    "referencia_vancouver": "Carelli LE, Barros AGC, Pupp LG. Deformidades da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 551-568."
   },
   "42": {
     "numero": 42,
@@ -5169,7 +5374,12 @@
       "meta_descricao": "Bases biológicas de la degeneración discal: matriz extracelular, inflamación, genética, clasificaciones Modic/Pfirrmann y terapias regenerativas.",
       "resumo_chamada": "Fundamentos celulares, biomecánicos, genéticos y metabólicos de la degeneración discal y sus implicaciones diagnósticas y terapéuticas.",
       "slug": "fisiopatologia-degeneracion-discal"
-    }
+    },
+    "autores_vancouver": "Righesso Neto O, Falavigna A, Falavigna VF, Viapiana MEL, Righesso EP",
+    "pagina_inicial": 569,
+    "pagina_final": 578,
+    "paginas": "569-578",
+    "referencia_vancouver": "Righesso Neto O, Falavigna A, Falavigna VF, Viapiana MEL, Righesso EP. Fisiopatologia da degeneração discal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 569-578."
   },
   "43": {
     "numero": 43,
@@ -5309,7 +5519,12 @@
       "meta_descricao": "Hernia cervical: radiculopatía frente a mielopatía, examen neurológico, RM, ACDF, artroplastia y foraminotomía endoscópica.",
       "resumo_chamada": "Abordaje sistemático de la hernia discal cervical, integrando distribución radicular, signos de mielopatía, resonancia magnética y selección de la técnica quirúrgica.",
       "slug": "hernia-disco-cervical"
-    }
+    },
+    "autores_vancouver": "Arantes Junior AA, Braga BD, Ribeiro DN, Lino Filho AM",
+    "pagina_inicial": 579,
+    "pagina_final": 592,
+    "paginas": "579-592",
+    "referencia_vancouver": "Arantes Junior AA, Braga BD, Ribeiro DN, Lino Filho AM. Hérnia de disco cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 579-592."
   },
   "44": {
     "numero": 44,
@@ -5443,7 +5658,12 @@
       "meta_descricao": "Hernia torácica: clínica, mielopatia, RM, calcificación en TC, manejo conservador y selección del abordaje quirúrgico.",
       "resumo_chamada": "Abordaje sistemático de la hernia discal torácica, integrando riesgo neurológico, calcificación discal y corredores quirúrgicos personalizados.",
       "slug": "hernia-disco-toracica"
-    }
+    },
+    "autores_vancouver": "Daher MT, Mangueira LJA, Balsimelli F",
+    "pagina_inicial": 593,
+    "pagina_final": 604,
+    "paginas": "593-604",
+    "referencia_vancouver": "Daher MT, Mangueira LJA, Balsimelli F. Hérnia de disco torácica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 593-604."
   },
   "45": {
     "numero": 45,
@@ -5547,7 +5767,12 @@
       "meta_descricao": "Hernia lumbar: fisiopatología, reabsorción espontánea, diagnóstico clinicorradiológico, manejo conservador y microdiscectomía endoscópica.",
       "resumo_chamada": "Abordaje sistemático de la hernia discal lumbar, integrando correlación clínica, reabsorción espontánea de extrusiones y cirugía descompresiva.",
       "slug": "hernia-disco-lumbar"
-    }
+    },
+    "autores_vancouver": "Ueta RHS, Jorge TF, Schussel VC, Vaz GN",
+    "pagina_inicial": 605,
+    "pagina_final": 612,
+    "paginas": "605-612",
+    "referencia_vancouver": "Ueta RHS, Jorge TF, Schussel VC, Vaz GN. Hérnia de disco lombar. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 605-612."
   },
   "46": {
     "numero": 46,
@@ -5651,7 +5876,12 @@
       "meta_descricao": "Estenosis lumbar: claudicación neurógena, evaluación por RM, manejo conservador, descompresión quirúrgica e indicación selectiva de fusión.",
       "resumo_chamada": "Abordaje sistemático de la estenosis lumbar y claudicación neurógena, equilibrando manejo conservador, descompresión selectiva y fusión.",
       "slug": "estenosis-lumbar-diagnostico-manejo"
-    }
+    },
+    "autores_vancouver": "Meves R, Mendonça RGM",
+    "pagina_inicial": 613,
+    "pagina_final": 624,
+    "paginas": "613-624",
+    "referencia_vancouver": "Meves R, Mendonça RGM. Estenose lombar: diagnóstico e manejo contemporâneo. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 613-624."
   },
   "47": {
     "numero": 47,
@@ -5744,7 +5974,12 @@
       "meta_descricao": "Guía sobre inestabilidad vertebral degenerativa: cascada de Kirkaldy-Willis, radiografías dinámicas, derrame facetario, descompresión y fusión.",
       "resumo_chamada": "Abordaje sistemático de la inestabilidad vertebral, correlacionando movimiento mecánico, síntomas, radiografías en carga y estabilización selectiva.",
       "slug": "inestabilidad-vertebral"
-    }
+    },
+    "autores_vancouver": "Pudles E",
+    "pagina_inicial": 625,
+    "pagina_final": 632,
+    "paginas": "625-632",
+    "referencia_vancouver": "Pudles E. Instabilidade vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 625-632."
   },
   "48": {
     "numero": 48,
@@ -5876,7 +6111,12 @@
       "meta_descricao": "Mielopatía cervical degenerativa y OLLP: puntuación mJOA, K-line, RM/TC, laminoplastia, descompresión anterior y fusión posterior.",
       "resumo_chamada": "Abordaje sistemático de la mielopatía cervical degenerativa y OLLP, integrando examen neurológico, alineamiento sagital y selección de abordajes quirúrgicos.",
       "slug": "mielopatia-cervical-degenerativa-ollp"
-    }
+    },
+    "autores_vancouver": "Dantas FLR, Dantas F, Fonseca VKT",
+    "pagina_inicial": 633,
+    "pagina_final": 654,
+    "paginas": "633-654",
+    "referencia_vancouver": "Dantas FLR, Dantas F, Fonseca VKT. Estenose cervical, mielopatia cervical degenerativa e ossificação do ligamento longitudinal posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 633-654."
   },
   "49": {
     "numero": 49,
@@ -5992,7 +6232,12 @@
       "meta_descricao": "Guía técnica sobre infiltraciones y radiofrecuencia: bloqueos diagnósticos, corticoides no particulados, denervación facetaria y seguridad.",
       "resumo_chamada": "Abordaje racional de bloqueos, infiltraciones y radiofrecuencia para dolor espinal, con énfasis en seguridad farmacológica y selección de dianas.",
       "slug": "infiltraciones-radiofrecuencia-columna"
-    }
+    },
+    "autores_vancouver": "Mistro Neto S, Risso Neto MI",
+    "pagina_inicial": 655,
+    "pagina_final": 662,
+    "paginas": "655-662",
+    "referencia_vancouver": "Mistro Neto S, Risso Neto MI. Infiltrações e radiofrequência na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 655-662."
   },
   "50": {
     "numero": 50,
@@ -6096,7 +6341,12 @@
       "meta_descricao": "Medicina regenerativa en columna: PRP, BMAC, células madre, abordaje multitarget y análisis crítico de la evidencia científica.",
       "resumo_chamada": "Análisis de las terapias biológicas y regenerativas en patología degenerativa de columna: PRP, concentrado de médula ósea y terapia celular.",
       "slug": "medicina-regenerativa-columna-degenerativa"
-    }
+    },
+    "autores_vancouver": "Machado ES, Meves R",
+    "pagina_inicial": 663,
+    "pagina_final": 672,
+    "paginas": "663-672",
+    "referencia_vancouver": "Machado ES, Meves R. Medicina regenerativa no manejo da doença degenerativa da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 663-672."
   },
   "51": {
     "numero": 51,
@@ -6215,7 +6465,12 @@
       "meta_descricao": "Oncología vertebral: biología tumoral, biopsia percutánea guiada, sistemas Enneking y WBB, márgenes oncológicos y decisión multidisciplinar.",
       "resumo_chamada": "Fundamentos para diagnóstico, estadificación y tratamiento de neoplasias vertebrales, integrando biología tumoral, biopsia, WBB y radiocirugía.",
       "slug": "principios-manejo-neoplasias-columna"
-    }
+    },
+    "autores_vancouver": "Risso Neto MI, Zuiani GR",
+    "pagina_inicial": 673,
+    "pagina_final": 694,
+    "paginas": "673-694",
+    "referencia_vancouver": "Risso Neto MI, Zuiani GR. Princípios no manejo das neoplasias da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 673-694."
   },
   "52": {
     "numero": 52,
@@ -6319,7 +6574,12 @@
       "meta_descricao": "Inestabilidad vertebral neoplásica: escala SINS, dolor mecánico, fijación percutánea y radioterapia estereotáxica SBRT.",
       "resumo_chamada": "Abordaje sistemático de la inestabilidad en neoplasias vertebrales, integrando reconocimiento del dolor mecánico, puntuación SINS y estabilización quirúrgica.",
       "slug": "inestabilidad-vertebral-neoplasia-columna"
-    }
+    },
+    "autores_vancouver": "Vialle LRG, Pereira OVA",
+    "pagina_inicial": 695,
+    "pagina_final": 700,
+    "paginas": "695-700",
+    "referencia_vancouver": "Vialle LRG, Pereira OVA. Instabilidade vertebral em neoplasia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 695-700."
   },
   "53": {
     "numero": 53,
@@ -6427,7 +6687,12 @@
       "meta_descricao": "Tumores benignos de columna: osteoma osteoide, osteoblastoma, quiste aneurismático, hemangioma, tumor de células gigantes y ablación por radiofrecuencia.",
       "resumo_chamada": "Abordaje sistemático de tumores benignos vertebrales, integrando patrones de imagen, principios de biopsia, estadificación Enneking y técnicas percutáneas.",
       "slug": "tumores-benignos-seudotumorales-columna"
-    }
+    },
+    "autores_vancouver": "Barros AGC, Carelli LE, Alves GF",
+    "pagina_inicial": 701,
+    "pagina_final": 712,
+    "paginas": "701-712",
+    "referencia_vancouver": "Barros AGC, Carelli LE, Alves GF. Tumores benignos e lesões pseudotumorais da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 701-712."
   },
   "54": {
     "numero": 54,
@@ -6539,7 +6804,12 @@
       "meta_descricao": "Tumores óseos malignos de columna: sarcoma de Ewing, osteosarcoma, condrosarcoma, cordoma, estadificación WBB y vertebrectomía en bloque.",
       "resumo_chamada": "Manejo oncológico de los principales sarcomas vertebrales primarios, integrando biopsia percutánea, Enneking, WBB, márgenes quirúrgicos y SBRT.",
       "slug": "tumores-oseos-primarios-malignos-columna"
-    }
+    },
+    "autores_vancouver": "Coimbra BGMM, Teixeira WGJ, Perini DD",
+    "pagina_inicial": 713,
+    "pagina_final": 720,
+    "paginas": "713-720",
+    "referencia_vancouver": "Coimbra BGMM, Teixeira WGJ, Perini DD. Tumores ósseos primários malignos. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 713-720."
   },
   "55": {
     "numero": 55,
@@ -6644,7 +6914,12 @@
       "meta_descricao": "Metástasis vertebrales: algoritmo NOMS, escala SINS, compresión epidural de Bilsky, cirugía de separación y radioterapia estereotáxica SBRT.",
       "resumo_chamada": "Abordaje sistemático de las metástasis vertebrales, integrando el paradigma NOMS, puntuación SINS, escala de Bilsky y cirugía de separación.",
       "slug": "tumores-metastásicos-columna"
-    }
+    },
+    "autores_vancouver": "Risso Neto MI, Rosa AF",
+    "pagina_inicial": 721,
+    "pagina_final": 742,
+    "paginas": "721-742",
+    "referencia_vancouver": "Risso Neto MI, Rosa AF. Tumores metastáticos na coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 721-742."
   },
   "56": {
     "numero": 56,
@@ -6768,7 +7043,12 @@
       "meta_descricao": "Clasificación, diagnóstico por imagen, indicaciones quirúrgicas y principios de manejo de los principales tumores intradurales de la columna.",
       "resumo_chamada": "Diferenciación entre tumores intramedulares y extramedulares, con énfasis en diagnóstico, decisión quirúrgica, neuromonitorización y preservación funcional.",
       "slug": "tumores-intramedulares-extramedulares-columna"
-    }
+    },
+    "autores_vancouver": "Pinheiro LCP, Moraes OJS",
+    "pagina_inicial": 743,
+    "pagina_final": 752,
+    "paginas": "743-752",
+    "referencia_vancouver": "Pinheiro LCP, Moraes OJS. Tumores intramedulares e extramedulares: classificação, diagnóstico e manejo. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 743-752."
   },
   "57": {
     "numero": 57,
@@ -6885,7 +7165,12 @@
       "meta_descricao": "Principios de la radioterapia en tumores vertebrales, incluyendo SBRT, SINS, Bilsky, planificación por imagen y prevención de complicaciones.",
       "resumo_chamada": "Integración de radioterapia, SBRT, estabilidad mecánica, compresión epidural e imagen para la selección individualizada del tratamiento en tumores vertebrales.",
       "slug": "radioterapia-tumores-columna"
-    }
+    },
+    "autores_vancouver": "Hanriot RM, Gutierrez NS",
+    "pagina_inicial": 753,
+    "pagina_final": 766,
+    "paginas": "753-766",
+    "referencia_vancouver": "Hanriot RM, Gutierrez NS. Radioterapia nos tumores de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 753-766."
   },
   "58": {
     "numero": 58,
@@ -6989,7 +7274,12 @@
       "meta_descricao": "Diagnóstico y manejo de infecciones primarias de la columna vertebral, incluyendo espondilodiscitis, tuberculosis espinal y criterios quirúrgicos.",
       "resumo_chamada": "Infecciones vertebrales piógenas y tuberculosas: sospecha clínica, diagnóstico por imagen, microbiología, tratamiento conservador y criterios de cirugía.",
       "slug": "infeccion-primaria-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Pudles E",
+    "pagina_inicial": 767,
+    "pagina_final": 776,
+    "paginas": "767-776",
+    "referencia_vancouver": "Pudles E. Infecção primária da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 767-776."
   },
   "59": {
     "numero": 59,
@@ -7106,7 +7396,12 @@
       "meta_descricao": "Espondiloartritis axial: fisiopatología, dolor inflamatorio, diagnóstico clínico, sacroilitis por imagen y principios de tratamiento.",
       "resumo_chamada": "Cómo reconocer e investigar el compromiso inflamatorio axial, interpretar la sacroilitis e integrar clínica, laboratorio, imagen y tratamiento multidisciplinar.",
       "slug": "enfermedades-reumaticas-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Teixeira CEG, Yazbek MA, Sachetto Z",
+    "pagina_inicial": 777,
+    "pagina_final": 782,
+    "paginas": "777-782",
+    "referencia_vancouver": "Teixeira CEG, Yazbek MA, Sachetto Z. Doenças reumáticas da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 777-782."
   },
   "60": {
     "numero": 60,
@@ -7214,7 +7509,12 @@
       "meta_descricao": "Osteoporosis, glucocorticoides, hiperparatiroidismo, osteomalacia, raquitismo y enfermedad de Paget en el contexto clínico de la columna vertebral.",
       "resumo_chamada": "Enfermedades osteometabólicas de la columna: fragilidad vertebral, densitometría, causas secundarias e implicaciones en la planificación quirúrgica.",
       "slug": "enfermedades-metabolicas-columna"
-    }
+    },
+    "autores_vancouver": "Gomes MM, Paula FJA",
+    "pagina_inicial": 783,
+    "pagina_final": 792,
+    "paginas": "783-792",
+    "referencia_vancouver": "Gomes MM, Paula FJA. Doenças metabólicas que afetam a coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 783-792."
   },
   "61": {
     "numero": 61,
@@ -7333,7 +7633,12 @@
       "meta_descricao": "Principios quirúrgicos en artritis reumatoide y espondilitis anquilosante: inestabilidad cervical, fracturas y osteotomías correctoras.",
       "resumo_chamada": "Tratamiento quirúrgico de la artritis reumatoide y espondilitis anquilosante: inestabilidad, riesgo neurológico, fracturas, deformidad y planificación biomecánica.",
       "slug": "tratamiento-quirurgico-enfermedades-reumaticas-columna"
-    }
+    },
+    "autores_vancouver": "Marcon RM, Santiago MAM, Santos HGL",
+    "pagina_inicial": 793,
+    "pagina_final": 804,
+    "paginas": "793-804",
+    "referencia_vancouver": "Marcon RM, Santiago MAM, Santos HGL. Tratamento cirúrgico das doenças reumáticas da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 793-804."
   },
   "62": {
     "numero": 62,
@@ -7468,7 +7773,12 @@
       "meta_descricao": "Abordaje endoscópico posterolateral lumbar: indicaciones, planificación, foraminoplastia, resultados clínicos, complicaciones y principios de seguridad.",
       "resumo_chamada": "Fundamentos de la endoscopia posterolateral y transforaminal lumbar, con énfasis en selección de la vía, foraminoplastia, protección neural y prevención de complicaciones.",
       "slug": "endoscopia-transforaminal-lumbar"
-    }
+    },
+    "autores_vancouver": "Bergamaschi JPM, Brito MBS, Lobo SE",
+    "pagina_inicial": 805,
+    "pagina_final": 822,
+    "paginas": "805-822",
+    "referencia_vancouver": "Bergamaschi JPM, Brito MBS, Lobo SE. Endoscopia transforaminal na coluna lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 805-822."
   },
   "63": {
     "numero": 63,
@@ -7619,7 +7929,12 @@
       "meta_descricao": "Principios de la endoscopia interlaminar lumbar: indicaciones, planificación, técnica de descompresión, seguridad neural y manejo de complicaciones.",
       "resumo_chamada": "Técnica interlaminar endoscópica aplicada a hernias y estenosis lumbares, con planificación anatómica, protección neural y criterios de descompresión completa.",
       "slug": "endoscopia-interlaminar-lumbar"
-    }
+    },
+    "autores_vancouver": "Carvalho MOP, Moscatelli MA, Silva RB",
+    "pagina_inicial": 823,
+    "pagina_final": 838,
+    "paginas": "823-838",
+    "referencia_vancouver": "Carvalho MOP, Moscatelli MA, Silva RB. Endoscopia interlaminar na coluna lombossacra. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 823-838."
   },
   "64": {
     "numero": 64,
@@ -7720,7 +8035,12 @@
       "meta_descricao": "Endoscopia uniportal torácica: selección de casos, anatomía, planificación, descompresión de hernias discales y prevención de complicaciones.",
       "resumo_chamada": "Principios de la endoscopia torácica uniportal para descompresión selectiva, con énfasis en seguridad medular, anatomía foraminal y preservación vascular.",
       "slug": "endoscopia-uniportal-toracica"
-    }
+    },
+    "autores_vancouver": "Rocha ID, Gabana E",
+    "pagina_inicial": 839,
+    "pagina_final": 844,
+    "paginas": "839-844",
+    "referencia_vancouver": "Rocha ID, Gabana E. Cirurgia endoscópica uniportal no segmento torácico. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 839-844."
   },
   "65": {
     "numero": 65,
@@ -7820,7 +8140,12 @@
       "meta_descricao": "Endoscopia cervical posterior para radiculopatía y estenosis: indicaciones, planificación, técnicas uniportal y biportal, y manejo de complicaciones.",
       "resumo_chamada": "Abordaje endoscópico cervical posterior con preservación de movilidad, selección criteriosa de la vía y principios de protección neural y vascular.",
       "slug": "endoscopia-cervical-posterior"
-    }
+    },
+    "autores_vancouver": "Del Curto D, Vaz GN, Schussel VC, Jorge TF",
+    "pagina_inicial": 845,
+    "pagina_final": 852,
+    "paginas": "845-852",
+    "referencia_vancouver": "Del Curto D, Vaz GN, Schussel VC, Jorge TF. Endoscopia na coluna cervical pela via posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 845-852."
   },
   "66": {
     "numero": 66,
@@ -7912,7 +8237,12 @@
       "meta_descricao": "Cirugía endoscópica cervical anterior: indicaciones, técnicas transdiscal y transcorpórea, protección visceral y complicaciones.",
       "resumo_chamada": "Descompresión endoscópica anterior de hernias cervicales, preservación del movimiento, abordaje transcorpóreo y seguridad neurovascular.",
       "slug": "endoscopia-cervical-anterior"
-    }
+    },
+    "autores_vancouver": "Teixeira KO, Assis RR, Lobo SE, Bergamaschi JPM",
+    "pagina_inicial": 853,
+    "pagina_final": 862,
+    "paginas": "853-862",
+    "referencia_vancouver": "Teixeira KO, Assis RR, Lobo SE, Bergamaschi JPM. Endoscopia na coluna cervical pela via anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 853-862."
   },
   "67": {
     "numero": 67,
@@ -8005,7 +8335,12 @@
       "meta_descricao": "Cirugía endoscópica unilateral biportal (UBE): triangulación, dinámica de fluidos, descompresión lumbar, artrodesis y complicaciones.",
       "resumo_chamada": "Fundamentos de la Endoscopia Unilateral Biportal (UBE), geometría de triangulación, manejo de presiones de irrigación, técnica ULBD y artrodesis biportal.",
       "slug": "endoscopia-unilateral-biportal-ube"
-    }
+    },
+    "autores_vancouver": "Braga BD, Morais WJ, Fernandes MNF",
+    "pagina_inicial": 863,
+    "pagina_final": 872,
+    "paginas": "863-872",
+    "referencia_vancouver": "Braga BD, Morais WJ, Fernandes MNF. Endoscopia unilateral biportal. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 863-872."
   },
   "68": {
     "numero": 68,
@@ -8099,7 +8434,12 @@
       "meta_descricao": "Principios y técnica de PLIF, TLIF abierto y MIS-TLIF: indicaciones, preparación de platillos, restauración de lordosis y complicaciones.",
       "resumo_chamada": "Guía completa sobre artrodesis intersomática lumbar PLIF y TLIF, biomecánica, abordajes mínimamente invasivos, preparación del platillo y lordosis.",
       "slug": "artrodesis-intersomatica-lumbar-posterior-plif-tlif"
-    }
+    },
+    "autores_vancouver": "Dambrós JM, Suarez ADH, Cechin IE",
+    "pagina_inicial": 873,
+    "pagina_final": 880,
+    "paginas": "873-880",
+    "referencia_vancouver": "Dambrós JM, Suarez ADH, Cechin IE. Artrodese intersomática lombar posterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 873-880."
   },
   "69": {
     "numero": 69,
@@ -8195,7 +8535,12 @@
       "meta_descricao": "Cirugía lumbar lateral en posición única (SPLS): técnica LLIF y tornillos percutáneos en decúbito lateral, eficiencia y navegación.",
       "resumo_chamada": "Fundamentos de la cirugía lumbar lateral en posición única (SPLS), integrando la fusión lateral y la fijación pedicular percutánea en decúbito lateral.",
       "slug": "cirugia-lumbar-lateral-posicion-unica-spls"
-    }
+    },
+    "autores_vancouver": "Menezes CM, Leal JS",
+    "pagina_inicial": 881,
+    "pagina_final": 890,
+    "paginas": "881-890",
+    "referencia_vancouver": "Menezes CM, Leal JS. Artrodese lombar em single-position lateral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 881-890."
   },
   "70": {
     "numero": 70,
@@ -8290,7 +8635,12 @@
       "meta_descricao": "Fusión lumbar transpsoas en prono (PTP): anatomía, abordaje asistido por gravedad, neuromonitorización, lordosis y flujo de trabajo continuo.",
       "resumo_chamada": "Fundamentos de la fusión intersomática lumbar transpsoas en decúbito prono (PTP), combinando la biomecánica lateral con las ventajas de la posición prona.",
       "slug": "artrodesis-lumbar-transpsoas-prono-ptp"
-    }
+    },
+    "autores_vancouver": "Pimenta L, Amaral R, Pokorny J, Pokorny G",
+    "pagina_inicial": 891,
+    "pagina_final": 898,
+    "paginas": "891-898",
+    "referencia_vancouver": "Pimenta L, Amaral R, Pokorny J, Pokorny G. Artrodese lombar prone transpsoas. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 891-898."
   },
   "71": {
     "numero": 71,
@@ -8386,7 +8736,12 @@
       "meta_descricao": "Artrodesis lumbar oblicua (OLIF): técnica pre-psoas, OLIF25, OLIF51, mapeo vascular, rotación ortogonal y prevención de complicaciones.",
       "resumo_chamada": "Fundamentos de la Artrodesis Lumbar Oblicua (OLIF), anatomía por delante del psoas, protección vascular, rotación de la caja y artrodesis multinivel.",
       "slug": "artrodesis-lumbar-oblicua-olif"
-    }
+    },
+    "autores_vancouver": "Malheiros JA, Ferreira Junior MA",
+    "pagina_inicial": 899,
+    "pagina_final": 908,
+    "paginas": "899-908",
+    "referencia_vancouver": "Malheiros JA, Ferreira Junior MA. Artrodese lombar oblíqua. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 899-908."
   },
   "72": {
     "numero": 72,
@@ -8485,7 +8840,12 @@
       "meta_descricao": "Artrodesis lumbar anterior (ALIF): acceso retroperitoneal en L4-L5 y L5-S1, seguridad vascular, plexo hipogástrico y restauración de lordosis.",
       "resumo_chamada": "Principios quirúrgicos de la Artrodesis Lumbar Anterior (ALIF), disección retroperitoneal, protección del plexo hipogástrico y artrodesis hiperlordótica de L5-S1.",
       "slug": "artrodesis-lumbar-anterior-alif"
-    }
+    },
+    "autores_vancouver": "Teles AR, Martins AGS, Ludwig GA",
+    "pagina_inicial": 909,
+    "pagina_final": 918,
+    "paginas": "909-918",
+    "referencia_vancouver": "Teles AR, Martins AGS, Ludwig GA. Artrodese lombar anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 909-918."
   },
   "73": {
     "numero": 73,
@@ -8577,7 +8937,12 @@
       "meta_descricao": "Artroplastia discal cervical y lumbar: indicaciones, diseños protésicos, técnica quirúrgica, centrado en línea media y complicaciones.",
       "resumo_chamada": "Guía completa sobre artroplastia discal cervical y lumbar, abordando biomecánica, selección de candidatos, implantación en línea media y protección adyacente.",
       "slug": "artroplastia-columna-vertebral-reemplazo-discal"
-    }
+    },
+    "autores_vancouver": "Benites VM",
+    "pagina_inicial": 919,
+    "pagina_final": 926,
+    "paginas": "919-926",
+    "referencia_vancouver": "Benites VM. Artroplastia da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 919-926."
   },
   "74": {
     "numero": 74,
@@ -8678,7 +9043,12 @@
       "meta_descricao": "Técnicas de fijación en columna cervical alta: Goel-Harms C1-C2, tornillos translaminares, tornillo de odontoide y fusión occipitocervical.",
       "resumo_chamada": "Fijación quirúrgica de la columna cervical alta, técnica de Goel-Harms C1-C2, tornillos translaminares de C2, osteosíntesis del odontoide y fusión occipitocervical.",
       "slug": "fijacion-columna-cervical-alta"
-    }
+    },
+    "autores_vancouver": "Carneiro-Filho GS, Bezerra Júnior DL",
+    "pagina_inicial": 927,
+    "pagina_final": 936,
+    "paginas": "927-936",
+    "referencia_vancouver": "Carneiro-Filho GS, Bezerra Júnior DL. Técnicas cirúrgicas para a fixação da coluna cervical alta. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 927-936."
   },
   "75": {
     "numero": 75,
@@ -8772,7 +9142,12 @@
       "meta_descricao": "Fijación cervical anterior: ACDF, corpectomía (ACCF), placas anteriores bloqueadas, dispositivos zero-profile y manejo de complicaciones.",
       "resumo_chamada": "Guía sobre técnicas de fijación cervical anterior, disección de Smith-Robinson, ACDF, corpectomía, placas bloqueadas e implantes zero-profile.",
       "slug": "tecnicas-de-fijacion-cervical-anterior"
-    }
+    },
+    "autores_vancouver": "Milano JB, Lindorfer Neto EE",
+    "pagina_inicial": 937,
+    "pagina_final": 946,
+    "paginas": "937-946",
+    "referencia_vancouver": "Milano JB, Lindorfer Neto EE. Técnicas de fixação cervical anterior. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 937-946."
   },
   "76": {
     "numero": 76,
@@ -8866,7 +9241,12 @@
       "meta_descricao": "Técnicas de fijación cervical posterior: tornillos en masas laterales (Magerl, Roy-Camille, An), tornillos pediculares subaxiales y transición C7-T1.",
       "resumo_chamada": "Guía sobre fijación posterior cervical, trayectorias de tornillos en masa lateral, tornillos pediculares subaxiales, fijación cervicotorácica y seguridad neurovascular.",
       "slug": "fijacion-posterior-columna-cervical"
-    }
+    },
+    "autores_vancouver": "Tavares RH, Moliterno LAM, Almeida GJ",
+    "pagina_inicial": 947,
+    "pagina_final": 954,
+    "paginas": "947-954",
+    "referencia_vancouver": "Tavares RH, Moliterno LAM, Almeida GJ. Fixação posterior da coluna cervical. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 947-954."
   },
   "77": {
     "numero": 77,
@@ -8961,7 +9341,12 @@
       "meta_descricao": "Laminoplastia cervical: técnicas open-door (Hirabayashi), double-door (Kurokawa), miniplacas, parálisis de C5 y evidencia clínica.",
       "resumo_chamada": "Guía sobre laminoplastia cervical para mielopatía multinivel y OPLL, describiendo técnicas open-door y double-door, criterios de lordosis y prevención de complicaciones.",
       "slug": "laminoplastia-cervical-principios-tecnicas-evidencia"
-    }
+    },
+    "autores_vancouver": "Brock RS, Soares AM",
+    "pagina_inicial": 955,
+    "pagina_final": 966,
+    "paginas": "955-966",
+    "referencia_vancouver": "Brock RS, Soares AM. Laminoplastia cervical: princípios, técnicas e evidências atuais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 955-966."
   },
   "78": {
     "numero": 78,
@@ -9055,7 +9440,12 @@
       "meta_descricao": "Técnica free-hand de tornillos pediculares en columna torácica, lumbar y sacra: puntos de entrada, palpación táctil, 5 paredes y seguridad.",
       "resumo_chamada": "Guía de la técnica free-hand para tornillos pediculares de T1 a S1, puntos de referencia anatómicos, protocolo Kim-Lenke en 5 pasos y confirmación neurofisiológica.",
       "slug": "tornillos-pediculares-free-hand-columna-toracolumbar"
-    }
+    },
+    "autores_vancouver": "Cavali PTM, Risso Neto MI",
+    "pagina_inicial": 967,
+    "pagina_final": 984,
+    "paginas": "967-984",
+    "referencia_vancouver": "Cavali PTM, Risso Neto MI. Parafusos pediculares na coluna torácica, lombar e lombossacra – técnica free-hand. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 967-984."
   },
   "79": {
     "numero": 79,
@@ -9149,7 +9539,12 @@
       "meta_descricao": "Técnica de fijación pélvica S2 Alar-Ilíaco (S2AI): puntos anatómicos, radioscopia en gota de lágrima, biomecánica y prevención de complicaciones.",
       "resumo_chamada": "Guía sobre fijación sacropélvica con tornillos S2 Alar-Ilíacos (S2AI), trayectoria alineada con barras, proyección en gota de lágrima y transferencia de cargas.",
       "slug": "fijacion-iliaca-tecnica-s2-alar-iliaco-s2ai"
-    }
+    },
+    "autores_vancouver": "Letaif OB, Alves DYYO, Rotondo IG",
+    "pagina_inicial": 985,
+    "pagina_final": 990,
+    "paginas": "985-990",
+    "referencia_vancouver": "Letaif OB, Alves DYYO, Rotondo IG. Fixação do ilíaco – técnica S2 alar ilíaco. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 985-990."
   },
   "80": {
     "numero": 80,
@@ -9244,7 +9639,12 @@
       "meta_descricao": "Fijación en la columna osteoporótica: trayectoria CBT, aumentación con cemento PMMA, tornillos expansibles y fijación pélvica S2AI.",
       "resumo_chamada": "Guía completa sobre fijación en columna osteoporótica, trayectorias corticales CBT, tornillos fenestrados cementados con PMMA, anclaje S2AI y prevención de PJK.",
       "slug": "tecnicas-de-fijacion-columna-osteoporotica"
-    }
+    },
+    "autores_vancouver": "Façanha Filho FAM, Façanha AS, Vasconcelos PHC",
+    "pagina_inicial": 991,
+    "pagina_final": 1000,
+    "paginas": "991-1000",
+    "referencia_vancouver": "Façanha Filho FAM, Façanha AS, Vasconcelos PHC. Técnicas de fixação na coluna osteoporótica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 991-1000."
   },
   "81": {
     "numero": 81,
@@ -9329,7 +9729,12 @@
       "meta_descricao": "Guía de osteotomías vertebrales: clasificación SRS-Schwab, técnicas SPO, Ponte, PSO, VCR, planificación y prevención de complicaciones.",
       "resumo_chamada": "Guía completa de osteotomías de columna vertebral, abordando la clasificación SRS-Schwab, técnicas SPO, Ponte, PSO y VCR, y medidas de seguridad neurofisiológica.",
       "slug": "osteotomias-de-la-columna-vertebral-tecnicas-indicaciones"
-    }
+    },
+    "autores_vancouver": "Santos RA, Herrero F",
+    "pagina_inicial": 1001,
+    "pagina_final": 1010,
+    "paginas": "1001-1010",
+    "referencia_vancouver": "Santos RA, Herrero F. Ostetomias da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1001-1010."
   },
   "82": {
     "numero": 82,
@@ -9424,7 +9829,12 @@
       "meta_descricao": "Aplicación del halo y tracción craneal: protocolos halo-gravitacionales, zonas anatómicas seguras, reducción de trauma cervical y prevención de complicaciones.",
       "resumo_chamada": "Guía sobre colocación del halo craneal, protocolos de tracción halo-gravitacional en deformidades graves, reducción en traumatismos cervicales y seguridad de los pines.",
       "slug": "aplicacion-halo-tracion-craneal-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Lima MC, Cavali PTM, Rossato AJ, Risso Neto MI",
+    "pagina_inicial": 1011,
+    "pagina_final": 1022,
+    "paginas": "1011-1022",
+    "referencia_vancouver": "Lima MC, Cavali PTM, Rossato AJ, Risso Neto MI. Aplicação do halo e tração craniana. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1011-1022."
   },
   "83": {
     "numero": 83,
@@ -9530,7 +9940,12 @@
       "meta_descricao": "Aprenda la técnica de yeso seriado EDF de Mehta para escoliosis de inicio precoz, sus indicaciones, aplicación práctica y prevención de lesiones cutáneas.",
       "resumo_chamada": "Guía completa sobre el corsé de yeso seriado EDF de Mehta en escoliosis de inicio precoz: planificación, paso a paso técnico, cuidado de la piel y preservación del crecimiento torácico.",
       "slug": "corse-yeso-escoliosis-inicio-precoz"
-    }
+    },
+    "autores_vancouver": "Andujar ALF, Grandini RS, Freu CM",
+    "pagina_inicial": 1023,
+    "pagina_final": 1032,
+    "paginas": "1023-1032",
+    "referencia_vancouver": "Andujar ALF, Grandini RS, Freu CM. Colete gessado para escoliose de início precoce. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1023-1032."
   },
   "84": {
     "numero": 84,
@@ -9634,7 +10049,12 @@
       "meta_descricao": "Guía técnica sobre infiltraciones y bloqueos en la columna. Aprenda indicaciones, anatomía, técnicas percutáneas y prevención de complicaciones.",
       "resumo_chamada": "Conozca los principios anatómicos, indicaciones clínicas y técnicas percutáneas para infiltraciones y bloqueos espinales guiados por fluoroscopia.",
       "slug": "infiltraciones-y-bloqueos-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Gotfryd AO, Garcia JTFC",
+    "pagina_inicial": 1033,
+    "pagina_final": 1042,
+    "paginas": "1033-1042",
+    "referencia_vancouver": "Gotfryd AO, Garcia JTFC. Infiltrações e bloqueios da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1033-1042."
   },
   "85": {
     "numero": 85,
@@ -9714,7 +10134,12 @@
       "meta_descricao": "Aprenda la técnica de barras de crecimiento tradicionales en escoliosis de inicio precoz, indicaciones, planificación, técnica quirúrgica y manejo de complicaciones.",
       "resumo_chamada": "Guía práctica sobre barras de crecimiento tradicionales en escoliosis de inicio precoz: indicaciones, técnica quirúrgica, prevención de complicaciones y conducta en la madurez esquelética.",
       "slug": "barras-crecimiento-tradicionales-escoliosis"
-    }
+    },
+    "autores_vancouver": "Fontes BPC, Rios JVLG",
+    "pagina_inicial": 1043,
+    "pagina_final": 1048,
+    "paginas": "1043-1048",
+    "referencia_vancouver": "Fontes BPC, Rios JVLG. Sistemas de crescimento guiado para deformidades da coluna: hastes de crescimento tradicionais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1043-1048."
   },
   "86": {
     "numero": 86,
@@ -9815,7 +10240,12 @@
       "meta_descricao": "Guía completa sobre fijación bipolar en escoliosis neuromuscular: indicaciones, técnica quirúrgica, conectores autodistractores y resultados clínicos.",
       "resumo_chamada": "Conozca la técnica de fijación bipolar para la escoliosis neuromuscular: abordaje modular sin fusión con tornillos iliosacros y conectores autodistractores que preserva el crecimiento y reduce complicaciones.",
       "slug": "tecnica-fijacion-bipolar-escoliosis-neuromuscular"
-    }
+    },
+    "autores_vancouver": "Rossato AJ, Lima MC, Cavali PTM",
+    "pagina_inicial": 1049,
+    "pagina_final": 1060,
+    "paginas": "1049-1060",
+    "referencia_vancouver": "Rossato AJ, Lima MC, Cavali PTM. Técnica de fixação bipolar da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1049-1060."
   },
   "87": {
     "numero": 87,
@@ -9914,7 +10344,12 @@
       "meta_descricao": "Análisis de técnicas quirúrgicas de corrección de deformidades vertebrales: desrotación, traslación, moldeado asimétrico y protocolos de neuromonitorización.",
       "resumo_chamada": "Guía especializada en maniobras de traslación, desrotación vertebral directa y estrategias de seguridad intraoperatoria para la corrección eficaz de deformidades complejas.",
       "slug": "tecnicas-correccion-quirurgica-deformidades-columna"
-    }
+    },
+    "autores_vancouver": "Sakai DS",
+    "pagina_inicial": 1061,
+    "pagina_final": 1064,
+    "paginas": "1061-1064",
+    "referencia_vancouver": "Sakai DS. Técnicas de correção cirúrgica das deformidades da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1061-1064."
   },
   "88": {
     "numero": 88,
@@ -10038,7 +10473,12 @@
       "meta_descricao": "Guía sobre vertebrectomía torácica y lumbar en neoplasias: indicaciones, sistema WBB, embolización, técnica de Gasbarrini y prevención de complicaciones.",
       "resumo_chamada": "Análisis exhaustivo de la vertebrectomía torácica y lumbar en neoplasias espinales, abordando estadificación WBB, vías quirúrgicas, reconstrucción circunferencial y técnica de Gasbarrini.",
       "slug": "vertebrectomia-toracica-lumbar-neoplasias"
-    }
+    },
+    "autores_vancouver": "Meirelles RSP, Simões CE, Azevedo GBL, Ramos PJS, Silva VTG, Gasbarrini A, Pereira OVA, Cini C",
+    "pagina_inicial": 1065,
+    "pagina_final": 1078,
+    "paginas": "1065-1078",
+    "referencia_vancouver": "Meirelles RSP, Simões CE, Azevedo GBL, Ramos PJS, Silva VTG, Gasbarrini A, Pereira OVA, Cini C. Vertebrectomia torácica e lombar nas neoplasias. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1065-1078."
   },
   "89": {
     "numero": 89,
@@ -10134,7 +10574,12 @@
       "meta_descricao": "Guía completa sobre sacrectomía oncológica: indicaciones, abordajes quirúrgicos, reconstrucción espinopélvica instrumentada, complicaciones e innovaciones.",
       "resumo_chamada": "Síntesis detallada sobre sacrectomía en tumores sacros y pélvicos, abordando vías quirúrgicas, reconstrucción espinopélvica, prevención de complicaciones y márgenes oncológicos R0.",
       "slug": "sacrectomia-oncologica-tecnicas-reconstruccion-espinopelvica"
-    }
+    },
+    "autores_vancouver": "Simões CE, Pereira OVA",
+    "pagina_inicial": 1079,
+    "pagina_final": 1088,
+    "paginas": "1079-1088",
+    "referencia_vancouver": "Simões CE, Pereira OVA. Sacrectomia. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1079-1088."
   },
   "90": {
     "numero": 90,
@@ -10250,7 +10695,12 @@
       "meta_descricao": "Cirugía de tumores cervicales complejos: abordajes ventrales, manejo vascular, espondilectomía total, reconstrucción cervical y complicaciones.",
       "resumo_chamada": "Principios para planificar abordajes, resección oncológica, manejo de la arteria vertebral y reconstrucción en cirugías complejas de tumores cervicales.",
       "slug": "cirugia-compleja-tumores-cervicales"
-    }
+    },
+    "autores_vancouver": "Narazaki DK, Tipan SAN, Façanha AS",
+    "pagina_inicial": 1089,
+    "pagina_final": 1104,
+    "paginas": "1089-1104",
+    "referencia_vancouver": "Narazaki DK, Tipan SAN, Façanha AS. Cirurgia complexa dos tumores cervicais. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1089-1104."
   },
   "91": {
     "numero": 91,
@@ -10356,7 +10806,12 @@
       "meta_descricao": "Endoscopia, ablación, vertebroplastia, SBRT, cirugía de separación e instrumentación percutánea en el manejo multimodal de tumores de la columna.",
       "resumo_chamada": "Integración de técnicas mínimamente invasivas para descompresión, estabilización, control del dolor y terapia oncológica adyuvante en tumores espinales.",
       "slug": "tecnicas-minimamente-invasivas-tumores-espinales"
-    }
+    },
+    "autores_vancouver": "Mudo ML, Tatsui CE",
+    "pagina_inicial": 1105,
+    "pagina_final": 1126,
+    "paginas": "1105-1126",
+    "referencia_vancouver": "Mudo ML, Tatsui CE. Técnicas minimamente invasivas para tratamento e adjuvância nos tumores da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1105-1126."
   },
   "92": {
     "numero": 92,
@@ -10434,7 +10889,12 @@
       "meta_descricao": "Guía técnica sobre sistemas de navegación 3D y robótica en cirugía de columna: historia, indicaciones, flujo de trabajo, precisión y prevención de errores.",
       "resumo_chamada": "Análisis completo de la navegación 3D y la robótica en cirugía espinal: flujos quirúrgicos, ganancias de precisión, prevención de complicaciones y limitaciones técnicas.",
       "slug": "navegacion-y-robotica-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Defino HLA, Carneiro VM, Defino MP",
+    "pagina_inicial": 1127,
+    "pagina_final": 1136,
+    "paginas": "1127-1136",
+    "referencia_vancouver": "Defino HLA, Carneiro VM, Defino MP. Navegação e robótica. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1127-1136."
   },
   "93": {
     "numero": 93,
@@ -10528,7 +10988,12 @@
       "meta_descricao": "Comprenda factores de riesgo, diagnóstico, microbiología, dinámica de biopelícula, retención vs. retiro de implantes y prevención de infecciones en cirugía de columna.",
       "resumo_chamada": "Reconocimiento, diagnóstico, prevención y principios de tratamiento de las infecciones posoperatorias de columna, con enfoque en biopelícula y manejo de implantes.",
       "slug": "infecciones-posoperatorias-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Volpi MS, Ancheschi BC, Paula SR",
+    "pagina_inicial": 1137,
+    "pagina_final": 1144,
+    "paginas": "1137-1144",
+    "referencia_vancouver": "Volpi MS, Ancheschi BC, Paula SR. Infecções pós-operatórias. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1137-1144."
   },
   "94": {
     "numero": 94,
@@ -10618,7 +11083,12 @@
       "meta_descricao": "Diagnóstico, prevención y manejo de desgarros durales, aracnoiditis adhesiva y fibrosis epidural posoperatoria en cirugía de columna.",
       "resumo_chamada": "Tres complicaciones espinales distintas que requieren reconocimiento clínico-radiológico temprano, cierre dural hermético y abordajes terapéuticos individualizados.",
       "slug": "desgarro-dural-aracnoiditis-fibrosis-epidural"
-    }
+    },
+    "autores_vancouver": "Campos WK, Amancio Filho W",
+    "pagina_inicial": 1145,
+    "pagina_final": 1150,
+    "paginas": "1145-1150",
+    "referencia_vancouver": "Campos WK, Amancio Filho W. Lesão dural, aracnoidite e fibrose pós-operatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1145-1150."
   },
   "95": {
     "numero": 95,
@@ -10706,7 +11176,12 @@
       "meta_descricao": "Cómo interpretar y manejar la pérdida de señales en la monitorización neurofisiológica intraoperatoria en cirugía de columna: PEM, PESS, PAM y listas de rescate.",
       "resumo_chamada": "Guía práctica para interpretar alertas neurofisiológicas, distinguir causas sistémicas de mecánicas y ejecutar protocolos de rescate durante la cirugía de columna.",
       "slug": "caida-de-senales-neuromonitorizacion-intraoperatoria"
-    }
+    },
+    "autores_vancouver": "Rodrigues LMR, Pajanoti GP, Oliveira LSR",
+    "pagina_inicial": 1151,
+    "pagina_final": 1156,
+    "paginas": "1151-1156",
+    "referencia_vancouver": "Rodrigues LMR, Pajanoti GP, Oliveira LSR. Queda das respostas na monitoração neurofisiológica intraoperatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1151-1156."
   },
   "96": {
     "numero": 96,
@@ -10796,7 +11271,12 @@
       "meta_descricao": "Comprenda la enfermedad frente a la degeneración del segmento adyacente tras fusión espinal: biomecánica, factores de riesgo, diagnóstico y estrategias de tratamiento.",
       "resumo_chamada": "Cómo diferenciar la degeneración radiográfica de la enfermedad sintomática del nivel adyacente, integrando biomecánica y alineación sagital en las decisiones clínicas.",
       "slug": "enfermedad-nivel-adyacente-artrodesis-columna"
-    }
+    },
+    "autores_vancouver": "Cardoso IM, Jacob Junior C",
+    "pagina_inicial": 1157,
+    "pagina_final": 1162,
+    "paginas": "1157-1162",
+    "referencia_vancouver": "Cardoso IM, Jacob Junior C. Doença do nível adjacente. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1157-1162."
   },
   "97": {
     "numero": 97,
@@ -10887,7 +11367,12 @@
       "meta_descricao": "Mecanismos, diagnóstico, optimización metabólica, construcciones con múltiples barras y principios de revisión para seudoartrosis y falla de implantes tras fusión espinal.",
       "resumo_chamada": "Integración de biología ósea, biomecánica, alineación sagital e instrumentación con múltiples barras para prevenir y tratar la seudoartrosis y el colapso de montajes espinales.",
       "slug": "seudoartrosis-falla-mecanica-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Astur Neto N, Monteiro FNS, Prates RC",
+    "pagina_inicial": 1163,
+    "pagina_final": 1174,
+    "paginas": "1163-1174",
+    "referencia_vancouver": "Astur Neto N, Monteiro FNS, Prates RC. Pseudoartrose e falha mecânica da instrumentação na cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1163-1174."
   },
   "98": {
     "numero": 98,
@@ -10979,7 +11464,12 @@
       "meta_descricao": "Conozca las complicaciones vasculares, viscerales, neurológicas y urogenitales asociadas a los abordajes lumbares anteriores y retroperitoneales.",
       "resumo_chamada": "Anatomía, prevención, reconocimiento y manejo de las principales complicaciones de la cirugía lumbar anterior retroperitoneal.",
       "slug": "complicaciones-abordaje-anterior-columna"
-    }
+    },
+    "autores_vancouver": "Pereira Filho ARD",
+    "pagina_inicial": 1175,
+    "pagina_final": 1188,
+    "paginas": "1175-1188",
+    "referencia_vancouver": "Pereira Filho ARD. Complicações da abordagem anterior da coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1175-1188."
   },
   "99": {
     "numero": 99,
@@ -11074,7 +11564,12 @@
       "meta_descricao": "Reconocimiento, diagnóstico, prevención y manejo de urgencia de lesiones neurológicas perioperatorias en cirugía espinal: síndrome del cordón blanco, parálisis de C5 y hematomas.",
       "resumo_chamada": "Anatomía, mecanismos de lesión, neuromonitorización, neuroimagen de urgencia y principios terapéuticos para complicaciones neurológicas perioperatorias.",
       "slug": "lesion-neurologica-perioperatoria-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Ferreira MAC, Asano LYJ, Januario AMS",
+    "pagina_inicial": 1189,
+    "pagina_final": 1204,
+    "paginas": "1189-1204",
+    "referencia_vancouver": "Ferreira MAC, Asano LYJ, Januario AMS. Lesão neurológica perioperatória. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1189-1204."
   },
   "100": {
     "numero": 100,
@@ -11166,7 +11661,12 @@
       "meta_descricao": "Comprenda las causas del síndrome de cirugía fallida, protocolos de imagen, selección de pacientes y cuándo indicar revisión quirúrgica o neuromodulación.",
       "resumo_chamada": "Diagnóstico, selección de pacientes y estudio sistemático del dolor persistente o recurrente tras cirugía lumbar, estableciendo criterios claros de revisión.",
       "slug": "sindrome-cirugia-columna-fallida"
-    }
+    },
+    "autores_vancouver": "Hennemann SA, Abreu M",
+    "pagina_inicial": 1205,
+    "pagina_final": 1216,
+    "paginas": "1205-1216",
+    "referencia_vancouver": "Hennemann SA, Abreu M. Síndrome da falha da cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1205-1216."
   },
   "101": {
     "numero": 101,
@@ -11258,7 +11758,12 @@
       "meta_descricao": "Anatomía, biomecánica, trauma, invaginación basilar, artritis reumatoide e inestabilidad de la unión craneovertebral: imagen multimodal y cirugía.",
       "resumo_chamada": "Anatomía, estabilidad, trauma y afecciones adquiridas de la unión craneovertebral, con enfoque en riesgo neurovascular, imagen y preservación del movimiento.",
       "slug": "union-craneovertebral-trauma-anomalias"
-    }
+    },
+    "autores_vancouver": "Carelli LE, Barros AGC, Bianconi AM",
+    "pagina_inicial": 1217,
+    "pagina_final": 1232,
+    "paginas": "1217-1232",
+    "referencia_vancouver": "Carelli LE, Barros AGC, Bianconi AM. Junção craniovertebral: anormalidades congênitas, adquiridas e trauma. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1217-1232."
   },
   "102": {
     "numero": 102,
@@ -11345,7 +11850,12 @@
       "meta_descricao": "Guía completa sobre neurobiología, fenotipos (nociceptivo, neuropático, nociplástico), farmacoterapia y manejo intervencionista del dolor espinal.",
       "resumo_chamada": "Neurobiología, diferenciación clínica, farmacoterapia multimodal y tratamientos intervencionistas para el dolor agudo y crónico de la columna vertebral.",
       "slug": "manejo-dolor-agudo-cronico-columna"
-    }
+    },
+    "autores_vancouver": "Risso RC, Braghiroli KS",
+    "pagina_inicial": 1233,
+    "pagina_final": 1248,
+    "paginas": "1233-1248",
+    "referencia_vancouver": "Risso RC, Braghiroli KS. Manejo da dor aguda e crônica na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1233-1248."
   },
   "103": {
     "numero": 103,
@@ -11431,7 +11941,12 @@
       "meta_descricao": "Analgesia multimodal basada en la evidencia, protocolos ERAS, bloqueos interfasciales y estrategias de ahorro de opioides en cirugía de columna.",
       "resumo_chamada": "Estrategias para el control del dolor posoperatorio en cirugía espinal: protocolos ERAS, analgesia preventiva, bloqueos regionales y farmacoterapia multimodal.",
       "slug": "manejo-dolor-posoperatorio-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Abrão J, Zuazo SM",
+    "pagina_inicial": 1249,
+    "pagina_final": 1260,
+    "paginas": "1249-1260",
+    "referencia_vancouver": "Abrão J, Zuazo SM. Abordagens para o tratamento da dor pós-operatória em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1249-1260."
   },
   "104": {
     "numero": 104,
@@ -11517,7 +12032,12 @@
       "meta_descricao": "Consideraciones anestésicas clave en cirugía de columna: decúbito prono, manejo de vía aérea, TIVA para neuromonitorización y ahorro de sangre.",
       "resumo_chamada": "Manejo anestésico para cirugía espinal: vía aérea, decúbito prono, protocolos TIVA para neuromonitorización y prevención de neuropatía óptica isquémica.",
       "slug": "anestesia-para-cirugia-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Malito ML",
+    "pagina_inicial": 1261,
+    "pagina_final": 1272,
+    "paginas": "1261-1272",
+    "referencia_vancouver": "Malito ML. Anestesia para cirurgia da coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1261-1272."
   },
   "105": {
     "numero": 105,
@@ -11608,7 +12128,12 @@
       "meta_descricao": "Estrategias para el control del sangrado intraoperatorio en cirugía espinal: Patient Blood Management, ácido tranexámico, posición prona y pruebas viscoelásticas.",
       "resumo_chamada": "Gestión proactiva de la sangre del paciente (PBM), hemostasia quirúrgica, terapia antifibrinolítica y transfusión guiada por pruebas viscoelásticas.",
       "slug": "control-sangrado-intraoperatorio-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Paula EV, Cralcev C, Isaias GAB",
+    "pagina_inicial": 1273,
+    "pagina_final": 1282,
+    "paginas": "1273-1282",
+    "referencia_vancouver": "Paula EV, Cralcev C, Isaias GAB. Controle do sangramento intraoperatório. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1273-1282."
   },
   "106": {
     "numero": 106,
@@ -11699,7 +12224,12 @@
       "meta_descricao": "Principios biomecánicos, indicaciones, evidencia y limitaciones de las órtesis cervicales, toracolombares y lumbosacras en trauma, escoliosis y cirugía.",
       "resumo_chamada": "Fundamentos biomecánicos, indicaciones clínicas y limitaciones de las órtesis espinales en traumatismos, deformidades, osteoporosis y cuidados posoperatorios.",
       "slug": "uso-ortesis-columna-vertebral"
-    }
+    },
+    "autores_vancouver": "Zylbersztejn S, Antoneli PHL, Gallina D",
+    "pagina_inicial": 1283,
+    "pagina_final": 1292,
+    "paginas": "1283-1292",
+    "referencia_vancouver": "Zylbersztejn S, Antoneli PHL, Gallina D. Uso de órteses na coluna vertebral. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1283-1292."
   },
   "107": {
     "numero": 107,
@@ -11790,7 +12320,12 @@
       "meta_descricao": "Estructura sistemática para la seguridad del paciente en cirugía de columna: cultura de seguridad, listas de verificación, prevención de nivel incorrecto y gestión de riesgos.",
       "resumo_chamada": "Principios sistémicos para evitar errores quirúrgicos, asegurar la verificación del nivel correcto y fomentar una cultura de seguridad multidisciplinaria en cirugía espinal.",
       "slug": "seguridad-paciente-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Zuiani GR, Risso Neto MI",
+    "pagina_inicial": 1293,
+    "pagina_final": 1302,
+    "paginas": "1293-1302",
+    "referencia_vancouver": "Zuiani GR, Risso Neto MI. Segurança em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1293-1302."
   },
   "108": {
     "numero": 108,
@@ -11879,7 +12414,12 @@
       "meta_descricao": "Evaluación y manejo de la fragilidad, sarcopenia y osteosarcopenia en el paciente anciano candidato a cirugía de columna: estratificación y optimización.",
       "resumo_chamada": "Detección preoperatoria de fragilidad, sarcopenia y osteosarcopenia para estratificar el riesgo, guiar la prehabilitación y optimizar los resultados en cirugía espinal.",
       "slug": "fragilidad-sarcopenia-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Almada Filho CM, Kusabara R",
+    "pagina_inicial": 1303,
+    "pagina_final": 1310,
+    "paginas": "1303-1310",
+    "referencia_vancouver": "Almada Filho CM, Kusabara R. Manejo do paciente frágil com sarcopenia em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1303-1310."
   },
   "109": {
     "numero": 109,
@@ -11976,6 +12516,11 @@
       "meta_descricao": "Cómo utilizar ODI, NDI, RMDQ, SF-36, MCID y PASS para evaluar función, calidad de vida y satisfacción del paciente tras cirugía de columna.",
       "resumo_chamada": "PROMs estandarizados, psicometría y umbrales clínicos (MCID, PASS) para medir discapacidad, calidad de vida y mejoría percibida tras tratamiento espinal.",
       "slug": "evaluacion-resultados-cirugia-columna"
-    }
+    },
+    "autores_vancouver": "Nogueira PA, Farias SAB, Joaquim AF",
+    "pagina_inicial": 1311,
+    "pagina_final": 1316,
+    "paginas": "1311-1316",
+    "referencia_vancouver": "Nogueira PA, Farias SAB, Joaquim AF. Avaliação dos resultados em cirurgia de coluna. In: Pudles E, Defino H, Risso M, editores. Tratado de cirurgia da coluna vertebral. 1.ª ed. Rio de Janeiro: Dilivros Editora; 2026. p. 1311-1316."
   }
 }

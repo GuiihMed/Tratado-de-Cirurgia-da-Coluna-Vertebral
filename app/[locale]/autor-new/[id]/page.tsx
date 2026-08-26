@@ -315,7 +315,7 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
                 </p>
 
                 {author.orcid && (
-                  <div style={{ margin: "0 0 16px", display: "inline-block" }}>
+                  <div style={{ margin: "0 10px 16px 0", display: "inline-block" }}>
                     <a
                       href={
                         author.orcid_url ||
@@ -347,6 +347,28 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
                       </svg>
                       <span>ORCID: {author.orcid}</span>
                     </a>
+                  </div>
+                )}
+
+                {author.nome_vancouver && (
+                  <div style={{ margin: "0 0 16px", display: "inline-block" }}>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        background: "rgba(56, 189, 248, 0.15)",
+                        border: "1px solid rgba(56, 189, 248, 0.4)",
+                        color: "#38bdf8",
+                        padding: "6px 14px",
+                        borderRadius: 10,
+                        fontSize: 13.5,
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span>📑 {locale === "en" ? "Vancouver Citation:" : locale === "es" ? "Cita Vancouver:" : "Citação Vancouver:"}</span>
+                      <strong style={{ color: "#ffffff" }}>{author.nome_vancouver}</strong>
+                    </span>
                   </div>
                 )}
               </div>

@@ -740,11 +740,18 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
                     {/* Authors Box */}
                     <div className="px-5 py-3 bg-black/20 border-b border-white/10 min-h-[68px]">
-                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
-                        <Users size={13} className="text-slate-400" />
-                        <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center justify-between gap-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <Users size={13} className="text-slate-400" />
+                          <span>{locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores"}</span>
+                        </div>
+                        {chap.pagina_inicial && chap.pagina_final && (
+                          <span className="text-[10.5px] font-bold text-slate-300 bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                            📖 {locale === "en" ? "p. " : locale === "es" ? "p. " : "p. "}{chap.pagina_inicial}–{chap.pagina_final}
+                          </span>
+                        )}
                       </div>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 mb-2">
                         {chap.autores.map((autor, aIdx) => (
                           <span
                             key={aIdx}
@@ -755,7 +762,34 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                           </span>
                         ))}
                       </div>
+                      {chap.autores_vancouver && (
+                        <div className="text-[11px] text-sky-300 bg-sky-950/40 px-2 py-1 rounded border border-sky-500/20 font-medium">
+                          <strong>Vancouver:</strong> {chap.autores_vancouver}
+                        </div>
+                      )}
                     </div>
+
+                    {/* Official Chapter Vancouver Reference Card */}
+                    {chap.referencia_vancouver && (
+                      <div className="px-5 py-3 bg-red-950/30 border-b border-red-500/20">
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <span className="text-[10.5px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1">
+                            <span>📑</span>
+                            <span>{locale === "en" ? "Official Chapter Citation" : locale === "es" ? "Cita Oficial del Capítulo" : "Citação Oficial do Capítulo"}</span>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => copyToClipboard(chap.referencia_vancouver || "", `van-card-new-${chap.numero}`)}
+                            className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30 transition-colors cursor-pointer"
+                          >
+                            {copiedId === `van-card-new-${chap.numero}` ? "✓ Copiado" : "Copiar"}
+                          </button>
+                        </div>
+                        <p className="text-[11.5px] text-slate-300 leading-relaxed font-mono select-all">
+                          {chap.referencia_vancouver}
+                        </p>
+                      </div>
+                    )}
 
                     {/* References List */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
@@ -768,7 +802,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                 ? `${chap.referencias.length} Citations`
                                 : locale === "es"
                                 ? `${chap.referencias.length} Citas`
-                                : `${chap.referencias.length} Referências`}
+                                : `${chap.referencias.length} Referências Citadas`}
                             </span>
                           </span>
                         </div>
@@ -841,17 +875,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                     onClick={() => copyToClipboard(ref.text, refId)}
                                     className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer"
                                   >
-                                    {isCopied ? (
-                                      <>
-                                        <Check size={12} className="text-emerald-400" />
-                                        <span className="text-emerald-400">Copiado</span>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <Copy size={12} />
-                                        <span>Copiar</span>
-                                      </>
-                                    )}
+                                    <span>{isCopied ? "✓ Copiado" : "Copiar"}</span>
                                   </button>
                                 </div>
                               </div>
@@ -863,7 +887,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                           <button
                             type="button"
                             onClick={() => toggleExpandCard(chap.numero)}
-                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-bold transition-colors cursor-pointer border border-white/10"
+                            className="mt-3 w-full py-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 text-xs font-bold transition-colors cursor-pointer border border-white/10"
                           >
                             {isExpanded
                               ? (locale === "en" ? "▲ Show less" : locale === "es" ? "▲ Mostrar menos" : "▲ Mostrar menos")
@@ -876,7 +900,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                         )}
                       </div>
 
-                      {/* Card Bottom CTA */}
+                      {/* Card Bottom Link */}
                       <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
                         <Link
                           href={`/${locale}/capitulo-new/${chap.numero}`}
@@ -897,12 +921,12 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
           {filteredChapters.length > 0 && viewMode === "table" && (
             <div
               style={{
-                background: "rgba(0, 20, 50, 0.8)",
-                borderRadius: 18,
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+                background: "rgba(0, 16, 40, 0.7)",
+                borderRadius: 16,
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
                 overflow: "hidden",
-                backdropFilter: "blur(16px)",
+                backdropFilter: "blur(12px)",
               }}
             >
               {/* 3-Column Table Header */}
@@ -912,13 +936,13 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                   gridTemplateColumns: "360px 280px 1fr",
                   gap: 24,
                   padding: "16px 24px",
-                  background: "#001026",
+                  background: "rgba(0, 8, 24, 0.9)",
                   color: "#ffffff",
                   fontSize: 13,
                   fontWeight: 700,
                   letterSpacing: "0.04em",
                   textTransform: "uppercase",
-                  borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
                 className="hidden lg:grid"
               >
@@ -953,7 +977,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       >
                         {/* Coluna 1: CAPÍTULO & SEÇÃO */}
                         <div>
-                          <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
                             <span
                               className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase ${
                                 chap.secao_id <= 5
@@ -967,6 +991,11 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                             <span className="text-xs font-bold text-red-400 uppercase">
                               {locale === "en" ? `Chapter ${chap.numero}` : locale === "es" ? `Capítulo ${chap.numero}` : `Capítulo ${chap.numero}`}
                             </span>
+                            {chap.pagina_inicial && chap.pagina_final && (
+                              <span className="text-[11px] font-bold text-slate-300 bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                                p. {chap.pagina_inicial}–{chap.pagina_final}
+                              </span>
+                            )}
                           </div>
 
                           <h2 style={{ fontSize: 16, fontWeight: 700, color: "#ffffff", margin: "0 0 8px", lineHeight: 1.35 }}>
@@ -1024,11 +1053,60 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                 <span>{autor.nome}</span>
                               </div>
                             ))}
+
+                            {chap.autores_vancouver && (
+                              <div style={{ marginTop: 6, padding: "6px 10px", borderRadius: 8, background: "rgba(56, 189, 248, 0.1)", border: "1px solid rgba(56, 189, 248, 0.25)", fontSize: 11.5, color: "#38bdf8", lineHeight: 1.4 }}>
+                                <strong style={{ display: "block", fontSize: 10.5, textTransform: "uppercase", letterSpacing: "0.04em", color: "#94a3b8", marginBottom: 2 }}>
+                                  {locale === "en" ? "Vancouver Author Names" : locale === "es" ? "Autores en Vancouver" : "Nomes em Vancouver"}
+                                </strong>
+                                <span>{chap.autores_vancouver}</span>
+                              </div>
+                            )}
                           </div>
                         </div>
 
                         {/* Coluna 3: REFERÊNCIAS BIBLIOGRÁFICAS */}
                         <div>
+                          {/* Official Chapter Reference Box */}
+                          {chap.referencia_vancouver && (
+                            <div
+                              style={{
+                                marginBottom: 14,
+                                padding: "12px 14px",
+                                borderRadius: 10,
+                                background: "rgba(245, 34, 56, 0.15)",
+                                border: "1px solid rgba(245, 34, 56, 0.3)",
+                                fontSize: 12.5,
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 6 }}>
+                                <strong style={{ color: "#fca5a5", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                                  📑 {locale === "en" ? "Chapter Vancouver Reference" : locale === "es" ? "Referencia Vancouver del Capítulo" : "Referência Vancouver do Capítulo"}
+                                </strong>
+                                <button
+                                  type="button"
+                                  onClick={() => copyToClipboard(chap.referencia_vancouver || "", `table-van-new-${chap.numero}`)}
+                                  style={{
+                                    border: "1px solid rgba(245, 34, 56, 0.4)",
+                                    background: "rgba(245, 34, 56, 0.25)",
+                                    color: "#ffffff",
+                                    fontSize: 11,
+                                    fontWeight: 700,
+                                    padding: "3px 8px",
+                                    borderRadius: 6,
+                                    cursor: "pointer",
+                                  }}
+                                >
+                                  {copiedId === `table-van-new-${chap.numero}` ? "✓ Copiado" : "Copiar Citação"}
+                                </button>
+                              </div>
+                              <p style={{ margin: 0, color: "#f1f5f9", fontFamily: "ui-monospace, monospace", fontSize: 12 }}>
+                                {chap.referencia_vancouver}
+                              </p>
+                            </div>
+                          )}
+
                           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             {chap.referencias.map((ref, rIdx) => {
                               const refId = `new-table-ref-${chap.numero}-${rIdx}`;

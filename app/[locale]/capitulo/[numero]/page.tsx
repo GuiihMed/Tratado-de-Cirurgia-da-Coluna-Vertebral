@@ -10,6 +10,8 @@ import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import { getFullChapterByNumber } from "@/lib/data/chapters-content";
+import VancouverCitationCard from "@/components/VancouverCitationCard";
+import { getVancouverData } from "@/lib/data/vancouver";
 
 interface CapituloPageProps {
   params: Promise<{
@@ -154,6 +156,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
   const isCap8 = num === 8;
   const fullChapter = getFullChapterByNumber(num, locale);
   const chapterAuthors = getAuthorsByChapter(num);
+  const vancouverData = getVancouverData(num);
 
   // Title in active locale
   const title =
@@ -376,6 +379,20 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     <span>{authorsText}</span>
                   )}
                 </div>
+
+                {/* Vancouver Author Citation Pill & Page Range */}
+                {vancouverData?.autores_vancouver && (
+                  <div className="flex flex-wrap items-center gap-2 mb-5 text-xs">
+                    <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/20 text-sky-200 font-medium">
+                      <strong className="text-white">Vancouver:</strong> {vancouverData.autores_vancouver}
+                    </span>
+                    {vancouverData.paginas && (
+                      <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/20 text-slate-200 font-medium">
+                        📖 {locale === "en" ? "Pages: " : locale === "es" ? "Págs: " : "Páginas: "} {vancouverData.paginas}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {/* Print Notice Box */}
                 <div
@@ -698,6 +715,26 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     })}
                   </div>
                 </article>
+              )}
+
+              {/* CARD: COMO CITAR ESTE CAPÍTULO (VANCOUVER) */}
+              {(vancouverData?.referencia_vancouver_pt || fullChapter?.referencia_vancouver) && (
+                <VancouverCitationCard
+                  numero={num}
+                  referenciaVancouver={
+                    (locale === "en"
+                      ? vancouverData?.referencia_vancouver_en
+                      : locale === "es"
+                      ? vancouverData?.referencia_vancouver_es
+                      : vancouverData?.referencia_vancouver_pt) ||
+                    fullChapter?.referencia_vancouver ||
+                    ""
+                  }
+                  autoresVancouver={vancouverData?.autores_vancouver || fullChapter?.autores_vancouver}
+                  paginas={vancouverData?.paginas || fullChapter?.paginas}
+                  locale={locale}
+                  variant="light"
+                />
               )}
 
               {/* CARD 5: REFERÊNCIAS BIBLIOGRÁFICAS */}

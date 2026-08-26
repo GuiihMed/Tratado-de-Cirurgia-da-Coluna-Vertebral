@@ -221,7 +221,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
 
                 {/* ORCID badge if present */}
                 {author.orcid && (
-                  <div style={{ margin: "0 0 14px", display: "inline-block" }}>
+                  <div style={{ margin: "0 8px 14px 0", display: "inline-block" }}>
                     <a
                       href={author.orcid_url || `https://orcid.org/${author.orcid}`}
                       target="_blank"
@@ -247,6 +247,29 @@ export default async function AutorPage({ params }: AutorPageProps) {
                       <span>ORCID: {author.orcid}</span>
                       <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
                     </a>
+                  </div>
+                )}
+
+                {/* Vancouver Citation Name */}
+                {author.nome_vancouver && (
+                  <div style={{ margin: "0 0 14px", display: "inline-block" }}>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        background: "rgba(56, 189, 248, 0.15)",
+                        border: "1px solid rgba(56, 189, 248, 0.4)",
+                        color: "#38bdf8",
+                        padding: "5px 12px",
+                        borderRadius: 8,
+                        fontSize: 13,
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span>📑 {locale === "en" ? "Vancouver Citation:" : locale === "es" ? "Cita Vancouver:" : "Citação Vancouver:"}</span>
+                      <strong style={{ color: "#ffffff" }}>{author.nome_vancouver}</strong>
+                    </span>
                   </div>
                 )}
 

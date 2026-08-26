@@ -26,6 +26,11 @@ export interface FullChapterContent {
   titulo: string;
   secao: string;
   autores: string[];
+  autores_vancouver?: string;
+  pagina_inicial?: number;
+  pagina_final?: number;
+  paginas?: string;
+  referencia_vancouver?: string;
   contexto: string;
   objetivo: string;
   conteudo_principal: ChapterSubtopic[];
