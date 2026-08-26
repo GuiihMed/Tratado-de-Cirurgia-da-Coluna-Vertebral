@@ -437,6 +437,16 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
                 <p style={{ margin: 0, fontSize: 14.5, color: "#475569", lineHeight: 1.65 }}>
                   {APRESENTACAO_DATA.sobreAObra}
                 </p>
+                <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid #f1f5f9", display: "flex", flexDirection: "column", gap: 6, fontSize: 14, color: "#334155" }}>
+                  <div>
+                    <strong>Editores na ficha catalográfica:</strong>{" "}
+                    <span>Edson Pudles; Helton Defino; Marcelo Risso</span>
+                  </div>
+                  <div>
+                    <strong>Editores na referência:</strong>{" "}
+                    <span>Pudles E, Defino H, Risso M</span>
+                  </div>
+                </div>
               </div>
             </div>
 
