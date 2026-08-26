@@ -169,128 +169,240 @@ export default async function AutorPage({ params }: AutorPageProps) {
               <span style={{ color: "#ffffff", fontWeight: 700 }}>{author.nome}</span>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
-              {/* Foto do Autor */}
-              <div
-                style={{
-                  width: 200,
-                  height: 230,
-                  borderRadius: 16,
-                  overflow: "hidden",
-                  background: "#001738",
-                  border: "3px solid rgba(255, 255, 255, 0.3)",
-                  boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
-                  margin: "0 auto",
-                  position: "relative",
-                }}
-              >
-                <img
-                  src={author.foto_url || "/assets/avatar-placeholder.png"}
-                  alt={author.nome}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-                />
-              </div>
+            {(() => {
+              const hasRealPhoto = Boolean(
+                author.foto_url &&
+                !author.foto_url.includes("avatar-placeholder") &&
+                author.foto_url.trim() !== ""
+              );
 
-              {/* Informações Principais */}
-              <div>
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: "rgba(245, 34, 56, 0.25)",
-                    border: "1px solid rgba(245, 34, 56, 0.5)",
-                    padding: "4px 14px",
-                    borderRadius: 20,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: "#ff808f",
-                    marginBottom: 12,
-                  }}
-                >
-                  <span>{author.cargo}</span>
-                </div>
-
-                <h1 style={{ fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
-                  {author.nome}
-                </h1>
-
-                <p style={{ fontSize: 16, color: "#e2e8f0", margin: "0 0 10px", fontWeight: 600 }}>
-                  🏛️ {author.instituicao}
-                </p>
-
-                {/* ORCID badge if present */}
-                {author.orcid && (
-                  <div style={{ margin: "0 8px 14px 0", display: "inline-block" }}>
-                    <a
-                      href={author.orcid_url || `https://orcid.org/${author.orcid}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+              if (hasRealPhoto) {
+                return (
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))", gap: 32, alignItems: "center" }}>
+                    {/* Foto do Autor */}
+                    <div
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 8,
-                        background: "rgba(166, 206, 57, 0.15)",
-                        border: "1px solid rgba(166, 206, 57, 0.4)",
-                        color: "#a6ce39",
-                        padding: "5px 12px",
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        textDecoration: "none",
+                        width: 200,
+                        height: 230,
+                        borderRadius: 16,
+                        overflow: "hidden",
+                        background: "#001738",
+                        border: "3px solid rgba(255, 255, 255, 0.3)",
+                        boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
+                        margin: "0 auto",
+                        position: "relative",
                       }}
                     >
-                      <svg width="16" height="16" viewBox="0 0 256 256" fill="#a6ce39">
-                        <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
-                        <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
-                      </svg>
-                      <span>ORCID: {author.orcid}</span>
-                      <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
-                    </a>
-                  </div>
-                )}
+                      <img
+                        src={author.foto_url}
+                        alt={author.nome}
+                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                      />
+                    </div>
 
-                {/* Vancouver Citation Name */}
-                {author.nome_vancouver && (
-                  <div style={{ margin: "0 0 14px", display: "inline-block" }}>
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        background: "rgba(56, 189, 248, 0.15)",
-                        border: "1px solid rgba(56, 189, 248, 0.4)",
-                        color: "#38bdf8",
-                        padding: "5px 12px",
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: 600,
-                      }}
-                    >
-                      <span>📑 {locale === "en" ? "Vancouver Citation:" : locale === "es" ? "Cita Vancouver:" : "Citação Vancouver:"}</span>
-                      <strong style={{ color: "#ffffff" }}>{author.nome_vancouver}</strong>
-                    </span>
-                  </div>
-                )}
+                    {/* Informações Principais */}
+                    <div>
+                      <div
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 8,
+                          background: "rgba(245, 34, 56, 0.25)",
+                          border: "1px solid rgba(245, 34, 56, 0.5)",
+                          padding: "4px 14px",
+                          borderRadius: 20,
+                          fontSize: 12,
+                          fontWeight: 700,
+                          color: "#ff808f",
+                          marginBottom: 12,
+                        }}
+                      >
+                        <span>{author.cargo}</span>
+                      </div>
 
-                <div>
+                      <h1 style={{ fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
+                        {author.nome}
+                      </h1>
+
+                      <p style={{ fontSize: 16, color: "#e2e8f0", margin: "0 0 10px", fontWeight: 600 }}>
+                        🏛️ {author.instituicao}
+                      </p>
+
+                      {/* Badges / ORCID & Vancouver */}
+                      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px 12px", marginBottom: 14 }}>
+                        {author.orcid && (
+                          <a
+                            href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 8,
+                              background: "rgba(166, 206, 57, 0.15)",
+                              border: "1px solid rgba(166, 206, 57, 0.4)",
+                              color: "#a6ce39",
+                              padding: "5px 12px",
+                              borderRadius: 8,
+                              fontSize: 13,
+                              fontWeight: 600,
+                              textDecoration: "none",
+                            }}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 256 256" fill="#a6ce39">
+                              <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                              <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                            </svg>
+                            <span>ORCID: {author.orcid}</span>
+                            <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
+                          </a>
+                        )}
+
+                        {author.nome_vancouver && (
+                          <span
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 6,
+                              background: "rgba(56, 189, 248, 0.15)",
+                              border: "1px solid rgba(56, 189, 248, 0.4)",
+                              color: "#38bdf8",
+                              padding: "5px 12px",
+                              borderRadius: 8,
+                              fontSize: 13,
+                              fontWeight: 600,
+                            }}
+                          >
+                            <span>📑 {locale === "en" ? "Vancouver Citation:" : locale === "es" ? "Cita Vancouver:" : "Citação Vancouver:"}</span>
+                            <strong style={{ color: "#ffffff" }}>{author.nome_vancouver}</strong>
+                          </span>
+                        )}
+                      </div>
+
+                      {author.destaque && (
+                        <div>
+                          <div
+                            style={{
+                              display: "inline-block",
+                              background: "rgba(0, 0, 0, 0.3)",
+                              borderLeft: "3px solid #ff3047",
+                              padding: "8px 16px",
+                              borderRadius: "0 8px 8px 0",
+                              color: "#ffffff",
+                              fontSize: 13,
+                              fontWeight: 600,
+                            }}
+                          >
+                            <span>⭐ {author.destaque}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
+              // When author has NO photo: left-align everything directly aligned with lower boxes
+              return (
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left", maxWidth: "860px" }}>
                   <div
                     style={{
-                      display: "inline-block",
-                      background: "rgba(0, 0, 0, 0.3)",
-                      borderLeft: "3px solid #ff3047",
-                      padding: "8px 16px",
-                      borderRadius: "0 8px 8px 0",
-                      fontSize: 14,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "rgba(245, 34, 56, 0.25)",
+                      border: "1px solid rgba(245, 34, 56, 0.5)",
+                      padding: "4px 14px",
+                      borderRadius: 20,
+                      fontSize: 12,
                       fontWeight: 700,
                       color: "#ff808f",
+                      marginBottom: 12,
                     }}
                   >
-                    ⭐ {author.destaque}
+                    <span>{author.cargo}</span>
                   </div>
+
+                  <h1 style={{ fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 700, margin: "0 0 8px", letterSpacing: "-0.03em" }}>
+                    {author.nome}
+                  </h1>
+
+                  <p style={{ fontSize: 16, color: "#e2e8f0", margin: "0 0 14px", fontWeight: 600 }}>
+                    🏛️ {author.instituicao}
+                  </p>
+
+                  {/* Badges / ORCID & Vancouver */}
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px 12px", marginBottom: 14 }}>
+                    {author.orcid && (
+                      <a
+                        href={author.orcid_url || `https://orcid.org/${author.orcid}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 8,
+                          background: "rgba(166, 206, 57, 0.15)",
+                          border: "1px solid rgba(166, 206, 57, 0.4)",
+                          color: "#a6ce39",
+                          padding: "5px 12px",
+                          borderRadius: 8,
+                          fontSize: 13,
+                          fontWeight: 600,
+                          textDecoration: "none",
+                        }}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 256 256" fill="#a6ce39">
+                          <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>
+                          <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zm-7.7-121.7c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm114.7 65.5c0 30.6-20.8 56.2-54.8 56.2h-31V79.1h32.2c33 0 53.6 25.4 53.6 50.9zm-15.6 0c0-21.7-13.6-37.4-38.3-37.4h-15v74.9h14.9c25.4 0 38.4-15.8 38.4-37.5z"/>
+                        </svg>
+                        <span>ORCID: {author.orcid}</span>
+                        <span style={{ fontSize: 11, opacity: 0.8 }}>↗</span>
+                      </a>
+                    )}
+
+                    {author.nome_vancouver && (
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 6,
+                          background: "rgba(56, 189, 248, 0.15)",
+                          border: "1px solid rgba(56, 189, 248, 0.4)",
+                          color: "#38bdf8",
+                          padding: "5px 12px",
+                          borderRadius: 8,
+                          fontSize: 13,
+                          fontWeight: 600,
+                        }}
+                      >
+                        <span>📑 {locale === "en" ? "Vancouver Citation:" : locale === "es" ? "Cita Vancouver:" : "Citação Vancouver:"}</span>
+                        <strong style={{ color: "#ffffff" }}>{author.nome_vancouver}</strong>
+                      </span>
+                    )}
+                  </div>
+
+                  {author.destaque && (
+                    <div>
+                      <div
+                        style={{
+                          display: "inline-block",
+                          background: "rgba(0, 0, 0, 0.3)",
+                          borderLeft: "3px solid #ff3047",
+                          padding: "8px 16px",
+                          borderRadius: "0 8px 8px 0",
+                          color: "#ffffff",
+                          fontSize: 13,
+                          fontWeight: 600,
+                        }}
+                      >
+                        <span>⭐ {author.destaque}</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
         </section>
 
