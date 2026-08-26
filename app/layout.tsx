@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
       },
       {
-        url: "https://www.tratadodecoluna.com.br/assets/capa-tratado-da-coluna.svg",
+        url: "https://www.tratadodecoluna.com.br/assets/capa-tratado.png",
         width: 964,
         height: 1244,
         type: "image/png",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
       "Obra oficial de referência médica nacional com 109 capítulos especializados e diretrizes científicas da SBC.",
     images: [
       "https://www.tratadodecoluna.com.br/assets/og-cover.png",
-      "https://www.tratadodecoluna.com.br/assets/capa-tratado-da-coluna.svg",
+      "https://www.tratadodecoluna.com.br/assets/capa-tratado.png",
     ],
   },
   robots: {

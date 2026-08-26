@@ -76,7 +76,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
               {/* 3D Book Cover */}
               <div className="md:col-span-5 flex justify-center md:justify-end">
                 <img
-                  src="/assets/capa-tratado-da-coluna.svg"
+                  src="/assets/capa-tratado.png"
                   alt="Tratado de Cirurgia da Coluna Vertebral"
                   style={{
                     width: 260,
@@ -593,7 +593,7 @@ export default async function ApresentacaoPage({ params }: ApresentacaoPageProps
           >
             <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
               <img
-                src="/assets/capa-tratado-da-coluna.svg"
+                src="/assets/capa-tratado.png"
                 alt="Livro"
                 style={{ width: 70, height: "auto", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.4))" }}
               />

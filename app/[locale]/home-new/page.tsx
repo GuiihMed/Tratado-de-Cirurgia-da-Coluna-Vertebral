@@ -410,70 +410,70 @@ export default function HomeNewPage({ params }: HomeNewProps) {
       desc: locale === "en"
         ? "Three-dimensional alignment minimizing postural energetic expenditure. The C7 plumb line (Sagittal Vertical Axis - SVA) should ideally sit within ±3 cm of the sacral promontory."
         : locale === "es"
-        ? "Alineación tridimensional que minimiza el gasto energético postural. La línea de plomada de C7 (Sagittal Vertical Axis - SVA) debe situarse preferentemente a ±3 cm del promontorio sacro."
-        : "Alinhamento tridimensional que minimiza o gasto energético postural. A linha de prumo de C7 (Sagittal Vertical Axis - SVA) deve situar-se preferencialmente a ±3 cm do promontório sacral.",
+          ? "Alineación tridimensional que minimiza el gasto energético postural. La línea de plomada de C7 (Sagittal Vertical Axis - SVA) debe situarse preferentemente a ±3 cm del promontorio sacro."
+          : "Alinhamento tridimensional que minimiza o gasto energético postural. A linha de prumo de C7 (Sagittal Vertical Axis - SVA) deve situar-se preferencialmente a ±3 cm do promontório sacral.",
       formula: locale === "en" ? "Ideal SVA: < 40-50 mm in adults" : locale === "es" ? "SVA ideal: < 40-50 mm en adultos" : "SVA ideal: < 40-50 mm em adultos",
       clinical: locale === "en"
         ? "Positive imbalances (> 5 cm) increase muscular fatigue and directly correlate with worsening ODI and SRS-22 scores."
         : locale === "es"
-        ? "Desbalances positivos (> 5 cm) aumentan la fatiga muscular y se correlacionan directamente con empeoramiento en las escalas ODI y SRS-22."
-        : "Desbalanços positivos (> 5 cm) aumentam a fadiga muscular e correlacionam-se diretamente com piora nos escores ODI e SRS-22.",
+          ? "Desbalances positivos (> 5 cm) aumentan la fatiga muscular y se correlacionan directamente con empeoramiento en las escalas ODI y SRS-22."
+          : "Desbalanços positivos (> 5 cm) aumentam a fadiga muscular e correlacionam-se diretamente com piora nos escores ODI e SRS-22.",
     },
     incidencia: {
       title: locale === "en" ? "Pelvic Incidence (PI)" : locale === "es" ? "Incidencia Pélvica (PI)" : "Incidência Pélvica (Pelvic Incidence - PI)",
       desc: locale === "en"
         ? "Intrinsic anatomical parameter fixed in adulthood. It is the sum of pelvic tilt (PT) and sacral slope (SS)."
         : locale === "es"
-        ? "Parámetro anatómico intrínseco fijo en la vida adulta. Es la suma del tilt pélvico (PT) con la inclinación sacra (SS)."
-        : "Parâmetro anatômico intrínseco fixo na vida adulta. É a soma do tilt pélvico (PT) com a inclinação sacral (SS).",
+          ? "Parámetro anatómico intrínseco fijo en la vida adulta. Es la suma del tilt pélvico (PT) con la inclinación sacra (SS)."
+          : "Parâmetro anatômico intrínseco fixo na vida adulta. É a soma do tilt pélvico (PT) com a inclinação sacral (SS).",
       formula: "PI = PT + SS (Normal: ~50° ± 10°)",
       clinical: locale === "en"
         ? "Essential for predicting the exact amount of lumbar lordosis required in reconstructive spine surgery."
         : locale === "es"
-        ? "Fundamental para prever la cantidad exacta de lordosis lumbar que la columna necesita en la cirugía reconstructiva."
-        : "Fundamental para prever a quantidade exata de lordose lombar que a coluna necessita na cirurgia reconstrutiva.",
+          ? "Fundamental para prever la cantidad exacta de lordosis lumbar que la columna necesita en la cirugía reconstructiva."
+          : "Fundamental para prever a quantidade exata de lordose lombar que a coluna necessita na cirurgia reconstrutiva.",
     },
     cone: {
       title: locale === "en" ? "Jean Dubousset's Cone of Economy" : locale === "es" ? "Cono de Economía de Jean Dubousset" : "Cone de Economia de Jean Dubousset",
       desc: locale === "en"
         ? "Classic biomechanical concept describing the human body oscillating within an imaginary cone of stability over the feet with minimal energy expenditure."
         : locale === "es"
-        ? "Concepto biomecánico clásico que describe el cuerpo humano oscilando dentro de un cono imaginario de estabilidad sobre los pies con mínimo consumo de energía."
-        : "Conceito biomecânico clássico que descreve o corpo humano oscilando dentro de um cone imaginário de estabilidade sobre a base dos pés com mínimo consumo de energia.",
+          ? "Concepto biomecánico clásico que describe el cuerpo humano oscilando dentro de un cono imaginario de estabilidad sobre los pies con mínimo consumo de energía."
+          : "Conceito biomecânico clássico que descreve o corpo humano oscilando dentro de um cone imaginário de estabilidade sobre a base dos pés com mínimo consumo de energia.",
       formula: locale === "en" ? "Minimal antigravity muscular effort" : locale === "es" ? "Mínimo esfuerzo muscular antigravitacional" : "Mínimo esforço muscular antigravitacional",
       clinical: locale === "en"
         ? "Surgery must restore erect posture without requiring exhausting compensatory mechanisms (pelvic retroversion, knee flexion)."
         : locale === "es"
-        ? "La cirugía debe restaurar la postura erecta sin exigir mecanismos compensatorios exhaustivos (retroversión pélvica, flexión de rodillas)."
-        : "A cirurgia deve restaurar a postura ereta sem exigir mecanismos compensatórios exaustivos (retroversão pélvica, flexão de joelhos).",
+          ? "La cirugía debe restaurar la postura erecta sin exigir mecanismos compensatorios exhaustivos (retroversión pélvica, flexión de rodillas)."
+          : "A cirurgia deve restaurar a postura ereta sem exigir mecanismos compensatórios exaustivos (retroversão pélvica, flexão de joelhos).",
     },
     lordose: {
       title: locale === "en" ? "Lumbar Lordosis & Segmental Distribution (LL)" : locale === "es" ? "Lordosis Lumbar y Distribución Segmentaria (LL)" : "Lordose Lombar e Distribuição Segmentar (LL)",
       desc: locale === "en"
         ? "Approximately 65% to 70% of total lumbar lordosis is located at L4-L5 and L5-S1. Correct alignment must maintain harmony with Pelvic Incidence."
         : locale === "es"
-        ? "Aproximadamente el 65% al 70% de la lordosis lumbar total se localiza en los segmentos L4-L5 y L5-S1. La alineación debe respetar la armonía con la Incidencia Pélvica."
-        : "Aproximadamente 65% a 70% da lordose lombar total localiza-se nos segmentos L4-L5 e L5-S1. O alinhamento correto deve respeitar a harmonia com a Incidência Pélvica.",
+          ? "Aproximadamente el 65% al 70% de la lordosis lumbar total se localiza en los segmentos L4-L5 y L5-S1. La alineación debe respetar la armonía con la Incidencia Pélvica."
+          : "Aproximadamente 65% a 70% da lordose lombar total localiza-se nos segmentos L4-L5 e L5-S1. O alinhamento correto deve respeitar a harmonia com a Incidência Pélvica.",
       formula: locale === "en" ? "Surgical target: LL = PI ± 9°" : locale === "es" ? "Meta quirúrgica: LL = PI ± 9°" : "Meta cirúrgica: LL = PI ± 9°",
       clinical: locale === "en"
         ? "Under-correction of lordosis in lumbar fusion is the main cause of Flat Back Syndrome and adjacent segment degeneration."
         : locale === "es"
-        ? "La subcorrección de la lordosis en fusiones lumbares es la causa principal del Síndrome de Espalda Plana y degeneración de segmento adyacente."
-        : "Sub-correção da lordose em fusões lombares é a principal causa da Síndrome do Dorso Plano e degeneração do segmento adjacente.",
+          ? "La subcorrección de la lordosis en fusiones lumbares es la causa principal del Síndrome de Espalda Plana y degeneración de segmento adyacente."
+          : "Sub-correção da lordose em fusões lombares é a principal causa da Síndrome do Dorso Plano e degeneração do segmento adjacente.",
     },
     t1: {
       title: locale === "en" ? "T1 Slope & Cervical Balance" : locale === "es" ? "T1 Slope y Balance Cervical" : "T1 Slope & Balanço Cervical",
       desc: locale === "en"
         ? "Angle formed between T1 upper endplate and the horizontal plane. Determines the degree of cervical lordosis required to maintain horizontal gaze."
         : locale === "es"
-        ? "Ángulo formado entre el platillo superior de T1 y el plano horizontal. Determina el grado de lordosis cervical necesario para mantener la mirada horizontal."
-        : "Ângulo formado entre o platô superior de T1 e o plano horizontal. Determina o grau de lordose cervical necessário para manter o olhar horizontal.",
+          ? "Ángulo formado entre el platillo superior de T1 y el plano horizontal. Determina el grado de lordosis cervical necesario para mantener la mirada horizontal."
+          : "Ângulo formado entre o platô superior de T1 e o plano horizontal. Determina o grau de lordose cervical necessário para manter o olhar horizontal.",
       formula: locale === "en" ? "Cervical Lordosis = T1 Slope ± 10°" : locale === "es" ? "Lordosis Cervical = T1 Slope ± 10°" : "Lordose Cervical = T1 Slope ± 10°",
       clinical: locale === "en"
         ? "Essential in planning cervical osteotomies and treating complex cervicothoracic spinal deformities."
         : locale === "es"
-        ? "Esencial en la planificación de osteotomías cervicales y en el tratamiento de deformidades cervicotorácicas complejas."
-        : "Essencial no planejamento de osteotomias cervicais e no tratamento de deformidades complexas cervicotorácicas.",
+          ? "Esencial en la planificación de osteotomías cervicales y en el tratamiento de deformidades cervicotorácicas complejas."
+          : "Essencial no planejamento de osteotomias cervicais e no tratamento de deformidades complexas cervicotorácicas.",
     },
   };
 
@@ -552,7 +552,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             <div className="modern-book-stage">
               <div className="modern-book-3d">
                 <img
-                  src="/assets/capa-tratado-da-coluna.svg"
+                  src="/assets/capa-tratado.png"
                   alt="Capa do Tratado de Cirurgia da Coluna Vertebral"
                 />
               </div>
@@ -807,7 +807,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
-              
+
               {/* Left Column: Info, Tabs & Parameters */}
               <div className="lg:col-span-7 flex flex-col justify-between">
                 <div>
@@ -1092,10 +1092,10 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                   author.id === "1" || author.name.includes("Edson")
                     ? `/${locale}/autor-new/edson-pudles`
                     : author.id === "2" || author.name.includes("Defino")
-                    ? `/${locale}/autor-new/helton-defino`
-                    : author.id === "3" || author.name.includes("Risso")
-                    ? `/${locale}/autor-new/marcelo-risso`
-                    : `/${locale}/autor-new/${author.id}`;
+                      ? `/${locale}/autor-new/helton-defino`
+                      : author.id === "3" || author.name.includes("Risso")
+                        ? `/${locale}/autor-new/marcelo-risso`
+                        : `/${locale}/autor-new/${author.id}`;
 
                 return (
                   <article
@@ -1276,13 +1276,13 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
           <div className="shell relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              
+
               {/* 1. Imagem do Livro em Grande Evidência (Destaque Principal) */}
               <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center">
                 <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] transition-transform duration-300 hover:scale-105">
                   <div className="absolute inset-0 bg-red-600/20 blur-[50px] rounded-full" />
                   <img
-                    src="/assets/capa-tratado-da-coluna.svg"
+                    src="/assets/capa-tratado.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral Livro"
                     className="relative z-10 w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)]"
                   />

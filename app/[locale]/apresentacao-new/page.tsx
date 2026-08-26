@@ -108,7 +108,7 @@ export default function ApresentacaoNewPage({ params }: ApresentacaoNewProps) {
                     }}
                   />
                   <img
-                    src="/assets/capa-tratado-da-coluna.svg"
+                    src="/assets/capa-tratado.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
                     style={{
                       position: "relative",

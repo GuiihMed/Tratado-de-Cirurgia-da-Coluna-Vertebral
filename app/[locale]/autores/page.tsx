@@ -144,7 +144,7 @@ export default function AutoresPage({ params }: AutoresPageProps) {
               <div className="md:col-span-5 flex justify-center md:justify-end">
                 <div className="w-full max-w-[220px] sm:max-w-[260px] md:max-w-[320px] transition-transform duration-300 hover:scale-[1.03]">
                   <img
-                    src="/assets/capa-tratado-da-coluna.svg"
+                    src="/assets/capa-tratado.png"
                     alt="Tratado de Cirurgia da Coluna Vertebral"
                     className="w-full h-auto drop-shadow-[0_25px_50px_rgba(0,0,0,0.65)]"
                   />

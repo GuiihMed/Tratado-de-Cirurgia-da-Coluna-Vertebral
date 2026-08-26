@@ -73,7 +73,7 @@ export async function generateMetadata({
           alt: "Tratado de Cirurgia da Coluna Vertebral - Sociedade Brasileira de Coluna (SBC)",
         },
         {
-          url: "https://www.tratadodecoluna.com.br/assets/capa-tratado-da-coluna.svg",
+          url: "https://www.tratadodecoluna.com.br/assets/capa-tratado.png",
           width: 964,
           height: 1244,
           type: "image/png",

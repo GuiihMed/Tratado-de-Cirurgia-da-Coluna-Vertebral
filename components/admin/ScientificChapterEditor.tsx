@@ -196,7 +196,7 @@ O sucesso a longo prazo reside na individualização do plano cirúrgico, respei
   };
 
   const handleInsertImage = () => {
-    const snippet = `\n![Figura: Ressonância Magnética demonstrando estenose foraminal e alinhamento sagital](/assets/capa-tratado-da-coluna.svg)\n*Legenda da Figura: Corte sagital ponderado em T2 evidenciando compressão discal no nível L4-L5.*\n`;
+    const snippet = `\n![Figura: Ressonância Magnética demonstrando estenose foraminal e alinhamento sagital](/assets/capa-tratado.png)\n*Legenda da Figura: Corte sagital ponderado em T2 evidenciando compressão discal no nível L4-L5.*\n`;
     insertMarkdown(snippet);
   };
 

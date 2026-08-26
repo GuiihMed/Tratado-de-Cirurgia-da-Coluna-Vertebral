@@ -921,7 +921,7 @@ export default function ChapterEditPage() {
 
               <button
                 type="button"
-                onClick={() => insertMarkdown("\n![Legenda da Figura de Imagem](/assets/capa-tratado-da-coluna.svg)\n*Figura 1: Corte tomográfico evidenciando anatomia vertebral.*\n")}
+                onClick={() => insertMarkdown("\n![Legenda da Figura de Imagem](/assets/capa-tratado.png)\n*Figura 1: Corte tomográfico evidenciando anatomia vertebral.*\n")}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
