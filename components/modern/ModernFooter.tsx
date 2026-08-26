@@ -222,14 +222,6 @@ export default function ModernFooter({ locale }: ModernFooterProps) {
                   </span>
                   <span>Español (Resúmenes)</span>
                 </Link>
-
-                <Link
-                  href="/admin/login"
-                  className="inline-flex items-center gap-2 text-sm text-rose-400 hover:text-rose-300 font-bold transition-colors mt-1"
-                >
-                  <Lock size={14} className="text-rose-400" />
-                  <span>{locale === "en" ? "Author Portal" : locale === "es" ? "Panel Autores" : "Painel de Autores"}</span>
-                </Link>
               </div>
             </div>
 

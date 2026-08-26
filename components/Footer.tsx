@@ -61,9 +61,6 @@ export default function Footer({ locale }: FooterProps) {
           >
             {dict.nav.buy}
           </a>
-          <Link href="/admin/login" style={{ color: "#ff8290" }}>
-            {dict.nav.admin}
-          </Link>
         </div>
 
         <div className="footer-note">
