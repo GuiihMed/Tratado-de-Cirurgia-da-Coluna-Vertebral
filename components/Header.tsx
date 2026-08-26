@@ -76,7 +76,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </div>
         </Link>
 
-        {/* Desktop Navigation (Totalmente Centralizada) */}
+        {/* Desktop Navigation */}
         <nav className="nav-links desktop-only-nav" aria-label="Navegação principal">
           <Link
             href={`/${locale}/prefacio`}
@@ -126,10 +126,12 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
               gap: 6,
               color: "#ffffff",
               font: "inherit",
-              fontSize: 14,
+              fontSize: 13.5,
               fontWeight: 600,
-              padding: "6px 12px",
+              padding: "6px 8px",
               borderRadius: 8,
+              whiteSpace: "nowrap",
+              flexShrink: 0,
               transition: "all 0.2s ease",
             }}
             className="hover:text-rose-400"
@@ -138,61 +140,74 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#f52238", display: "grid", placeItems: "center", fontSize: 8.5, color: "#fff", flexShrink: 0 }}>
               ▶
             </span>
-            <span>{dict.nav.debate}</span>
+            <span style={{ whiteSpace: "nowrap" }}>{dict.nav.debate}</span>
           </button>
         </nav>
 
         {/* Right Side: Onde Comprar + Idiomas */}
-        <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 18, flexShrink: 0 }}>
+        <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-buy-link"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "6.5px 14px",
+              borderRadius: 8,
+              background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
+              color: "#ffffff",
+              fontSize: 13,
+              fontWeight: 700,
+              textDecoration: "none",
+              boxShadow: "0 3px 10px rgba(245, 34, 56, 0.35)",
+              whiteSpace: "nowrap",
+              transition: "all 0.2s ease",
+            }}
+            className="hover:brightness-110 active:scale-[0.98]"
           >
-            {dict.nav.buy}
+            <span>{dict.nav.buy}</span>
+            <span style={{ fontSize: 13 }}>🛒</span>
           </a>
 
           {/* Languages Divider */}
-          <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.2)", height: 20, margin: "0 2px" }} />
+          <div style={{ width: 1, height: 18, background: "rgba(255, 255, 255, 0.2)" }} />
 
-          {/* Languages */}
-          <div className="languages" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {locale === "pt" ? (
-              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 17, height: "auto", display: "inline-block" }} />
-                <b style={{ color: "#ff3247" }}>PT</b>
-              </span>
-            ) : (
-              <Link href={getLocalePath("pt")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
-                <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 15, height: "auto", display: "inline-block" }} />
-                <span>PT</span>
-              </Link>
-            )}
-            <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
-            {locale === "es" ? (
-              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 17, height: "auto", display: "inline-block" }} />
-                <b style={{ color: "#ff3247" }}>ES</b>
-              </span>
-            ) : (
-              <Link href={getLocalePath("es")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
-                <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 15, height: "auto", display: "inline-block" }} />
-                <span>ES</span>
-              </Link>
-            )}
-            <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>|</span>
-            {locale === "en" ? (
-              <span className="active-lang" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                <img src="/assets/flags/eua.png" alt="English" style={{ width: 17, height: "auto", display: "inline-block" }} />
-                <b style={{ color: "#ff3247" }}>EN</b>
-              </span>
-            ) : (
-              <Link href={getLocalePath("en")} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: 0.85 }}>
-                <img src="/assets/flags/eua.png" alt="English" style={{ width: 15, height: "auto", display: "inline-block" }} />
-                <span>EN</span>
-              </Link>
-            )}
+          {/* Languages Switcher */}
+          <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
+            {[
+              { code: "pt", flag: "/assets/flags/brasil.png", label: "PT" },
+              { code: "es", flag: "/assets/flags/espanha.png", label: "ES" },
+              { code: "en", flag: "/assets/flags/eua.png", label: "EN" },
+            ].map(({ code, flag, label }) => {
+              const isActive = locale === code;
+              return (
+                <Link
+                  key={code}
+                  href={getLocalePath(code as Locale)}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 4,
+                    padding: "4px 7px",
+                    borderRadius: 6,
+                    background: isActive ? "rgba(245, 34, 56, 0.2)" : "transparent",
+                    border: isActive ? "1px solid rgba(245, 34, 56, 0.6)" : "1px solid transparent",
+                    color: isActive ? "#ff4d61" : "rgba(255, 255, 255, 0.75)",
+                    fontSize: 12,
+                    fontWeight: isActive ? 800 : 600,
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                    transition: "all 0.2s ease",
+                  }}
+                  className="hover:text-white"
+                >
+                  <img src={flag} alt={label} style={{ width: 15, height: "auto", display: "inline-block" }} />
+                  <span>{label}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
 

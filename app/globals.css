@@ -78,16 +78,8 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: clamp(12px, 1.5vw, 24px);
   position: relative;
-}
-
-@media (min-width: 1025px) {
-  .nav-shell {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 20px;
-  }
 }
 
 .brand {
@@ -113,7 +105,7 @@ svg {
   font-weight: 700;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1280px) {
   .brand-text,
   .brand > div,
   .modern-brand-text {
@@ -125,11 +117,13 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 1.5vw, 24px);
+  gap: clamp(8px, 1.2vw, 20px);
   font-size: 14px;
   font-weight: 500;
   height: 100%;
   margin: 0 auto;
+  flex-wrap: nowrap;
+  flex: 1;
 }
 
 .nav-links a {
@@ -203,7 +197,7 @@ svg {
 
 .languages {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   align-items: center;
   font-size: 13px;
   font-weight: 700;
@@ -231,15 +225,6 @@ svg {
 .languages .active-lang {
   color: #f52238;
   font-weight: 800;
-}
-
-.languages span:before,
-.languages a + a:before,
-.languages b + a:before,
-.languages a + b:before {
-  content: "|";
-  color: #8495ac;
-  margin-right: 13px;
 }
 
 /* BUTTONS */
@@ -1865,7 +1850,7 @@ svg {
   display: flex;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1180px) {
   .desktop-only-nav {
     display: none !important;
   }
