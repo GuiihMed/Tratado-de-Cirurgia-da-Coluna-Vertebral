@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo } from "react";
+import { use, useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import ModernHeader from "@/components/modern/ModernHeader";
 import ModernFooter from "@/components/modern/ModernFooter";
@@ -36,6 +36,10 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number | "all">(12);
 
   const toggleExpandCard = (chapNum: number) => {
     setExpandedCards((prev) => ({
@@ -80,6 +84,49 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
       return true;
     });
   }, [selectedSecao, searchQuery]);
+
+  // Reset to page 1 whenever filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedSecao, pageSize]);
+
+  // Pagination calculations
+  const totalItems = filteredChapters.length;
+  const itemsPerPage = pageSize === "all" ? (totalItems || 1) : pageSize;
+  const totalPages = pageSize === "all" || totalItems === 0 ? 1 : Math.ceil(totalItems / itemsPerPage);
+  const safeCurrentPage = Math.min(Math.max(1, currentPage), totalPages);
+
+  const paginatedChapters = useMemo(() => {
+    if (pageSize === "all") return filteredChapters;
+    const start = (safeCurrentPage - 1) * itemsPerPage;
+    return filteredChapters.slice(start, start + itemsPerPage);
+  }, [filteredChapters, safeCurrentPage, itemsPerPage, pageSize]);
+
+  const startItem = totalItems === 0 ? 0 : (safeCurrentPage - 1) * itemsPerPage + 1;
+  const endItem = pageSize === "all" ? totalItems : Math.min(safeCurrentPage * itemsPerPage, totalItems);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    if (typeof window !== "undefined") {
+      const el = document.getElementById("tabela-referencias");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
+
+  const getPageNumbers = () => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    if (safeCurrentPage <= 4) {
+      return [1, 2, 3, 4, 5, "...", totalPages];
+    }
+    if (safeCurrentPage >= totalPages - 3) {
+      return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+    return [1, "...", safeCurrentPage - 1, safeCurrentPage, safeCurrentPage + 1, "...", totalPages];
+  };
 
   const getSecaoTitle = (secaoId: number) => {
     const s = SECOES.find((item) => item.id === secaoId);
@@ -428,28 +475,76 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                 </button>
               </div>
 
-              {/* Results count badge */}
+              {/* Results count badge & items per page */}
               <div
                 style={{
-                  background: "rgba(255, 255, 255, 0.08)",
-                  padding: "10px 18px",
-                  borderRadius: 10,
-                  fontSize: 13.5,
-                  fontWeight: 600,
-                  color: "#cbd5e1",
-                  whiteSpace: "nowrap",
-                  textAlign: "center",
-                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  flexWrap: "wrap",
                 }}
               >
-                <strong style={{ color: "#ffffff", fontWeight: 800 }}>{filteredChapters.length}</strong>{" "}
-                <span>
-                  {locale === "en"
-                    ? `of ${ALL_CHAPTER_REFERENCES.length} chapters`
-                    : locale === "es"
-                    ? `de ${ALL_CHAPTER_REFERENCES.length} capítulos`
-                    : `de ${ALL_CHAPTER_REFERENCES.length} capítulos`}
-                </span>
+                <div
+                  style={{
+                    background: "rgba(255, 255, 255, 0.08)",
+                    padding: "10px 16px",
+                    borderRadius: 10,
+                    fontSize: 13.5,
+                    fontWeight: 600,
+                    color: "#cbd5e1",
+                    whiteSpace: "nowrap",
+                    textAlign: "center",
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                  }}
+                >
+                  <strong style={{ color: "#ffffff", fontWeight: 800 }}>{filteredChapters.length}</strong>{" "}
+                  <span>
+                    {locale === "en"
+                      ? `of ${ALL_CHAPTER_REFERENCES.length} chapters`
+                      : locale === "es"
+                      ? `de ${ALL_CHAPTER_REFERENCES.length} capítulos`
+                      : `de ${ALL_CHAPTER_REFERENCES.length} capítulos`}
+                  </span>
+                </div>
+
+                {/* Page Size Selector */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    background: "rgba(255, 255, 255, 0.06)",
+                    padding: "3px 4px",
+                    borderRadius: 10,
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                    gap: 3,
+                  }}
+                >
+                  {[12, 24, 48, "all"].map((size) => {
+                    const isSelected = pageSize === size;
+                    const label = size === "all" ? (locale === "en" ? "All" : locale === "es" ? "Todos" : "Todos") : `${size}`;
+                    return (
+                      <button
+                        key={String(size)}
+                        type="button"
+                        onClick={() => setPageSize(size as number | "all")}
+                        style={{
+                          padding: "6px 10px",
+                          borderRadius: 7,
+                          fontSize: 12,
+                          fontWeight: 700,
+                          border: "none",
+                          background: isSelected ? "#f52238" : "transparent",
+                          color: "#ffffff",
+                          cursor: "pointer",
+                          transition: "all 0.15s ease",
+                        }}
+                        title={size === "all" ? "Exibir todos os capítulos" : `Exibir ${size} capítulos por página`}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
@@ -514,6 +609,42 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
             </div>
           </div>
 
+          {/* Current Page Range Info Bar (when paginated) */}
+          {totalItems > 0 && pageSize !== "all" && totalPages > 1 && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 12,
+                margin: "0 0 20px 0",
+                padding: "10px 16px",
+                background: "rgba(0, 20, 50, 0.6)",
+                borderRadius: 12,
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                fontSize: 13,
+                color: "#94a3b8",
+              }}
+            >
+              <div>
+                <span>
+                  {locale === "en" ? "Showing chapters " : locale === "es" ? "Mostrando capítulos " : "Exibindo capítulos "}
+                </span>
+                <strong style={{ color: "#ffffff" }}>{startItem}–{endItem}</strong>
+                <span>
+                  {locale === "en" ? ` of ${totalItems}` : locale === "es" ? ` de ${totalItems}` : ` de ${totalItems}`}
+                </span>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <span style={{ fontWeight: 600, color: "#e2e8f0" }}>
+                  {locale === "en" ? `Page ${safeCurrentPage} of ${totalPages}` : locale === "es" ? `Página ${safeCurrentPage} de ${totalPages}` : `Página ${safeCurrentPage} de ${totalPages}`}
+                </span>
+              </div>
+            </div>
+          )}
+
           {/* ================= EMPTY STATE ================= */}
           {filteredChapters.length === 0 && (
             <div
@@ -566,7 +697,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
           {/* ================= VIEW 1: 3-COLUMN CARD GRID (EXACTLY 3 CHAPTERS PER ROW) ================= */}
           {filteredChapters.length > 0 && viewMode === "grid" && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-              {filteredChapters.map((chap) => {
+              {paginatedChapters.map((chap) => {
                 const isExpanded = !!expandedCards[chap.numero];
                 const displayedRefs = isExpanded ? chap.referencias : chap.referencias.slice(0, 3);
                 const hasMoreRefs = chap.referencias.length > 3;
@@ -798,7 +929,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
 
               {/* 3-Column Rows */}
               <div style={{ display: "flex", flexDirection: "column" }}>
-                {filteredChapters.map((chap, index) => {
+                {paginatedChapters.map((chap, index) => {
                   const isEven = index % 2 === 0;
                   return (
                     <article
@@ -806,7 +937,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                       style={{
                         padding: "24px",
                         background: isEven ? "rgba(255, 255, 255, 0.02)" : "rgba(255, 255, 255, 0.05)",
-                        borderBottom: index === filteredChapters.length - 1 ? "none" : "1px solid rgba(255, 255, 255, 0.08)",
+                        borderBottom: index === paginatedChapters.length - 1 ? "none" : "1px solid rgba(255, 255, 255, 0.08)",
                         transition: "background 0.2s ease",
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)")}
@@ -826,8 +957,8 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                             <span
                               className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold uppercase ${
                                 chap.secao_id <= 5
-                                  ? "bg-red-500/20 text-red-300 border border-red-500/30"
-                                  : "bg-sky-500/20 text-sky-300 border border-sky-500/30"
+                                  ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                                  : "bg-sky-500/20 text-sky-400 border border-sky-500/30"
                               }`}
                             >
                               {locale === "en" ? `Section ${chap.secao_id}` : locale === "es" ? `Sección ${chap.secao_id}` : `Seção ${chap.secao_id}`}
@@ -846,7 +977,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                                 textDecoration: "none",
                                 transition: "color 0.2s ease",
                               }}
-                              onMouseEnter={(e) => (e.currentTarget.style.color = "#ff4d61")}
+                              onMouseEnter={(e) => (e.currentTarget.style.color = "#f52238")}
                               onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
                             >
                               {chap.titulo_pt}
@@ -865,12 +996,12 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                               gap: 6,
                               fontSize: 12.5,
                               fontWeight: 700,
-                              color: "#38bdf8",
+                              color: "#f52238",
                               textDecoration: "none",
                             }}
                           >
                             <span>{locale === "en" ? "View chapter" : locale === "es" ? "Ver capítulo" : "Ver capítulo"}</span>
-                            <span>→</span>
+                            <ArrowRight size={14} />
                           </Link>
                         </div>
 
@@ -1038,6 +1169,162 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                     </article>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* ================= PAGINATION CONTROLS ================= */}
+          {totalItems > 0 && pageSize !== "all" && totalPages > 1 && (
+            <div
+              style={{
+                marginTop: 36,
+                padding: "20px 24px",
+                background: "rgba(0, 20, 50, 0.7)",
+                borderRadius: 16,
+                border: "1px solid rgba(255, 255, 255, 0.12)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: 16,
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              {/* Left Info: Current slice */}
+              <div style={{ fontSize: 13.5, color: "#94a3b8" }}>
+                <span>{locale === "en" ? "Showing chapters " : locale === "es" ? "Mostrando capítulos " : "Exibindo capítulos "}</span>
+                <strong style={{ color: "#ffffff", fontWeight: 700 }}>{startItem}–{endItem}</strong>
+                <span>{locale === "en" ? ` of ${totalItems} total` : locale === "es" ? ` de ${totalItems} en total` : ` de ${totalItems} no total`}</span>
+              </div>
+
+              {/* Center Page Numbers and Prev/Next buttons */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                }}
+              >
+                {/* Previous Button */}
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(safeCurrentPage - 1)}
+                  disabled={safeCurrentPage <= 1}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 14px",
+                    borderRadius: 10,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    background: safeCurrentPage <= 1 ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.1)",
+                    color: safeCurrentPage <= 1 ? "#64748b" : "#ffffff",
+                    cursor: safeCurrentPage <= 1 ? "not-allowed" : "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  <span>←</span>
+                  <span>{locale === "en" ? "Previous" : locale === "es" ? "Anterior" : "Anterior"}</span>
+                </button>
+
+                {/* Page Number Buttons */}
+                {getPageNumbers().map((num, idx) => {
+                  if (num === "...") {
+                    return (
+                      <span
+                        key={`ellipsis-${idx}`}
+                        style={{
+                          padding: "0 6px",
+                          color: "#64748b",
+                          fontWeight: 700,
+                          fontSize: 14,
+                        }}
+                      >
+                        ...
+                      </span>
+                    );
+                  }
+
+                  const isCurrent = safeCurrentPage === num;
+                  return (
+                    <button
+                      key={String(num)}
+                      type="button"
+                      onClick={() => handlePageChange(Number(num))}
+                      style={{
+                        minWidth: 38,
+                        height: 38,
+                        padding: "0 10px",
+                        borderRadius: 10,
+                        fontSize: 13.5,
+                        fontWeight: 700,
+                        border: isCurrent ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.12)",
+                        background: isCurrent ? "#f52238" : "rgba(255, 255, 255, 0.05)",
+                        color: "#ffffff",
+                        cursor: "pointer",
+                        boxShadow: isCurrent ? "0 4px 14px rgba(245, 34, 56, 0.4)" : "none",
+                        transition: "all 0.15s ease",
+                      }}
+                    >
+                      {num}
+                    </button>
+                  );
+                })}
+
+                {/* Next Button */}
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(safeCurrentPage + 1)}
+                  disabled={safeCurrentPage >= totalPages}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 14px",
+                    borderRadius: 10,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    background: safeCurrentPage >= totalPages ? "rgba(255, 255, 255, 0.04)" : "rgba(255, 255, 255, 0.1)",
+                    color: safeCurrentPage >= totalPages ? "#64748b" : "#ffffff",
+                    cursor: safeCurrentPage >= totalPages ? "not-allowed" : "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  <span>{locale === "en" ? "Next" : locale === "es" ? "Próximo" : "Próximo"}</span>
+                  <span>→</span>
+                </button>
+              </div>
+
+              {/* Right: Items per page quick switcher */}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#94a3b8" }}>
+                <span>{locale === "en" ? "Per page:" : locale === "es" ? "Por pág:" : "Por página:"}</span>
+                <div style={{ display: "flex", gap: 4 }}>
+                  {[12, 24, 48, "all"].map((size) => (
+                    <button
+                      key={String(size)}
+                      type="button"
+                      onClick={() => setPageSize(size as number | "all")}
+                      style={{
+                        padding: "4px 8px",
+                        borderRadius: 6,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        border: pageSize === size ? "1px solid #f52238" : "1px solid rgba(255, 255, 255, 0.12)",
+                        background: pageSize === size ? "#f52238" : "rgba(255, 255, 255, 0.05)",
+                        color: "#ffffff",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {size === "all" ? (locale === "en" ? "All" : locale === "es" ? "Todos" : "Todos") : size}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           )}
