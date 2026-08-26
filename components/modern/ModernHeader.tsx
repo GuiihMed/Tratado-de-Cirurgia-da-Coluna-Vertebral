@@ -49,11 +49,11 @@ export default function ModernHeader({
             style={{ height: 36, width: "auto", objectFit: "contain" }}
           />
           <div className="modern-brand-text hidden min-[1240px]:flex" style={{ flexDirection: "column", justifyContent: "center", borderLeft: "1px solid rgba(255, 255, 255, 0.2)", paddingLeft: 12 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.15, color: "#94a3b8", letterSpacing: "0.02em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-              Tratado Oficial
+            <span style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.15, color: "#e2e8f0", letterSpacing: "-0.01em", whiteSpace: "nowrap" }}>
+              {dict.brand.line1}
             </span>
             <strong style={{ fontSize: 15.5, fontWeight: 700, lineHeight: 1.15, color: "#ffffff", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>
-              Cirurgia da Coluna Vertebral
+              {dict.brand.line2}
             </strong>
           </div>
         </Link>
