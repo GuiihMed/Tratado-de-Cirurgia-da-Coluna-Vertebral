@@ -34,28 +34,7 @@ export default function ChapterAccordion({
   return (
     <section id="conteudo" className="outline">
       <div className="shell">
-        <div style={{ textAlign: "center", marginBottom: 42 }}>
-          <span
-            style={{
-              display: "inline-block",
-              fontSize: 13,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "#f52238",
-              marginBottom: 10,
-              background: "rgba(245, 34, 56, 0.08)",
-              padding: "5px 16px",
-              borderRadius: 20,
-              border: "1px solid rgba(245, 34, 56, 0.2)",
-            }}
-          >
-            {locale === "en"
-              ? "Full Book Structure"
-              : locale === "es"
-              ? "Estructura Completa de la Obra"
-              : "Estrutura Completa da Obra"}
-          </span>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h2
             style={{
               fontSize: "clamp(32px, 3.8vw, 44px)",
@@ -63,7 +42,7 @@ export default function ChapterAccordion({
               color: "#001738",
               letterSpacing: "-0.03em",
               lineHeight: 1.18,
-              margin: "6px 0 14px",
+              margin: 0,
             }}
           >
             {locale === "en"
@@ -72,15 +51,6 @@ export default function ChapterAccordion({
               ? "Contenido completo — 109 capítulos"
               : "Conteúdo completo — 109 capítulos"}
           </h2>
-          <div
-            style={{
-              width: 56,
-              height: 4,
-              background: "linear-gradient(90deg, #f52238, #d9142a)",
-              borderRadius: 2,
-              margin: "0 auto",
-            }}
-          />
         </div>
 
         {isLoading ? (
