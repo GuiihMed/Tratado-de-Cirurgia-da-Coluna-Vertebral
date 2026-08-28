@@ -221,7 +221,6 @@ export default function ModernHeader({
                     }}
                     className="hover:bg-white/10"
                   >
-                    <span style={{ fontSize: 14 }}>📜</span>
                     <span>{dict.nav.preface}</span>
                   </Link>
 
@@ -243,7 +242,6 @@ export default function ModernHeader({
                     }}
                     className="hover:bg-white/10"
                   >
-                    <span style={{ fontSize: 14 }}>📄</span>
                     <span>{dict.nav.presentation}</span>
                   </Link>
                 </div>
@@ -302,7 +300,7 @@ export default function ModernHeader({
                   left: 0,
                   paddingTop: 8,
                   zIndex: 110,
-                  minWidth: 175,
+                  minWidth: 155,
                 }}
               >
                 <div
@@ -336,8 +334,7 @@ export default function ModernHeader({
                     }}
                     className="hover:bg-white/10"
                   >
-                    <span style={{ fontSize: 14 }}>📑</span>
-                    <span>{dict.nav.chapters} (109)</span>
+                    <span>{dict.nav.chapters}</span>
                   </Link>
 
                   <Link
@@ -358,7 +355,6 @@ export default function ModernHeader({
                     }}
                     className="hover:bg-white/10"
                   >
-                    <span style={{ fontSize: 14 }}>📚</span>
                     <span>{dict.nav.references}</span>
                   </Link>
                 </div>
@@ -890,17 +886,15 @@ export default function ModernHeader({
                 <Link
                   href={`/${locale}/prefacio-new`}
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 600, textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}
+                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 14, display: "block" }}
                 >
-                  <span>📜</span>
                   <span>{dict.nav.preface}</span>
                 </Link>
                 <Link
                   href={`/${locale}/apresentacao-new`}
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 600, textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}
+                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 14, display: "block" }}
                 >
-                  <span>📄</span>
                   <span>{dict.nav.presentation}</span>
                 </Link>
               </div>
@@ -915,17 +909,15 @@ export default function ModernHeader({
                 <Link
                   href={`/${locale}/indice-new`}
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 600, textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}
+                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 14, display: "block" }}
                 >
-                  <span>📑</span>
-                  <span>{dict.nav.chapters} (109)</span>
+                  <span>{dict.nav.chapters}</span>
                 </Link>
                 <Link
                   href={`/${locale}/referencias-new`}
                   onClick={() => setMobileMenuOpen(false)}
-                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 600, textDecoration: "none", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}
+                  style={{ padding: "8px 10px", borderRadius: 6, color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 14, display: "block" }}
                 >
-                  <span>📚</span>
                   <span>{dict.nav.references}</span>
                 </Link>
               </div>
@@ -935,9 +927,9 @@ export default function ModernHeader({
             <Link
               href={`/${locale}/autores-new`}
               onClick={() => setMobileMenuOpen(false)}
-              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 15 }}
+              style={{ padding: "12px 16px", borderRadius: 10, background: "rgba(255, 255, 255, 0.05)", color: "#ffffff", fontWeight: 700, textDecoration: "none", fontSize: 15, display: "block" }}
             >
-              👥 {dict.nav.authors}
+              <span>{dict.nav.authors}</span>
             </Link>
 
             {/* Tratado em Debate */}
