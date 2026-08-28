@@ -117,7 +117,7 @@ export default function Footer({ locale }: FooterProps) {
           </a>
           <span style={{ color: "rgba(255, 255, 255, 0.2)" }}>•</span>
           <a
-            href="https://www.instagram.com/colunasbc/"
+            href="https://www.instagram.com/sociedadebrasileiradecoluna/"
             target="_blank"
             rel="noopener noreferrer"
             title="Instagram SBC"
