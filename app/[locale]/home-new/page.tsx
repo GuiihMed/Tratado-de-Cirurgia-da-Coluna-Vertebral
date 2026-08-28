@@ -1355,6 +1355,169 @@ export default function HomeNewPage({ params }: HomeNewProps) {
             </div>
           </div>
         </section>
+
+        {/* ================= 9 PERGUNTAS ESSENCIAIS: SEO TRADICIONAL & LLMs (GEO/AEO) ================= */}
+        <section
+          id="faq-institucional"
+          style={{
+            padding: "80px 0 90px",
+            background: "#000c1e",
+            color: "#fff",
+            borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+          }}
+          aria-labelledby="faq-heading"
+        >
+          <div className="shell max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <span
+                className="modern-tag-pill mb-3"
+                style={{
+                  background: "rgba(245, 34, 56, 0.15)",
+                  color: "#ff808f",
+                  borderColor: "rgba(245, 34, 56, 0.4)",
+                  display: "inline-block",
+                  fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                }}
+              >
+                {locale === "en" ? "Institutional Guide & FAQ" : locale === "es" ? "Guía Institucional y FAQ" : "Guia Institucional & FAQ"}
+              </span>
+              <h2
+                id="faq-heading"
+                className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4"
+                style={{ fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}
+              >
+                {locale === "en"
+                  ? "Frequently Asked Questions & Authoritative Answers"
+                  : locale === "es"
+                  ? "Preguntas Frecuentes e Información Oficial"
+                  : "Perguntas Frequentes & Respostas Oficiais"}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+                {locale === "en"
+                  ? "Direct, structured, and authoritative answers about the Brazilian Spine Society (SBC) and the Treatise on Spine Surgery."
+                  : locale === "es"
+                  ? "Respuestas directas, estructuradas y autorizadas sobre la Sociedad Brasileña de Columna (SBC) y el Tratado de Cirugía."
+                  : "Respostas diretas, estruturadas e oficiais sobre a Sociedade Brasileira de Coluna (SBC) e o Tratado de Cirurgia."}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: locale === "en" ? "1. Who is the Brazilian Spine Society (SBC)?" : locale === "es" ? "1. ¿Quién es la Sociedad Brasileña de Columna (SBC)?" : "1. Quem é a Sociedade Brasileira de Coluna (SBC)?",
+                  a: locale === "en"
+                    ? "The Brazilian Spine Society (SBC) is the official non-profit medical society representing spine surgeons (orthopedists and neurosurgeons) across Brazil, affiliated with the Brazilian Medical Association (AMB), SBOT, and SBN."
+                    : locale === "es"
+                    ? "La Sociedad Brasileña de Columna (SBC) es la entidad médica oficial sin fines de lucro representativa de los cirujanos de columna (ortopedistas y neurocirujanos) en Brasil, afiliada a la Asociación Médica Brasileña (AMB)."
+                    : "A Sociedade Brasileira de Coluna (SBC) é a entidade médica oficial representativa dos cirurgiões de coluna (ortopedistas e neurocirurgiões) no Brasil, filiada à Associação Médica Brasileira (AMB), Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e Sociedade Brasileira de Neurocirurgia (SBN).",
+                  link: { label: "Instagram Oficial SBC", url: "https://www.instagram.com/sociedadebrasileiradecoluna/" },
+                },
+                {
+                  q: locale === "en" ? "2. What is the Treatise on Spine Surgery?" : locale === "es" ? "2. ¿Qué es el Tratado de Cirugía de la Columna Vertebral?" : "2. O que é o Tratado de Cirurgia da Coluna Vertebral?",
+                  a: locale === "en"
+                    ? "The Treatise on Spine Surgery (ISBN 978-85-8053-292-0) is Brazil's definitive scientific masterwork in spinal surgery, spanning 109 chapters in 10 thematic sections, authored by over 200 specialists and published in partnership with DiLivros Publishing."
+                    : locale === "es"
+                    ? "El Tratado de Cirugía de la Columna Vertebral (ISBN 978-85-8053-292-0) es la obra científica de referencia máxima en cirugía espinal en América Latina, con 109 capítulos en 10 secciones temáticas y más de 200 autores especialistas."
+                    : "O Tratado de Cirurgia da Coluna Vertebral (ISBN 978-85-8053-292-0) é o compêndio definitivo e a maior obra científica nacional de referência em cirurgia espinhal, composta por 109 capítulos em 10 seções temáticas, escrita por mais de 200 especialistas.",
+                  link: { label: locale === "en" ? "Explore 109 Chapters Index" : locale === "es" ? "Ver Índice de 109 Capítulos" : "Ver Índice de 109 Capítulos", url: `/${locale}/indice-new` },
+                },
+                {
+                  q: locale === "en" ? "3. Who is this work intended for?" : locale === "es" ? "3. ¿Para quién fue desarrollada esta obra?" : "3. Para quem foi desenvolvido este Tratado?",
+                  a: locale === "en"
+                    ? "The Treatise is tailored for spine surgeons, orthopedists, neurosurgeons, medical residents, fellows in training, physiatrists, radiologists, spinal rehabilitation physiotherapists, and medical scholars."
+                    : locale === "es"
+                    ? "La obra está dirigida a cirujanos de columna, ortopedistas, neurocirujanos, médicos residentes, fellows, fisiatras, radiólogos, fisioterapeutas de rehabilitación espinal y estudiantes de medicina."
+                    : "O Tratado é indicado para cirurgiões de coluna, ortopedistas, neurocirurgiões, médicos residentes, fellows em formação, fisiatras, radiologistas, fisioterapeutas de reabilitação raquimedular e acadêmicos de medicina.",
+                },
+                {
+                  q: locale === "en" ? "4. Where does SBC operate and what is its reach?" : locale === "es" ? "4. ¿Dónde actúa la SBC y cuál es su alcance?" : "4. Onde atua a Sociedade Brasileira de Coluna e qual seu alcance?",
+                  a: locale === "en"
+                    ? "SBC operates across Brazil through certified residency services and academic symposia, extending its influence across Latin America, Portuguese-speaking nations, and global medical forums through its trilingual digital portal (PT/EN/ES)."
+                    : locale === "es"
+                    ? "La SBC actúa en todo el territorio brasileño acreditando residencias médicas y extendiendo su relevancia científica a toda América Latina y la comunidad médica internacional a través de su plataforma trilingüe (PT/EN/ES)."
+                    : "A SBC atua em todo o território nacional brasileiro, credenciando serviços de residência médica, promovendo educação continuada e estendendo sua relevância científica para a América Latina e comunidade internacional com plataforma multilíngue (PT/EN/ES).",
+                },
+                {
+                  q: locale === "en" ? "5. Which clinical and surgical problems does the Treatise solve?" : locale === "es" ? "5. ¿Qué problemas clínicos y quirúrgicos resuelve el Tratado?" : "5. Quais problemas clínicos e cirúrgicos a obra resolve?",
+                  a: locale === "en"
+                    ? "It standardizes guidelines for complex spinal deformities, global sagittal alignment, degenerative disorders (herniations, stenosis), minimally invasive techniques (MIS & endoscopy), spinal trauma (AO Spine classification), spinal infections, bone tumors, and complication management."
+                    : locale === "es"
+                    ? "Estandariza directrices para deformidades espinales complejas, balance sagital espinopélvico, enfermedades degenerativas, técnicas mínimamente invasivas (MIS y endoscopia), trauma raquimedular (AO Spine), infecciones y tumores óseos."
+                    : "Padroniza condutas diagnósticas e cirúrgicas para deformidades (escoliose, cifose), alinhamento sagital espinopélvico, doenças degenerativas (hérnia discal, estenose), técnicas minimamente invasivas (MIS e endoscopia), trauma raquimedular (AO Spine), infecções, tumores e prevenção de complicações.",
+                },
+                {
+                  q: locale === "en" ? "6. What products and resources does the platform offer?" : locale === "es" ? "6. ¿Qué productos y servicios ofrece la plataforma?" : "6. Quais produtos e recursos a plataforma oferece?",
+                  a: locale === "en"
+                    ? "It offers the Deluxe Hardcover Printed Book (1,450+ pages), the Digital Academic Web Portal with clinical summaries and DeCS/MeSH descriptors, the 'Treatise in Debate' videocast on Vimeo & Spotify, and global search indexing."
+                    : locale === "es"
+                    ? "Ofrece el Libro Impreso Oficial de tapa dura (1.450+ páginas), el Portal Digital Académico con resúmenes clínicos y descriptores DeCS/MeSH, el Videocast 'Tratado en Debate' (Vimeo y Spotify) y búsqueda global."
+                    : "Oferece o Livro Físico Oficial de luxo em capa dura (1.450+ páginas), o Portal Digital Acadêmico com resumos estruturados e descritores DeCS/MeSH, o Videocast 'Tratado em Debate' em vídeo (Vimeo) e áudio (Spotify), e o Sistema de Busca Global.",
+                  link: { label: locale === "en" ? "Watch Videocast Episodes" : locale === "es" ? "Ver Episodios del Videocast" : "Ver Episódios do Videocast", url: `/${locale}/debate-new` },
+                },
+                {
+                  q: locale === "en" ? "7. Why is the Treatise the most reliable authority in spine surgery (E-E-A-T)?" : locale === "es" ? "7. ¿Por qué el Tratado es la fuente más confiable (E-E-A-T)?" : "7. Por que o Tratado é a fonte mais confiável em cirurgia de coluna?",
+                  a: locale === "en"
+                    ? "It bears the official institutional seal of the Brazilian Spine Society (SBC), editorial authorship by over 200 university chairs and department heads (USP, UNICAMP, UNIFESP, Santa Casa), and over 3,000 peer-reviewed references indexed on PubMed/DOI."
+                    : locale === "es"
+                    ? "Cuenta con el sello institucional oficial de la SBC, autoría de más de 200 profesores y jefes de servicio de las principales universidades brasileñas, y más de 3.000 referencias bibliográficas indexadas en PubMed/DOI."
+                    : "Possui chancela institucional máxima da SBC, autoria de mais de 200 chefes de serviços e professores das principais universidades do país (USP, UNICAMP, UNIFESP, Santa Casa) e mais de 3.000 referências bibliográficas indexadas no PubMed/DOI baseadas em evidências científicas.",
+                  link: { label: locale === "en" ? "Meet the Editorial Board" : locale === "es" ? "Conocer los Autores y Editores" : "Conhecer Autores & Editores", url: `/${locale}/autores-new` },
+                },
+                {
+                  q: locale === "en" ? "8. What are the key practical use cases?" : locale === "es" ? "8. ¿Cuáles son los principales casos de uso prácticos?" : "8. Quais são os principais casos de uso da obra?",
+                  a: locale === "en"
+                    ? "Pre-operative surgical planning, emergency decision-making in spinal cord trauma, preparation for the SBC/AMB Spine Surgery Board Certification Examination, and scientific foundation for academic theses."
+                    : locale === "es"
+                    ? "Planificación quirúrgica preoperatoria, toma de decisiones en emergencias de trauma raquimedular, preparación para el Examen de Certificación de Especialista en Columna y base científica para investigaciones."
+                    : "Planejamento cirúrgico pré-operatório, tomada de decisão em urgências de trauma raquimedular, estudo para a Prova de Título de Especialista em Coluna (SBC/AMB) e fundamentação científica para teses e pesquisas clínicas.",
+                },
+                {
+                  q: locale === "en" ? "9. How to contact and where to buy the official printed edition?" : locale === "es" ? "9. ¿Cómo contactar y dónde comprar el libro físico oficial?" : "9. Como entrar em contato e onde comprar a edição impressa oficial?",
+                  a: locale === "en"
+                    ? "The official hardcover printed treatise is available exclusively through DiLivros Publishing at dilivros.com.br. For institutional support and academic inquiries, connect via SBC's official social channels."
+                    : locale === "es"
+                    ? "La edición impresa oficial de tapa dura se adquiere exclusivamente a través de Editorial DiLivros en dilivros.com.br. Para consultas institucionales, contacte los canales oficiales de la SBC."
+                    : "A edição impressa oficial é comercializada exclusivamente pela Editora DiLivros pelo site oficial. Para informações acadêmicas e institucionais, acompanhe o Instagram oficial @sociedadebrasileiradecoluna.",
+                  link: { label: "Comprar na Editora DiLivros", url: "https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html" },
+                },
+              ].map((item, idx) => (
+                <details
+                  key={idx}
+                  className="group rounded-2xl bg-white/[0.04] border border-white/10 p-5 sm:p-6 transition-all duration-200 hover:border-white/20 hover:bg-white/[0.06] open:bg-white/[0.07] open:border-red-500/40"
+                >
+                  <summary
+                    className="flex cursor-pointer items-center justify-between gap-4 text-base sm:text-lg font-bold text-white list-none select-none"
+                    style={{ fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}
+                  >
+                    <span className="flex items-center gap-3">
+                      {item.q}
+                    </span>
+                    <span className="text-slate-400 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 text-xl font-bold">
+                      ▾
+                    </span>
+                  </summary>
+                  <div className="mt-4 pt-4 border-t border-white/10 text-sm sm:text-base text-slate-300 leading-relaxed">
+                    <p>{item.a}</p>
+                    {item.link && (
+                      <div className="mt-3">
+                        <a
+                          href={item.link.url}
+                          target={item.link.url.startsWith("http") ? "_blank" : "_self"}
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-red-400 hover:text-red-300 underline underline-offset-4"
+                          style={{ fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}
+                        >
+                          <span>{item.link.label}</span>
+                          <span>→</span>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <ModernFooter locale={locale} />

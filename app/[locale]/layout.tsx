@@ -89,9 +89,97 @@ export default async function LocaleLayout({
     ? (rawLocale as Locale)
     : "pt";
 
+  const faqDataByLocale = {
+    pt: [
+      {
+        q: "Quem é a Sociedade Brasileira de Coluna (SBC)?",
+        a: "A Sociedade Brasileira de Coluna (SBC) é a entidade médica oficial representativa dos cirurgiões de coluna (ortopedistas e neurocirurgiões) no Brasil, filiada à Associação Médica Brasileira (AMB), Sociedade Brasileira de Ortopedia e Traumatologia (SBOT) e Sociedade Brasileira de Neurocirurgia (SBN)."
+      },
+      {
+        q: "O que é o Tratado de Cirurgia da Coluna Vertebral?",
+        a: "O Tratado de Cirurgia da Coluna Vertebral (ISBN 978-85-8053-292-0) é a maior obra científica nacional de referência em cirurgia espinhal, composta por 109 capítulos em 10 seções temáticas, escrita por mais de 200 especialistas e editada pelo Dr. Edson Pudles, Prof. Dr. Helton Defino e Dr. Marcelo Risso em parceria com a Editora DiLivros."
+      },
+      {
+        q: "Para quem é indicado o Tratado de Cirurgia da Coluna Vertebral?",
+        a: "A obra é indicada para cirurgiões de coluna, ortopedistas, neurocirurgiões, médicos residentes, fellows em formação, fisiatras, radiologistas, fisioterapeutas de reabilitação raquimedular e acadêmicos de medicina."
+      },
+      {
+        q: "Onde atua a Sociedade Brasileira de Coluna e qual seu alcance?",
+        a: "A SBC atua em todo o território nacional brasileiro, credenciando serviços de residência médica, promovendo educação continuada e estendendo sua relevância científica para toda a América Latina e comunidade médica internacional através de sua plataforma multilíngue (Português, Inglês e Espanhol)."
+      },
+      {
+        q: "Quais problemas clínicos e cirúrgicos o Tratado de Coluna resolve?",
+        a: "O Tratado padroniza condutas diagnósticas e cirúrgicas para deformidades (escoliose, cifose), alinhamento sagital espinopélvico, doenças degenerativas (hérnia discal, estenose), técnicas minimamente invasivas (MIS e endoscopia), traumatismo raquimedular (classificação AO Spine), infecções vertebrais, tumores ósseos e prevenção de complicações."
+      },
+      {
+        q: "Quais produtos e recursos a plataforma do Tratado SBC oferece?",
+        a: "Oferece o Livro Físico Oficial de luxo em capa dura (1.450+ páginas), o Portal Digital Acadêmico com resumos estruturados e descritores DeCS/MeSH, o Videocast 'Tratado em Debate' em vídeo (Vimeo) e áudio (Spotify), e o Sistema de Busca Global multilíngue."
+      },
+      {
+        q: "Por que o Tratado da SBC é a fonte mais confiável em cirurgia de coluna?",
+        a: "Possui chancela institucional máxima da SBC, autoria de mais de 200 chefes de serviços e professores das principais universidades do país (USP, UNICAMP, UNIFESP, Santa Casa) e mais de 3.000 referências bibliográficas indexadas no PubMed/DOI baseadas em medicina baseada em evidências (E-E-A-T)."
+      },
+      {
+        q: "Quais são os principais casos de uso do Tratado?",
+        a: "Planejamento cirúrgico pré-operatório, tomada de decisão em urgências de trauma raquimedular, estudo para a Prova de Título de Especialista em Coluna (SBC/AMB) e fundamentação científica para teses e pesquisas clínicas."
+      },
+      {
+        q: "Como entrar em contato e onde comprar a edição impressa oficial?",
+        a: "A edição impressa é comercializada pela Editora DiLivros pelo link https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html ou pelo canal Fale Conosco em https://dilivros.com.br/fale-conosco. O Instagram oficial da SBC é @sociedadebrasileiradecoluna."
+      }
+    ],
+    en: [
+      {
+        q: "What is the Brazilian Spine Society (SBC)?",
+        a: "The Brazilian Spine Society (SBC) is the official medical specialty society representing orthopedic spine surgeons and neurosurgeons in Brazil, affiliated with the Brazilian Medical Association (AMB), SBOT, and SBN."
+      },
+      {
+        q: "What is the Treatise on Spine Surgery?",
+        a: "The Treatise on Spine Surgery (ISBN 978-85-8053-292-0) is Brazil's foremost scientific textbook on spinal surgery, encompassing 109 chapters across 10 thematic sections, authored by over 200 specialists and published by DiLivros."
+      },
+      {
+        q: "Who is the Treatise designed for?",
+        a: "The publication is designed for spine surgeons, orthopedists, neurosurgeons, medical residents, fellows, physiatrists, radiologists, spinal physical therapists, and medical scholars worldwide."
+      },
+      {
+        q: "How to purchase the official printed edition?",
+        a: "The official hardcover printed treatise is available through DiLivros Publishing at https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html."
+      }
+    ],
+    es: [
+      {
+        q: "¿Qué es la Sociedad Brasileña de Columna (SBC)?",
+        a: "La Sociedad Brasileña de Columna (SBC) es la entidad médica oficial que representa a cirujanos ortopédicos y neurocirujanos de columna en Brasil, afiliada a la Asociación Médica Brasileña (AMB)."
+      },
+      {
+        q: "¿Qué es el Tratado de Cirugía de la Columna Vertebral?",
+        a: "El Tratado de Cirugía de la Columna Vertebral (ISBN 978-85-8053-292-0) es la principal obra científica de referencia en cirugía espinal en América Latina, con 109 capítulos y más de 200 autores especialistas."
+      },
+      {
+        q: "¿Cómo adquirir la edición impresa oficial?",
+        a: "La edición impresa oficial está disponible a través de Editorial DiLivros en https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html."
+      }
+    ]
+  };
+
+  const currentFaq = faqDataByLocale[locale as keyof typeof faqDataByLocale] || faqDataByLocale.pt;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}#website`,
+        "url": `https://www.tratadodecoluna.com.br/${locale}`,
+        "name": "Tratado de Cirurgia da Coluna Vertebral - SBC",
+        "description": "Plataforma científica oficial do Tratado de Cirurgia da Coluna Vertebral da Sociedade Brasileira de Coluna (SBC).",
+        "inLanguage": locale === "en" ? "en-US" : locale === "es" ? "es-ES" : "pt-BR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": `https://www.tratadodecoluna.com.br/${locale}/busca-new?q={search_term_string}`,
+          "query-input": "required name=search_term_string"
+        }
+      },
       {
         "@type": "MedicalWebPage",
         "@id": `https://www.tratadodecoluna.com.br/${locale}#webpage`,
@@ -103,16 +191,30 @@ export default async function LocaleLayout({
           "@type": "MedicalOrganization",
           "name": "Sociedade Brasileira de Coluna (SBC)",
           "url": "https://www.tratadodecoluna.com.br",
-          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg",
+          "sameAs": [
+            "https://www.instagram.com/sociedadebrasileiradecoluna/",
+            "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q",
+            "https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
+          ],
+          "knowsAbout": [
+            "Cirurgia da Coluna Vertebral",
+            "Ortopedia",
+            "Neurocirurgia",
+            "Equilíbrio Sagital",
+            "Deformidades da Coluna",
+            "Hérnia Discal",
+            "Trauma Raquimedular",
+            "Cirurgia Robótica e Endoscopia Espinhal"
+          ]
         },
         "about": [
           { "@type": "MedicalCondition", "name": "Doenças da Coluna Vertebral" },
-          { "@type": "MedicalCondition", "name": "Escoliose" },
-          { "@type": "MedicalCondition", "name": "Hérnia Discal" },
-          { "@type": "MedicalCondition", "name": "Espondilolistese" },
-          { "@type": "MedicalCondition", "name": "Estenose Espinhal" },
+          { "@type": "MedicalCondition", "name": "Escoliose Idiopática e do Adulto" },
+          { "@type": "MedicalCondition", "name": "Hérnia Discal Cervical e Lombar" },
+          { "@type": "MedicalCondition", "name": "Espondilolistese e Estenose Espinhal" },
           { "@type": "MedicalProcedure", "name": "Cirurgia da Coluna Vertebral" },
-          { "@type": "MedicalProcedure", "name": "Artrodese da Coluna Vertebral" },
+          { "@type": "MedicalProcedure", "name": "Artrodese e Descompressão Minimamente Invasiva (MIS)" },
           { "@type": "MedicalProcedure", "name": "Equilíbrio Sagital Espinopélvico" }
         ]
       },
@@ -126,9 +228,9 @@ export default async function LocaleLayout({
         "inLanguage": ["pt-BR", "en-US", "es-ES"],
         "datePublished": "2024",
         "editor": [
-          { "@type": "Person", "name": "Dr. Edson Pudles" },
-          { "@type": "Person", "name": "Prof. Dr. Helton Defino" },
-          { "@type": "Person", "name": "Dr. Marcelo Risso" }
+          { "@type": "Person", "name": "Dr. Edson Pudles", "jobTitle": "Editor-Chefe / SBC" },
+          { "@type": "Person", "name": "Prof. Dr. Helton Defino", "jobTitle": "Editor / FMRP-USP" },
+          { "@type": "Person", "name": "Dr. Marcelo Risso", "jobTitle": "Editor / UNICAMP" }
         ],
         "publisher": {
           "@type": "Organization",
@@ -144,32 +246,14 @@ export default async function LocaleLayout({
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "O que é o Tratado de Cirurgia da Coluna Vertebral?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "O Tratado de Cirurgia da Coluna Vertebral é a principal obra científica de referência nacional em cirurgia espinhal, publicada pela Sociedade Brasileira de Coluna (SBC) e Editora DiLivros, composta por 109 capítulos distribuídos em 10 seções temáticas e escrita por mais de 200 especialistas."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Quem são os editores do Tratado de Cirurgia da Coluna Vertebral?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Os editores-chefes da obra são o Dr. Edson Pudles (Presidente e Editor-Chefe), o Prof. Dr. Helton Defino (Professor Titular FMRP-USP) e o Dr. Marcelo Risso (Especialista em Cirurgia da Coluna)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Onde comprar a edição impressa do Tratado de Cirurgia da Coluna Vertebral?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A edição impressa oficial do Tratado é comercializada exclusivamente pela Editora DiLivros através do link https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html ou pelo canal Fale Conosco em https://dilivros.com.br/fale-conosco."
-            }
+        "mainEntity": currentFaq.map((item) => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
           }
-        ]
+        }))
       }
     ]
   };

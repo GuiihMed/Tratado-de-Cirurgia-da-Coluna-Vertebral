@@ -138,6 +138,59 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
     redirect(`/${locale}/autor-new/${author.slug}`);
   }
 
+  const authorJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Physician",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/autor-new/${author.slug || author.id}#person`,
+        "url": `https://www.tratadodecoluna.com.br/${locale}/autor-new/${author.slug || author.id}`,
+        "name": author.nome,
+        "jobTitle": author.cargo,
+        "description": author.bio_completa || author.destaque,
+        "image": author.foto_url ? (author.foto_url.startsWith("http") ? author.foto_url : `https://www.tratadodecoluna.com.br${author.foto_url}`) : undefined,
+        "sameAs": author.orcid_url ? [author.orcid_url] : undefined,
+        "worksFor": {
+          "@type": "MedicalOrganization",
+          "name": author.instituicao || "Sociedade Brasileira de Coluna"
+        },
+        "medicalSpecialty": [
+          "Cirurgia da Coluna Vertebral",
+          "Ortopedia e Traumatologia",
+          "Neurocirurgia"
+        ],
+        "knowsAbout": author.especialidades || ["Cirurgia Espinhal", "Deformidades", "Trauma"],
+        "alumnusOf": author.titulacao_academica?.map((t) => ({
+          "@type": "EducationalOrganization",
+          "name": t
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início",
+            "item": `https://www.tratadodecoluna.com.br/${locale}/home-new`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores",
+            "item": `https://www.tratadodecoluna.com.br/${locale}/autores-new`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": author.nome,
+            "item": `https://www.tratadodecoluna.com.br/${locale}/autor-new/${author.slug || author.id}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div
       style={{
@@ -147,6 +200,10 @@ export default async function AutorNewPage({ params }: AutorNewPageProps) {
         fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(authorJsonLd) }}
+      />
       <ModernHeader locale={locale} currentPage="other" />
 
       <main>

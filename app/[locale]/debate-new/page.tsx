@@ -94,6 +94,37 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
     ? (rawLocale as Locale)
     : "pt";
 
+  const videoJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video`,
+        "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Paulo Cavali debatendo o alinhamento no plano sagital e parâmetros espinopélvicos (Capítulo 8).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+        ],
+        "uploadDate": "2024-05-15T08:00:00+00:00",
+        "duration": "PT45M",
+        "embedUrl": "https://player.vimeo.com/video/1037756184",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast`,
+        "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 8 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+      }
+    ]
+  };
+
   return (
     <div
       style={{
@@ -105,6 +136,10 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+      />
       <ModernHeader locale={locale} currentPage="debate-new" />
 
       <main style={{ flex: 1 }}>
