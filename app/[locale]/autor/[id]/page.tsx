@@ -130,8 +130,65 @@ export default async function AutorPage({ params }: AutorPageProps) {
     redirect(`/${locale}/autor/${author.slug}`);
   }
 
+  const authorJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Physician",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/autor/${author.slug || author.id}#person`,
+        "url": `https://www.tratadodecoluna.com.br/${locale}/autor/${author.slug || author.id}`,
+        "name": author.nome,
+        "jobTitle": author.cargo,
+        "description": author.bio_completa || author.destaque,
+        "image": author.foto_url ? (author.foto_url.startsWith("http") ? author.foto_url : `https://www.tratadodecoluna.com.br${author.foto_url}`) : undefined,
+        "sameAs": author.orcid_url ? [author.orcid_url] : undefined,
+        "worksFor": {
+          "@type": "MedicalOrganization",
+          "name": author.instituicao || "Sociedade Brasileira de Coluna"
+        },
+        "medicalSpecialty": [
+          "Cirurgia da Coluna Vertebral",
+          "Ortopedia e Traumatologia",
+          "Neurocirurgia"
+        ],
+        "knowsAbout": author.especialidades || ["Cirurgia Espinhal", "Deformidades", "Trauma"],
+        "alumnusOf": author.titulacao_academica?.map((t) => ({
+          "@type": "EducationalOrganization",
+          "name": t
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início",
+            "item": `https://www.tratadodecoluna.com.br/${locale}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": locale === "en" ? "Authors" : locale === "es" ? "Autores" : "Autores",
+            "item": `https://www.tratadodecoluna.com.br/${locale}/autores`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": author.nome,
+            "item": `https://www.tratadodecoluna.com.br/${locale}/autor/${author.slug || author.id}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(authorJsonLd) }}
+      />
       <Header locale={locale} currentPage="autores" />
 
       <main style={{ minHeight: "100vh", background: "#f4f7fb", paddingBottom: "90px" }}>

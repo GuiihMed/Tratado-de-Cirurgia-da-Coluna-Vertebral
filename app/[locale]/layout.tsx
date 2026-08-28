@@ -31,11 +31,59 @@ export async function generateMetadata({
   const currentDesc = descriptions[locale as keyof typeof descriptions] || descriptions.pt;
 
   return {
+    metadataBase: new URL("https://www.tratadodecoluna.com.br"),
     title: {
       default: currentTitle,
       template: `%s | ${currentTitle}`,
     },
     description: currentDesc,
+    keywords: [
+      "Tratado de Cirurgia da Coluna Vertebral",
+      "Sociedade Brasileira de Coluna",
+      "SBC",
+      "Cirurgia da Coluna Vertebral",
+      "Coluna Vertebral",
+      "Equilíbrio Sagital Espinopélvico",
+      "Escoliose Idiopática e do Adulto",
+      "Hérnia Discal Cervical e Lombar",
+      "Trauma Raquimedular",
+      "Classificação AO Spine",
+      "Dr. Edson Pudles",
+      "Prof. Dr. Helton Defino",
+      "Dr. Marcelo Risso",
+      "Editora DiLivros",
+      "Spine Surgery Treatise",
+      "Tratado de Cirugía de la Columna",
+    ],
+    authors: [
+      { name: "Dr. Edson Pudles" },
+      { name: "Prof. Dr. Helton Defino" },
+      { name: "Dr. Marcelo Risso" },
+      { name: "Sociedade Brasileira de Coluna (SBC)" },
+    ],
+    creator: "Sociedade Brasileira de Coluna (SBC)",
+    publisher: "Editora DiLivros",
+    category: "Medical / Health",
+    alternates: {
+      canonical: `https://www.tratadodecoluna.com.br/${locale}`,
+      languages: {
+        "pt-BR": "https://www.tratadodecoluna.com.br/pt",
+        "en-US": "https://www.tratadodecoluna.com.br/en",
+        "es-ES": "https://www.tratadodecoluna.com.br/es",
+        "x-default": "https://www.tratadodecoluna.com.br/pt",
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       type: "website",
       locale: locale === "en" ? "en_US" : locale === "es" ? "es_ES" : "pt_BR",

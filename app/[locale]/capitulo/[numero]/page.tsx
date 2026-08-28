@@ -267,8 +267,84 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
     (c) => c.numero !== num && (c.secao_id === cap.secao_id || [1, 2, 4, 8].includes(c.numero))
   ).slice(0, 4);
 
+  const chapterJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalScholarlyArticle",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/capitulo/${num}#article`,
+        "url": `https://www.tratadodecoluna.com.br/${locale}/capitulo/${num}`,
+        "headline": `Capítulo ${num}: ${title}`,
+        "name": title,
+        "description": leadText,
+        "inLanguage": locale === "en" ? "en-US" : locale === "es" ? "es-ES" : "pt-BR",
+        "isPartOf": {
+          "@type": "Book",
+          "name": "Tratado de Cirurgia da Coluna Vertebral",
+          "isbn": "9788580532920",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Editora DiLivros",
+            "url": "https://dilivros.com.br"
+          }
+        },
+        "author": chapterAuthors.map((a) => ({
+          "@type": "Person",
+          "name": a.nome,
+          "jobTitle": a.cargo,
+          "worksFor": {
+            "@type": "Organization",
+            "name": a.instituicao || "Sociedade Brasileira de Coluna"
+          }
+        })),
+        "about": keywords.map((k) => ({
+          "@type": "MedicalCondition",
+          "name": k
+        })),
+        "citation": referencesList.map((r) => ({
+          "@type": "CreativeWork",
+          "name": r.text,
+          "identifier": r.doi || r.pmid
+        })),
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "url": "https://www.tratadodecoluna.com.br",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início",
+            "item": `https://www.tratadodecoluna.com.br/${locale}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": locale === "en" ? "Index" : locale === "es" ? "Índice" : "A Obra",
+            "item": `https://www.tratadodecoluna.com.br/${locale}/indice`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `Capítulo ${num}`,
+            "item": `https://www.tratadodecoluna.com.br/${locale}/capitulo/${num}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div style={{ background: "#f4f7fb", color: "#1e293b", minHeight: "100vh", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(chapterJsonLd) }}
+      />
       {/* Classic Top Header */}
       <Header locale={locale} currentPage="other" />
 
