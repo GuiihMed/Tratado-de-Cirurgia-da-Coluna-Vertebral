@@ -10,6 +10,7 @@ import { ALL_CHAPTER_REFERENCES } from "@/lib/data/references";
 import { getCapituloByNumero } from "@/lib/supabase/server";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import ChapterReferencesList from "@/components/modern/ChapterReferencesList";
 import { getFullChapterByNumber } from "@/lib/data/chapters-content";
 import {
   BookOpen,
@@ -565,18 +566,18 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
         {/* ================= 2-COLUMN MODERN CONTENT ================= */}
         <section style={{ padding: "45px 0 80px", background: "#f1f5f9" }}>
-          <div className="shell" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 40, alignItems: "center" }}>
-            {/* MAIN COLUMN */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
-                       <article
+          <div className="shell grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-8 xl:gap-10 items-start">
+            {/* MAIN COLUMN (LEFT) */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 26, minWidth: 0 }}>
+              <article
                 id="resumo"
                 style={{
                   background: "#ffffff",
                   borderRadius: 20,
-                  padding: "36px",
                   border: "1px solid #e2e8f0",
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
                 }}
+                className="p-6 sm:p-9"
               >
                 {/* Header */}
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
@@ -594,7 +595,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     <FileText size={22} />
                   </div>
                   <div>
-                    <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 2px" }}>
+                    <h2 style={{ fontSize: 22, fontWeight: 700, color: "#001a3d", margin: "0 0 2px", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       {locale === "en" ? "Chapter Clinical Summary" : locale === "es" ? "Resumen Clínico del Capítulo" : "Resumo Clínico do Capítulo"}
                     </h2>
                     <span style={{ fontSize: 13, color: "#64748b" }}>
@@ -619,7 +620,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#dc2626", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#dc2626", letterSpacing: "0.06em", marginBottom: 6, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       • {locale === "en" ? "Clinical Context" : locale === "es" ? "Contexto Clínico" : "Contexto Clínico"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -637,7 +638,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       padding: "18px 22px",
                     }}
                   >
-                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#0284c7", letterSpacing: "0.06em", marginBottom: 6, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       • {locale === "en" ? "Chapter Objective" : locale === "es" ? "Objetivo del Capítulo" : "Objetivo do Capítulo"}
                     </div>
                     <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -657,7 +658,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         padding: "18px 22px",
                       }}
                     >
-                      <div style={{ fontSize: 13, fontWeight: 700, color: idx % 2 === 0 ? "#4338ca" : "#0f766e", marginBottom: 6 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: idx % 2 === 0 ? "#4338ca" : "#0f766e", marginBottom: 6, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                         {st.subtitulo}
                       </div>
                       <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -677,7 +678,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         padding: "18px 22px",
                       }}
                     >
-                      <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6 }}>
+                      <div style={{ fontSize: 12.5, fontWeight: 700, textTransform: "uppercase", color: "#16a34a", letterSpacing: "0.06em", marginBottom: 6, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                         • {locale === "en" ? "Clinical Application & Guidance" : locale === "es" ? "Aplicación Clínica y Directrices" : "Aplicação Clínica & Diretrizes"}
                       </div>
                       <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "#334155", margin: 0 }}>
@@ -693,14 +694,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 style={{
                   background: "#ffffff",
                   borderRadius: 20,
-                  padding: "28px 32px",
                   border: "1px solid #e2e8f0",
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
+                className="p-5 sm:p-8"
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                   <Tag size={18} className="text-rose-600" />
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                     {locale === "en" ? "DeCS / MeSH Scientific Descriptors" : locale === "es" ? "Descriptores Científicos DeCS / MeSH" : "Descritores Científicos DeCS / MeSH"}
                   </h3>
                 </div>
@@ -718,6 +719,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         color: "#001a3d",
                         fontWeight: 700,
                         transition: "all 0.2s ease",
+                        fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                       }}
                     >
                       {kw}
@@ -732,14 +734,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   style={{
                     background: "linear-gradient(135deg, #001533 0%, #00224d 100%)",
                     borderRadius: 20,
-                    padding: "36px",
                     color: "#fff",
                     boxShadow: "0 12px 36px rgba(0, 20, 60, 0.15)",
                   }}
+                  className="p-6 sm:p-9"
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                     <Award size={20} className="text-amber-400" />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       {locale === "en" ? "Why this chapter matters" : locale === "es" ? "Por qué importa este capítulo" : "Por que este capítulo importa"}
                     </h3>
                   </div>
@@ -761,7 +763,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         textAlign: "center",
                       }}
                     >
-                      <span style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.5 }}>
+                      <span style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.5, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                         “ {centralMessageText} ”
                       </span>
                     </div>
@@ -771,7 +773,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
               {/* CARD 4: TRÍADE DE DESTAQUES CIRÚRGICOS */}
               {cardsDestaque.length > 0 && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))", gap: 18 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: 18 }}>
                   {cardsDestaque.map((card, cIdx) => {
                     const isPurple = cIdx === 0;
                     const isRed = cIdx === 1;
@@ -804,10 +806,10 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         >
                           {isPurple ? <Globe size={20} /> : isRed ? <Stethoscope size={20} /> : <Compass size={20} />}
                         </div>
-                        <div style={{ fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", color: iconColor, letterSpacing: "0.05em", marginBottom: 4 }}>
+                        <div style={{ fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", color: iconColor, letterSpacing: "0.05em", marginBottom: 4, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                           {card.tipo || (isPurple ? "Conceito essencial" : isRed ? "Decisão clínica" : "Pérola ou alerta")}
                         </div>
-                        <h4 style={{ fontSize: 15.5, fontWeight: 700, color: "#001a3d", margin: "0 0 8px" }}>
+                        <h4 style={{ fontSize: 15.5, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                           {card.titulo}
                         </h4>
                         <p style={{ fontSize: 13, color: "#475569", margin: 0, lineHeight: 1.55 }}>
@@ -819,104 +821,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 </div>
               )}
 
-              {/* CARD 5: REFERÊNCIAS BIBLIOGRÁFICAS INTERATIVAS */}
-              <article
-                id="referencias"
-                style={{
-                  background: "#ffffff",
-                  borderRadius: 20,
-                  padding: "36px",
-                  border: "1px solid #e2e8f0",
-                  boxShadow: "0 10px 30px rgba(0, 20, 60, 0.05)",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, borderBottom: "1px solid #f1f5f9", paddingBottom: 16 }}>
-                  <div>
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#001a3d", margin: "0 0 4px" }}>
-                      {locale === "en" ? "Selected Bibliographic References" : locale === "es" ? "Referencias Bibliográficas Seleccionadas" : "Referências Bibliográficas Selecionadas"}
-                    </h3>
-                    <span style={{ fontSize: 13, color: "#64748b" }}>
-                      {locale === "en" ? "High-impact peer-reviewed literature indexed on PubMed / DOI" : locale === "es" ? "Literatura de alto impacto indexada en PubMed / DOI" : "Literatura de alto impacto indexada no PubMed / DOI"}
-                    </span>
-                  </div>
-                  <span style={{ fontSize: 12, fontWeight: 700, padding: "4px 12px", borderRadius: 12, background: "#f1f5f9", color: "#475569" }}>
-                    {referencesList.length} {locale === "en" ? "References" : locale === "es" ? "Referencias" : "Referências"}
-                  </span>
-                </div>
+              {/* CARD 5: REFERÊNCIAS BIBLIOGRÁFICAS INTERATIVAS COM PADRÃO 3 ITENS E VER MAIS */}
+              <ChapterReferencesList references={referencesList} locale={locale} />
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  {referencesList.map((ref) => (
-                    <div
-                      key={ref.num}
-                      style={{
-                        padding: "16px 18px",
-                        borderRadius: 12,
-                        background: "#f8fafc",
-                        border: "1px solid #e2e8f0",
-                        display: "grid",
-                        gridTemplateColumns: "1fr auto",
-                        gap: 16,
-                        alignItems: "center",
-                      }}
-                    >
-                      <div>
-                        <div style={{ fontSize: 13.5, lineHeight: 1.6, color: "#1e293b", fontFamily: "Georgia, serif" }}>
-                          <span style={{ fontWeight: 700, color: "#001a3d", marginRight: 6 }}>{ref.num}.</span>
-                          {ref.text}
-                        </div>
-                      </div>
-
-                      <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
-                        <a
-                          href={ref.doi}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            padding: "6px 12px",
-                            borderRadius: 6,
-                            border: "1px solid #93c5fd",
-                            background: "#eff6ff",
-                            color: "#1d4ed8",
-                            fontSize: 12,
-                            fontWeight: 700,
-                            textDecoration: "none",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 4,
-                          }}
-                        >
-                          <span>DOI</span>
-                          <ExternalLink size={12} />
-                        </a>
-                        <a
-                          href={ref.pmid}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            padding: "6px 12px",
-                            borderRadius: 6,
-                            border: "1px solid #86efac",
-                            background: "#f0fdf4",
-                            color: "#15803d",
-                            fontSize: 12,
-                            fontWeight: 700,
-                            textDecoration: "none",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: 4,
-                          }}
-                        >
-                          <span>PubMed</span>
-                          <ExternalLink size={12} />
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </article>
-
-              {/* BOTTOM: TRATADO EM DEBATE & NAVEGAÇÃO */}
-              <div className="modern-chapter-bottom-grid">
+              {/* CARD 6 & 7: TRATADO EM DEBATE & NAVEGAÇÃO */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Tratado em Debate Video Card */}
                 <div
                   style={{
@@ -938,12 +847,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       <CustomVimeoPlayer locale={locale} />
                     </div>
 
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8 }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f52238" }} />
                       <span>{locale === "en" ? "Treatise in Debate • Videocast" : locale === "es" ? "Tratado en Debate • Videocast" : "Tratado em Debate • Videocast"}</span>
                     </div>
 
-                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.3 }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.3, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       {locale === "en"
                         ? "Episode 1 – Chapter 8: Sagittal Plane Spinal Alignment"
                         : locale === "es"
@@ -975,6 +884,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         fontSize: 12.5,
                         fontWeight: 700,
                         boxShadow: "0 4px 12px rgba(245, 34, 56, 0.35)",
+                        fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                       }}
                     >
                       <span>{locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio"}</span>
@@ -999,6 +909,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         fontWeight: 700,
                         boxShadow: "0 4px 12px rgba(29, 185, 84, 0.35)",
                         transition: "all 0.2s ease",
+                        fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                       }}
                       className="hover:bg-[#1ed760] hover:scale-105"
                     >
@@ -1022,6 +933,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         fontSize: 12.5,
                         fontWeight: 700,
                         transition: "background 0.2s ease",
+                        fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                       }}
                       className="hover:bg-[#002b66]"
                     >
@@ -1036,7 +948,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   style={{
                     background: "#ffffff",
                     borderRadius: 20,
-                    padding: "28px",
+                    padding: "24px",
                     border: "1px solid #e2e8f0",
                     display: "flex",
                     flexDirection: "column",
@@ -1045,7 +957,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   }}
                 >
                   <div>
-                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px" }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 14px", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       {locale === "en" ? "Browse Treatise" : locale === "es" ? "Navegar en la Obra" : "Navegar na Obra"}
                     </h4>
                     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1064,6 +976,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             display: "flex",
                             alignItems: "center",
                             gap: 6,
+                            fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                           }}
                         >
                           <ArrowLeft size={13} />
@@ -1087,6 +1000,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             justifyContent: "space-between",
                             alignItems: "center",
                             gap: 6,
+                            fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                           }}
                         >
                           <span>{locale === "en" ? `Ch. ${nextCap.numero}: ${nextCap.titulo_en || nextCap.titulo_pt}` : locale === "es" ? `Cap. ${nextCap.numero}: ${nextCap.titulo_es || nextCap.titulo_pt}` : `Cap. ${nextCap.numero}: ${nextCap.titulo_pt}`}</span>
@@ -1109,6 +1023,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       alignItems: "center",
                       justifyContent: "center",
                       gap: 6,
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                     }}
                   >
                     <span>{locale === "en" ? "View Complete 109 Chapters Index" : locale === "es" ? "Ver Índice Completo de 109 Capítulos" : "Ver Índice Completo de 109 Capítulos"}</span>
@@ -1118,26 +1033,29 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
               </div>
             </div>
 
-            {/* SIDEBAR */}
-            <aside style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              {/* CARD 1: AUTORES */}
+            {/* SIDEBAR (RIGHT COLUMN) */}
+            <aside style={{ display: "flex", flexDirection: "column", gap: 24 }} className="lg:sticky lg:top-24">
+              {/* CARD 1: AUTORES DO CAPÍTULO */}
               <div
                 style={{
                   background: "#ffffff",
                   borderRadius: 20,
-                  padding: "28px",
+                  padding: "24px",
                   border: "1px solid #e2e8f0",
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
-                  <Users size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 18, borderBottom: "1px solid #f1f5f9", paddingBottom: 14 }}>
+                  <Users size={18} className="text-red-600" />
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                     {locale === "en" ? "Chapter Authors" : locale === "es" ? "Autores del Capítulo" : "Autores do Capítulo"}
                   </h3>
+                  <span style={{ marginLeft: "auto", fontSize: 11.5, fontWeight: 700, padding: "2px 8px", borderRadius: 10, background: "#f1f5f9", color: "#475569", fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
+                    {chapterAuthors.length}
+                  </span>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {chapterAuthors.map((author) => (
                     <div
                       key={author.slug}
@@ -1145,29 +1063,51 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         display: "flex",
                         alignItems: "center",
                         gap: 12,
-                        padding: "10px 14px",
+                        padding: "10px 12px",
                         borderRadius: 12,
                         background: "#f8fafc",
                         border: "1px solid #e2e8f0",
                       }}
                     >
-                      <img
-                        src={author.foto_url}
-                        alt={author.nome}
+                      <div
                         style={{
-                          width: 48,
-                          height: 48,
+                          width: 50,
+                          height: 50,
+                          minWidth: 50,
+                          minHeight: 50,
+                          maxWidth: 50,
+                          maxHeight: 50,
                           borderRadius: "50%",
-                          objectFit: "cover",
+                          background: "#0f172a",
                           border: "2px solid #001a3d",
+                          overflow: "hidden",
                           flexShrink: 0,
+                          display: "grid",
+                          placeItems: "center",
                         }}
-                      />
+                      >
+                        {author.foto_url ? (
+                          <img
+                            src={author.foto_url}
+                            alt={author.nome}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              display: "block",
+                            }}
+                          />
+                        ) : (
+                          <span style={{ fontSize: 13, fontWeight: 700, color: "#cbd5e1" }}>
+                            {author.nome.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                          </span>
+                        )}
+                      </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <Link
                           href={`/${locale}/autor-new/${author.slug}`}
                           style={{
-                            fontSize: 14.5,
+                            fontSize: 14,
                             fontWeight: 700,
                             color: "#001a3d",
                             textDecoration: "none",
@@ -1175,25 +1115,27 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                             whiteSpace: "nowrap",
+                            fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                           }}
-                          className="hover:underline hover:text-blue-700"
+                          className="hover:underline hover:text-red-600 transition-colors"
                         >
                           {author.nome}
                         </Link>
-                        <div style={{ fontSize: 12, color: "#64748b", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                          {translateAuthorRole(author.cargo, locale)}
+                        <div style={{ fontSize: 11.5, color: "#64748b", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {translateAuthorRole(author.cargo, locale) || author.instituicao}
                         </div>
                         <Link
                           href={`/${locale}/autor-new/${author.slug}`}
                           style={{
                             fontSize: 11.5,
                             fontWeight: 700,
-                            color: "#e11d48",
+                            color: "#f52238",
                             textDecoration: "none",
                             display: "inline-flex",
                             alignItems: "center",
                             gap: 3,
-                            marginTop: 4,
+                            marginTop: 3,
+                            fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                           }}
                         >
                           <span>{locale === "en" ? "View profile & bio" : locale === "es" ? "Ver perfil y currículo" : "Ver perfil & currículo"}</span>
@@ -1210,19 +1152,19 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 style={{
                   background: "#ffffff",
                   borderRadius: 20,
-                  padding: "28px",
+                  padding: "24px",
                   border: "1px solid #e2e8f0",
                   boxShadow: "0 10px 30px rgba(0, 20, 60, 0.04)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <Globe size={18} className="text-blue-700" />
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#001a3d", margin: 0 }}>
+                  <Globe size={18} className="text-red-600" />
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: 0, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                     {locale === "en" ? "Available Languages" : locale === "es" ? "Idiomas Disponibles" : "Idiomas Disponíveis"}
                   </h3>
                 </div>
 
-                <p style={{ fontSize: 13, color: "#64748b", margin: "0 0 16px" }}>
+                <p style={{ fontSize: 12.5, color: "#64748b", margin: "0 0 14px", lineHeight: 1.4 }}>
                   {locale === "en"
                     ? "Access titles and summaries for this chapter across international editions:"
                     : locale === "es"
@@ -1244,10 +1186,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       background: locale === "pt" ? "#f52238" : "#f1f5f9",
                       color: locale === "pt" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 12.5,
+                      fontSize: 12,
                       textDecoration: "none",
                       boxShadow: locale === "pt" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                       border: locale === "pt" ? "1px solid #f52238" : "1px solid #e2e8f0",
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                     }}
                   >
                     <img src="/assets/flags/brasil.png" alt="Português" style={{ width: 22, height: "auto" }} />
@@ -1266,10 +1209,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       background: locale === "es" ? "#f52238" : "#f1f5f9",
                       color: locale === "es" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 12.5,
+                      fontSize: 12,
                       textDecoration: "none",
                       boxShadow: locale === "es" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                       border: locale === "es" ? "1px solid #f52238" : "1px solid #e2e8f0",
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                     }}
                   >
                     <img src="/assets/flags/espanha.png" alt="Español" style={{ width: 22, height: "auto" }} />
@@ -1288,10 +1232,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       background: locale === "en" ? "#f52238" : "#f1f5f9",
                       color: locale === "en" ? "#fff" : "#334155",
                       fontWeight: 700,
-                      fontSize: 12.5,
+                      fontSize: 12,
                       textDecoration: "none",
                       boxShadow: locale === "en" ? "0 4px 12px rgba(245, 34, 56, 0.3)" : "none",
                       border: locale === "en" ? "1px solid #f52238" : "1px solid #e2e8f0",
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                     }}
                   >
                     <img src="/assets/flags/eua.png" alt="English" style={{ width: 22, height: "auto" }} />
@@ -1305,26 +1250,26 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                 style={{
                   background: "linear-gradient(135deg, #00132b 0%, #00224d 100%)",
                   borderRadius: 20,
-                  padding: "28px",
+                  padding: "24px",
                   color: "#fff",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <ShieldCheck size={18} className="text-blue-400" />
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#fff", margin: 0 }}>
+                  <h3 style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", margin: 0, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                     {locale === "en" ? "SBC Institutional Notice" : locale === "es" ? "Aviso Institucional SBC" : "Aviso Institucional SBC"}
                   </h3>
                 </div>
 
-                <p style={{ fontSize: 13, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 14px" }}>
+                <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 12px" }}>
                   {locale === "en"
                     ? "This portal is the official digital academic support companion to the printed masterwork of the Brazilian Spine Society."
                     : locale === "es"
                     ? "Este portal es la plataforma digital oficial de apoyo académico a la obra impresa de la Sociedade Brasileira de Coluna."
                     : "Este portal é a plataforma digital oficial de apoio acadêmico à obra impressa da Sociedade Brasileira de Coluna."}
                 </p>
-                <p style={{ fontSize: 13, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 20px" }}>
+                <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "#cbd5e1", margin: "0 0 16px" }}>
                   {locale === "en"
                     ? "The complete treatise with all surgical diagrams, high-resolution anatomical plates, and full references is exclusive to the Printed Masterwork."
                     : locale === "es"
@@ -1349,10 +1294,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                     background: "rgba(255, 255, 255, 0.12)",
                     border: "1px solid rgba(255, 255, 255, 0.25)",
                     color: "#fff",
-                    fontSize: 13,
+                    fontSize: 12.5,
                     fontWeight: 700,
                     textDecoration: "none",
+                    fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                   }}
+                  className="hover:bg-white/20 transition-colors"
                 >
                   <span>{locale === "en" ? "Explore Official Printed Edition" : locale === "es" ? "Conocer Edición Impresa Oficial" : "Conhecer Edição Impressa Oficial"}</span>
                   <ArrowRight size={13} />
