@@ -14,12 +14,21 @@ interface HeaderProps {
   currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "debate" | "other" | string;
 }
 
+const LANGUAGES = [
+  { code: "pt", flag: "/assets/flags/brasil.png", label: "PT", fullName: "Português" },
+  { code: "es", flag: "/assets/flags/espanha.png", label: "ES", fullName: "Español" },
+  { code: "en", flag: "/assets/flags/eua.png", label: "EN", fullName: "English" },
+];
+
 export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   const dict = getDictionary(locale);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
   const [userAccount, setUserAccount] = useState<{ email: string; nome?: string; role?: string } | null>(null);
+
+  const currentLang = LANGUAGES.find((l) => l.code === locale) || LANGUAGES[0];
 
   useEffect(() => {
     async function loadAccount() {
@@ -175,40 +184,115 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           {/* Languages Divider */}
           <div style={{ width: 1, height: 18, background: "rgba(255, 255, 255, 0.2)" }} />
 
-          {/* Languages Switcher */}
-          <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
-            {[
-              { code: "pt", flag: "/assets/flags/brasil.png", label: "PT" },
-              { code: "es", flag: "/assets/flags/espanha.png", label: "ES" },
-              { code: "en", flag: "/assets/flags/eua.png", label: "EN" },
-            ].map(({ code, flag, label }) => {
-              const isActive = locale === code;
-              return (
-                <Link
-                  key={code}
-                  href={getLocalePath(code as Locale)}
+          {/* Languages Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setLangDropdownOpen(true)}
+            onMouseLeave={() => setLangDropdownOpen(false)}
+            style={{ position: "relative" }}
+          >
+            <button
+              type="button"
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "6px 12px",
+                borderRadius: 8,
+                background: "rgba(255, 255, 255, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                color: "#ffffff",
+                fontSize: 12.5,
+                fontWeight: 700,
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+              }}
+              className="hover:bg-white/15"
+              aria-label="Selecionar idioma"
+            >
+              <img
+                src={currentLang.flag}
+                alt={currentLang.label}
+                style={{ width: 16, height: 12, objectFit: "cover", borderRadius: 2 }}
+              />
+              <span>{currentLang.label}</span>
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                style={{
+                  transform: langDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.2s ease",
+                  opacity: 0.8,
+                }}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            {langDropdownOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  right: 0,
+                  paddingTop: 8,
+                  zIndex: 100,
+                  minWidth: 145,
+                }}
+              >
+                <div
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 4,
-                    padding: "4px 7px",
-                    borderRadius: 6,
-                    background: isActive ? "rgba(245, 34, 56, 0.2)" : "transparent",
-                    border: isActive ? "1px solid rgba(245, 34, 56, 0.6)" : "1px solid transparent",
-                    color: isActive ? "#ff4d61" : "rgba(255, 255, 255, 0.75)",
-                    fontSize: 12,
-                    fontWeight: isActive ? 800 : 600,
-                    textDecoration: "none",
-                    whiteSpace: "nowrap",
-                    transition: "all 0.2s ease",
+                    background: "rgba(0, 20, 50, 0.96)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderRadius: 12,
+                    backdropFilter: "blur(16px)",
+                    boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5)",
+                    padding: 6,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
                   }}
-                  className="hover:text-white"
                 >
-                  <img src={flag} alt={label} style={{ width: 15, height: "auto", display: "inline-block" }} />
-                  <span>{label}</span>
-                </Link>
-              );
-            })}
+                  {LANGUAGES.map((item) => {
+                    const isActive = locale === item.code;
+                    return (
+                      <Link
+                        key={item.code}
+                        href={getLocalePath(item.code as Locale)}
+                        onClick={() => setLangDropdownOpen(false)}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          padding: "8px 12px",
+                          borderRadius: 8,
+                          fontSize: 13,
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          transition: "all 0.15s ease",
+                          background: isActive ? "rgba(245, 34, 56, 0.25)" : "transparent",
+                          color: isActive ? "#ff808f" : "#ffffff",
+                        }}
+                        className={isActive ? "" : "hover:bg-white/10"}
+                      >
+                        <img
+                          src={item.flag}
+                          alt={item.label}
+                          style={{ width: 16, height: 12, objectFit: "cover", borderRadius: 2 }}
+                        />
+                        <span>{item.fullName}</span>
+                        {isActive && <span style={{ marginLeft: "auto", fontSize: 11, color: "#f52238", fontWeight: 700 }}>✓</span>}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
