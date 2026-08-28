@@ -15,7 +15,7 @@ interface ModernHeaderProps {
 const LANGUAGES = [
   { code: "pt", flag: "/assets/flags/brasil.png", label: "PT", fullName: "Português" },
   { code: "es", flag: "/assets/flags/espanha.png", label: "ES", fullName: "Español" },
-  { code: "en", flag: "/assets/flags/estados-unidos.png", label: "EN", fullName: "English" },
+  { code: "en", flag: "/assets/flags/eua.png", label: "EN", fullName: "English" },
 ];
 
 export default function ModernHeader({
