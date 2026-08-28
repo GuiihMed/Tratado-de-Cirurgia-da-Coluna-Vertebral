@@ -1,17 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Search, Users, Tv, X } from "lucide-react";
+import { searchTreatise } from "@/lib/data/global-search";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface HeaderProps {
   locale: Locale;
-  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "debate" | "other" | string;
+  currentPage?: "home" | "indice" | "prefacio" | "apresentacao" | "autores" | "referencias" | "debate" | "busca" | "other" | string;
 }
 
 const LANGUAGES = [
@@ -23,10 +24,44 @@ const LANGUAGES = [
 export default function Header({ locale, currentPage = "home" }: HeaderProps) {
   const dict = getDictionary(locale);
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [miniPlayerOpen, setMiniPlayerOpen] = useState(false);
   const [userAccount, setUserAccount] = useState<{ email: string; nome?: string; role?: string } | null>(null);
+
+  // Live Search state
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Close search on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setIsSearchFocused(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const liveResults = useMemo(() => {
+    if (!searchQuery.trim()) return null;
+    return searchTreatise(searchQuery, locale, false);
+  }, [searchQuery, locale]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      setIsSearchFocused(false);
+      setMobileMenuOpen(false);
+      router.push(`/${locale}/busca?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   const currentLang = LANGUAGES.find((l) => l.code === locale) || LANGUAGES[0];
 
@@ -148,8 +183,245 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </button>
         </nav>
 
-        {/* Right Side: Comprar + Idiomas */}
-        <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+        {/* Right Side: Busca no site + Comprar + Idiomas */}
+        <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          {/* Caixa de Busca no Site com Autocomplete Live */}
+          <div
+            ref={searchContainerRef}
+            className="relative search-widget-container"
+            style={{ position: "relative" }}
+          >
+            <form
+              onSubmit={handleSearchSubmit}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                position: "relative",
+              }}
+            >
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsSearchFocused(true)}
+                placeholder={dict.nav.searchPlaceholder || dict.nav.search || "Busque no site..."}
+                style={{
+                  width: isSearchFocused || searchQuery ? 180 : 130,
+                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                  background: isSearchFocused ? "rgba(255, 255, 255, 0.14)" : "rgba(255, 255, 255, 0.08)",
+                  border: isSearchFocused ? "1px solid rgba(245, 34, 56, 0.6)" : "1px solid rgba(255, 255, 255, 0.16)",
+                  borderRadius: 20,
+                  padding: "5.5px 28px 5.5px 12px",
+                  fontSize: 12.5,
+                  color: "#ffffff",
+                  outline: "none",
+                }}
+                className="placeholder:text-slate-400"
+              />
+              <button
+                type="submit"
+                style={{
+                  position: "absolute",
+                  right: 3,
+                  width: 22,
+                  height: 22,
+                  borderRadius: "50%",
+                  border: "none",
+                  background: isSearchFocused || searchQuery ? "#f52238" : "transparent",
+                  color: "#ffffff",
+                  display: "grid",
+                  placeItems: "center",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  boxShadow: isSearchFocused || searchQuery ? "0 2px 6px rgba(245, 34, 56, 0.4)" : "none",
+                }}
+                title={locale === "en" ? "Search" : locale === "es" ? "Buscar" : "Pesquisar"}
+              >
+                <Search size={11} />
+              </button>
+            </form>
+
+            {/* LIVE AUTOCOMPLETE SUGGESTIONS POPOVER */}
+            {isSearchFocused && liveResults && liveResults.total > 0 && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  right: 0,
+                  paddingTop: 8,
+                  zIndex: 200,
+                  width: 320,
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgba(0, 16, 38, 0.98)",
+                    border: "1px solid rgba(255, 255, 255, 0.18)",
+                    borderRadius: 14,
+                    backdropFilter: "blur(20px)",
+                    boxShadow: "0 20px 45px rgba(0, 0, 0, 0.6)",
+                    padding: 8,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 6,
+                    maxHeight: 380,
+                    overflowY: "auto",
+                  }}
+                  className="scrollbar-none"
+                >
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "4px 8px" }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", color: "#94a3b8" }}>
+                      Sugestões ({liveResults.total})
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setIsSearchFocused(false)}
+                      style={{ background: "transparent", border: "none", color: "#64748b", cursor: "pointer" }}
+                    >
+                      <X size={13} />
+                    </button>
+                  </div>
+
+                  {/* Chapters matching */}
+                  {liveResults.chapters.slice(0, 3).map((ch) => (
+                    <Link
+                      key={ch.numero}
+                      href={ch.url}
+                      onClick={() => setIsSearchFocused(false)}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 8,
+                        padding: "7px 10px",
+                        borderRadius: 8,
+                        textDecoration: "none",
+                        background: "rgba(255, 255, 255, 0.04)",
+                        transition: "background 0.15s ease",
+                      }}
+                      className="hover:bg-white/10"
+                    >
+                      <span
+                        style={{
+                          fontSize: 10,
+                          fontWeight: 800,
+                          padding: "2px 5px",
+                          borderRadius: 4,
+                          background: "#f52238",
+                          color: "#fff",
+                          flexShrink: 0,
+                          marginTop: 1,
+                        }}
+                      >
+                        Cap. {ch.numero}
+                      </span>
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: "#fff", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {ch.titulo}
+                        </span>
+                        <span style={{ fontSize: 10.5, color: "#94a3b8", display: "block" }}>
+                          {ch.secaoNome}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+
+                  {/* Authors matching */}
+                  {liveResults.authors.slice(0, 2).map((a) => (
+                    <Link
+                      key={String(a.id)}
+                      href={a.url}
+                      onClick={() => setIsSearchFocused(false)}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        padding: "6px 10px",
+                        borderRadius: 8,
+                        textDecoration: "none",
+                        background: "rgba(255, 255, 255, 0.04)",
+                      }}
+                      className="hover:bg-white/10"
+                    >
+                      <div
+                        style={{
+                          width: 22,
+                          height: 22,
+                          borderRadius: "50%",
+                          background: "rgba(56, 189, 248, 0.2)",
+                          color: "#38bdf8",
+                          display: "grid",
+                          placeItems: "center",
+                          fontSize: 10,
+                          fontWeight: 700,
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Users size={12} />
+                      </div>
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <span style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          {a.name}
+                        </span>
+                        <span style={{ fontSize: 10.5, color: "#94a3b8", display: "block" }}>
+                          {a.role || a.institution || "Autor SBC"}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+
+                  {/* Debate matching */}
+                  {liveResults.episodes.slice(0, 1).map((ep) => (
+                    <Link
+                      key={ep.episodeNumber}
+                      href={ep.url}
+                      onClick={() => setIsSearchFocused(false)}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        padding: "6px 10px",
+                        borderRadius: 8,
+                        textDecoration: "none",
+                        background: "rgba(245, 34, 56, 0.12)",
+                      }}
+                      className="hover:bg-red-500/20"
+                    >
+                      <Tv size={13} className="text-red-400 flex-shrink-0" />
+                      <span style={{ fontSize: 12, fontWeight: 600, color: "#ff808f", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                        EP {ep.episodeNumber}: {ep.title}
+                      </span>
+                    </Link>
+                  ))}
+
+                  {/* See all results button */}
+                  <Link
+                    href={`/${locale}/busca?q=${encodeURIComponent(searchQuery.trim())}`}
+                    onClick={() => setIsSearchFocused(false)}
+                    style={{
+                      marginTop: 4,
+                      padding: "8px 10px",
+                      borderRadius: 8,
+                      background: "rgba(245, 34, 56, 0.2)",
+                      border: "1px solid rgba(245, 34, 56, 0.4)",
+                      color: "#ffffff",
+                      fontSize: 12,
+                      fontWeight: 700,
+                      textAlign: "center",
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 6,
+                    }}
+                    className="hover:bg-red-500 hover:text-white transition-all"
+                  >
+                    <span>Ver todos os {liveResults.total} resultados</span>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
             target="_blank"
@@ -331,6 +603,54 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             gap: 16,
           }}
         >
+          {/* Mobile Search Box */}
+          <form
+            onSubmit={handleSearchSubmit}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              position: "relative",
+              width: "100%",
+            }}
+          >
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={dict.nav.searchPlaceholder || "Busque no site..."}
+              style={{
+                width: "100%",
+                background: "rgba(255, 255, 255, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                borderRadius: 10,
+                padding: "10px 42px 10px 14px",
+                fontSize: 14,
+                color: "#ffffff",
+                outline: "none",
+              }}
+              className="placeholder:text-slate-400"
+            />
+            <button
+              type="submit"
+              style={{
+                position: "absolute",
+                right: 6,
+                width: 32,
+                height: 32,
+                borderRadius: 8,
+                border: "none",
+                background: "#f52238",
+                color: "#ffffff",
+                display: "grid",
+                placeItems: "center",
+                cursor: "pointer",
+              }}
+              aria-label="Buscar"
+            >
+              <Search size={15} />
+            </button>
+          </form>
+
           <nav style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {[
               { href: `/${locale}/prefacio`, label: dict.nav.preface, active: pathname?.includes("/prefacio") },
