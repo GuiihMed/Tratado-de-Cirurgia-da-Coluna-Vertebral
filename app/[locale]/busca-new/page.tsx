@@ -403,14 +403,41 @@ function SearchPageContent({ locale }: SearchPageContentProps) {
                         <Link
                           key={String(a.id)}
                           href={a.url}
-                          className="group p-4.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-500/40 transition-all flex items-center gap-4"
+                          className="group p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-500/40 transition-all flex items-center gap-3.5 min-w-0 overflow-hidden"
                           style={{ textDecoration: "none" }}
                         >
-                          <div className="w-13 h-13 rounded-full bg-slate-800 border border-white/15 overflow-hidden flex-shrink-0 flex items-center justify-center text-slate-300 font-bold text-base">
+                          <div
+                            style={{
+                              width: 52,
+                              height: 52,
+                              minWidth: 52,
+                              minHeight: 52,
+                              maxWidth: 52,
+                              maxHeight: 52,
+                              borderRadius: "50%",
+                              background: "#0f172a",
+                              border: "1px solid rgba(255, 255, 255, 0.15)",
+                              overflow: "hidden",
+                              flexShrink: 0,
+                              display: "grid",
+                              placeItems: "center",
+                            }}
+                          >
                             {a.fotoUrl ? (
-                              <img src={a.fotoUrl} alt={a.name} className="w-full h-full object-cover" />
+                              <img
+                                src={a.fotoUrl}
+                                alt={a.name}
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  objectFit: "cover",
+                                  display: "block",
+                                }}
+                              />
                             ) : (
-                              <span>{a.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}</span>
+                              <span style={{ fontSize: 13, fontWeight: 700, color: "#cbd5e1" }}>
+                                {a.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                              </span>
                             )}
                           </div>
                           <div className="flex-1 min-w-0">

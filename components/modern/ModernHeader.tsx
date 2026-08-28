@@ -796,18 +796,9 @@ export default function ModernHeader({
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="mobile-only-btn"
+          className="modern-mobile-burger"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Abrir menu"
-          style={{
-            background: "rgba(255, 255, 255, 0.1)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-            color: "#ffffff",
-            padding: 8,
-            borderRadius: 8,
-            cursor: "pointer",
-            display: "none",
-          }}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             {mobileMenuOpen ? (
