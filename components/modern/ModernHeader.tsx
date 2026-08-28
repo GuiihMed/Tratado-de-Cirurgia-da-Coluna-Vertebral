@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { ShoppingCart } from "lucide-react";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
 interface ModernHeaderProps {
@@ -166,7 +167,7 @@ export default function ModernHeader({
 
         {/* Desktop Right Side: Botão Onde Comprar + Language Dropdown */}
         <div className="desktop-only-nav" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-          {/* Botão Onde Comprar */}
+          {/* Botão Comprar */}
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
             target="_blank"
@@ -175,7 +176,7 @@ export default function ModernHeader({
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              padding: "7px 15px",
+              padding: "7.5px 15px",
               borderRadius: 10,
               background: "linear-gradient(135deg, #f52238 0%, #d9142a 100%)",
               color: "#ffffff",
@@ -189,7 +190,7 @@ export default function ModernHeader({
             className="hover:brightness-110 active:scale-[0.98]"
           >
             <span>{dict.nav.buy}</span>
-            <span style={{ fontSize: 13 }}>🛒</span>
+            <ShoppingCart size={14} className="text-white" />
           </a>
 
           {/* Languages Divider */}
@@ -445,18 +446,22 @@ export default function ModernHeader({
             rel="noopener noreferrer"
             style={{
               marginTop: 10,
-              padding: "14px",
+              padding: "13px",
               borderRadius: 10,
               background: "#f52238",
               color: "#ffffff",
               fontWeight: 700,
-              fontSize: 16,
+              fontSize: 15,
               textAlign: "center",
               textDecoration: "none",
-              display: "block",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
             }}
           >
-            {dict.nav.buy} 🛒
+            <span>{dict.nav.buy}</span>
+            <ShoppingCart size={17} className="text-white" />
           </a>
         </div>
       )}

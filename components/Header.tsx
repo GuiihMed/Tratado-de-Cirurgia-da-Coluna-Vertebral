@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { ShoppingCart } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import DebateMiniPlayer from "@/components/DebateMiniPlayer";
 
@@ -144,7 +145,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </button>
         </nav>
 
-        {/* Right Side: Onde Comprar + Idiomas */}
+        {/* Right Side: Comprar + Idiomas */}
         <div className="desktop-only-nav nav-actions" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
           <a
             href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
@@ -168,7 +169,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             className="hover:brightness-110 active:scale-[0.98]"
           >
             <span>{dict.nav.buy}</span>
-            <span style={{ fontSize: 13 }}>🛒</span>
+            <ShoppingCart size={14} className="text-white" />
           </a>
 
           {/* Languages Divider */}
@@ -309,7 +310,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
               }}
             >
               <span>{dict.nav.buy}</span>
-              <span style={{ fontSize: 16 }}>🛒</span>
+              <ShoppingCart size={16} className="text-white" />
             </a>
           </nav>
 

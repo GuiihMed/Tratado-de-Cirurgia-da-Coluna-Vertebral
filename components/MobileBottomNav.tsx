@@ -28,28 +28,28 @@ export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
       chapters: "Capítulos",
       authors: "Autores",
       debate: "Debate",
-      buy: "Onde Comprar",
+      buy: "Comprar",
     },
     es: {
       home: "Inicio",
       chapters: "Capítulos",
       authors: "Autores",
       debate: "Debate",
-      buy: "Dónde Comprar",
+      buy: "Comprar",
     },
     en: {
       home: "Home",
       chapters: "Chapters",
       authors: "Authors",
       debate: "Debate",
-      buy: "Buy Book",
+      buy: "Buy",
     },
   }[locale] || {
     home: "Início",
     chapters: "Capítulos",
     authors: "Autores",
     debate: "Debate",
-    buy: "Onde Comprar",
+    buy: "Comprar",
   };
 
   return (
