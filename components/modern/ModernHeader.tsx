@@ -155,7 +155,9 @@ export default function ModernHeader({
                 background: "transparent",
                 border: "none",
                 cursor: "pointer",
-                font: "inherit",
+                fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                fontWeight: 700,
+                fontSize: 13.5,
               }}
               aria-expanded={tratadoDropdownOpen}
             >
@@ -211,7 +213,8 @@ export default function ModernHeader({
                       padding: "8px 12px",
                       borderRadius: 8,
                       fontSize: 13,
-                      fontWeight: 600,
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                      fontWeight: 700,
                       textDecoration: "none",
                       color: pathname?.includes("/prefacio") ? "#ff808f" : "#ffffff",
                       background: pathname?.includes("/prefacio") ? "rgba(245, 34, 56, 0.2)" : "transparent",
@@ -232,7 +235,8 @@ export default function ModernHeader({
                       padding: "8px 12px",
                       borderRadius: 8,
                       fontSize: 13,
-                      fontWeight: 600,
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                      fontWeight: 700,
                       textDecoration: "none",
                       color: pathname?.includes("/apresentacao") ? "#ff808f" : "#ffffff",
                       background: pathname?.includes("/apresentacao") ? "rgba(245, 34, 56, 0.2)" : "transparent",
@@ -266,7 +270,9 @@ export default function ModernHeader({
                 background: "transparent",
                 border: "none",
                 cursor: "pointer",
-                font: "inherit",
+                fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                fontWeight: 700,
+                fontSize: 13.5,
               }}
               aria-expanded={indiceDropdownOpen}
             >
@@ -322,7 +328,8 @@ export default function ModernHeader({
                       padding: "8px 12px",
                       borderRadius: 8,
                       fontSize: 13,
-                      fontWeight: 600,
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                      fontWeight: 700,
                       textDecoration: "none",
                       color: pathname?.includes("/indice") ? "#ff808f" : "#ffffff",
                       background: pathname?.includes("/indice") ? "rgba(245, 34, 56, 0.2)" : "transparent",
@@ -343,7 +350,8 @@ export default function ModernHeader({
                       padding: "8px 12px",
                       borderRadius: 8,
                       fontSize: 13,
-                      fontWeight: 600,
+                      fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+                      fontWeight: 700,
                       textDecoration: "none",
                       color: pathname?.includes("/referencias") ? "#ff808f" : "#ffffff",
                       background: pathname?.includes("/referencias") ? "rgba(245, 34, 56, 0.2)" : "transparent",
@@ -362,7 +370,11 @@ export default function ModernHeader({
           <Link
             href={`/${locale}/autores-new`}
             className={`modern-nav-link ${currentPage === "autores-new" || pathname?.includes("/autores") || pathname?.includes("/autor-") ? "active" : ""}`}
-            style={{ whiteSpace: "nowrap" }}
+            style={{
+              whiteSpace: "nowrap",
+              fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+              fontWeight: 700,
+            }}
           >
             <span>{dict.nav.authors}</span>
           </Link>
@@ -376,6 +388,8 @@ export default function ModernHeader({
               alignItems: "center",
               gap: 6,
               whiteSpace: "nowrap",
+              fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
+              fontWeight: 700,
             }}
           >
             <span
