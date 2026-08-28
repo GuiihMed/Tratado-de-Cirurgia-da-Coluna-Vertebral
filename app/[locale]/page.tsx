@@ -164,21 +164,13 @@ export default async function HomePage({ params }: HomePageProps) {
                   </span>
                 </div>
 
-                {/* Action Buttons Row (3 Buttons matching media_1787333724340.png) */}
+                {/* Action Buttons Row */}
                 <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full max-w-xl mb-5">
                   <Link
                     href={`/${locale}/indice`}
                     className="w-full sm:w-auto h-11 px-5 rounded-md bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-[14px] flex items-center justify-center gap-2.5 shadow-sm transition-all active:scale-[0.98]"
                   >
                     <span>{dict.heroHome.exploreIndex}</span>
-                    <span className="text-[15px] leading-none font-bold">→</span>
-                  </Link>
-
-                  <Link
-                    href={`/${locale}/indice#conteudo`}
-                    className="w-full sm:w-auto h-11 px-5 rounded-md bg-[#001738]/60 hover:bg-[#001738]/90 text-white font-bold text-[14px] flex items-center justify-center gap-2.5 border border-white/35 backdrop-blur-sm transition-all active:scale-[0.98]"
-                  >
-                    <span>{dict.heroHome.seeChapters}</span>
                     <span className="text-[15px] leading-none font-bold">→</span>
                   </Link>
 
