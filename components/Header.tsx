@@ -102,15 +102,9 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           </Link>
           <Link
             href={`/${locale}/indice`}
-            className={currentPage === "indice" && !pathname?.includes("#conteudo") ? "active" : ""}
+            className={currentPage === "indice" ? "active" : ""}
           >
-            <span>{dict.nav.index}</span>
-          </Link>
-          <Link
-            href={`/${locale}/indice#conteudo`}
-            className=""
-          >
-            <span>{dict.nav.chapters}</span>
+            <span>{dict.nav.theWork || "A Obra"}</span>
           </Link>
           <Link
             href={`/${locale}/autores`}
@@ -341,8 +335,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
             {[
               { href: `/${locale}/prefacio`, label: dict.nav.preface, active: pathname?.includes("/prefacio") },
               { href: `/${locale}/apresentacao`, label: dict.nav.presentation, active: pathname?.includes("/apresentacao") },
-              { href: `/${locale}/indice`, label: dict.nav.index, active: currentPage === "indice" },
-              { href: `/${locale}/indice#conteudo`, label: dict.nav.chapters, active: false },
+              { href: `/${locale}/indice`, label: dict.nav.theWork || "A Obra", active: currentPage === "indice" },
               { href: `/${locale}/autores`, label: dict.nav.authors, active: pathname?.includes("/autores") },
               { href: `/${locale}/referencias`, label: dict.nav.references, active: pathname?.includes("/referencias") },
               { href: `/${locale}#debate`, label: dict.nav.debate, active: false },
