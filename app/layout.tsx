@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import SvgSprite from "@/components/SvgSprite";
@@ -164,6 +165,7 @@ export default function RootLayout({
         </Suspense>
         <SvgSprite />
         {children}
+        <Analytics />
       </body>
     </html>
   );
