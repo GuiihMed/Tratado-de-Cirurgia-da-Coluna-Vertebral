@@ -54,10 +54,23 @@ export default function CustomVimeoPlayer({
   const [controlsVisible, setControlsVisible] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
   const [hoverTime, setHoverTime] = useState<{ time: number; pct: number } | null>(null);
-  const [seeking, setSeeking] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Optimistic refs for 0ms latency seeking and skipping
+  const currentTimeRef = useRef(0);
+  const durationRef = useRef(0);
+  const isSeekingRef = useRef(false);
+  const seekDebounceTimer = useRef<NodeJS.Timeout | null>(null);
+  const seekReleaseTimer = useRef<NodeJS.Timeout | null>(null);
   const hideControlsTimer = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    currentTimeRef.current = currentTime;
+  }, [currentTime]);
+
+  useEffect(() => {
+    durationRef.current = duration;
+  }, [duration]);
 
   const formatTime = (secs: number) => {
     if (isNaN(secs) || secs < 0) return "00:00";
@@ -70,6 +83,39 @@ export default function CustomVimeoPlayer({
     }
     return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
   };
+
+  // Instant Seek logic with 0ms UI delay
+  const seekTo = useCallback((targetTime: number) => {
+    const dur = durationRef.current || duration || 2980;
+    const clamped = Math.max(0, Math.min(dur, targetTime));
+
+    // 1. Instant 0ms UI response
+    currentTimeRef.current = clamped;
+    setCurrentTime(clamped);
+
+    // 2. Lock timeupdate to prevent backwards jumping/lag
+    isSeekingRef.current = true;
+    if (seekReleaseTimer.current) clearTimeout(seekReleaseTimer.current);
+    seekReleaseTimer.current = setTimeout(() => {
+      isSeekingRef.current = false;
+    }, 700);
+
+    // 3. Dispatch to Vimeo iframe asynchronously
+    if (seekDebounceTimer.current) clearTimeout(seekDebounceTimer.current);
+    seekDebounceTimer.current = setTimeout(() => {
+      if (playerRef.current) {
+        playerRef.current.setCurrentTime(clamped).catch(() => {});
+      }
+    }, 20);
+  }, [duration]);
+
+  const handleSkip = useCallback(
+    (seconds: number) => {
+      const base = currentTimeRef.current;
+      seekTo(base + seconds);
+    },
+    [seekTo]
+  );
 
   // Initialize Vimeo Player SDK
   useEffect(() => {
@@ -84,6 +130,7 @@ export default function CustomVimeoPlayer({
         try {
           const d = await player.getDuration();
           setDuration(d);
+          durationRef.current = d;
         } catch (e) {}
       });
 
@@ -97,11 +144,29 @@ export default function CustomVimeoPlayer({
         setIsPlaying(false);
       });
 
+      player.on("seeking", () => {
+        isSeekingRef.current = true;
+      });
+
+      player.on("seeked", (data) => {
+        if (seekReleaseTimer.current) clearTimeout(seekReleaseTimer.current);
+        seekReleaseTimer.current = setTimeout(() => {
+          isSeekingRef.current = false;
+          if (data && typeof data.seconds === "number") {
+            setCurrentTime(data.seconds);
+            currentTimeRef.current = data.seconds;
+          }
+        }, 80);
+      });
+
       player.on("timeupdate", (data) => {
-        if (!seeking) {
+        // Ignore stale timeupdate packets while user is actively advancing
+        if (!isSeekingRef.current) {
           setCurrentTime(data.seconds);
-          if (data.duration && duration === 0) {
+          currentTimeRef.current = data.seconds;
+          if (data.duration && (duration === 0 || durationRef.current === 0)) {
             setDuration(data.duration);
+            durationRef.current = data.duration;
           }
           if (data.percent) {
             setBufferedPct(Math.min(100, data.percent * 100 + 10));
@@ -123,6 +188,9 @@ export default function CustomVimeoPlayer({
       });
 
       return () => {
+        if (seekDebounceTimer.current) clearTimeout(seekDebounceTimer.current);
+        if (seekReleaseTimer.current) clearTimeout(seekReleaseTimer.current);
+        if (hideControlsTimer.current) clearTimeout(hideControlsTimer.current);
         player.destroy();
       };
     } catch (err) {
@@ -144,18 +212,6 @@ export default function CustomVimeoPlayer({
       console.warn(e);
     }
   }, [isPlaying]);
-
-  const handleSkip = useCallback(
-    async (seconds: number) => {
-      if (!playerRef.current) return;
-      try {
-        const nextTime = Math.max(0, Math.min(duration, currentTime + seconds));
-        await playerRef.current.setCurrentTime(nextTime);
-        setCurrentTime(nextTime);
-      } catch (e) {}
-    },
-    [currentTime, duration]
-  );
 
   const handleVolumeChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseFloat(e.target.value);
@@ -427,7 +483,7 @@ export default function CustomVimeoPlayer({
         >
           {/* Progress / Timeline Bar */}
           <div
-            className="relative w-full h-3.5 sm:h-4 flex items-center cursor-pointer group/progress mb-1.5 sm:mb-2"
+            className="relative w-full h-3.5 sm:h-4 flex items-center cursor-pointer group/progress mb-1.5 sm:mb-2 touch-none select-none"
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const pos = (e.clientX - rect.left) / rect.width;
@@ -435,14 +491,26 @@ export default function CustomVimeoPlayer({
               setHoverTime({ time, pct: pos * 100 });
             }}
             onMouseLeave={() => setHoverTime(null)}
+            onPointerDown={(e) => {
+              e.currentTarget.setPointerCapture(e.pointerId);
+              const rect = e.currentTarget.getBoundingClientRect();
+              const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+              const dur = durationRef.current || duration || 2980;
+              seekTo(pos * dur);
+            }}
+            onPointerMove={(e) => {
+              if (e.buttons === 1) {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                const dur = durationRef.current || duration || 2980;
+                seekTo(pos * dur);
+              }
+            }}
             onClick={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
-              const pos = (e.clientX - rect.left) / rect.width;
-              const val = Math.max(0, Math.min(duration, pos * duration));
-              setCurrentTime(val);
-              if (playerRef.current) {
-                playerRef.current.setCurrentTime(val);
-              }
+              const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+              const dur = durationRef.current || duration || 2980;
+              seekTo(pos * dur);
             }}
           >
             {/* Background Rail */}
