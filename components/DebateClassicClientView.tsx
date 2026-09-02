@@ -103,33 +103,38 @@ export default function DebateClassicClientView({
           >
             {/* Top Bar on Player */}
             <div
-              className="flex flex-col xs:flex-row xs:items-center justify-between gap-2.5 sm:gap-3 p-3 sm:px-4 sm:py-3 bg-[#001633] border-b border-white/10"
+              className="flex items-center justify-between gap-2.5 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 bg-[#001633] border-b border-white/10 flex-wrap sm:flex-nowrap"
             >
-              <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+              {/* Left: Episode Badge + Duration */}
+              <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                 <span
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#f52238] text-[10.5px] sm:text-xs font-bold text-white uppercase tracking-wider"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#f52238] text-[11px] font-bold text-white uppercase tracking-wide whitespace-nowrap shrink-0 shadow-sm"
                 >
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   <span>
                     {locale === "en"
-                      ? `Episode ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • Now Playing`
+                      ? `Episode ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero}`
                       : locale === "es"
-                      ? `Episodio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • En Reproducción`
-                      : `Episódio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • Em Reprodução`}
+                      ? `Episodio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero}`
+                      : `Episódio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero}`}
+                  </span>
+                  <span className="hidden md:inline font-semibold opacity-90">
+                    {locale === "en" ? "• Now Playing" : locale === "es" ? "• En Reproducción" : "• Em Reprodução"}
                   </span>
                 </span>
-                <span className="text-xs sm:text-sm text-white/80 font-semibold">
+                <span className="text-xs sm:text-sm text-slate-300 font-semibold whitespace-nowrap shrink-0">
                   {activeEpisode.duracao} min
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 self-start xs:self-auto">
+              {/* Right: Actions */}
+              <div className="flex items-center gap-2 shrink-0">
                 {activeEpisode.spotifyUrl && (
                   <a
                     href={activeEpisode.spotifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline"
+                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap"
                     title="Ouvir no Spotify"
                   >
                     <SpotifyIcon size={14} color="#ffffff" />
@@ -139,7 +144,7 @@ export default function DebateClassicClientView({
                 <button
                   onClick={handleShare}
                   type="button"
-                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all cursor-pointer active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all cursor-pointer active:scale-95 whitespace-nowrap"
                 >
                   {copiedLink ? (
                     <>
@@ -370,7 +375,7 @@ export default function DebateClassicClientView({
                   >
                     <div className="flex items-center justify-between mb-1.5">
                       <span
-                        className={`text-[10.5px] font-bold uppercase px-2 py-0.5 rounded ${
+                        className={`text-[10.5px] font-bold uppercase px-2 py-0.5 rounded whitespace-nowrap shrink-0 ${
                           isActive ? "bg-[#f52238] text-white" : "bg-slate-200 text-slate-700"
                         }`}
                       >
