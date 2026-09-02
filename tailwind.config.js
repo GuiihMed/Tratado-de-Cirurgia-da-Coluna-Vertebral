@@ -9,6 +9,9 @@ module.exports = {
   theme: {
     extend:
       {
+      screens: {
+        xs: "480px",
+      },
       fontFamily: {
         sans: ["Montserrat", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],

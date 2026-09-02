@@ -135,9 +135,9 @@ export default async function DebatePage({ params }: DebatePageProps) {
       <Header locale={locale} currentPage="debate" />
 
       <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
-        {/* ================= HERO SECTION (DESIGN CLÁSSICO) ================= */}
+        {/* ================= HERO SECTION (DESIGN CLÁSSICO RESPONSIVO) ================= */}
         <section
-          className="relative w-full overflow-hidden text-white pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-white/10"
+          className="relative w-full overflow-hidden text-white pt-5 pb-8 sm:pt-10 sm:pb-14 border-b border-white/10"
           style={{
             background:
               "radial-gradient(circle at 19% 24%, rgba(255, 87, 86, 0.45), transparent 34%), linear-gradient(105deg, #c9142a 0%, #39244c 28%, #052b5b 58%, #0062a7 100%)",
@@ -147,59 +147,32 @@ export default async function DebatePage({ params }: DebatePageProps) {
           <img
             src="/assets/hero-spine.png"
             alt=""
-            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-25 hidden md:block"
+            className="absolute right-0 top-0 h-full w-auto max-w-[62%] object-contain pointer-events-none opacity-20 hidden md:block"
             style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
           />
 
           <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
             {/* Breadcrumb */}
-            <div style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.8)", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
-              <Link href={`/${locale}`} style={{ color: "rgba(255, 255, 255, 0.85)", textDecoration: "none" }}>
+            <div className="text-xs sm:text-sm text-white/80 mb-3 sm:mb-5 flex items-center flex-wrap gap-1.5 sm:gap-2">
+              <Link href={`/${locale}`} className="text-white/85 hover:text-white transition-colors no-underline">
                 {locale === "en" ? "Home" : locale === "es" ? "Inicio" : "Início"}
               </Link>
               <span>›</span>
-              <span style={{ color: "rgba(255, 255, 255, 0.85)" }}>
+              <span className="text-white/85">
                 {locale === "en" ? "The Treatise" : locale === "es" ? "El Tratado" : "O Tratado"}
               </span>
               <span>›</span>
-              <span style={{ color: "#ffffff", fontWeight: 700 }}>
+              <span className="text-white font-bold">
                 {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-              {/* Left Column: Book Photo */}
-              <div className="md:col-span-4 flex justify-center md:justify-end">
-                <img
-                  src="/assets/capa-tratado.png"
-                  alt="Tratado de Cirurgia da Coluna Vertebral"
-                  style={{
-                    width: 240,
-                    height: "auto",
-                    filter: "drop-shadow(0 20px 45px rgba(0, 0, 0, 0.5))",
-                  }}
-                />
-              </div>
-
-              {/* Right Column: Hero Info */}
-              <div className="md:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-12 items-center">
+              {/* Right Column / Primary Info on Mobile */}
+              <div className="md:col-span-8 order-1 md:order-2 flex flex-col items-start text-left">
                 {/* Institutional Badge */}
                 <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "4px 12px",
-                    borderRadius: 4,
-                    border: "1px solid rgba(255, 255, 255, 0.35)",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: "#fff",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    marginBottom: 14,
-                    background: "rgba(0, 16, 48, 0.4)",
-                  }}
+                  className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-[#001030]/60 border border-white/30 text-[10px] sm:text-[11px] font-bold text-white uppercase tracking-wider mb-2.5 sm:mb-3.5 backdrop-blur-sm"
                 >
                   <span className="w-2 h-2 rounded-full bg-[#ff3047] animate-pulse" />
                   <span>
@@ -213,28 +186,14 @@ export default async function DebatePage({ params }: DebatePageProps) {
 
                 {/* Main Hero Title */}
                 <h1
-                  style={{
-                    fontSize: "clamp(30px, 3.8vw, 48px)",
-                    letterSpacing: "-0.03em",
-                    margin: "0 0 14px",
-                    fontWeight: 800,
-                    color: "#ffffff",
-                    lineHeight: 1.15,
-                  }}
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight mb-2 sm:mb-3"
                 >
                   {locale === "en" ? "Treatise in Debate" : locale === "es" ? "Tratado en Debate" : "Tratado em Debate"}
                 </h1>
 
                 {/* Subtitle */}
                 <p
-                  style={{
-                    fontSize: "clamp(15px, 1.6vw, 18px)",
-                    color: "#e2e8f0",
-                    maxWidth: 680,
-                    margin: 0,
-                    lineHeight: 1.55,
-                    fontWeight: 400,
-                  }}
+                  className="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed max-w-2xl font-normal m-0"
                 >
                   {locale === "en"
                     ? "Scientific clinical discussions and surgical insights directly with the authors of each chapter of the SBC Spine Treatise."
@@ -242,6 +201,15 @@ export default async function DebatePage({ params }: DebatePageProps) {
                     ? "Debates clínicos y enfoques quirúrgicos directamente con los autores de cada capítulo del Tratado de la SBC."
                     : "Debates clínicos aprofundados e condutas cirúrgicas práticas diretamente com os autores e especialistas dos capítulos da obra."}
                 </p>
+              </div>
+
+              {/* Book Photo (Compact and clean on mobile, full size on desktop) */}
+              <div className="md:col-span-4 order-2 md:order-1 flex justify-center md:justify-end">
+                <img
+                  src="/assets/capa-tratado.png"
+                  alt="Tratado de Cirurgia da Coluna Vertebral"
+                  className="w-[125px] sm:w-[170px] md:w-[240px] h-auto drop-shadow-[0_15px_35px_rgba(0,0,0,0.5)] transition-transform hover:scale-[1.02]"
+                />
               </div>
             </div>
           </div>
