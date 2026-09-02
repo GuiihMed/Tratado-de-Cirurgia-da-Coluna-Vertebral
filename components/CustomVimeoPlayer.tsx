@@ -7,6 +7,8 @@ import {
   Pause,
   RotateCcw,
   RotateCw,
+  FastForward,
+  Rewind,
   Volume2,
   VolumeX,
   Volume1,
@@ -56,6 +58,28 @@ export default function CustomVimeoPlayer({
   const [hoverTime, setHoverTime] = useState<{ time: number; pct: number } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // 60FPS Drag/Scrubbing states
+  const [isScrubbing, setIsScrubbing] = useState(false);
+  const [scrubTime, setScrubTime] = useState(0);
+  const isScrubbingRef = useRef(false);
+  const scrubTimeRef = useRef(0);
+
+  // On-screen Skip HUD feedback (Accumulated Seconds - YouTube/Netflix style)
+  const [skipFeedback, setSkipFeedback] = useState<{
+    direction: "forward" | "backward";
+    seconds: number;
+    id: number;
+  } | null>(null);
+  const skipAccumulatorRef = useRef<{
+    direction: "forward" | "backward";
+    seconds: number;
+    timer: NodeJS.Timeout | null;
+  }>({
+    direction: "forward",
+    seconds: 0,
+    timer: null,
+  });
+
   // Optimistic refs for 0ms latency seeking and skipping
   const currentTimeRef = useRef(0);
   const durationRef = useRef(0);
@@ -84,8 +108,8 @@ export default function CustomVimeoPlayer({
     return `${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
-  // Instant Seek logic with 0ms UI delay
-  const seekTo = useCallback((targetTime: number) => {
+  // Instant Seek logic with 0ms UI delay and Vimeo throttling
+  const seekTo = useCallback((targetTime: number, debounceMs = 150) => {
     const dur = durationRef.current || duration || 2980;
     const clamped = Math.max(0, Math.min(dur, targetTime));
 
@@ -93,29 +117,114 @@ export default function CustomVimeoPlayer({
     currentTimeRef.current = clamped;
     setCurrentTime(clamped);
 
-    // 2. Lock timeupdate to prevent backwards jumping/lag
+    // 2. Lock timeupdate so Vimeo's stale frames don't bounce the scrubber back
     isSeekingRef.current = true;
     if (seekReleaseTimer.current) clearTimeout(seekReleaseTimer.current);
     seekReleaseTimer.current = setTimeout(() => {
       isSeekingRef.current = false;
-    }, 700);
+    }, 1000);
 
     // 3. Dispatch to Vimeo iframe asynchronously
     if (seekDebounceTimer.current) clearTimeout(seekDebounceTimer.current);
-    seekDebounceTimer.current = setTimeout(() => {
+    if (debounceMs <= 0) {
       if (playerRef.current) {
         playerRef.current.setCurrentTime(clamped).catch(() => {});
       }
-    }, 20);
+    } else {
+      seekDebounceTimer.current = setTimeout(() => {
+        if (playerRef.current) {
+          playerRef.current.setCurrentTime(clamped).catch(() => {});
+        }
+      }, debounceMs);
+    }
   }, [duration]);
+
+  // Click Accumulator: Shows +10s, +20s, +30s on screen with zero lag
+  const triggerSkipFeedback = useCallback((delta: number) => {
+    const dir = delta > 0 ? "forward" : "backward";
+    const absDelta = Math.abs(delta);
+
+    if (skipAccumulatorRef.current.timer) {
+      clearTimeout(skipAccumulatorRef.current.timer);
+    }
+
+    if (skipAccumulatorRef.current.direction === dir) {
+      skipAccumulatorRef.current.seconds += absDelta;
+    } else {
+      skipAccumulatorRef.current.direction = dir;
+      skipAccumulatorRef.current.seconds = absDelta;
+    }
+
+    const currentTotal = skipAccumulatorRef.current.seconds;
+
+    setSkipFeedback({
+      direction: dir,
+      seconds: currentTotal,
+      id: Date.now(),
+    });
+
+    skipAccumulatorRef.current.timer = setTimeout(() => {
+      setSkipFeedback(null);
+      skipAccumulatorRef.current.seconds = 0;
+      skipAccumulatorRef.current.timer = null;
+    }, 850);
+  }, []);
 
   const handleSkip = useCallback(
     (seconds: number) => {
-      const base = currentTimeRef.current;
-      seekTo(base + seconds);
+      // 1. Exibir instantaneamente os segundos acumulados na tela
+      triggerSkipFeedback(seconds);
+
+      // 2. Calcular e atualizar interface com 0ms de delay
+      const base = isScrubbingRef.current ? scrubTimeRef.current : currentTimeRef.current;
+      seekTo(base + seconds, 150);
     },
-    [seekTo]
+    [seekTo, triggerSkipFeedback]
   );
+
+  // Timeline Scrubbing Handlers (Butter-smooth 60FPS drag)
+  const handleScrubStart = useCallback((clientX: number, rect: DOMRect) => {
+    isScrubbingRef.current = true;
+    setIsScrubbing(true);
+    isSeekingRef.current = true;
+
+    const pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const dur = durationRef.current || duration || 2980;
+    const newTime = pos * dur;
+
+    scrubTimeRef.current = newTime;
+    setScrubTime(newTime);
+    currentTimeRef.current = newTime;
+    setCurrentTime(newTime);
+  }, [duration]);
+
+  const handleScrubMove = useCallback((clientX: number, rect: DOMRect) => {
+    if (!isScrubbingRef.current) return;
+    const pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const dur = durationRef.current || duration || 2980;
+    const newTime = pos * dur;
+
+    scrubTimeRef.current = newTime;
+    setScrubTime(newTime);
+    currentTimeRef.current = newTime;
+    setCurrentTime(newTime);
+  }, [duration]);
+
+  const handleScrubEnd = useCallback(() => {
+    if (!isScrubbingRef.current) return;
+    isScrubbingRef.current = false;
+    setIsScrubbing(false);
+
+    const finalTime = scrubTimeRef.current;
+    if (playerRef.current) {
+      playerRef.current.setCurrentTime(finalTime).catch(() => {});
+    }
+
+    if (seekReleaseTimer.current) clearTimeout(seekReleaseTimer.current);
+    seekReleaseTimer.current = setTimeout(() => {
+      isSeekingRef.current = false;
+    }, 1000);
+  }, []);
 
   // Initialize Vimeo Player SDK
   useEffect(() => {
@@ -324,7 +433,8 @@ export default function CustomVimeoPlayer({
     };
   }, [handlePlayPause, handleSkip, handleToggleMute]);
 
-  const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const displayCurrentTime = isScrubbing ? scrubTime : currentTime;
+  const progressPct = duration > 0 ? (displayCurrentTime / duration) * 100 : 0;
 
   const t = {
     badge: locale === "en" ? "Official SBC Videocast" : locale === "es" ? "Videocast Oficial SBC" : "Videocast Oficial SBC",
@@ -473,6 +583,36 @@ export default function CustomVimeoPlayer({
         </div>
       )}
 
+      {/* On-Screen Skip Feedback HUD (Accumulated Seconds - YouTube / Netflix Style) */}
+      {skipFeedback && (
+        <div
+          key={skipFeedback.id}
+          className={`absolute top-1/2 -translate-y-1/2 z-40 pointer-events-none flex items-center justify-center transition-all duration-200 ${
+            skipFeedback.direction === "forward" ? "right-6 sm:right-16" : "left-6 sm:left-16"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-2xl bg-black/85 backdrop-blur-xl border border-white/25 text-white shadow-[0_12px_40px_rgba(0,0,0,0.7)] animate-pulse">
+            <div className="flex items-center gap-1.5 text-rose-500">
+              {skipFeedback.direction === "forward" ? (
+                <FastForward size={24} className="fill-current" />
+              ) : (
+                <Rewind size={24} className="fill-current" />
+              )}
+            </div>
+            <span className="text-xl sm:text-2xl font-black tracking-tight font-mono text-white">
+              {skipFeedback.direction === "forward" ? `+${skipFeedback.seconds}s` : `-${skipFeedback.seconds}s`}
+            </span>
+            <span className="text-[10px] sm:text-[11px] text-white/80 font-bold uppercase tracking-wider">
+              {skipFeedback.seconds >= 60
+                ? `${Math.floor(skipFeedback.seconds / 60)}m ${skipFeedback.seconds % 60 ? `${skipFeedback.seconds % 60}s` : ""}`
+                : skipFeedback.direction === "forward"
+                ? "Avançar"
+                : "Retroceder"}
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* 5. Bottom Custom Controller Bar */}
       {hasStarted && (
         <div
@@ -493,24 +633,27 @@ export default function CustomVimeoPlayer({
             onMouseLeave={() => setHoverTime(null)}
             onPointerDown={(e) => {
               e.currentTarget.setPointerCapture(e.pointerId);
-              const rect = e.currentTarget.getBoundingClientRect();
-              const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-              const dur = durationRef.current || duration || 2980;
-              seekTo(pos * dur);
+              handleScrubStart(e.clientX, e.currentTarget.getBoundingClientRect());
             }}
             onPointerMove={(e) => {
-              if (e.buttons === 1) {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                const dur = durationRef.current || duration || 2980;
-                seekTo(pos * dur);
+              if (isScrubbing || e.buttons === 1) {
+                handleScrubMove(e.clientX, e.currentTarget.getBoundingClientRect());
               }
+            }}
+            onPointerUp={(e) => {
+              try {
+                e.currentTarget.releasePointerCapture(e.pointerId);
+              } catch (err) {}
+              handleScrubEnd();
+            }}
+            onPointerCancel={() => {
+              handleScrubEnd();
             }}
             onClick={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
               const dur = durationRef.current || duration || 2980;
-              seekTo(pos * dur);
+              seekTo(pos * dur, 0);
             }}
           >
             {/* Background Rail */}
@@ -529,7 +672,9 @@ export default function CustomVimeoPlayer({
 
             {/* Scrubber Handle */}
             <div
-              className="absolute w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-white border-2 border-rose-600 shadow-md shadow-black/80 -translate-x-1/2 scale-0 group-hover/progress:scale-100 transition-transform duration-150"
+              className={`absolute w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-white border-2 border-rose-600 shadow-md shadow-black/80 -translate-x-1/2 transition-transform duration-100 ${
+                isScrubbing ? "scale-125" : "scale-0 group-hover/progress:scale-100"
+              }`}
               style={{ left: `${progressPct}%` }}
             />
 
@@ -610,7 +755,7 @@ export default function CustomVimeoPlayer({
 
               {/* Time Display */}
               <div className="text-[10px] sm:text-[11.5px] font-mono text-slate-300 ml-0.5 select-none shrink-0">
-                <span className="text-white font-bold">{formatTime(currentTime)}</span>
+                <span className="text-white font-bold">{formatTime(displayCurrentTime)}</span>
                 <span className="opacity-40 mx-0.5 sm:mx-1">/</span>
                 <span className="hidden sm:inline">{formatTime(duration || 2980)}</span>
               </div>
