@@ -8,6 +8,7 @@ import { Locale } from "@/lib/types";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import { Users, Award, ArrowDown, ArrowRight, Search, BookOpen, ExternalLink } from "lucide-react";
 import { AUTHORS_DIRECTORY } from "@/lib/data/authors";
+import { extractSearchTokens, normalize, cleanPunctuation } from "@/lib/data/global-search";
 
 interface AutoresNewProps {
   params: Promise<{ locale: string }>;
@@ -114,11 +115,15 @@ export default function AutoresNewPage({ params }: AutoresNewProps) {
   );
 
   const filteredAuthors = authorsList.filter((a) => {
+    const tokens = extractSearchTokens(searchQuery);
     const matchSearch =
-      a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.institution.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.bio.toLowerCase().includes(searchQuery.toLowerCase());
+      tokens.length === 0 ||
+      (() => {
+        const fullText = cleanPunctuation(
+          normalize(`${a.name} ${a.role} ${a.institution} ${a.bio} ${a.specialties.join(" ")}`)
+        );
+        return tokens.every((token) => fullText.includes(token));
+      })();
 
     const matchSpec =
       selectedSpecialty === "ALL" || a.specialties.includes(selectedSpecialty);

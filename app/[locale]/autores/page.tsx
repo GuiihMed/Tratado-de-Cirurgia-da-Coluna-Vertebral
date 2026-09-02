@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
 import { EDITORES_TRATADO } from "@/lib/data/institutional-data";
 import { AUTHORS_DIRECTORY, AuthorProfile } from "@/lib/data/authors";
+import { extractSearchTokens, normalize, cleanPunctuation } from "@/lib/data/global-search";
 
 interface AutoresPageProps {
   params: Promise<{ locale: string }>;
@@ -62,17 +63,17 @@ export default function AutoresPage({ params }: AutoresPageProps) {
       }
 
       if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase().trim();
-        const matchesName = a.nome.toLowerCase().includes(query);
-        const matchesCargo = a.cargo.toLowerCase().includes(query);
-        const matchesInst = a.instituicao.toLowerCase().includes(query);
-        const matchesChapters = a.capitulos_tratado.some(
-          (c) =>
-            c.titulo.toLowerCase().includes(query) ||
-            c.num.toString() === query ||
-            c.secao_nome.toLowerCase().includes(query)
-        );
-        return matchesName || matchesCargo || matchesInst || matchesChapters;
+        const tokens = extractSearchTokens(searchQuery);
+        if (tokens.length > 0) {
+          const authorText = cleanPunctuation(
+            normalize(
+              `${a.nome} ${a.nome_vancouver || ""} ${a.cargo} ${a.instituicao} ${a.destaque || ""} ${a.capitulos_tratado
+                .map((c) => `${c.num} ${c.titulo} ${c.secao_nome}`)
+                .join(" ")}`
+            )
+          );
+          return tokens.every((token) => authorText.includes(token));
+        }
       }
 
       return true;

@@ -55,7 +55,29 @@ export interface SearchResults {
   sections: SearchResultSection[];
 }
 
-function normalize(text: string): string {
+/**
+ * Conjunto abrangente de honoríficos médicos e acadêmicos comuns
+ * Trata variações como: Dr, Dr., Dra, Dra., Doutor, Doutora, Doctor, Prof, Professor, etc.
+ */
+export const MEDICAL_HONORIFICS = new Set([
+  "dr",
+  "dra",
+  "drs",
+  "dras",
+  "doutor",
+  "doutora",
+  "doutores",
+  "doutoras",
+  "doctor",
+  "doctora",
+  "prof",
+  "profa",
+  "professor",
+  "professora",
+  "doc",
+]);
+
+export function normalize(text: string): string {
   return (text || "")
     .toLowerCase()
     .normalize("NFD")
@@ -63,9 +85,46 @@ function normalize(text: string): string {
     .trim();
 }
 
+/**
+ * Remove pontuações mantendo palavras separadas por espaço
+ */
+export function cleanPunctuation(text: string): string {
+  return (text || "")
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Extrai tokens inteligentes de busca considerando títulos médicos.
+ * Se o usuário pesquisar "Dr. Marcelo Risso" ou "Doutor Helton",
+ * a função filtra o prefixo "dr" / "doutor" e foca nos termos significativos ["marcelo", "risso"],
+ * garantindo que o autor seja encontrado mesmo que seu nome no banco não tenha "Dr.".
+ */
+export function extractSearchTokens(rawQuery: string): string[] {
+  const norm = normalize(rawQuery);
+  if (!norm) return [];
+
+  const cleaned = cleanPunctuation(norm);
+  const allTokens = cleaned.split(/\s+/).filter(Boolean);
+
+  const meaningfulTokens = allTokens.filter((token) => !MEDICAL_HONORIFICS.has(token));
+
+  // Se o usuário digitou palavras além do honorífico (ex: "Dr. Marcelo Risso"),
+  // usamos apenas os termos relevantes
+  if (meaningfulTokens.length > 0) {
+    return meaningfulTokens;
+  }
+
+  // Se o usuário digitou APENAS "Dr" ou "Doutor", mantemos o termo para não zerar a busca
+  return allTokens;
+}
+
 export function searchTreatise(rawQuery: string, locale: Locale = "pt", isModern: boolean = true): SearchResults {
+  const queryTokens = extractSearchTokens(rawQuery);
   const query = normalize(rawQuery);
-  if (!query) {
+
+  if (!query || queryTokens.length === 0) {
     return {
       query: rawQuery,
       total: 0,
@@ -76,11 +135,10 @@ export function searchTreatise(rawQuery: string, locale: Locale = "pt", isModern
     };
   }
 
-  const queryTokens = query.split(/\s+/).filter(Boolean);
-
   const textMatchesQuery = (text: string) => {
-    const norm = normalize(text);
-    return queryTokens.every((token) => norm.includes(token));
+    if (!text) return false;
+    const cleanNorm = cleanPunctuation(normalize(text));
+    return queryTokens.every((token) => cleanNorm.includes(token));
   };
 
   // 1. Chapters search
@@ -99,7 +157,11 @@ export function searchTreatise(rawQuery: string, locale: Locale = "pt", isModern
     const numStr = ch.numero.toString();
     const resumo = (locale === "en" ? ch.resumo_en : locale === "es" ? ch.resumo_es : ch.resumo_pt) || ch.resumo_pt || "";
 
-    const matchesNum = numStr === query || query === `capitulo ${numStr}` || query === `cap ${numStr}` || query === `chapter ${numStr}`;
+    const matchesNum =
+      numStr === rawQuery.trim() ||
+      (queryTokens.length === 1 && queryTokens[0] === numStr) ||
+      (queryTokens.includes(numStr) && (queryTokens.includes("capitulo") || queryTokens.includes("cap") || queryTokens.includes("chapter")));
+
     const matchesTitle = textMatchesQuery(currentTitle) || textMatchesQuery(titlePt) || textMatchesQuery(titleEn) || textMatchesQuery(titleEs);
     const matchesAuthors = textMatchesQuery(autoresRaw);
     const matchesSecao = textMatchesQuery(secaoNome);
