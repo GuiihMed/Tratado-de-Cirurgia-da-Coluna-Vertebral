@@ -216,7 +216,7 @@ export default async function DebatePage({ params }: DebatePageProps) {
         </section>
 
         {/* ================= VIDEOCAST CLASSIC CLIENT VIEW ================= */}
-        <section style={{ background: "#f8fafc" }}>
+        <section style={{ background: "#f8fafc" }} className="pt-8 pb-12 sm:pt-12 sm:pb-16 border-t border-slate-200">
           <DebateClassicClientView locale={locale} />
         </section>
 

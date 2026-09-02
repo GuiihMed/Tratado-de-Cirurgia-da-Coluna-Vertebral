@@ -91,7 +91,7 @@ export default function DebateClassicClientView({
   };
 
   return (
-    <div className="shell py-5 sm:py-8 md:py-12 px-3.5 sm:px-6">
+    <div className="shell px-3.5 sm:px-6">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* ========================================================================= */}
         {/* COLUNA ESQUERDA: EPISÓDIO EM DESTAQUE / PRINCIPAL (8 COLS) */}

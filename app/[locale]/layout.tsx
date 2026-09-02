@@ -312,7 +312,7 @@ export default async function LocaleLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="pb-16 md:pb-0 min-h-screen flex flex-col justify-between">
+      <div className="min-h-screen flex flex-col justify-between">
         <div className="flex-1">
           {children}
         </div>
