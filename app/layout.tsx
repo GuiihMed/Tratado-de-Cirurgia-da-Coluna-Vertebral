@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
+import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import SvgSprite from "@/components/SvgSprite";
@@ -138,6 +139,26 @@ export default function RootLayout({
         />
       </head>
       <body className={montserrat.className}>
+        {/* Google tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-PGPNH4Q7ZJ"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-PGPNH4Q7ZJ', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
         <Suspense fallback={null}>
           <GlobalScrollRestorer />
         </Suspense>
