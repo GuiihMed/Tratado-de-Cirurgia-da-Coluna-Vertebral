@@ -629,7 +629,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                             boxShadow: "0 3px 10px rgba(245, 34, 56, 0.35)",
                           }}
                         >
-                          <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
+                          <span>{locale === "en" ? "View Summary" : locale === "es" ? "Ver Resumen" : "Ver Resumo"}</span>
                           <ArrowRight size={13} />
                         </Link>
                         <button
@@ -1072,7 +1072,7 @@ export default function IndiceNewPage({ params }: IndiceNewProps) {
                     style={{ height: 44, fontSize: 13, flex: "1 1 200px", textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                   >
                     <BookOpen size={16} />
-                    <span>{locale === "en" ? "Read Full Chapter" : locale === "es" ? "Leer Capítulo Completo" : "Ler Capítulo Completo"}</span>
+                    <span>{locale === "en" ? "View Chapter Summary" : locale === "es" ? "Ver Resumen del Capítulo" : "Confira o Resumo do Capítulo"}</span>
                   </Link>
                   <button
                     onClick={() => copyCitation(activeModalChapter)}

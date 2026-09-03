@@ -226,7 +226,7 @@ export default function AuthorNewClientView({ author, locale }: AuthorNewClientV
                   transition: "all 0.2s ease",
                 }}
               >
-                <span>{locale === "en" ? "View Chapter" : locale === "es" ? "Ver Capítulo" : "Ver Capítulo"}</span>
+                <span>{locale === "en" ? "View Summary" : locale === "es" ? "Ver Resumen" : "Ver Resumo"}</span>
                 <ArrowRight size={14} />
               </Link>
             </div>

@@ -541,7 +541,7 @@ export default async function AutorPage({ params }: AutorPageProps) {
                             textDecoration: "none",
                           }}
                         >
-                          <span>{locale === "en" ? "Read Chapter" : locale === "es" ? "Leer Capítulo" : "Ler Capítulo"}</span>
+                          <span>{locale === "en" ? "View Summary" : locale === "es" ? "Ver Resumen" : "Ver Resumo"}</span>
                           <span>→</span>
                         </Link>
                       </div>

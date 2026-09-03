@@ -38,7 +38,7 @@ export const DICTIONARY = {
       lead: "Navegue pela estrutura completa da obra impressa:\n10 seções temáticas e 109 capítulos organizados\npara estudo, consulta e referência.",
       printNotice: "A obra completa existe exclusivamente\nem formato impresso.",
       exploreSections: "Explorar seções",
-      seeAllChapters: "Ver todos os capítulos",
+      seeAllChapters: "Confira os Resumos da Obra",
       whereToBuy: "Onde Comprar",
     },
     stats: {
@@ -94,7 +94,7 @@ export const DICTIONARY = {
       chaptersCount: "capítulos",
     },
     outline: {
-      title: "Conteúdo completo — 109 capítulos",
+      title: "Estrutura e Resumos da Obra — 109 capítulos",
       sectionPrefix: "Seção",
       loading: "Carregando capítulos...",
     },
@@ -166,7 +166,7 @@ export const DICTIONARY = {
       lead: "Browse the complete structure of the printed edition:\n10 thematic sections and 109 chapters organized\nfor study, consultation, and reference.",
       printNotice: "The complete work is available exclusively\nin printed format.",
       exploreSections: "Explore Sections",
-      seeAllChapters: "View All Chapters",
+      seeAllChapters: "View Chapter Summaries",
       whereToBuy: "Where to Buy",
     },
     stats: {
@@ -222,7 +222,7 @@ export const DICTIONARY = {
       chaptersCount: "chapters",
     },
     outline: {
-      title: "Complete Content — 109 Chapters",
+      title: "Complete Structure & Summaries — 109 Chapters",
       sectionPrefix: "Section",
       loading: "Loading chapters...",
     },
@@ -294,7 +294,7 @@ export const DICTIONARY = {
       lead: "Navegue por la estructura completa de la obra impresa:\n10 secciones temáticas y 109 capítulos organizados\npara estudio, consulta y referencia.",
       printNotice: "La obra completa existe exclusivamente\nen formato impreso.",
       exploreSections: "Explorar secciones",
-      seeAllChapters: "Ver todos los capítulos",
+      seeAllChapters: "Ver Resúmenes de la Obra",
       whereToBuy: "Dónde Comprar",
     },
     stats: {
@@ -350,7 +350,7 @@ export const DICTIONARY = {
       chaptersCount: "capítulos",
     },
     outline: {
-      title: "Contenido completo — 109 capítulos",
+      title: "Estructura y Resúmenes de la Obra — 109 capítulos",
       sectionPrefix: "Sección",
       loading: "Cargando capítulos...",
     },

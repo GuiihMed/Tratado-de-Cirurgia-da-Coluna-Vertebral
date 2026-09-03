@@ -54,7 +54,7 @@ export default function DebateMiniPlayer({
       : locale === "es"
       ? "Con el Dr. Marcelo Risso y el Dr. Paulo Cavali"
       : "Com Dr. Marcelo Risso e Dr. Paulo Cavali",
-    viewChapter: locale === "en" ? "Study Chapter 8" : locale === "es" ? "Ver Capítulo 8" : "Acessar Capítulo 8",
+    viewChapter: locale === "en" ? "View Summary of Ch. 8" : locale === "es" ? "Ver Resumen del Cap. 8" : "Ver Resumo do Cap. 8",
     allEpisodes: locale === "en" ? "Other Episodes" : locale === "es" ? "Otros Episodios" : "Outros Episódios",
     seeOtherEpisodes: locale === "en" ? "See other episodes" : locale === "es" ? "Ver otros episodios" : "Ver outros episódios",
     minimize: locale === "en" ? "Minimize" : locale === "es" ? "Minimizar" : "Minimizar",

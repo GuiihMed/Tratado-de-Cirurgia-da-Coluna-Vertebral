@@ -751,7 +751,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                           href={`/${locale}/capitulo-new/${chap.numero}`}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-red-400 transition-colors"
                         >
-                          <span>{locale === "en" ? "View Full Chapter" : locale === "es" ? "Ver Capítulo Completo" : "Ver Capítulo Completo"}</span>
+                          <span>{locale === "en" ? "View Chapter Summary" : locale === "es" ? "Ver Resumen del Capítulo" : "Ver Resumo do Capítulo"}</span>
                           <ArrowRight size={13} />
                         </Link>
                       </div>
@@ -869,7 +869,7 @@ export default function ReferenciasNewPage({ params }: ReferenciasNewProps) {
                               textDecoration: "none",
                             }}
                           >
-                            <span>{locale === "en" ? "View chapter" : locale === "es" ? "Ver capítulo" : "Ver capítulo"}</span>
+                            <span>{locale === "en" ? "View summary" : locale === "es" ? "Ver resumen" : "Ver resumo"}</span>
                             <span>→</span>
                           </Link>
                         </div>

@@ -498,7 +498,7 @@ export default function DebateEpisodesClientView({
                     boxShadow: "0 4px 15px rgba(245, 34, 56, 0.4)",
                   }}
                 >
-                  <span>{locale === "en" ? `Access Chapter ${activeEpisode.capituloNum}` : locale === "es" ? `Ver Capítulo ${activeEpisode.capituloNum}` : `Acessar Capítulo ${activeEpisode.capituloNum}`}</span>
+                  <span>{locale === "en" ? `View Summary of Ch. ${activeEpisode.capituloNum}` : locale === "es" ? `Ver Resumen del Cap. ${activeEpisode.capituloNum}` : `Ver Resumo do Cap. ${activeEpisode.capituloNum}`}</span>
                   <ExternalLink size={14} />
                 </Link>
               </div>

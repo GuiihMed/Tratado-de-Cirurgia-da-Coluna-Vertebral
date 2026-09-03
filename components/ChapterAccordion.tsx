@@ -46,10 +46,10 @@ export default function ChapterAccordion({
             }}
           >
             {locale === "en"
-              ? "Complete Content — 109 Chapters"
+              ? "Complete Structure & Summaries — 109 Chapters"
               : locale === "es"
-              ? "Contenido completo — 109 capítulos"
-              : "Conteúdo completo — 109 capítulos"}
+              ? "Estructura y Resúmenes de la Obra — 109 capítulos"
+              : "Estrutura e Resumos da Obra — 109 Capítulos"}
           </h2>
         </div>
 
@@ -107,7 +107,7 @@ export default function ChapterAccordion({
                         <Link
                           href={`/${locale}/capitulo/${cap.numero}`}
                           style={{ color: "inherit", textDecoration: "none", display: "inline-block" }}
-                          title={`Ler Capítulo ${cap.numero}: ${getChapterTitle(cap)}`}
+                          title={`${locale === "en" ? "View Summary of Chapter" : locale === "es" ? "Ver Resumen del Capítulo" : "Ver Resumo do Capítulo"} ${cap.numero}: ${getChapterTitle(cap)}`}
                         >
                           <b>{cap.numero}.</b> {getChapterTitle(cap)}
                         </Link>

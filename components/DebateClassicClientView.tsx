@@ -325,7 +325,7 @@ export default function DebateClassicClientView({
                   href={`/${locale}/capitulo/${activeEpisode.capituloNum}`}
                   className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline"
                 >
-                  <span>{locale === "en" ? `Access Chapter ${activeEpisode.capituloNum}` : locale === "es" ? `Ver Capítulo ${activeEpisode.capituloNum}` : `Acessar Capítulo ${activeEpisode.capituloNum}`}</span>
+                  <span>{locale === "en" ? `View Summary of Ch. ${activeEpisode.capituloNum}` : locale === "es" ? `Ver Resumen del Cap. ${activeEpisode.capituloNum}` : `Ver Resumo do Cap. ${activeEpisode.capituloNum}`}</span>
                   <ExternalLink size={13} />
                 </Link>
               </div>

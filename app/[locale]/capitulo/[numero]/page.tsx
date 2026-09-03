@@ -1079,7 +1079,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                     }}
                     className="hover:text-white"
                   >
-                    {locale === "en" ? "View all chapters ›" : locale === "es" ? "Ver todos los capítulos ›" : "Ver todos os capítulos ›"}
+                    {locale === "en" ? "Explore the Work ›" : locale === "es" ? "Explorar la Obra ›" : "Confira os Resumos da Obra ›"}
                   </Link>
                 </div>
               </div>

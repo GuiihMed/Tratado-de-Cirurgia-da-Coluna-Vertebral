@@ -911,7 +911,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                           href={`/${locale}/capitulo/${chap.numero}`}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#003382] hover:text-red-600 transition-colors"
                         >
-                          <span>{locale === "en" ? "View Full Chapter" : locale === "es" ? "Ver Capítulo Completo" : "Ver Capítulo Completo"}</span>
+                          <span>{locale === "en" ? "View Chapter Summary" : locale === "es" ? "Ver Resumen del Capítulo" : "Ver Resumo do Capítulo"}</span>
                           <span>→</span>
                         </Link>
                       </div>
@@ -1032,7 +1032,7 @@ export default function ReferenciasPage({ params }: ReferenciasPageProps) {
                               textDecoration: "none",
                             }}
                           >
-                            <span>{locale === "en" ? "View chapter" : locale === "es" ? "Ver capítulo" : "Ver capítulo"}</span>
+                            <span>{locale === "en" ? "View summary" : locale === "es" ? "Ver resumen" : "Ver resumo"}</span>
                             <span>→</span>
                           </Link>
                         </div>
