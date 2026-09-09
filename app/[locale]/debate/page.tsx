@@ -49,9 +49,14 @@ export async function generateMetadata({
       "Videocast SBC",
       "Cirurgia de Coluna",
       "Episódio 01",
+      "Episódio 02",
       "Coluna Vertebral no Plano Sagital",
+      "Princípios da Artrodese",
+      "Biologia do Enxerto",
+      "Substitutos Ósseos",
       "Dr. Marcelo Risso",
       "Dr. Paulo Cavali",
+      "Dr. Raphael Martus Marcon",
       "Sociedade Brasileira de Coluna",
     ],
     alternates: {
@@ -100,16 +105,34 @@ export default async function DebatePage({ params }: DebatePageProps) {
     "@graph": [
       {
         "@type": "VideoObject",
-        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video`,
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep2`,
+        "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Raphael Martus Marcon debatendo a consolidação da artrodese, substitutos ósseos e prevenção de pseudoartrose (Capítulo 9).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+        ],
+        "uploadDate": "2026-09-09T18:00:00+00:00",
+        "duration": "PT52M",
+        "embedUrl": "https://player.vimeo.com/video/1225402821",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep1`,
         "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
         "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Paulo Cavali debatendo o alinhamento no plano sagital e parâmetros espinopélvicos (Capítulo 8).",
         "thumbnailUrl": [
           "https://www.tratadodecoluna.com.br/assets/og-cover.png",
           "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
         ],
-        "uploadDate": "2024-05-15T08:00:00+00:00",
+        "uploadDate": "2026-09-02T18:00:00+00:00",
         "duration": "PT45M",
-        "embedUrl": "https://player.vimeo.com/video/1037756184",
+        "embedUrl": "https://player.vimeo.com/video/1220279985",
         "publisher": {
           "@type": "MedicalOrganization",
           "name": "Sociedade Brasileira de Coluna (SBC)",

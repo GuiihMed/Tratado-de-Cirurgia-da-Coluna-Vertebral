@@ -12,6 +12,7 @@ import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import ChapterReferencesList from "@/components/modern/ChapterReferencesList";
 import { getFullChapterByNumber } from "@/lib/data/chapters-content";
+import { DEBATE_EPISODES } from "@/lib/data/debate-episodes";
 import {
   BookOpen,
   ShoppingCart,
@@ -274,6 +275,12 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
             pmid: "https://pubmed.ncbi.nlm.nih.gov/",
           },
         ];
+
+  // Associated or featured debate videocast episode
+  const debateEp =
+    DEBATE_EPISODES.find((ep) => ep.capituloNum === num) ||
+    DEBATE_EPISODES.find((ep) => ep.numero === 2) ||
+    DEBATE_EPISODES[0];
 
   const chapterJsonLd = {
     "@context": "https://schema.org",
@@ -920,7 +927,14 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                   <div>
                     {/* Custom Vimeo Player */}
                     <div style={{ marginBottom: 14 }}>
-                      <CustomVimeoPlayer locale={locale} />
+                      <CustomVimeoPlayer
+                        key={debateEp.id}
+                        url={debateEp.vimeoUrl}
+                        videoId={debateEp.vimeoId}
+                        title={locale === "en" ? debateEp.titulo_en : locale === "es" ? debateEp.titulo_es : debateEp.titulo_pt}
+                        guests={debateEp.convidados.map((c) => c.nome).join(" & ")}
+                        locale={locale}
+                      />
                     </div>
 
                     <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "3px 10px", borderRadius: 20, background: "#f0f7ff", border: "1px solid #dbeafe", color: "#003382", fontSize: 11, fontWeight: 700, textTransform: "uppercase", marginBottom: 8, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
@@ -930,17 +944,17 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
 
                     <h4 style={{ fontSize: 16, fontWeight: 700, color: "#001a3d", margin: "0 0 8px", lineHeight: 1.3, fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif" }}>
                       {locale === "en"
-                        ? "Episode 1 – Chapter 8: Sagittal Plane Spinal Alignment"
+                        ? debateEp.titulo_en
                         : locale === "es"
-                        ? "Episodio 1 – Capítulo 8: Columna Vertebral en el Plano Sagital"
-                        : "Episódio 1 – Capítulo 8: Coluna Vertebral no Plano Sagital"}
+                        ? debateEp.titulo_es
+                        : debateEp.titulo_pt}
                     </h4>
                     <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.45, margin: "0 0 16px" }}>
                       {locale === "en"
-                        ? "Deepen your understanding through clinical debates with the chapter authors discussing complex case studies and surgical workflows."
+                        ? debateEp.subtitulo_en
                         : locale === "es"
-                        ? "Profundice en el debate científico con los autores del capítulo analizando casos prácticos y conductas quirúrgicas."
-                        : "Aprofunde-se no debate científico com os autores do capítulo discutindo casos práticos e condutas cirúrgicas."}
+                        ? debateEp.subtitulo_es
+                        : debateEp.subtitulo_pt}
                     </p>
                   </div>
 
@@ -967,10 +981,11 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       <Play size={12} className="fill-current" />
                     </Link>
 
-                    <a
-                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    {debateEp.spotifyUrl && (
+                      <a
+                        href={debateEp.spotifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -992,6 +1007,7 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                       <SpotifyIcon size={14} color="#ffffff" />
                       <span>Spotify</span>
                     </a>
+                    )}
 
                     <Link
                       href={`/${locale}/debate-new`}

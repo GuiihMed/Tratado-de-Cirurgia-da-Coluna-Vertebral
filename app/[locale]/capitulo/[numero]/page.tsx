@@ -13,6 +13,7 @@ import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import { getFullChapterByNumber } from "@/lib/data/chapters-content";
 import VancouverCitationCard from "@/components/VancouverCitationCard";
 import { getVancouverData } from "@/lib/data/vancouver";
+import { DEBATE_EPISODES } from "@/lib/data/debate-episodes";
 
 interface CapituloPageProps {
   params: Promise<{
@@ -266,6 +267,12 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
   const relatedChapters = INITIAL_CHAPTERS.filter(
     (c) => c.numero !== num && (c.secao_id === cap.secao_id || [1, 2, 4, 8].includes(c.numero))
   ).slice(0, 4);
+
+  // Associated or featured debate videocast episode
+  const debateEp =
+    DEBATE_EPISODES.find((ep) => ep.capituloNum === num) ||
+    DEBATE_EPISODES.find((ep) => ep.numero === 2) ||
+    DEBATE_EPISODES[0];
 
   const chapterJsonLd = {
     "@context": "https://schema.org",
@@ -914,7 +921,14 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                   <div>
                     {/* Custom Vimeo Player */}
                     <div style={{ marginBottom: 14 }}>
-                      <CustomVimeoPlayer locale={locale} />
+                      <CustomVimeoPlayer
+                        key={debateEp.id}
+                        url={debateEp.vimeoUrl}
+                        videoId={debateEp.vimeoId}
+                        title={locale === "en" ? debateEp.titulo_en : locale === "es" ? debateEp.titulo_es : debateEp.titulo_pt}
+                        guests={debateEp.convidados.map((c) => c.nome).join(" & ")}
+                        locale={locale}
+                      />
                     </div>
 
                     {/* Badge & Textos */}
@@ -933,24 +947,24 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
 
                     <h4 style={{ fontSize: 15, fontWeight: 700, margin: "0 0 8px", color: "#001a3d", lineHeight: 1.3 }}>
                       {locale === "en"
-                        ? "Episode 1 – Chapter 8: Sagittal Plane Spinal Alignment"
+                        ? debateEp.titulo_en
                         : locale === "es"
-                        ? "Episodio 1 – Capítulo 8: Columna Vertebral en el Plano Sagital"
-                        : "Episódio 1 – Capítulo 8: Coluna Vertebral no Plano Sagital"}
+                        ? debateEp.titulo_es
+                        : debateEp.titulo_pt}
                     </h4>
 
                     <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.45, margin: "0 0 16px" }}>
                       {locale === "en"
-                        ? "Discussion with the authors on fundamental concepts of sagittal alignment, radiographic parameters, and clinical significance."
+                        ? debateEp.subtitulo_en
                         : locale === "es"
-                        ? "Discusión con los autores sobre los conceptos fundamentales del equilibrio sagital, parámetros radiográficos y su importancia clínica."
-                        : "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos."}
+                        ? debateEp.subtitulo_es
+                        : debateEp.subtitulo_pt}
                     </p>
                   </div>
 
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
                     <Link
-                      href={`/${locale}#debate`}
+                      href={`/${locale}/debate`}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -971,10 +985,11 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       <span>→</span>
                     </Link>
 
-                    <a
-                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    {debateEp.spotifyUrl && (
+                      <a
+                        href={debateEp.spotifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -995,6 +1010,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
                       <SpotifyIcon size={16} color="#ffffff" />
                       <span>Spotify</span>
                     </a>
+                    )}
                   </div>
                 </div>
 

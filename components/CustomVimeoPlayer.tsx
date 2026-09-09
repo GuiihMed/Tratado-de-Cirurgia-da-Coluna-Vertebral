@@ -22,6 +22,8 @@ import { Locale } from "@/lib/types";
 interface CustomVimeoPlayerProps {
   videoId?: string;
   url?: string;
+  title?: string;
+  guests?: string;
   locale?: Locale;
   autoplay?: boolean;
   onPopOutMiniPlayer?: () => void;
@@ -33,6 +35,8 @@ interface CustomVimeoPlayerProps {
 export default function CustomVimeoPlayer({
   videoId = "1220279985",
   url = "https://player.vimeo.com/video/1220279985",
+  title,
+  guests,
   locale = "pt",
   autoplay = false,
   onPopOutMiniPlayer,
@@ -439,8 +443,20 @@ export default function CustomVimeoPlayer({
   const t = {
     badge: locale === "en" ? "Official SBC Videocast" : locale === "es" ? "Videocast Oficial SBC" : "Videocast Oficial SBC",
     badgeShort: "Videocast SBC",
-    epTitle: locale === "en" ? "Episode 01 – The Spine in the Sagittal Plane" : locale === "es" ? "Episodio 01 – Columna Vertebral en el Plano Sagital" : "Episódio 01 – Coluna Vertebral no Plano Sagital",
-    guests: locale === "en" ? "Dr. Marcelo Risso & Dr. Paulo Cavali" : locale === "es" ? "Dr. Marcelo Risso y Dr. Paulo Cavali" : "Dr. Marcelo Risso e Dr. Paulo Cavali",
+    epTitle:
+      title ||
+      (locale === "en"
+        ? "Episode 01 – The Spine in the Sagittal Plane"
+        : locale === "es"
+        ? "Episodio 01 – Columna Vertebral en el Plano Sagital"
+        : "Episódio 01 – Coluna Vertebral no Plano Sagital"),
+    guests:
+      guests ||
+      (locale === "en"
+        ? "Dr. Marcelo Risso & Dr. Paulo Cavali"
+        : locale === "es"
+        ? "Dr. Marcelo Risso y Dr. Paulo Cavali"
+        : "Dr. Marcelo Risso e Dr. Paulo Cavali"),
     clickToPlay: locale === "en" ? "Watch Videocast" : locale === "es" ? "Ver Videocast" : "Assistir Videocast",
     popOut: locale === "en" ? "Mini Player" : locale === "es" ? "Mini Player" : "Mini Player",
     speed: locale === "en" ? "Speed" : locale === "es" ? "Velocidad" : "Velocidade",

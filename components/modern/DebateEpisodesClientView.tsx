@@ -29,7 +29,7 @@ interface DebateEpisodesClientViewProps {
 
 export default function DebateEpisodesClientView({
   locale,
-  initialEpisodeNumber = 1,
+  initialEpisodeNumber = 2,
 }: DebateEpisodesClientViewProps) {
   const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -221,6 +221,8 @@ export default function DebateEpisodesClientView({
               key={activeEpisode.id}
               url={activeEpisode.vimeoUrl}
               videoId={activeEpisode.vimeoId}
+              title={title}
+              guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
               locale={locale}
               autoplay={false}
               showPopOutButton={true}
