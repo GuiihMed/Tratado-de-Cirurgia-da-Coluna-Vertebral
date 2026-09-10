@@ -18,11 +18,11 @@ export default function DebateEmbedPage() {
         <div
           style={{
             minHeight: "100vh",
-            background: "#001026",
+            background: "#f8fafc",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "#ffffff",
+            color: "#001733",
             fontFamily: "sans-serif",
             fontSize: "14px",
           }}

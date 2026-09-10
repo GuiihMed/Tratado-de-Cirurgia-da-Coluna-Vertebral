@@ -3,37 +3,31 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import { Locale } from "@/lib/types";
-import DebateEmbedWidget from "@/components/DebateEmbedWidget";
+import DebateClassicClientView from "@/components/DebateClassicClientView";
 
 export default function DebateEmbedClientPage() {
   const searchParams = useSearchParams();
   
   const epParam = searchParams.get("ep");
-  const initialEp = epParam ? parseInt(epParam, 10) || 2 : 2;
+  const initialEp = epParam ? parseInt(epParam, 10) || 1 : 1;
 
   const rawLocale = searchParams.get("locale");
   const locale: Locale = rawLocale && ["pt", "en", "es"].includes(rawLocale) ? (rawLocale as Locale) : "pt";
-
-  const rawTheme = searchParams.get("theme");
-  const theme: "dark" | "light" = rawTheme === "light" ? "light" : "dark";
-
-  const rawPlaylist = searchParams.get("playlist");
-  const showPlaylist = rawPlaylist === "false" || rawPlaylist === "0" ? false : true;
 
   return (
     <main
       style={{
         margin: 0,
-        padding: 0,
+        padding: "24px 0 40px",
         minHeight: "100vh",
-        background: theme === "light" ? "#f8fafc" : "#001026",
+        background: "#f8fafc",
+        boxSizing: "border-box",
       }}
     >
-      <DebateEmbedWidget
+      <DebateClassicClientView
         initialEpisodeNumber={initialEp}
         locale={locale}
-        theme={theme}
-        showPlaylist={showPlaylist}
+        isEmbed={true}
       />
     </main>
   );

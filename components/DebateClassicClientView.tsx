@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
 import { DEBATE_EPISODES, DebateEpisode } from "@/lib/data/debate-episodes";
@@ -25,14 +25,22 @@ import {
 interface DebateClassicClientViewProps {
   locale: Locale;
   initialEpisodeNumber?: number;
+  isEmbed?: boolean;
 }
 
 export default function DebateClassicClientView({
   locale,
   initialEpisodeNumber = 2,
+  isEmbed = false,
 }: DebateClassicClientViewProps) {
   const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  useEffect(() => {
+    if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
+      setActiveEpNumber(initialEpisodeNumber);
+    }
+  }, [initialEpisodeNumber]);
 
   const activeEpisode: DebateEpisode =
     DEBATE_EPISODES.find((ep) => ep.numero === activeEpNumber) || DEBATE_EPISODES[0];
@@ -81,7 +89,9 @@ export default function DebateClassicClientView({
 
   const handleShare = () => {
     if (typeof window !== "undefined") {
-      const url = window.location.href;
+      const url = isEmbed
+        ? `https://www.tratadodecoluna.com.br/${locale}/debate?ep=${activeEpisode.numero}`
+        : window.location.href;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(url);
         setCopiedLink(true);
@@ -172,7 +182,7 @@ export default function DebateClassicClientView({
               guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
               locale={locale}
               autoplay={false}
-              showPopOutButton={true}
+              showPopOutButton={!isEmbed}
             />
           </div>
 
@@ -276,6 +286,8 @@ export default function DebateClassicClientView({
                       {g.slug && (
                         <Link
                           href={`/${locale}/autor/${g.slug}`}
+                          target={isEmbed ? "_blank" : undefined}
+                          rel={isEmbed ? "noopener noreferrer" : undefined}
                           className="text-[11px] sm:text-xs font-bold text-[#f52238] hover:underline inline-flex items-center gap-1 no-underline"
                         >
                           <span>{locale === "en" ? "View bio" : locale === "es" ? "Ver perfil" : "Ver biografia"}</span>
@@ -325,6 +337,8 @@ export default function DebateClassicClientView({
 
                 <Link
                   href={`/${locale}/capitulo/${activeEpisode.capituloNum}`}
+                  target={isEmbed ? "_blank" : undefined}
+                  rel={isEmbed ? "noopener noreferrer" : undefined}
                   className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline"
                 >
                   <span>{locale === "en" ? `View Summary of Ch. ${activeEpisode.capituloNum}` : locale === "es" ? `Ver Resumen del Cap. ${activeEpisode.capituloNum}` : `Ver Resumo do Cap. ${activeEpisode.capituloNum}`}</span>
