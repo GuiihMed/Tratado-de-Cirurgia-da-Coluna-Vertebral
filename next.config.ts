@@ -14,6 +14,50 @@ const nextConfig: NextConfig = {
         },
       ],
     },
+    {
+      source: "/embed/:path*",
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value: "frame-ancestors *;",
+        },
+        {
+          key: "Access-Control-Allow-Origin",
+          value: "*",
+        },
+      ],
+    },
+    {
+      source: "/:locale/embed/:path*",
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value: "frame-ancestors *;",
+        },
+        {
+          key: "Access-Control-Allow-Origin",
+          value: "*",
+        },
+      ],
+    },
+    {
+      source: "/:locale/debate",
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value: "frame-ancestors *;",
+        },
+      ],
+    },
+    {
+      source: "/:locale/debate-new",
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value: "frame-ancestors *;",
+        },
+      ],
+    },
   ],
 };
 

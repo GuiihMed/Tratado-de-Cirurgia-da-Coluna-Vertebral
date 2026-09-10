@@ -11,6 +11,10 @@ interface MobileBottomNavProps {
 export default function MobileBottomNav({ locale }: MobileBottomNavProps) {
   const pathname = usePathname();
 
+  if (pathname?.includes("/embed")) {
+    return null;
+  }
+
   const isNew = pathname?.includes("-new");
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/` || pathname === `/${locale}/home-new`;
   const isCapitulos = pathname?.includes("/indice") || pathname?.includes("/capitulo");

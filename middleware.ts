@@ -7,12 +7,13 @@ const defaultLocale = "pt";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Ignore static files, assets, API routes, and admin routes
+  // Ignore static files, assets, API routes, admin routes, and standalone embed routes
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/assets") ||
     pathname.startsWith("/admin") ||
+    pathname.startsWith("/embed") ||
     pathname.includes(".") // e.g. favicon.ico, images
   ) {
     return NextResponse.next();
