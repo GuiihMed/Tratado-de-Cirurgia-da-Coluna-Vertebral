@@ -73,7 +73,7 @@ export default function Footer({ locale }: FooterProps) {
           <h3 style={{ fontSize: 16, margin: "0 0 14px", fontWeight: 700 }}>{dict.footer.contentTitle}</h3>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <Link href={`/${locale}/referencias`}>{dict.nav.references}</Link>
-            <Link href={`/${locale}#debate`}>{dict.nav.debate}</Link>
+            <Link href={`/${locale}/debate`}>{dict.nav.debate}</Link>
             <a
               href="https://dilivros.com.br/livro-tratado-de-cirurgia-da-coluna-vertebral-9788580532920,pu6756.html"
               target="_blank"

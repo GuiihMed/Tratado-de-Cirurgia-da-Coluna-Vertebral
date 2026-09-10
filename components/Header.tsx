@@ -153,34 +153,23 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
           >
             <span>{dict.nav.references}</span>
           </Link>
-          <button
-            type="button"
-            onClick={() => setMiniPlayerOpen(true)}
+          <Link
+            href={`/${locale}/debate`}
+            className={currentPage === "debate" || pathname?.includes("/debate") ? "active" : ""}
             style={{
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              color: "#ffffff",
-              font: "inherit",
-              fontSize: 13.5,
-              fontWeight: 600,
-              padding: "6px 8px",
-              borderRadius: 8,
               whiteSpace: "nowrap",
               flexShrink: 0,
-              transition: "all 0.2s ease",
             }}
-            className="hover:text-rose-400"
-            title="Assistir Videocast Oficial (Mini Player)"
+            title="Tratado em Debate – Videocast Oficial SBC"
           >
             <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#f52238", display: "grid", placeItems: "center", fontSize: 8.5, color: "#fff", flexShrink: 0 }}>
               ▶
             </span>
             <span style={{ whiteSpace: "nowrap" }}>{dict.nav.debate}</span>
-          </button>
+          </Link>
         </nav>
 
         {/* Right Side: Busca no site + Comprar + Idiomas */}
@@ -658,7 +647,7 @@ export default function Header({ locale, currentPage = "home" }: HeaderProps) {
               { href: `/${locale}/indice`, label: dict.nav.theWork || "A Obra", active: currentPage === "indice" },
               { href: `/${locale}/autores`, label: dict.nav.authors, active: pathname?.includes("/autores") },
               { href: `/${locale}/referencias`, label: dict.nav.references, active: pathname?.includes("/referencias") },
-              { href: `/${locale}#debate`, label: dict.nav.debate, active: false },
+              { href: `/${locale}/debate`, label: dict.nav.debate, active: currentPage === "debate" || pathname?.includes("/debate") },
             ].map((item, idx) => (
               <Link
                 key={idx}
