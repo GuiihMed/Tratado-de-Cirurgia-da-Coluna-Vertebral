@@ -100,9 +100,105 @@ export default function DebateClassicClientView({
     }
   };
 
+  const renderPlaylistCard = () => (
+    <div
+      className="bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 border border-[#dce4ed] shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+    >
+      <div className="flex items-center justify-between pb-2.5 sm:pb-3 mb-2.5 sm:mb-3 border-b border-slate-200">
+        <div className="flex items-center gap-2">
+          <Radio size={16} className="text-red-600 animate-pulse shrink-0" />
+          <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#001733] m-0">
+            {locale === "en" ? "Series Episodes" : locale === "es" ? "Episodios de la Serie" : "Episódios da Série"}
+          </h3>
+        </div>
+        <span
+          className="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 shrink-0"
+        >
+          {DEBATE_EPISODES.length} {locale === "en" ? "Ep." : "Ep."}
+        </span>
+      </div>
+
+      {/* List of Episodes */}
+      <div className="flex flex-col gap-2 sm:gap-2.5">
+        {DEBATE_EPISODES.map((ep) => {
+          const isActive = ep.numero === activeEpNumber;
+          const epTitle =
+            locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
+
+          return (
+            <div
+              key={ep.id}
+              onClick={() => setActiveEpNumber(ep.numero)}
+              className={`p-2.5 sm:p-3.5 rounded-xl cursor-pointer transition-all active:scale-[0.99] select-none ${
+                isActive
+                  ? "bg-[#f0f7ff] border-2 border-[#f52238] shadow-sm"
+                  : "bg-[#f8fafc] border border-slate-200 hover:bg-[#f1f5f9] hover:border-slate-300"
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1 gap-2">
+                <span
+                  className={`text-[10px] sm:text-[10.5px] font-bold uppercase px-2 py-0.5 rounded whitespace-nowrap shrink-0 ${
+                    isActive ? "bg-[#f52238] text-white" : "bg-slate-200 text-slate-700"
+                  }`}
+                >
+                  {isActive
+                    ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ Reproduzindo Agora")
+                    : (locale === "en" ? `Episode ${ep.numero}` : locale === "es" ? `Episodio ${ep.numero}` : `Episódio ${ep.numero}`)}
+                </span>
+                <span className="text-[11px] sm:text-xs text-slate-500 font-semibold shrink-0">
+                  {ep.duracao} min
+                </span>
+              </div>
+
+              <h4
+                className={`text-xs sm:text-sm font-bold leading-snug mb-0.5 sm:mb-1 ${
+                  isActive ? "text-[#001733]" : "text-slate-700"
+                }`}
+              >
+                {epTitle}
+              </h4>
+
+              <div className="text-[10.5px] sm:text-xs text-slate-500 truncate">
+                <span>{ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}</span>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Placeholder / Empty State for Future Episodes */}
+        <div
+          className="p-3 sm:p-4 rounded-xl bg-[#f8fafc] border border-dashed border-slate-300 text-center flex flex-col items-center gap-1.5 sm:gap-2 mt-0.5 sm:mt-1"
+        >
+          <div
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-200 grid place-items-center text-slate-600 shrink-0"
+          >
+            <Tv size={14} />
+          </div>
+
+          <div>
+            <strong className="text-xs sm:text-[13px] text-slate-700 block mb-0.5">
+              {locale === "en"
+                ? "Upcoming Episodes in Production"
+                : locale === "es"
+                ? "Próximos Episodios en Producción"
+                : "Próximos Episódios em Produção"}
+            </strong>
+            <p className="text-[10.5px] sm:text-xs text-slate-500 m-0 leading-relaxed">
+              {locale === "en"
+                ? "New episodes exploring the other chapters are currently being recorded by SBC."
+                : locale === "es"
+                ? "Nuevos episodios explorando los otros capítulos están siendo grabados por la SBC."
+                : "Novos episódios abordando os demais capítulos do Tratado serão disponibilizados em breve."}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="shell px-3.5 sm:px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+    <div className={`shell ${isEmbed ? "px-2 sm:px-4 md:px-6 max-w-full" : "px-3.5 sm:px-6"}`}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
         {/* ========================================================================= */}
         {/* COLUNA ESQUERDA: EPISÓDIO EM DESTAQUE / PRINCIPAL (8 COLS) */}
         {/* ========================================================================= */}
@@ -184,6 +280,11 @@ export default function DebateClassicClientView({
               autoplay={false}
               showPopOutButton={!isEmbed}
             />
+          </div>
+
+          {/* Mobile-Only Playlist Card (Directly below player for fast episode selection on phones/tablets) */}
+          <div className="block lg:hidden">
+            {renderPlaylistCard()}
           </div>
 
           {/* Episode Info Card (Classic Light Design, Responsive Padding) */}
@@ -277,10 +378,10 @@ export default function DebateClassicClientView({
                       className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-[#f52238] shrink-0"
                     />
                     <div className="min-w-0 flex-1">
-                      <strong className="text-xs sm:text-sm font-bold text-[#001733] block mb-0.5 truncate">
+                      <strong className="text-xs sm:text-sm font-bold text-[#001733] block mb-0.5">
                         {g.nome}
                       </strong>
-                      <span className="text-[11px] sm:text-xs text-slate-500 block leading-tight mb-1 truncate">
+                      <span className="text-[11px] sm:text-xs text-slate-500 block leading-tight mb-1">
                         {g.cargo}
                       </span>
                       {g.slug && (
@@ -353,100 +454,9 @@ export default function DebateClassicClientView({
         {/* COLUNA LATERAL / PLAYLIST (4 COLS) */}
         {/* ========================================================================= */}
         <aside className="lg:col-span-4 flex flex-col gap-4 sm:gap-6">
-          {/* Playlist Card */}
-          <div
-            className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#dce4ed] shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
-          >
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
-              <div className="flex items-center gap-2">
-                <Radio size={16} className="text-red-600 animate-pulse" />
-                <h3 className="text-base sm:text-lg font-bold text-[#001733] m-0">
-                  {locale === "en" ? "Series Episodes" : locale === "es" ? "Episodios de la Serie" : "Episódios da Série"}
-                </h3>
-              </div>
-              <span
-                className="text-xs font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600"
-              >
-                {DEBATE_EPISODES.length} {locale === "en" ? "Ep." : "Ep."}
-              </span>
-            </div>
-
-            {/* List of Episodes */}
-            <div className="flex flex-col gap-2.5">
-              {/* Episódio 1 (Atual) */}
-              {DEBATE_EPISODES.map((ep) => {
-                const isActive = ep.numero === activeEpNumber;
-                const epTitle =
-                  locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
-
-                return (
-                  <div
-                    key={ep.id}
-                    onClick={() => setActiveEpNumber(ep.numero)}
-                    className={`p-3 sm:p-3.5 rounded-xl cursor-pointer transition-all active:scale-[0.99] select-none ${
-                      isActive
-                        ? "bg-[#f0f7ff] border-2 border-[#f52238] shadow-sm"
-                        : "bg-[#f8fafc] border border-slate-200 hover:bg-[#f1f5f9] hover:border-slate-300"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span
-                        className={`text-[10.5px] font-bold uppercase px-2 py-0.5 rounded whitespace-nowrap shrink-0 ${
-                          isActive ? "bg-[#f52238] text-white" : "bg-slate-200 text-slate-700"
-                        }`}
-                      >
-                        {isActive
-                          ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ Reproduzindo Agora")
-                          : (locale === "en" ? `Episode ${ep.numero}` : locale === "es" ? `Episodio ${ep.numero}` : `Episódio ${ep.numero}`)}
-                      </span>
-                      <span className="text-xs text-slate-500 font-semibold">
-                        {ep.duracao} min
-                      </span>
-                    </div>
-
-                    <h4
-                      className={`text-xs sm:text-sm font-bold leading-snug mb-1 ${
-                        isActive ? "text-[#001733]" : "text-slate-700"
-                      }`}
-                    >
-                      {epTitle}
-                    </h4>
-
-                    <div className="text-[11px] sm:text-xs text-slate-500 truncate">
-                      <span>{ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}</span>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Placeholder / Empty State for Future Episodes */}
-              <div
-                className="p-3.5 sm:p-4 rounded-xl bg-[#f8fafc] border border-dashed border-slate-300 text-center flex flex-col items-center gap-2 mt-1"
-              >
-                <div
-                  className="w-8 h-8 rounded-full bg-slate-200 grid place-items-center text-slate-600"
-                >
-                  <Tv size={15} />
-                </div>
-
-                <div>
-                  <strong className="text-xs sm:text-[13px] text-slate-700 block mb-0.5">
-                    {locale === "en"
-                      ? "Upcoming Episodes in Production"
-                      : locale === "es"
-                      ? "Próximos Episodios en Producción"
-                      : "Próximos Episódios em Produção"}
-                  </strong>
-                  <p className="text-[11px] sm:text-xs text-slate-500 m-0 leading-relaxed">
-                    {locale === "en"
-                      ? "New episodes exploring the other chapters are currently being recorded by SBC."
-                      : locale === "es"
-                      ? "Nuevos episodios explorando los otros capítulos están siendo grabados por la SBC."
-                      : "Novos episódios abordando os demais capítulos do Tratado serão disponibilizados em breve."}
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Desktop-Only Playlist Card (Inside sidebar) */}
+          <div className="hidden lg:block">
+            {renderPlaylistCard()}
           </div>
 
           {/* Quick Institutional Info Card */}

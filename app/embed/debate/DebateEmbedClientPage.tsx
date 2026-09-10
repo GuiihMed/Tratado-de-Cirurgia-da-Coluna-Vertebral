@@ -16,11 +16,9 @@ export default function DebateEmbedClientPage() {
 
   return (
     <main
+      className="w-full min-h-screen bg-[#f8fafc] py-2.5 sm:py-6 md:py-8 overflow-x-hidden"
       style={{
         margin: 0,
-        padding: "24px 0 40px",
-        minHeight: "100vh",
-        background: "#f8fafc",
         boxSizing: "border-box",
       }}
     >
