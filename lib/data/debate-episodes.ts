@@ -142,7 +142,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
       "En este segundo episodio del Tratado en Debate, el Dr. Marcelo Risso recibe al Dr. Raphael Martus Marcon, autor del Capítulo 9 del Tratado de la SBC, para debatir los fundamentos biológicos y biomecánicos del éxito de la artrodesis vertebral. Analizan la tríada de consolidación ósea (osteogénesis, osteoinducción y osteoconducción), las indicaciones y limitaciones del autoinjerto, aloinjertos, matriz ósea desmineralizada (DBM), proteínas morfogenéticas (rhBMP-2) y cerámicas sintéticas, con énfasis en la preparación meticulosa del lecho y la prevención de la seudoartrosis.",
     vimeoId: "1225402821",
     vimeoUrl: "https://player.vimeo.com/video/1225402821",
-    spotifyUrl: "https://open.spotify.com/search/SBC%20Coluna%20Cast",
+    spotifyUrl: "https://open.spotify.com/episode/2kaOBpTY0aGjXUnb0FkcIA",
     capituloNum: 9,
     capituloTitulo_pt: "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
     capituloTitulo_en: "Principles of Arthrodesis, Graft Biology, and Bone Substitutes in Spine Surgery",

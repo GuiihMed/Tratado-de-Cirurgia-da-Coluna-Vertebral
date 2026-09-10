@@ -139,11 +139,36 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
         }
       },
       {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep2`,
+        "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Raphael Martus Marcon debatendo o Capítulo 9.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+        ],
+        "uploadDate": "2026-09-09T18:00:00+00:00",
+        "duration": "PT52M",
+        "embedUrl": "https://player.vimeo.com/video/1225402821",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
+      {
         "@type": "PodcastEpisode",
-        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast`,
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast-ep1`,
         "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
         "description": "Episódio em áudio no Spotify sobre o Capítulo 8 do Tratado de Cirurgia da Coluna Vertebral.",
         "url": "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast-ep2`,
+        "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 9 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/2kaOBpTY0aGjXUnb0FkcIA"
       }
     ]
   };
