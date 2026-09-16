@@ -30,7 +30,7 @@ interface DebateClassicClientViewProps {
 
 export default function DebateClassicClientView({
   locale,
-  initialEpisodeNumber = 2,
+  initialEpisodeNumber = 3,
   isEmbed = false,
 }: DebateClassicClientViewProps) {
   const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);

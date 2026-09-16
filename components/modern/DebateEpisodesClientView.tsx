@@ -29,7 +29,7 @@ interface DebateEpisodesClientViewProps {
 
 export default function DebateEpisodesClientView({
   locale,
-  initialEpisodeNumber = 2,
+  initialEpisodeNumber = 3,
 }: DebateEpisodesClientViewProps) {
   const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
   const [copiedLink, setCopiedLink] = useState(false);

@@ -271,7 +271,7 @@ export default async function CapituloClassicPage({ params }: CapituloPageProps)
   // Associated or featured debate videocast episode
   const debateEp =
     DEBATE_EPISODES.find((ep) => ep.capituloNum === num) ||
-    DEBATE_EPISODES.find((ep) => ep.numero === 2) ||
+    [...DEBATE_EPISODES].reverse().find((ep) => ep.status === "publicado") ||
     DEBATE_EPISODES[0];
 
   const chapterJsonLd = {

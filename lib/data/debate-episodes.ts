@@ -205,6 +205,91 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "3",
+    numero: 3,
+    slug: "episodio-03-monitorizacao-neurofisiologica-intraoperatoria-em-cirurgia-de-coluna",
+    titulo_pt: "Episódio 03 – Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+    titulo_en: "Episode 03 – Intraoperative Neurophysiological Monitoring in Spine Surgery",
+    titulo_es: "Episodio 03 – Monitorización Neurofisiológica Intraoperatoria en Cirugía de Columna",
+    subtitulo_pt:
+      "Debate científico sobre monitoramento multimodal, PEM córtico-miogênico, PESS, onda D, mapeamento radicular e resposta sistematizada a alertas cirúrgicos",
+    subtitulo_en:
+      "Scientific debate on multimodal monitoring, transcranial MEPs, SSEP, D-wave, radicular mapping, and response protocols for intraoperative alerts",
+    subtitulo_es:
+      "Debate científico sobre monitoreo multimodal, PEM córtico-miogénico, PESS, onda D, mapeo radicular y protocolos de respuesta ante alertas quirúrgicas",
+    descricao_pt:
+      "Neste terceiro episódio do Tratado em Debate, o Dr. Marcelo Risso recebe o Dr. Ricardo José Rodriguez Ferreira, autor principal do Capítulo 14 do Tratado da SBC, para aprofundar os princípios e as diretrizes clínicas da monitorização neurofisiológica intraoperatória (MNIO) em cirurgias de coluna. Eles debatem a essencial distinção entre monitoramento contínuo e mapeamento anatômico, as aplicações e limitações do potencial evocado motor córtico-miogênico (PEMcm), potencial evocado somatossensitivo (PESS), eletromiografia livre e estimulada (frEMG e tEMG), reflexos sacrais e o valor prognóstico da onda D. Discutem também os requisitos da anestesia venosa total (TIVA), o impacto de fatores hemodinâmicos e sistêmicos, e o protocolo de ação imediata diante da queda de potenciais durante instrumentações e correções de deformidades.",
+    descricao_en:
+      "In this third episode of the Treatise in Debate, Dr. Marcelo Risso hosts Dr. Ricardo José Rodriguez Ferreira, lead author of Chapter 14 of the SBC Treatise, to examine the principles and clinical guidelines of intraoperative neurophysiological monitoring (IONM) in spine surgery. They explore the fundamental difference between continuous monitoring and anatomical mapping, indications and nuances of transcranial motor evoked potentials (tcMEP), somatosensory evoked potentials (SSEP), free-running and triggered electromyography (frEMG and tEMG), sacral reflexes, and the prognostic value of the D-wave. They also address total intravenous anesthesia (TIVA) requirements, systemic factors, and the standardized multidisciplinary protocol for managing signal loss during instrumentation and deformity correction.",
+    descricao_es:
+      "En este tercer episodio del Tratado en Debate, el Dr. Marcelo Risso recibe al Dr. Ricardo José Rodriguez Ferreira, autor principal del Capítulo 14 del Tratado de la SBC, para profundizar en los principios y directrices de la monitorización neurofisiológica intraoperatoria (MNIO) en cirugía de columna. Analizan la diferencia crítica entre monitoreo continuo y mapeo anatómico, las indicaciones del potencial evocado motor córtico-miogénico (PEMcm), potenciales evocados somatosensoriales (PESS), electromiografía libre y estimulada (frEMG y tEMG), reflejos sacros y el valor pronóstico de la onda D. También examinan la anestesia intravenosa total (TIVA), factores sistémicos y el protocolo de respuesta inmediata ante alertas durante instrumentaciones y corrección de deformidades.",
+    vimeoId: "1225996397",
+    vimeoUrl: "https://player.vimeo.com/video/1225996397",
+    spotifyUrl: "https://open.spotify.com/episode/2fHhe1AJwqKziYaZpqoXaN?si=AqujIb1qR6eHWBWkZGaFEw",
+    capituloNum: 14,
+    capituloTitulo_pt: "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
+    capituloTitulo_en: "Intraoperative Neurophysiological Monitoring in Spine Surgery",
+    capituloTitulo_es: "Monitorización Neurofisiológica Intraoperatoria en Cirugía de Columna",
+    secaoId: 2,
+    secaoTitulo_pt: "Diagnóstico",
+    secaoTitulo_en: "Diagnosis",
+    secaoTitulo_es: "Diagnóstico",
+    duracao: "45:41",
+    dataPublicacao: "2026",
+    convidados: [
+      {
+        nome: "Dr. Marcelo Italo Risso Neto",
+        cargo: "Editor-Chefe do Tratado SBC • Prof. Dr. UNICAMP",
+        instituicao: "UNICAMP • Hospital Alemão Oswaldo Cruz",
+        slug: "marcelo-italo-risso-neto",
+        foto_url: "/assets/marcelo-risso.png",
+        orcid: "0000-0003-0990-6901",
+      },
+      {
+        nome: "Dr. Ricardo José Rodriguez Ferreira",
+        cargo: "Médico Fisiatra e Neurofisiologista • Coord. MNIO IOT-FMUSP",
+        instituicao: "Instituto de Ortopedia e Traumatologia (IOT-HC-FMUSP) • SBNC",
+        slug: "ricardo-jose-rodriguez-ferreira",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0003-1415-6324",
+      },
+    ],
+    destaques_pt: [
+      "Diferenciação prática: monitoramento da integridade funcional vs. mapeamento cirúrgico de raízes e nervos periféricos.",
+      "Avaliação multimodal: associação mandatória de PEM córtico-miogênico, PESS, frEMG e tEMG em procedimentos de alto risco.",
+      "Valor prognóstico da onda D em cirurgias medulares e tumores intramedulares: lesão transitória vs. permanente.",
+      "Influência anestésica e sistêmica: requisitos da anestesia venosa total (TIVA), controle pressórico (PAM) e temperatura.",
+      "Protocolo sistematizado de alarme: reversão de manobras cirúrgicas, otimização hemodinâmica e condutas coordenadas pela equipe.",
+    ],
+    destaques_en: [
+      "Core distinction: continuous functional pathway monitoring vs. intraoperative anatomical neural mapping.",
+      "Multimodal surveillance: mandatory combination of transcranial MEP, SSEP, frEMG, and triggered EMG in complex cases.",
+      "Prognostic power of the D-wave in spinal cord procedures: distinguishing transient impairment from permanent deficit.",
+      "Anesthetic and systemic optimization: total intravenous anesthesia (TIVA) protocols, MAP maintenance, and normothermia.",
+      "Standardized alert checklist: surgical maneuver reversal, hemodynamic correction, and coordinated team interventions.",
+    ],
+    destaques_es: [
+      "Diferencia crucial: monitoreo de la integridad funcional vs. mapeo anatómico de raíces y nervios en el campo quirúrgico.",
+      "Abordaje multimodal: combinación esencial de PEM córtico-miogénico, PESS, frEMG y tEMG en cirugías de alto riesgo.",
+      "Valor pronóstico de la onda D en patología medular: diferenciación entre déficit funcional transitorio y lesión permanente.",
+      "Interacción anestésica y factores sistémicos: protocolos con TIVA, manejo de la presión arterial media (PAM) y temperatura.",
+      "Algoritmo coordinado ante alertas: reversión de maniobras, optimización hemodinámica y toma de decisiones en equipo.",
+    ],
+    tags: [
+      "Monitorização Neurofisiológica",
+      "MNIO",
+      "Potencial Evocado Motor",
+      "PESS",
+      "Onda D",
+      "Eletromiografia",
+      "Mapeamento Neural",
+      "Segurança Cirúrgica",
+      "Cirurgia de Coluna",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function getDebateEpisodes(): DebateEpisode[] {

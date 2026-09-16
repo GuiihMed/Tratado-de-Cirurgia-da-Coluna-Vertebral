@@ -50,13 +50,16 @@ export async function generateMetadata({
       "Cirurgia de Coluna",
       "Episódio 01",
       "Episódio 02",
+      "Episódio 03",
       "Coluna Vertebral no Plano Sagital",
       "Princípios da Artrodese",
       "Biologia do Enxerto",
       "Substitutos Ósseos",
+      "Monitorização Neurofisiológica Intraoperatória",
       "Dr. Marcelo Risso",
       "Dr. Paulo Cavali",
       "Dr. Raphael Martus Marcon",
+      "Dr. Ricardo José Rodriguez Ferreira",
       "Sociedade Brasileira de Coluna",
     ],
     alternates: {
@@ -105,6 +108,24 @@ export default async function DebatePage({ params }: DebatePageProps) {
     "@graph": [
       {
         "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep3`,
+        "name": "Episódio 03: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Ricardo José Rodriguez Ferreira debatendo a monitorização neurofisiológica intraoperatória, potenciais motores, onda D e protocolos cirúrgicos (Capítulo 14).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
+          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+        ],
+        "uploadDate": "2026-09-16T18:00:00+00:00",
+        "duration": "PT45M",
+        "embedUrl": "https://player.vimeo.com/video/1225996397",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
+      {
+        "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep2`,
         "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
         "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Raphael Martus Marcon debatendo a consolidação da artrodese, substitutos ósseos e prevenção de pseudoartrose (Capítulo 9).",
@@ -140,29 +161,11 @@ export default async function DebatePage({ params }: DebatePageProps) {
         }
       },
       {
-        "@type": "VideoObject",
-        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep2`,
-        "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
-        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Raphael Martus Marcon debatendo o Capítulo 9.",
-        "thumbnailUrl": [
-          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
-          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
-        ],
-        "uploadDate": "2026-09-09T18:00:00+00:00",
-        "duration": "PT52M",
-        "embedUrl": "https://player.vimeo.com/video/1225402821",
-        "publisher": {
-          "@type": "MedicalOrganization",
-          "name": "Sociedade Brasileira de Coluna (SBC)",
-          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
-        }
-      },
-      {
         "@type": "PodcastEpisode",
-        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep1`,
-        "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
-        "description": "Episódio em áudio no Spotify sobre o Capítulo 8 do Tratado de Cirurgia da Coluna Vertebral.",
-        "url": "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep3`,
+        "name": "Episódio 03: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 14 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/2fHhe1AJwqKziYaZpqoXaN?si=AqujIb1qR6eHWBWkZGaFEw"
       },
       {
         "@type": "PodcastEpisode",
@@ -170,6 +173,13 @@ export default async function DebatePage({ params }: DebatePageProps) {
         "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
         "description": "Episódio em áudio no Spotify sobre o Capítulo 9 do Tratado de Cirurgia da Coluna Vertebral.",
         "url": "https://open.spotify.com/episode/2kaOBpTY0aGjXUnb0FkcIA"
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep1`,
+        "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 8 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
       }
     ]
   };

@@ -15,7 +15,7 @@ interface DebateEmbedWidgetProps {
 }
 
 export default function DebateEmbedWidget({
-  initialEpisodeNumber = 2,
+  initialEpisodeNumber = 3,
   locale = "pt",
   theme = "dark",
   showPlaylist = true,
