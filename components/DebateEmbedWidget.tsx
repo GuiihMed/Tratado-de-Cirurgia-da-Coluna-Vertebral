@@ -1,9 +1,14 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { ExternalLink, Radio, Share2, Check } from "lucide-react";
 import { Locale } from "@/lib/types";
-import { DEBATE_EPISODES, DebateEpisode, isEpisodeReleased } from "@/lib/data/debate-episodes";
+import {
+  DEBATE_EPISODES,
+  DebateEpisode,
+  isEpisodeReleased,
+  getDefaultFeaturedEpisodeNumber,
+} from "@/lib/data/debate-episodes";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 
@@ -15,13 +20,32 @@ interface DebateEmbedWidgetProps {
 }
 
 export default function DebateEmbedWidget({
-  initialEpisodeNumber = 4,
+  initialEpisodeNumber,
   locale = "pt",
   theme = "dark",
   showPlaylist = true,
 }: DebateEmbedWidgetProps) {
-  const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
+  const [activeEpNumber, setActiveEpNumber] = useState<number>(() => {
+    return initialEpisodeNumber ?? getDefaultFeaturedEpisodeNumber();
+  });
+  const [userSelected, setUserSelected] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
+      setActiveEpNumber(initialEpisodeNumber);
+    }
+  }, [initialEpisodeNumber]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentDefault = getDefaultFeaturedEpisodeNumber();
+      if (!userSelected && !initialEpisodeNumber && currentDefault !== activeEpNumber) {
+        setActiveEpNumber(currentDefault);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [userSelected, initialEpisodeNumber, activeEpNumber]);
 
   const activeEpisode: DebateEpisode = useMemo(() => {
     return (
@@ -403,7 +427,10 @@ export default function DebateEmbedWidget({
               return (
                 <div
                   key={ep.id}
-                  onClick={() => setActiveEpNumber(ep.numero)}
+                  onClick={() => {
+                    setActiveEpNumber(ep.numero);
+                    setUserSelected(true);
+                  }}
                   style={{
                     padding: "8px 10px",
                     borderRadius: "10px",

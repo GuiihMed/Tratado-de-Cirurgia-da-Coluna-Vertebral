@@ -414,3 +414,16 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
   return DEBATE_EPISODES.find((ep) => ep.slug === slug || ep.id === slug);
 }
 
+/**
+ * Retorna o número do episódio padrão a ser colocado em evidência / destaque principal:
+ * - Antes da estreia do Ep 04 (quarta-feira 23/09 às 18:00), retorna o Ep 03 (mais recente liberado).
+ * - A partir das 18:00 de quarta-feira (momento da estreia), passa a retornar automaticamente o Ep 04.
+ */
+export function getDefaultFeaturedEpisodeNumber(): number {
+  const published = getPublishedDebateEpisodes();
+  if (published.length > 0) {
+    return Math.max(...published.map((ep) => ep.numero));
+  }
+  return 1;
+}
+

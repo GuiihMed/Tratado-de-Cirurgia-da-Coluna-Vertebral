@@ -3,7 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
-import { DEBATE_EPISODES, DebateEpisode, isEpisodeReleased } from "@/lib/data/debate-episodes";
+import {
+  DEBATE_EPISODES,
+  DebateEpisode,
+  isEpisodeReleased,
+  getDefaultFeaturedEpisodeNumber,
+} from "@/lib/data/debate-episodes";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import {
@@ -30,10 +35,13 @@ interface DebateClassicClientViewProps {
 
 export default function DebateClassicClientView({
   locale,
-  initialEpisodeNumber = 4,
+  initialEpisodeNumber,
   isEmbed = false,
 }: DebateClassicClientViewProps) {
-  const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
+  const [activeEpNumber, setActiveEpNumber] = useState<number>(() => {
+    return initialEpisodeNumber ?? getDefaultFeaturedEpisodeNumber();
+  });
+  const [userSelected, setUserSelected] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
@@ -41,6 +49,17 @@ export default function DebateClassicClientView({
       setActiveEpNumber(initialEpisodeNumber);
     }
   }, [initialEpisodeNumber]);
+
+  // Se o usuário não selecionou manualmente outro episódio e o Ep 4 acabou de estrear, atualiza para ele em tempo real
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentDefault = getDefaultFeaturedEpisodeNumber();
+      if (!userSelected && !initialEpisodeNumber && currentDefault !== activeEpNumber) {
+        setActiveEpNumber(currentDefault);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [userSelected, initialEpisodeNumber, activeEpNumber]);
 
   const activeEpisode: DebateEpisode =
     DEBATE_EPISODES.find((ep) => ep.numero === activeEpNumber) || DEBATE_EPISODES[0];
@@ -145,7 +164,10 @@ export default function DebateClassicClientView({
           return (
             <div
               key={ep.id}
-              onClick={() => setActiveEpNumber(ep.numero)}
+              onClick={() => {
+                setActiveEpNumber(ep.numero);
+                setUserSelected(true);
+              }}
               className={`p-2 sm:p-2.5 rounded-xl cursor-pointer transition-all active:scale-[0.99] select-none flex gap-3 items-center group ${
                 isActive
                   ? "bg-[#f0f7ff] border-2 border-[#f52238] shadow-sm"
