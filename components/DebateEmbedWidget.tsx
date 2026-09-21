@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { ExternalLink, Radio, Share2, Check } from "lucide-react";
 import { Locale } from "@/lib/types";
-import { DEBATE_EPISODES, DebateEpisode } from "@/lib/data/debate-episodes";
+import { DEBATE_EPISODES, DebateEpisode, isEpisodeReleased } from "@/lib/data/debate-episodes";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 
@@ -15,7 +15,7 @@ interface DebateEmbedWidgetProps {
 }
 
 export default function DebateEmbedWidget({
-  initialEpisodeNumber = 3,
+  initialEpisodeNumber = 4,
   locale = "pt",
   theme = "dark",
   showPlaylist = true,
@@ -32,6 +32,20 @@ export default function DebateEmbedWidget({
   }, [activeEpNumber]);
 
   const isDark = theme === "dark";
+  const isPremiere = Boolean(activeEpisode.dataEstreia && !isEpisodeReleased(activeEpisode));
+
+  const handleSpotifyClick = (e: React.MouseEvent) => {
+    if (isPremiere) {
+      e.preventDefault();
+      alert(
+        locale === "en"
+          ? "This episode is scheduled to premiere on Spotify on Wednesday, Sep 23 at 6:00 PM (BRT)."
+          : locale === "es"
+          ? "Este episodio está programado para estrenarse en Spotify el miércoles 23 de septiembre a las 18:00 (BRT)."
+          : "Este episódio está agendado e estará disponível no Spotify nesta quarta-feira (23/09) a partir das 18h00!"
+      );
+    }
+  };
 
   const t = {
     pt: {
@@ -231,6 +245,8 @@ export default function DebateEmbedWidget({
           url={activeEpisode.vimeoUrl}
           videoId={activeEpisode.vimeoId}
           thumbnailUrl={activeEpisode.thumbnailUrl}
+          premiereDate={activeEpisode.dataEstreia}
+          spotifyUrl={activeEpisode.spotifyUrl}
           title={title}
           guests={guests}
           locale={locale}
@@ -280,8 +296,10 @@ export default function DebateEmbedWidget({
             {activeEpisode.spotifyUrl && (
               <a
                 href={activeEpisode.spotifyUrl}
+                onClick={handleSpotifyClick}
                 target="_blank"
                 rel="noopener noreferrer"
+                title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : undefined}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -296,7 +314,7 @@ export default function DebateEmbedWidget({
                 }}
               >
                 <SpotifyIcon size={14} color="#ffffff" />
-                <span>Spotify</span>
+                <span>{isPremiere ? "Spotify (23/09 • 18h)" : "Spotify"}</span>
               </a>
             )}
 
@@ -376,6 +394,7 @@ export default function DebateEmbedWidget({
           >
             {DEBATE_EPISODES.map((ep) => {
               const isActive = ep.numero === activeEpNumber;
+              const isEpPremiere = Boolean(ep.dataEstreia && !isEpisodeReleased(ep));
               const epTitle =
                 locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
 
@@ -425,21 +444,40 @@ export default function DebateEmbedWidget({
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       loading="lazy"
                     />
-                    <span
-                      style={{
-                        position: "absolute",
-                        bottom: "2px",
-                        right: "2px",
-                        background: "rgba(0,0,0,0.85)",
-                        color: "#fff",
-                        fontSize: "8.5px",
-                        fontWeight: 700,
-                        padding: "0 3px",
-                        borderRadius: "2px",
-                      }}
-                    >
-                      {ep.duracao}
-                    </span>
+                    {isEpPremiere ? (
+                      <span
+                        style={{
+                          position: "absolute",
+                          bottom: "2px",
+                          right: "2px",
+                          background: "rgba(0,0,0,0.9)",
+                          color: "#fb7185",
+                          fontSize: "7.5px",
+                          fontWeight: 700,
+                          padding: "1px 3px",
+                          borderRadius: "2px",
+                          border: "1px solid rgba(244, 63, 94, 0.4)",
+                        }}
+                      >
+                        23/09 18h
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          position: "absolute",
+                          bottom: "2px",
+                          right: "2px",
+                          background: "rgba(0,0,0,0.85)",
+                          color: "#fff",
+                          fontSize: "8.5px",
+                          fontWeight: 700,
+                          padding: "0 3px",
+                          borderRadius: "2px",
+                        }}
+                      >
+                        {ep.duracao}
+                      </span>
+                    )}
                   </div>
 
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -451,11 +489,33 @@ export default function DebateEmbedWidget({
                           textTransform: "uppercase",
                           padding: "1px 5px",
                           borderRadius: "3px",
-                          background: isActive ? "#f52238" : isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0",
-                          color: isActive ? "#ffffff" : isDark ? "#cbd5e1" : "#475569",
+                          background: isEpPremiere
+                            ? isActive
+                              ? "#f52238"
+                              : "rgba(244, 63, 94, 0.2)"
+                            : isActive
+                            ? "#f52238"
+                            : isDark
+                            ? "rgba(255, 255, 255, 0.1)"
+                            : "#e2e8f0",
+                          color: isEpPremiere
+                            ? isActive
+                              ? "#ffffff"
+                              : "#fb7185"
+                            : isActive
+                            ? "#ffffff"
+                            : isDark
+                            ? "#cbd5e1"
+                            : "#475569",
                         }}
                       >
-                        {isActive ? t.nowPlaying : `${t.episode} 0${ep.numero}`}
+                        {isEpPremiere
+                          ? isActive
+                            ? (locale === "en" ? "🔴 Premiere 09/23" : locale === "es" ? "🔴 Estreno 23/09" : "🔴 Estreia 23/09")
+                            : (locale === "en" ? "Premiere 09/23" : locale === "es" ? "Estreno 23/09" : "Estreia 23/09")
+                          : isActive
+                          ? t.nowPlaying
+                          : `${t.episode} 0${ep.numero}`}
                       </span>
                     </div>
 

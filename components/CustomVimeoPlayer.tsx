@@ -17,6 +17,7 @@ import {
   Sparkles,
   PictureInPicture,
 } from "lucide-react";
+import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import { Locale } from "@/lib/types";
 
 interface CustomVimeoPlayerProps {
@@ -31,11 +32,13 @@ interface CustomVimeoPlayerProps {
   className?: string;
   aspectRatio?: string;
   thumbnailUrl?: string;
+  premiereDate?: string;
+  spotifyUrl?: string;
 }
 
 export default function CustomVimeoPlayer({
-  videoId = "1225996397",
-  url = "https://player.vimeo.com/video/1225996397",
+  videoId = "1228104091",
+  url = "https://player.vimeo.com/video/1228104091",
   title,
   guests,
   locale = "pt",
@@ -45,6 +48,8 @@ export default function CustomVimeoPlayer({
   className = "",
   aspectRatio = "16/9",
   thumbnailUrl,
+  premiereDate,
+  spotifyUrl,
 }: CustomVimeoPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -67,6 +72,7 @@ export default function CustomVimeoPlayer({
   // Initial and dynamic thumbnail resolution from Vimeo
   const getInitialThumbnail = () => {
     if (thumbnailUrl) return thumbnailUrl;
+    if (videoId === "1228104091") return "/assets/debate-ep4-cover.jpg";
     if (videoId === "1225996397") return "/assets/debate-ep3-cover.jpg";
     if (videoId === "1225402821") return "/assets/debate-ep2-cover.jpg";
     if (videoId === "1220279985") return "/assets/debate-ep1-cover.jpg";
@@ -80,7 +86,9 @@ export default function CustomVimeoPlayer({
       setResolvedThumbnail(thumbnailUrl);
       return;
     }
-    if (videoId === "1225996397") {
+    if (videoId === "1228104091") {
+      setResolvedThumbnail("/assets/debate-ep4-cover.jpg");
+    } else if (videoId === "1225996397") {
       setResolvedThumbnail("/assets/debate-ep3-cover.jpg");
     } else if (videoId === "1225402821") {
       setResolvedThumbnail("/assets/debate-ep2-cover.jpg");
@@ -98,6 +106,36 @@ export default function CustomVimeoPlayer({
         .catch(() => {});
     }
   }, [thumbnailUrl, videoId]);
+
+  // Premiere Countdown logic
+  const [mounted, setMounted] = useState(false);
+  const [nowMs, setNowMs] = useState<number>(() => Date.now());
+
+  useEffect(() => {
+    setMounted(true);
+    if (!premiereDate) return;
+
+    setNowMs(Date.now());
+    const timer = setInterval(() => {
+      const current = Date.now();
+      setNowMs(current);
+      if (new Date(premiereDate).getTime() <= current) {
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [premiereDate]);
+
+  const premiereTarget = premiereDate ? new Date(premiereDate).getTime() : 0;
+  // If premiereDate is in the future, premiere countdown is active
+  const isPremiereActive = Boolean(premiereDate && premiereTarget > nowMs);
+
+  const diffMs = Math.max(0, premiereTarget - nowMs);
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+  const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
 
   // 60FPS Drag/Scrubbing states
   const [isScrubbing, setIsScrubbing] = useState(false);
@@ -347,7 +385,7 @@ export default function CustomVimeoPlayer({
       console.warn("Vimeo SDK init fallback:", err);
       setIsLoading(false);
     }
-  }, []);
+  }, [videoId, isPremiereActive]);
 
   const handlePlayPause = useCallback(async () => {
     if (!playerRef.current) return;
@@ -513,19 +551,136 @@ export default function CustomVimeoPlayer({
         outline: "none",
       }}
     >
-      {/* 1. Underlying Vimeo Iframe (Chromeless & clean) */}
-      <div className="absolute inset-0 w-full h-full pointer-events-auto">
-        <iframe
-          ref={iframeRef}
-          src={`${url}?autoplay=${autoplay ? "1" : "0"}&badge=0&autopause=0&player_id=0&app_id=58479&controls=0`}
-          className="w-full h-full border-0"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          title="Tratado em Debate - Videocast Oficial SBC"
-        />
-      </div>
+      {/* 1. Underlying Vimeo Iframe (Chromeless & clean) - only loaded when premiere is active/ready */}
+      {!isPremiereActive && (
+        <div className="absolute inset-0 w-full h-full pointer-events-auto">
+          <iframe
+            ref={iframeRef}
+            src={`${url}?autoplay=${autoplay ? "1" : "0"}&badge=0&autopause=0&player_id=0&app_id=58479&controls=0`}
+            className="w-full h-full border-0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            title="Tratado em Debate - Videocast Oficial SBC"
+          />
+        </div>
+      )}
 
-      {/* 2. Responsive Initial Poster Overlay with Vimeo Cover (before playing) */}
-      {!hasStarted && (
+      {/* 2. Responsive Premiere Countdown Overlay (before release date) */}
+      {isPremiereActive ? (
+        <div className="absolute inset-0 z-20 flex flex-col justify-between overflow-hidden select-none">
+          {/* Background cover */}
+          {resolvedThumbnail ? (
+            <img
+              src={resolvedThumbnail}
+              alt={title || "Tratado em Debate"}
+              className="absolute inset-0 w-full h-full object-cover scale-105 filter blur-[2px] brightness-[0.45]"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 bg-cover bg-center filter blur-[2px] brightness-[0.45]"
+              style={{ backgroundImage: `url('/assets/debate-artwork.png')` }}
+            />
+          )}
+
+          {/* Dark Glass Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/65" />
+
+          {/* Top Row: Badge */}
+          <div className="relative z-10 flex items-center justify-between gap-2 p-3 sm:p-5 md:p-6">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-600/90 backdrop-blur-md text-white text-[10.5px] sm:text-xs font-bold uppercase tracking-wider shadow-lg shadow-rose-600/30">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span>{locale === "en" ? "Premiere Countdown" : locale === "es" ? "Cuenta Regresiva" : "Contagem Regressiva"}</span>
+            </div>
+
+            <div className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 text-[10px] text-sky-400 font-bold border border-sky-500/30 backdrop-blur-md">
+              <Sparkles size={11} />
+              <span>1080p Full HD</span>
+            </div>
+          </div>
+
+          {/* Center: Live Countdown Cards */}
+          <div className="relative z-10 flex flex-col items-center justify-center my-auto px-3 sm:px-4 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[11px] sm:text-xs md:text-sm font-bold shadow-lg mb-2 sm:mb-3.5 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+              <span>
+                {locale === "en"
+                  ? "Exclusive Premiere • Wed, Sep 23 at 6:00 PM (BRT)"
+                  : locale === "es"
+                  ? "Estreno Exclusivo • Mié, 23 de Septiembre a las 18:00 (BRT)"
+                  : "Pré-Estreia Exclusiva • Quarta-feira, 23 de Setembro às 18h00"}
+              </span>
+            </div>
+
+            {/* Countdown Grid */}
+            <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 my-1 sm:my-2">
+              <div className="flex flex-col items-center justify-center bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl sm:rounded-2xl px-2 py-1.5 sm:px-4 sm:py-2.5 min-w-[52px] sm:min-w-[72px] md:min-w-[84px] shadow-2xl">
+                <span className="text-xl sm:text-3xl md:text-4xl font-black text-white font-mono tracking-tight leading-none">
+                  {String(diffDays).padStart(2, "0")}
+                </span>
+                <span className="text-[8px] sm:text-[9.5px] md:text-xs font-bold text-rose-300 uppercase tracking-widest mt-1">
+                  {locale === "en" ? "Days" : locale === "es" ? "Días" : "Dias"}
+                </span>
+              </div>
+
+              <span className="text-base sm:text-2xl font-bold text-white/40 pb-1.5 select-none">:</span>
+
+              <div className="flex flex-col items-center justify-center bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl sm:rounded-2xl px-2 py-1.5 sm:px-4 sm:py-2.5 min-w-[52px] sm:min-w-[72px] md:min-w-[84px] shadow-2xl">
+                <span className="text-xl sm:text-3xl md:text-4xl font-black text-white font-mono tracking-tight leading-none">
+                  {String(diffHours).padStart(2, "0")}
+                </span>
+                <span className="text-[8px] sm:text-[9.5px] md:text-xs font-bold text-rose-300 uppercase tracking-widest mt-1">
+                  {locale === "en" ? "Hours" : locale === "es" ? "Horas" : "Horas"}
+                </span>
+              </div>
+
+              <span className="text-base sm:text-2xl font-bold text-white/40 pb-1.5 select-none">:</span>
+
+              <div className="flex flex-col items-center justify-center bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl sm:rounded-2xl px-2 py-1.5 sm:px-4 sm:py-2.5 min-w-[52px] sm:min-w-[72px] md:min-w-[84px] shadow-2xl">
+                <span className="text-xl sm:text-3xl md:text-4xl font-black text-white font-mono tracking-tight leading-none">
+                  {String(diffMinutes).padStart(2, "0")}
+                </span>
+                <span className="text-[8px] sm:text-[9.5px] md:text-xs font-bold text-rose-300 uppercase tracking-widest mt-1">
+                  {locale === "en" ? "Mins" : locale === "es" ? "Min" : "Min"}
+                </span>
+              </div>
+
+              <span className="text-base sm:text-2xl font-bold text-white/40 pb-1.5 select-none">:</span>
+
+              <div className="flex flex-col items-center justify-center bg-slate-900/85 backdrop-blur-md border border-rose-500/40 rounded-xl sm:rounded-2xl px-2 py-1.5 sm:px-4 sm:py-2.5 min-w-[52px] sm:min-w-[72px] md:min-w-[84px] shadow-2xl shadow-rose-600/20">
+                <span className="text-xl sm:text-3xl md:text-4xl font-black text-rose-400 font-mono tracking-tight leading-none">
+                  {String(diffSeconds).padStart(2, "0")}
+                </span>
+                <span className="text-[8px] sm:text-[9.5px] md:text-xs font-bold text-rose-300 uppercase tracking-widest mt-1">
+                  {locale === "en" ? "Secs" : locale === "es" ? "Seg" : "Seg"}
+                </span>
+              </div>
+            </div>
+
+            <p className="mt-2 sm:mt-3 text-[11px] sm:text-xs md:text-[13px] text-slate-300 max-w-lg leading-relaxed drop-shadow font-medium px-2">
+              {locale === "en"
+                ? "The full videocast will premiere automatically in this player on Wednesday at 6:00 PM BRT."
+                : locale === "es"
+                ? "El videocast completo se transmitirá automáticamente en este reproductor el miércoles a las 18:00 BRT."
+                : "O videocast completo será liberado automaticamente neste player na quarta-feira (23/09) às 18h00 (horário de Brasília)."}
+            </p>
+
+            {spotifyUrl && (
+              <div className="mt-2 sm:mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-sm text-slate-300 text-[10px] sm:text-xs">
+                <SpotifyIcon size={13} color="#1DB954" />
+                <span>
+                  {locale === "en"
+                    ? "Also premiering on Spotify at 6:00 PM"
+                    : locale === "es"
+                    ? "Disponible en Spotify a partir de las 18:00"
+                    : "Disponível no Spotify a partir das 18h00"}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom spacer for balance */}
+          <div className="relative z-10 p-2 sm:p-3 pointer-events-none" />
+        </div>
+      ) : !hasStarted ? (
         <div
           onClick={handlePlayPause}
           className="absolute inset-0 z-20 cursor-pointer flex flex-col justify-between overflow-hidden group select-none transition-all duration-300"
@@ -597,7 +752,7 @@ export default function CustomVimeoPlayer({
           {/* Bottom spacer for balance */}
           <div className="relative z-10 p-2 sm:p-3 pointer-events-none" />
         </div>
-      )}
+      ) : null}
 
       {/* 3. Interactive Transparent Click Area for Play/Pause */}
       {hasStarted && (

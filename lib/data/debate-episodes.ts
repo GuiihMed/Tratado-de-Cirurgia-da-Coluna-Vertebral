@@ -37,6 +37,7 @@ export interface DebateEpisode {
   secaoTitulo_es: string;
   duracao: string;
   dataPublicacao: string;
+  dataEstreia?: string;
   convidados: DebateGuest[];
   destaques_pt: string[];
   destaques_en: string[];
@@ -301,14 +302,108 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "4",
+    numero: 4,
+    slug: "episodio-04-avaliacao-da-coluna-do-paciente-politraumatizado",
+    titulo_pt: "Episódio 04 – Avaliação da Coluna do Paciente Politraumatizado",
+    titulo_en: "Episode 04 – Spine Evaluation in the Polytrauma Patient",
+    titulo_es: "Episodio 04 – Evaluación de la Columna en el Paciente Politraumatizado",
+    subtitulo_pt: "Equilíbrio Sagital: o detalhe que muda a indicação cirúrgica e a abordagem no trauma",
+    subtitulo_en: "Sagittal Balance: the clinical factor that shifts surgical indication in spinal trauma",
+    subtitulo_es: "Equilibrio Sagital: el factor determinante en la indicación quirúrgica del trauma",
+    descricao_pt:
+      "Neste quarto episódio do Tratado em Debate, Dr. Edson Pudles e Dr. Charbel Jacob Júnior aprofundam a discussão sobre as condutas críticas e sistematizadas no atendimento da coluna no paciente politraumatizado (Capítulo 18 do Tratado SBC). Abordam a restrição do movimento cervical desde a etapa A do ATLS® (ABCDE), critérios para indicação criteriosa de exames de imagem (TC e RM) sob regras clínicas como Canadian C-Spine Rule e NEXUS, o rastreamento obrigatório de lesões não contíguas e como os parâmetros do equilíbrio sagital prévio e pós-traumático determinam a indicação e a técnica cirúrgica.",
+    descricao_en:
+      "In this fourth episode of the Treatise in Debate, Dr. Edson Pudles and Dr. Charbel Jacob Júnior explore critical decision-making in spinal polytrauma evaluation (Chapter 18 of the SBC Treatise). They analyze cervical motion restriction integrated into step A of the ATLS® ABCDE protocol, evidence-based imaging criteria (CT and MRI via Canadian C-Spine Rule and NEXUS), systematic screening for non-contiguous spinal injuries, and the direct impact of sagittal balance parameters on surgical planning.",
+    descricao_es:
+      "En este cuarto episodio del Tratado en Debate, el Dr. Edson Pudles y el Dr. Charbel Jacob Júnior analizan las conductas críticas y el algoritmo de atención de la columna en el paciente politraumatizado (Capítulo 18 del Tratado SBC). Abordan la restricción del movimiento cervical en la etapa A del ATLS® (ABCDE), criterios clínicos de indicación de imágenes (TC y RM con NEXUS y Canadian C-Spine Rule), la búsqueda obligatoria de lesiones no contiguas y cómo el equilibrio sagital previo y postraumático define la indicación y técnica quirúrgica.",
+    vimeoId: "1228104091",
+    vimeoUrl: "https://player.vimeo.com/video/1228104091",
+    thumbnailUrl: "/assets/debate-ep4-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2202508791-c926821fa98de72815784aa2fbe360318981014653721571b189663896a9b488-d_1280x720?region=us",
+    spotifyUrl:
+      "https://open.spotify.com/episode/7atRhQH833XSSv3tFOxjFH?si=eMEUIAvnTPWyr-ih_57X1w",
+    capituloNum: 18,
+    capituloTitulo_pt: "Avaliação da Coluna do Paciente Politraumatizado",
+    capituloTitulo_en: "Spine Evaluation in the Polytrauma Patient",
+    capituloTitulo_es: "Evaluación de la Columna en el Paciente Politraumatizado",
+    secaoId: 3,
+    secaoTitulo_pt: "Lesões Traumáticas da Coluna Vertebral",
+    secaoTitulo_en: "Traumatic Spine Injuries",
+    secaoTitulo_es: "Lesiones Traumáticas de la Columna Vertebral",
+    duracao: "38:40",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-09-23T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Edson Pudles",
+        cargo: "Apresentação • Ortopedista e Cirurgião de Coluna",
+        instituicao: "Hospital Universitário Evangélico Mackenzie • Curitiba-PR • SBC",
+        slug: "edson-pudles",
+        foto_url: "/assets/edson-pudles.png",
+        orcid: "0000-0001-9816-2945",
+      },
+      {
+        nome: "Dr. Charbel Jacob Júnior",
+        cargo: "Convidado • Autor do Cap. 18 • Cirurgião de Coluna",
+        instituicao: "Sociedade Brasileira de Coluna (SBC)",
+        slug: "charbel-jacob-junior",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-1301-5805",
+      },
+    ],
+    destaques_pt: [
+      "Integração ATLS® e proteção neurológica: restrição mandatória do movimento cervical na etapa A do ABCDE.",
+      "Regras clínicas de imagem: critérios objetivos de NEXUS e Canadian C-Spine Rule na triagem do pronto atendimento.",
+      "TC de coluna total vs. RM: algoritmos diagnósticos rápidos para lesões ósseas, disco-ligamentares e compressão medular.",
+      "Rastreamento de lesões não contíguas: alto índice de suspeição para fraturas associadas ao longo de todo o neuroeixo.",
+      "Equilíbrio Sagital no trauma: como o alinhamento espinopélvico prévio condiciona a indicação cirúrgica e a reconstrução mecânica.",
+    ],
+    destaques_en: [
+      "ATLS® integration & neural protection: mandatory cervical motion restriction in step A of the ABCDE trauma sequence.",
+      "Evidence-based clinical decision rules: strict application of NEXUS criteria and Canadian C-Spine Rule in emergency triage.",
+      "Whole-spine CT vs. MRI: diagnostic algorithm for unstable osseous fractures, disco-ligamentous disruption, and cord compromise.",
+      "Non-contiguous injury surveillance: active full-spine imaging protocol to prevent missed secondary spinal injuries.",
+      "Sagittal Balance in acute trauma: how spinopelvic alignment influences surgical indication, reduction technique, and construct length.",
+    ],
+    destaques_es: [
+      "Integración ATLS® y protección neurológica: restricción obligatoria del movimiento cervical en la etapa A del protocolo ABCDE.",
+      "Reglas clínicas de decisión radiológica: aplicación protocolizada de criterios NEXUS y Canadian C-Spine Rule en urgencias.",
+      "TC de columna completa vs. RM: algoritmo de detección rápida para lesiones osteoarticulares, disco-ligamentarias y medulares.",
+      "Detección de lesiones no contiguas: rastreo sistemático para evitar pasar por alto fracturas secundarias en el neuroeje.",
+      "Equilibrio Sagital en el trauma: repercusión del alineamiento espinopélvico previo en la indicación y reconstrucción quirúrgica.",
+    ],
+    tags: [
+      "Politraumatizado",
+      "Trauma Raquimedular",
+      "Equilíbrio Sagital",
+      "ATLS",
+      "NEXUS",
+      "Canadian C-Spine Rule",
+      "Fratura de Coluna",
+      "Cirurgia de Coluna",
+      "SBC",
+      "Emergência",
+    ],
+    status: "publicado",
+  },
 ];
+
+export function isEpisodeReleased(episode: DebateEpisode): boolean {
+  if (episode.dataEstreia) {
+    return new Date().getTime() >= new Date(episode.dataEstreia).getTime();
+  }
+  return episode.status === "publicado";
+}
 
 export function getDebateEpisodes(): DebateEpisode[] {
   return DEBATE_EPISODES;
 }
 
 export function getPublishedDebateEpisodes(): DebateEpisode[] {
-  return DEBATE_EPISODES.filter((ep) => ep.status === "publicado");
+  return DEBATE_EPISODES.filter((ep) => isEpisodeReleased(ep));
 }
 
 export function getDebateEpisodeByNumber(numero: number): DebateEpisode | undefined {
@@ -318,3 +413,4 @@ export function getDebateEpisodeByNumber(numero: number): DebateEpisode | undefi
 export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined {
   return DEBATE_EPISODES.find((ep) => ep.slug === slug || ep.id === slug);
 }
+

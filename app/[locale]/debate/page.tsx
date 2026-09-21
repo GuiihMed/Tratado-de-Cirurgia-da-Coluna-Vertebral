@@ -51,15 +51,21 @@ export async function generateMetadata({
       "Episódio 01",
       "Episódio 02",
       "Episódio 03",
+      "Episódio 04",
       "Coluna Vertebral no Plano Sagital",
       "Princípios da Artrodese",
       "Biologia do Enxerto",
       "Substitutos Ósseos",
       "Monitorização Neurofisiológica Intraoperatória",
+      "Avaliação da Coluna do Paciente Politraumatizado",
+      "Politraumatizado",
+      "Equilíbrio Sagital",
       "Dr. Marcelo Risso",
       "Dr. Paulo Cavali",
       "Dr. Raphael Martus Marcon",
       "Dr. Ricardo José Rodriguez Ferreira",
+      "Dr. Edson Pudles",
+      "Dr. Charbel Jacob Júnior",
       "Sociedade Brasileira de Coluna",
     ],
     alternates: {
@@ -106,6 +112,24 @@ export default async function DebatePage({ params }: DebatePageProps) {
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep4`,
+        "name": "Episódio 04: Avaliação da Coluna do Paciente Politraumatizado — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Edson Pudles e Dr. Charbel Jacob Júnior debatendo o atendimento no politrauma, regras canadenses e NEXUS, lesões não contíguas e equilíbrio sagital no trauma (Capítulo 18).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep4-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-09-23T18:00:00-03:00",
+        "duration": "PT38M",
+        "embedUrl": "https://player.vimeo.com/video/1228104091",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep3`,
@@ -159,6 +183,13 @@ export default async function DebatePage({ params }: DebatePageProps) {
           "name": "Sociedade Brasileira de Coluna (SBC)",
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep4`,
+        "name": "Episódio 04: Avaliação da Coluna do Paciente Politraumatizado — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 18 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/7atRhQH833XSSv3tFOxjFH?si=eMEUIAvnTPWyr-ih_57X1w"
       },
       {
         "@type": "PodcastEpisode",

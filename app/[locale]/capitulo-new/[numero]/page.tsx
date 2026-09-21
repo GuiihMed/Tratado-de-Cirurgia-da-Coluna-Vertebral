@@ -932,9 +932,13 @@ export default async function CapituloNewPage({ params }: CapituloNewPageProps) 
                         url={debateEp.vimeoUrl}
                         videoId={debateEp.vimeoId}
                         thumbnailUrl={debateEp.thumbnailUrl}
+                        premiereDate={debateEp.dataEstreia}
+                        spotifyUrl={debateEp.spotifyUrl}
                         title={locale === "en" ? debateEp.titulo_en : locale === "es" ? debateEp.titulo_es : debateEp.titulo_pt}
                         guests={debateEp.convidados.map((c) => c.nome).join(" & ")}
                         locale={locale}
+                        autoplay={false}
+                        showPopOutButton={true}
                       />
                     </div>
 

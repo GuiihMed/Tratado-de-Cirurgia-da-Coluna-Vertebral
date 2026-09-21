@@ -9,7 +9,7 @@ export default function DebateEmbedClientPage() {
   const searchParams = useSearchParams();
   
   const epParam = searchParams.get("ep");
-  const initialEp = epParam ? parseInt(epParam, 10) || 3 : 3;
+  const initialEp = epParam ? parseInt(epParam, 10) || 4 : 4;
 
   const rawLocale = searchParams.get("locale");
   const locale: Locale = rawLocale && ["pt", "en", "es"].includes(rawLocale) ? (rawLocale as Locale) : "pt";

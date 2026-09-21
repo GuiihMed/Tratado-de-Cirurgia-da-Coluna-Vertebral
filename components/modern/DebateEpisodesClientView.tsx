@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
-import { DEBATE_EPISODES, DebateEpisode } from "@/lib/data/debate-episodes";
+import { DEBATE_EPISODES, DebateEpisode, isEpisodeReleased } from "@/lib/data/debate-episodes";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import {
@@ -29,7 +29,7 @@ interface DebateEpisodesClientViewProps {
 
 export default function DebateEpisodesClientView({
   locale,
-  initialEpisodeNumber = 3,
+  initialEpisodeNumber = 4,
 }: DebateEpisodesClientViewProps) {
   const [activeEpNumber, setActiveEpNumber] = useState<number>(initialEpisodeNumber);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -80,6 +80,21 @@ export default function DebateEpisodesClientView({
       : activeEpisode.destaques_pt;
 
   const otherEpisodes = DEBATE_EPISODES.filter((ep) => ep.numero !== activeEpisode.numero);
+
+  const isPremiere = Boolean(activeEpisode.dataEstreia && !isEpisodeReleased(activeEpisode));
+
+  const handleSpotifyClick = (e: React.MouseEvent) => {
+    if (isPremiere) {
+      e.preventDefault();
+      alert(
+        locale === "en"
+          ? "This episode is scheduled to premiere on Spotify on Wednesday, Sep 23 at 6:00 PM (BRT)."
+          : locale === "es"
+          ? "Este episodio está programado para estrenarse en Spotify el miércoles 23 de septiembre a las 18:00 (BRT)."
+          : "Este episódio está agendado e estará disponível no Spotify nesta quarta-feira (23/09) a partir das 18h00!"
+      );
+    }
+  };
 
   const handleShare = () => {
     if (typeof window !== "undefined") {
@@ -142,14 +157,14 @@ export default function DebateEpisodesClientView({
                   <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
                   <span>
                     {locale === "en"
-                      ? `Episode ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • Now Playing`
+                      ? `Episode ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • ${isPremiere ? "Premiere 09/23 • 6PM" : "Now Playing"}`
                       : locale === "es"
-                      ? `Episodio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • En Reproducción`
-                      : `Episódio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • Em Reprodução`}
+                      ? `Episodio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • ${isPremiere ? "Estreno 23/09 • 18h" : "En Reproducción"}`
+                      : `Episódio ${activeEpisode.numero < 10 ? `0${activeEpisode.numero}` : activeEpisode.numero} • ${isPremiere ? "Pré-Estreia 23/09 • 18h" : "No Ar"}`}
                   </span>
                 </span>
                 <span style={{ fontSize: 13, color: "rgba(255, 255, 255, 0.7)", fontWeight: 600 }}>
-                  {activeEpisode.duracao} min
+                  {isPremiere ? (locale === "en" ? "Premiere Sep 23 • 6PM" : locale === "es" ? "Estreno 23/09 a las 18h" : "Estreia 23/09 às 18h") : `${activeEpisode.duracao} min`}
                 </span>
               </div>
 
@@ -157,6 +172,7 @@ export default function DebateEpisodesClientView({
                 {activeEpisode.spotifyUrl && (
                   <a
                     href={activeEpisode.spotifyUrl}
+                    onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -174,10 +190,10 @@ export default function DebateEpisodesClientView({
                       transition: "all 0.2s ease",
                     }}
                     className="hover:bg-[#1ed760] hover:scale-105"
-                    title="Ouvir no Spotify"
+                    title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : "Ouvir no Spotify"}
                   >
                     <SpotifyIcon size={15} color="#ffffff" />
-                    <span>Spotify</span>
+                    <span>{isPremiere ? "Spotify (23/09 • 18h)" : "Spotify"}</span>
                   </a>
                 )}
                 <button
@@ -222,6 +238,8 @@ export default function DebateEpisodesClientView({
               url={activeEpisode.vimeoUrl}
               videoId={activeEpisode.vimeoId}
               thumbnailUrl={activeEpisode.thumbnailUrl}
+              premiereDate={activeEpisode.dataEstreia}
+              spotifyUrl={activeEpisode.spotifyUrl}
               title={title}
               guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
               locale={locale}
@@ -462,8 +480,10 @@ export default function DebateEpisodesClientView({
                 {activeEpisode.spotifyUrl && (
                   <a
                     href={activeEpisode.spotifyUrl}
+                    onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : undefined}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -481,7 +501,19 @@ export default function DebateEpisodesClientView({
                     className="hover:bg-[#1ed760] hover:scale-105"
                   >
                     <SpotifyIcon size={18} color="#ffffff" />
-                    <span>{locale === "en" ? "Listen on Spotify" : locale === "es" ? "Escuchar en Spotify" : "Ouvir no Spotify"}</span>
+                    <span>
+                      {isPremiere
+                        ? locale === "en"
+                          ? "Spotify (Premiere Sep 23 • 6PM)"
+                          : locale === "es"
+                          ? "Spotify (Estreno 23/09 • 18h)"
+                          : "Spotify (Estreia 23/09 • 18h)"
+                        : locale === "en"
+                        ? "Listen on Spotify"
+                        : locale === "es"
+                        ? "Escuchar en Spotify"
+                        : "Ouvir no Spotify"}
+                    </span>
                   </a>
                 )}
 
@@ -550,6 +582,7 @@ export default function DebateEpisodesClientView({
               {/* Episódio 1 (Atual) */}
               {DEBATE_EPISODES.map((ep) => {
                 const isActive = ep.numero === activeEpNumber;
+                const isEpPremiere = Boolean(ep.dataEstreia && !isEpisodeReleased(ep));
                 const epTitle =
                   locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
                 const coverUrl = ep.thumbnailUrl || `/assets/debate-ep${ep.numero}-cover.jpg`;
@@ -595,22 +628,42 @@ export default function DebateEpisodesClientView({
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         loading="lazy"
                       />
-                      <span
-                        style={{
-                          position: "absolute",
-                          bottom: "3px",
-                          right: "4px",
-                          background: "rgba(0, 0, 0, 0.85)",
-                          color: "#fff",
-                          fontSize: "9.5px",
-                          fontWeight: 700,
-                          padding: "1px 4px",
-                          borderRadius: "3px",
-                          lineHeight: 1.1,
-                        }}
-                      >
-                        {ep.duracao}
-                      </span>
+                      {isEpPremiere ? (
+                        <span
+                          style={{
+                            position: "absolute",
+                            bottom: "3px",
+                            right: "4px",
+                            background: "rgba(0, 0, 0, 0.9)",
+                            color: "#fb7185",
+                            fontSize: "8.5px",
+                            fontWeight: 700,
+                            padding: "1px 4px",
+                            borderRadius: "3px",
+                            lineHeight: 1.1,
+                            border: "1px solid rgba(244, 63, 94, 0.4)",
+                          }}
+                        >
+                          23/09 • 18h
+                        </span>
+                      ) : (
+                        <span
+                          style={{
+                            position: "absolute",
+                            bottom: "3px",
+                            right: "4px",
+                            background: "rgba(0, 0, 0, 0.85)",
+                            color: "#fff",
+                            fontSize: "9.5px",
+                            fontWeight: 700,
+                            padding: "1px 4px",
+                            borderRadius: "3px",
+                            lineHeight: 1.1,
+                          }}
+                        >
+                          {ep.duracao}
+                        </span>
+                      )}
                       {isActive && (
                         <div
                           style={{
@@ -651,11 +704,25 @@ export default function DebateEpisodesClientView({
                             textTransform: "uppercase",
                             padding: "2px 6px",
                             borderRadius: 4,
-                            background: isActive ? "#f52238" : "rgba(255, 255, 255, 0.1)",
-                            color: "#ffffff",
+                            background: isEpPremiere
+                              ? isActive
+                                ? "#f52238"
+                                : "rgba(244, 63, 94, 0.2)"
+                              : isActive
+                              ? "#f52238"
+                              : "rgba(255, 255, 255, 0.1)",
+                            color: isEpPremiere
+                              ? isActive
+                                ? "#ffffff"
+                                : "#fb7185"
+                              : "#ffffff",
                           }}
                         >
-                          {isActive
+                          {isEpPremiere
+                            ? isActive
+                              ? (locale === "en" ? "🔴 Premiere 09/23" : locale === "es" ? "🔴 Estreno 23/09" : "🔴 Estreia 23/09 • 18h")
+                              : (locale === "en" ? "Premiere 09/23" : locale === "es" ? "Estreno 23/09" : "Estreia 23/09")
+                            : isActive
                             ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ No Ar")
                             : (locale === "en" ? `Ep. 0${ep.numero}` : locale === "es" ? `Ep. 0${ep.numero}` : `Ep. 0${ep.numero}`)}
                         </span>
