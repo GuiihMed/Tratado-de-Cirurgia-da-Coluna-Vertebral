@@ -24,6 +24,8 @@ export interface DebateEpisode {
   descricao_es: string;
   vimeoId: string;
   vimeoUrl: string;
+  thumbnailUrl?: string;
+  vimeoThumbnailUrl?: string;
   spotifyUrl?: string;
   capituloNum: number;
   capituloTitulo_pt: string;
@@ -62,6 +64,9 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
       "En este episodio de estreno del Tratado en Debate, el Dr. Marcelo Risso y el Dr. Paulo Cavali profundizan en los conceptos anátomo-biomecánicos esenciales del Capítulo 8 del Tratado de la SBC. Abordan los parámetros radiográficos espinopélvicos (Incidencia Pélvica, Versión Pélvica, Pendiente Sacra, SVA y Lordosis Lumbar), el cono de economía de Jean Dubousset, la clasificación de Roussouly, modificadores SRS-Schwab y cómo guían la decisión quirúrgica para restaurar el alineamiento global y prevenir fallas mecánicas.",
     vimeoId: "1220279985",
     vimeoUrl: "https://player.vimeo.com/video/1220279985",
+    thumbnailUrl: "/assets/debate-ep1-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2199863320-754ffaa4403daf6290f5953e4fa3c856c7b64d1bca3133a296046bf97f7fc56a-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q",
     capituloNum: 8,
     capituloTitulo_pt: "Coluna Vertebral no Plano Sagital",
@@ -142,6 +147,9 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
       "En este segundo episodio del Tratado en Debate, el Dr. Marcelo Risso recibe al Dr. Raphael Martus Marcon, autor del Capítulo 9 del Tratado de la SBC, para debatir los fundamentos biológicos y biomecánicos del éxito de la artrodesis vertebral. Analizan la tríada de consolidación ósea (osteogénesis, osteoinducción y osteoconducción), las indicaciones y limitaciones del autoinjerto, aloinjertos, matriz ósea desmineralizada (DBM), proteínas morfogenéticas (rhBMP-2) y cerámicas sintéticas, con énfasis en la preparación meticulosa del lecho y la prevención de la seudoartrosis.",
     vimeoId: "1225402821",
     vimeoUrl: "https://player.vimeo.com/video/1225402821",
+    thumbnailUrl: "/assets/debate-ep2-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2199115788-6aa45ed6065c88cca8cf44c9a320e314a39275887fe5eaf0834650a0af3754f9-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/2kaOBpTY0aGjXUnb0FkcIA",
     capituloNum: 9,
     capituloTitulo_pt: "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
@@ -226,6 +234,9 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
       "En este tercer episodio del Tratado en Debate, el Dr. Marcelo Risso recibe al Dr. Ricardo José Rodriguez Ferreira, autor principal del Capítulo 14 del Tratado de la SBC, para profundizar en los principios y directrices de la monitorización neurofisiológica intraoperatoria (MNIO) en cirugía de columna. Analizan la diferencia crítica entre monitoreo continuo y mapeo anatómico, las indicaciones del potencial evocado motor córtico-miogénico (PEMcm), potenciales evocados somatosensoriales (PESS), electromiografía libre y estimulada (frEMG y tEMG), reflejos sacros y el valor pronóstico de la onda D. También examinan la anestesia intravenosa total (TIVA), factores sistémicos y el protocolo de respuesta inmediata ante alertas durante instrumentaciones y corrección de deformidades.",
     vimeoId: "1225996397",
     vimeoUrl: "https://player.vimeo.com/video/1225996397",
+    thumbnailUrl: "/assets/debate-ep3-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2199859507-b3f4b5f3c119944d7f8b7b93ab7f58a4190211c94499d047642316d7d02384cb-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/2fHhe1AJwqKziYaZpqoXaN?si=AqujIb1qR6eHWBWkZGaFEw",
     capituloNum: 14,
     capituloTitulo_pt: "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",

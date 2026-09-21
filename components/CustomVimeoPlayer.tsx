@@ -30,11 +30,12 @@ interface CustomVimeoPlayerProps {
   showPopOutButton?: boolean;
   className?: string;
   aspectRatio?: string;
+  thumbnailUrl?: string;
 }
 
 export default function CustomVimeoPlayer({
-  videoId = "1220279985",
-  url = "https://player.vimeo.com/video/1220279985",
+  videoId = "1225996397",
+  url = "https://player.vimeo.com/video/1225996397",
   title,
   guests,
   locale = "pt",
@@ -43,6 +44,7 @@ export default function CustomVimeoPlayer({
   showPopOutButton = true,
   className = "",
   aspectRatio = "16/9",
+  thumbnailUrl,
 }: CustomVimeoPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -61,6 +63,41 @@ export default function CustomVimeoPlayer({
   const [showSettings, setShowSettings] = useState(false);
   const [hoverTime, setHoverTime] = useState<{ time: number; pct: number } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Initial and dynamic thumbnail resolution from Vimeo
+  const getInitialThumbnail = () => {
+    if (thumbnailUrl) return thumbnailUrl;
+    if (videoId === "1225996397") return "/assets/debate-ep3-cover.jpg";
+    if (videoId === "1225402821") return "/assets/debate-ep2-cover.jpg";
+    if (videoId === "1220279985") return "/assets/debate-ep1-cover.jpg";
+    return "";
+  };
+
+  const [resolvedThumbnail, setResolvedThumbnail] = useState<string>(getInitialThumbnail);
+
+  useEffect(() => {
+    if (thumbnailUrl) {
+      setResolvedThumbnail(thumbnailUrl);
+      return;
+    }
+    if (videoId === "1225996397") {
+      setResolvedThumbnail("/assets/debate-ep3-cover.jpg");
+    } else if (videoId === "1225402821") {
+      setResolvedThumbnail("/assets/debate-ep2-cover.jpg");
+    } else if (videoId === "1220279985") {
+      setResolvedThumbnail("/assets/debate-ep1-cover.jpg");
+    } else if (videoId) {
+      fetch(`https://vimeo.com/api/oembed.json?url=https://player.vimeo.com/video/${videoId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.thumbnail_url) {
+            const highRes = data.thumbnail_url.replace(/_\d+x\d+/, "_1280x720");
+            setResolvedThumbnail(highRes);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [thumbnailUrl, videoId]);
 
   // 60FPS Drag/Scrubbing states
   const [isScrubbing, setIsScrubbing] = useState(false);
@@ -487,17 +524,31 @@ export default function CustomVimeoPlayer({
         />
       </div>
 
-      {/* 2. Responsive Initial Poster Overlay (before playing) */}
+      {/* 2. Responsive Initial Poster Overlay with Vimeo Cover (before playing) */}
       {!hasStarted && (
         <div
           onClick={handlePlayPause}
-          className="absolute inset-0 z-20 cursor-pointer flex flex-col justify-between p-3 sm:p-5 md:p-6 bg-cover bg-center transition-all duration-500 hover:brightness-105"
-          style={{
-            backgroundImage: `linear-gradient(180deg, rgba(0, 16, 38, 0.35) 0%, rgba(0, 10, 26, 0.75) 100%), url('/assets/debate-artwork.png')`,
-          }}
+          className="absolute inset-0 z-20 cursor-pointer flex flex-col justify-between overflow-hidden group select-none transition-all duration-300"
         >
+          {/* Cover image from Vimeo */}
+          {resolvedThumbnail ? (
+            <img
+              src={resolvedThumbnail}
+              alt={title || "Tratado em Debate"}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('/assets/debate-artwork.png')` }}
+            />
+          )}
+
+          {/* Subtle contrast gradient at top/bottom for badges and UI */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/20 pointer-events-none" />
+
           {/* Top Row: Pill Badge + HD / Popout */}
-          <div className="flex items-center justify-between gap-2">
+          <div className="relative z-10 flex items-center justify-between gap-2 p-3 sm:p-5 md:p-6">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-600/90 backdrop-blur-md text-white text-[10.5px] sm:text-xs font-bold uppercase tracking-wider shadow-lg shadow-rose-600/30">
               <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span className="hidden sm:inline">{t.badge}</span>
@@ -505,7 +556,7 @@ export default function CustomVimeoPlayer({
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/50 text-[10px] text-sky-400 font-bold border border-sky-500/30 backdrop-blur-md">
+              <div className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 text-[10px] text-sky-400 font-bold border border-sky-500/30 backdrop-blur-md">
                 <Sparkles size={11} />
                 <span>1080p HD</span>
               </div>
@@ -527,33 +578,24 @@ export default function CustomVimeoPlayer({
           </div>
 
           {/* Center Play Button & Compact CTA */}
-          <div className="flex flex-col items-center justify-center my-auto">
-            <div className="relative group/btn flex items-center justify-center">
+          <div className="relative z-10 flex flex-col items-center justify-center my-auto">
+            <div className="relative flex items-center justify-center">
               {/* Glowing animated background */}
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-rose-600 to-sky-500 opacity-60 blur-md group-hover/btn:opacity-90 animate-pulse transition-opacity duration-300" />
+              <div className="absolute -inset-3 rounded-full bg-rose-600/40 opacity-70 blur-md group-hover:opacity-100 group-hover:scale-125 transition-all duration-300" />
 
               {/* Main Play Circle */}
-              <div className="relative w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full bg-gradient-to-tr from-rose-600 via-rose-500 to-red-600 text-white flex items-center justify-center shadow-2xl shadow-rose-600/60 border-2 border-white/50 group-hover/btn:scale-110 transition-transform duration-300">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-[#f52238] text-white flex items-center justify-center shadow-2xl shadow-rose-600/50 border-2 border-white/80 group-hover:scale-110 transition-transform duration-300">
                 <Play size={24} className="sm:w-7 sm:h-7 md:w-8 md:h-8 fill-current ml-0.5 sm:ml-1 drop-shadow" />
               </div>
             </div>
 
-            <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider drop-shadow bg-black/60 px-3 py-1 rounded-full backdrop-blur-md border border-white/15 shadow-md">
+            <span className="mt-2.5 sm:mt-3 text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider drop-shadow bg-black/75 px-3.5 py-1 rounded-full backdrop-blur-md border border-white/20 shadow-md">
               {t.clickToPlay}
             </span>
           </div>
 
-          {/* Bottom Episode Line (Hidden on compact heights) */}
-          <div className="hidden lg:flex items-end justify-between gap-4">
-            <div className="min-w-0">
-              <h3 className="text-sm sm:text-base font-extrabold text-white leading-tight drop-shadow-md truncate">
-                {t.epTitle}
-              </h3>
-              <p className="text-xs text-slate-300 font-medium truncate mt-0.5">
-                {t.guests}
-              </p>
-            </div>
-          </div>
+          {/* Bottom spacer for balance */}
+          <div className="relative z-10 p-2 sm:p-3 pointer-events-none" />
         </div>
       )}
 

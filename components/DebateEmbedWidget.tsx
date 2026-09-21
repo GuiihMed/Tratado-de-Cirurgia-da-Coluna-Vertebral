@@ -230,6 +230,7 @@ export default function DebateEmbedWidget({
           key={activeEpisode.id}
           url={activeEpisode.vimeoUrl}
           videoId={activeEpisode.vimeoId}
+          thumbnailUrl={activeEpisode.thumbnailUrl}
           title={title}
           guests={guests}
           locale={locale}
@@ -378,12 +379,14 @@ export default function DebateEmbedWidget({
               const epTitle =
                 locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
 
+              const coverUrl = ep.thumbnailUrl || `/assets/debate-ep${ep.numero}-cover.jpg`;
+
               return (
                 <div
                   key={ep.id}
                   onClick={() => setActiveEpNumber(ep.numero)}
                   style={{
-                    padding: "10px 12px",
+                    padding: "8px 10px",
                     borderRadius: "10px",
                     cursor: "pointer",
                     background: isActive
@@ -399,38 +402,75 @@ export default function DebateEmbedWidget({
                       ? "1px solid rgba(255, 255, 255, 0.08)"
                       : "1px solid #e2e8f0",
                     transition: "all 0.2s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
                   }}
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                  {/* Capa Vimeo */}
+                  <div
+                    style={{
+                      width: "65px",
+                      aspectRatio: "16/9",
+                      borderRadius: "6px",
+                      overflow: "hidden",
+                      flexShrink: 0,
+                      position: "relative",
+                      background: "#000",
+                    }}
+                  >
+                    <img
+                      src={coverUrl}
+                      alt={epTitle}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      loading="lazy"
+                    />
                     <span
                       style={{
-                        fontSize: "10px",
-                        fontWeight: 800,
-                        textTransform: "uppercase",
-                        padding: "2px 6px",
-                        borderRadius: "4px",
-                        background: isActive ? "#f52238" : isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0",
-                        color: isActive ? "#ffffff" : isDark ? "#cbd5e1" : "#475569",
+                        position: "absolute",
+                        bottom: "2px",
+                        right: "2px",
+                        background: "rgba(0,0,0,0.85)",
+                        color: "#fff",
+                        fontSize: "8.5px",
+                        fontWeight: 700,
+                        padding: "0 3px",
+                        borderRadius: "2px",
                       }}
                     >
-                      {isActive ? t.nowPlaying : `${t.episode} 0${ep.numero}`}
-                    </span>
-                    <span style={{ fontSize: "11px", color: isDark ? "#94a3b8" : "#64748b", fontWeight: 600 }}>
-                      {ep.duracao} {t.duration}
+                      {ep.duracao}
                     </span>
                   </div>
 
-                  <div
-                    style={{
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      color: isActive ? (isDark ? "#ffffff" : "#b91c1c") : isDark ? "#e2e8f0" : "#1e293b",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {epTitle}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3px" }}>
+                      <span
+                        style={{
+                          fontSize: "9.5px",
+                          fontWeight: 800,
+                          textTransform: "uppercase",
+                          padding: "1px 5px",
+                          borderRadius: "3px",
+                          background: isActive ? "#f52238" : isDark ? "rgba(255, 255, 255, 0.1)" : "#e2e8f0",
+                          color: isActive ? "#ffffff" : isDark ? "#cbd5e1" : "#475569",
+                        }}
+                      >
+                        {isActive ? t.nowPlaying : `${t.episode} 0${ep.numero}`}
+                      </span>
+                    </div>
+
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        color: isActive ? (isDark ? "#ffffff" : "#b91c1c") : isDark ? "#e2e8f0" : "#1e293b",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {epTitle}
+                    </div>
                   </div>
                 </div>
               );

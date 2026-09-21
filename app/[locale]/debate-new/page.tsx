@@ -111,8 +111,8 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
         "name": "Episódio 03: Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna — Tratado em Debate",
         "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Ricardo José Rodriguez Ferreira debatendo a monitorização neurofisiológica intraoperatória, potenciais motores, onda D e protocolos cirúrgicos (Capítulo 14).",
         "thumbnailUrl": [
-          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
-          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+          "https://www.tratadodecoluna.com.br/assets/debate-ep3-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
         ],
         "uploadDate": "2026-09-16T18:00:00+00:00",
         "duration": "PT45M",
@@ -129,8 +129,8 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
         "name": "Episódio 02: Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos — Tratado em Debate",
         "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Raphael Martus Marcon debatendo a consolidação da artrodese, substitutos ósseos e prevenção de pseudoartrose (Capítulo 9).",
         "thumbnailUrl": [
-          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
-          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+          "https://www.tratadodecoluna.com.br/assets/debate-ep2-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
         ],
         "uploadDate": "2026-09-09T18:00:00+00:00",
         "duration": "PT52M",
@@ -147,8 +147,8 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
         "name": "Episódio 01: Coluna Vertebral no Plano Sagital — Tratado em Debate",
         "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Marcelo Risso e Dr. Paulo Cavali debatendo o alinhamento no plano sagital e parâmetros espinopélvicos (Capítulo 8).",
         "thumbnailUrl": [
-          "https://www.tratadodecoluna.com.br/assets/og-cover.png",
-          "https://www.tratadodecoluna.com.br/assets/debate-artwork.png"
+          "https://www.tratadodecoluna.com.br/assets/debate-ep1-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
         ],
         "uploadDate": "2026-09-02T18:00:00+00:00",
         "duration": "PT45M",

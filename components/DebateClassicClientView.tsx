@@ -124,42 +124,63 @@ export default function DebateClassicClientView({
           const isActive = ep.numero === activeEpNumber;
           const epTitle =
             locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
+          const coverUrl = ep.thumbnailUrl || `/assets/debate-ep${ep.numero}-cover.jpg`;
 
           return (
             <div
               key={ep.id}
               onClick={() => setActiveEpNumber(ep.numero)}
-              className={`p-2.5 sm:p-3.5 rounded-xl cursor-pointer transition-all active:scale-[0.99] select-none ${
+              className={`p-2 sm:p-2.5 rounded-xl cursor-pointer transition-all active:scale-[0.99] select-none flex gap-3 items-center group ${
                 isActive
                   ? "bg-[#f0f7ff] border-2 border-[#f52238] shadow-sm"
                   : "bg-[#f8fafc] border border-slate-200 hover:bg-[#f1f5f9] hover:border-slate-300"
               }`}
             >
-              <div className="flex items-center justify-between mb-1 gap-2">
-                <span
-                  className={`text-[10px] sm:text-[10.5px] font-bold uppercase px-2 py-0.5 rounded whitespace-nowrap shrink-0 ${
-                    isActive ? "bg-[#f52238] text-white" : "bg-slate-200 text-slate-700"
-                  }`}
-                >
-                  {isActive
-                    ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ Reproduzindo Agora")
-                    : (locale === "en" ? `Episode ${ep.numero}` : locale === "es" ? `Episodio ${ep.numero}` : `Episódio ${ep.numero}`)}
-                </span>
-                <span className="text-[11px] sm:text-xs text-slate-500 font-semibold shrink-0">
+              {/* Capa do Vimeo */}
+              <div className="relative w-24 sm:w-28 aspect-video rounded-lg overflow-hidden shrink-0 bg-slate-200 border border-slate-200/80 shadow-xs">
+                <img
+                  src={coverUrl}
+                  alt={epTitle}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <span className="absolute bottom-1 right-1 bg-black/85 text-white text-[9px] font-bold px-1 py-0.2 rounded leading-tight">
                   {ep.duracao} min
                 </span>
+                {isActive && (
+                  <div className="absolute inset-0 bg-[#f52238]/25 flex items-center justify-center">
+                    <div className="w-5 h-5 rounded-full bg-[#f52238] text-white flex items-center justify-center shadow">
+                      <Play size={10} className="fill-current ml-0.5" />
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <h4
-                className={`text-xs sm:text-sm font-bold leading-snug mb-0.5 sm:mb-1 ${
-                  isActive ? "text-[#001733]" : "text-slate-700"
-                }`}
-              >
-                {epTitle}
-              </h4>
+              {/* Detalhes do Episódio */}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between mb-0.5 gap-2">
+                  <span
+                    className={`text-[9.5px] sm:text-[10px] font-bold uppercase px-1.5 py-0.5 rounded whitespace-nowrap shrink-0 ${
+                      isActive ? "bg-[#f52238] text-white" : "bg-slate-200 text-slate-700"
+                    }`}
+                  >
+                    {isActive
+                      ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ No Ar")
+                      : (locale === "en" ? `Ep. 0${ep.numero}` : locale === "es" ? `Ep. 0${ep.numero}` : `Ep. 0${ep.numero}`)}
+                  </span>
+                </div>
 
-              <div className="text-[10.5px] sm:text-xs text-slate-500 truncate">
-                <span>{ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}</span>
+                <h4
+                  className={`text-xs sm:text-[13px] font-bold leading-snug line-clamp-2 mb-0.5 ${
+                    isActive ? "text-[#001733]" : "text-slate-700"
+                  }`}
+                >
+                  {epTitle}
+                </h4>
+
+                <div className="text-[10px] sm:text-[11px] text-slate-500 truncate">
+                  <span>{ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}</span>
+                </div>
               </div>
             </div>
           );
@@ -274,6 +295,7 @@ export default function DebateClassicClientView({
               key={activeEpisode.id}
               url={activeEpisode.vimeoUrl}
               videoId={activeEpisode.vimeoId}
+              thumbnailUrl={activeEpisode.thumbnailUrl}
               title={title}
               guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
               locale={locale}

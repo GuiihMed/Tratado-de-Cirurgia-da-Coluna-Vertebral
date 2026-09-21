@@ -221,6 +221,7 @@ export default function DebateEpisodesClientView({
               key={activeEpisode.id}
               url={activeEpisode.vimeoUrl}
               videoId={activeEpisode.vimeoId}
+              thumbnailUrl={activeEpisode.thumbnailUrl}
               title={title}
               guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
               locale={locale}
@@ -551,13 +552,14 @@ export default function DebateEpisodesClientView({
                 const isActive = ep.numero === activeEpNumber;
                 const epTitle =
                   locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
+                const coverUrl = ep.thumbnailUrl || `/assets/debate-ep${ep.numero}-cover.jpg`;
 
                 return (
                   <div
                     key={ep.id}
                     onClick={() => setActiveEpNumber(ep.numero)}
                     style={{
-                      padding: "16px",
+                      padding: "12px 14px",
                       borderRadius: 14,
                       background: isActive
                         ? "linear-gradient(135deg, rgba(245, 34, 56, 0.25) 0%, rgba(0, 30, 80, 0.4) 100%)"
@@ -568,47 +570,118 @@ export default function DebateEpisodesClientView({
                       cursor: "pointer",
                       transition: "all 0.2s ease",
                       boxShadow: isActive ? "0 6px 20px rgba(245, 34, 56, 0.25)" : "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 14,
                     }}
                     className={!isActive ? "hover:bg-white/10 hover:border-white/20" : ""}
                   >
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-                      <span
-                        style={{
-                          fontSize: 11,
-                          fontWeight: 800,
-                          textTransform: "uppercase",
-                          padding: "2px 8px",
-                          borderRadius: 6,
-                          background: isActive ? "#f52238" : "rgba(255, 255, 255, 0.1)",
-                          color: "#ffffff",
-                        }}
-                      >
-                        {isActive
-                          ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ Reproduzindo Agora")
-                          : (locale === "en" ? `Episode ${ep.numero}` : locale === "es" ? `Episodio ${ep.numero}` : `Episódio ${ep.numero}`)}
-                      </span>
-                      <span style={{ fontSize: 12, color: "#94a3b8", fontWeight: 600 }}>
-                        {ep.duracao}
-                      </span>
-                    </div>
-
-                    <h4
+                    {/* Capa Vimeo */}
+                    <div
                       style={{
-                        fontSize: 14.5,
-                        fontWeight: 700,
-                        color: isActive ? "#ffffff" : "#cbd5e1",
-                        margin: "0 0 6px",
-                        lineHeight: 1.35,
+                        position: "relative",
+                        width: "110px",
+                        aspectRatio: "16/9",
+                        borderRadius: "8px",
+                        overflow: "hidden",
+                        flexShrink: 0,
+                        background: "#000",
+                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
                       }}
                     >
-                      {epTitle}
-                    </h4>
-
-                    <div style={{ fontSize: 12, color: "#94a3b8", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span>{locale === "en" ? "Guests:" : locale === "es" ? "Invitados:" : "Convidados:"}</span>
-                      <span style={{ color: "#e2effe", fontWeight: 600 }}>
-                        {ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}
+                      <img
+                        src={coverUrl}
+                        alt={epTitle}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        loading="lazy"
+                      />
+                      <span
+                        style={{
+                          position: "absolute",
+                          bottom: "3px",
+                          right: "4px",
+                          background: "rgba(0, 0, 0, 0.85)",
+                          color: "#fff",
+                          fontSize: "9.5px",
+                          fontWeight: 700,
+                          padding: "1px 4px",
+                          borderRadius: "3px",
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {ep.duracao}
                       </span>
+                      {isActive && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "rgba(245, 34, 56, 0.3)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "22px",
+                              height: "22px",
+                              borderRadius: "50%",
+                              background: "#f52238",
+                              color: "#fff",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              boxShadow: "0 2px 6px rgba(0,0,0,0.4)",
+                            }}
+                          >
+                            <Play size={11} className="fill-current ml-0.5" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Detalhes */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+                        <span
+                          style={{
+                            fontSize: 10,
+                            fontWeight: 800,
+                            textTransform: "uppercase",
+                            padding: "2px 6px",
+                            borderRadius: 4,
+                            background: isActive ? "#f52238" : "rgba(255, 255, 255, 0.1)",
+                            color: "#ffffff",
+                          }}
+                        >
+                          {isActive
+                            ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ No Ar")
+                            : (locale === "en" ? `Ep. 0${ep.numero}` : locale === "es" ? `Ep. 0${ep.numero}` : `Ep. 0${ep.numero}`)}
+                        </span>
+                      </div>
+
+                      <h4
+                        style={{
+                          fontSize: 13.5,
+                          fontWeight: 700,
+                          color: isActive ? "#ffffff" : "#cbd5e1",
+                          margin: "0 0 4px",
+                          lineHeight: 1.3,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {epTitle}
+                      </h4>
+
+                      <div style={{ fontSize: 11, color: "#94a3b8", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        <span style={{ color: "#e2effe", fontWeight: 600 }}>
+                          {ep.convidados.map((c) => c.nome.replace("Dr. ", "")).join(" & ")}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 );
