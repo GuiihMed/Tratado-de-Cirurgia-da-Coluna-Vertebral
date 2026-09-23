@@ -71,6 +71,12 @@ export default function CustomVimeoPlayer({
 
   // Initial and dynamic thumbnail resolution from Vimeo
   const getInitialThumbnail = () => {
+    if (typeof window !== "undefined" && videoId) {
+      try {
+        const cached = sessionStorage.getItem(`vimeo_thumb_${videoId}`);
+        if (cached) return cached;
+      } catch (_) {}
+    }
     if (thumbnailUrl) return thumbnailUrl;
     if (videoId === "1228104091") return "/assets/debate-ep4-cover.jpg";
     if (videoId === "1225996397") return "/assets/debate-ep3-cover.jpg";
@@ -82,29 +88,35 @@ export default function CustomVimeoPlayer({
   const [resolvedThumbnail, setResolvedThumbnail] = useState<string>(getInitialThumbnail);
 
   useEffect(() => {
+    if (!videoId) return;
+
+    // Atualiza base inicial se thumbnailUrl for fornecido
     if (thumbnailUrl) {
       setResolvedThumbnail(thumbnailUrl);
-      return;
     }
-    if (videoId === "1228104091") {
-      setResolvedThumbnail("/assets/debate-ep4-cover.jpg");
-    } else if (videoId === "1225996397") {
-      setResolvedThumbnail("/assets/debate-ep3-cover.jpg");
-    } else if (videoId === "1225402821") {
-      setResolvedThumbnail("/assets/debate-ep2-cover.jpg");
-    } else if (videoId === "1220279985") {
-      setResolvedThumbnail("/assets/debate-ep1-cover.jpg");
-    } else if (videoId) {
-      fetch(`https://vimeo.com/api/oembed.json?url=https://player.vimeo.com/video/${videoId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data && data.thumbnail_url) {
-            const highRes = data.thumbnail_url.replace(/_\d+x\d+/, "_1280x720");
-            setResolvedThumbnail(highRes);
-          }
-        })
-        .catch(() => {});
-    }
+
+    // Sempre busca a capa mais recente diretamente da API do Vimeo em tempo real
+    let isMounted = true;
+    fetch(`https://vimeo.com/api/oembed.json?url=https://player.vimeo.com/video/${videoId}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Vimeo oEmbed response not ok");
+        return res.json();
+      })
+      .then((data) => {
+        if (!isMounted) return;
+        if (data && data.thumbnail_url) {
+          const highRes = data.thumbnail_url.replace(/_\d+x\d+/, "_1280x720");
+          setResolvedThumbnail(highRes);
+          try {
+            sessionStorage.setItem(`vimeo_thumb_${videoId}`, highRes);
+          } catch (_) {}
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+    };
   }, [thumbnailUrl, videoId]);
 
   // Premiere Countdown logic

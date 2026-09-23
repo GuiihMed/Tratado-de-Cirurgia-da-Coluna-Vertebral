@@ -67,7 +67,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     vimeoUrl: "https://player.vimeo.com/video/1220279985",
     thumbnailUrl: "/assets/debate-ep1-cover.jpg",
     vimeoThumbnailUrl:
-      "https://i.vimeocdn.com/video/2199863320-754ffaa4403daf6290f5953e4fa3c856c7b64d1bca3133a296046bf97f7fc56a-d_1280x720?region=us",
+      "https://i.vimeocdn.com/video/2203348422-0fe4a4d62b22032c47de18c13d9e2c3a209c00f4f760ac82f330f01bdd5b4c1c-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q",
     capituloNum: 8,
     capituloTitulo_pt: "Coluna Vertebral no Plano Sagital",
@@ -150,7 +150,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     vimeoUrl: "https://player.vimeo.com/video/1225402821",
     thumbnailUrl: "/assets/debate-ep2-cover.jpg",
     vimeoThumbnailUrl:
-      "https://i.vimeocdn.com/video/2199115788-6aa45ed6065c88cca8cf44c9a320e314a39275887fe5eaf0834650a0af3754f9-d_1280x720?region=us",
+      "https://i.vimeocdn.com/video/2203348041-d26eb444dfd53aa33aa3d7ba2166994b2fc561759c301c040526defb72ee5fff-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/2kaOBpTY0aGjXUnb0FkcIA",
     capituloNum: 9,
     capituloTitulo_pt: "Princípios da Artrodese, Biologia do Enxerto e Substitutos Ósseos na Coluna",
@@ -237,7 +237,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     vimeoUrl: "https://player.vimeo.com/video/1225996397",
     thumbnailUrl: "/assets/debate-ep3-cover.jpg",
     vimeoThumbnailUrl:
-      "https://i.vimeocdn.com/video/2199859507-b3f4b5f3c119944d7f8b7b93ab7f58a4190211c94499d047642316d7d02384cb-d_1280x720?region=us",
+      "https://i.vimeocdn.com/video/2203347718-8b0446a7f53127646f99eff63eecba6de696ef6c232b34f0aa07f4efbc7c84a1-d_1280x720?region=us",
     spotifyUrl: "https://open.spotify.com/episode/2fHhe1AJwqKziYaZpqoXaN?si=AqujIb1qR6eHWBWkZGaFEw",
     capituloNum: 14,
     capituloTitulo_pt: "Monitorização Neurofisiológica Intraoperatória em Cirurgia de Coluna",
@@ -322,7 +322,7 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     vimeoUrl: "https://player.vimeo.com/video/1228104091",
     thumbnailUrl: "/assets/debate-ep4-cover.jpg",
     vimeoThumbnailUrl:
-      "https://i.vimeocdn.com/video/2202508791-c926821fa98de72815784aa2fbe360318981014653721571b189663896a9b488-d_1280x720?region=us",
+      "https://i.vimeocdn.com/video/2203347066-827a73edb6cc128a51628edf82677413fe565e048b4d97c69b01eb675ea02ecf-d_1280x720?region=us",
     spotifyUrl:
       "https://open.spotify.com/episode/7atRhQH833XSSv3tFOxjFH?si=eMEUIAvnTPWyr-ih_57X1w",
     capituloNum: 18,

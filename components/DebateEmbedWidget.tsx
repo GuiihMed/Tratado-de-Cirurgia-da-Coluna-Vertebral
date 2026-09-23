@@ -9,6 +9,7 @@ import {
   isEpisodeReleased,
   getDefaultFeaturedEpisodeNumber,
 } from "@/lib/data/debate-episodes";
+import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 
@@ -25,6 +26,7 @@ export default function DebateEmbedWidget({
   theme = "dark",
   showPlaylist = true,
 }: DebateEmbedWidgetProps) {
+  const liveThumbnails = useVimeoThumbnails(DEBATE_EPISODES);
   const [activeEpNumber, setActiveEpNumber] = useState<number>(() => {
     return initialEpisodeNumber ?? getDefaultFeaturedEpisodeNumber();
   });
@@ -268,7 +270,11 @@ export default function DebateEmbedWidget({
           key={activeEpisode.id}
           url={activeEpisode.vimeoUrl}
           videoId={activeEpisode.vimeoId}
-          thumbnailUrl={activeEpisode.thumbnailUrl}
+          thumbnailUrl={
+            liveThumbnails[activeEpisode.vimeoId] ||
+            activeEpisode.vimeoThumbnailUrl ||
+            activeEpisode.thumbnailUrl
+          }
           premiereDate={activeEpisode.dataEstreia}
           spotifyUrl={activeEpisode.spotifyUrl}
           title={title}
@@ -422,7 +428,11 @@ export default function DebateEmbedWidget({
               const epTitle =
                 locale === "en" ? ep.titulo_en : locale === "es" ? ep.titulo_es : ep.titulo_pt;
 
-              const coverUrl = ep.thumbnailUrl || `/assets/debate-ep${ep.numero}-cover.jpg`;
+              const coverUrl =
+                liveThumbnails[ep.vimeoId] ||
+                ep.vimeoThumbnailUrl ||
+                ep.thumbnailUrl ||
+                `/assets/debate-ep${ep.numero}-cover.jpg`;
 
               return (
                 <div
