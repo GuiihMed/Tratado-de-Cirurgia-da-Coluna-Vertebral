@@ -392,19 +392,19 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
   {
     id: "5",
     numero: 5,
-    slug: "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica",
-    titulo_pt: "Episódio 05 – Trauma Toracolombar: da Classificação Correta à Decisão Cirúrgica",
-    titulo_en: "Episode 05 – Thoracolumbar Trauma: from Proper Classification to Surgical Decision",
-    titulo_es: "Episodio 05 – Trauma Toracolumbar: de la Clasificación Correcta a la Decisión Quirúrgica",
-    subtitulo_pt: "Critérios de estabilidade biomecânica, classificação AO Spine, TLICS e escolha da via cirúrgica no trauma toracolombar",
-    subtitulo_en: "Biomechanical stability criteria, AO Spine classification, TLICS, and surgical approach selection in thoracolumbar trauma",
-    subtitulo_es: "Criterios de estabilidad biomecánica, clasificación AO Spine, TLICS y abordaje quirúrgico en el trauma toracolumbar",
+    slug: "episodio-05-lesoes-traumaticas-da-coluna-toracica-e-lombar",
+    titulo_pt: "Episódio 05 – Lesões Traumáticas da Coluna Torácica e Lombar",
+    titulo_en: "Episode 05 – Traumatic Injuries of the Thoracic and Lumbar Spine",
+    titulo_es: "Episodio 05 – Lesiones Traumáticas de la Columna Torácica y Lumbar",
+    subtitulo_pt: "Trauma Toracolombar: da Classificação Correta à Decisão Cirúrgica",
+    subtitulo_en: "Thoracolumbar Trauma: from Proper Classification to Surgical Decision",
+    subtitulo_es: "Trauma Toracolombar: de la Clasificación Correcta a la Decisión Quirúrgica",
     descricao_pt:
       "Neste quinto episódio do Tratado em Debate, o Dr. Edson Pudles recebe o Dr. Alexandre Philippe Boss Jaccard para discutir os pilares diagnósticos e a tomada de decisão no trauma toracolombar (Capítulo 22 do Tratado SBC). Abordam a avaliação da estabilidade da coluna anterior e posterior, a aplicação prática das classificações AO Spine e TLICS, o diagnóstico das lesões do complexo ligamentar posterior (PLC) por ressonância magnética e as diretrizes para escolha entre tratamento conservador, descompressão e fixação por via posterior, anterior ou combinada.",
     descricao_en:
       "In this fifth episode of the Treatise in Debate, Dr. Edson Pudles hosts Dr. Alexandre Philippe Boss Jaccard to discuss diagnostic foundations and surgical decision-making in thoracolumbar trauma (Chapter 22 of the SBC Treatise). They explore biomechanical stability of anterior and posterior columns, clinical application of AO Spine and TLICS classification systems, MRI-based assessment of posterior ligamentous complex (PLC) integrity, and evidence-based indications for conservative management versus posterior, anterior, or combined surgical stabilization.",
     descricao_es:
-      "En este quinto episodio del Tratado en Debate, el Dr. Edson Pudles recibe al Dr. Alexandre Philippe Boss Jaccard para debatir los pilares diagnósticos y la toma de decisiones en el trauma toracolumbar (Capítulo 22 del Tratado SBC). Analizan la evaluación de estabilidad de las columnas anterior y posterior, la aplicación clínica de las clasificaciones AO Spine y TLICS, el diagnóstico por resonancia magnética del complejo ligamentario posterior (PLC) y las directrices para definir entre tratamiento conservador y fijación quirúrgica posterior, anterior o combinada.",
+      "En este quinto episodio del Tratado en Debate, el Dr. Edson Pudles recibe al Dr. Alexandre Philippe Boss Jaccard para debatir los pilares diagnósticos y la toma de decisiones en el trauma toracolombar (Capítulo 22 del Tratado SBC). Analizan la evaluación de estabilidad de las columnas anterior y posterior, la aplicación clínica de las clasificaciones AO Spine y TLICS, el diagnóstico por resonancia magnética del complejo ligamentario posterior (PLC) y las directrices para definir entre tratamiento conservador y fijación quirúrgica posterior, anterior o combinada.",
     vimeoId: "1231004388",
     vimeoUrl: "https://player.vimeo.com/video/1231004388",
     thumbnailUrl: "/assets/debate-ep5-cover.jpg",
@@ -479,19 +479,16 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
   {
     id: "ep-06",
     numero: 6,
-    slug: "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento",
-    titulo_pt:
-      "Episódio 06: Escoliose de Início Precoce — Pulmão e Coluna em Crescimento",
-    titulo_en:
-      "Episode 06: Early-Onset Scoliosis — Lungs and the Growing Spine",
-    titulo_es:
-      "Episodio 06: Escoliosis de Inicio Temprano — Pulmón y Columna en Crecimiento",
+    slug: "episodio-06-escoliose-de-inicio-precoce",
+    titulo_pt: "Episódio 06 – Escoliose de Início Precoce",
+    titulo_en: "Episode 06 – Early-Onset Scoliosis",
+    titulo_es: "Episodio 06 – Escoliosis de Inicio Temprano",
     subtitulo_pt:
-      "Desenvolvimento torácico, síndrome de insuficiência torácica, classificação C-EOS e técnicas cirúrgicas que preservam o crescimento",
+      "Pulmão e Coluna em Crescimento: desenvolvimento torácico, classificação C-EOS e técnicas cirúrgicas que preservam o crescimento",
     subtitulo_en:
-      "Thoracic development, thoracic insufficiency syndrome, C-EOS classification, and growth-friendly surgical techniques",
+      "Lungs and the Growing Spine: thoracic development, C-EOS classification, and growth-friendly surgical techniques",
     subtitulo_es:
-      "Desarrollo torácico, síndrome de insuficiencia torácica, clasificación C-EOS y técnicas quirúrgicas que preservan el crecimiento",
+      "Pulmón y Columna en Crecimiento: desarrollo torácico, clasificación C-EOS y técnicas quirúrgicas que preservan el crecimiento",
     descricao_pt:
       "Neste sexto episódio do Tratado em Debate, o Dr. Alberto Gotfryd recebe o Dr. Alexandre Fogaça Cristante (Presidente da SBC e Professor Titular da FMUSP) para aprofundar os desafios clínicos e cirúrgicos da Escoliose de Início Precoce (Capítulo 28 do Tratado SBC). Discutem a íntima sincronização entre o crescimento vertebral e a expansão alveolar pulmonar, o diagnóstico precoce para prevenção da síndrome de insuficiência torácica, a estratificação pela classificação C-EOS, as indicações de gessos seriados e órteses, e os sistemas modernos de instrumentação que preservam o crescimento (hastes tradicionais, magnéticas/MAGEC e sistemas guiados) antes da artrodese definitiva.",
     descricao_en:
@@ -591,7 +588,13 @@ export function getDebateEpisodeByNumber(numero: number): DebateEpisode | undefi
 }
 
 export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined {
-  return DEBATE_EPISODES.find((ep) => ep.slug === slug || ep.id === slug);
+  return DEBATE_EPISODES.find(
+    (ep) =>
+      ep.slug === slug ||
+      ep.id === slug ||
+      (ep.numero === 5 && slug === "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica") ||
+      (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento")
+  );
 }
 
 /**
