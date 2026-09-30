@@ -660,12 +660,11 @@ export default function CustomVimeoPlayer({
                 <Calendar size={13} className="text-indigo-400" />
               )}
               <span>
-                {formatPremiereFullDate(premiereDate, locale) ||
-                  (locale === "en"
-                    ? "Exclusive Premiere"
-                    : locale === "es"
-                    ? "Estreno Exclusivo"
-                    : "Pré-Estreia Exclusiva")}
+                {locale === "en"
+                  ? `Exclusive Premiere • ${formatPremiereFullDate(premiereDate, "en")}`
+                  : locale === "es"
+                  ? `Estreno Exclusivo • ${formatPremiereFullDate(premiereDate, "es")}`
+                  : `Pré-Estreia Exclusiva • ${formatPremiereFullDate(premiereDate, "pt")}`}
               </span>
             </div>
 
