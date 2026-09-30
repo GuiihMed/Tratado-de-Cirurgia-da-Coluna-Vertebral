@@ -52,6 +52,7 @@ export async function generateMetadata({
       "Episódio 03",
       "Episódio 04",
       "Episódio 05",
+      "Episódio 06",
       "Coluna Vertebral no Plano Sagital",
       "Princípios da Artrodese",
       "Biologia do Enxerto",
@@ -60,6 +61,10 @@ export async function generateMetadata({
       "Avaliação da Coluna do Paciente Politraumatizado",
       "Trauma Toracolombar",
       "Fratura Toracolombar",
+      "Escoliose de Início Precoce",
+      "C-EOS",
+      "Insuficiência Torácica",
+      "MAGEC",
       "AO Spine",
       "TLICS",
       "Complexo Ligamentar Posterior",
@@ -72,6 +77,8 @@ export async function generateMetadata({
       "Dr. Edson Pudles",
       "Dr. Charbel Jacob Júnior",
       "Dr. Alexandre Philippe Boss Jaccard",
+      "Dr. Alberto Gotfryd",
+      "Dr. Alexandre Fogaça Cristante",
       "Sociedade Brasileira de Coluna",
     ],
     alternates: {
@@ -118,6 +125,24 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep6`,
+        "name": "Episódio 06: Escoliose de Início Precoce — Pulmão e Coluna em Crescimento — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Alberto Gotfryd e Dr. Alexandre Fogaça Cristante debatendo escoliose de início precoce, desenvolvimento torácico, classificação C-EOS e técnicas cirúrgicas que preservam o crescimento (Capítulo 28).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep6-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-10-07T18:00:00-03:00",
+        "duration": "PT46M",
+        "embedUrl": "https://player.vimeo.com/video/1231004387",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep5`,
@@ -207,6 +232,13 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
           "name": "Sociedade Brasileira de Coluna (SBC)",
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast-ep6`,
+        "name": "Episódio 06: Escoliose de Início Precoce — Pulmão e Coluna em Crescimento — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 28 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/2mWXhUNUZMMdqBuAULVPeX?si=DqeX6Tq-TpC2YSlxBfIZ9g"
       },
       {
         "@type": "PodcastEpisode",

@@ -476,6 +476,99 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-06",
+    numero: 6,
+    slug: "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento",
+    titulo_pt:
+      "Episódio 06: Escoliose de Início Precoce — Pulmão e Coluna em Crescimento",
+    titulo_en:
+      "Episode 06: Early-Onset Scoliosis — Lungs and the Growing Spine",
+    titulo_es:
+      "Episodio 06: Escoliosis de Inicio Temprano — Pulmón y Columna en Crecimiento",
+    subtitulo_pt:
+      "Desenvolvimento torácico, síndrome de insuficiência torácica, classificação C-EOS e técnicas cirúrgicas que preservam o crescimento",
+    subtitulo_en:
+      "Thoracic development, thoracic insufficiency syndrome, C-EOS classification, and growth-friendly surgical techniques",
+    subtitulo_es:
+      "Desarrollo torácico, síndrome de insuficiencia torácica, clasificación C-EOS y técnicas quirúrgicas que preservan el crecimiento",
+    descricao_pt:
+      "Neste sexto episódio do Tratado em Debate, o Dr. Alberto Gotfryd recebe o Dr. Alexandre Fogaça Cristante (Presidente da SBC e Professor Titular da FMUSP) para aprofundar os desafios clínicos e cirúrgicos da Escoliose de Início Precoce (Capítulo 28 do Tratado SBC). Discutem a íntima sincronização entre o crescimento vertebral e a expansão alveolar pulmonar, o diagnóstico precoce para prevenção da síndrome de insuficiência torácica, a estratificação pela classificação C-EOS, as indicações de gessos seriados e órteses, e os sistemas modernos de instrumentação que preservam o crescimento (hastes tradicionais, magnéticas/MAGEC e sistemas guiados) antes da artrodese definitiva.",
+    descricao_en:
+      "In this sixth episode of the Treatise in Debate, Dr. Alberto Gotfryd hosts Dr. Alexandre Fogaça Cristante (President of the SBC and Full Professor at FMUSP) to discuss clinical and surgical management of Early-Onset Scoliosis (Chapter 28 of the SBC Treatise). They explore the physiological relationship between spinal growth and pulmonary alveolar development, strategies to prevent thoracic insufficiency syndrome, the C-EOS classification system, conservative treatment with serial casting and bracing, and modern growth-friendly spinal instrumentation (traditional, magnetically controlled MAGEC rods, and guided-growth systems) prior to definitive fusion.",
+    descricao_es:
+      "En este sexto episodio del Tratado en Debate, el Dr. Alberto Gotfryd recibe al Dr. Alexandre Fogaça Cristante (Presidente de la SBC y Profesor Titular de la FMUSP) para analizar el manejo clínico y quirúrgico de la Escoliosis de Inicio Temprano (Capítulo 28 del Tratado SBC). Abordan la sincronización entre el crecimiento espinal y la maduración pulmonar, la prevención del síndrome de insuficiencia torácica, la clasificación C-EOS, las opciones conservadoras con yesos seriados y corsés, y las tecnologías quirúrgicas de preservación del crecimiento (barras tradicionales, varillas magnéticas MAGEC y sistemas guiados) antes de la artrodesis definitiva.",
+    vimeoId: "1231004387",
+    vimeoUrl: "https://player.vimeo.com/video/1231004387",
+    thumbnailUrl: "/assets/debate-ep6-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2206063937-4c4e606e4b180b1df3cfe25d7cc7a9e136bd38316aa4fcfe182ec7012958a8c9-d_1280x720?region=us",
+    spotifyUrl:
+      "https://open.spotify.com/episode/2mWXhUNUZMMdqBuAULVPeX?si=DqeX6Tq-TpC2YSlxBfIZ9g",
+    capituloNum: 28,
+    capituloTitulo_pt: "Escoliose de Início Precoce",
+    capituloTitulo_en: "Early-Onset Scoliosis",
+    capituloTitulo_es: "Escoliosis de Inicio Temprano",
+    secaoId: 4,
+    secaoTitulo_pt: "Deformidades da Coluna Vertebral",
+    secaoTitulo_en: "Spinal Deformities",
+    secaoTitulo_es: "Deformidades de la Columna Vertebral",
+    duracao: "46:00",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-10-07T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Alberto Gotfryd",
+        cargo: "Apresentação • Ortopedista e Cirurgião de Coluna",
+        instituicao: "Faculdade de Ciências Médicas da Santa Casa de SP • SBC",
+        slug: "alberto-ofenhejm-gotfryd",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0003-3143-2845",
+      },
+      {
+        nome: "Dr. Alexandre Fogaça Cristante",
+        cargo: "Convidado • Autor do Cap. 28 • Cirurgião de Coluna",
+        instituicao: "Professor Titular FMUSP • IOT-HC-FMUSP • Pres. SBC",
+        slug: "alexandre-fogaca-cristante",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-7797-5274",
+      },
+    ],
+    destaques_pt: [
+      "Sincronização biológica: o impacto do crescimento vertebral no desenvolvimento alveolar pulmonar antes dos 10 anos.",
+      "Prevenção da Síndrome de Insuficiência Torácica (TIS): critérios clínicos e radiográficos de monitoramento volumétrico.",
+      "Classificação C-EOS: estratificação por etiologia, magnitude da curva principal, cifose e modificador anual.",
+      "Tratamento conservador: o papel dos gessos seriados (Mehta) e órteses na contenção ou correção das curvas.",
+      "Sistemas cirúrgicos de preservação do crescimento (Growth-Friendly): hastes tradicionais vs. magnéticas (MAGEC) e momento da artrodese definitiva.",
+    ],
+    destaques_en: [
+      "Biological synchronization: the impact of spinal growth on pulmonary alveolar multiplication under age 10.",
+      "Prevention of Thoracic Insufficiency Syndrome (TIS): clinical assessment and radiographic volumetric monitoring.",
+      "C-EOS Classification: staging by etiology, major curve magnitude, kyphosis, and annual progression modifier.",
+      "Non-operative strategies: role of serial derotational casting (Mehta) and custom orthoses in curve control.",
+      "Growth-friendly spinal systems: traditional dual rods vs. magnetically controlled (MAGEC) rods and timing for definitive spinal fusion.",
+    ],
+    destaques_es: [
+      "Sincronización biológica: impacto del crecimiento espinal en el desarrollo alveolar pulmonar en menores de 10 años.",
+      "Prevención del Síndrome de Insuficiencia Torácica (TIS): criterios clínicos y seguimiento volumétrico radiográfico.",
+      "Clasificación C-EOS: estratificación según etiología, magnitud de la curva principal, cifosis y modificador de progresión.",
+      "Manejo conservador: papel de los yesos seriados (Mehta) y corsés en el control o corrección de la deformidad.",
+      "Sistemas de preservación del crecimiento (Growth-Friendly): barras tradicionales vs. magnéticas (MAGEC) y oportunidad de la artrodesis definitiva.",
+    ],
+    tags: [
+      "Escoliose de Início Precoce",
+      "EOS",
+      "C-EOS",
+      "Coluna em Crescimento",
+      "Insuficiência Torácica",
+      "MAGEC",
+      "Deformidade Vertebral",
+      "Cirurgia de Coluna",
+      "Ortopedia Pediátrica",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -547,4 +640,74 @@ export function formatPremiereNotice(dataEstreia?: string, locale: Locale = "pt"
     return "18:00";
   }
 }
+
+/**
+ * Determina se o contador regressivo de segundos/minutos/horas deve ser exibido.
+ * Requisito: A contagem regressiva ao vivo só entra na véspera (dia anterior, a partir das 00h00) da estreia.
+ * Antes disso, exibe-se apenas a data e horário agendados.
+ */
+export function isCountdownActive(dataEstreia?: string, nowMs: number = Date.now()): boolean {
+  if (!dataEstreia) return false;
+  const target = new Date(dataEstreia).getTime();
+  if (target <= nowMs) return false;
+
+  const targetDate = new Date(dataEstreia);
+  const dayBefore = new Date(targetDate);
+  dayBefore.setDate(dayBefore.getDate() - 1);
+  dayBefore.setHours(0, 0, 0, 0);
+
+  return nowMs >= dayBefore.getTime();
+}
+
+const MONTH_NAMES_PT = [
+  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
+
+const MONTH_NAMES_EN = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const MONTH_NAMES_ES = [
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
+const WEEKDAY_NAMES_PT = [
+  "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
+  "Quinta-feira", "Sexta-feira", "Sábado"
+];
+
+const WEEKDAY_NAMES_EN = [
+  "Sunday", "Monday", "Tuesday", "Wednesday",
+  "Thursday", "Friday", "Saturday"
+];
+
+const WEEKDAY_NAMES_ES = [
+  "Domingo", "Lunes", "Martes", "Miércoles",
+  "Jueves", "Viernes", "Sábado"
+];
+
+export function formatPremiereFullDate(dataEstreia?: string, locale: Locale = "pt"): string {
+  if (!dataEstreia) return "";
+  try {
+    const d = new Date(dataEstreia);
+    const day = String(d.getDate()).padStart(2, "0");
+    const monthIdx = d.getMonth();
+    const weekdayIdx = d.getDay();
+    const hours = String(d.getHours()).padStart(2, "0");
+
+    if (locale === "en") {
+      const pmHour = d.getHours() > 12 ? d.getHours() - 12 : d.getHours();
+      return `${WEEKDAY_NAMES_EN[weekdayIdx]}, ${MONTH_NAMES_EN[monthIdx]} ${day} at ${pmHour}:00 PM (BRT)`;
+    } else if (locale === "es") {
+      return `${WEEKDAY_NAMES_ES[weekdayIdx]}, ${day} de ${MONTH_NAMES_ES[monthIdx]} a las ${hours}:00 (BRT)`;
+    }
+    return `${WEEKDAY_NAMES_PT[weekdayIdx]}, ${day} de ${MONTH_NAMES_PT[monthIdx]} às ${hours}h00`;
+  } catch (_) {
+    return "18h00";
+  }
+}
+
 
