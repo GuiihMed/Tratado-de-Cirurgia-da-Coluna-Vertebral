@@ -51,12 +51,18 @@ export async function generateMetadata({
       "Episódio 02",
       "Episódio 03",
       "Episódio 04",
+      "Episódio 05",
       "Coluna Vertebral no Plano Sagital",
       "Princípios da Artrodese",
       "Biologia do Enxerto",
       "Substitutos Ósseos",
       "Monitorização Neurofisiológica Intraoperatória",
       "Avaliação da Coluna do Paciente Politraumatizado",
+      "Trauma Toracolombar",
+      "Fratura Toracolombar",
+      "AO Spine",
+      "TLICS",
+      "Complexo Ligamentar Posterior",
       "Politraumatizado",
       "Equilíbrio Sagital",
       "Dr. Marcelo Risso",
@@ -65,6 +71,7 @@ export async function generateMetadata({
       "Dr. Ricardo José Rodriguez Ferreira",
       "Dr. Edson Pudles",
       "Dr. Charbel Jacob Júnior",
+      "Dr. Alexandre Philippe Boss Jaccard",
       "Sociedade Brasileira de Coluna",
     ],
     alternates: {
@@ -111,6 +118,24 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep5`,
+        "name": "Episódio 05: Lesões Traumáticas da Coluna Torácica e Lombar — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Edson Pudles e Dr. Alexandre Philippe Boss Jaccard debatendo trauma toracolombar, estabilidade biomecânica, classificação AO Spine, escore TLICS e critérios de indicação cirúrgica (Capítulo 22).",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep5-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-09-30T18:00:00-03:00",
+        "duration": "PT47M",
+        "embedUrl": "https://player.vimeo.com/video/1231004388",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep4`,
@@ -182,6 +207,13 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
           "name": "Sociedade Brasileira de Coluna (SBC)",
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
+      },
+      {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast-ep5`,
+        "name": "Episódio 05: Lesões Traumáticas da Coluna Torácica e Lombar — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 22 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/0MqxAQEJlxVlcdOJKZ6zB0?si=z6BAf-yZTGaRzDbA6HKkow"
       },
       {
         "@type": "PodcastEpisode",

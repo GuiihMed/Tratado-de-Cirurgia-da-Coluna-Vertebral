@@ -78,6 +78,7 @@ export default function CustomVimeoPlayer({
       } catch (_) {}
     }
     if (thumbnailUrl) return thumbnailUrl;
+    if (videoId === "1231004388") return "/assets/debate-ep5-cover.jpg";
     if (videoId === "1228104091") return "/assets/debate-ep4-cover.jpg";
     if (videoId === "1225996397") return "/assets/debate-ep3-cover.jpg";
     if (videoId === "1225402821") return "/assets/debate-ep2-cover.jpg";
@@ -672,7 +673,7 @@ export default function CustomVimeoPlayer({
                 ? "The full videocast will premiere automatically in this player on Wednesday at 6:00 PM BRT."
                 : locale === "es"
                 ? "El videocast completo se transmitirá automáticamente en este reproductor el miércoles a las 18:00 BRT."
-                : "O videocast completo será liberado automaticamente neste player na quarta-feira (23/09) às 18h00 (horário de Brasília)."}
+                : "O videocast completo será liberado automaticamente neste player na quarta-feira às 18h00 (horário de Brasília)."}
             </p>
 
             {spotifyUrl && (

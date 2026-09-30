@@ -8,6 +8,8 @@ import {
   DebateEpisode,
   isEpisodeReleased,
   getDefaultFeaturedEpisodeNumber,
+  formatPremiereBadge,
+  formatPremiereNotice,
 } from "@/lib/data/debate-episodes";
 import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
@@ -65,10 +67,10 @@ export default function DebateEmbedWidget({
       e.preventDefault();
       alert(
         locale === "en"
-          ? "This episode is scheduled to premiere on Spotify on Wednesday, Sep 23 at 6:00 PM (BRT)."
+          ? `This episode is scheduled to premiere on Spotify on ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}.`
           : locale === "es"
-          ? "Este episodio está programado para estrenarse en Spotify el miércoles 23 de septiembre a las 18:00 (BRT)."
-          : "Este episódio está agendado e estará disponível no Spotify nesta quarta-feira (23/09) a partir das 18h00!"
+          ? `Este episodio está programado para estrenarse en Spotify el ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}.`
+          : `Este episódio está agendado e estará disponível no Spotify nesta ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}!`
       );
     }
   };
@@ -329,7 +331,7 @@ export default function DebateEmbedWidget({
                 onClick={handleSpotifyClick}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : undefined}
+                title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : undefined}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -344,7 +346,7 @@ export default function DebateEmbedWidget({
                 }}
               >
                 <SpotifyIcon size={14} color="#ffffff" />
-                <span>{isPremiere ? "Spotify (23/09 • 18h)" : "Spotify"}</span>
+                <span>{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
               </a>
             )}
 
@@ -496,7 +498,7 @@ export default function DebateEmbedWidget({
                           border: "1px solid rgba(244, 63, 94, 0.4)",
                         }}
                       >
-                        23/09 18h
+                        {formatPremiereBadge(ep.dataEstreia, locale)}
                       </span>
                     ) : (
                       <span
@@ -548,8 +550,8 @@ export default function DebateEmbedWidget({
                       >
                         {isEpPremiere
                           ? isActive
-                            ? (locale === "en" ? "🔴 Premiere 09/23" : locale === "es" ? "🔴 Estreno 23/09" : "🔴 Estreia 23/09")
-                            : (locale === "en" ? "Premiere 09/23" : locale === "es" ? "Estreno 23/09" : "Estreia 23/09")
+                            ? (locale === "en" ? `🔴 Premiere ${formatPremiereBadge(ep.dataEstreia, "en")}` : locale === "es" ? `🔴 Estreno ${formatPremiereBadge(ep.dataEstreia, "es")}` : `🔴 Estreia ${formatPremiereBadge(ep.dataEstreia, "pt")}`)
+                            : (locale === "en" ? `Premiere ${formatPremiereBadge(ep.dataEstreia, "en")}` : locale === "es" ? `Estreno ${formatPremiereBadge(ep.dataEstreia, "es")}` : `Estreia ${formatPremiereBadge(ep.dataEstreia, "pt")}`)
                           : isActive
                           ? t.nowPlaying
                           : `${t.episode} 0${ep.numero}`}

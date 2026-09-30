@@ -389,6 +389,93 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "5",
+    numero: 5,
+    slug: "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica",
+    titulo_pt: "Episódio 05 – Trauma Toracolombar: da Classificação Correta à Decisão Cirúrgica",
+    titulo_en: "Episode 05 – Thoracolumbar Trauma: from Proper Classification to Surgical Decision",
+    titulo_es: "Episodio 05 – Trauma Toracolumbar: de la Clasificación Correcta a la Decisión Quirúrgica",
+    subtitulo_pt: "Critérios de estabilidade biomecânica, classificação AO Spine, TLICS e escolha da via cirúrgica no trauma toracolombar",
+    subtitulo_en: "Biomechanical stability criteria, AO Spine classification, TLICS, and surgical approach selection in thoracolumbar trauma",
+    subtitulo_es: "Criterios de estabilidad biomecánica, clasificación AO Spine, TLICS y abordaje quirúrgico en el trauma toracolumbar",
+    descricao_pt:
+      "Neste quinto episódio do Tratado em Debate, o Dr. Edson Pudles recebe o Dr. Alexandre Philippe Boss Jaccard para discutir os pilares diagnósticos e a tomada de decisão no trauma toracolombar (Capítulo 22 do Tratado SBC). Abordam a avaliação da estabilidade da coluna anterior e posterior, a aplicação prática das classificações AO Spine e TLICS, o diagnóstico das lesões do complexo ligamentar posterior (PLC) por ressonância magnética e as diretrizes para escolha entre tratamento conservador, descompressão e fixação por via posterior, anterior ou combinada.",
+    descricao_en:
+      "In this fifth episode of the Treatise in Debate, Dr. Edson Pudles hosts Dr. Alexandre Philippe Boss Jaccard to discuss diagnostic foundations and surgical decision-making in thoracolumbar trauma (Chapter 22 of the SBC Treatise). They explore biomechanical stability of anterior and posterior columns, clinical application of AO Spine and TLICS classification systems, MRI-based assessment of posterior ligamentous complex (PLC) integrity, and evidence-based indications for conservative management versus posterior, anterior, or combined surgical stabilization.",
+    descricao_es:
+      "En este quinto episodio del Tratado en Debate, el Dr. Edson Pudles recibe al Dr. Alexandre Philippe Boss Jaccard para debatir los pilares diagnósticos y la toma de decisiones en el trauma toracolumbar (Capítulo 22 del Tratado SBC). Analizan la evaluación de estabilidad de las columnas anterior y posterior, la aplicación clínica de las clasificaciones AO Spine y TLICS, el diagnóstico por resonancia magnética del complejo ligamentario posterior (PLC) y las directrices para definir entre tratamiento conservador y fijación quirúrgica posterior, anterior o combinada.",
+    vimeoId: "1231004388",
+    vimeoUrl: "https://player.vimeo.com/video/1231004388",
+    thumbnailUrl: "/assets/debate-ep5-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2206064480-451ff73f163814e7ec3dae4e89f1dca26c4c421c26639d5101cfa5edbcbb7d51-d_1280x720?region=us",
+    spotifyUrl:
+      "https://open.spotify.com/episode/0MqxAQEJlxVlcdOJKZ6zB0?si=z6BAf-yZTGaRzDbA6HKkow",
+    capituloNum: 22,
+    capituloTitulo_pt: "Lesões Traumáticas da Coluna Torácica e Lombar",
+    capituloTitulo_en: "Traumatic Injuries of the Thoracic and Lumbar Spine",
+    capituloTitulo_es: "Lesiones Traumáticas de la Columna Torácica y Lumbar",
+    secaoId: 3,
+    secaoTitulo_pt: "Lesões Traumáticas da Coluna Vertebral",
+    secaoTitulo_en: "Traumatic Spine Injuries",
+    secaoTitulo_es: "Lesiones Traumáticas de la Columna Vertebral",
+    duracao: "46:50",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-09-30T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Edson Pudles",
+        cargo: "Apresentação • Ortopedista e Cirurgião de Coluna",
+        instituicao: "Hospital Universitário Evangélico Mackenzie • Curitiba-PR • SBC",
+        slug: "edson-pudles",
+        foto_url: "/assets/edson-pudles.png",
+        orcid: "0000-0001-9816-2945",
+      },
+      {
+        nome: "Dr. Alexandre Philippe Boss Jaccard",
+        cargo: "Convidado • Autor do Cap. 22 • Cirurgião de Coluna",
+        instituicao: "Universidade Estadual de Campinas (UNICAMP) • AO Spine",
+        slug: "alexandre-philippe-boss-jaccard",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0001-6198-3539",
+      },
+    ],
+    destaques_pt: [
+      "Conceito de estabilidade biomecânica: Denis vs. AO Spine na transição toracolombar (T10-L2).",
+      "Classificação AO Spine (A, B, C): identificação refinada de fraturas por compressão, distração e translação.",
+      "O papel decisivo do Complexo Ligamentar Posterior (PLC): integridade anatômica e correlação por RM.",
+      "Escore TLICS na prática clínica: algoritmo objetivo que define conduta conservadora vs. indicação cirúrgica.",
+      "Técnicas cirúrgicas de fixação: instrumentação percutânea minimamente invasiva, artrodese aberta e reconstrução anterior.",
+    ],
+    destaques_en: [
+      "Biomechanical stability concepts: Denis vs. AO Spine systems across the thoracolumbar junction (T10-L2).",
+      "AO Spine Classification (Types A, B, C): precise differentiation of compression, distraction, and translation injuries.",
+      "Decisive role of the Posterior Ligamentous Complex (PLC): anatomical integrity and MRI correlation.",
+      "TLICS scoring algorithm: practical point-based framework differentiating non-operative care from surgical fixation.",
+      "Surgical stabilization strategies: percutaneous minimally invasive pedicle screws, open fusion, and anterior column reconstruction.",
+    ],
+    destaques_es: [
+      "Concepto de estabilidad biomecánica: sistemas de Denis y AO Spine en la transición toracolumbar (T10-L2).",
+      "Clasificación AO Spine (Tipos A, B, C): distinción diagnóstica de fracturas por compresión, distracción y traslación.",
+      "Papel decisivo del Complejo Ligamentario Posterior (PLC): evaluación de integridad anatómica mediante resonancia magnética.",
+      "Puntuación TLICS en la toma de decisiones: algoritmo clínico que define conducta conservadora vs. indicación quirúrgica.",
+      "Técnicas de fijación quirúrgica: tornillos percutáneos mínimamente invasivos, artrodesis abierta y reconstrucción anterior.",
+    ],
+    tags: [
+      "Trauma Toracolombar",
+      "Fratura Toracolombar",
+      "AO Spine",
+      "TLICS",
+      "Complexo Ligamentar Posterior",
+      "Cirurgia de Coluna",
+      "Coluna Torácica e Lombar",
+      "SBC",
+      "Emergência",
+      "Politraumatizado",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -416,8 +503,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
 
 /**
  * Retorna o número do episódio padrão a ser colocado em evidência / destaque principal:
- * - Antes da estreia do Ep 04 (quarta-feira 23/09 às 18:00), retorna o Ep 03 (mais recente liberado).
- * - A partir das 18:00 de quarta-feira (momento da estreia), passa a retornar automaticamente o Ep 04.
+ * - Antes da estreia (ex: hoje antes das 18h), retorna o episódio mais recente liberado (Ep 4).
+ * - A partir das 18h da estreia, passa a retornar automaticamente o episódio recém-estreado (Ep 5).
  */
 export function getDefaultFeaturedEpisodeNumber(): number {
   const published = getPublishedDebateEpisodes();
@@ -425,5 +512,39 @@ export function getDefaultFeaturedEpisodeNumber(): number {
     return Math.max(...published.map((ep) => ep.numero));
   }
   return 1;
+}
+
+export function formatPremiereBadge(dataEstreia?: string, locale: Locale = "pt"): string {
+  if (!dataEstreia) return "";
+  try {
+    const d = new Date(dataEstreia);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const hours = String(d.getHours()).padStart(2, "0");
+    if (locale === "en") {
+      const pmHour = d.getHours() > 12 ? d.getHours() - 12 : d.getHours();
+      return `${month}/${day} • ${pmHour}PM`;
+    }
+    return `${day}/${month} • ${hours}h`;
+  } catch (_) {
+    return "18h";
+  }
+}
+
+export function formatPremiereNotice(dataEstreia?: string, locale: Locale = "pt"): string {
+  if (!dataEstreia) return "";
+  try {
+    const d = new Date(dataEstreia);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    if (locale === "en") {
+      return `Wednesday, ${month}/${day} at 6:00 PM (BRT)`;
+    } else if (locale === "es") {
+      return `miércoles ${day}/${month} a las 18:00 (BRT)`;
+    }
+    return `quarta-feira (${day}/${month}) a partir das 18h00`;
+  } catch (_) {
+    return "18:00";
+  }
 }
 

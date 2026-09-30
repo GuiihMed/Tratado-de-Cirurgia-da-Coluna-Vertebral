@@ -8,6 +8,8 @@ import {
   DebateEpisode,
   isEpisodeReleased,
   getDefaultFeaturedEpisodeNumber,
+  formatPremiereBadge,
+  formatPremiereNotice,
 } from "@/lib/data/debate-episodes";
 import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
@@ -115,10 +117,10 @@ export default function DebateClassicClientView({
       e.preventDefault();
       alert(
         locale === "en"
-          ? "This episode is scheduled to premiere on Spotify on Wednesday, Sep 23 at 6:00 PM (BRT)."
+          ? `This episode is scheduled to premiere on Spotify on ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}.`
           : locale === "es"
-          ? "Este episodio está programado para estrenarse en Spotify el miércoles 23 de septiembre a las 18:00 (BRT)."
-          : "Este episódio está agendado e estará disponível no Spotify nesta quarta-feira (23/09) a partir das 18h00!"
+          ? `Este episodio está programado para estrenarse en Spotify el ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}.`
+          : `Este episódio está agendado e estará disponível no Spotify nesta ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}!`
       );
     }
   };
@@ -191,7 +193,7 @@ export default function DebateClassicClientView({
                 {isEpPremiere ? (
                   <span className="absolute bottom-1 right-1 bg-black/90 text-rose-400 text-[8.5px] font-bold px-1.5 py-0.5 rounded leading-tight flex items-center gap-1 border border-rose-500/30">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-                    <span>23/09 • 18h</span>
+                    <span>{formatPremiereBadge(ep.dataEstreia, locale)}</span>
                   </span>
                 ) : (
                   <span className="absolute bottom-1 right-1 bg-black/85 text-white text-[9px] font-bold px-1 py-0.2 rounded leading-tight">
@@ -223,8 +225,8 @@ export default function DebateClassicClientView({
                   >
                     {isEpPremiere
                       ? isActive
-                        ? (locale === "en" ? "🔴 Premiere 09/23" : locale === "es" ? "🔴 Estreno 23/09" : "🔴 Estreia 23/09 • 18h")
-                        : (locale === "en" ? "Premiere 09/23" : locale === "es" ? "Estreno 23/09" : "Estreia 23/09")
+                        ? (locale === "en" ? `🔴 Premiere ${formatPremiereBadge(ep.dataEstreia, "en")}` : locale === "es" ? `🔴 Estreno ${formatPremiereBadge(ep.dataEstreia, "es")}` : `🔴 Estreia ${formatPremiereBadge(ep.dataEstreia, "pt")}`)
+                        : (locale === "en" ? `Premiere ${formatPremiereBadge(ep.dataEstreia, "en")}` : locale === "es" ? `Estreno ${formatPremiereBadge(ep.dataEstreia, "es")}` : `Estreia ${formatPremiereBadge(ep.dataEstreia, "pt")}`)
                       : isActive
                       ? (locale === "en" ? "▶ Now Playing" : locale === "es" ? "▶ En Reproducción" : "▶ No Ar")
                       : (locale === "en" ? `Ep. 0${ep.numero}` : locale === "es" ? `Ep. 0${ep.numero}` : `Ep. 0${ep.numero}`)}
@@ -308,12 +310,12 @@ export default function DebateClassicClientView({
                   </span>
                   <span className="hidden md:inline font-semibold opacity-90">
                     {isPremiere
-                      ? (locale === "en" ? "• Premiere 09/23 • 6PM" : locale === "es" ? "• Estreno 23/09 • 18h" : "• Pré-Estreia 23/09 • 18h")
+                      ? (locale === "en" ? `• Premiere ${formatPremiereBadge(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `• Estreno ${formatPremiereBadge(activeEpisode.dataEstreia, "es")}` : `• Pré-Estreia ${formatPremiereBadge(activeEpisode.dataEstreia, "pt")}`)
                       : (locale === "en" ? "• Now Playing" : locale === "es" ? "• En Reproducción" : "• Em Reprodução")}
                   </span>
                 </span>
                 <span className="text-xs sm:text-sm text-slate-300 font-semibold whitespace-nowrap shrink-0">
-                  {isPremiere ? (locale === "en" ? "Premiere Sep 23 • 6PM" : locale === "es" ? "Estreno 23/09 a las 18h" : "Estreia 23/09 às 18h") : `${activeEpisode.duracao} min`}
+                  {isPremiere ? (locale === "en" ? `Premiere ${formatPremiereBadge(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Estreno ${formatPremiereBadge(activeEpisode.dataEstreia, "es")}` : `Estreia ${formatPremiereBadge(activeEpisode.dataEstreia, "pt")}`) : `${activeEpisode.duracao} min`}
                 </span>
               </div>
 
@@ -326,10 +328,10 @@ export default function DebateClassicClientView({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap"
-                    title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : "Ouvir no Spotify"}
+                    title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : "Ouvir no Spotify"}
                   >
                     <SpotifyIcon size={14} color="#ffffff" />
-                    <span>{isPremiere ? "Spotify (23/09 • 18h)" : "Spotify"}</span>
+                    <span>{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
                   </a>
                 )}
                 <button
@@ -523,16 +525,16 @@ export default function DebateClassicClientView({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline"
-                    title={isPremiere ? "Disponível no Spotify a partir de 23/09 às 18h00" : undefined}
+                    title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : undefined}
                   >
                     <SpotifyIcon size={16} color="#ffffff" />
                     <span>
                       {isPremiere
                         ? locale === "en"
-                          ? "Spotify (Premiere Sep 23 • 6PM)"
+                          ? `Spotify (Premiere ${formatPremiereBadge(activeEpisode.dataEstreia, "en")})`
                           : locale === "es"
-                          ? "Spotify (Estreno 23/09 • 18h)"
-                          : "Spotify (Estreia 23/09 • 18h)"
+                          ? `Spotify (Estreno ${formatPremiereBadge(activeEpisode.dataEstreia, "es")})`
+                          : `Spotify (Estreia ${formatPremiereBadge(activeEpisode.dataEstreia, "pt")})`
                         : locale === "en"
                         ? "Listen on Spotify"
                         : locale === "es"
