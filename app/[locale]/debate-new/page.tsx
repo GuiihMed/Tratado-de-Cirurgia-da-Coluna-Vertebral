@@ -10,6 +10,7 @@ export const revalidate = 0;
 
 interface DebateNewPageProps {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<{ ep?: string }>;
 }
 
 export function generateStaticParams() {
@@ -53,6 +54,18 @@ export async function generateMetadata({
       "Episódio 04",
       "Episódio 05",
       "Episódio 06",
+      "Episódio 07",
+      "Tratamento Não Cirúrgico das Escolioses",
+      "Conservador Não É Passivo",
+      "Colete Ortopédico",
+      "Gesso Seriado",
+      "EDF Mehta",
+      "Órteses 3D",
+      "Chêneau",
+      "Boston",
+      "EFEE",
+      "Dr. Túlio Albuquerque de Moura Rangel",
+      "Dr. Mauricio Coelho Lima",
       "Coluna Vertebral no Plano Sagital",
       "Princípios da Artrodese",
       "Biologia do Enxerto",
@@ -115,9 +128,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function DebateNewPage({ params }: DebateNewPageProps) {
+export default async function DebateNewPage({ params, searchParams }: DebateNewPageProps) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
   const rawLocale = resolvedParams.locale;
+  const epParam = resolvedSearchParams?.ep ? parseInt(resolvedSearchParams.ep, 10) : undefined;
+  const initialEpisodeNumber = Number.isInteger(epParam) && epParam! > 0 ? epParam : undefined;
   const locale: Locale = ["pt", "en", "es"].includes(rawLocale)
     ? (rawLocale as Locale)
     : "pt";
@@ -125,6 +141,24 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep7`,
+        "name": "Episódio 07: Tratamento Não Cirúrgico das Escolioses — Conservador Não É Passivo — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Túlio Albuquerque de Moura Rangel e Dr. Mauricio Coelho Lima debatendo condutas conservadoras, órteses 3D, gessos seriados (EDF/Mehta) e exercícios específicos (EFEE) no Capítulo 29 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep7-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-10-14T18:00:00-03:00",
+        "duration": "PT52M",
+        "embedUrl": "https://player.vimeo.com/video/1234198018",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#video-ep6`,
@@ -232,6 +266,13 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
           "name": "Sociedade Brasileira de Coluna (SBC)",
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
+      },
+            {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate-new#podcast-ep7`,
+        "name": "Episódio 07: Tratamento Não Cirúrgico das Escolioses — Conservador Não É Passivo — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 29 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/5op8xUDtUihdtfqhhkZiQw?si=1PIowciEQG6muMFea1sr9Q"
       },
       {
         "@type": "PodcastEpisode",
@@ -409,7 +450,7 @@ export default async function DebateNewPage({ params }: DebateNewPageProps) {
 
         {/* ================= VIDEOCAST CLIENT VIEW ================= */}
         <section style={{ background: "#000c1e" }}>
-          <DebateEpisodesClientView locale={locale} />
+          <DebateEpisodesClientView locale={locale} initialEpisodeNumber={initialEpisodeNumber} />
         </section>
       </main>
 

@@ -566,6 +566,98 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-07",
+    numero: 7,
+    slug: "episodio-07-tratamento-nao-cirurgico-das-escolioses",
+    titulo_pt: "Episódio 07 – Tratamento Não Cirúrgico das Escolioses",
+    titulo_en: "Episode 07 – Non-Surgical Management of Scoliosis",
+    titulo_es: "Episodio 07 – Tratamiento No Quirúrgico de las Escoliosis",
+    subtitulo_pt:
+      "Conservador Não É Passivo: Estratégia no Tratamento das Escolioses",
+    subtitulo_en:
+      "Conservative Is Not Passive: Strategy in Scoliosis Management",
+    subtitulo_es:
+      "Conservador No Es Pasivo: Estrategia en el Tratamiento de las Escoliosis",
+    descricao_pt:
+      "Neste sétimo episódio do Tratado em Debate, o Dr. Túlio Albuquerque de Moura Rangel e o Dr. Mauricio Coelho Lima debatem a fundo as diretrizes e indicações do Tratamento Não Cirúrgico das Escolioses (Capítulo 29 do Tratado SBC). Sob a premissa de que \x27conservador não é passivo\x27, os especialistas discutem a individualização da conduta conforme idade, etiologia, maturidade esquelética e comportamento da curva. Abordam o papel do gesso seriado (EDF/Mehta) no retardo ou prevenção de cirurgias na infância, a biomecânica e critérios de prescrição das principais órteses (Milwaukee, Boston, coletes noturnos e modelos 3D Chêneau/Rigo), a importância crítica da adesão do paciente e a incorporação dos Exercícios Fisioterapêuticos Específicos para Escoliose (EFEE).",
+    descricao_en:
+      "In this seventh episode of the Treatise in Debate, Dr. Túlio Albuquerque de Moura Rangel and Dr. Mauricio Coelho Lima explore evidence-based strategies and clinical guidelines for Non-Surgical Management of Scoliosis (Chapter 29 of the SBC Treatise). Emphasizing that \x27conservative is not passive\x27, the experts analyze individualized treatment pathways based on age, etiology, skeletal maturity, and curve behavior. They discuss the strategic role of serial derotational casting (EDF/Mehta) in delaying or avoiding surgical intervention in early-onset scoliosis, the biomechanical principles and prescription criteria for key braces (Milwaukee, Boston, nighttime braces, and 3D Chêneau/Rigo designs), the paramount importance of patient compliance, and the integration of Physiotherapeutic Scoliosis-Specific Exercises (PSSE).",
+    descricao_es:
+      "En este séptimo episodio del Tratado en Debate, el Dr. Túlio Albuquerque de Moura Rangel y el Dr. Mauricio Coelho Lima analizan las directrices y la evidencia del Tratamiento No Quirúrgico de las Escoliosis (Capítulo 29 del Tratado SBC). Bajo la premisa de que \x27conservador no es pasivo\x27, los especialistas debaten la individualización terapéutica según edad, etiología, madurez esquelética y comportamiento de la curva. Examinan el papel del yeso seriado (EDF/Mehta) para postergar o evitar la cirugía en deformidades precoces, la biomecánica y criterios de indicación de corsés (Milwaukee, Boston, órtesis nocturnas y modelos 3D Chêneau/Rigo), la importancia crítica de la adherencia del paciente y la incorporación de los Ejercicios Fisioterapéuticos Específicos para Escoliosis (EFEE).",
+    vimeoId: "1234198018",
+    vimeoUrl: "https://player.vimeo.com/video/1234198018",
+    thumbnailUrl: "/assets/debate-ep7-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2210104401-43bdabfbb76aeb394eae6762b1fa722754c3c2ea0382b6e71dee13eac30b5dc6-d_1280x720?region=us",
+    spotifyUrl:
+      "https://open.spotify.com/episode/5op8xUDtUihdtfqhhkZiQw?si=1PIowciEQG6muMFea1sr9Q",
+    capituloNum: 29,
+    capituloTitulo_pt: "Tratamento Não Cirúrgico das Escolioses",
+    capituloTitulo_en: "Non-Surgical Management of Scoliosis",
+    capituloTitulo_es: "Tratamiento No Quirúrgico de las Escoliosis",
+    secaoId: 4,
+    secaoTitulo_pt: "Deformidades da Coluna Vertebral",
+    secaoTitulo_en: "Spinal Deformities",
+    secaoTitulo_es: "Deformidades de la Columna Vertebral",
+    duracao: "52:29",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-10-14T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Túlio Albuquerque de Moura Rangel",
+        cargo: "Convidado • Autor do Cap. 29 • Cirurgião de Coluna",
+        instituicao: "Hospital Getúlio Vargas Recife/PE • SBC • SRS",
+        slug: "tulio-albuquerque-de-moura-rangel",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-5324-7440",
+      },
+      {
+        nome: "Dr. Mauricio Coelho Lima",
+        cargo: "Convidado • Cirurgião de Coluna",
+        instituicao: "AACD • FCM-UNICAMP • Hospital Alemão Oswaldo Cruz • SBC",
+        slug: "mauricio-coelho-lima",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0001-9395-2147",
+      },
+    ],
+    destaques_pt: [
+      "Conservador não é passivo: o tratamento não cirúrgico como intervenção ativa, dinâmica e orientada por objetivos clínicos bem definidos.",
+      "Estratificação por maturidade esquelética: avaliação do sinal de Risser, velocidade de crescimento e risco de progressão angular.",
+      "Gesso seriado (EDF/Mehta): fundamentos e papel na escoliose de início precoce para remodelamento vertebral e retardo da cirurgia.",
+      "Biomecânica e seleção de órteses: Milwaukee, Boston, coletes noturnos (Charleston/Providence) e desenhos tridimensionais (Chêneau/Rigo).",
+      "Exercícios específicos (EFEE) e adesão: integração da fisioterapia especializada ao uso do colete e protocolos de controle radiográfico periódico.",
+    ],
+    destaques_en: [
+      "Conservative is not passive: non-surgical scoliosis care as an active, dynamic, and goal-oriented clinical strategy.",
+      "Skeletal maturity assessment: Risser sign evaluation, peak growth velocity, and individualized risk of curve progression.",
+      "Serial casting (EDF/Mehta): indications in early-onset scoliosis for spinal remodeling and delaying surgical intervention.",
+      "Brace mechanics and selection: Milwaukee, Boston, nighttime braces (Charleston/Providence), and 3D custom designs (Chêneau/Rigo).",
+      "Specific exercises (PSSE) and compliance: integrating specialized physiotherapy with verified orthotic wear-time and serial radiographic follow-up.",
+    ],
+    destaques_es: [
+      "Conservador no es pasivo: el tratamiento no quirúrgico como intervención activa, dinámica y orientada por metas clínicas precisas.",
+      "Estratificación por madurez esquelética: signo de Risser, pico de velocidad de crecimiento y riesgo de progresión angular.",
+      "Yesos seriados (EDF/Mehta): fundamentos e indicaciones en escoliosis de inicio temprano para remodelación espinal y retraso quirúrgico.",
+      "Biomecánica y elección de corsés: Milwaukee, Boston, órtesis nocturnas (Charleston/Providence) y modelos tridimensionales (Chêneau/Rigo).",
+      "Ejercicios específicos (EFEE) y adherencia: integración de fisioterapia especializada con el uso del corsé y control radiográfico periódico.",
+    ],
+    tags: [
+      "Tratamento Não Cirúrgico",
+      "Escolioses",
+      "EIA",
+      "Colete Ortopédico",
+      "Gesso Seriado",
+      "EDF Mehta",
+      "Órteses 3D",
+      "Chêneau",
+      "Boston",
+      "EFEE",
+      "Deformidades da Coluna",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -593,7 +685,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       ep.slug === slug ||
       ep.id === slug ||
       (ep.numero === 5 && slug === "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica") ||
-      (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento")
+      (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento") ||
+      (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses")
   );
 }
 
