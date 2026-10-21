@@ -55,6 +55,13 @@ export async function generateMetadata({
       "Episódio 05",
       "Episódio 06",
       "Episódio 07",
+      "Episódio 08",
+      "Escoliose Idiopática",
+      "História Natural",
+      "Classificação de Lenke",
+      "Artrodese Seletiva",
+      "Prof. Dr. Helton L. A. Defino",
+      "Dr. Helton Defino",
       "Tratamento Não Cirúrgico das Escolioses",
       "Conservador Não É Passivo",
       "Colete Ortopédico",
@@ -141,6 +148,24 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep8`,
+        "name": "Episódio 08: Escoliose Idiopática — da História Natural ao Planejamento Cirúrgico — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Túlio Albuquerque de Moura Rangel e Prof. Dr. Helton L. A. Defino debatendo diagnóstico de exclusão, história natural, classificação de Lenke e planejamento cirúrgico no Capítulo 34 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep8-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-10-21T18:00:00-03:00",
+        "duration": "PT46M",
+        "embedUrl": "https://player.vimeo.com/video/1238004890",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep7`,
@@ -267,7 +292,14 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
       },
-            {
+                  {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep8`,
+        "name": "Episódio 08: Escoliose Idiopática — da História Natural ao Planejamento Cirúrgico — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 34 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/5HPU9CpngsjNGnrvVS6LV4?si=wvO3A-tcSJK_vrH3fIZ3TA"
+      },
+      {
         "@type": "PodcastEpisode",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep7`,
         "name": "Episódio 07: Tratamento Não Cirúrgico das Escolioses — Conservador Não É Passivo — Tratado em Debate",

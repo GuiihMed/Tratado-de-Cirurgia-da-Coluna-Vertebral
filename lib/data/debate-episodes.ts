@@ -658,6 +658,96 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-08",
+    numero: 8,
+    slug: "episodio-08-escoliose-idiopatica",
+    titulo_pt: "Episódio 08 – Escoliose Idiopática",
+    titulo_en: "Episode 08 – Idiopathic Scoliosis",
+    titulo_es: "Episodio 08 – Escoliosis Idiopática",
+    subtitulo_pt:
+      "Escoliose Idiopática: da História Natural ao Planejamento Cirúrgico",
+    subtitulo_en:
+      "Idiopathic Scoliosis: from Natural History to Surgical Planning",
+    subtitulo_es:
+      "Escoliosis Idiopática: de la Historia Natural a la Planificación Quirúrgica",
+    descricao_pt:
+      "Neste oitavo episódio do Tratado em Debate, o Dr. Túlio Albuquerque de Moura Rangel recebe o Prof. Dr. Helton L. A. Defino (Professor Titular da FMRP-USP e Editor do Tratado SBC) para debater profundamente a Escoliose Idiopática (Capítulo 34 do Tratado SBC). Sob a perspectiva \x27da história natural ao planejamento cirúrgico\x27, discutem os critérios rigorosos para o diagnóstico de exclusão, a etiologia multifatorial, a avaliação clínica minuciosa com manobra de Adams e exame neurológico, os fatores determinantes para progressão angular e maturidade esquelética, a aplicação prática da classificação de Lenke na escolha dos níveis de fusão, os princípios da artrodese seletiva para preservação de segmentos móveis e as tecnologias modernas de correção tridimensional do equilíbrio sagital e coronal.",
+    descricao_en:
+      "In this eighth episode of the Treatise in Debate, Dr. Túlio Albuquerque de Moura Rangel hosts Prof. Dr. Helton L. A. Defino (Full Professor at FMRP-USP and Editor of the SBC Treatise) to examine Idiopathic Scoliosis in depth (Chapter 34 of the SBC Treatise). Exploring the pathway \x27from natural history to surgical planning\x27, they discuss diagnostic exclusion criteria, multifactorial etiology, comprehensive clinical evaluation with the Adams forward bend test, predictors of curve progression based on skeletal maturity, practical application of the Lenke classification, principles of selective thoracic fusion to spare mobile lumbar levels, and modern strategies for three-dimensional coronal and sagittal balance restoration.",
+    descricao_es:
+      "En este octavo episodio del Tratado en Debate, el Dr. Túlio Albuquerque de Moura Rangel recibe al Prof. Dr. Helton L. A. Defino (Profesor Titular de la FMRP-USP y Editor del Tratado SBC) para profundizar en la Escoliosis Idiopática (Capítulo 34 del Tratado SBC). Bajo el enfoque \x27de la historia natural a la planificación quirúrgica\x27, abordan los criterios de diagnóstico de exclusión, la etiología multifatorial, la exploración clínica con test de Adams, los factores pronósticos de progresión angular según madurez esquelética, la clasificación de Lenke en la toma de decisiones, la artrodesis selectiva para preservar segmentos lumbares y las técnicas modernas de corrección tridimensional del equilibrio sagital y coronal.",
+    vimeoId: "1238004890",
+    vimeoUrl: "https://player.vimeo.com/video/1238004890",
+    thumbnailUrl: "/assets/debate-ep8-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2214985825-596e0646ab2d0bda6bb45cd790853a73b558de2c67472f0ccf806b0417612f07-d_1280x720?region=us",
+    spotifyUrl:
+      "https://open.spotify.com/episode/5HPU9CpngsjNGnrvVS6LV4?si=wvO3A-tcSJK_vrH3fIZ3TA",
+    capituloNum: 34,
+    capituloTitulo_pt: "Escoliose Idiopática",
+    capituloTitulo_en: "Idiopathic Scoliosis",
+    capituloTitulo_es: "Escoliosis Idiopática",
+    secaoId: 4,
+    secaoTitulo_pt: "Deformidades da Coluna Vertebral",
+    secaoTitulo_en: "Spinal Deformities",
+    secaoTitulo_es: "Deformidades de la Columna Vertebral",
+    duracao: "46:30",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-10-21T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Túlio Albuquerque de Moura Rangel",
+        cargo: "Apresentação • Cirurgião de Coluna",
+        instituicao: "Hospital Getúlio Vargas Recife/PE • SBC • SRS",
+        slug: "tulio-albuquerque-de-moura-rangel",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-5324-7440",
+      },
+      {
+        nome: "Prof. Dr. Helton L. A. Defino",
+        cargo: "Convidado • Autor do Cap. 34 • Editor do Tratado",
+        instituicao: "Professor Titular FMRP-USP • Ribeirão Preto-SP • SBC",
+        slug: "helton-luiz-aparecido-defino",
+        foto_url: "/assets/helton-defino.png",
+        orcid: "0000-0003-4274-0130",
+      },
+    ],
+    destaques_pt: [
+      "Diagnóstico de exclusão: diferenciação clínica e por neuroimagem entre escoliose verdadeiramente idiopática e causas secundárias.",
+      "Fatores prognósticos de progressão: maturidade esquelética (Risser e cartilagem trirradiada), magnitude e localização da curva.",
+      "Classificação de Lenke: análise prática dos tipos 1 a 6, modificadores lombares (A, B, C) e modificador sagital torácico.",
+      "Planejamento cirúrgico e artrodese seletiva: critérios para poupar segmentos móveis lombares e evitar descompensação pós-operatória.",
+      "Restauração do alinhamento tridimensional: correção de gibosidade costal, desrotação apical e preservação da cifose torácica fisiológica.",
+    ],
+    destaques_en: [
+      "Diagnosis of exclusion: clinical and neuroimaging differentiation between true idiopathic scoliosis and secondary etiologies.",
+      "Predictors of curve progression: skeletal maturity markers (Risser stage, triradiate cartilage), curve magnitude, and apex location.",
+      "Lenke Classification: clinical utility of curve types 1 to 6, lumbar modifiers (A, B, C), and sagittal thoracic modifier.",
+      "Surgical planning and selective fusion: principles for preserving mobile lumbar levels while avoiding coronal and sagittal decompensation.",
+      "Three-dimensional alignment restoration: apical derotation, rib prominence reduction, and maintenance of physiological thoracic kyphosis.",
+    ],
+    destaques_es: [
+      "Diagnóstico de exclusión: diferenciación clínica y neurorradiológica entre escoliosis verdaderamente idiopática y causas secundarias.",
+      "Factores pronósticos de progresión: madurez esquelética (signo de Risser, cartílago trirradiado), magnitud y localización de la curva.",
+      "Clasificación de Lenke: análisis de tipos 1 a 6, modificadores lumbares (A, B, C) y modificador sagital torácico.",
+      "Planificación quirúrgica y artrodesis selectiva: criterios para preservar segmentos móviles lumbares y evitar descompensación.",
+      "Restauración del alineamiento tridimensional: corrección de giba costal, desrotación apical y conservación de la cifosis fisiológica.",
+    ],
+    tags: [
+      "Escoliose Idiopática",
+      "EIA",
+      "Lenke",
+      "História Natural",
+      "Artrodese Seletiva",
+      "Equilíbrio Sagital",
+      "Coluna Vertebral",
+      "Cirurgia de Coluna",
+      "Helton Defino",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -686,7 +776,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       ep.id === slug ||
       (ep.numero === 5 && slug === "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica") ||
       (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento") ||
-      (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses")
+      (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses") ||
+      (ep.numero === 8 && slug === "escoliose-idiopatica")
   );
 }
 
