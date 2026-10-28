@@ -1,7 +1,5 @@
 "use client";
 
-import MinimalistFireworks from "@/components/MinimalistFireworks";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
@@ -608,15 +606,6 @@ export default function DebateClassicClientView({
           </div>
         </aside>
       </div>
-      <MinimalistFireworks
-        message={
-          locale === "en"
-            ? "🎉 Premiere is live! Watch the video and listen on Spotify now."
-            : locale === "es"
-            ? "🎉 ¡Estreno en vivo! Vea el video y escuche en Spotify ahora."
-            : "🎉 Estreia liberada! Assista no player e ouça no Spotify agora."
-        }
-      />
     </div>
   );
 }
