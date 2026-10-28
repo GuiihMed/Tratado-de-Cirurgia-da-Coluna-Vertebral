@@ -40,6 +40,7 @@ interface CustomVimeoPlayerProps {
   thumbnailUrl?: string;
   premiereDate?: string;
   spotifyUrl?: string;
+  onPremiereUnlocked?: () => void;
 }
 
 export default function CustomVimeoPlayer({
@@ -56,6 +57,7 @@ export default function CustomVimeoPlayer({
   thumbnailUrl,
   premiereDate,
   spotifyUrl,
+  onPremiereUnlocked,
 }: CustomVimeoPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -141,6 +143,10 @@ export default function CustomVimeoPlayer({
       setNowMs(current);
       if (new Date(premiereDate).getTime() <= current) {
         clearInterval(timer);
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("treatise:premiere-unlocked"));
+        }
+        onPremiereUnlocked?.();
       }
     }, 1000);
 

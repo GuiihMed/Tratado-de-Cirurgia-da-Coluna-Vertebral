@@ -56,6 +56,13 @@ export async function generateMetadata({
       "Episódio 06",
       "Episódio 07",
       "Episódio 08",
+      "Episódio 09",
+      "Fisiopatologia da Degeneração Discal",
+      "Degeneração Discal",
+      "Pfirrmann",
+      "Modic",
+      "Dr. Orlando Righesso Neto",
+      "Dr. Orlando Righesso",
       "Escoliose Idiopática",
       "História Natural",
       "Classificação de Lenke",
@@ -148,6 +155,24 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep9`,
+        "name": "Episódio 09: Fisiopatologia da Degeneração Discal — do Envelhecimento ao Tratamento — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Edson Pudles e Dr. Orlando Righesso Neto debatendo bases celulares, nutrição discal pelas placas terminais, classificações de Pfirrmann e Modic e medicina regenerativa no Capítulo 42 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep9-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-10-28T18:00:00-03:00",
+        "duration": "PT43M",
+        "embedUrl": "https://player.vimeo.com/video/1240418291",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep8`,
@@ -292,7 +317,14 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
           "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
         }
       },
-                  {
+                        {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep9`,
+        "name": "Episódio 09: Fisiopatologia da Degeneração Discal — do Envelhecimento ao Tratamento — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 42 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/17nOJAkTOc2KHxhmHGDGCD?si=ukyHXlokSGGB07R0--v7OQ"
+      },
+      {
         "@type": "PodcastEpisode",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep8`,
         "name": "Episódio 08: Escoliose Idiopática — da História Natural ao Planejamento Cirúrgico — Tratado em Debate",

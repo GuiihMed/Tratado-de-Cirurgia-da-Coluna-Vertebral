@@ -1,5 +1,7 @@
 "use client";
 
+import MinimalistFireworks from "@/components/MinimalistFireworks";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
@@ -47,6 +49,8 @@ export default function DebateClassicClientView({
   });
   const [userSelected, setUserSelected] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [nowMs, setNowMs] = useState<number>(() => Date.now());
+  const [justUnlocked, setJustUnlocked] = useState(false);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -54,9 +58,11 @@ export default function DebateClassicClientView({
     }
   }, [initialEpisodeNumber]);
 
-  // Se o usuário não selecionou manualmente outro episódio e o Ep 4 acabou de estrear, atualiza para ele em tempo real
+  // Atualiza relógio em tempo real a cada segundo e gerencia transição de episódios
   useEffect(() => {
     const timer = setInterval(() => {
+      const current = Date.now();
+      setNowMs(current);
       const currentDefault = getDefaultFeaturedEpisodeNumber();
       if (!userSelected && !initialEpisodeNumber && currentDefault !== activeEpNumber) {
         setActiveEpNumber(currentDefault);
@@ -64,6 +70,14 @@ export default function DebateClassicClientView({
     }, 1000);
     return () => clearInterval(timer);
   }, [userSelected, initialEpisodeNumber, activeEpNumber]);
+
+  useEffect(() => {
+    const handleUnlocked = () => setJustUnlocked(true);
+    if (typeof window !== "undefined") {
+      window.addEventListener("treatise:premiere-unlocked", handleUnlocked);
+      return () => window.removeEventListener("treatise:premiere-unlocked", handleUnlocked);
+    }
+  }, []);
 
   const activeEpisode: DebateEpisode =
     DEBATE_EPISODES.find((ep) => ep.numero === activeEpNumber) || DEBATE_EPISODES[0];
@@ -110,7 +124,7 @@ export default function DebateClassicClientView({
       ? activeEpisode.destaques_es
       : activeEpisode.destaques_pt;
 
-  const isPremiere = Boolean(activeEpisode.dataEstreia && !isEpisodeReleased(activeEpisode));
+  const isPremiere = !justUnlocked && Boolean(activeEpisode.dataEstreia && new Date(activeEpisode.dataEstreia).getTime() > nowMs);
 
   const handleSpotifyClick = (e: React.MouseEvent) => {
     if (isPremiere) {
@@ -327,7 +341,7 @@ export default function DebateClassicClientView({
                     onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap"
+                    className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap ${justUnlocked ? "ring-4 ring-emerald-400/80 shadow-lg shadow-emerald-500/50 animate-pulse" : ""}`}
                     title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : "Ouvir no Spotify"}
                   >
                     <SpotifyIcon size={14} color="#ffffff" />
@@ -524,7 +538,7 @@ export default function DebateClassicClientView({
                     onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline"
+                    className={`w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline ${justUnlocked ? "ring-4 ring-emerald-400/80 shadow-lg shadow-emerald-500/50 animate-pulse" : ""}`}
                     title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : undefined}
                   >
                     <SpotifyIcon size={16} color="#ffffff" />
@@ -594,6 +608,15 @@ export default function DebateClassicClientView({
           </div>
         </aside>
       </div>
+      <MinimalistFireworks
+        message={
+          locale === "en"
+            ? "🎉 Premiere is live! Watch the video and listen on Spotify now."
+            : locale === "es"
+            ? "🎉 ¡Estreno en vivo! Vea el video y escuche en Spotify ahora."
+            : "🎉 Estreia liberada! Assista no player e ouça no Spotify agora."
+        }
+      />
     </div>
   );
 }

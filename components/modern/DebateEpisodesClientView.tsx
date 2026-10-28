@@ -1,5 +1,7 @@
 "use client";
 
+import MinimalistFireworks from "@/components/MinimalistFireworks";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
@@ -45,6 +47,8 @@ export default function DebateEpisodesClientView({
   });
   const [userSelected, setUserSelected] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [nowMs, setNowMs] = useState<number>(() => Date.now());
+  const [justUnlocked, setJustUnlocked] = useState(false);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -54,6 +58,8 @@ export default function DebateEpisodesClientView({
 
   useEffect(() => {
     const timer = setInterval(() => {
+      const current = Date.now();
+      setNowMs(current);
       const currentDefault = getDefaultFeaturedEpisodeNumber();
       if (!userSelected && !initialEpisodeNumber && currentDefault !== activeEpNumber) {
         setActiveEpNumber(currentDefault);
@@ -61,6 +67,14 @@ export default function DebateEpisodesClientView({
     }, 1000);
     return () => clearInterval(timer);
   }, [userSelected, initialEpisodeNumber, activeEpNumber]);
+
+  useEffect(() => {
+    const handleUnlocked = () => setJustUnlocked(true);
+    if (typeof window !== "undefined") {
+      window.addEventListener("treatise:premiere-unlocked", handleUnlocked);
+      return () => window.removeEventListener("treatise:premiere-unlocked", handleUnlocked);
+    }
+  }, []);
 
   const activeEpisode: DebateEpisode =
     DEBATE_EPISODES.find((ep) => ep.numero === activeEpNumber) || DEBATE_EPISODES[0];
@@ -109,7 +123,7 @@ export default function DebateEpisodesClientView({
 
   const otherEpisodes = DEBATE_EPISODES.filter((ep) => ep.numero !== activeEpisode.numero);
 
-  const isPremiere = Boolean(activeEpisode.dataEstreia && !isEpisodeReleased(activeEpisode));
+  const isPremiere = !justUnlocked && Boolean(activeEpisode.dataEstreia && new Date(activeEpisode.dataEstreia).getTime() > nowMs);
 
   const handleSpotifyClick = (e: React.MouseEvent) => {
     if (isPremiere) {
@@ -891,6 +905,15 @@ export default function DebateEpisodesClientView({
           </div>
         </aside>
       </div>
+      <MinimalistFireworks
+        message={
+          locale === "en"
+            ? "🎉 Premiere is live! Watch the video and listen on Spotify now."
+            : locale === "es"
+            ? "🎉 ¡Estreno en vivo! Vea el video y escuche en Spotify ahora."
+            : "🎉 Estreia liberada! Assista no player e ouça no Spotify agora."
+        }
+      />
     </div>
   );
 }

@@ -748,6 +748,96 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-09",
+    numero: 9,
+    slug: "episodio-09-fisiopatologia-da-degeneracao-discal",
+    titulo_pt: "Episódio 09 – Fisiopatologia da Degeneração Discal",
+    titulo_en: "Episode 09 – Pathophysiology of Intervertebral Disc Degeneration",
+    titulo_es: "Episodio 09 – Fisiopatología de la Degeneración Discal",
+    subtitulo_pt:
+      "Fisiopatologia da Degeneração Discal: do envelhecimento ao tratamento",
+    subtitulo_en:
+      "Pathophysiology of Disc Degeneration: from aging to treatment",
+    subtitulo_es:
+      "Fisiopatología de la Degeneración Discal: del envejecimiento al tratamiento",
+    descricao_pt:
+      "Neste nono episódio do Tratado em Debate, o Dr. Edson Pudles recebe o Dr. Orlando Righesso Neto (Mestre e Doutor pela Santa Casa de SP e autor do Capítulo 42 do Tratado SBC) para uma imersão na fisiopatologia da degeneração do disco intervertebral. Discutem os mecanismos biológicos e biomecânicos envolvidos na senescência celular, perda de proteoglicanos e desidratação do núcleo pulposo, a vulnerabilidade vascular das placas terminais, a correlação entre achados de ressonância magnética (classificações de Pfirrmann e Modic) e sintomas clínicos, os fatores de risco modificáveis e o estágio real das terapias biológicas e regenerativas.",
+    descricao_en:
+      "In this ninth episode of the Treatise in Debate, Dr. Edson Pudles hosts Dr. Orlando Righesso Neto (MSc, PhD from Santa Casa de SP and lead author of Chapter 42 of the SBC Treatise) to explore the pathophysiology of intervertebral disc degeneration. They analyze cellular senescence, proteoglycan loss, nucleus pulposus dehydration, endplate vascular impairment, MRI classification systems (Pfirrmann and Modic), clinical-radiological correlation, modifiable systemic risk factors, and the current evidence surrounding biological and regenerative spinal therapies.",
+    descricao_es:
+      "En este noveno episodio del Tratado en Debate, el Dr. Edson Pudles recibe al Dr. Orlando Righesso Neto (autor del Capítulo 42 del Tratado SBC) para profundizar en la fisiopatología de la degeneración discal. Analizan los mecanismos moleculares de senescencia celular, pérdida de proteoglicanos y deshidratación discal, el compromiso nutricional a través de las placas terminales, la correlación clinicorradiológica (clasificaciones de Pfirrmann y Modic), los factores de riesgo modificables y el estado de la medicina regenerativa.",
+    vimeoId: "1240418291",
+    vimeoUrl: "https://player.vimeo.com/video/1240418291",
+    thumbnailUrl: "/assets/debate-ep9-cover.jpg",
+    vimeoThumbnailUrl: "",
+    spotifyUrl:
+      "https://open.spotify.com/episode/17nOJAkTOc2KHxhmHGDGCD?si=ukyHXlokSGGB07R0--v7OQ",
+    capituloNum: 42,
+    capituloTitulo_pt: "Fisiopatologia da Degeneração Discal",
+    capituloTitulo_en: "Pathophysiology of Intervertebral Disc Degeneration",
+    capituloTitulo_es: "Fisiopatología de la Degeneración Discal",
+    secaoId: 5,
+    secaoTitulo_pt: "Doenças Degenerativas",
+    secaoTitulo_en: "Degenerative Diseases",
+    secaoTitulo_es: "Enfermedades Degenerativas",
+    duracao: "42:55",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-10-28T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Edson Pudles",
+        cargo: "Apresentação • Ortopedista e Cirurgião de Coluna",
+        instituicao: "Hospital Universitário Evangélico Mackenzie • Curitiba-PR • SBC",
+        slug: "edson-pudles",
+        foto_url: "/assets/edson-pudles.png",
+        orcid: "0000-0001-9816-2945",
+      },
+      {
+        nome: "Dr. Orlando Righesso Neto",
+        cargo: "Convidado • Autor do Cap. 42 • Cirurgião de Coluna",
+        instituicao: "Faculdade de Ciências Médicas da Santa Casa de SP • SBC",
+        slug: "orlando-righesso-neto",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-9193-9165",
+      },
+    ],
+    destaques_pt: [
+      "Bases celulares e moleculares: senescência, apoptose, redução de proteoglicanos e desidratação do núcleo pulposo.",
+      "Nutrição discal e vulnerabilidade vascular: o papel crítico da difusão pelas placas terminais em uma estrutura avascular.",
+      "Correlação clinicorradiológica: por que alterações degenerativas na imagem não equivalem a diagnóstico automático de dor.",
+      "Classificações de Pfirrmann e Modic: interpretação de alterações na ressonância magnética e sua utilidade na tomada de decisão.",
+      "Perspectivas biológicas e medicina regenerativa: fatores sistêmicos modificáveis e o estágio atual das terapias celulares e biomateriais.",
+    ],
+    destaques_en: [
+      "Cellular and molecular hallmarks: senescence, apoptosis, proteoglycan depletion, and nucleus pulposus dehydration.",
+      "Disc nutrition and vascular vulnerability: the critical dependence on endplate diffusion in an avascular structure.",
+      "Clinical-radiological correlation: distinguishing asymptomatic imaging degeneration from true pain generators.",
+      "Pfirrmann and Modic classifications: MRI interpretation and clinical decision-making relevance.",
+      "Regenerative medicine perspectives: modifiable systemic factors, cellular therapies, and biomaterial innovations.",
+    ],
+    destaques_es: [
+      "Bases celulares y moleculares: senescencia, apoptosis, pérdida de proteoglicanos y deshidratación del núcleo pulposo.",
+      "Nutrición discal y vulnerabilidad vascular: papel crítico de la difusión por las placas terminales.",
+      "Correlación clinicorradiológica: por qué los cambios degenerativos en imagen no equivalen a dolor automático.",
+      "Clasificaciones de Pfirrmann y Modic: interpretación en resonancia magnética y su aplicación clínica.",
+      "Medicina regenerativa: factores sistémicos modificables y avances en terapias celulares y biomateriales.",
+    ],
+    tags: [
+      "Fisiopatologia Discal",
+      "Degeneração Discal",
+      "Doenças Degenerativas",
+      "Pfirrmann",
+      "Modic",
+      "Medicina Regenerativa",
+      "Coluna Vertebral",
+      "Cirurgia de Coluna",
+      "Orlando Righesso",
+      "Edson Pudles",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -777,7 +867,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       (ep.numero === 5 && slug === "episodio-05-trauma-toracolombar-da-classificacao-correta-a-decisao-cirurgica") ||
       (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento") ||
       (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses") ||
-      (ep.numero === 8 && slug === "escoliose-idiopatica")
+      (ep.numero === 8 && slug === "escoliose-idiopatica") ||
+      (ep.numero === 9 && slug === "fisiopatologia-da-degeneracao-discal")
   );
 }
 
