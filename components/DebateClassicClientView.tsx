@@ -339,7 +339,7 @@ export default function DebateClassicClientView({
                     onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap ${justUnlocked ? "ring-4 ring-emerald-400/80 shadow-lg shadow-emerald-500/50 animate-pulse" : ""}`}
+                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-[#1DB954] hover:bg-[#1ed760] text-white text-xs font-bold shadow-sm transition-all active:scale-95 no-underline whitespace-nowrap"
                     title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : "Ouvir no Spotify"}
                   >
                     <SpotifyIcon size={14} color="#ffffff" />
@@ -536,7 +536,7 @@ export default function DebateClassicClientView({
                     onClick={handleSpotifyClick}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline ${justUnlocked ? "ring-4 ring-emerald-400/80 shadow-lg shadow-emerald-500/50 animate-pulse" : ""}`}
+                    className="w-full xs:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] no-underline"
                     title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : undefined}
                   >
                     <SpotifyIcon size={16} color="#ffffff" />
