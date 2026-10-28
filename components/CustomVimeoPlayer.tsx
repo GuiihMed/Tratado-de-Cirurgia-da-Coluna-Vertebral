@@ -347,12 +347,32 @@ export default function CustomVimeoPlayer({
           setDuration(d);
           durationRef.current = d;
         } catch (e) {}
+
+        // Sincroniza estado real do áudio diretamente com o Vimeo
+        try {
+          const [m, v] = await Promise.all([
+            player.getMuted().catch(() => false),
+            player.getVolume().catch(() => 1),
+          ]);
+          setIsMuted(Boolean(m) || v === 0);
+          setVolume(v > 0 ? v : 1);
+        } catch (e) {}
       });
 
-      player.on("play", () => {
+      player.on("play", async () => {
         setIsPlaying(true);
         setHasStarted(true);
         setIsLoading(false);
+
+        // Ao tocar, verifica se o navegador mutou automaticamente por restrição de autoplay
+        try {
+          const [m, v] = await Promise.all([
+            player.getMuted().catch(() => false),
+            player.getVolume().catch(() => 1),
+          ]);
+          setIsMuted(Boolean(m) || v === 0);
+          if (v > 0) setVolume(v);
+        } catch (e) {}
       });
 
       player.on("pause", () => {
@@ -393,9 +413,14 @@ export default function CustomVimeoPlayer({
         setIsPlaying(false);
       });
 
-      player.on("volumechange", (data) => {
+      player.on("volumechange", async (data) => {
+        let muted = data.volume === 0;
+        try {
+          const m = await player.getMuted().catch(() => false);
+          muted = Boolean(m) || data.volume === 0;
+        } catch (e) {}
         setVolume(data.volume);
-        setIsMuted(data.volume === 0);
+        setIsMuted(muted);
       });
 
       player.on("playbackratechange", (data) => {
@@ -420,37 +445,74 @@ export default function CustomVimeoPlayer({
       if (isPlaying) {
         await playerRef.current.pause();
       } else {
+        // Aproveita o clique direto do usuário para desmutar e restaurar o volume
+        try {
+          const isCurrentlyMuted = await playerRef.current.getMuted().catch(() => false);
+          if (isCurrentlyMuted || isMuted) {
+            await playerRef.current.setMuted(false).catch(() => {});
+            setIsMuted(false);
+          }
+          const currentVol = await playerRef.current.getVolume().catch(() => 0);
+          if (currentVol === 0) {
+            const targetVol = volume > 0 ? volume : 1;
+            await playerRef.current.setVolume(targetVol).catch(() => {});
+            setVolume(targetVol);
+          }
+        } catch (_) {}
+
         await playerRef.current.play();
         setHasStarted(true);
       }
     } catch (e) {
-      console.warn(e);
+      // Se a política de autoplay do navegador rejeitar play com áudio desmutado,
+      // toca mutado com segurança e indica na interface para ativar o áudio
+      try {
+        await playerRef.current.setMuted(true).catch(() => {});
+        setIsMuted(true);
+        await playerRef.current.play();
+        setHasStarted(true);
+      } catch (err) {
+        console.warn("Play error:", err);
+      }
     }
-  }, [isPlaying]);
+  }, [isPlaying, isMuted, volume]);
 
   const handleVolumeChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseFloat(e.target.value);
     setVolume(val);
-    setIsMuted(val === 0);
+    const muted = val === 0;
+    setIsMuted(muted);
     if (playerRef.current) {
       try {
-        await playerRef.current.setVolume(val);
+        if (muted) {
+          await playerRef.current.setMuted(true).catch(() => {});
+          await playerRef.current.setVolume(0).catch(() => {});
+        } else {
+          await playerRef.current.setMuted(false).catch(() => {});
+          await playerRef.current.setVolume(val).catch(() => {});
+        }
       } catch (e) {}
     }
   };
 
-  const handleToggleMute = async () => {
+  const handleToggleMute = useCallback(async () => {
     if (!playerRef.current) return;
     try {
-      if (isMuted) {
-        await playerRef.current.setVolume(volume || 0.8);
+      if (isMuted || volume === 0) {
+        const newVol = volume > 0 ? volume : 1;
+        await playerRef.current.setMuted(false).catch(() => {});
+        await playerRef.current.setVolume(newVol).catch(() => {});
+        setVolume(newVol);
         setIsMuted(false);
       } else {
-        await playerRef.current.setVolume(0);
+        await playerRef.current.setMuted(true).catch(() => {});
+        await playerRef.current.setVolume(0).catch(() => {});
         setIsMuted(true);
       }
-    } catch (e) {}
-  };
+    } catch (e) {
+      console.warn("Toggle mute error:", e);
+    }
+  }, [isMuted, volume]);
 
   const handleSetRate = async (rate: number) => {
     setPlaybackRate(rate);
@@ -525,6 +587,26 @@ export default function CustomVimeoPlayer({
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         handleSkip(10);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        const nextVol = Math.min(1, Math.round((volume + 0.1) * 10) / 10);
+        setVolume(nextVol);
+        setIsMuted(false);
+        if (playerRef.current) {
+          playerRef.current.setMuted(false).catch(() => {});
+          playerRef.current.setVolume(nextVol).catch(() => {});
+        }
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const nextVol = Math.max(0, Math.round((volume - 0.1) * 10) / 10);
+        setVolume(nextVol);
+        setIsMuted(nextVol === 0);
+        if (playerRef.current) {
+          if (nextVol === 0) {
+            playerRef.current.setMuted(true).catch(() => {});
+          }
+          playerRef.current.setVolume(nextVol).catch(() => {});
+        }
       }
     };
 
@@ -537,7 +619,7 @@ export default function CustomVimeoPlayer({
         container.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [handlePlayPause, handleSkip, handleToggleMute]);
+  }, [handlePlayPause, handleSkip, handleToggleMute, volume]);
 
   const displayCurrentTime = isScrubbing ? scrubTime : currentTime;
   const progressPct = duration > 0 ? (displayCurrentTime / duration) * 100 : 0;
@@ -583,9 +665,10 @@ export default function CustomVimeoPlayer({
         <div className="absolute inset-0 w-full h-full pointer-events-auto">
           <iframe
             ref={iframeRef}
-            src={`${url}?autoplay=${autoplay ? "1" : "0"}&badge=0&autopause=0&player_id=0&app_id=58479&controls=0`}
+            src={`${url}?autoplay=${autoplay ? "1" : "0"}&badge=0&autopause=0&player_id=0&app_id=58479&controls=0&muted=${autoplay ? "1" : "0"}`}
             className="w-full h-full border-0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; speaker-selection"
+            allowFullScreen
             title="Tratado em Debate - Videocast Oficial SBC"
           />
         </div>
@@ -879,6 +962,30 @@ export default function CustomVimeoPlayer({
         </div>
       )}
 
+      {/* Floating Unmute Indicator Pill (YouTube/Social style for browser autoplay policies) */}
+      {hasStarted && (isMuted || volume === 0) && (
+        <div className="absolute top-14 sm:top-16 left-1/2 -translate-x-1/2 z-40 pointer-events-auto">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleToggleMute();
+            }}
+            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-rose-600/95 hover:bg-rose-500 text-white font-bold text-xs sm:text-sm shadow-2xl shadow-rose-600/50 flex items-center gap-2 border border-white/30 backdrop-blur-md cursor-pointer transition-all hover:scale-105 active:scale-95 animate-pulse"
+            title="Clique para ativar o áudio"
+          >
+            <VolumeX size={15} className="text-white shrink-0" />
+            <span className="whitespace-nowrap">
+              {locale === "en"
+                ? "Video is muted • Click to turn on sound"
+                : locale === "es"
+                ? "Video silenciado • Clic para activar sonido"
+                : "Vídeo sem som • Clique para ativar o áudio"}
+            </span>
+          </button>
+        </div>
+      )}
+
       {/* On-Screen Skip Feedback HUD (Accumulated Seconds - YouTube / Netflix Style) */}
       {skipFeedback && (
         <div
@@ -1021,7 +1128,7 @@ export default function CustomVimeoPlayer({
               </button>
 
               {/* Volume & Mute */}
-              <div className="hidden xs:flex items-center gap-0.5 group/vol relative">
+              <div className="flex items-center gap-0.5 group/vol relative">
                 <button
                   onClick={handleToggleMute}
                   className="w-6 h-6 sm:w-7 sm:h-7 rounded hover:bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition-colors shrink-0"
