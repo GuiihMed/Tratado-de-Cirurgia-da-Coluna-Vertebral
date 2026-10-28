@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
-import { ExternalLink, Radio, Share2, Check } from "lucide-react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { ExternalLink, Radio, Share2, Check, Maximize, Minimize } from "lucide-react";
 import { Locale } from "@/lib/types";
 import {
   DEBATE_EPISODES,
@@ -34,6 +34,52 @@ export default function DebateEmbedWidget({
   });
   const [userSelected, setUserSelected] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const playerCardRef = useRef<HTMLDivElement>(null);
+
+  const togglePlayerFullscreen = async () => {
+    const el = playerCardRef.current;
+    if (!el) return;
+
+    if (!document.fullscreenElement && !isFullscreen) {
+      try {
+        if (el.requestFullscreen) {
+          await el.requestFullscreen();
+        } else if ((el as any).webkitRequestFullscreen) {
+          await (el as any).webkitRequestFullscreen();
+        }
+        setIsFullscreen(true);
+      } catch (err) {
+        setIsFullscreen(true);
+      }
+    } else {
+      try {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen();
+        }
+      } catch (_) {}
+      setIsFullscreen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFsChange);
+    document.addEventListener("webkitfullscreenchange", handleFsChange);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFsChange);
+      document.removeEventListener("webkitfullscreenchange", handleFsChange);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isFullscreen]);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -242,6 +288,28 @@ export default function DebateEmbedWidget({
             <span>{copied ? t.copied : t.share}</span>
           </button>
 
+          <button
+            onClick={togglePlayerFullscreen}
+            type="button"
+            title={isFullscreen ? "Sair da Tela Cheia (Esc)" : "Tela Cheia"}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              padding: "5px 10px",
+              borderRadius: "8px",
+              fontSize: "12px",
+              fontWeight: 600,
+              background: isDark ? "rgba(255, 255, 255, 0.08)" : "#f1f5f9",
+              color: isDark ? "#cbd5e1" : "#475569",
+              border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid #e2e8f0",
+              cursor: "pointer",
+            }}
+          >
+            {isFullscreen ? <Minimize size={13} /> : <Maximize size={13} />}
+            <span>{isFullscreen ? "Sair" : "Tela Cheia"}</span>
+          </button>
+
           <a
             href={`https://www.tratadodecoluna.com.br/${locale}/debate?ep=${activeEpisode.numero}`}
             target="_blank"
@@ -267,24 +335,39 @@ export default function DebateEmbedWidget({
       </header>
 
       {/* 2. Custom Vimeo Player */}
-      <div style={{ width: "100%", borderRadius: "14px", overflow: "hidden", boxShadow: "0 10px 30px rgba(0, 0, 0, 0.35)" }}>
-        <CustomVimeoPlayer
-          key={activeEpisode.id}
-          url={activeEpisode.vimeoUrl}
-          videoId={activeEpisode.vimeoId}
-          thumbnailUrl={
-            liveThumbnails[activeEpisode.vimeoId] ||
-            activeEpisode.vimeoThumbnailUrl ||
-            activeEpisode.thumbnailUrl
-          }
-          premiereDate={activeEpisode.dataEstreia}
-          spotifyUrl={activeEpisode.spotifyUrl}
-          title={title}
-          guests={guests}
-          locale={locale}
-          autoplay={false}
-          showPopOutButton={false}
-        />
+      <div
+        ref={playerCardRef}
+        className={
+          isFullscreen
+            ? "fixed inset-0 z-[999999] bg-[#000814] flex flex-col justify-center items-center p-2 sm:p-6 w-screen h-screen"
+            : ""
+        }
+        style={{
+          width: "100%",
+          borderRadius: isFullscreen ? 0 : "14px",
+          overflow: "hidden",
+          boxShadow: isFullscreen ? "none" : "0 10px 30px rgba(0, 0, 0, 0.35)",
+        }}
+      >
+        <div style={{ width: "100%", maxWidth: isFullscreen ? "1200px" : "100%", margin: "0 auto" }}>
+          <CustomVimeoPlayer
+            key={activeEpisode.id}
+            url={activeEpisode.vimeoUrl}
+            videoId={activeEpisode.vimeoId}
+            thumbnailUrl={
+              liveThumbnails[activeEpisode.vimeoId] ||
+              activeEpisode.vimeoThumbnailUrl ||
+              activeEpisode.thumbnailUrl
+            }
+            premiereDate={activeEpisode.dataEstreia}
+            spotifyUrl={activeEpisode.spotifyUrl}
+            title={title}
+            guests={guests}
+            locale={locale}
+            autoplay={false}
+            showPopOutButton={false}
+          />
+        </div>
       </div>
 
       {/* 3. Detalhes do Episódio Atual */}

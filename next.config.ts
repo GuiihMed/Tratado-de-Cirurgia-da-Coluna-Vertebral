@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
           key: "Access-Control-Allow-Origin",
           value: "*",
         },
+        {
+          key: "Permissions-Policy",
+          value: "fullscreen=*, autoplay=*, picture-in-picture=*",
+        },
       ],
     },
     {
@@ -38,6 +42,10 @@ const nextConfig: NextConfig = {
           key: "Access-Control-Allow-Origin",
           value: "*",
         },
+        {
+          key: "Permissions-Policy",
+          value: "fullscreen=*, autoplay=*, picture-in-picture=*",
+        },
       ],
     },
     {
@@ -47,6 +55,10 @@ const nextConfig: NextConfig = {
           key: "Content-Security-Policy",
           value: "frame-ancestors *;",
         },
+        {
+          key: "Permissions-Policy",
+          value: "fullscreen=*, autoplay=*, picture-in-picture=*",
+        },
       ],
     },
     {
@@ -55,6 +67,10 @@ const nextConfig: NextConfig = {
         {
           key: "Content-Security-Policy",
           value: "frame-ancestors *;",
+        },
+        {
+          key: "Permissions-Policy",
+          value: "fullscreen=*, autoplay=*, picture-in-picture=*",
         },
       ],
     },

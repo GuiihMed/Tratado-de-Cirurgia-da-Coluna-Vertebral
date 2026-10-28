@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
 import {
@@ -28,6 +28,8 @@ import {
   Tv,
   Layers,
   Radio,
+  Maximize,
+  Minimize,
 } from "lucide-react";
 
 interface DebateClassicClientViewProps {
@@ -49,6 +51,53 @@ export default function DebateClassicClientView({
   const [copiedLink, setCopiedLink] = useState(false);
   const [nowMs, setNowMs] = useState<number>(() => Date.now());
   const [justUnlocked, setJustUnlocked] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const playerCardRef = useRef<HTMLDivElement>(null);
+
+  const togglePlayerFullscreen = async () => {
+    const el = playerCardRef.current;
+    if (!el) return;
+
+    if (!document.fullscreenElement && !isFullscreen) {
+      try {
+        if (el.requestFullscreen) {
+          await el.requestFullscreen();
+        } else if ((el as any).webkitRequestFullscreen) {
+          await (el as any).webkitRequestFullscreen();
+        }
+        setIsFullscreen(true);
+      } catch (err) {
+        // Fallback suave para tela cheia CSS se o iframe pai restringir fullscreen API
+        setIsFullscreen(true);
+      }
+    } else {
+      try {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen();
+        }
+      } catch (_) {}
+      setIsFullscreen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+    document.addEventListener("fullscreenchange", handleFsChange);
+    document.addEventListener("webkitfullscreenchange", handleFsChange);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFsChange);
+      document.removeEventListener("webkitfullscreenchange", handleFsChange);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isFullscreen]);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -334,11 +383,18 @@ export default function DebateClassicClientView({
         <div className="lg:col-span-8 flex flex-col gap-4 sm:gap-6">
           {/* Main Video Player Container (Classic Dark Navy Frame) */}
           <div
-            className="rounded-xl sm:rounded-2xl bg-[#001026] border border-[#00224d] shadow-[0_12px_35px_rgba(0,20,50,0.15)] overflow-hidden"
+            ref={playerCardRef}
+            className={`transition-all duration-300 ${
+              isFullscreen
+                ? "fixed inset-0 z-[999999] bg-[#000814] flex flex-col justify-center items-center p-2 sm:p-6 w-screen h-screen rounded-none border-0 shadow-none overflow-hidden"
+                : "rounded-xl sm:rounded-2xl bg-[#001026] border border-[#00224d] shadow-[0_12px_35px_rgba(0,20,50,0.15)] overflow-hidden"
+            }`}
           >
             {/* Top Bar on Player */}
             <div
-              className="flex items-center justify-between gap-2.5 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 bg-[#001633] border-b border-white/10 flex-wrap sm:flex-nowrap"
+              className={`flex items-center justify-between gap-2.5 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 bg-[#001633] border-b border-white/10 flex-wrap sm:flex-nowrap ${
+                isFullscreen ? "w-full max-w-6xl mx-auto rounded-t-xl" : ""
+              }`}
             >
               {/* Left: Episode Badge + Duration */}
               <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
@@ -398,27 +454,47 @@ export default function DebateClassicClientView({
                     </>
                   )}
                 </button>
+                <button
+                  onClick={togglePlayerFullscreen}
+                  type="button"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all cursor-pointer active:scale-95 whitespace-nowrap"
+                  title={isFullscreen ? (locale === "en" ? "Exit Fullscreen (Esc)" : locale === "es" ? "Salir de Pantalla Completa (Esc)" : "Sair da Tela Cheia (Esc)") : (locale === "en" ? "Fullscreen" : locale === "es" ? "Pantalla Completa" : "Tela Cheia")}
+                >
+                  {isFullscreen ? (
+                    <>
+                      <Minimize size={13} />
+                      <span>{locale === "en" ? "Exit" : locale === "es" ? "Salir" : "Sair"}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Maximize size={13} />
+                      <span>{locale === "en" ? "Fullscreen" : locale === "es" ? "Pantalla Completa" : "Tela Cheia"}</span>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
 
             {/* Custom Vimeo Player */}
-            <CustomVimeoPlayer
-              key={activeEpisode.id}
-              url={activeEpisode.vimeoUrl}
-              videoId={activeEpisode.vimeoId}
-              thumbnailUrl={
-                liveThumbnails[activeEpisode.vimeoId] ||
-                activeEpisode.vimeoThumbnailUrl ||
-                activeEpisode.thumbnailUrl
-              }
-              premiereDate={activeEpisode.dataEstreia}
-              spotifyUrl={activeEpisode.spotifyUrl}
-              title={title}
-              guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
-              locale={locale}
-              autoplay={false}
-              showPopOutButton={!isEmbed}
-            />
+            <div className={isFullscreen ? "w-full max-w-6xl mx-auto my-auto" : "w-full"}>
+              <CustomVimeoPlayer
+                key={activeEpisode.id}
+                url={activeEpisode.vimeoUrl}
+                videoId={activeEpisode.vimeoId}
+                thumbnailUrl={
+                  liveThumbnails[activeEpisode.vimeoId] ||
+                  activeEpisode.vimeoThumbnailUrl ||
+                  activeEpisode.thumbnailUrl
+                }
+                premiereDate={activeEpisode.dataEstreia}
+                spotifyUrl={activeEpisode.spotifyUrl}
+                title={title}
+                guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
+                locale={locale}
+                autoplay={false}
+                showPopOutButton={!isEmbed}
+              />
+            </div>
           </div>
 
           {/* Mobile-Only Playlist Card (Directly below player for fast episode selection on phones/tablets) */}
