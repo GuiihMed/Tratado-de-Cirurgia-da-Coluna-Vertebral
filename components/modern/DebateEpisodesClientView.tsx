@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
 import {
@@ -28,8 +28,6 @@ import {
   Tv,
   Layers,
   Radio,
-  Maximize,
-  Minimize,
 } from "lucide-react";
 
 interface DebateEpisodesClientViewProps {
@@ -49,52 +47,6 @@ export default function DebateEpisodesClientView({
   const [copiedLink, setCopiedLink] = useState(false);
   const [nowMs, setNowMs] = useState<number>(() => Date.now());
   const [justUnlocked, setJustUnlocked] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const playerCardRef = useRef<HTMLDivElement>(null);
-
-  const togglePlayerFullscreen = async () => {
-    const el = playerCardRef.current;
-    if (!el) return;
-
-    if (!document.fullscreenElement && !isFullscreen) {
-      try {
-        if (el.requestFullscreen) {
-          await el.requestFullscreen();
-        } else if ((el as any).webkitRequestFullscreen) {
-          await (el as any).webkitRequestFullscreen();
-        }
-        setIsFullscreen(true);
-      } catch (err) {
-        setIsFullscreen(true);
-      }
-    } else {
-      try {
-        if (document.fullscreenElement) {
-          await document.exitFullscreen();
-        }
-      } catch (_) {}
-      setIsFullscreen(false);
-    }
-  };
-
-  useEffect(() => {
-    const handleFsChange = () => {
-      setIsFullscreen(Boolean(document.fullscreenElement));
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isFullscreen) {
-        setIsFullscreen(false);
-      }
-    };
-    document.addEventListener("fullscreenchange", handleFsChange);
-    document.addEventListener("webkitfullscreenchange", handleFsChange);
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("fullscreenchange", handleFsChange);
-      document.removeEventListener("webkitfullscreenchange", handleFsChange);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isFullscreen]);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -242,23 +194,16 @@ export default function DebateEpisodesClientView({
         <div className="lg:col-span-8 flex flex-col gap-6">
           {/* Main Video Player Container */}
           <div
-            ref={playerCardRef}
-            className={`transition-all duration-300 ${
-              isFullscreen
-                ? "fixed inset-0 z-[999999] bg-[#000814] flex flex-col justify-center items-center p-2 sm:p-6 w-screen h-screen rounded-none border-0 shadow-none overflow-hidden"
-                : ""
-            }`}
             style={{
               background: "#000814",
-              borderRadius: isFullscreen ? 0 : 22,
-              border: isFullscreen ? "none" : "1px solid rgba(255, 255, 255, 0.15)",
-              boxShadow: isFullscreen ? "none" : "0 25px 60px rgba(0, 10, 30, 0.7), 0 0 35px rgba(245, 34, 56, 0.2)",
+              borderRadius: 22,
+              border: "1px solid rgba(255, 255, 255, 0.15)",
+              boxShadow: "0 25px 60px rgba(0, 10, 30, 0.7), 0 0 35px rgba(245, 34, 56, 0.2)",
               overflow: "hidden",
             }}
           >
             {/* Top Bar on Player */}
             <div
-              className={isFullscreen ? "w-full max-w-6xl mx-auto rounded-t-xl" : ""}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -362,61 +307,27 @@ export default function DebateEpisodesClientView({
                     </>
                   )}
                 </button>
-                <button
-                  onClick={togglePlayerFullscreen}
-                  type="button"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    padding: "6px 14px",
-                    borderRadius: 8,
-                    background: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.18)",
-                    color: "#fff",
-                    fontSize: 12.5,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                  }}
-                  className="hover:bg-white/15"
-                  title={isFullscreen ? (locale === "en" ? "Exit Fullscreen (Esc)" : locale === "es" ? "Salir de Pantalla Completa (Esc)" : "Sair da Tela Cheia (Esc)") : (locale === "en" ? "Fullscreen" : locale === "es" ? "Pantalla Completa" : "Tela Cheia")}
-                >
-                  {isFullscreen ? (
-                    <>
-                      <Minimize size={14} />
-                      <span>{locale === "en" ? "Exit" : locale === "es" ? "Salir" : "Sair"}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Maximize size={14} />
-                      <span>{locale === "en" ? "Fullscreen" : locale === "es" ? "Pantalla Completa" : "Tela Cheia"}</span>
-                    </>
-                  )}
-                </button>
               </div>
             </div>
 
             {/* Custom Vimeo Player */}
-            <div className={isFullscreen ? "w-full max-w-6xl mx-auto my-auto" : "w-full"}>
-              <CustomVimeoPlayer
-                key={activeEpisode.id}
-                url={activeEpisode.vimeoUrl}
-                videoId={activeEpisode.vimeoId}
-                thumbnailUrl={
-                  liveThumbnails[activeEpisode.vimeoId] ||
-                  activeEpisode.vimeoThumbnailUrl ||
-                  activeEpisode.thumbnailUrl
-                }
-                premiereDate={activeEpisode.dataEstreia}
-                spotifyUrl={activeEpisode.spotifyUrl}
-                title={title}
-                guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
-                locale={locale}
-                autoplay={false}
-                showPopOutButton={true}
-              />
-            </div>
+            <CustomVimeoPlayer
+              key={activeEpisode.id}
+              url={activeEpisode.vimeoUrl}
+              videoId={activeEpisode.vimeoId}
+              thumbnailUrl={
+                liveThumbnails[activeEpisode.vimeoId] ||
+                activeEpisode.vimeoThumbnailUrl ||
+                activeEpisode.thumbnailUrl
+              }
+              premiereDate={activeEpisode.dataEstreia}
+              spotifyUrl={activeEpisode.spotifyUrl}
+              title={title}
+              guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
+              locale={locale}
+              autoplay={false}
+              showPopOutButton={true}
+            />
           </div>
 
           {/* Episode Info Card */}
