@@ -147,7 +147,7 @@ export default function DebateEmbedWidget({
 
   const handleCopyLink = () => {
     if (typeof window !== "undefined" && navigator.clipboard) {
-      const fullUrl = `https://www.tratadodecoluna.com.br/${locale}/debate`;
+      const fullUrl = `https://www.tratadodecoluna.com.br/${locale}/debate?ep=${activeEpisode.numero}`;
       navigator.clipboard.writeText(fullUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -243,7 +243,7 @@ export default function DebateEmbedWidget({
           </button>
 
           <a
-            href={`https://www.tratadodecoluna.com.br/${locale}/debate`}
+            href={`https://www.tratadodecoluna.com.br/${locale}/debate?ep=${activeEpisode.numero}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{

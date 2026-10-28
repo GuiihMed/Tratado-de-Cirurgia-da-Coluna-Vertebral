@@ -136,14 +136,52 @@ export default function DebateEpisodesClientView({
     }
   };
 
-  const handleShare = () => {
+  const getEpisodeShareUrl = (epNum: number) => {
+    if (typeof window === "undefined") {
+      return `https://www.tratadodecoluna.com.br/${locale}/debate-new?ep=${epNum}`;
+    }
+    const origin = window.location.origin || "https://www.tratadodecoluna.com.br";
+    const pathname = window.location.pathname.includes("/debate-new")
+      ? `/${locale}/debate-new`
+      : `/${locale}/debate`;
+    return `${origin}${pathname}?ep=${epNum}`;
+  };
+
+  const handleSelectEpisode = (epNum: number) => {
+    setActiveEpNumber(epNum);
+    setUserSelected(true);
     if (typeof window !== "undefined") {
-      const url = window.location.href;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(url);
+      const cleanUrl = getEpisodeShareUrl(epNum);
+      window.history.replaceState({ ep: epNum }, "", cleanUrl);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const cleanUrl = getEpisodeShareUrl(activeEpNumber);
+      window.history.replaceState({ ep: activeEpNumber }, "", cleanUrl);
+    }
+  }, [activeEpNumber, locale]);
+
+  const handleShare = async () => {
+    if (typeof window === "undefined") return;
+    const shareUrl = getEpisodeShareUrl(activeEpisode.numero);
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          url: shareUrl,
+        });
+        return;
+      } catch (_) {}
+    }
+
+    if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
         setCopiedLink(true);
         setTimeout(() => setCopiedLink(false), 2500);
-      }
+      } catch (_) {}
     }
   };
 
@@ -638,10 +676,7 @@ export default function DebateEpisodesClientView({
                 return (
                   <div
                     key={ep.id}
-                    onClick={() => {
-                      setActiveEpNumber(ep.numero);
-                      setUserSelected(true);
-                    }}
+                    onClick={() => handleSelectEpisode(ep.numero)}
                     style={{
                       padding: "12px 14px",
                       borderRadius: 14,
