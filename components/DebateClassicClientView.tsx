@@ -13,6 +13,7 @@ import {
 } from "@/lib/data/debate-episodes";
 import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
+import HarmoniousVimeoPlayer from "@/components/demo/HarmoniousVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 import {
   Play,
@@ -47,6 +48,7 @@ export default function DebateClassicClientView({
   });
   const [userSelected, setUserSelected] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [playerMode, setPlayerMode] = useState<"current" | "harmonious">("current");
   const [nowMs, setNowMs] = useState<number>(() => Date.now());
   const [justUnlocked, setJustUnlocked] = useState(false);
 
@@ -332,6 +334,64 @@ export default function DebateClassicClientView({
         {/* COLUNA ESQUERDA: EPISÓDIO EM DESTAQUE / PRINCIPAL (8 COLS) */}
         {/* ========================================================================= */}
         <div className="lg:col-span-8 flex flex-col gap-4 sm:gap-6">
+          {/* Banner de Demonstração do Player Harmonioso */}
+          {!isEmbed && (
+            <div className="bg-gradient-to-r from-[#001026] via-[#001c3d] to-[#001026] border-2 border-[#f52238]/60 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#f52238]/20 text-[#f52238] flex items-center justify-center shrink-0 border border-[#f52238]/40">
+                  <Sparkles size={18} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-white">Ambiente Demonstrativo do Player</span>
+                    <span className="text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-[#f52238] text-white uppercase tracking-wider">
+                      Demo
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 m-0">
+                    Alterne entre o player atual e a proposta harmoniosa aqui mesmo ou abra o laboratório completo.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 w-full sm:w-auto shrink-0 justify-between sm:justify-end">
+                <div className="inline-flex rounded-lg p-1 bg-black/50 border border-white/10 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setPlayerMode("current")}
+                    className={`px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                      playerMode === "current"
+                        ? "bg-white/20 text-white shadow-xs"
+                        : "text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    Player Atual
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPlayerMode("harmonious")}
+                    className={`px-3 py-1 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      playerMode === "harmonious"
+                        ? "bg-[#f52238] text-white shadow-xs"
+                        : "text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    <Sparkles size={12} />
+                    <span>Proposta SBC</span>
+                  </button>
+                </div>
+
+                <Link
+                  href={`/${locale}/demo/player?ep=${activeEpisode.numero}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold no-underline transition-all whitespace-nowrap"
+                >
+                  <span>Laboratório Lado a Lado</span>
+                  <ChevronRight size={13} />
+                </Link>
+              </div>
+            </div>
+          )}
+
           {/* Main Video Player Container (Classic Dark Navy Frame) */}
           <div
             className="rounded-xl sm:rounded-2xl bg-[#001026] border border-[#00224d] shadow-[0_12px_35px_rgba(0,20,50,0.15)] overflow-hidden"
@@ -401,24 +461,42 @@ export default function DebateClassicClientView({
               </div>
             </div>
 
-            {/* Custom Vimeo Player */}
-            <CustomVimeoPlayer
-              key={activeEpisode.id}
-              url={activeEpisode.vimeoUrl}
-              videoId={activeEpisode.vimeoId}
-              thumbnailUrl={
-                liveThumbnails[activeEpisode.vimeoId] ||
-                activeEpisode.vimeoThumbnailUrl ||
-                activeEpisode.thumbnailUrl
-              }
-              premiereDate={activeEpisode.dataEstreia}
-              spotifyUrl={activeEpisode.spotifyUrl}
-              title={title}
-              guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
-              locale={locale}
-              autoplay={false}
-              showPopOutButton={!isEmbed}
-            />
+            {/* Vimeo Player (Comutável para Demonstração) */}
+            {playerMode === "harmonious" ? (
+              <HarmoniousVimeoPlayer
+                key={`harmonious-${activeEpisode.id}`}
+                url={activeEpisode.vimeoUrl}
+                videoId={activeEpisode.vimeoId}
+                thumbnailUrl={
+                  liveThumbnails[activeEpisode.vimeoId] ||
+                  activeEpisode.vimeoThumbnailUrl ||
+                  activeEpisode.thumbnailUrl
+                }
+                title={title}
+                guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
+                episodeNumber={activeEpisode.numero}
+                locale={locale}
+                autoplay={false}
+              />
+            ) : (
+              <CustomVimeoPlayer
+                key={activeEpisode.id}
+                url={activeEpisode.vimeoUrl}
+                videoId={activeEpisode.vimeoId}
+                thumbnailUrl={
+                  liveThumbnails[activeEpisode.vimeoId] ||
+                  activeEpisode.vimeoThumbnailUrl ||
+                  activeEpisode.thumbnailUrl
+                }
+                premiereDate={activeEpisode.dataEstreia}
+                spotifyUrl={activeEpisode.spotifyUrl}
+                title={title}
+                guests={activeEpisode.convidados.map((c) => c.nome).join(" & ")}
+                locale={locale}
+                autoplay={false}
+                showPopOutButton={!isEmbed}
+              />
+            )}
           </div>
 
           {/* Mobile-Only Playlist Card (Directly below player for fast episode selection on phones/tablets) */}
