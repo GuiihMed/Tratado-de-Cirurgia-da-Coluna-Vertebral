@@ -838,6 +838,96 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-10",
+    numero: 10,
+    slug: "episodio-10-instabilidade-vertebral",
+    titulo_pt: "Episódio 10 – Instabilidade Vertebral",
+    titulo_en: "Episode 10 – Vertebral Instability",
+    titulo_es: "Episodio 10 – Inestabilidad Vertebral",
+    subtitulo_pt:
+      "Instabilidade Vertebral: clínica, imagem e decisão cirúrgica",
+    subtitulo_en:
+      "Vertebral Instability: Clinical Presentation, Imaging, and Surgical Decision-Making",
+    subtitulo_es:
+      "Inestabilidad Vertebral: clínica, imagen y decisión quirúrgica",
+    descricao_pt:
+      "Neste décimo episódio do Tratado em Debate, o Prof. Dr. Helton L. A. Defino e o Dr. Edson Pudles (Editor do Tratado SBC e autor do Capítulo 47) aprofundam a abordagem da Instabilidade Vertebral sob o prisma 'clínica, imagem e decisão cirúrgica'. Analisam a definição biomecânica de instabilidade e sua dissociação com a dor clínica, as causas degenerativas com foco na espondilolistese primária e pós-descompressão, a importância mandatória do estudo radiográfico dinâmico em carga (bipedestação) versus a subestimação do escorregamento em decúbito, a distinção clínica entre claudicação/estenose e dor mecânica por instabilidade, as indicações precisas de descompressão isolada versus artrodese circunferencial/instrumentada e o papel insubstituível da consolidação óssea biológica no desfecho a longo prazo.",
+    descricao_en:
+      "In this tenth episode of the Treatise in Debate, Prof. Dr. Helton L. A. Defino and Dr. Edson Pudles (Editor of the SBC Treatise and lead author of Chapter 47) explore Vertebral Instability through the lens of 'clinical presentation, imaging, and surgical decision-making'. They analyze the biomechanical definition of spinal instability versus clinical pain generators, degenerative etiologies emphasizing primary and post-decompression spondylolisthesis, the critical necessity of weight-bearing upright dynamic radiographs over supine MRI/CT, differentiating neurogenic claudication from mechanical instability pain, precise indications for decompression alone versus instrumented fusion, and the foundational requirement of biological arthrodesis for long-term clinical success.",
+    descricao_es:
+      "En este décimo episodio del Tratado en Debate, el Prof. Dr. Helton L. A. Defino y el Dr. Edson Pudles (Editor del Tratado SBC y autor del Capítulo 47) profundizan en la Inestabilidad Vertebral bajo el enfoque de 'clínica, imagen y decisión quirúrgica'. Analizan los conceptos biomecánicos de inestabilidad y su correlación con el dolor clínico, las causas degenerativas con énfasis en espondilolistesis primaria y posdescompresiva, el valor de las radiografías funcionales en bipedestación frente a la subestimación en decúbito, la diferenciación entre síntomas de estenosis y dolor mecánico, las indicaciones de descompresión frente a artrodesis instrumentada y los pilares biológicos de la fusión sólida a largo plazo.",
+    vimeoId: "1239994476",
+    vimeoUrl: "https://player.vimeo.com/video/1239994476",
+    thumbnailUrl: "/assets/debate-ep10-cover.jpg",
+    vimeoThumbnailUrl: "",
+    spotifyUrl:
+      "https://open.spotify.com/episode/4fR6ULjVoE25JwFQBdGCus?si=Cp2rCKgoRm-EbTKiQVcQ8A",
+    capituloNum: 47,
+    capituloTitulo_pt: "Instabilidade Vertebral",
+    capituloTitulo_en: "Vertebral Instability",
+    capituloTitulo_es: "Inestabilidad Vertebral",
+    secaoId: 5,
+    secaoTitulo_pt: "Doenças Degenerativas",
+    secaoTitulo_en: "Degenerative Diseases",
+    secaoTitulo_es: "Enfermedades Degenerativas",
+    duracao: "32:28",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-11-04T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Prof. Dr. Helton L. A. Defino",
+        cargo: "Apresentação • Editor do Tratado SBC",
+        instituicao: "Professor Titular FMRP-USP • Ribeirão Preto-SP • SBC",
+        slug: "helton-luiz-aparecido-defino",
+        foto_url: "/assets/helton-defino.png",
+        orcid: "0000-0003-4274-0130",
+      },
+      {
+        nome: "Dr. Edson Pudles",
+        cargo: "Convidado • Autor do Cap. 47 • Editor do Tratado",
+        instituicao: "Hospital Universitário Evangélico Mackenzie • Curitiba-PR • SBC",
+        slug: "edson-pudles",
+        foto_url: "/assets/edson-pudles.png",
+        orcid: "0000-0001-9816-2945",
+      },
+    ],
+    destaques_pt: [
+      "Conceito biomecânico vs. dor clínica: por que mobilidade aumentada no segmento motor não se traduz automaticamente em sintomas.",
+      "Avaliação por imagem em carga: a relevância das radiografias dinâmicas em bipedestação para revelar escorregamentos subestimados na RM em decúbito.",
+      "Diagnóstico diferencial clínico: distinguindo a dor mecânica por perda de rigidez dos sintomas de estenose e claudicação neurogênica.",
+      "Decisão cirúrgica: critérios para indicação de descompressão isolada versus artrodese com instrumentação pedicular e suporte intersomático.",
+      "Bases da artrodese sólida: o papel central da biologia do enxerto e estabilidade mecânica na prevenção de falhas e doença do segmento adjacente.",
+    ],
+    destaques_en: [
+      "Biomechanical concept vs. clinical pain: why segmental hypermobility does not invariably equal symptomatic instability.",
+      "Weight-bearing imaging: the vital importance of upright dynamic flexion-extension radiographs over supine MRI.",
+      "Clinical differential diagnosis: distinguishing mechanical instability back pain from neural compression and neurogenic claudication.",
+      "Surgical decision-making: clear criteria for standalone neural decompression versus instrumented fusion and interbody support.",
+      "Solid biological arthrodesis: the essential role of graft biology and mechanical stability in preventing adjacent segment disease.",
+    ],
+    destaques_es: [
+      "Concepto biomecánico vs. dolor clínico: por qué la hipermovilidad segmentaria no produce siempre síntomas.",
+      "Estudio en carga: valor crucial de las radiografías funcionales en bipedestación frente a la RM en decúbito supino.",
+      "Diagnóstico diferencial: diferenciando el dolor mecánico por pérdida de rigidez de la estenosis y claudicación neurógena.",
+      "Toma de decisión quirúrgica: criterios para descompresión aislada frente a artrodesis instrumentada y soporte intersomático.",
+      "Principios de fusión sólida: papel de la biología del injerto para prevenir pseudartrosis y enfermedad del segmento adyacente.",
+    ],
+    tags: [
+      "Instabilidade Vertebral",
+      "Espondilolistese",
+      "Doenças Degenerativas",
+      "Coluna Lombar",
+      "Radiografias Dinâmicas",
+      "Artrodese",
+      "Coluna Vertebral",
+      "Cirurgia de Coluna",
+      "Edson Pudles",
+      "Helton Defino",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -868,7 +958,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       (ep.numero === 6 && slug === "escoliose-de-inicio-precoce-pulmao-e-coluna-em-crescimento") ||
       (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses") ||
       (ep.numero === 8 && slug === "escoliose-idiopatica") ||
-      (ep.numero === 9 && slug === "fisiopatologia-da-degeneracao-discal")
+      (ep.numero === 9 && slug === "fisiopatologia-da-degeneracao-discal") ||
+      (ep.numero === 10 && slug === "instabilidade-vertebral")
   );
 }
 

@@ -57,6 +57,9 @@ export async function generateMetadata({
       "Episódio 07",
       "Episódio 08",
       "Episódio 09",
+      "Episódio 10",
+      "Instabilidade Vertebral",
+      "Espondilolistese",
       "Fisiopatologia da Degeneração Discal",
       "Degeneração Discal",
       "Pfirrmann",
@@ -155,6 +158,24 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep10`,
+        "name": "Episódio 10: Instabilidade Vertebral — Clínica, Imagem e Decisão Cirúrgica — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Prof. Dr. Helton L. A. Defino e Dr. Edson Pudles debatendo o conceito biomecânico de instabilidade, avaliação funcional em carga e tomada de decisão cirúrgica no Capítulo 47 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep10-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-11-04T18:00:00-03:00",
+        "duration": "PT32M",
+        "embedUrl": "https://player.vimeo.com/video/1239994476",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep9`,
@@ -318,6 +339,13 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
         }
       },
                         {
+        "@type": "PodcastEpisode",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep10`,
+        "name": "Episódio 10: Instabilidade Vertebral — Clínica, Imagem e Decisão Cirúrgica — Tratado em Debate",
+        "description": "Episódio em áudio no Spotify sobre o Capítulo 47 do Tratado de Cirurgia da Coluna Vertebral.",
+        "url": "https://open.spotify.com/episode/4fR6ULjVoE25JwFQBdGCus?si=Cp2rCKgoRm-EbTKiQVcQ8A"
+      },
+      {
         "@type": "PodcastEpisode",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#podcast-ep9`,
         "name": "Episódio 09: Fisiopatologia da Degeneração Discal — do Envelhecimento ao Tratamento — Tratado em Debate",
