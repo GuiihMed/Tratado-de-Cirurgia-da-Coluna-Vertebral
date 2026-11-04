@@ -245,9 +245,14 @@ const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: st
 
 interface HomeFeaturedDebateSectionProps {
   locale: Locale;
+  variant?: "classic" | "modern";
 }
 
-export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebateSectionProps) {
+export default function HomeFeaturedDebateSection({
+  locale,
+  variant = "classic",
+}: HomeFeaturedDebateSectionProps) {
+  const isModern = variant === "modern";
   const liveThumbnails = useVimeoThumbnails(DEBATE_EPISODES);
   const [activeEpNumber, setActiveEpNumber] = useState<number>(() => {
     return getDefaultFeaturedEpisodeNumber();
@@ -344,7 +349,13 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
       {/* ========================================================================= */}
       {/* 1. DESTAQUE DE CAPÍTULO VINCULADO AO EPISÓDIO ATUAL DO VIDEOCAST */}
       {/* ========================================================================= */}
-      <section id="capitulo" className="py-12 sm:py-16 bg-slate-50 relative overflow-hidden">
+      <section
+        id={isModern ? "destaque" : "capitulo"}
+        className={`py-12 sm:py-16 relative overflow-hidden ${
+          isModern ? "bg-[#f8fbfe]" : "bg-slate-50"
+        }`}
+      >
+        {isModern && <div id="capitulo" className="sr-only" />}
         <div className="shell">
           <div
             className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl p-6 sm:p-8 lg:p-10 text-white"
@@ -411,7 +422,11 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
               {/* 3. Action Buttons */}
               <div className="lg:col-span-3 flex flex-col gap-3 justify-center w-full pt-2 lg:pt-0">
                 <Link
-                  href={`/${locale}/capitulo/${highlightData.capituloNum}`}
+                  href={
+                    isModern
+                      ? `/${locale}/capitulo-new/${highlightData.capituloNum}`
+                      : `/${locale}/capitulo/${highlightData.capituloNum}`
+                  }
                   className="w-full h-12 px-5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
                   style={{ textDecoration: "none" }}
                 >
@@ -420,7 +435,11 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
                 </Link>
 
                 <Link
-                  href={`/${locale}/referencias`}
+                  href={
+                    isModern
+                      ? `/${locale}/referencias-new`
+                      : `/${locale}/referencias`
+                  }
                   className="w-full h-12 px-5 rounded-xl bg-[#001f4d]/60 hover:bg-[#001f4d]/90 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
                   style={{ textDecoration: "none" }}
                 >
@@ -436,9 +455,19 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
       {/* ========================================================================= */}
       {/* 2. VIDEOCAST TRATADO EM DEBATE COM PLAYER E INFORMAÇÕES SINCRONIZADAS */}
       {/* ========================================================================= */}
-      <section id="debate" className="py-10 sm:py-16 bg-slate-50 relative">
+      <section
+        id="debate"
+        className={`py-10 sm:py-16 relative ${isModern ? "" : "bg-slate-50"}`}
+        style={isModern ? { padding: "40px 0 90px", background: "transparent" } : undefined}
+      >
         <div className="shell">
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
+          <div
+            className={
+              isModern
+                ? "modern-player-card"
+                : "bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50"
+            }
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* 1. Player do Vimeo Customizado e Oficial */}
               <div className="lg:col-span-6 order-1 flex justify-center w-full">
@@ -463,22 +492,42 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
 
               {/* 2. Textos e Informações do Episódio */}
               <div className="lg:col-span-6 order-2 flex flex-col justify-center">
-                <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">
+                <p
+                  className={`text-xs sm:text-sm font-bold uppercase tracking-wide mb-2 ${
+                    isModern ? "text-slate-300" : "text-slate-500"
+                  }`}
+                >
                   {t.videocastKicker}
                 </p>
 
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#001026] leading-tight tracking-tight mb-3">
+                <h3
+                  className={`text-xl sm:text-2xl lg:text-3xl font-bold leading-tight tracking-tight mb-3 ${
+                    isModern ? "text-white" : "text-[#001026]"
+                  }`}
+                >
                   {episodeHeading}
                 </h3>
 
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6 line-clamp-3 sm:line-clamp-4">
+                <p
+                  className={`text-sm sm:text-base leading-relaxed max-w-xl mb-6 line-clamp-3 sm:line-clamp-4 ${
+                    isModern ? "text-slate-200" : "text-slate-600"
+                  }`}
+                >
                   {episodeDescription}
                 </p>
 
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
-                    href={`/${locale}/debate?ep=${episode.numero}`}
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
+                    href={
+                      isModern
+                        ? `/${locale}/debate-new?ep=${episode.numero}`
+                        : `/${locale}/debate?ep=${episode.numero}`
+                    }
+                    className={
+                      isModern
+                        ? "inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#f52238] to-[#d9142a] hover:from-[#db152a] hover:to-[#b80f21] text-white font-bold text-sm sm:text-base shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
+                        : "inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
+                    }
                     style={{ textDecoration: "none" }}
                   >
                     <span>{t.watchEpisode}</span>
@@ -495,6 +544,23 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
                     <SpotifyIcon size={20} color="#ffffff" />
                     <span>{t.listenSpotify}</span>
                   </a>
+
+                  {isModern && (
+                    <Link
+                      href={`/${locale}/capitulo-new/${highlightData.capituloNum}`}
+                      className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-sm border border-white/20 transition-all active:scale-[0.98]"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <span>
+                        {locale === "en"
+                          ? `Chapter ${highlightData.capituloNum}`
+                          : locale === "es"
+                          ? `Capítulo ${highlightData.capituloNum}`
+                          : `Capítulo ${highlightData.capituloNum}`}
+                      </span>
+                      <span>→</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
