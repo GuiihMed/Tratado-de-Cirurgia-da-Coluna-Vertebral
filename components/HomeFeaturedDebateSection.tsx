@@ -279,7 +279,7 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
         : locale === "es"
         ? "VIDEOCAST OFICIAL DERIVADO DE LOS CAPÍTULOS DEL TRATADO."
         : "VIDEOCAST OFICIAL DERIVADO DOS CAPÍTULOS DO TRATADO.",
-    watchEpisode: locale === "en" ? "Watch on Videocast" : locale === "es" ? "Ver en Videocast" : "Assistir no Videocast",
+    watchEpisode: locale === "en" ? "Watch episode" : locale === "es" ? "Ver episodio" : "Assistir episódio",
     listenSpotify: locale === "en" ? "Listen on Spotify" : locale === "es" ? "Escuchar en Spotify" : "Ouvir no Spotify",
   };
 
