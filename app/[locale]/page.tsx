@@ -8,8 +8,7 @@ import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { SECOES } from "@/lib/data/sections-and-chapters";
-import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
-import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import HomeFeaturedDebateSection from "@/components/HomeFeaturedDebateSection";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -282,155 +281,8 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
 
-        {/* DESTAQUE DE CAPÍTULO (RÉPLICA EXATA DO DESIGN DESKTOP & MOBILE) */}
-        <section id="capitulo" className="py-12 sm:py-16 bg-slate-50 relative overflow-hidden">
-          <div className="shell">
-            <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl p-6 sm:p-8 lg:p-10 text-white"
-              style={{
-                background: "radial-gradient(circle at 8% 25%, rgba(220, 20, 50, 0.55), transparent 38%), linear-gradient(110deg, #38173f 0%, #08295b 45%, #003875 100%)",
-                boxShadow: "0 25px 60px rgba(0, 20, 55, 0.25)",
-              }}
-            >
-              {/* Spine Graphic Background Overlay */}
-              <img
-                src="/assets/chapter-spine.png"
-                alt=""
-                className="absolute right-10 top-0 bottom-0 h-full w-auto max-w-[45%] object-contain pointer-events-none opacity-20 hidden md:block"
-                style={{ mixBlendMode: "screen" }}
-              />
-
-              {/* Grid: 3 columns on Desktop / Clean stacked flow on Mobile */}
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                
-                {/* 1. Chapter Number Badge */}
-                <div className="lg:col-span-2 flex flex-row lg:flex-col items-center justify-start lg:justify-center gap-3 lg:gap-1 pb-4 lg:pb-0 border-b lg:border-b-0 lg:border-r border-white/20 lg:pr-6">
-                  <span className="text-sm sm:text-base font-bold uppercase tracking-wider text-slate-200">
-                    {dict.chapterHighlight.badge}
-                  </span>
-                  <strong className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-none">
-                    {dict.chapterHighlight.number}
-                  </strong>
-                </div>
-
-                {/* 2. Chapter Content & Chips */}
-                <div className="lg:col-span-7 flex flex-col justify-center lg:px-2">
-                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-white leading-tight tracking-tight mb-3">
-                    {dict.chapterHighlight.title}
-                  </h2>
-
-                  {/* Authors with red squares */}
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm font-semibold text-slate-200 mb-3">
-                    <span className="inline-flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-[2px] bg-[#f52238] inline-block" />
-                      {dict.chapterHighlight.authors[0]}
-                    </span>
-                    <span className="inline-flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-[2px] bg-[#f52238] inline-block" />
-                      {dict.chapterHighlight.authors[1]}
-                    </span>
-                  </div>
-
-                  {/* Summary */}
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl mb-4 font-normal">
-                    {dict.chapterHighlight.summary}
-                  </p>
-
-                  {/* Keyword Chips */}
-                  <div className="flex flex-wrap gap-2">
-                    {dict.chapterHighlight.chips.map((chip, index) => (
-                      <span
-                        key={index}
-                        className="text-xs font-semibold px-3 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/25 text-white transition-colors"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 3. Action Buttons */}
-                <div className="lg:col-span-3 flex flex-col gap-3 justify-center w-full pt-2 lg:pt-0">
-                  <Link
-                    href={`/${locale}/capitulo/8`}
-                    className="w-full h-12 px-5 rounded-xl bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-all active:scale-[0.98]"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <span>{dict.chapterHighlight.btnSummary}</span>
-                    <svg className="w-4 h-4"><use href="#i-arrow"></use></svg>
-                  </Link>
-
-                  <Link
-                    href={`/${locale}/referencias`}
-                    className="w-full h-12 px-5 rounded-xl bg-[#001f4d]/60 hover:bg-[#001f4d]/90 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-[0.98]"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <span>{dict.chapterHighlight.btnRef}</span>
-                    <svg className="w-4 h-4 text-sky-400"><use href="#i-ref"></use></svg>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TRATADO EM DEBATE (COM IMAGEM DE ARTE OFICIAL, EPISÓDIO 01 E PLAYER POR CIMA) */}
-        <section id="debate" className="py-10 sm:py-16 bg-slate-50 relative">
-          <div className="shell">
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-200/50">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                
-                {/* 1. Player do Vimeo Customizado */}
-                <div className="lg:col-span-6 order-1 flex justify-center w-full">
-                  <CustomVimeoPlayer locale={locale} />
-                </div>
-
-                {/* 2. Textos e Informações do Episódio */}
-                <div className="lg:col-span-6 order-2 flex flex-col justify-center">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#093c78] text-xs font-bold uppercase tracking-wider mb-3.5 w-max">
-                    <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
-                    <span>{dict.debate.title || "TRATADO EM DEBATE"}</span>
-                  </div>
-
-                  <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-1.5">
-                    {dict.debate.kicker || "VIDEOCAST OFICIAL DERIVADO DOS CAPÍTULOS DO TRATADO."}
-                  </p>
-
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#001026] leading-tight tracking-tight mb-3.5">
-                    {dict.debate.subtitle || "Episódio 1 – Capítulo 8 Coluna Vertebral no Plano Sagital"}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
-                    {dict.debate.description || "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos."}
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Link
-                      href={`/${locale}/capitulo/8`}
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#002654] hover:bg-[#001838] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-950/25 transition-all active:scale-[0.98]"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <span>{dict.debate.cta || "Assistir episódio"}</span>
-                      <span className="text-base font-bold">→</span>
-                    </Link>
-
-                    <a
-                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <SpotifyIcon size={20} color="#ffffff" />
-                      <span>{locale === "en" ? "Listen on Spotify" : locale === "es" ? "Escuchar en Spotify" : "Ouvir no Spotify"}</span>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* DESTAQUE DE CAPÍTULO E VIDEOCAST (DINÂMICO E SINCRONIZADO COM O VIDEOCAST TRATADO EM DEBATE) */}
+        <HomeFeaturedDebateSection locale={locale} />
 
         {/* AUTORES E IDIOMAS (RESPONSIVO) */}
         <section id="autores" className="py-10 sm:py-16 bg-white">

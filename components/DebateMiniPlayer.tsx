@@ -6,6 +6,11 @@ import { Locale } from "@/lib/types";
 import { X, Maximize2, Minimize2, ExternalLink, Play, ChevronDown, Tv } from "lucide-react";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import {
+  DEBATE_EPISODES,
+  getDefaultFeaturedEpisodeNumber,
+  getDebateEpisodeByNumber,
+} from "@/lib/data/debate-episodes";
 
 interface DebateMiniPlayerProps {
   locale: Locale;
@@ -41,20 +46,31 @@ export default function DebateMiniPlayer({
 
   if (!isOpen) return null;
 
+  const featuredEpNumber = getDefaultFeaturedEpisodeNumber();
+  const episode = getDebateEpisodeByNumber(featuredEpNumber) || DEBATE_EPISODES[DEBATE_EPISODES.length - 1];
+
   const t = {
     badge: locale === "en" ? "Official SBC Videocast" : locale === "es" ? "Videocast Oficial SBC" : "Videocast Oficial SBC",
-    title: locale === "en" ? "Treatise in Debate • Episode 01" : locale === "es" ? "Tratado en Debate • Episodio 01" : "Tratado em Debate • Episódio 01",
+    title: locale === "en"
+      ? `Treatise in Debate • Episode ${String(episode.numero).padStart(2, "0")}`
+      : locale === "es"
+      ? `Tratado en Debate • Episodio ${String(episode.numero).padStart(2, "0")}`
+      : `Tratado em Debate • Episódio ${String(episode.numero).padStart(2, "0")}`,
     chapterTitle: locale === "en"
-      ? "Chapter 8 – The Spine in the Sagittal Plane"
+      ? `Chapter ${episode.capituloNum} – ${episode.capituloTitulo_en || episode.capituloTitulo_pt}`
       : locale === "es"
-      ? "Capítulo 8 – Columna Vertebral en el Plano Sagital"
-      : "Capítulo 8 – Coluna Vertebral no Plano Sagital",
+      ? `Capítulo ${episode.capituloNum} – ${episode.capituloTitulo_es || episode.capituloTitulo_pt}`
+      : `Capítulo ${episode.capituloNum} – ${episode.capituloTitulo_pt}`,
     guests: locale === "en"
-      ? "With Dr. Marcelo Risso & Dr. Paulo Cavali"
+      ? `With ${episode.convidados.map((c) => c.nome).join(" & ")}`
       : locale === "es"
-      ? "Con el Dr. Marcelo Risso y el Dr. Paulo Cavali"
-      : "Com Dr. Marcelo Risso e Dr. Paulo Cavali",
-    viewChapter: locale === "en" ? "View Summary of Ch. 8" : locale === "es" ? "Ver Resumen del Cap. 8" : "Ver Resumo do Cap. 8",
+      ? `Con ${episode.convidados.map((c) => c.nome).join(" & ")}`
+      : `Com ${episode.convidados.map((c) => c.nome).join(" & ")}`,
+    viewChapter: locale === "en"
+      ? `View Summary of Ch. ${episode.capituloNum}`
+      : locale === "es"
+      ? `Ver Resumen del Cap. ${episode.capituloNum}`
+      : `Ver Resumo do Cap. ${episode.capituloNum}`,
     allEpisodes: locale === "en" ? "Other Episodes" : locale === "es" ? "Otros Episodios" : "Outros Episódios",
     seeOtherEpisodes: locale === "en" ? "See other episodes" : locale === "es" ? "Ver otros episodios" : "Ver outros episódios",
     minimize: locale === "en" ? "Minimize" : locale === "es" ? "Minimizar" : "Minimizar",
@@ -62,8 +78,8 @@ export default function DebateMiniPlayer({
     close: locale === "en" ? "Close" : locale === "es" ? "Cerrar" : "Fechar",
   };
 
-  const chapterUrl = isModern ? `/${locale}/capitulo-new/8` : `/${locale}/capitulo/8`;
-  const debateUrl = isModern ? `/${locale}/debate-new` : `/${locale}/debate`;
+  const chapterUrl = isModern ? `/${locale}/capitulo-new/${episode.capituloNum}` : `/${locale}/capitulo/${episode.capituloNum}`;
+  const debateUrl = isModern ? `/${locale}/debate-new?ep=${episode.numero}` : `/${locale}/debate?ep=${episode.numero}`;
 
   // 1. Minimized Mode (Small bar in bottom-right)
   if (viewMode === "minimized") {
@@ -221,6 +237,14 @@ export default function DebateMiniPlayer({
 
           {/* Custom Vimeo Player */}
           <CustomVimeoPlayer
+            key={episode.id}
+            url={episode.vimeoUrl}
+            videoId={episode.vimeoId}
+            thumbnailUrl={episode.vimeoThumbnailUrl || episode.thumbnailUrl}
+            premiereDate={episode.dataEstreia}
+            spotifyUrl={episode.spotifyUrl}
+            title={locale === "en" ? episode.titulo_en : locale === "es" ? episode.titulo_es : episode.titulo_pt}
+            guests={episode.convidados.map((c) => c.nome).join(" & ")}
             locale={locale}
             autoplay={true}
             showPopOutButton={false}
@@ -248,7 +272,7 @@ export default function DebateMiniPlayer({
             </div>
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
               <a
-                href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+                href={episode.spotifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -420,6 +444,14 @@ export default function DebateMiniPlayer({
 
       {/* Custom Vimeo Player */}
       <CustomVimeoPlayer
+        key={episode.id}
+        url={episode.vimeoUrl}
+        videoId={episode.vimeoId}
+        thumbnailUrl={episode.vimeoThumbnailUrl || episode.thumbnailUrl}
+        premiereDate={episode.dataEstreia}
+        spotifyUrl={episode.spotifyUrl}
+        title={locale === "en" ? episode.titulo_en : locale === "es" ? episode.titulo_es : episode.titulo_pt}
+        guests={episode.convidados.map((c) => c.nome).join(" & ")}
         locale={locale}
         autoplay={true}
         showPopOutButton={false}
@@ -447,7 +479,7 @@ export default function DebateMiniPlayer({
 
         <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
           <a
-            href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+            href={episode.spotifyUrl}
             target="_blank"
             rel="noopener noreferrer"
             style={{

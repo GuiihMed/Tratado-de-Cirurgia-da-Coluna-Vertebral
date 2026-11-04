@@ -11,6 +11,11 @@ import { ArrowRight, BookOpen, ShoppingCart, Award, Layers, Users, Globe, Brain,
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import {
+  DEBATE_EPISODES,
+  getDefaultFeaturedEpisodeNumber,
+  getDebateEpisodeByNumber,
+} from "@/lib/data/debate-episodes";
 
 interface HomeNewProps {
   params: Promise<{ locale: string }>;
@@ -138,6 +143,23 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
   // Interactive Author Hover State (null when not hovering)
   const [hoveredAuthor, setHoveredAuthor] = useState<number | null>(null);
+
+  // Dynamic Featured Debate Episode (synchronized with official videocast schedule)
+  const [featuredEpNum, setFeaturedEpNum] = useState<number>(() => {
+    return getDefaultFeaturedEpisodeNumber();
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const current = getDefaultFeaturedEpisodeNumber();
+      if (current !== featuredEpNum) {
+        setFeaturedEpNum(current);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [featuredEpNum]);
+
+  const featuredEpisode = getDebateEpisodeByNumber(featuredEpNum) || DEBATE_EPISODES[DEBATE_EPISODES.length - 1];
 
   // Dynamic Authors list
   const defaultAuthors = DEFAULT_AUTHORS_I18N[locale] || DEFAULT_AUTHORS_I18N.pt;
@@ -995,20 +1017,32 @@ export default function HomeNewPage({ params }: HomeNewProps) {
 
                   <div style={{ padding: 18, borderRadius: 14, background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.12)", marginBottom: 24 }}>
                     <span style={{ fontSize: 12, color: "#ff6b7a", fontWeight: 700, textTransform: "uppercase" }}>
-                      {t.debateFeatured}
+                      {locale === "en"
+                        ? `Featured Episode ${String(featuredEpisode.numero).padStart(2, "0")}`
+                        : locale === "es"
+                        ? `Episodio ${String(featuredEpisode.numero).padStart(2, "0")} Destacado`
+                        : `Episódio ${String(featuredEpisode.numero).padStart(2, "0")} em Destaque`}
                     </span>
                     <h4 style={{ fontSize: 17, margin: "4px 0 6px", color: "#fff" }}>
-                      {t.debateEpTitle}
+                      {locale === "en"
+                        ? featuredEpisode.titulo_en
+                        : locale === "es"
+                        ? featuredEpisode.titulo_es
+                        : featuredEpisode.titulo_pt}
                     </h4>
                     <p style={{ fontSize: 13.5, color: "#9fc0e5", margin: 0 }}>
-                      {t.debateEpDesc}
+                      {locale === "en"
+                        ? featuredEpisode.subtitulo_en || featuredEpisode.descricao_en
+                        : locale === "es"
+                        ? featuredEpisode.subtitulo_es || featuredEpisode.descricao_es
+                        : featuredEpisode.subtitulo_pt || featuredEpisode.descricao_pt}
                     </p>
                   </div>
 
                   {/* Action Buttons */}
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center", marginBottom: 20 }}>
                     <a
-                      href="https://open.spotify.com/episode/7hhh4RRDMS4xfx67QkUEZY?si=mkVupBTQSUOdg64qlboZ3Q"
+                      href={featuredEpisode.spotifyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
@@ -1032,7 +1066,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </a>
 
                     <Link
-                      href={`/${locale}/debate-new`}
+                      href={`/${locale}/debate-new?ep=${featuredEpisode.numero}`}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -1052,7 +1086,7 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                     </Link>
 
                     <Link
-                      href={`/${locale}/capitulo-new/8`}
+                      href={`/${locale}/capitulo-new/${featuredEpisode.capituloNum}`}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -1067,7 +1101,13 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                         textDecoration: "none",
                       }}
                     >
-                      <span>{locale === "en" ? "Chapter 8" : locale === "es" ? "Capítulo 8" : "Capítulo 8"}</span>
+                      <span>
+                        {locale === "en"
+                          ? `Chapter ${featuredEpisode.capituloNum}`
+                          : locale === "es"
+                          ? `Capítulo ${featuredEpisode.capituloNum}`
+                          : `Capítulo ${featuredEpisode.capituloNum}`}
+                      </span>
                       <span>→</span>
                     </Link>
                   </div>
@@ -1088,7 +1128,25 @@ export default function HomeNewPage({ params }: HomeNewProps) {
                 </div>
 
                 <div>
-                  <CustomVimeoPlayer locale={locale} />
+                  <CustomVimeoPlayer
+                    key={featuredEpisode.id}
+                    url={featuredEpisode.vimeoUrl}
+                    videoId={featuredEpisode.vimeoId}
+                    thumbnailUrl={featuredEpisode.vimeoThumbnailUrl || featuredEpisode.thumbnailUrl}
+                    premiereDate={featuredEpisode.dataEstreia}
+                    spotifyUrl={featuredEpisode.spotifyUrl}
+                    title={
+                      locale === "en"
+                        ? featuredEpisode.titulo_en
+                        : locale === "es"
+                        ? featuredEpisode.titulo_es
+                        : featuredEpisode.titulo_pt
+                    }
+                    guests={featuredEpisode.convidados.map((c) => c.nome).join(" & ")}
+                    locale={locale}
+                    autoplay={false}
+                    showPopOutButton={true}
+                  />
                 </div>
               </div>
             </div>

@@ -965,15 +965,23 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
 
 /**
  * Retorna o número do episódio padrão a ser colocado em evidência / destaque principal:
- * - Antes da estreia (ex: hoje antes das 18h), retorna o episódio mais recente liberado (Ep 4).
- * - A partir das 18h da estreia, passa a retornar automaticamente o episódio recém-estreado (Ep 5).
+ * - Se houver um episódio com estreia agendada (ex: hoje com contagem regressiva ativa para as 18h), ele tem prioridade máxima de destaque para a contagem.
+ * - A partir do momento da estreia (ou caso não haja estreia futura ativa), retorna o episódio mais recente publicado.
  */
 export function getDefaultFeaturedEpisodeNumber(): number {
+  const now = Date.now();
+  const upcomingEpisode = DEBATE_EPISODES.find(
+    (ep) => ep.dataEstreia && new Date(ep.dataEstreia).getTime() > now
+  );
+  if (upcomingEpisode) {
+    return upcomingEpisode.numero;
+  }
+
   const published = getPublishedDebateEpisodes();
   if (published.length > 0) {
     return Math.max(...published.map((ep) => ep.numero));
   }
-  return 1;
+  return DEBATE_EPISODES[DEBATE_EPISODES.length - 1]?.numero ?? 1;
 }
 
 export function formatPremiereBadge(dataEstreia?: string, locale: Locale = "pt"): string {
