@@ -190,6 +190,59 @@ const CHAPTER_HIGHLIGHTS_BY_EPISODE: Record<number, ChapterHighlightData> = {
   },
 };
 
+const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: string }> = {
+  1: {
+    pt: "Discussão com os autores sobre os conceitos fundamentais do equilíbrio sagital, parâmetros radiográficos e sua importância no planejamento cirúrgico e nos resultados clínicos.",
+    en: "Clinical discussion with the authors on fundamental concepts of sagittal balance, radiographic parameters, and surgical planning.",
+    es: "Discusión con los autores sobre los conceptos fundamentales del equilibrio sagital, parámetros radiográficos y planificación quirúrgica.",
+  },
+  2: {
+    pt: "Discussão com os autores sobre a biologia do enxerto ósseo, substitutos sintéticos, osteoindução e princípios essenciais para uma consolidação biológica sólida.",
+    en: "Clinical discussion on bone graft biology, synthetic substitutes, osteoinduction, and essentials for solid biological fusion.",
+    es: "Discusión sobre biología del injerto óseo, sustitutos sintéticos, osteoinducción y principios para una consolidación biológica sólida.",
+  },
+  3: {
+    pt: "Discussão com os autores sobre monitorização neurofisiológica intraoperatória (MNIO), mapeamento radicular contínuo e prevenção ativa de déficits neurológicos.",
+    en: "Discussion on intraoperative neurophysiological monitoring (IONM), continuous nerve root mapping, and prevention of neurological deficits.",
+    es: "Discusión sobre monitorización neurofisiológica intraoperatoria (MNIO), mapeo radicular continuo y prevención de déficits neurológicos.",
+  },
+  4: {
+    pt: "Discussão com os autores sobre a abordagem da coluna no politraumatizado sob as diretrizes do ATLS, triagem de fraturas instáveis e timing cirúrgico.",
+    en: "Discussion on spinal evaluation in polytrauma patients following ATLS guidelines, unstable fracture triage, and surgical timing.",
+    es: "Discusión sobre el abordaje de columna en politraumatizados según guías ATLS, triaje de fracturas inestables y tiempos quirúrgicos.",
+  },
+  5: {
+    pt: "Discussão com os autores sobre a classificação AO Spine no trauma toracolombar, avaliação do complexo ligamentar posterior e indicações de fixação percutânea.",
+    en: "Discussion on AO Spine thoracolumbar trauma classification, posterior ligamentous complex evaluation, and percutaneous fixation indications.",
+    es: "Discusión sobre clasificación AO Spine en trauma toracolumbar, evaluación del complejo ligamentario posterior y fijación percutánea.",
+  },
+  6: {
+    pt: "Discussão com os autores sobre o manejo precoce das escolioses, preservação do crescimento torácico e desenvolvimento da função alveolar pulmonar.",
+    en: "Discussion on early-onset scoliosis management, preservation of thoracic spine growth, and pulmonary alveolar development.",
+    es: "Discusión sobre el manejo temprano de escoliosis, preservación del crecimiento torácico y desarrollo alveolar pulmonar.",
+  },
+  7: {
+    pt: "Discussão com os autores sobre o tratamento conservador das escolioses, diretrizes SOSORT, biomecânica dos coletes ortopédicos e critérios de indicação.",
+    en: "Discussion on conservative scoliosis treatment, SOSORT guidelines, orthotic brace biomechanics, and clinical indications.",
+    es: "Discusión sobre tratamiento conservador de escoliosis, guías SOSORT, biomecánica de corsés ortopédicos y criterios clínicos.",
+  },
+  8: {
+    pt: "Discussão com os autores sobre a escoliose idiopática do adolescente, aplicação da classificação de Lenke para seleção de níveis e preservação de mobilidade.",
+    en: "Discussion on adolescent idiopathic scoliosis, Lenke classification application for fusion level selection, and motion preservation.",
+    es: "Discusión sobre escoliosis idiopática del adolescente, clasificación de Lenke para selección de niveles y preservación de movilidad.",
+  },
+  9: {
+    pt: "Discussão com os autores sobre a cascata degenerativa discal, correlação radiológica com as classificações de Pfirrmann e Modic e perspectivas da medicina regenerativa.",
+    en: "Clinical discussion with the authors on disc degeneration, radiologic correlation with Pfirrmann and Modic classifications, and regenerative therapies.",
+    es: "Discusión clínica con los autores sobre degeneración discal, correlación radiológica con Pfirrmann y Modic, y medicina regenerativa.",
+  },
+  10: {
+    pt: "Discussão com os autores sobre a instabilidade vertebral, o valor diagnóstico da radiografia dinâmica em carga e critérios de decisão entre descompressão e artrodese.",
+    en: "Clinical discussion on spinal instability, weight-bearing dynamic radiographs, and decision criteria between decompression and fusion.",
+    es: "Discusión clínica con los autores sobre inestabilidad vertebral, radiografías dinámicas en bipedestación y criterios entre descompresión y artrodesis.",
+  },
+};
+
 interface HomeFeaturedDebateSectionProps {
   locale: Locale;
 }
@@ -247,26 +300,29 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
       ? highlightData.chips_es
       : highlightData.chips_pt;
 
-  const episodeTitle =
-    locale === "en"
-      ? episode.titulo_en
+  const shortDescObj = DEBATE_SHORT_DESCRIPTIONS[episode.numero];
+  const episodeDescription = shortDescObj
+    ? locale === "en"
+      ? shortDescObj.en
       : locale === "es"
-      ? episode.titulo_es
-      : episode.titulo_pt;
+      ? shortDescObj.es
+      : shortDescObj.pt
+    : (locale === "en"
+        ? episode.descricao_en
+        : locale === "es"
+        ? episode.descricao_es
+        : episode.descricao_pt
+      )
+        .split(/(?<=\.)\s+/)
+        .slice(0, 2)
+        .join(" ");
 
-  const episodeSubtitle =
+  const episodeHeading =
     locale === "en"
-      ? episode.subtitulo_en || episode.capituloTitulo_en
+      ? `Episode ${String(episode.numero).padStart(2, "0")} – Chapter ${episode.capituloNum} ${episode.capituloTitulo_en || episode.capituloTitulo_pt}`
       : locale === "es"
-      ? episode.subtitulo_es || episode.capituloTitulo_es
-      : episode.subtitulo_pt || episode.capituloTitulo_pt;
-
-  const episodeDescription =
-    locale === "en"
-      ? episode.descricao_en
-      : locale === "es"
-      ? episode.descricao_es
-      : episode.descricao_pt;
+      ? `Episodio ${String(episode.numero).padStart(2, "0")} – Capítulo ${episode.capituloNum} ${episode.capituloTitulo_es || episode.capituloTitulo_pt}`
+      : `Episódio ${String(episode.numero).padStart(2, "0")} – Capítulo ${episode.capituloNum} ${episode.capituloTitulo_pt}`;
 
   const t = {
     badge: locale === "en" ? "Chapter" : locale === "es" ? "Capítulo" : "Capítulo",
@@ -397,7 +453,7 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
                   }
                   premiereDate={episode.dataEstreia}
                   spotifyUrl={episode.spotifyUrl}
-                  title={episodeTitle}
+                  title={episodeHeading}
                   guests={episode.convidados.map((c) => c.nome).join(" & ")}
                   locale={locale}
                   autoplay={false}
@@ -407,24 +463,15 @@ export default function HomeFeaturedDebateSection({ locale }: HomeFeaturedDebate
 
               {/* 2. Textos e Informações do Episódio */}
               <div className="lg:col-span-6 order-2 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#093c78] text-xs font-bold uppercase tracking-wider mb-3.5 w-max">
-                  <span className="w-2 h-2 rounded-full bg-[#f52238] animate-pulse" />
-                  <span>{t.videocastBadge}</span>
-                </div>
-
-                <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-1.5">
+                <p className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wide mb-2">
                   {t.videocastKicker}
                 </p>
 
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#001026] leading-tight tracking-tight mb-2">
-                  {episodeTitle}
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#001026] leading-tight tracking-tight mb-3">
+                  {episodeHeading}
                 </h3>
 
-                <p className="text-sm sm:text-base font-semibold text-[#093c78] mb-3">
-                  {episodeSubtitle}
-                </p>
-
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mb-6 line-clamp-3 sm:line-clamp-4">
                   {episodeDescription}
                 </p>
 
