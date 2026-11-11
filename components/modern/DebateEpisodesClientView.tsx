@@ -14,6 +14,7 @@ import {
 import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import { trackSpotifyClick } from "@/lib/analytics/track";
 import {
   Play,
   BookOpen,
@@ -133,7 +134,15 @@ export default function DebateEpisodesClientView({
           ? `Este episodio está programado para estrenarse en Spotify el ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}.`
           : `Este episódio está agendado e estará disponível no Spotify nesta ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}!`
       );
+      return;
     }
+
+    trackSpotifyClick({
+      episodeNumber: activeEpisode.numero,
+      episodeTitle: title,
+      spotifyUrl: activeEpisode.spotifyUrl || "",
+      sourceLocation: "debate_new_view",
+    });
   };
 
   const getEpisodeShareUrl = (epNum: number) => {
