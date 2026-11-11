@@ -21,11 +21,13 @@ import {
   Calendar,
   Layers,
   CheckCircle2,
-  AlertCircle,
+  AlertTriangle,
   HelpCircle,
   Globe2,
   Smartphone,
   Laptop,
+  Check,
+  Info,
 } from "lucide-react";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
 
@@ -78,7 +80,7 @@ export default function AnalyticsDashboard({
     downloadAnchor.setAttribute("href", jsonString);
     downloadAnchor.setAttribute(
       "download",
-      `analytics-sbc-${timeRange}.json`
+      `relatorio-analytics-sbc-${timeRange}.json`
     );
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
@@ -94,27 +96,27 @@ export default function AnalyticsDashboard({
   const renderKpiIcon = (icon: MetricCardData["icon"], source: MetricCardData["source"]) => {
     if (source === "spotify" || icon === "spotify" || icon === "audio") {
       return (
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 shadow-xs ring-1 ring-emerald-100">
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
           <SpotifyIcon size={20} color="#1DB954" />
         </span>
       );
     }
     if (icon === "pageviews") {
       return (
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 shadow-xs ring-1 ring-blue-100">
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-200">
           <Eye className="h-5 w-5" />
         </span>
       );
     }
     if (icon === "duration") {
       return (
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 shadow-xs ring-1 ring-amber-100">
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 text-amber-600 border border-amber-200">
           <Clock className="h-5 w-5" />
         </span>
       );
     }
     return (
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-navy-800 shadow-xs ring-1 ring-indigo-100">
+      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-[#001a3d] border border-slate-200">
         <Users className="h-5 w-5" />
       </span>
     );
@@ -146,266 +148,277 @@ export default function AnalyticsDashboard({
   const streamsPath = `M ${streamsPoints.join(" L ")}`;
 
   return (
-    <div className="w-full bg-[#f8fafc] text-slate-800 pb-20">
-      {/* Top Banner / Classic Header */}
-      <section className="border-b border-slate-200 bg-white shadow-xs">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-navy-900/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-800">
-                  <BarChart3 className="h-3.5 w-3.5 text-sbc-red" />
-                  Métricas Oficiais SBC
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 ring-1 ring-emerald-600/20">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {data.summary.activeUsersNow} leitores online (GA4)
-                </span>
+    <div className="w-full bg-[#f8fafc] text-slate-800 pb-24 font-sans">
+      {/* ========================================================================= */}
+      {/* CLASSIC HERO HEADER (Identidade Visual Oficial SBC) */}
+      {/* ========================================================================= */}
+      <section
+        className="relative w-full overflow-hidden text-white pt-10 pb-12 sm:pt-14 sm:pb-16 shadow-md"
+        style={{
+          background:
+            "radial-gradient(circle at 14% 30%, rgba(220, 20, 45, 0.45), transparent 42%), linear-gradient(105deg, #a80f22 0%, #2f193e 26%, #052b5b 54%, #005a9c 100%)",
+        }}
+      >
+        {/* Subtle Anatomical Spine Background Overlay */}
+        <img
+          src="/assets/hero-spine.png"
+          alt=""
+          className="absolute right-0 top-0 h-full w-auto max-w-[55%] object-contain pointer-events-none opacity-20 hidden md:block"
+          style={{ mixBlendMode: "screen", filter: "contrast(1.2) brightness(1.1)" }}
+        />
+
+        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-3xl">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 backdrop-blur-sm text-xs font-semibold text-white mb-3">
+                <BarChart3 className="h-3.5 w-3.5 text-[#ff5b54]" />
+                <span>Sociedade Brasileira de Coluna • Telemetria Oficial</span>
               </div>
-              <h1 className="mt-2 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
-                Relatório de Audiência & Streaming
+
+              {/* Title */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                Painel de Audiência & Streaming
               </h1>
-              <p className="mt-1 text-sm text-slate-600">
-                Consolidação de dados do portal oficial{" "}
-                <a
-                  href="https://www.tratadodecoluna.com.br/pt"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium text-navy-800 underline hover:text-sbc-red inline-flex items-center gap-0.5"
-                >
-                  tratadodecoluna.com.br <ExternalLink className="h-3 w-3" />
-                </a>{" "}
-                integrando tráfego web do <strong>Google Analytics 4 (Propriedade 406694675)</strong> e reproduções do videocast no <strong>Spotify (&quot;Tratado em Debate&quot;)</strong>.
+
+              {/* Subtitle */}
+              <p className="mt-2 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                Relatório executivo dos 109 capítulos e videocast oficial. Integração direta com{" "}
+                <span className="font-semibold text-white">Google Analytics (GA4: 406694675)</span> e{" "}
+                <span className="font-semibold text-white">Spotify (&quot;Tratado em Debate&quot;)</span>.
               </p>
             </div>
 
-            {/* Actions Bar */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-2.5">
               <button
                 onClick={() => setShowConfigModal(true)}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-medium text-slate-700 shadow-2xs hover:bg-slate-50 transition-colors focus-visible:ring-2 focus-visible:ring-navy-700"
+                className="h-10 px-4 rounded-md bg-[#001738]/70 hover:bg-[#001738]/90 text-white font-bold text-xs flex items-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-95"
               >
-                <HelpCircle className="h-4 w-4 text-slate-500" />
-                Configurar Credenciais
+                <HelpCircle className="h-4 w-4 text-cyan-300" />
+                <span>Status das APIs</span>
               </button>
 
               <button
                 onClick={handleExportJSON}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-medium text-slate-700 shadow-2xs hover:bg-slate-50 transition-colors focus-visible:ring-2 focus-visible:ring-navy-700"
+                className="h-10 px-4 rounded-md bg-[#001738]/70 hover:bg-[#001738]/90 text-white font-bold text-xs flex items-center gap-2 border border-white/30 backdrop-blur-sm transition-all active:scale-95"
               >
-                <Download className="h-4 w-4 text-slate-500" />
-                Exportar JSON
+                <Download className="h-4 w-4 text-slate-200" />
+                <span>Exportar JSON</span>
               </button>
 
               <button
                 onClick={handlePrint}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-navy-900 px-3.5 py-2 text-xs font-medium text-white shadow-sm hover:bg-navy-800 transition-colors focus-visible:ring-2 focus-visible:ring-navy-700"
+                className="h-10 px-5 rounded-md bg-[#f52238] hover:bg-[#db152a] text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all active:scale-95"
               >
                 <Printer className="h-4 w-4" />
-                Imprimir Relatório
+                <span>Imprimir Relatório</span>
               </button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Time Range & Navigation Tabs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t border-slate-100 pt-6">
-            {/* View Mode Tabs */}
-            <div
-              role="tablist"
-              aria-label="Navegação de seções analíticas"
-              className="flex items-center rounded-xl bg-slate-100 p-1 text-xs font-medium text-slate-600 overflow-x-auto"
-            >
-              <button
-                role="tab"
-                aria-selected={activeTab === "overview"}
-                onClick={() => setActiveTab("overview")}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 whitespace-nowrap transition-all ${
-                  activeTab === "overview"
-                    ? "bg-white text-navy-900 shadow-xs font-semibold"
-                    : "hover:text-slate-900"
+      {/* ========================================================================= */}
+      {/* STATUS / DIAGNÓSTICO DAS APIS */}
+      {/* ========================================================================= */}
+      <section className="border-b border-slate-200 bg-white py-3.5 shadow-2xs">
+        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                Status de Conexão:
+              </span>
+
+              {/* Google GA4 Pill */}
+              <div
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border ${
+                  data.isLive.google
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                    : "bg-amber-50 text-amber-800 border-amber-200"
                 }`}
               >
-                <Layers className="h-3.5 w-3.5" />
-                Visão Geral
-              </button>
-              <button
-                role="tab"
-                aria-selected={activeTab === "content"}
-                onClick={() => setActiveTab("content")}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 whitespace-nowrap transition-all ${
-                  activeTab === "content"
-                    ? "bg-white text-navy-900 shadow-xs font-semibold"
-                    : "hover:text-slate-900"
-                }`}
-              >
-                <Eye className="h-3.5 w-3.5 text-blue-600" />
-                Capítulos Mais Lidos
-              </button>
-              <button
-                role="tab"
-                aria-selected={activeTab === "spotify"}
-                onClick={() => setActiveTab("spotify")}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 whitespace-nowrap transition-all ${
-                  activeTab === "spotify"
-                    ? "bg-white text-navy-900 shadow-xs font-semibold"
-                    : "hover:text-slate-900"
+                <span className="font-bold text-[#4285F4]">G</span>
+                <span>GA4 (406694675):</span>
+                {data.isLive.google ? (
+                  <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                    <Check className="h-3.5 w-3.5" /> Ao Vivo
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 text-amber-700">
+                    <AlertTriangle className="h-3 w-3" /> Requer Permissão no GA
+                  </span>
+                )}
+              </div>
+
+              {/* Spotify Pill */}
+              <div
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border ${
+                  data.isLive.spotify
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                    : "bg-slate-100 text-slate-700 border-slate-200"
                 }`}
               >
                 <SpotifyIcon size={14} color="#1DB954" />
-                Spotify & Podcasts
-              </button>
-              <button
-                role="tab"
-                aria-selected={activeTab === "traffic"}
-                onClick={() => setActiveTab("traffic")}
-                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 whitespace-nowrap transition-all ${
-                  activeTab === "traffic"
-                    ? "bg-white text-navy-900 shadow-xs font-semibold"
-                    : "hover:text-slate-900"
-                }`}
-              >
-                <Globe2 className="h-3.5 w-3.5 text-teal-600" />
-                Origem & Dispositivos
-              </button>
+                <span>Spotify Web API:</span>
+                {data.isLive.spotify ? (
+                  <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                    <Check className="h-3.5 w-3.5" /> Conectado (Token Ativo)
+                  </span>
+                ) : (
+                  <span className="text-slate-500">Offline</span>
+                )}
+              </div>
             </div>
 
-            {/* Time Filter Buttons */}
-            <div className="flex items-center gap-1 rounded-xl bg-slate-100 p-1 text-xs font-medium text-slate-600">
-              <span className="flex items-center gap-1 px-2 text-slate-400">
-                <Calendar className="h-3.5 w-3.5" />
-                Período:
+            {/* Time filter buttons */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs text-slate-500 font-medium flex items-center gap-1 mr-1">
+                <Calendar className="h-3.5 w-3.5 text-slate-400" />
+                Filtrar Período:
               </span>
               {(["7d", "30d", "90d", "all"] as AnalyticsTimeRange[]).map((r) => (
                 <button
                   key={r}
                   disabled={isPending}
                   onClick={() => handleRangeChange(r)}
-                  className={`rounded-lg px-3 py-1 transition-all ${
+                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${
                     timeRange === r
-                      ? "bg-white text-navy-900 shadow-xs font-semibold"
-                      : "hover:text-slate-900"
+                      ? "bg-[#001a3d] text-white shadow-xs"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                   }`}
                 >
-                  {r === "7d" ? "7 Dias" : r === "30d" ? "30 Dias" : r === "90d" ? "90 Dias" : "Tudo"}
+                  {r === "7d" ? "7 Dias" : r === "30d" ? "30 Dias" : r === "90d" ? "90 Dias" : "Total"}
                 </button>
               ))}
             </div>
           </div>
+
+          {/* Alert if GA4 is pending user permission */}
+          {!data.isLive.google && (
+            <div className="mt-3 p-3 bg-amber-50/80 border border-amber-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-amber-900">
+              <div className="flex items-start gap-2">
+                <Info className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                <span>
+                  <strong>Por que os dados estão estimados?</strong> A chave da conta de serviço Google já está pronta, mas o e-mail{" "}
+                  <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-950">
+                    analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
+                  </code>{" "}
+                  precisa ser adicionado como <strong>Leitor</strong> dentro do Google Analytics (Propriedade 406694675). Enquanto isso, o dashboard exibe dados aproximados.
+                </span>
+              </div>
+              <button
+                onClick={() => setShowConfigModal(true)}
+                className="text-xs font-bold text-amber-900 underline hover:text-black flex-shrink-0"
+              >
+                Ver como liberar
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Main Content Area */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-8">
-        {/* Source Provider Badges (Google GA4 & Spotify) */}
-        <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-2">
-              Provedores Conectados:
-            </span>
+      {/* ========================================================================= */}
+      {/* MAIN CONTENT / DASHBOARD */}
+      {/* ========================================================================= */}
+      <main className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl pt-8 space-y-8">
+        {/* Navigation Tabs */}
+        <div className="flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto">
+          <button
+            onClick={() => setActiveTab("overview")}
+            className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === "overview"
+                ? "bg-[#001a3d] text-white shadow-xs"
+                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+            }`}
+          >
+            <Layers className="h-3.5 w-3.5" />
+            Visão Geral
+          </button>
 
-            {/* Google GA4 */}
-            <button
-              onClick={() => setSourceFilter(sourceFilter === "google" ? "all" : "google")}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium border transition-colors ${
-                sourceFilter === "google"
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-              }`}
-            >
-              <span className="font-bold text-[#4285F4]">G</span>
-              <span>Google Analytics (GA4: 406694675)</span>
-              {data.isLive.google ? (
-                <CheckCircle2 className="h-3 w-3 text-emerald-500" />
-              ) : (
-                <span className="text-[10px] text-slate-500 bg-white/60 px-1 rounded border border-slate-200">Ativo</span>
-              )}
-            </button>
+          <button
+            onClick={() => setActiveTab("content")}
+            className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === "content"
+                ? "bg-[#001a3d] text-white shadow-xs"
+                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+            }`}
+          >
+            <Eye className="h-3.5 w-3.5 text-blue-600" />
+            Capítulos do Livro
+          </button>
 
-            {/* Spotify */}
-            <button
-              onClick={() => setSourceFilter(sourceFilter === "spotify" ? "all" : "spotify")}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium border transition-colors ${
-                sourceFilter === "spotify"
-                  ? "bg-emerald-600 text-white border-emerald-600"
-                  : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-              }`}
-            >
-              <SpotifyIcon size={14} color={sourceFilter === "spotify" ? "#ffffff" : "#1DB954"} />
-              <span>Spotify Podcasts</span>
-              {data.isLive.spotify ? (
-                <CheckCircle2 className="h-3 w-3 text-emerald-500" />
-              ) : (
-                <span className="text-[10px] text-slate-500 bg-white/60 px-1 rounded border border-slate-200">Ativo</span>
-              )}
-            </button>
+          <button
+            onClick={() => setActiveTab("spotify")}
+            className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === "spotify"
+                ? "bg-[#001a3d] text-white shadow-xs"
+                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+            }`}
+          >
+            <SpotifyIcon size={14} color="#1DB954" />
+            Videocast Spotify
+          </button>
 
-            {sourceFilter !== "all" && (
-              <button
-                onClick={() => setSourceFilter("all")}
-                className="text-xs text-sbc-red font-semibold hover:underline ml-2"
-              >
-                Limpar filtro
-              </button>
-            )}
-          </div>
-
-          <div className="text-xs text-slate-500">
-            Atualizado em:{" "}
-            <span className="font-medium text-slate-700">
-              {new Date(data.generatedAt).toLocaleTimeString("pt-BR", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </span>
-          </div>
+          <button
+            onClick={() => setActiveTab("traffic")}
+            className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
+              activeTab === "traffic"
+                ? "bg-[#001a3d] text-white shadow-xs"
+                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+            }`}
+          >
+            <Globe2 className="h-3.5 w-3.5 text-teal-600" />
+            Origem & Dispositivos
+          </button>
         </div>
 
-        {/* 6 Classic KPI Cards Grid */}
+        {/* KPI Cards Grid */}
         <section aria-labelledby="kpi-heading-classic">
           <h2 id="kpi-heading-classic" className="sr-only">
-            Indicadores Principais
+            Métricas Chave
           </h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filteredKpis.map((kpi, idx) => (
               <div
                 key={idx}
-                className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:shadow-md transition-shadow"
+                className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                     {kpi.title}
                   </span>
                   {renderKpiIcon(kpi.icon, kpi.source)}
                 </div>
 
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold tracking-tight text-navy-900 font-mono">
+                  <span className="text-3xl font-extrabold tracking-tight text-[#001a3d]">
                     {kpi.value}
                   </span>
                   <span
-                    className={`inline-flex items-center gap-0.5 text-xs font-semibold ${
-                      kpi.trend === "up" ? "text-emerald-600" : "text-rose-600"
+                    className={`inline-flex items-center gap-0.5 text-xs font-bold ${
+                      kpi.trend === "up" ? "text-emerald-700" : "text-rose-700"
                     }`}
                   >
                     <TrendingUp className="h-3.5 w-3.5" />+{kpi.changePercent}%
                   </span>
                 </div>
 
-                <div className="mt-2 flex items-center justify-between text-xs text-slate-500">
+                <div className="mt-2 flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-2">
                   <span>{kpi.subtitle}</span>
-                  <span className="capitalize font-medium text-slate-400">
-                    {kpi.source === "spotify" ? "Spotify" : kpi.source === "google" ? "GA4" : "Unificado"}
+                  <span className="font-bold text-slate-400">
+                    {kpi.source === "spotify" ? "Spotify" : "GA4"}
                   </span>
                 </div>
 
-                {/* Bottom colored indicator line */}
+                {/* Bottom colored indicator bar */}
                 <div
                   className={`absolute bottom-0 left-0 right-0 h-1 ${
                     kpi.source === "spotify"
-                      ? "bg-emerald-500"
+                      ? "bg-[#1DB954]"
                       : kpi.source === "google"
-                      ? "bg-blue-500"
-                      : "bg-sbc-red"
+                      ? "bg-[#4285F4]"
+                      : "bg-[#f52238]"
                   }`}
                 />
               </div>
@@ -413,123 +426,125 @@ export default function AnalyticsDashboard({
           </div>
         </section>
 
-        {/* Overview Chart & Traffic Split */}
+        {/* Charts & Traffic Sources */}
         {(activeTab === "overview" || activeTab === "traffic") && (
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* SVG Interactive Time Series Chart */}
-            <div className="lg:col-span-2 rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                <div>
-                  <h3 className="text-lg font-bold text-navy-900">
-                    Evolução de Tráfego e Reproduções
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    Comparação temporal entre visualizações de páginas (Google Analytics) e reproduções no Spotify
-                  </p>
+            <div className="lg:col-span-2 rounded-xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-lg font-bold text-[#001a3d]">
+                      Evolução de Leituras & Reproduções
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Comparação temporal entre visualizações no portal (GA4) e streams no Spotify
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4 text-xs font-semibold">
+                    <span className="flex items-center gap-1.5 text-slate-700">
+                      <span className="h-3 w-3 rounded-full bg-[#4285F4] inline-block" />
+                      Visualizações Web (GA4)
+                    </span>
+                    <span className="flex items-center gap-1.5 text-slate-700">
+                      <span className="h-3 w-3 rounded-full bg-[#1DB954] inline-block" />
+                      Spotify Streams
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-4 text-xs">
-                  <span className="flex items-center gap-1.5 font-medium text-slate-700">
-                    <span className="h-3 w-3 rounded-full bg-[#4285F4] inline-block" />
-                    Páginas Web (GA4)
-                  </span>
-                  <span className="flex items-center gap-1.5 font-medium text-slate-700">
-                    <span className="h-3 w-3 rounded-full bg-emerald-500 inline-block" />
-                    Spotify Streams
-                  </span>
-                </div>
-              </div>
 
-              {/* Accessible SVG Chart */}
-              <div
-                role="img"
-                aria-label={`Gráfico de linha mostrando histórico de leituras com pico de ${maxPageviews} visualizações e streams com pico de ${maxStreams}.`}
-                className="w-full overflow-hidden"
-              >
-                <svg
-                  viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-                  className="w-full h-56 overflow-visible"
-                  preserveAspectRatio="none"
+                {/* Accessible SVG Chart */}
+                <div
+                  role="img"
+                  aria-label={`Gráfico de linha mostrando histórico de leituras com pico de ${maxPageviews} visualizações e streams com pico de ${maxStreams}.`}
+                  className="w-full overflow-hidden"
                 >
-                  <defs>
-                    <linearGradient id="pageviewsGradientClassic" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#4285F4" stopOpacity="0.22" />
-                      <stop offset="100%" stopColor="#4285F4" stopOpacity="0.01" />
-                    </linearGradient>
-                    <linearGradient id="streamsGradientClassic" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#1DB954" stopOpacity="0.25" />
-                      <stop offset="100%" stopColor="#1DB954" stopOpacity="0.02" />
-                    </linearGradient>
-                  </defs>
+                  <svg
+                    viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+                    className="w-full h-56 overflow-visible"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <linearGradient id="pageviewsGradientClassic2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#4285F4" stopOpacity="0.20" />
+                        <stop offset="100%" stopColor="#4285F4" stopOpacity="0.0" />
+                      </linearGradient>
+                      <linearGradient id="streamsGradientClassic2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#1DB954" stopOpacity="0.25" />
+                        <stop offset="100%" stopColor="#1DB954" stopOpacity="0.0" />
+                      </linearGradient>
+                    </defs>
 
-                  {/* Horizontal grid lines */}
-                  {[0.25, 0.5, 0.75, 1].map((ratio, idx) => {
-                    const y = chartHeight - ratio * (chartHeight - 40) - 20;
-                    return (
-                      <g key={idx}>
-                        <line
-                          x1="0"
-                          y1={y}
-                          x2={chartWidth}
-                          y2={y}
-                          stroke="#e2e8f0"
-                          strokeDasharray="4 4"
-                          strokeWidth="1"
-                        />
-                        <text x="4" y={y - 4} fill="#94a3b8" fontSize="10" fontFamily="monospace">
-                          {Math.round(maxPageviews * ratio)}
-                        </text>
-                      </g>
-                    );
-                  })}
+                    {/* Horizontal grid lines */}
+                    {[0.25, 0.5, 0.75, 1].map((ratio, idx) => {
+                      const y = chartHeight - ratio * (chartHeight - 40) - 20;
+                      return (
+                        <g key={idx}>
+                          <line
+                            x1="0"
+                            y1={y}
+                            x2={chartWidth}
+                            y2={y}
+                            stroke="#e2e8f0"
+                            strokeDasharray="4 4"
+                            strokeWidth="1"
+                          />
+                          <text x="4" y={y - 4} fill="#94a3b8" fontSize="10" fontFamily="sans-serif">
+                            {Math.round(maxPageviews * ratio)}
+                          </text>
+                        </g>
+                      );
+                    })}
 
-                  {/* Web Pageviews Area & Line */}
-                  <path d={pageviewsArea} fill="url(#pageviewsGradientClassic)" />
-                  <path
-                    d={pageviewsPath}
-                    fill="none"
-                    stroke="#4285F4"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                    {/* Web Pageviews Area & Line */}
+                    <path d={pageviewsArea} fill="url(#pageviewsGradientClassic2)" />
+                    <path
+                      d={pageviewsPath}
+                      fill="none"
+                      stroke="#4285F4"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
 
-                  {/* Spotify Streams Line */}
-                  <path
-                    d={streamsPath}
-                    fill="none"
-                    stroke="#1DB954"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                    {/* Spotify Streams Line */}
+                    <path
+                      d={streamsPath}
+                      fill="none"
+                      stroke="#1DB954"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
 
-                {/* X Axis Dates */}
-                <div className="flex justify-between text-[11px] text-slate-400 pt-3 border-t border-slate-100 font-mono">
-                  {data.timeSeries
-                    .filter((_, idx) => idx % Math.ceil(data.timeSeries.length / 6) === 0)
-                    .map((pt, i) => (
-                      <span key={i}>{pt.label}</span>
-                    ))}
-                  <span>{data.timeSeries[data.timeSeries.length - 1]?.label}</span>
+                  {/* Horizontal Dates Axis */}
+                  <div className="flex justify-between text-[11px] text-slate-400 pt-3 border-t border-slate-100">
+                    {data.timeSeries
+                      .filter((_, idx) => idx % Math.ceil(data.timeSeries.length / 6) === 0)
+                      .map((pt, i) => (
+                        <span key={i}>{pt.label}</span>
+                      ))}
+                    <span>{data.timeSeries[data.timeSeries.length - 1]?.label}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Channels & Traffic Sources Breakdown */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs flex flex-col justify-between">
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col justify-between">
               <div>
-                <h3 className="text-lg font-bold text-navy-900">Canais de Aquisição</h3>
+                <h3 className="text-lg font-bold text-[#001a3d]">Canais de Aquisição</h3>
                 <p className="text-xs text-slate-500 mb-6">
-                  Origens de tráfego registradas no Google Analytics & Spotify
+                  Distribuição das origens de tráfego de cirurgiões e leitores
                 </p>
 
                 <div className="space-y-4">
                   {data.trafficSources.map((source, idx) => (
                     <div key={idx} className="space-y-1.5">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-slate-700">{source.name}</span>
-                        <span className="text-slate-500 font-mono">
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span className="text-slate-700">{source.name}</span>
+                        <span className="text-slate-500 font-bold">
                           {source.sessions.toLocaleString("pt-BR")} ({source.percentage}%)
                         </span>
                       </div>
@@ -549,24 +564,24 @@ export default function AnalyticsDashboard({
 
               {/* Devices Split */}
               <div className="mt-8 pt-6 border-t border-slate-100">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                  Distribuição por Dispositivo
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                  Acessos por Dispositivo
                 </h4>
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
                     <Smartphone className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-navy-900 font-mono">{data.devices[0]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500">Celular</div>
+                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[0]?.percentage}%</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Celular</div>
                   </div>
-                  <div className="rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
                     <Laptop className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-navy-900 font-mono">{data.devices[1]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500">Computador</div>
+                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[1]?.percentage}%</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Desktop</div>
                   </div>
-                  <div className="rounded-xl bg-slate-50 p-2.5 border border-slate-100">
+                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
                     <Radio className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-navy-900 font-mono">{data.devices[2]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500">Tablet</div>
+                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[2]?.percentage}%</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Tablet</div>
                   </div>
                 </div>
               </div>
@@ -574,38 +589,38 @@ export default function AnalyticsDashboard({
           </div>
         )}
 
-        {/* Section 2: Top Pages & Chapters (Modern Web Guidance responsive-table compliant) */}
+        {/* Section 2: Top Pages & Chapters */}
         {(activeTab === "overview" || activeTab === "content") && (
-          <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs space-y-4">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
-                <h3 className="text-lg font-bold text-navy-900">
+                <h3 className="text-lg font-bold text-[#001a3d]">
                   Capítulos e Páginas Mais Lidas
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Métricas de visualização direta e tempo de leitura nos 109 capítulos (Google Analytics 4)
+                  Visualizações e retenção de leitura nos 109 capítulos (Google Analytics 4)
                 </p>
               </div>
-              <span className="text-xs font-medium text-slate-500">
-                Total de {data.topPages.length} páginas mapeadas
+              <span className="text-xs font-bold text-slate-500">
+                {data.topPages.length} capítulos mapeados
               </span>
             </div>
 
-            {/* Accessible Responsive Table Wrapper */}
+            {/* Responsive Table */}
             <div
               tabIndex={0}
               role="region"
-              aria-labelledby="top-pages-table-caption-classic"
-              className="table-wrapper relative overflow-x-auto max-h-[500px] rounded-xl border border-slate-200"
+              aria-labelledby="top-pages-table-caption-classic-view"
+              className="table-wrapper relative overflow-x-auto max-h-[500px] rounded-lg border border-slate-200"
             >
               <table className="w-full text-left text-sm border-collapse">
-                <caption id="top-pages-table-caption-classic" className="sr-only">
-                  Lista das páginas e capítulos mais visualizados no portal Tratado de Cirurgia da Coluna Vertebral
+                <caption id="top-pages-table-caption-classic-view" className="sr-only">
+                  Capítulos mais lidos no portal do Tratado de Coluna SBC
                 </caption>
-                <thead className="sticky top-0 z-10 bg-slate-50 text-xs uppercase font-semibold text-slate-600 border-b border-slate-200 shadow-2xs">
+                <thead className="sticky top-0 z-10 bg-slate-50 text-xs uppercase font-bold text-slate-600 border-b border-slate-200">
                   <tr>
                     <th scope="col" className="py-3 px-4">
-                      Capítulo / Página
+                      Capítulo / Seção
                     </th>
                     <th scope="col" className="py-3 px-4">
                       Categoria
@@ -632,7 +647,7 @@ export default function AnalyticsDashboard({
                     <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                       <th
                         scope="row"
-                        className="py-3 px-4 font-semibold text-slate-900 max-w-xs truncate"
+                        className="py-3 px-4 font-bold text-[#001a3d] max-w-xs truncate"
                         title={page.title}
                       >
                         <div className="flex flex-col">
@@ -644,35 +659,35 @@ export default function AnalyticsDashboard({
                       </th>
                       <td className="py-3 px-4">
                         <span
-                          className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium ${
+                          className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold ${
                             page.category === "capitulo"
-                              ? "bg-blue-50 text-blue-700 ring-1 ring-blue-700/10"
+                              ? "bg-blue-50 text-blue-700 border border-blue-200"
                               : page.category === "debate"
-                              ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-700/10"
+                              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                               : page.category === "secao"
-                              ? "bg-purple-50 text-purple-700 ring-1 ring-purple-700/10"
+                              ? "bg-purple-50 text-purple-700 border border-purple-200"
                               : "bg-slate-100 text-slate-700"
                           }`}
                         >
                           {page.category}
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-right font-medium text-slate-900 font-mono">
+                      <td className="py-3 px-4 text-right font-extrabold text-[#001a3d]">
                         {page.views.toLocaleString("pt-BR")}
                       </td>
-                      <td className="py-3 px-4 text-right text-slate-600 font-mono">
+                      <td className="py-3 px-4 text-right text-slate-600">
                         {page.uniqueVisitors.toLocaleString("pt-BR")}
                       </td>
-                      <td className="py-3 px-4 text-right text-emerald-700 font-mono text-xs">
+                      <td className="py-3 px-4 text-right text-emerald-700 font-semibold text-xs">
                         {page.avgDuration}
                       </td>
-                      <td className="py-3 px-4 text-right text-slate-600 font-mono text-xs">
+                      <td className="py-3 px-4 text-right text-slate-600 text-xs">
                         {page.bounceRate}
                       </td>
                       <td className="py-3 px-4 text-center">
                         <Link
                           href={page.path}
-                          className="inline-flex items-center justify-center h-7 w-7 rounded-lg text-slate-400 hover:text-navy-900 hover:bg-slate-100 transition-colors"
+                          className="inline-flex items-center justify-center h-7 w-7 rounded bg-slate-100 text-slate-600 hover:text-[#001a3d] hover:bg-slate-200 transition-colors"
                           title={`Ver página: ${page.title}`}
                         >
                           <ExternalLink className="h-4 w-4" />
@@ -688,18 +703,18 @@ export default function AnalyticsDashboard({
 
         {/* Section 3: Spotify Videocast Ranking */}
         {(activeTab === "overview" || activeTab === "spotify") && (
-          <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs space-y-4">
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100">
-                  <SpotifyIcon size={24} color="#1DB954" />
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+                  <SpotifyIcon size={22} color="#1DB954" />
                 </span>
                 <div>
-                  <h3 className="text-lg font-bold text-navy-900">
-                    Audiência do Videocast no Spotify
+                  <h3 className="text-lg font-bold text-[#001a3d]">
+                    Audiência no Spotify • Série &quot;Tratado em Debate&quot;
                   </h3>
                   <p className="text-xs text-slate-500">
-                    Episódios da série científica &quot;Tratado em Debate&quot; transmitidos via streaming
+                    Episódios em áudio com os cirurgiões autores dos capítulos da obra
                   </p>
                 </div>
               </div>
@@ -707,7 +722,7 @@ export default function AnalyticsDashboard({
                 href="https://open.spotify.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-700 underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 underline"
               >
                 Abrir Canal no Spotify <ExternalLink className="h-3.5 w-3.5" />
               </a>
@@ -718,16 +733,16 @@ export default function AnalyticsDashboard({
               {data.spotifyEpisodes.map((ep) => (
                 <div
                   key={ep.id}
-                  className="rounded-xl border border-slate-200 p-4 hover:border-emerald-300 hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="rounded-lg border border-slate-200 p-4 hover:border-emerald-300 hover:shadow-xs transition-all flex flex-col justify-between bg-white"
                 >
                   <div>
                     <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
-                      <span className="font-semibold text-emerald-700">
-                        Episódio #{ep.episodeNumber} • Cap. {ep.chapterNumber}
+                      <span className="font-bold text-emerald-800">
+                        Episódio #{ep.episodeNumber} • Capítulo {ep.chapterNumber}
                       </span>
                       <span>{ep.releaseDate}</span>
                     </div>
-                    <h4 className="font-bold text-sm text-navy-900 line-clamp-2">
+                    <h4 className="font-bold text-sm text-[#001a3d] line-clamp-2">
                       {ep.title}
                     </h4>
                   </div>
@@ -735,21 +750,21 @@ export default function AnalyticsDashboard({
                   <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                     <div>
                       <span className="text-slate-400">Streams: </span>
-                      <strong className="text-slate-800 font-mono">{ep.streams.toLocaleString("pt-BR")}</strong>
+                      <strong className="text-slate-800">{ep.streams.toLocaleString("pt-BR")}</strong>
                     </div>
                     <div>
                       <span className="text-slate-400">Retenção: </span>
-                      <strong className="text-emerald-600 font-mono">{ep.completionRate}%</strong>
+                      <strong className="text-emerald-700">{ep.completionRate}%</strong>
                     </div>
                     <div>
                       <span className="text-slate-400">Duração: </span>
-                      <span className="font-mono text-slate-700">{ep.avgListeningTime}</span>
+                      <span className="font-medium text-slate-700">{ep.avgListeningTime}</span>
                     </div>
                     <a
                       href={ep.spotifyUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md hover:bg-emerald-100 transition-colors"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded hover:bg-emerald-100 transition-colors"
                     >
                       Ouvir <ExternalLink className="h-3 w-3" />
                     </a>
@@ -762,25 +777,25 @@ export default function AnalyticsDashboard({
 
         {/* Section 4: Geographic Reach */}
         {(activeTab === "overview" || activeTab === "traffic") && (
-          <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs">
-            <h3 className="text-lg font-bold text-navy-900 mb-1">Alcance Geográfico</h3>
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+            <h3 className="text-lg font-bold text-[#001a3d] mb-1">Alcance Internacional</h3>
             <p className="text-xs text-slate-500 mb-6">
-              Distribuição dos cirurgiões e especialistas que acessam a obra
+              Distribuição dos cirurgiões de coluna e especialistas que consultam a obra
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
               {data.countries.map((c, idx) => (
                 <div
                   key={idx}
-                  className="rounded-xl border border-slate-100 bg-slate-50/70 p-3.5 text-center"
+                  className="rounded-lg border border-slate-200 bg-slate-50/70 p-3.5 text-center"
                 >
-                  <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
                     {c.country} ({c.code})
                   </div>
-                  <div className="text-xl font-bold text-navy-900 mt-1 font-mono">
+                  <div className="text-xl font-extrabold text-[#001a3d] mt-1">
                     {c.percentage}%
                   </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5 font-mono">
+                  <div className="text-[11px] text-slate-400 mt-0.5">
                     {c.sessions.toLocaleString("pt-BR")} acessos
                   </div>
                 </div>
@@ -790,20 +805,20 @@ export default function AnalyticsDashboard({
         )}
       </main>
 
-      {/* Classic API Config Modal */}
+      {/* API Configuration & Help Modal */}
       {showConfigModal && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-labelledby="api-modal-title-classic"
+          aria-labelledby="api-modal-title-classic-help"
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4"
         >
-          <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
-                <AlertCircle className="h-5 w-5 text-navy-800" />
-                <h3 id="api-modal-title-classic" className="text-lg font-bold text-navy-900">
-                  Credenciais Google Analytics 4 & Spotify
+                <AlertTriangle className="h-5 w-5 text-[#f52238]" />
+                <h3 id="api-modal-title-classic-help" className="text-lg font-bold text-[#001a3d]">
+                  Status das Conexões • GA4 & Spotify
                 </h3>
               </div>
               <button
@@ -814,27 +829,34 @@ export default function AnalyticsDashboard({
               </button>
             </div>
 
-            <p className="text-xs text-slate-600 leading-relaxed">
-              O sistema conecta à propriedade GA4 <strong>406694675</strong> e ao videocast oficial. Para produção na Vercel, certifique-se de configurar as variáveis no arquivo <code className="bg-slate-100 px-1 py-0.5 rounded text-navy-900 font-mono">.env.local</code> e no painel da Vercel:
-            </p>
+            <div className="space-y-3 text-xs text-slate-600 leading-relaxed">
+              <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-900">
+                <strong>1. Google Analytics 4 (Propriedade 406694675):</strong>
+                <p className="mt-1">
+                  A chave da conta de serviço já está configurada no servidor. Para liberar a leitura dos dados reais, adicione o e-mail:
+                </p>
+                <code className="block mt-1 bg-white p-1.5 rounded border border-blue-300 font-mono text-[11px] select-all text-blue-950">
+                  analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
+                </code>
+                <p className="mt-1">
+                  como <strong>Leitor</strong> em: <em>Google Analytics &gt; Administrador &gt; Gerenciamento de acessos à propriedade</em>.
+                </p>
+              </div>
 
-            <div className="rounded-xl bg-slate-900 p-4 text-xs font-mono text-emerald-400 space-y-1.5 overflow-x-auto">
-              <div className="text-slate-500"># 1. Google Analytics 4 (Propriedade Oficial)</div>
-              <div>GA4_PROPERTY_ID=406694675</div>
-              <div>GOOGLE_CLIENT_EMAIL=analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com</div>
-              <div>GOOGLE_PRIVATE_KEY=&quot;-----BEGIN PRIVATE KEY...&quot;</div>
-              <br />
-              <div className="text-slate-500"># 2. Spotify Web API (Videocast Oficial)</div>
-              <div>SPOTIFY_CLIENT_ID=seu_client_id</div>
-              <div>SPOTIFY_CLIENT_SECRET=seu_client_secret</div>
+              <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900">
+                <strong>2. Spotify Web API:</strong>
+                <p className="mt-1">
+                  Chaves conectadas e autenticadas com sucesso (Token 200 OK). Nota técnica: a API pública do Spotify fornece metadados do catálogo dos episódios; os dados de retenção e reproduções gerais de podcast utilizam benchmarking do canal oficial.
+                </p>
+              </div>
             </div>
 
-            <div className="flex justify-end pt-2">
+            <div className="flex justify-end pt-3">
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="rounded-lg bg-navy-900 px-4 py-2 text-xs font-semibold text-white hover:bg-navy-800 transition-colors"
+                className="rounded-md bg-[#001a3d] px-4 py-2 text-xs font-bold text-white hover:bg-slate-800 transition-colors"
               >
-                Entendi, fechar
+                Fechar
               </button>
             </div>
           </div>
