@@ -6,6 +6,7 @@ import { Locale } from "@/lib/types";
 import { X, Maximize2, Minimize2, ExternalLink, Play, ChevronDown, Tv } from "lucide-react";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import { trackSpotifyClick } from "@/lib/analytics/track";
 import {
   DEBATE_EPISODES,
   getDefaultFeaturedEpisodeNumber,
@@ -273,6 +274,14 @@ export default function DebateMiniPlayer({
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
               <a
                 href={episode.spotifyUrl}
+                onClick={() => {
+                  trackSpotifyClick({
+                    episodeNumber: episode.numero,
+                    episodeTitle: t.chapterTitle,
+                    spotifyUrl: episode.spotifyUrl || "",
+                    sourceLocation: "debate_mini_player_expanded",
+                  });
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -480,6 +489,14 @@ export default function DebateMiniPlayer({
         <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
           <a
             href={episode.spotifyUrl}
+            onClick={() => {
+              trackSpotifyClick({
+                episodeNumber: episode.numero,
+                episodeTitle: t.chapterTitle,
+                spotifyUrl: episode.spotifyUrl || "",
+                sourceLocation: "debate_mini_player_collapsed",
+              });
+            }}
             target="_blank"
             rel="noopener noreferrer"
             style={{

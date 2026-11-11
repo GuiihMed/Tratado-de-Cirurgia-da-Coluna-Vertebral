@@ -11,6 +11,7 @@ import {
 import { useVimeoThumbnails } from "@/lib/hooks/useVimeoThumbnails";
 import CustomVimeoPlayer from "@/components/CustomVimeoPlayer";
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
+import { trackSpotifyClick } from "@/lib/analytics/track";
 import { FileText, ArrowRight, ExternalLink } from "lucide-react";
 
 interface ChapterHighlightData {
@@ -536,6 +537,14 @@ export default function HomeFeaturedDebateSection({
 
                   <a
                     href={episode.spotifyUrl}
+                    onClick={() => {
+                      trackSpotifyClick({
+                        episodeNumber: episode.numero,
+                        episodeTitle: episodeHeading || episode.titulo_pt,
+                        spotifyUrl: episode.spotifyUrl || "",
+                        sourceLocation: "home_featured_section",
+                      });
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
