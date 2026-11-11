@@ -1,5 +1,5 @@
 export type AnalyticsTimeRange = "7d" | "30d" | "90d" | "all";
-export type AnalyticsSourceFilter = "all" | "vercel" | "google" | "spotify";
+export type AnalyticsSourceFilter = "all" | "google" | "spotify";
 
 export interface MetricCardData {
   title: string;
@@ -7,7 +7,7 @@ export interface MetricCardData {
   changePercent: number; // e.g. +14.2
   trend: "up" | "down" | "neutral";
   subtitle: string;
-  source: "vercel" | "google" | "spotify" | "unified";
+  source: "google" | "spotify" | "unified";
   icon: "visitors" | "pageviews" | "duration" | "bounce" | "spotify" | "audio" | "users";
 }
 
@@ -65,7 +65,6 @@ export interface AnalyticsResponseData {
   timeRange: AnalyticsTimeRange;
   generatedAt: string;
   isLive: {
-    vercel: boolean;
     google: boolean;
     spotify: boolean;
   };
