@@ -43,6 +43,7 @@ import {
   Lock,
   Layers,
   Award,
+  BarChart3,
   Building2,
   Save,
   Camera,
@@ -1450,6 +1451,24 @@ export default function AdminPainelPage() {
               {isDark ? <Sun size={15} color="#f59e0b" /> : <Moon size={15} color="#6366f1" />}
               <span className="hidden md:inline">{isDark ? "Tema Claro" : "Tema Escuro"}</span>
             </button>
+
+            {/* Analytics Dashboard Link */}
+            <Link
+              href="/pt/analytics"
+              target="_blank"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all active:scale-95"
+              style={{
+                background: isDark ? "rgba(245, 34, 56, 0.15)" : "#fee2e2",
+                borderColor: isDark ? "rgba(245, 34, 56, 0.3)" : "#fca5a5",
+                color: isDark ? "#fca5a5" : "#be123c",
+                textDecoration: "none",
+              }}
+              title="Ver métricas de Vercel, Google Analytics e Spotify"
+            >
+              <BarChart3 size={14} color={isDark ? "#fca5a5" : "#be123c"} />
+              <span className="hidden sm:inline">Analytics</span>
+              <ExternalLink size={12} color={isDark ? "#fca5a5" : "#be123c"} className="hidden sm:inline" />
+            </Link>
 
             {/* Public Link Button */}
             <Link
