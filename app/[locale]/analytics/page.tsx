@@ -5,14 +5,10 @@ import { Locale } from "@/lib/types";
 import { getUnifiedAnalytics } from "@/lib/services/analytics";
 import AnalyticsDashboard from "@/components/analytics/AnalyticsDashboard";
 
-export const revalidate = 60; // ISR cache for 60 seconds
+export const dynamic = "force-dynamic";
 
 interface AnalyticsPageProps {
   params: Promise<{ locale: string }>;
-}
-
-export function generateStaticParams() {
-  return [{ locale: "pt" }, { locale: "en" }, { locale: "es" }];
 }
 
 export async function generateMetadata({
