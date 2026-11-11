@@ -25,7 +25,7 @@ function getEnvConfig(): EnvConfig {
   const googlePrivateKey = rawKey ? rawKey.replace(/\\n/g, "\n") : undefined;
 
   return {
-    ga4PropertyId: process.env.GA4_PROPERTY_ID || "406694675",
+    ga4PropertyId: process.env.GA4_PROPERTY_ID || "552513737",
     googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
     googlePrivateKey,
     spotifyClientId: process.env.SPOTIFY_CLIENT_ID,

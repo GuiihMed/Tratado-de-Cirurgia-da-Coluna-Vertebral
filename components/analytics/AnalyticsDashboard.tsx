@@ -184,7 +184,7 @@ export default function AnalyticsDashboard({
               {/* Subtitle */}
               <p className="mt-2 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
                 Relatório executivo dos 109 capítulos e videocast oficial. Integração direta com{" "}
-                <span className="font-semibold text-white">Google Analytics (GA4: 406694675)</span> e{" "}
+                <span className="font-semibold text-white">Google Analytics (GA4: 552513737)</span> e{" "}
                 <span className="font-semibold text-white">Spotify (&quot;Tratado em Debate&quot;)</span>.
               </p>
             </div>
@@ -239,7 +239,7 @@ export default function AnalyticsDashboard({
                 }`}
               >
                 <span className="font-bold text-[#4285F4]">G</span>
-                <span>GA4 (406694675):</span>
+                <span>GA4 (552513737):</span>
                 {data.isLive.google ? (
                   <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
                     <Check className="h-3.5 w-3.5" /> Ao Vivo
@@ -304,7 +304,7 @@ export default function AnalyticsDashboard({
                   <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-950">
                     analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
                   </code>{" "}
-                  precisa ser adicionado como <strong>Leitor</strong> dentro do Google Analytics (Propriedade 406694675). Enquanto isso, o dashboard exibe dados aproximados.
+                  precisa ser adicionado como <strong>Leitor</strong> dentro do Google Analytics (Propriedade 552513737). Enquanto isso, o dashboard exibe dados aproximados.
                 </span>
               </div>
               <button
@@ -831,7 +831,7 @@ export default function AnalyticsDashboard({
 
             <div className="space-y-3 text-xs text-slate-600 leading-relaxed">
               <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-900">
-                <strong>1. Google Analytics 4 (Propriedade 406694675):</strong>
+                <strong>1. Google Analytics 4 (Propriedade 552513737):</strong>
                 <p className="mt-1">
                   A chave da conta de serviço já está configurada no servidor. Para liberar a leitura dos dados reais, adicione o e-mail:
                 </p>
