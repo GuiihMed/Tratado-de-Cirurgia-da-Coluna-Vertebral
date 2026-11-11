@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ModernHeader from "@/components/modern/ModernHeader";
-import ModernFooter from "@/components/modern/ModernFooter";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Locale } from "@/lib/types";
 import { getUnifiedAnalytics } from "@/lib/services/analytics";
 import AnalyticsDashboard from "@/components/analytics/AnalyticsDashboard";
@@ -24,15 +24,15 @@ export async function generateMetadata({
     : "pt";
 
   const titles = {
-    pt: "Relatório de Analytics New | Tratado de Cirurgia da Coluna SBC",
-    en: "Analytics New Report | Treatise on Spine Surgery SBC",
-    es: "Informe de Analítica New | Tratado de Cirugía de Columna SBC",
+    pt: "Relatório de Analytics & Métricas | Tratado de Cirurgia da Coluna SBC",
+    en: "Analytics & Metrics Report | Treatise on Spine Surgery SBC",
+    es: "Informe de Analítica y Métricas | Tratado de Cirugía de Columna SBC",
   };
 
   const descriptions = {
-    pt: "Painel executivo New de audiência, engajamento e métricas integradas de Google Analytics 4 e Spotify Podcasts para o Tratado de Coluna.",
-    en: "Executive New audience, engagement, and integrated metrics dashboard from Google Analytics 4 and Spotify Podcasts.",
-    es: "Panel ejecutivo New de audiencia, compromiso y métricas integradas de Google Analytics 4 y Spotify Podcasts.",
+    pt: "Painel executivo oficial de audiência, engajamento e métricas de Google Analytics 4 e Spotify Podcasts para o Tratado de Coluna.",
+    en: "Official executive audience, engagement, and metrics dashboard from Google Analytics 4 and Spotify Podcasts.",
+    es: "Panel ejecutivo oficial de audiencia, compromiso y métricas de Google Analytics 4 y Spotify Podcasts.",
   };
 
   return {
@@ -57,12 +57,12 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
   const initialData = await getUnifiedAnalytics("30d");
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#021226] text-white">
-      <ModernHeader locale={locale} currentPage="other" />
+    <div className="min-h-screen flex flex-col bg-[#f8fafc] text-slate-800">
+      <Header locale={locale} currentPage="other" />
       <div className="flex-1">
         <AnalyticsDashboard initialData={initialData} locale={locale} />
       </div>
-      <ModernFooter locale={locale} />
+      <Footer locale={locale} />
     </div>
   );
 }

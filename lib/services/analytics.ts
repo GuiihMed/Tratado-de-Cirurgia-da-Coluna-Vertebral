@@ -20,10 +20,13 @@ interface EnvConfig {
 }
 
 function getEnvConfig(): EnvConfig {
+  const rawKey = process.env.GOOGLE_PRIVATE_KEY;
+  const googlePrivateKey = rawKey ? rawKey.replace(/\\n/g, "\n") : undefined;
+
   return {
     ga4PropertyId: process.env.GA4_PROPERTY_ID || "406694675",
     googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
-    googlePrivateKey: process.env.GOOGLE_PRIVATE_KEY,
+    googlePrivateKey,
     spotifyClientId: process.env.SPOTIFY_CLIENT_ID,
     spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET,
   };
