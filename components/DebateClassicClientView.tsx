@@ -125,7 +125,7 @@ export default function DebateClassicClientView({
   const isPremiere = !justUnlocked && Boolean(activeEpisode.dataEstreia && new Date(activeEpisode.dataEstreia).getTime() > nowMs);
 
   const handleSpotifyClick = (e: React.MouseEvent) => {
-    if (isPremiere) {
+    if (isPremiere && !activeEpisode.spotifyUrl) {
       e.preventDefault();
       alert(
         locale === "en"

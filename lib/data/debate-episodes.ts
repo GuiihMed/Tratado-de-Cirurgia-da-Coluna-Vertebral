@@ -928,6 +928,109 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-11",
+    numero: 11,
+    slug: "episodio-11-medicina-regenerativa-na-coluna",
+    titulo_pt: "Episódio 11 – Medicina Regenerativa na Coluna",
+    titulo_en: "Episode 11 – Regenerative Medicine in Spine Surgery",
+    titulo_es: "Episodio 11 – Medicina Regenerativa en la Columna",
+    subtitulo_pt:
+      "Medicina Regenerativa na Coluna: promessa, evidência e bom-senso",
+    subtitulo_en:
+      "Regenerative Medicine in the Spine: Promise, Evidence, and Good Sense",
+    subtitulo_es:
+      "Medicina Regenerativa en la Columna: promesa, evidencia y sentido común",
+    descricao_pt:
+      "Neste décimo primeiro episódio do Tratado em Debate, o Dr. Edilson Silva Machado, o Dr. Robert Meves (autores do Capítulo 50) e o Dr. Denis Sakai debatem a 'Medicina Regenerativa na Coluna: Promessa, Evidência e Bom-Senso'. Discutem a evolução e a aplicação dos ortobiológicos no manejo das afecções degenerativas vertebrais, incluindo o uso de plasma rico em plaquetas (PRP), aspirado de medula óssea (BMAC), derivados de tecido adiposo e terapias celulares. Analisam os limites biológicos entre o alívio sintomático inflamatório e a verdadeira regeneração tecidual, a relevância da abordagem multitarget na dor axial e os rigorosos critérios regulatórios e científicos para uma prática médica ética e baseada em evidências.",
+    descricao_en:
+      "In this eleventh episode of the Treatise in Debate, Dr. Edilson Silva Machado, Dr. Robert Meves (authors of Chapter 50), and Dr. Denis Sakai debate 'Regenerative Medicine in the Spine: Promise, Evidence, and Good Sense'. They analyze the application of orthobiologics in degenerative spinal conditions, including platelet-rich plasma (PRP), bone marrow aspirate concentrate (BMAC), adipose-derived therapies, and cellular treatments. The experts examine biological boundaries between symptom relief and true tissue regeneration, the multitarget strategy in axial back pain, and essential regulatory criteria for evidence-based clinical practice.",
+    descricao_es:
+      "En este undécimo episodio del Tratado en Debate, el Dr. Edilson Silva Machado, el Dr. Robert Meves (autores del Capítulo 50) y el Dr. Denis Sakai debaten sobre 'Medicina Regenerativa en la Columna: Promesa, Evidencia y Sentido Común'. Analizan la aplicación de ortobiológicos en patologías degenerativas vertebrales, el uso de plasma rico en plaquetas (PRP), aspirado de médula ósea (BMAC), derivados adiposos y terapias celulares. Examinan los límites entre el alivio sintomático y la regeneración tisular real, el abordaje multitarget en dolor axial y los requisitos regulatorios y éticos para una práctica médica fundamentada.",
+    vimeoId: "1245571937",
+    vimeoUrl: "https://player.vimeo.com/video/1245571937",
+    thumbnailUrl: "/assets/debate-ep11-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2224740489-617a623c6b6a956084088bd1c8b73bc3409ee0c76acf2a307603bf1035ca7c12-d_1280x720.jpg",
+    spotifyUrl:
+      "https://open.spotify.com/episode/67KrA5VQRQWQDEtyoxizlc?si=o3sQWNhPTJe5aj0W1IRIrw",
+    capituloNum: 50,
+    capituloTitulo_pt:
+      "Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
+    capituloTitulo_en:
+      "Regenerative Medicine in Degenerative Spine Disease",
+    capituloTitulo_es:
+      "Medicina Regenerativa en la Enfermedad Degenerativa de Columna",
+    secaoId: 5,
+    secaoTitulo_pt: "Doenças Degenerativas",
+    secaoTitulo_en: "Degenerative Diseases",
+    secaoTitulo_es: "Enfermedades Degenerativas",
+    duracao: "55:22",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-11-11T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Edilson Silva Machado",
+        cargo: "Convidado • Autor do Cap. 50 • Médico em Dor",
+        instituicao: "Academia Brasileira de Medicina Regenerativa • SBC",
+        slug: "edilson-silva-machado",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-0332-572X",
+      },
+      {
+        nome: "Dr. Robert Meves",
+        cargo: "Convidado • Autor do Cap. 50 • Chefe do Grupo de Coluna",
+        instituicao: "Faculdade de Ciências Médicas da Santa Casa de São Paulo • SBC",
+        slug: "robert-meves",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-8695-3982",
+      },
+      {
+        nome: "Dr. Denis Sakai",
+        cargo: "Convidado • Autor do Cap. 87 • Cirurgião de Coluna",
+        instituicao: "Universidade Estadual de Campinas (Unicamp) • SBC",
+        slug: "denis-seguchi-sakai",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-3201-7718",
+      },
+    ],
+    destaques_pt: [
+      "Ortobiológicos vs. Terapias Celulares: diferenciação clara entre produtos autólogos de manipulação mínima (PRP, BMAC, tecido adiposo) e terapias celulares expandidas.",
+      "Mecanismos de Ação Biológicos: ação anti-inflamatória, imunomodulação e sinalização parácrina versus limitações reais em reconstituir a altura discal colapsada.",
+      "Critérios de Indicação Clínica: seleção minuciosa do paciente com dor discogênica e articular facetária para evitar o uso empírico e indiscriminado.",
+      "Abordagem Multitarget: visão integrada da coluna vertebral como unidade funcional com múltiplos geradores potenciais de dor axial associados.",
+      "Rigor Científico e Marco Regulatório: estado da arte na literatura médica, evidências clínicas consolidadas e diretrizes éticas e regulatórias vigentes.",
+    ],
+    destaques_en: [
+      "Orthobiologics vs. Cell Therapies: distinguishing minimally manipulated autologous products (PRP, BMAC, adipose) from cultured cell therapy.",
+      "Biological Mechanisms of Action: anti-inflammatory modulation and paracrine signaling versus anatomical limitations in restoring disc height.",
+      "Clinical Selection Criteria: identifying discogenic versus facet joint pain generators to avoid indiscriminate, non-targeted application.",
+      "Multitarget Strategy: treating the spinal motion segment as a coordinated functional unit with concurrent axial pain generators.",
+      "Evidence Standards & Regulatory Compliance: separating clinical data from commercial hype under current safety and regulatory frameworks.",
+    ],
+    destaques_es: [
+      "Ortobiológicos vs. Terapias Celulares: diferenciación entre preparados autólogos de mínima manipulación (PRP, BMAC, tejido adiposo) y terapias celulares avanzadas.",
+      "Mecanismos Biológicos: modulación antiinflamatoria y señalización paracrina frente a la limitación de restaurar la altura discal colapsada.",
+      "Criterios de Selección Clínica: identificación precisa del dolor discogénico y facetario para evitar el uso empírico e indiscriminado.",
+      "Estrategia Multitarget: enfoque integral de la unidad vertebral funcional que reconoce múltiples fuentes de dolor axial simultáneas.",
+      "Rigor Científico y Marco Regulatorio: estado actual de la evidencia clínica y cumplimiento de normas regulatorias y bioéticas.",
+    ],
+    tags: [
+      "Medicina Regenerativa",
+      "Ortobiológicos",
+      "PRP",
+      "BMAC",
+      "Doenças Degenerativas",
+      "Dor Discogênica",
+      "Dor Facetária",
+      "Coluna Vertebral",
+      "Edilson Silva Machado",
+      "Robert Meves",
+      "Denis Sakai",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -959,7 +1062,8 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       (ep.numero === 7 && slug === "tratamento-nao-cirurgico-das-escolioses") ||
       (ep.numero === 8 && slug === "escoliose-idiopatica") ||
       (ep.numero === 9 && slug === "fisiopatologia-da-degeneracao-discal") ||
-      (ep.numero === 10 && slug === "instabilidade-vertebral")
+      (ep.numero === 10 && slug === "instabilidade-vertebral") ||
+      (ep.numero === 11 && (slug === "medicina-regenerativa-na-coluna" || slug === "medicina-regenerativa"))
   );
 }
 

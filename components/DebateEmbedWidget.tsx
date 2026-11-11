@@ -64,7 +64,7 @@ export default function DebateEmbedWidget({
   const isPremiere = Boolean(activeEpisode.dataEstreia && !isEpisodeReleased(activeEpisode));
 
   const handleSpotifyClick = (e: React.MouseEvent) => {
-    if (isPremiere) {
+    if (isPremiere && !activeEpisode.spotifyUrl) {
       e.preventDefault();
       alert(
         locale === "en"

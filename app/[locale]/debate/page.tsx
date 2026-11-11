@@ -58,6 +58,15 @@ export async function generateMetadata({
       "Episódio 08",
       "Episódio 09",
       "Episódio 10",
+      "Episódio 11",
+      "Medicina Regenerativa na Coluna",
+      "Medicina Regenerativa",
+      "Ortobiológicos",
+      "PRP",
+      "BMAC",
+      "Dr. Edilson Silva Machado",
+      "Dr. Robert Meves",
+      "Dr. Denis Sakai",
       "Instabilidade Vertebral",
       "Espondilolistese",
       "Fisiopatologia da Degeneração Discal",
@@ -158,6 +167,24 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep11`,
+        "name": "Episódio 11: Medicina Regenerativa na Coluna — Promessa, Evidência e Bom-Senso — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Edilson Silva Machado, Dr. Robert Meves e Dr. Denis Sakai debatendo a aplicação dos ortobiológicos (PRP, BMAC, tecido adiposo), limites biológicos, abordagem multitarget e conformidade regulatória no Capítulo 50 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep11-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-11-11T18:00:00-03:00",
+        "duration": "PT55M",
+        "embedUrl": "https://player.vimeo.com/video/1245571937",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep10`,

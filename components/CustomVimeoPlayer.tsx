@@ -67,6 +67,7 @@ export default function CustomVimeoPlayer({
       } catch (_) {}
     }
     if (thumbnailUrl) return thumbnailUrl;
+    if (cleanVideoId === "1245571937") return "/assets/debate-ep11-cover.jpg";
     if (cleanVideoId === "1239994476") return "/assets/debate-ep10-cover.jpg";
     if (cleanVideoId === "1240418291") return "/assets/debate-ep9-cover.jpg";
     if (cleanVideoId === "1238004890") return "/assets/debate-ep8-cover.jpg";

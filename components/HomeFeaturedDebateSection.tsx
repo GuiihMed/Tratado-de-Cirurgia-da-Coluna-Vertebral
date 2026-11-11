@@ -189,6 +189,22 @@ const CHAPTER_HIGHLIGHTS_BY_EPISODE: Record<number, ChapterHighlightData> = {
     chips_en: ["Vertebral Instability", "Spondylolisthesis", "Functional X-ray", "Decompression", "Arthrodesis"],
     chips_es: ["Inestabilidad Vertebral", "Espondilolistesis", "Radiografía Funcional", "Descompresión", "Artrodesis"],
   },
+  11: {
+    capituloNum: 50,
+    title_pt: "Medicina Regenerativa no Manejo da Doença Degenerativa da Coluna",
+    title_en: "Regenerative Medicine in Degenerative Spine Disease",
+    title_es: "Medicina Regenerativa en la Enfermedad Degenerativa de Columna",
+    authors: ["Edilson Silva Machado", "Robert Meves", "Denis Sakai"],
+    summary_pt:
+      "Exploração dos mecanismos biológicos de reparação e modulação tecidual. Aplicações de PRP, aspirado de medula óssea, derivados de tecido adiposo, terapias celulares e a abordagem multitarget.",
+    summary_en:
+      "Exploration of biological repair and tissue modulation mechanisms. Clinical applications of PRP, BMAC, adipose-derived products, cell therapies, and the multitarget strategy.",
+    summary_es:
+      "Exploración de los mecanismos biológicos de reparación y modulación tisular. Aplicaciones de PRP, BMAC, derivados de tejido adiposo, terapias celulares y enfoque multitarget.",
+    chips_pt: ["Medicina Regenerativa", "PRP", "BMAC", "Ortobiológicos", "Terapia Celular"],
+    chips_en: ["Regenerative Medicine", "PRP", "BMAC", "Orthobiologics", "Cell Therapy"],
+    chips_es: ["Medicina Regenerativa", "PRP", "BMAC", "Ortobiológicos", "Terapia Celular"],
+  },
 };
 
 const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: string }> = {
@@ -241,6 +257,11 @@ const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: st
     pt: "Discussão com os autores sobre a instabilidade vertebral, o valor diagnóstico da radiografia dinâmica em carga e critérios de decisão entre descompressão e artrodese.",
     en: "Clinical discussion on spinal instability, weight-bearing dynamic radiographs, and decision criteria between decompression and fusion.",
     es: "Discusión clínica con los autores sobre inestabilidad vertebral, radiografías dinámicas en bipedestación y criterios entre descompresión y artrodesis.",
+  },
+  11: {
+    pt: "Discussão com os autores sobre os avanços e evidências da medicina regenerativa na coluna: PRP, BMAC, derivados adiposos, abordagem multitarget e rigor regulatório.",
+    en: "Clinical discussion with the authors on spine regenerative medicine advances: PRP, BMAC, adipose derivatives, multitarget approach, and evidence standards.",
+    es: "Discusión con los autores sobre avances y evidencia en medicina regenerativa de columna: PRP, BMAC, derivados adiposos, abordaje multitarget y rigor regulatorio.",
   },
 };
 
