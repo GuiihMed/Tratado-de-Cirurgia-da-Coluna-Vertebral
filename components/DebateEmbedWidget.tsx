@@ -355,7 +355,7 @@ export default function DebateEmbedWidget({
                 }}
               >
                 <SpotifyIcon size={14} color="#ffffff" />
-                <span>{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
+                <span className="hidden sm:inline">{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
               </a>
             )}
 

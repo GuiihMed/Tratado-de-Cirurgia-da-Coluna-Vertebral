@@ -568,11 +568,13 @@ export default function HomeFeaturedDebateSection({
                     }}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="inline-flex items-center justify-center gap-2.5 px-3.5 sm:px-5 py-3 sm:py-3.5 rounded-xl bg-[#1DB954] hover:bg-[#1ed760] text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
                     style={{ textDecoration: "none" }}
+                    aria-label={t.listenSpotify}
+                    title={t.listenSpotify}
                   >
                     <SpotifyIcon size={20} color="#ffffff" />
-                    <span>{t.listenSpotify}</span>
+                    <span className="hidden sm:inline">{t.listenSpotify}</span>
                   </a>
 
                   {isModern && (

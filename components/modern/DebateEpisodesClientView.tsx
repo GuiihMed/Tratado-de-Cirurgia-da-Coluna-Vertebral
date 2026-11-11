@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/types";
 import {
@@ -48,6 +48,7 @@ export default function DebateEpisodesClientView({
   const [copiedLink, setCopiedLink] = useState(false);
   const [nowMs, setNowMs] = useState<number>(() => Date.now());
   const [justUnlocked, setJustUnlocked] = useState(false);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (initialEpisodeNumber && initialEpisodeNumber !== activeEpNumber) {
@@ -156,12 +157,60 @@ export default function DebateEpisodesClientView({
     return `${origin}${pathname}?ep=${epNum}`;
   };
 
+  const copyTextToClipboard = async (text: string): Promise<boolean> => {
+    if (typeof navigator !== "undefined" && navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (_) {}
+    }
+
+    if (typeof document !== "undefined") {
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.width = "2em";
+        textArea.style.height = "2em";
+        textArea.style.padding = "0";
+        textArea.style.border = "none";
+        textArea.style.outline = "none";
+        textArea.style.boxShadow = "none";
+        textArea.style.background = "transparent";
+        textArea.style.opacity = "0";
+        textArea.setAttribute("readonly", "");
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        const successful = document.execCommand("copy");
+        document.body.removeChild(textArea);
+        if (successful) return true;
+      } catch (_) {}
+    }
+    return false;
+  };
+
   const handleSelectEpisode = (epNum: number) => {
     setActiveEpNumber(epNum);
     setUserSelected(true);
     if (typeof window !== "undefined") {
       const cleanUrl = getEpisodeShareUrl(epNum);
       window.history.replaceState({ ep: epNum }, "", cleanUrl);
+
+      // No mobile/tablet, rola suave e lentamente até o player
+      if (playerContainerRef.current) {
+        const rect = playerContainerRef.current.getBoundingClientRect();
+        if (window.innerWidth < 1024 || rect.top < 0) {
+          const targetY = window.scrollY + rect.top - 20;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: "smooth",
+          });
+        }
+      }
     }
   };
 
@@ -176,21 +225,28 @@ export default function DebateEpisodesClientView({
     if (typeof window === "undefined") return;
     const shareUrl = getEpisodeShareUrl(activeEpisode.numero);
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          url: shareUrl,
-        });
-        return;
-      } catch (_) {}
+    // 1. Sempre copia imediatamente para a área de transferência com fallback garantido
+    const copied = await copyTextToClipboard(shareUrl);
+    if (copied) {
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2500);
     }
 
-    if (navigator.clipboard) {
+    // 2. No mobile, aciona a folha de compartilhamento nativa (WhatsApp, etc.) se disponível
+    const isMobileDevice =
+      typeof navigator !== "undefined" &&
+      /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+
+    if (isMobileDevice && typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
-        await navigator.clipboard.writeText(shareUrl);
-        setCopiedLink(true);
-        setTimeout(() => setCopiedLink(false), 2500);
-      } catch (_) {}
+        await navigator.share({
+          title: `Tratado em Debate - Episódio ${activeEpisode.numero}`,
+          text: title,
+          url: shareUrl,
+        });
+      } catch (_) {
+        // Usuário cancelou ou descartou a folha nativa; o link já está copiado e feedback visual ativo
+      }
     }
   };
 
@@ -203,6 +259,8 @@ export default function DebateEpisodesClientView({
         <div className="lg:col-span-8 flex flex-col gap-6">
           {/* Main Video Player Container */}
           <div
+            ref={playerContainerRef}
+            id="debate-player"
             style={{
               background: "#000814",
               borderRadius: 22,
@@ -280,7 +338,7 @@ export default function DebateEpisodesClientView({
                     title={isPremiere ? (locale === "en" ? `Available on Spotify starting ${formatPremiereNotice(activeEpisode.dataEstreia, "en")}` : locale === "es" ? `Disponible en Spotify a partir del ${formatPremiereNotice(activeEpisode.dataEstreia, "es")}` : `Disponível no Spotify a partir de ${formatPremiereNotice(activeEpisode.dataEstreia, "pt")}`) : "Ouvir no Spotify"}
                   >
                     <SpotifyIcon size={15} color="#ffffff" />
-                    <span>{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
+                    <span className="hidden sm:inline">{isPremiere ? `Spotify (${formatPremiereBadge(activeEpisode.dataEstreia, locale)})` : "Spotify"}</span>
                   </a>
                 )}
                 <button
@@ -592,7 +650,7 @@ export default function DebateEpisodesClientView({
                     className="hover:bg-[#1ed760] hover:scale-105"
                   >
                     <SpotifyIcon size={18} color="#ffffff" />
-                    <span>
+                    <span className="hidden sm:inline">
                       {isPremiere
                         ? locale === "en"
                           ? `Spotify (Premiere ${formatPremiereBadge(activeEpisode.dataEstreia, "en")})`
