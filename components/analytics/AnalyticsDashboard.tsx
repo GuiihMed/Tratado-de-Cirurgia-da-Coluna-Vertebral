@@ -294,24 +294,23 @@ export default function AnalyticsDashboard({
             </div>
           </div>
 
-          {/* Alert if GA4 is pending user permission */}
+          {/* Alert if GA4 is pending user permission or env vars */}
           {!data.isLive.google && (
-            <div className="mt-3 p-3 bg-amber-50/80 border border-amber-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-amber-900">
+            <div className="mt-3 p-3 bg-amber-50/90 border border-amber-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-900">
               <div className="flex items-start gap-2">
                 <Info className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
                 <span>
-                  <strong>Por que os dados estão estimados?</strong> A chave da conta de serviço Google já está pronta, mas o e-mail{" "}
-                  <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-amber-950">
-                    analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
-                  </code>{" "}
-                  precisa ser adicionado como <strong>Leitor</strong> dentro do Google Analytics (Propriedade 552513737). Enquanto isso, o dashboard exibe dados aproximados.
+                  <strong>Aviso de Conexão GA4:</strong>{" "}
+                  {data.diagnostics?.google?.hasEmail && data.diagnostics?.google?.hasKey
+                    ? "As credenciais do Google foram lidas pelo servidor. Se o status ainda não atualizou para Ao Vivo, confirme a permissão de Leitor no GA4 ou faça um Redeploy na Vercel."
+                    : "As variáveis de ambiente do Google Analytics (GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY) precisam ser adicionadas na Vercel e o projeto republicado."}
                 </span>
               </div>
               <button
                 onClick={() => setShowConfigModal(true)}
-                className="text-xs font-bold text-amber-900 underline hover:text-black flex-shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-xs transition-colors whitespace-nowrap self-start sm:self-auto"
               >
-                Ver como liberar
+                Passo a passo com links <ExternalLink className="h-3 w-3" />
               </button>
             </div>
           )}
@@ -811,52 +810,146 @@ export default function AnalyticsDashboard({
           role="dialog"
           aria-modal="true"
           aria-labelledby="api-modal-title-classic-help"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto"
         >
-          <div className="w-full max-w-xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl space-y-4">
+          <div className="w-full max-w-2xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl space-y-5 my-8 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-[#f52238]" />
+                <BarChart3 className="h-5 w-5 text-[#f52238]" />
                 <h3 id="api-modal-title-classic-help" className="text-lg font-bold text-[#001a3d]">
-                  Status das Conexões • GA4 & Spotify
+                  Conexão Google Analytics 4 (Propriedade 552513737)
                 </h3>
               </div>
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="text-slate-400 hover:text-slate-700 text-sm font-bold"
+                className="text-slate-400 hover:text-slate-700 text-sm font-bold p-1 rounded hover:bg-slate-100"
               >
                 ✕
               </button>
             </div>
 
-            <div className="space-y-3 text-xs text-slate-600 leading-relaxed">
-              <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-900">
-                <strong>1. Google Analytics 4 (Propriedade 552513737):</strong>
-                <p className="mt-1">
-                  A chave da conta de serviço já está configurada no servidor. Para liberar a leitura dos dados reais, adicione o e-mail:
+            {/* Diagnostic Alert Box */}
+            <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-slate-700 uppercase tracking-wide text-[10px]">
+                  Diagnóstico Atual do Servidor
+                </span>
+                <span
+                  className={`px-2 py-0.5 rounded text-[11px] font-bold ${
+                    data.isLive.google
+                      ? "bg-emerald-100 text-emerald-800"
+                      : "bg-amber-100 text-amber-800"
+                  }`}
+                >
+                  {data.isLive.google ? "✓ Conectado Ao Vivo" : "● Requer Ação"}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600">
+                <div className="flex items-center gap-1.5">
+                  <span>GOOGLE_CLIENT_EMAIL:</span>
+                  {data.diagnostics?.google?.hasEmail ? (
+                    <span className="text-emerald-700 font-semibold">✓ Presente</span>
+                  ) : (
+                    <span className="text-rose-600 font-semibold">✗ Ausente na Vercel</span>
+                  )}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span>GOOGLE_PRIVATE_KEY:</span>
+                  {data.diagnostics?.google?.hasKey ? (
+                    <span className="text-emerald-700 font-semibold">
+                      ✓ Presente {data.diagnostics?.google?.keyValidFormat ? "(PEM Válida)" : "(Formato Inválido)"}
+                    </span>
+                  ) : (
+                    <span className="text-rose-600 font-semibold">✗ Ausente na Vercel</span>
+                  )}
+                </div>
+              </div>
+              {data.diagnostics?.google?.error && (
+                <div className="mt-2 p-2 rounded bg-amber-100/70 text-amber-950 font-mono text-[10px] break-all border border-amber-200">
+                  <strong>Detalhe:</strong> {data.diagnostics.google.error}
+                </div>
+              )}
+            </div>
+
+            {/* Step-by-Step Guide */}
+            <div className="space-y-4 text-xs text-slate-700">
+              {/* Step 1 */}
+              <div className="border border-slate-200 rounded-lg p-4 space-y-2 bg-white">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="font-bold text-[#001a3d] text-sm">
+                    Passo 1: Liberar Acesso no Google Analytics
+                  </span>
+                  <a
+                    href="https://analytics.google.com/analytics/web/#/p552513737/admin/propertyuserpermissions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    Abrir Gerenciamento de Acessos <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+                <p className="text-slate-600 text-xs">
+                  Acesse o painel acima, clique em <strong>+ (Adicionar usuários)</strong> e cole o e-mail da conta de serviço com a função <strong>Leitor</strong>:
                 </p>
-                <code className="block mt-1 bg-white p-1.5 rounded border border-blue-300 font-mono text-[11px] select-all text-blue-950">
-                  analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
-                </code>
-                <p className="mt-1">
-                  como <strong>Leitor</strong> em: <em>Google Analytics &gt; Administrador &gt; Gerenciamento de acessos à propriedade</em>.
-                </p>
+                <div className="flex items-center gap-2 bg-slate-100 p-2 rounded border border-slate-200">
+                  <code className="text-[11px] font-mono text-slate-900 select-all flex-1 break-all">
+                    analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com
+                  </code>
+                </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900">
-                <strong>2. Spotify Web API:</strong>
-                <p className="mt-1">
-                  Chaves conectadas e autenticadas com sucesso (Token 200 OK). Nota técnica: a API pública do Spotify fornece metadados do catálogo dos episódios; os dados de retenção e reproduções gerais de podcast utilizam benchmarking do canal oficial.
+              {/* Step 2 */}
+              <div className="border border-slate-200 rounded-lg p-4 space-y-2 bg-white">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="font-bold text-[#001a3d] text-sm">
+                    Passo 2: Configurar Variáveis de Ambiente na Vercel
+                  </span>
+                  <a
+                    href="https://vercel.com/dashboard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    Abrir Painel da Vercel <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+                <p className="text-slate-600 text-xs">
+                  Na Vercel, acesse o projeto <strong>tratado-de-cirurgiada-coluna-vertebral</strong> &gt; <em>Settings</em> &gt; <em>Environment Variables</em> e certifique-se de que as 3 variáveis estão cadastradas para o ambiente de <strong>Production</strong>:
+                </p>
+                <div className="space-y-1.5 font-mono text-[11px] bg-slate-50 p-2.5 rounded border border-slate-200 text-slate-800">
+                  <div><strong>GA4_PROPERTY_ID</strong>: <span className="text-slate-600">552513737</span></div>
+                  <div><strong>GOOGLE_CLIENT_EMAIL</strong>: <span className="text-slate-600">analytics-dashboard@tratado-da-coluna-sbc.iam.gserviceaccount.com</span></div>
+                  <div><strong>GOOGLE_PRIVATE_KEY</strong>: <span className="text-slate-500">(chave PEM completa começando com -----BEGIN PRIVATE KEY-----)</span></div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="border border-slate-200 rounded-lg p-4 space-y-2 bg-white">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="font-bold text-[#001a3d] text-sm">
+                    Passo 3: Fazer Redeploy na Vercel
+                  </span>
+                  <a
+                    href="https://vercel.com/dashboard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    Ver Deployments <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+                <p className="text-slate-600 text-xs">
+                  A Vercel só injeta novas variáveis de ambiente em novos deploys. Na aba <em>Deployments</em>, clique nos três pontinhos <strong>(...)</strong> do último deploy e selecione <strong>Redeploy</strong>.
                 </p>
               </div>
             </div>
 
-            <div className="flex justify-end pt-3">
+            <div className="flex justify-end pt-2 border-t border-slate-100">
               <button
                 onClick={() => setShowConfigModal(false)}
-                className="rounded-md bg-[#001a3d] px-4 py-2 text-xs font-bold text-white hover:bg-slate-800 transition-colors"
+                className="rounded-md bg-[#001a3d] px-5 py-2 text-xs font-bold text-white hover:bg-slate-800 transition-colors"
               >
-                Fechar
+                Entendi / Fechar
               </button>
             </div>
           </div>

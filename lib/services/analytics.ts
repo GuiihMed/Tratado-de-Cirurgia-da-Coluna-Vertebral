@@ -19,23 +19,45 @@ interface EnvConfig {
   spotifyClientSecret?: string;
 }
 
-function getEnvConfig(): EnvConfig {
-  const rawKey = process.env.GOOGLE_PRIVATE_KEY;
-  const googlePrivateKey = rawKey ? rawKey.replace(/\\n/g, "\n") : undefined;
+function cleanEnvString(val: string | undefined): string | undefined {
+  if (!val) return undefined;
+  let str = val.trim();
+  if ((str.startsWith('"') && str.endsWith('"')) || (str.startsWith("'") && str.endsWith("'"))) {
+    str = str.slice(1, -1).trim();
+  }
+  return str || undefined;
+}
 
+function cleanPrivateKey(val: string | undefined): string | undefined {
+  if (!val) return undefined;
+  let key = val.trim();
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1).trim();
+  }
+  // Replace escaped \n with actual newlines
+  key = key.replace(/\\n/g, "\n");
+  // Normalize Windows-style line breaks
+  key = key.replace(/\r\n/g, "\n");
+  return key || undefined;
+}
+
+function getEnvConfig(): EnvConfig {
   return {
-    ga4PropertyId: process.env.GA4_PROPERTY_ID || "552513737",
-    googleClientEmail: process.env.GOOGLE_CLIENT_EMAIL,
-    googlePrivateKey,
-    spotifyClientId: process.env.SPOTIFY_CLIENT_ID,
-    spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    ga4PropertyId: cleanEnvString(process.env.GA4_PROPERTY_ID) || "552513737",
+    googleClientEmail: cleanEnvString(process.env.GOOGLE_CLIENT_EMAIL),
+    googlePrivateKey: cleanPrivateKey(process.env.GOOGLE_PRIVATE_KEY),
+    spotifyClientId: cleanEnvString(process.env.SPOTIFY_CLIENT_ID),
+    spotifyClientSecret: cleanEnvString(process.env.SPOTIFY_CLIENT_SECRET),
   };
 }
 
 /**
  * Get Google OAuth access token using Service Account JWT
  */
-async function getGoogleAccessToken(email: string, privateKey: string): Promise<string | null> {
+async function getGoogleAccessToken(
+  email: string,
+  privateKey: string
+): Promise<{ token: string | null; error?: string }> {
   try {
     const now = Math.floor(Date.now() / 1000);
     const header = Buffer.from(JSON.stringify({ alg: "RS256", typ: "JWT" })).toString("base64url");
@@ -61,12 +83,16 @@ async function getGoogleAccessToken(email: string, privateKey: string): Promise<
       cache: "no-store",
     });
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error("Google OAuth token error:", res.status, errText);
+      return { token: null, error: `OAuth HTTP ${res.status}: ${errText}` };
+    }
     const data = await res.json();
-    return data.access_token || null;
-  } catch (err) {
+    return { token: data.access_token || null };
+  } catch (err: any) {
     console.error("Error generating Google access token:", err);
-    return null;
+    return { token: null, error: err?.message || String(err) };
   }
 }
 
@@ -130,12 +156,16 @@ export async function getUnifiedAnalytics(
   let liveCountries: CountryMetric[] = [];
   let liveChannels: ChannelShareMetric[] = [];
   let spotifyClicksFromGA = 0;
+  let googleAuthError: string | undefined = undefined;
 
   if (env.googleClientEmail && env.googlePrivateKey) {
     try {
-      const gToken = await getGoogleAccessToken(env.googleClientEmail, env.googlePrivateKey);
+      const authResult = await getGoogleAccessToken(env.googleClientEmail, env.googlePrivateKey);
+      const gToken = authResult.token;
 
-      if (gToken) {
+      if (!gToken) {
+        googleAuthError = authResult.error || "Falha na geração do token OAuth do Google";
+      } else {
         // 1. Fetch Main Pages & Users
         const gaPagesRes = await fetch(
           `https://analyticsdata.googleapis.com/v1beta/properties/${env.ga4PropertyId}:runReport`,
@@ -359,10 +389,16 @@ export async function getUnifiedAnalytics(
           spotifyClicksFromGA = parseInt(spJson.rows?.[0]?.metricValues?.[0]?.value || "0", 10);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error connecting to GA4 Live API:", err);
+      googleAuthError = err?.message || String(err);
       isLiveGoogle = false;
     }
+  } else {
+    const missing: string[] = [];
+    if (!env.googleClientEmail) missing.push("GOOGLE_CLIENT_EMAIL");
+    if (!env.googlePrivateKey) missing.push("GOOGLE_PRIVATE_KEY");
+    googleAuthError = `Variáveis ausentes no servidor (Vercel): ${missing.join(", ")}`;
   }
 
   // Aggregate results or fallback
@@ -398,6 +434,24 @@ export async function getUnifiedAnalytics(
     isLive: {
       google: isLiveGoogle,
       spotify: true, // Spotify event tracking is configured and active
+    },
+    diagnostics: {
+      google: {
+        configured: Boolean(env.googleClientEmail && env.googlePrivateKey),
+        hasEmail: Boolean(env.googleClientEmail),
+        hasKey: Boolean(env.googlePrivateKey),
+        keyValidFormat: Boolean(
+          env.googlePrivateKey &&
+            env.googlePrivateKey.includes("-----BEGIN PRIVATE KEY-----") &&
+            env.googlePrivateKey.includes("-----END PRIVATE KEY-----")
+        ),
+        error: isLiveGoogle ? undefined : googleAuthError,
+      },
+      spotify: {
+        configured: true,
+        hasClientId: Boolean(env.spotifyClientId),
+        hasSecret: Boolean(env.spotifyClientSecret),
+      },
     },
     summary: {
       totalVisitors,

@@ -68,6 +68,20 @@ export interface AnalyticsResponseData {
     google: boolean;
     spotify: boolean;
   };
+  diagnostics?: {
+    google: {
+      configured: boolean;
+      hasEmail: boolean;
+      hasKey: boolean;
+      keyValidFormat: boolean;
+      error?: string;
+    };
+    spotify: {
+      configured: boolean;
+      hasClientId: boolean;
+      hasSecret: boolean;
+    };
+  };
   summary: {
     totalVisitors: number;
     totalPageviews: number;
