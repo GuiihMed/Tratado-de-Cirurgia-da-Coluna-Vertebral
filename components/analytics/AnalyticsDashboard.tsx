@@ -9,7 +9,6 @@ import {
   MetricCardData,
 } from "@/lib/types/analytics";
 import {
-  BarChart3,
   TrendingUp,
   Users,
   Eye,
@@ -133,7 +132,7 @@ export default function AnalyticsDashboard({
       {/* CLASSIC HERO HEADER (Identidade Visual Oficial SBC) */}
       {/* ========================================================================= */}
       <section
-        className="relative w-full overflow-hidden text-white pt-10 pb-12 sm:pt-14 sm:pb-16 shadow-md"
+        className="relative w-full overflow-hidden text-white py-8 sm:py-10 shadow-md"
         style={{
           background:
             "radial-gradient(circle at 14% 30%, rgba(220, 20, 45, 0.45), transparent 42%), linear-gradient(105deg, #a80f22 0%, #2f193e 26%, #052b5b 54%, #005a9c 100%)",
@@ -150,26 +149,11 @@ export default function AnalyticsDashboard({
         <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-3xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 backdrop-blur-sm text-xs font-semibold text-white mb-3">
-                <BarChart3 className="h-3.5 w-3.5 text-[#ff5b54]" />
-                <span>Sociedade Brasileira de Coluna • Telemetria Oficial</span>
-              </div>
-
               {/* Title */}
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                 Painel de Audiência & Streaming
               </h1>
-
-              {/* Subtitle */}
-              <p className="mt-2 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-                Relatório executivo dos 109 capítulos e videocast oficial. Integração direta com{" "}
-                <span className="font-semibold text-white">Google Analytics (GA4: 552513737)</span> e{" "}
-                <span className="font-semibold text-white">Spotify (&quot;Tratado em Debate&quot;)</span>.
-              </p>
             </div>
-
-
           </div>
         </div>
       </section>
