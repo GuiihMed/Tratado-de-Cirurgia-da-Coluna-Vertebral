@@ -49,8 +49,11 @@ export default function AnalyticsDashboard({
 
   // Filter KPI cards according to source (Google, Spotify, or Unified)
   const filteredKpis = data.kpis.filter((kpi) => {
-    if (sourceFilter === "all") return true;
-    if (sourceFilter === "google") return kpi.source === "google" || kpi.source === "unified";
+    if (sourceFilter === "all") {
+      // Exibir os 4 indicadores essenciais de alto impacto
+      return kpi.title !== "Sessões de Estudo" && kpi.title !== "Episódios no Videocast";
+    }
+    if (sourceFilter === "google") return kpi.source === "google";
     if (sourceFilter === "spotify") return kpi.source === "spotify";
     return true;
   });
@@ -377,7 +380,7 @@ export default function AnalyticsDashboard({
           <h2 id="kpi-heading-classic" className="sr-only">
             Métricas Chave
           </h2>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {filteredKpis.map((kpi, idx) => (
               <div
                 key={idx}
