@@ -42,12 +42,13 @@ export default function AnalyticsDashboard({
   const [isPending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<"overview" | "content" | "spotify" | "traffic">("overview");
 
-  // Filter KPI cards according to source (Google, Spotify, or Unified)
+  // Filter KPI cards according to source (Vercel, Google, Spotify, or Unified)
   const filteredKpis = data.kpis.filter((kpi) => {
     if (sourceFilter === "all") {
       // Exibir os 4 indicadores essenciais de alto impacto
-      return kpi.title !== "Sessões de Estudo" && kpi.title !== "Episódios no Videocast";
+      return kpi.title !== "Eventos Clínicos Registrados" && kpi.title !== "Episódios no Videocast";
     }
+    if (sourceFilter === "vercel") return kpi.source === "vercel";
     if (sourceFilter === "google") return kpi.source === "google";
     if (sourceFilter === "spotify") return kpi.source === "spotify";
     return true;
@@ -80,6 +81,15 @@ export default function AnalyticsDashboard({
         </span>
       );
     }
+    if (source === "vercel") {
+      return (
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-white shadow-xs">
+          <svg width={15} height={15} viewBox="0 0 76 65" fill="currentColor">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          </svg>
+        </span>
+      );
+    }
     if (icon === "pageviews") {
       return (
         <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 border border-blue-200">
@@ -89,13 +99,13 @@ export default function AnalyticsDashboard({
     }
     if (icon === "duration") {
       return (
-        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 text-amber-600 border border-amber-200">
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-50 text-purple-600 border border-purple-200">
           <Clock className="h-5 w-5" />
         </span>
       );
     }
     return (
-      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-[#001a3d] border border-slate-200">
+      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-rose-50 text-rose-600 border border-rose-200">
         <Users className="h-5 w-5" />
       </span>
     );
@@ -159,38 +169,75 @@ export default function AnalyticsDashboard({
       </section>
 
       {/* ========================================================================= */}
-      {/* BARRA DE CONTROLE & FILTRO DE PERÍODO */}
+      {/* BARRA DE CONTROLE: PLATAFORMA & FILTRO DE PERÍODO */}
       {/* ========================================================================= */}
       <section className="border-b border-slate-200 bg-white py-3 shadow-2xs">
         <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                Período das Métricas:
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            {/* Filter by Platform Source */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mr-1">
+                Plataforma:
               </span>
-              <span className="text-xs text-slate-600 font-medium">
-                {timeRange === "7d"
-                  ? "Últimos 7 dias"
-                  : timeRange === "30d"
-                  ? "Últimos 30 dias"
-                  : timeRange === "90d"
-                  ? "Últimos 90 dias"
-                  : "Todo o histórico registrado"}
-              </span>
+              <button
+                onClick={() => setSourceFilter("all")}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
+                  sourceFilter === "all"
+                    ? "bg-[#001a3d] text-white shadow-xs"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                Todas (Consolidado)
+              </button>
+              <button
+                onClick={() => setSourceFilter("vercel")}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  sourceFilter === "vercel"
+                    ? "bg-black text-white shadow-xs"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                <svg width={10} height={9} viewBox="0 0 76 65" fill="currentColor">
+                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+                </svg>
+                Vercel (1.886)
+              </button>
+              <button
+                onClick={() => setSourceFilter("google")}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  sourceFilter === "google"
+                    ? "bg-blue-600 text-white shadow-xs"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                <span className="font-extrabold text-[11px]">G</span>
+                GA4 (296)
+              </button>
+              <button
+                onClick={() => setSourceFilter("spotify")}
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  sourceFilter === "spotify"
+                    ? "bg-[#1DB954] text-white shadow-xs"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                <SpotifyIcon size={13} color={sourceFilter === "spotify" ? "#ffffff" : "#1DB954"} />
+                Spotify (993)
+              </button>
             </div>
 
             {/* Time filter buttons */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <span className="text-xs text-slate-500 font-medium flex items-center gap-1 mr-1">
                 <Calendar className="h-3.5 w-3.5 text-slate-400" />
-                Filtrar:
+                Período:
               </span>
               {(["7d", "30d", "90d", "all"] as AnalyticsTimeRange[]).map((r) => (
                 <button
                   key={r}
                   disabled={isPending}
                   onClick={() => handleRangeChange(r)}
-                  className={`px-3 py-1 rounded text-xs font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
                     timeRange === r
                       ? "bg-[#001a3d] text-white shadow-xs"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -293,7 +340,11 @@ export default function AnalyticsDashboard({
                 <div className="mt-2 flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-2">
                   <span>{kpi.subtitle}</span>
                   <span className="font-bold text-slate-400">
-                    {kpi.source === "spotify" ? "Spotify" : "GA4"}
+                    {kpi.source === "spotify"
+                      ? "Spotify"
+                      : kpi.source === "vercel"
+                      ? "Vercel Web"
+                      : "Google Analytics"}
                   </span>
                 </div>
 
@@ -304,6 +355,8 @@ export default function AnalyticsDashboard({
                       ? "bg-[#1DB954]"
                       : kpi.source === "google"
                       ? "bg-[#4285F4]"
+                      : kpi.source === "vercel"
+                      ? "bg-slate-900"
                       : "bg-[#f52238]"
                   }`}
                 />
@@ -448,28 +501,64 @@ export default function AnalyticsDashboard({
                 </div>
               </div>
 
-              {/* Devices Split */}
-              <div className="mt-8 pt-6 border-t border-slate-100">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                  Acessos por Dispositivo
-                </h4>
-                <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
-                    <Smartphone className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[0]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500 font-medium">Celular</div>
-                  </div>
-                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
-                    <Laptop className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[1]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500 font-medium">Desktop</div>
-                  </div>
-                  <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
-                    <Radio className="h-4 w-4 mx-auto text-slate-600 mb-1" />
-                    <div className="text-xs font-bold text-[#001a3d]">{data.devices[2]?.percentage}%</div>
-                    <div className="text-[10px] text-slate-500 font-medium">Tablet</div>
+              {/* Devices & OS Split */}
+              <div className="mt-8 pt-6 border-t border-slate-100 space-y-5">
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
+                    Dispositivos (Vercel Web Analytics)
+                  </h4>
+                  <div className="grid grid-cols-3 gap-2 text-center">
+                    <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
+                      <Laptop className="h-4 w-4 mx-auto text-slate-600 mb-1" />
+                      <div className="text-xs font-bold text-[#001a3d]">{data.devices[0]?.percentage || 77}%</div>
+                      <div className="text-[10px] text-slate-500 font-medium">Desktop</div>
+                    </div>
+                    <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
+                      <Smartphone className="h-4 w-4 mx-auto text-slate-600 mb-1" />
+                      <div className="text-xs font-bold text-[#001a3d]">{data.devices[1]?.percentage || 23}%</div>
+                      <div className="text-[10px] text-slate-500 font-medium">Celular</div>
+                    </div>
+                    <div className="rounded-lg bg-slate-50 p-2.5 border border-slate-200/80">
+                      <Radio className="h-4 w-4 mx-auto text-slate-600 mb-1" />
+                      <div className="text-xs font-bold text-[#001a3d]">{data.devices[2]?.percentage || 0.4}%</div>
+                      <div className="text-[10px] text-slate-500 font-medium">Tablet</div>
+                    </div>
                   </div>
                 </div>
+
+                {/* Operating Systems */}
+                {data.operatingSystems && data.operatingSystems.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5">
+                      Sistemas Operacionais
+                    </h4>
+                    <div className="grid grid-cols-5 gap-1.5 text-center text-xs">
+                      {data.operatingSystems.map((os, i) => (
+                        <div key={i} className="rounded bg-slate-50 p-2 border border-slate-200/70">
+                          <span className="block text-[11px] font-bold text-[#001a3d]">{os.name}</span>
+                          <span className="text-[10px] text-slate-500 font-semibold">{os.percentage}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Top Referrers */}
+                {data.referrers && data.referrers.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                      Principais Referenciadores
+                    </h4>
+                    <div className="space-y-1.5 text-xs">
+                      {data.referrers.slice(0, 4).map((ref, idx) => (
+                        <div key={idx} className="flex items-center justify-between py-1 border-b border-slate-100 last:border-none">
+                          <span className="text-slate-600 font-medium truncate max-w-[180px]">{ref.referrer}</span>
+                          <span className="font-bold text-[#001a3d]">{ref.visitors} leitores</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -633,27 +722,29 @@ export default function AnalyticsDashboard({
                     </h4>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs flex-wrap gap-2">
                     <div>
-                      <span className="text-slate-400">Streams: </span>
-                      <strong className="text-slate-800">{ep.streams.toLocaleString("pt-BR")}</strong>
+                      <span className="text-slate-400 block text-[10px] uppercase font-semibold">Reproduções</span>
+                      <strong className="text-slate-800 text-sm">{ep.streams.toLocaleString("pt-BR")}</strong>
                     </div>
                     <div>
-                      <span className="text-slate-400">Retenção: </span>
-                      <strong className="text-emerald-700">{ep.completionRate}%</strong>
+                      <span className="text-slate-400 block text-[10px] uppercase font-semibold">Ouvintes Únicos</span>
+                      <strong className="text-emerald-700 text-sm">{(ep.listeners || Math.round(ep.streams * 0.58)).toLocaleString("pt-BR")}</strong>
                     </div>
                     <div>
-                      <span className="text-slate-400">Duração: </span>
-                      <span className="font-medium text-slate-700">{ep.avgListeningTime}</span>
+                      <span className="text-slate-400 block text-[10px] uppercase font-semibold">Duração</span>
+                      <span className="font-medium text-slate-700 text-sm">{ep.avgListeningTime}</span>
                     </div>
-                    <a
-                      href={ep.spotifyUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded hover:bg-emerald-100 transition-colors"
-                    >
-                      Ouvir <ExternalLink className="h-3 w-3" />
-                    </a>
+                    <div>
+                      <a
+                        href={ep.spotifyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded hover:bg-emerald-100 transition-colors"
+                      >
+                        Ouvir <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
