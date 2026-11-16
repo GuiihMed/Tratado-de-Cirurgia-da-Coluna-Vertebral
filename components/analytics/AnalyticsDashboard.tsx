@@ -223,62 +223,31 @@ export default function AnalyticsDashboard({
       </section>
 
       {/* ========================================================================= */}
-      {/* STATUS / DIAGNÓSTICO DAS APIS */}
+      {/* BARRA DE CONTROLE & FILTRO DE PERÍODO */}
       {/* ========================================================================= */}
-      <section className="border-b border-slate-200 bg-white py-3.5 shadow-2xs">
+      <section className="border-b border-slate-200 bg-white py-3 shadow-2xs">
         <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                Status de Conexão:
+                Período das Métricas:
               </span>
-
-              {/* Google GA4 Pill */}
-              <div
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border ${
-                  data.isLive.google
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                    : "bg-amber-50 text-amber-800 border-amber-200"
-                }`}
-              >
-                <span className="font-bold text-[#4285F4]">G</span>
-                <span>GA4 (552513737):</span>
-                {data.isLive.google ? (
-                  <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
-                    <Check className="h-3.5 w-3.5" /> Ao Vivo
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 text-amber-700">
-                    <AlertTriangle className="h-3 w-3" /> Requer Permissão no GA
-                  </span>
-                )}
-              </div>
-
-              {/* Spotify Pill */}
-              <div
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold border ${
-                  data.isLive.spotify
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                    : "bg-slate-100 text-slate-700 border-slate-200"
-                }`}
-              >
-                <SpotifyIcon size={14} color="#1DB954" />
-                <span>Spotify Web API:</span>
-                {data.isLive.spotify ? (
-                  <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
-                    <Check className="h-3.5 w-3.5" /> Conectado (Token Ativo)
-                  </span>
-                ) : (
-                  <span className="text-slate-500">Offline</span>
-                )}
-              </div>
+              <span className="text-xs text-slate-600 font-medium">
+                {timeRange === "7d"
+                  ? "Últimos 7 dias"
+                  : timeRange === "30d"
+                  ? "Últimos 30 dias"
+                  : timeRange === "90d"
+                  ? "Últimos 90 dias"
+                  : "Todo o histórico registrado"}
+              </span>
             </div>
 
             {/* Time filter buttons */}
             <div className="flex items-center gap-1.5">
               <span className="text-xs text-slate-500 font-medium flex items-center gap-1 mr-1">
                 <Calendar className="h-3.5 w-3.5 text-slate-400" />
-                Filtrar Período:
+                Filtrar:
               </span>
               {(["7d", "30d", "90d", "all"] as AnalyticsTimeRange[]).map((r) => (
                 <button
