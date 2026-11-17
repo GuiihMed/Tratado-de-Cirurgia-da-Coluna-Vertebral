@@ -205,6 +205,22 @@ const CHAPTER_HIGHLIGHTS_BY_EPISODE: Record<number, ChapterHighlightData> = {
     chips_en: ["Regenerative Medicine", "PRP", "BMAC", "Orthobiologics", "Cell Therapy"],
     chips_es: ["Medicina Regenerativa", "PRP", "BMAC", "Ortobiológicos", "Terapia Celular"],
   },
+  12: {
+    capituloNum: 97,
+    title_pt: "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
+    title_en: "Pseudarthrosis and Hardware Failure in Spine Surgery",
+    title_es: "Pseudoartrosis y Falla Mecánica del Instrumental en Cirugía de Columna",
+    authors: ["Nelson Astur Neto", "Felipe Neves Simões Monteiro", "Marcelo Italo Risso Neto"],
+    summary_pt:
+      "Análise aprofundada dos mecanismos biológicos e mecânicos que levam à pseudoartrose e à falha dos implantes na coluna. Critérios diagnósticos tomográficos e protocolos cirúrgicos modernos de revisão.",
+    summary_en:
+      "In-depth analysis of biological and biomechanical failure modes in spinal fusion. CT diagnostic criteria and modern surgical strategies for complex hardware revision and anterior column reconstruction.",
+    summary_es:
+      "Análisis exhaustivo de los mecanismos biológicos y biomecánicos de pseudoartrosis y falla de instrumental en columna. Criterios diagnósticos por tomografía y estrategias modernas de revisión quirúrgica.",
+    chips_pt: ["Pseudoartrose", "Falha de Implante", "Cirurgia de Revisão", "Tomografia", "Artrodese"],
+    chips_en: ["Pseudarthrosis", "Hardware Failure", "Revision Surgery", "Computed Tomography", "Arthrodesis"],
+    chips_es: ["Pseudoartrosis", "Falla de Implante", "Cirugía de Revisión", "Tomografía", "Artrodesis"],
+  },
 };
 
 const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: string }> = {
@@ -262,6 +278,11 @@ const DEBATE_SHORT_DESCRIPTIONS: Record<number, { pt: string; en: string; es: st
     pt: "Discussão com os autores sobre os avanços e evidências da medicina regenerativa na coluna: PRP, BMAC, derivados adiposos, abordagem multitarget e rigor regulatório.",
     en: "Clinical discussion with the authors on spine regenerative medicine advances: PRP, BMAC, adipose derivatives, multitarget approach, and evidence standards.",
     es: "Discusión con los autores sobre avances y evidencia en medicina regenerativa de columna: PRP, BMAC, derivados adiposos, abordaje multitarget y rigor regulatorio.",
+  },
+  12: {
+    pt: "Discussão aprofundada com os autores sobre pseudoartrose, soltura ou quebra de parafusos pediculares, critérios tomográficos e táticas cirúrgicas de revisão.",
+    en: "In-depth clinical discussion on pseudarthrosis, hardware failure, CT diagnostic criteria, and advanced surgical revision strategies.",
+    es: "Discusión clínica con los autores sobre pseudoartrosis, rotura de implantes, criterios tomográficos y tácticas de revisión quirúrgica.",
   },
 };
 

@@ -104,10 +104,22 @@ async function getGoogleAccessToken(
  */
 const SPOTIFY_REAL_EPISODES: SpotifyEpisodeMetric[] = [
   {
+    id: "12",
+    episodeNumber: 12,
+    title: "Pseudoartrose e Falha Mecânica da Instrumentação",
+    chapterNumber: 97,
+    streams: 0,
+    listeners: 0,
+    completionRate: 0,
+    avgListeningTime: "64m 58s",
+    spotifyUrl: "https://open.spotify.com/episode/1vHhv32weNHNS0n5acDegf?si=LjzLMHoXSvyKAblSnUwwhA",
+    releaseDate: "18/11/2026",
+  },
+  {
     id: "11",
     episodeNumber: 11,
     title: "Medicina Regenerativa no Manejo da Dor Axial e Radicular",
-    chapterNumber: 11,
+    chapterNumber: 50,
     streams: 30, // Starts
     listeners: 18, // Streams/Ouvintes
     completionRate: 60,

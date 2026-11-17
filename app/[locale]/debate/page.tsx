@@ -59,6 +59,13 @@ export async function generateMetadata({
       "Episódio 09",
       "Episódio 10",
       "Episódio 11",
+      "Episódio 12",
+      "Pseudoartrose e Falha Mecânica",
+      "Pseudoartrose na Coluna",
+      "Falha Mecânica da Instrumentação",
+      "Dr. Nelson Astur Neto",
+      "Dr. Felipe Neves Simões Monteiro",
+      "Dr. Marcelo Italo Risso Neto",
       "Medicina Regenerativa na Coluna",
       "Medicina Regenerativa",
       "Ortobiológicos",
@@ -167,6 +174,24 @@ export default async function DebatePage({ params, searchParams }: DebatePagePro
   const videoJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep12`,
+        "name": "Episódio 12: Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral — Tratado em Debate",
+        "description": "Videocast científico oficial da Sociedade Brasileira de Coluna (SBC) com Dr. Nelson Astur Neto, Dr. Felipe Neves Simões Monteiro e Dr. Marcelo Italo Risso Neto debatendo a biologia, biomecânica, diagnóstico tomográfico e estratégias cirúrgicas de revisão de falha mecânica e pseudoartrose no Capítulo 97 do Tratado SBC.",
+        "thumbnailUrl": [
+          "https://www.tratadodecoluna.com.br/assets/debate-ep12-cover.jpg",
+          "https://www.tratadodecoluna.com.br/assets/og-cover.png"
+        ],
+        "uploadDate": "2026-11-18T18:00:00-03:00",
+        "duration": "PT65M",
+        "embedUrl": "https://player.vimeo.com/video/1246329251",
+        "publisher": {
+          "@type": "MedicalOrganization",
+          "name": "Sociedade Brasileira de Coluna (SBC)",
+          "logo": "https://www.tratadodecoluna.com.br/assets/sbc-logo.svg"
+        }
+      },
       {
         "@type": "VideoObject",
         "@id": `https://www.tratadodecoluna.com.br/${locale}/debate#video-ep11`,

@@ -1031,6 +1031,108 @@ export const DEBATE_EPISODES: DebateEpisode[] = [
     ],
     status: "publicado",
   },
+  {
+    id: "ep-12",
+    numero: 12,
+    slug: "episodio-12-pseudoartrose-e-falha-mecanica",
+    titulo_pt: "Episódio 12 – Pseudoartrose e Falha Mecânica da Instrumentação",
+    titulo_en: "Episode 12 – Pseudarthrosis and Hardware Failure in Spine Surgery",
+    titulo_es: "Episodio 12 – Pseudoartrosis y Falla Mecánica del Instrumental",
+    subtitulo_pt:
+      "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral: biologia, mecânica e estratégia de revisão",
+    subtitulo_en:
+      "Pseudarthrosis and Hardware Failure in Spine Surgery: Biology, Mechanics, and Revision Strategy",
+    subtitulo_es:
+      "Pseudoartrosis y Falla Mecánica del Instrumental en Cirugía de Columna: biología, mecánica y estrategia de revisión",
+    descricao_pt:
+      "Neste décimo segundo episódio do Tratado em Debate, o Dr. Nelson Astur Neto, o Dr. Felipe Neves Simões Monteiro (autores do Capítulo 97) e o Dr. Marcelo Italo Risso Neto debatem a 'Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral'. Analisam os fatores de risco biológicos e mecânicos associados à não consolidação óssea, critérios diagnósticos por imagem (tomografia computadorizada de alta resolução e radiografias dinâmicas), mecanismos de soltura e quebra de implantes e estratégias cirúrgicas modernas para revisão, incluindo osteotomias, reconstrução da coluna anterior e otimização biológica com enxertos.",
+    descricao_en:
+      "In this twelfth episode of the Treatise in Debate, Dr. Nelson Astur Neto, Dr. Felipe Neves Simões Monteiro (authors of Chapter 97), and Dr. Marcelo Italo Risso Neto examine 'Pseudarthrosis and Hardware Failure in Spine Surgery'. They explore biological and mechanical risk factors for nonunion, diagnostic imaging protocols (high-resolution CT and dynamic radiographs), modes of hardware failure and screw loosening, and current revision strategies including anterior column realignment, revision osteotomies, and biological augmentation.",
+    descricao_es:
+      "En este duodécimo episodio del Tratado en Debate, el Dr. Nelson Astur Neto, el Dr. Felipe Neves Simões Monteiro (autores del Capítulo 97) y el Dr. Marcelo Italo Risso Neto analizan la 'Pseudoartrosis y Falla Mecánica del Instrumental en Cirugía de Columna'. Discuten los factores biológicos y biomecánicos de falla de consolidación, criterios diagnósticos por tomografía de alta resolución y radiografías dinámicas, patrones de fatiga del material y estrategias avanzadas de rescate quirúrgico con osteotomías y soporte anterior.",
+    vimeoId: "1246329251",
+    vimeoUrl: "https://player.vimeo.com/video/1246329251",
+    thumbnailUrl: "/assets/debate-ep12-cover.jpg",
+    vimeoThumbnailUrl:
+      "https://i.vimeocdn.com/video/2225699935-795b95a4f47a5afc6e2e1d963e5ff249e025c38bcef41ebcc7d95a1d50cbbf16-d_1280x720.jpg",
+    spotifyUrl:
+      "https://open.spotify.com/episode/1vHhv32weNHNS0n5acDegf?si=LjzLMHoXSvyKAblSnUwwhA",
+    capituloNum: 97,
+    capituloTitulo_pt:
+      "Pseudoartrose e Falha Mecânica da Instrumentação na Cirurgia da Coluna Vertebral",
+    capituloTitulo_en:
+      "Pseudarthrosis and Hardware Failure in Spine Surgery",
+    capituloTitulo_es:
+      "Pseudoartrosis y Falla Mecánica del Instrumental en Cirugía de Columna",
+    secaoId: 9,
+    secaoTitulo_pt: "Complicações",
+    secaoTitulo_en: "Complications",
+    secaoTitulo_es: "Complicaciones",
+    duracao: "64:58",
+    dataPublicacao: "2026",
+    dataEstreia: "2026-11-18T18:00:00-03:00",
+    convidados: [
+      {
+        nome: "Dr. Nelson Astur Neto",
+        cargo: "Convidado • Autor do Cap. 97 • Cirurgião de Coluna",
+        instituicao: "Hospital Israelita Albert Einstein • SBC",
+        slug: "nelson-astur-neto",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0000-0002-2608-2118",
+      },
+      {
+        nome: "Dr. Felipe Neves Simões Monteiro",
+        cargo: "Convidado • Autor do Cap. 97 • Cirurgião de Coluna",
+        instituicao: "Hospital Israelita Albert Einstein • SBC",
+        slug: "felipe-neves-simoes-monteiro",
+        foto_url: "/assets/avatar-placeholder.png",
+        orcid: "0009-0009-6902-7598",
+      },
+      {
+        nome: "Dr. Marcelo Italo Risso Neto",
+        cargo: "Convidado • Cirurgião de Coluna • Coordenador",
+        instituicao: "Sociedade Brasileira de Coluna (SBC)",
+        slug: "marcelo-italo-risso-neto",
+        foto_url: "/assets/marcelo-risso.png",
+        orcid: "0000-0003-0990-6901",
+      },
+    ],
+    destaques_pt: [
+      "Biologia vs. Biomecânica da Pseudoartrose: identificação de falhas de consolidação, fatores do hospedeiro (tabagismo, osteometabolismo, diabetes) e sobrecarga mecânica.",
+      "Diagnóstico por Imagem e Tomografia de Alta Resolução: critérios tomográficos para confirmação de pseudoartrose, osteólise peri-implante e radiografias dinâmicas em flexão-extensão.",
+      "Mecanismos de Falha dos Implantes: afrouxamento de parafusos pediculares, fadiga de hastes metálicas e perda de suporte da coluna anterior.",
+      "Estratégia Cirúrgica de Revisão: planejamento de pontos de fixação adicionais, conectores dominó, osteotomias corretivas e reconstrução da coluna anterior.",
+      "Otimização Biológica e Enxertos: preparo do leito biológico facetário e discal, decorticação rigorosa e seleção de enxertos autólogos e substitutos ósseos no salvamento da artrodese.",
+    ],
+    destaques_en: [
+      "Biology vs. Biomechanics in Nonunion: differentiating biological host factors (smoking, metabolic bone disease) from structural mechanical overload.",
+      "High-Resolution CT and Diagnostic Criteria: thin-slice computed tomography analysis, halo signs, and dynamic radiographic evaluation.",
+      "Hardware Failure Mechanisms: pedicle screw loosening, rod fatigue fractures, and failure of anterior column load sharing.",
+      "Surgical Revision Strategy: extending fixation levels, revision connectors, corrective osteotomies, and anterior column reconstruction.",
+      "Biological Augmentation & Bone Grafting: bed decortication, biological bed preparation, and evidence-based bone grafting in complex salvage procedures.",
+    ],
+    destaques_es: [
+      "Biología vs. Biomecánica de la Pseudoartrosis: factores biológicos del huésped frente a sobrecarga mecánica del constructo quirúrgico.",
+      "Criterios Diagnósticos por Tomografía: análisis de líneas de radiolucencia peri-implante, tomografía computarizada y radiografías dinámicas.",
+      "Mecanismos de Falla del Instrumental: aflojamiento de tornillos, fractura por fatiga de barras y pérdida de soporte anterior.",
+      "Estrategia de Revisión Quirúrgica: extensión de niveles de fijación, osteotomías y restauración del soporte de la columna anterior.",
+      "Optimización Biológica e Injertos Óseos: decorticación minuciosa, preparación del lecho y selección de injertos para el rescate de la artrodesis.",
+    ],
+    tags: [
+      "Pseudoartrose",
+      "Falha Mecânica",
+      "Instrumentação",
+      "Cirurgia de Revisão",
+      "Artrodese",
+      "Coluna Vertebral",
+      "Nelson Astur Neto",
+      "Felipe Neves Simões Monteiro",
+      "Marcelo Italo Risso Neto",
+      "Complicações",
+      "SBC",
+    ],
+    status: "publicado",
+  },
 ];
 
 export function isEpisodeReleased(episode: DebateEpisode): boolean {
@@ -1063,7 +1165,11 @@ export function getDebateEpisodeBySlug(slug: string): DebateEpisode | undefined 
       (ep.numero === 8 && slug === "escoliose-idiopatica") ||
       (ep.numero === 9 && slug === "fisiopatologia-da-degeneracao-discal") ||
       (ep.numero === 10 && slug === "instabilidade-vertebral") ||
-      (ep.numero === 11 && (slug === "medicina-regenerativa-na-coluna" || slug === "medicina-regenerativa"))
+      (ep.numero === 11 && (slug === "medicina-regenerativa-na-coluna" || slug === "medicina-regenerativa")) ||
+      (ep.numero === 12 &&
+        (slug === "episodio-12-pseudoartrose-e-falha-mecanica" ||
+          slug === "pseudoartrose-e-falha-mecanica" ||
+          slug === "pseudoartrose"))
   );
 }
 
